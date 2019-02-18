@@ -1,0 +1,3 @@
+[submodule ".anyenv"]
+	path = .anyenv
+	url = https://github.com/anyenv/anyenv

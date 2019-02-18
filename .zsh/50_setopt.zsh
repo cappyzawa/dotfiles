@@ -1,0 +1,2 @@
+setopt nonomatch
+setopt globdots
