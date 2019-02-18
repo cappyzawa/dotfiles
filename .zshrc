@@ -3,7 +3,7 @@ limit coredumpsize 0
 bindkey -d
 
 # pip install
-if [[ ! `which pip` ]]; then
+if ! which pip; then
   curl -O https://bootstrap.pypa.io/get-pip.py
   python get-pip.py --user
 fi
