@@ -3,10 +3,11 @@ limit coredumpsize 0
 bindkey -d
 
 # pip install
-if ! which pip; then
+if ! which pip > /dev/null; then
   curl -O https://bootstrap.pypa.io/get-pip.py
   python get-pip.py --user
 fi
+export PATH=$PATH:$HOME/.local/bin
 
 # Return if zsh is called from Vim
 if [[ -n $VIMRUNTIME ]]; then
