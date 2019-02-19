@@ -512,5 +512,16 @@ endif
 if g:plug.is_installed('') " {{{1
 endif
 
+" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
+if executable('gopls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+    let g:go_def_mapping_enabled = 0
+    let g:go_doc_keywordprg_enabled = 0
+endif
+
 " __END__ {{{1
 " vim:fdm=marker expandtab fdc=3:

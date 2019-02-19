@@ -23,6 +23,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'junegunn/fzf.vim'
 
     " syntax? language support
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'zplug/vim-zplug', { 'for': 'zplug' }
     Plug 'chase/vim-ansible-yaml'
     Plug 'cespare/vim-toml', { 'for': 'toml' }
