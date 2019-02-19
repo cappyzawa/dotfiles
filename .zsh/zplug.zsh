@@ -36,7 +36,7 @@ fi
 zplug "motemen/ghq", \
     as:command, \
     from:gh-r, \
-    rename-to:ghq
+    rename-to:"ghq"
 
 zplug "peco/peco", \
     as:command, \
@@ -54,11 +54,10 @@ zplug "b4b4r07/ssh-keyreg", as:command, use:bin
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
 
-zplug "kislyuk/yq", \
+zplug "mikefarah/yq", \
     as:command, \
-    hook-build:"pip install yq --user", \
-    on:"stedolan/jq"
-
+    from:gh-r, \
+    rename-to:"yq"
 
 zplug 'dracula/zsh', as:theme
 

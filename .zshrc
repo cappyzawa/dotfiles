@@ -2,13 +2,6 @@ umask 022
 limit coredumpsize 0
 bindkey -d
 
-# pip install
-export PATH=$PATH:$HOME/.local/bin
-if ! which pip > /dev/null; then
-  curl -O https://bootstrap.pypa.io/get-pip.py
-  python get-pip.py --user
-fi
-
 # Return if zsh is called from Vim
 if [[ -n $VIMRUNTIME ]]; then
     return 0
@@ -42,5 +35,3 @@ if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
 
-# TODO: remove
-export PATH=${PATH}:${HOME}/Library/Python/2.7/bin
