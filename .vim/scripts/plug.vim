@@ -17,7 +17,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " start to manage with vim-plug
     call plug#begin(g:plug.base)
 
-
     " file and directory
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
@@ -30,13 +29,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'natebosch/vim-lsc'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'zplug/vim-zplug', { 'for': 'zplug' }
-    Plug 'chase/vim-ansible-yaml'
-    Plug 'cespare/vim-toml', { 'for': 'toml' }
-    Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'mattn/goplayground-vim'
-    Plug 'haya14busa/vim-gofmt'
-    Plug 'kylef/apiblueprint.vim'
-    Plug 'millermedeiros/vim-esformatter'
 
     " colorscheme
     Plug 'b4b4r07/solarized.vim'
@@ -46,7 +39,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'whatyouhide/vim-gotham'
 
     Plug 'plasticboy/vim-markdown',      { 'for': 'markdown' }
-    Plug 'shawncplus/phpcomplete.vim'
 
     Plug 'b4b4r07/vim-unicode'
     Plug 'b4b4r07/vim-sqlfmt'
