@@ -102,7 +102,7 @@ if s:load('plug.vim')
 endif
 
 " call s:load('func.vim')
-" call s:load('base.vim')
+call s:load('base.vim')
 " call s:load('view.vim')
 " call s:load('map.vim')
 " call s:load('command.vim')
