@@ -6,6 +6,10 @@ if g:plug.is_installed('enhancd') "{{{1
     let g:enhancd_action = g:plug.is_installed('dirvish') ? 'Dirvish' : 'Ex'
 endif
 
+if g:plug.is_installed('asyncomplete.vim') "{{{1
+    let g:lsp_async_completion = 1
+endif
+
 if g:plug.is_installed('caw') "{{{1
     vmap <C-k> <Plug>(caw:i:toggle)
     vmap K     <Plug>(caw:i:toggle)
