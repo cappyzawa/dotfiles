@@ -11,11 +11,17 @@ zplug "stedolan/jq", \
 zplug "b4b4r07/emoji-cli", \
     on:"stedolan/jq"
 
+zplug "cappyzawa/get-op", \
+    as:command, \
+    hook-build:"./init", \
+    use:"op"
+
 zplug "cappyzawa/op-kv", \
     from:gh-r, \
     as:command, \
     rename-to:op-kv, \
-    on:"stedolan/jq"
+    on:"stedolan/jq", \
+    on:"cappyzawa/get-op"
 
 zplug "mrowa44/emojify", as:command
 
