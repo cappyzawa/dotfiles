@@ -57,6 +57,26 @@ zplug 'b4b4r07/zplug-doctor', lazy:yes
 
 zplug "b4b4r07/ssh-keyreg", as:command, use:bin
 
+zplug "b4b4r07/stein", \
+    as:command, \
+    from:gh-r
+
+zplug "motemen/gobump", \
+    as:command, \
+    hook-build:"go get -d && go build cmd/gobump/..."
+
+zplug "goreleaser/goreleaser", \
+    as:command, \
+    rename-to:"goreleaser", \
+    hook-build:"go get -d && go mod download && go build"
+
+zplug "b4b4r07/release-go", \
+    as:command, \
+    rename-to:"release-go", \
+    use:"./release-go.sh", \
+    on:"goreleaser/goreleaser", \
+    on:"motemen/gobump"
+
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
 
