@@ -9,7 +9,7 @@
 # http://gist.github.com/287717
 exec sh -c "tail -n +$(($LINENO + 2)) <$0 | sed s/DATE/$(date +%Y)/"
 
-Copyright (c) DATE "cappyzawa" cappyzawa <http://github.com/cappyzawa/>
+Copyright (c) DATE Shu Kutsuzawa <cappyzawa@yahoo.ne.jp>
 
 Permission  is  hereby granted, free of charge, to any person ob-
 taining a copy of  this  software  and  associated  documentation
