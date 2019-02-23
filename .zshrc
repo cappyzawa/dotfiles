@@ -31,6 +31,10 @@ if ! eval "$(anyenv init -)"; then
   anyenv install --force-init
 fi
 
+if has "direnv"; then
+  eval "$(direnv hook zsh)"
+fi
+
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
