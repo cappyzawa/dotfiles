@@ -55,5 +55,9 @@ if is_osx; then
     alias -g CC='| tee /dev/tty | pbcopy'
 fi
 
+if [[ -e /usr/local/bin/vim ]];then
+	alias -g vim='/usr/local/bin/vim'
+fi
+
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
