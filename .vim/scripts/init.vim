@@ -106,7 +106,7 @@ call s:load('base.vim')
 " call s:load('view.vim')
 call s:load('map.vim')
 " call s:load('command.vim')
-" call s:load('utils.vim')
+call s:load('utils.vim')
 call s:load('option.vim')
 " call s:load('gui.vim', g:env.is_gui)
 
