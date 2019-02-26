@@ -291,4 +291,13 @@ if executable('bingo')
         \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
+    au FileType go nnoremap <buffer><silent> d :<C-u>LspDefinition<CR>
+    au FileType go nnoremap <buffer><silent> r :<C-u>LspReferences<CR>
+    au FileType go nnoremap <buffer><silent> i :<C-u>LspImplementation<CR>
+    au FileType go nnoremap <buffer><silent> t :<C-u>LspRename<CR>
+    au FileType go nnoremap <buffer><silent> gs :<C-u>LspDocumentSymbol<CR>
+    au FileType go nnoremap <buffer><silent> gS :<C-u>LspWorkspaceSymbol<CR>
+    au FileType go nnoremap <buffer><silent> gQ :<C-u>LspDocumentFormat<CR>
+    au FileType go vnoremap <buffer><silent> gQ :LspDocumentRangeFormat<CR>
+    au FileType go nnoremap <buffer><silent> K :<C-u>LspHover<CR>
 endif
