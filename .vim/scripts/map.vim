@@ -14,6 +14,14 @@ xnoremap [Space] <Nop>
 noremap [Space]h ^
 noremap [Space]l $
 
+if !g:plug.is_installed('lexima.vim')
+    inoremap [ []<LEFT>
+    inoremap ( ()<LEFT>
+    inoremap " ""<LEFT>
+    inoremap ' ''<LEFT>
+    inoremap ` ``<LEFT>
+endif
+
 inoremap <C-h> <Backspace>
 inoremap <C-d> <Delete>
 cnoremap <C-k> <UP>
@@ -162,6 +170,16 @@ nnoremap <silent> <C-t>L  :<C-u>call <SID>move_tabpage("right")<CR>
 nnoremap <silent> <C-t>H  :<C-u>call <SID>move_tabpage("left")<CR>
 nnoremap <silent> <C-t>dh :<C-u>call <SID>close_all_left_tabpages()<CR>
 nnoremap <silent> <C-t>dl :<C-u>call <SID>close_all_right_tabpages()<CR>
+
+" Swap jk for gjgk {{{1
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap gj j
+nnoremap gk k
+vnoremap gj j
+vnoremap gk k
 
 function! s:vsplit_or_wincmdw()
     if winnr('$') == 1
