@@ -60,7 +60,7 @@ nnoremap <Right> <Nop>
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
-" Must {{{1
+" Must 
 inoremap jj <ESC>
 cnoremap <expr> j getcmdline() [getcmdops()-2] ==# 'j' ? "\<BS>\<C-c>" : 'j'
 vnoremap <C-j><C-j> <ESC>
@@ -110,7 +110,7 @@ nnoremap <Leader>Y :<C-u>%y<CR>
 nnoremap <silent> <Leader>l :<C-u>call <SID>toggle_option('cursorline')<CR>
 nnoremap <silent> <Leader>c :<C-u>call <SID>toggle_option('cursorcolumn')<CR>
 
-" Swap jk for gjgk {{{1
+" Swap jk for gjgk 
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -139,7 +139,7 @@ if g:env.vimrc.goback_to_eof2bof == g:true
     nnoremap <expr><silent> j <SID>down("gj")
 endif
 
-" Buffers, windows, and tabpages {{{1
+" Buffers, windows, and tabpages 
 if !g:plug.is_installed('vim-buftabs')
     nnoremap <silent> <C-j> :<C-u>silent bnext<CR>
     nnoremap <silent> <C-k> :<C-u>silent bprev<CR>
@@ -151,7 +151,7 @@ endif
 nnoremap <silent> <C-x>u :<C-u>call <SID>buf_restore()<CR>
 nnoremap <silent> <C-x>d     :Delete<CR>
 nnoremap <silent> <C-x><C-d> :Delete!<CR>
-" Tabpages {{{1
+" Tabpages 
 function! s:move_to_tab()
     tab split
     tabprevious
@@ -171,7 +171,7 @@ nnoremap <silent> <C-t>H  :<C-u>call <SID>move_tabpage("left")<CR>
 nnoremap <silent> <C-t>dh :<C-u>call <SID>close_all_left_tabpages()<CR>
 nnoremap <silent> <C-t>dl :<C-u>call <SID>close_all_right_tabpages()<CR>
 
-" Swap jk for gjgk {{{1
+" Swap jk for gjgk 
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -203,9 +203,9 @@ nnoremap <silent> to :<C-u>tabonly<CR>
 
 nnoremap <silent>z0 :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
 
-" tig {{{1
+" tig 
 nnoremap <silent> [Space]g :<C-u>!tig blame +<C-r>=line('.')<CR> %<CR>:redraw!<CR>:
 
 
-" __END__ {{{1
+" __END__ 
 " vim:fdm=marker expandtab fdc=3:
