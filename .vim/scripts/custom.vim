@@ -2,36 +2,15 @@ if !exists('g:env')
     finish
 endif
 
-if g:plug.is_installed('enhancd') "{{{1
+if g:plug.is_installed('enhancd') 
     let g:enhancd_action = g:plug.is_installed('dirvish') ? 'Dirvish' : 'Ex'
 endif
 
-if g:plug.is_installed('asyncomplete.vim') "{{{1
+if g:plug.is_installed('asyncomplete.vim') 
     let g:lsp_async_completion = 1
 endif
 
-if g:plug.is_installed('caw') "{{{1
-    vmap <C-k> <Plug>(caw:i:toggle)
-    vmap K     <Plug>(caw:i:toggle)
-endif
-
-if g:plug.is_installed('anzu') "{{{1
-    nmap n <Plug>(anzu-n)
-    nmap N <Plug>(anzu-N)
-    nmap * <Plug>(anzu-star)
-    nmap # <Plug>(anzu-sharp)
-    nmap n <Plug>(anzu-n-with-echo)
-    nmap N <Plug>(anzu-N-with-echo)
-    nmap * <Plug>(anzu-star-with-echo)
-    nmap # <Plug>(anzu-sharp-with-echo)
-
-    augroup vim-anzu
-        autocmd!
-        autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
-    augroup END
-endif
-
-if g:plug.is_installed('fzf.vim') "{{{1
+if g:plug.is_installed('fzf.vim') 
     let g:fzf_action = {
                 \ 'ctrl-t': 'tab split',
                 \ 'ctrl-x': 'tab split',
@@ -63,213 +42,14 @@ if g:plug.is_installed('fzf.vim') "{{{1
                 \ })<CR>
 endif
 
-if g:plug.is_installed('vim-dirvish') "{{{1
-    " Override netrw
-    let g:dirvish_hijack_netrw = 1
-
-    augroup my_dirvish_events
-        au!
-        " always show hidden files
-        au User DirvishEnter let b:dirvish.showhidden = 1
-    augroup END
-
-    nnoremap <silent> [Space]d :<C-u>call <SID>toggle_dirvish()<CR>
-    function! s:toggle_dirvish()
-        if &filetype == 'dirvish'
-            if exists('b:dirvish')
-                if winnr('$') > 1
-                    wincmd c
-                else
-                    bdelete
-                endif
-            endif
-        else
-            Dirvish
-        endif
-    endfunction
-endif
-
-if g:plug.is_installed('neocomplete.vim') "{{{1
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#enable_camel_case = 1
-    let g:neocomplete#enable_underbar_completion = 1
-    let g:neocomplete#enable_fuzzy_completion = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-    let g:neocomplete#auto_completion_start_length = 2
-    let g:neocomplete#manual_completion_start_length = 0
-    let g:neocomplete#min_keyword_length = 3
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:jedi#auto_vim_configuration = 0
-    let g:neocomplete#sources#omni#input_patterns = {
-                \ 'ruby' : '[^. *\t]\.\w*\|\h\w*::',
-                \}
-    let g:neocomplete#force_omni_input_patterns = {
-                \ 'python': '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-                \}
-
-    let g:neocomplete#enable_auto_delimiter = 1
-    let g:neocomplete#disable_auto_select_buffer_name_pattern =
-                \ '\[Command Line\]'
-    let g:neocomplete#max_list = 100
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    if !exists('g:neocomplete#sources#omni#functions')
-        let g:neocomplete#sources#omni#functions = {}
-    endif
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#enable_auto_close_preview = 1
-
-    let g:neocomplete#force_omni_input_patterns.markdown =
-                \ ':\w*'
-    let g:neocomplete#force_omni_input_patterns.ruby =
-                \ '[^. *\t]\.\w*\|\h\w*::\w*'
-
-    let g:neocomplete#force_omni_input_patterns.python =
-                \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-    let g:neocomplete#sources#omni#functions.go =
-                \ 'gocomplete#Complete'
-
-    let g:neocomplete#sources#omni#input_patterns.php =
-                \'\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-    "if !exists('g:neocomplete#keyword_patterns')
-    "  let g:neocomplete#keyword_patterns = {}
-    "endif
-    "let g:neocomplete#keyword_patterns._ = '\h\w*'
-    "let g:neocomplete#keyword_patterns.perl = '\h\w*->\h\w*\|\h\w*::\w*'
-    "let g:neocomplete#keyword_patterns.rst =
-    "      \ '\$\$\?\w*\|[[:alpha:]_.\\/~-][[:alnum:]_.\\/~-]*\|\d\+\%(\.\d\+\)\+'
-
-    "let g:neocomplete#ignore_source_files = []
-
-    "let g:neocomplete#enable_at_startup = 1
-    "let g:neocomplete#disable_auto_complete = 0
-    "let g:neocomplete#enable_smart_case = 1
-    "let g:neocomplete#enable_camel_case = 1
-    "let g:neocomplete#enable_fuzzy_completion = 1
-    "let g:neocomplete#auto_completion_start_length = 2
-    "let g:neocomplete#manual_completion_start_length = 0
-    "let g:neocomplete#min_keyword_length = 3
-    "let g:neocomplete#enable_auto_select = 1
-    "let g:neocomplete#enable_cursor_hold_i = 0
-
-    "let g:neocomplete#enable_auto_delimiter = 1
-    "let g:neocomplete#disable_auto_select_buffer_name_pattern =
-    "      \ '\[Command Line\]'
-    "let g:neocomplete#max_list = 100
-    "if !exists('g:neocomplete#sources#omni#input_patterns')
-    "  let g:neocomplete#sources#omni#input_patterns = {}
-    "endif
-    "if !exists('g:neocomplete#sources#omni#functions')
-    "  let g:neocomplete#sources#omni#functions = {}
-    "endif
-    "if !exists('g:neocomplete#force_omni_input_patterns')
-    "  let g:neocomplete#force_omni_input_patterns = {}
-    "endif
-    "let g:neocomplete#enable_auto_close_preview = 1
-
-    "let g:neocomplete#force_omni_input_patterns.markdown =
-    "      \ ':\w*'
-    "let g:neocomplete#force_omni_input_patterns.ruby =
-    "      \ '[^. *\t]\.\w*\|\h\w*::\w*'
-
-    "let g:neocomplete#force_omni_input_patterns.python =
-    "      \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-    "let g:neocomplete#sources#omni#functions.go =
-    "      \ 'gocomplete#Complete'
-
-    "let g:neocomplete#sources#omni#input_patterns.php =
-    "      \'\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-    "if !exists('g:neocomplete#keyword_patterns')
-    "  let g:neocomplete#keyword_patterns = {}
-    "endif
-    "let g:neocomplete#keyword_patterns._ = '\h\w*'
-    "let g:neocomplete#keyword_patterns.perl = '\h\w*->\h\w*\|\h\w*::\w*'
-    "let g:neocomplete#keyword_patterns.rst =
-    "      \ '\$\$\?\w*\|[[:alpha:]_.\\/~-][[:alnum:]_.\\/~-]*\|\d\+\%(\.\d\+\)\+'
-
-    "let g:neocomplete#ignore_source_files = []
-
-    "let g:neocomplete#sources#vim#complete_functions = {
-    "      \ 'Emoji' : 'emoji#complete',
-    "      \ 'Ref' : 'ref#complete',
-    "      \ 'Unite' : 'unite#complete_source',
-    "      \ 'VimShellExecute' :
-    "      \      'vimshell#vimshell_execute_complete',
-    "      \ 'VimShellInteractive' :
-    "      \      'vimshell#vimshell_execute_complete',
-    "      \ 'VimShellTerminal' :
-    "      \      'vimshell#vimshell_execute_complete',
-    "      \ 'VimShell' : 'vimshell#complete',
-    "      \ 'VimFiler' : 'vimfiler#complete',
-    "      \ 'Vinarise' : 'vinarise#complete',
-    "      \}
-    ""call neocomplete#custom#source('look', 'min_pattern_length', 4)
-
-    "" mappings."{{{
-    "" <C-f>, <C-b>: page move.
-    "inoremap <expr><C-f>  pumvisible() ? "\<PageDown>" : "\<Right>"
-    "inoremap <expr><C-b>  pumvisible() ? "\<PageUp>"   : "\<Left>"
-    "" <C-h>, <BS>: close popup and delete backword char.
-    ""inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
-    ""inoremap <expr> <BS> neocomplete#smart_close_popup()."\<C-h>"
-    "" <C-n>: neocomplete.
-    "inoremap <expr> <C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>\<Down>"
-    "" <C-p>: keyword completion.
-    "inoremap <expr> <C-p>  pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
-    "inoremap <expr> '  pumvisible() ? "\<C-y>" : "'"
-
-    "inoremap <silent><expr> <C-x><C-f>
-    "      \ neocomplete#start_manual_complete('file')
-
-    "inoremap <expr> <C-g>     neocomplete#undo_completion()
-    "inoremap <expr> <C-l>     neocomplete#complete_common_string()
-
-    "" <CR>: close popup and save indent.
-    ""inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    ""function! s:my_cr_function()
-    ""  return neocomplete#smart_close_popup() . "\<CR>"
-    ""endfunction
-
-    "" <TAB>: completion.
-    "inoremap <silent><expr> <TAB>
-    "      \ pumvisible() ? "\<C-n>" :
-    "      \ <SID>check_back_space() ? "\<TAB>" :
-    "      \ neocomplete#start_manual_complete()
-    "function! s:check_back_space() "{{{
-    "  let col = col('.') - 1
-    "  return !col || getline('.')[col - 1]  =~ '\s'
-    "endfunction"}}}
-    "" <S-TAB>: completion back.
-    "inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-
-    "" For cursor moving in insert mode(Not recommended)
-    "inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-    "inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-    "inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-    "inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-    ""}}}
-
-    let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
-endif
-
-if g:plug.is_installed('mru.vim') "{{{1
+if g:plug.is_installed('mru.vim') 
     let MRU_Auto_Close = 1
     let MRU_Window_Height = 30
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
     let MRU_Max_Entries = 1000
     nnoremap <silent> [Space]j :<C-u>MRU<CR>
 else
-    " MRU configuration variables {{{3
+    " MRU configuration variables
     if !exists('s:MRU_File')
         if has('unix') || has('macunix')
             let s:MRU_File = $HOME . '/.vim_mru_files'
@@ -283,7 +63,7 @@ else
         endif
     endif
 
-    function! s:MRU_LoadList() "{{{3
+    function! s:MRU_LoadList()
         if filereadable(s:MRU_File)
             let s:MRU_files = readfile(s:MRU_File)
             if s:MRU_files[0] =~# '^#'
@@ -296,13 +76,13 @@ else
         endif
     endfunction
 
-    function! s:MRU_SaveList() "{{{3
+    function! s:MRU_SaveList()
         let l = []
         call add(l, '# Most recently used files list')
         call extend(l, s:MRU_files)
         call writefile(l, s:MRU_File)
     endfunction
-    function! s:MRU_AddList(buf) "{{{3
+    function! s:MRU_AddList(buf)
         if s:mru_list_locked
             return
         endif
@@ -344,7 +124,7 @@ else
         endif
     endfunction
 
-    function! s:MRU_RemoveList() "{{{3
+    function! s:MRU_RemoveList()
         call s:MRU_LoadList()
         let lnum = line('.')
         call remove(s:MRU_files, line('.')-1)
@@ -354,7 +134,7 @@ else
         call cursor(lnum, 1)
     endfunction
 
-    function! s:MRU_Open_File() range "{{{3
+    function! s:MRU_Open_File() range
         for f in getline(a:firstline, a:lastline)
             if f == ''
                 continue
@@ -376,7 +156,7 @@ else
         endfor
     endfunction
 
-    function! s:MRU_Create_Window() "{{{3
+    function! s:MRU_Create_Window()
         if &filetype == 'mru' && bufname("%") ==# '__MRU_Files__'
             quit
             return
@@ -480,7 +260,7 @@ else
         setlocal nonumber cursorline nomodifiable
     endfunction
 
-    " MRU Essentials {{{3
+    " MRU Essentials 
     let s:mru_list_locked = 0
     call s:MRU_LoadList()
     command! MRU call s:MRU_Create_Window()
@@ -501,31 +281,14 @@ else
     "endif
 endif
 
-if g:plug.is_installed('vim-sqlfmt') "{{{1
-    let g:sqlfmt_command = "sqlformat"
-    let g:sqlfmt_options = "-r -k upper"
-    let g:sqlfmt_auto = true
-endif
-
-if g:plug.is_installed('syntastic') " {{{1
-    let g:syntastic_mode_map = { 'mode': 'passive',
-                \ 'active_filetypes': ['go'] }
-    let g:syntastic_go_checkers = ['go', 'golint']
-endif
-
-if g:plug.is_installed('') " {{{1
+if g:plug.is_installed('')
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
-if executable('gopls')
+if executable('bingo')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'gopls',
-        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+        \ 'name': 'bingo',
+        \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
-    let g:go_def_mapping_enabled = 0
-    let g:go_doc_keywordprg_enabled = 0
 endif
-
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:

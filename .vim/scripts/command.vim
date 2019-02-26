@@ -44,7 +44,7 @@ command! -bar RTP echo substitute(&runtimepath, ',', "\n", 'g')
 " View all mappings
 command! -nargs=* -complete=mapping AllMaps map <args> | map! <args> | lmap <args>
 
-" Handle buffers {{{1
+" Handle buffers 
 " Wipeout all buffers
 command! -nargs=0 AllBwipeout call s:all_buffers_bwipeout()
 
@@ -69,7 +69,7 @@ command! -bang -nargs=? -complete=file BufNew call <SID>bufnew(<q-args>, <q-bang
 " Bwipeout(!) for all-purpose.
 command! -nargs=0 -bang Bwipeout call <SID>smart_bwipeout(0, <q-bang>)
 
-" Handle tabpages {{{1
+" Handle tabpages 
 " Make tabpages
 command! -nargs=? TabNew call s:tabnew(<q-args>)
 
@@ -78,7 +78,3 @@ command! -nargs=? Tab call s:tabdrop(<q-args>)
 
 " Open the buffer again with tabpages
 command! -nargs=? -complete=buffer ROT call <SID>recycle_open('tabedit', empty(<q-args>) ? expand('#') : expand(<q-args>))
-
-
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:

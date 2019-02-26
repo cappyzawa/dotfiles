@@ -127,6 +127,7 @@ endif
 set foldenable
 set foldlevel=0
 set foldcolumn=2
+set foldmethod=indent
 
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,ucs-2le,ucs-2,cp932
@@ -138,6 +139,3 @@ set wrap
 if has('clipboard')
 	set clipboard=unnamed
 endif
-
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:

@@ -20,15 +20,19 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " file and directory
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
-
+    Plug 'mattn/vim-terminal'
+    Plug 'tyru/open-browser.vim'
+    Plug 'tyru/open-browser-github.vim'
+    Plug 'b4b4r07/vim-hcl'
     " syntax? language support
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'natebosch/vim-lsc'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'zplug/vim-zplug', { 'for': 'zplug' }
+    Plug 'cespare/vim-toml', { 'for': 'toml' }
+    Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'mattn/goplayground-vim'
 
     " colorscheme
@@ -163,6 +167,3 @@ if g:plug.ready() && g:env.vimrc.plugin_on
                 \ | echo g:plug.plugs['<args>'].dir
                 \ | endif
 endif
-
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:

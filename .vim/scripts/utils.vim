@@ -7,7 +7,7 @@ augroup vimrc-without-plugin
     autocmd VimEnter * if !argc() | call <SID>b4b4r07() | endif
 augroup END
 
-"function! s:cd_file_parentdir() "{{{1
+"function! s:cd_file_parentdir() "
 "  execute ":lcd " . expand("%:p:h")
 "endfunction
 "command! Cdcd call <SID>cd_file_parentdir()
@@ -39,7 +39,7 @@ if g:env.vimrc.auto_cd_file_parentdir == g:true
     augroup END
 endif
 
-function! s:win_tab_switcher(...) "{{{1
+function! s:win_tab_switcher(...) "
     let minus = 0
     if &laststatus == 1 && winnr('$') != 1
         let minus += 1
@@ -180,7 +180,7 @@ endfunction
 "nnoremap <silent> <C-l> :<C-u>call <SID>win_tab_switcher('l')<CR>
 "nnoremap <silent> <C-h> :<C-u>call <SID>win_tab_switcher('h')<CR>
 
-function! s:get_buflists(...) "{{{1
+function! s:get_buflists(...) "
     if a:0 && a:1 ==# 'n'
         silent bnext
     elseif a:0 && a:1 ==# 'p'
@@ -204,7 +204,7 @@ function! s:get_buflists(...) "{{{1
     redraw | echo join(lists, "")
 endfunction
 
-function! s:root() "{{{1
+function! s:root() "
     let me = expand('%:p:h')
     let gitd = finddir('.git', me.';')
     if empty(gitd)
@@ -217,7 +217,7 @@ function! s:root() "{{{1
 endfunction
 command! Root call <SID>root()
 
-function! s:get_buflists(...) "{{{1
+function! s:get_buflists(...) "
     if a:0 && a:1 ==# 'n'
         silent bnext
     elseif a:0 && a:1 ==# 'p'
@@ -265,7 +265,7 @@ else
 endif
 
 
-function! s:buf_delete(bang) "{{{1
+function! s:buf_delete(bang) "
     let file = fnamemodify(expand('%'), ':p')
     let g:buf_delete_safety_mode = 1
     let g:buf_delete_custom_command = "system(printf('%s %s', 'gomi', shellescape(file)))"
@@ -302,7 +302,7 @@ command! -bang -nargs=0 -complete=buffer Delete call s:buf_delete(<bang>0)
 nnoremap <silent> <C-x>d     :<C-u>Delete<CR>
 nnoremap <silent> <C-x><C-d> :<C-u>Delete!<CR>
 
-function! s:open(file) "{{{1
+function! s:open(file) "
     if !g:env.bin.open
         return Error('open: not supported yet.')
     endif
@@ -314,7 +314,7 @@ endfunction
 command! -nargs=? -complete=file Open call <SID>open(<q-args>)
 command! -nargs=0                Op   call <SID>open('.')
 
-function! s:load_source(path) "{{{1
+function! s:load_source(path) "
     let path = expand(a:path)
     if filereadable(path)
         execute 'source ' . path
@@ -323,7 +323,7 @@ endfunction
 " Source file
 command! -nargs=? Source call <SID>load_source(empty(<q-args>) ? expand('%:p') : <q-args>)
 
-function! s:copy_current_path(...) "{{{1
+function! s:copy_current_path(...) "
     let path = a:0 ? expand('%:p:h') : expand('%:p')
     if IsWindows()
         let @* = substitute(path, '\\/', '\\', 'g')
@@ -339,7 +339,7 @@ command! CopyCurrentPath call s:copy_current_path()
 command! CopyCurrentDir call s:copy_current_path(1)
 command! CopyPath CopyCurrentPath
 
-function! s:make_junkfile() "{{{1
+function! s:make_junkfile() "
     let junk_dir = $HOME . '/.vim/junk'. strftime('/%Y/%m/%d')
     if !isdirectory(junk_dir)
         call s:mkdir(junk_dir)
@@ -356,7 +356,7 @@ endfunction
 " Make the notitle file called 'Junk'.
 command! -nargs=0 JunkFile call s:make_junkfile()
 
-function! s:rename(new, type) "{{{1
+function! s:rename(new, type) "
     if a:type ==# 'file'
         if empty(a:new)
             let new = input('New filename: ', expand('%:p:h') . '/', 'file')
@@ -406,7 +406,7 @@ else
     command! -nargs=?                    ReExt  call s:rename(<q-args>, 'ext')
 endif
 
-function! s:smart_execute(expr) "{{{1
+function! s:smart_execute(expr) "
     let wininfo = winsaveview()
     execute a:expr
     call winrestview(wininfo)
@@ -417,7 +417,7 @@ command! RemoveCr call s:smart_execute('silent! %substitute/\r$//g | nohlsearch'
 " Remove EOL space
 command! RemoveEolSpace call s:smart_execute('silent! %substitute/ \+$//g | nohlsearch')
 
-function! s:smart_foldcloser() "{{{1
+function! s:smart_foldcloser() "
     if foldlevel('.') == 0
         normal! zM
         return
@@ -436,7 +436,7 @@ function! s:smart_foldcloser() "{{{1
 endfunction
 nnoremap <silent> <C-_> :<C-u>call <SID>smart_foldcloser()<CR>
 
-function! s:win_tab_switcher(...) "{{{1
+function! s:win_tab_switcher(...) "
     " TODO: refactor
     let minus = 0
     if &laststatus == 1 && winnr('$') != 1
@@ -563,7 +563,7 @@ endfunction
 nnoremap <silent> <C-l> :<C-u>call <SID>win_tab_switcher('l')<CR>
 nnoremap <silent> <C-h> :<C-u>call <SID>win_tab_switcher('h')<CR>
 
-" Add execute permission {{{1
+" Add execute permission 
 if g:env.vimrc.add_execute_perm == g:true
     if g:env.bin.chmod
         augroup auto-add-executable
@@ -585,7 +585,7 @@ if g:env.vimrc.add_execute_perm == g:true
     endif
 endif
 
-" Backup automatically {{{1
+" Backup automatically 
 if IsWindows()
     set nobackup
 else
@@ -608,7 +608,7 @@ else
 endif
 
 
-" Restore cursor position {{{1
+" Restore cursor position 
 if g:env.vimrc.restore_cursor_position == g:true
     function! s:restore_cursor_postion()
         if line("'\"") <= line("$")
@@ -622,14 +622,14 @@ if g:env.vimrc.restore_cursor_position == g:true
     augroup END
 endif
 
-" Restore the buffer that has been deleted {{{1
+" Restore the buffer that has been deleted 
 let s:bufqueue = []
 augroup buffer-queue-restore
     autocmd!
     "autocmd BufDelete * call <SID>buf_enqueue(expand('#'))
 augroup END
 
-" Automatically get buffer list {{{1
+" Automatically get buffer list 
 if !g:plug.is_installed('vim-buftabs')
     augroup bufenter-get-buffer-list
         autocmd!
@@ -638,7 +638,7 @@ if !g:plug.is_installed('vim-buftabs')
     augroup END
 endif
 
-" Automatically cd parent directory when opening the file {{{1
+" Automatically cd parent directory when opening the file 
 function! s:cd_file_parentdir()
     execute ":lcd " . expand("%:p:h")
 endfunction
@@ -652,7 +652,7 @@ if g:env.vimrc.auto_cd_file_parentdir == g:true
     augroup END
 endif
 
-" QuickLook for mac {{{1
+" QuickLook for mac 
 if IsMac() && !g:env.bin.qlmanage
     command! -nargs=? -complete=file QuickLook call s:quicklook(<f-args>)
     function! s:quicklook(...)
@@ -670,7 +670,4 @@ augroup gopkgs
   autocmd FileType go command! -buffer Import exe 'GoImport' fzf#run({'source': 'gopkgs'})[0]
   autocmd FileType go command! -buffer Doc exe 'GoDoc' fzf#run({'source': 'gopkgs'})[0]
 augroup END
-
-" __END__ {{{1
-" vim:fdm=marker expandtab fdc=3:
 
