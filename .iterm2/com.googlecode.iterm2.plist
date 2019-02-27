@@ -918,8 +918,16 @@
 			<string></string>
 		</dict>
 	</dict>
+	<key>Hotkey</key>
+	<true/>
+	<key>HotkeyChar</key>
+	<integer>105</integer>
+	<key>HotkeyCode</key>
+	<integer>34</integer>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>HotkeyModifiers</key>
+	<integer>1048840</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSFontPanelAttributes</key>
@@ -978,9 +986,9 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>268 438 609 401 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>498 341 796 486 0 0 1440 877 </string>
+	<string>498 391 796 486 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>355 202 650 552 0 0 1440 900 </string>
+	<string>0 0 1440 900 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>688 220 650 552 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1573,7 +1581,7 @@
 			<key>Rows</key>
 			<integer>25</integer>
 			<key>Screen</key>
-			<integer>-1</integer>
+			<integer>-2</integer>
 			<key>Scrollback Lines</key>
 			<integer>0</integer>
 			<key>Selected Text Color</key>
@@ -1600,6 +1608,8 @@
 			<string></string>
 			<key>Silence Bell</key>
 			<false/>
+			<key>Space</key>
+			<integer>-1</integer>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -1623,7 +1633,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Working Directory</key>
 			<string>/Users/skutsuza</string>
 		</dict>
@@ -1704,7 +1714,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-02-25T15:01:58Z</date>
+	<date>2019-02-27T10:39:26Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -1717,6 +1727,8 @@
 	<integer>4</integer>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>3</integer>
+	<key>UseLionStyleFullscreen</key>
+	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>findMode_iTerm</key>
