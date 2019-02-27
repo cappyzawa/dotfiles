@@ -8,6 +8,7 @@ zplug "stedolan/jq", \
     from:gh-r, \
     as:command, \
     rename-to:jq
+
 zplug "b4b4r07/emoji-cli", \
     on:"stedolan/jq"
 
@@ -80,10 +81,15 @@ zplug "b4b4r07/release-go", \
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
 
-zplug "mikefarah/yq", \
-    as:command, \
-    from:gh-r, \
-    rename-to:"yq"
+#zplug "mikefarah/yq", \
+#    as:command, \
+#    from:gh-r, \
+#    rename-to:"yq"
+
+zplug "kislyuk/yq", \
+     as:command, \
+     rename-to:"yq", \
+     hook-build:"python setup.py install"
 
 zplug 'dracula/zsh', as:theme
 
