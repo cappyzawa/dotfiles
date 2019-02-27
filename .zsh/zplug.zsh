@@ -81,11 +81,6 @@ zplug "b4b4r07/release-go", \
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
 
-#zplug "mikefarah/yq", \
-#    as:command, \
-#    from:gh-r, \
-#    rename-to:"yq"
-
 zplug "kislyuk/yq", \
      as:command, \
      rename-to:"yq", \
