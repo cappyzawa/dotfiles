@@ -291,14 +291,14 @@ if executable('bingo')
         \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
-    au FileType go nnoremap <buffer><silent> d :<C-u>LspDefinition<CR>
-    au FileType go nnoremap <buffer><silent> r :<C-u>LspReferences<CR>
-    au FileType go nnoremap <buffer><silent> i :<C-u>LspImplementation<CR>
-    au FileType go nnoremap <buffer><silent> t :<C-u>LspRename<CR>
-    au FileType go nnoremap <buffer><silent> ds  :<C-u>LspDocumentSymbol<CR>
-    au FileType go nnoremap <buffer><silent> ws :<C-u>LspWorkspaceSymbol<CR>
-    au FileType go nnoremap <buffer><silent> df :<C-u>LspDocumentFormat<CR>
-    au FileType go vnoremap <buffer><silent> rs :LspDocumentRangeFormat<CR>
-    au FileType go nnoremap <buffer><silent> <C-h> :<C-u>LspHover<CR>
+    au FileType go nnoremap <buffer><silent> <Leader>d :<C-u>LspDefinition<CR>
+    au FileType go nnoremap <buffer><silent> <Leader>r :<C-u>LspReferences<CR>
+    au FileType go nnoremap <buffer><silent> <Leader>i :<C-u>LspImplementation<CR>
+    au FileType go nnoremap <buffer><silent> <Leader>t :<C-u>LspRename<CR>
+    au FileType go nnoremap <buffer><silent> <Leader>ds  :<C-u>LspDocumentSymbol<CR>
+    au FileType go nnoremap <buffer><silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
+    au FileType go nnoremap <buffer><silent> <Leader>df :<C-u>LspDocumentFormat<CR>
+    au FileType go vnoremap <buffer><silent> <Leader>rs :LspDocumentRangeFormat<CR>
+    au FileType go nnoremap <buffer><silent> <Leader>h :<C-u>LspHover<CR>
     au FileType go setlocal foldmethod=marker
 endif
