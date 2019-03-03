@@ -87,7 +87,7 @@ zplug "zsh-users/zsh-syntax-highlighting", \
 zplug "kislyuk/yq", \
      as:command, \
      rename-to:"yq", \
-     hook-build:"python setup.py install"
+     hook-build:"pip install yq"
 
 zplug 'dracula/zsh', as:theme
 
