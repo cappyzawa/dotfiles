@@ -45,6 +45,9 @@ zplug "motemen/ghq", \
     from:gh-r, \
     rename-to:"ghq"
 
+zplug "b4b4r07/zsh-vimode-visual", \
+  defer:3
+
 zplug "peco/peco", \
     as:command, \
     from:gh-r, \
