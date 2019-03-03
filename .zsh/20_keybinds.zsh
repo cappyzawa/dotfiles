@@ -3,7 +3,7 @@ bindkey -v
 # Vim-like escaping jj keybind
 bindkey -M viins 'jj' vi-cmd-mode
 
-# Add emacs-like keybind to viins mode
+# Add emacs-like keybind to vicmd mode
 bindkey -M vicmd ' h'  beginning-of-line
 bindkey -M vicmd ' l'  end-of-line
 bindkey -M vicmd '^k'  up-line-or-history
