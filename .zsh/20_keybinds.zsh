@@ -12,22 +12,6 @@ bindkey -M vicmd 'y'  yank
 bindkey -M vicmd '^W'  backward-kill-word
 bindkey -M vicmd 'q' push-line
 
-# vivis mode
-bindkey -M vicmd 'v' vi-vlines-mode
-bindkey -M vivis 'jj' vi-visual-exit
-bindkey -M vivis 'k'  vi-visual-up-line
-bindkey -M vivis 'l'  vi-visual-forward-char
-bindkey -M vivis 'h'  vi-visual-backward-char
-bindkey -M vivis 'j'  vi-visual-down-line
-bindkey -M vivis 'gg' vi-visual-goto-first-line
-bindkey -M vivis 'G'  vi-visual-goto-line
-bindkey -M vivis 'p'  vi-visual-put
-bindkey -M vivis 'r'  vi-visual-replace-region
-bindkey -M vivis 'y'  vi-visual-yank
-bindkey -M vivis 'w'  vi-visual-forward-word
-bindkey -M vivis 'e'  vi-visual-forward-word-end
-bindkey -M vivis 'v'  vi-visual-eol
-
 if [[ $- == *i* ]]; then
 
   # CTRL-T - Paste the selected file path(s) into the command line
