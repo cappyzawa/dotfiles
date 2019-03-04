@@ -7,18 +7,6 @@ augroup vimrc-without-plugin
     autocmd VimEnter * if !argc() | call <SID>b4b4r07() | endif
 augroup END
 
-"function! s:cd_file_parentdir() "
-"  execute ":lcd " . expand("%:p:h")
-"endfunction
-"command! Cdcd call <SID>cd_file_parentdir()
-"
-""if g:env.vimrc.auto_cd_file_parentdir == g:true
-"augroup cd-file-parentdir
-"  autocmd!
-"  autocmd BufRead,BufEnter * if g:env.vimrc.auto_cd_file_parentdir == g:true | call <SID>cd_file_parentdir() | endif
-"augroup END
-""endif
-
 command! -nargs=? -complete=dir -bang CD call s:change_current_dir('<args>', '<bang>')
 function! s:change_current_dir(directory, bang)
     if a:directory == ''
@@ -177,8 +165,6 @@ function! s:win_tab_switcher(...) "
         call <SID>get_buflists()
     endif
 endfunction
-"nnoremap <silent> <C-l> :<C-u>call <SID>win_tab_switcher('l')<CR>
-"nnoremap <silent> <C-h> :<C-u>call <SID>win_tab_switcher('h')<CR>
 
 function! s:get_buflists(...) "
     if a:0 && a:1 ==# 'n'
@@ -255,13 +241,9 @@ if !g:plug.is_installed('vim-buftabs')
     nnoremap <silent> <C-x>K     :<C-u>call <SID>smart_bwipeout(1)<CR>
     nnoremap <silent> <C-x><C-k> :<C-u>call <SID>smart_bwipeout(2)<CR>
 else
-    "autocmd BufUnload,BufLeave,BufDelete,BufWipeout * call <SID>get_buflists()
     nnoremap <silent> <C-x>k     :<C-u>call <SID>smart_bwipeout(0)<CR>
     nnoremap <silent> <C-x>K     :<C-u>call <SID>smart_bwipeout(1)<CR>
     nnoremap <silent> <C-x><C-k> :<C-u>call <SID>smart_bwipeout(2)<CR>
-    "nnoremap <silent> <C-x>k     :<C-u>silent call <SID>smart_bwipeout(0)<CR>:<C-u>call <SID>get_buflists()<CR>
-    "nnoremap <silent> <C-x>K     :<C-u>silent call <SID>smart_bwipeout(1)<CR>:<C-u>call <SID>get_buflists()<CR>
-    "nnoremap <silent> <C-x><C-k> :<C-u>silent call <SID>smart_bwipeout(2)<CR>:<C-u>call <SID>get_buflists()<CR>
 endif
 
 
