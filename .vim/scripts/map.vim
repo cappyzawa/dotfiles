@@ -14,14 +14,6 @@ xnoremap [Space] <Nop>
 noremap [Space]h ^
 noremap [Space]l $
 
-if !g:plug.is_installed('lexima.vim')
-    inoremap [ []<LEFT>
-    inoremap ( ()<LEFT>
-    inoremap " ""<LEFT>
-    inoremap ' ''<LEFT>
-    inoremap ` ``<LEFT>
-endif
-
 inoremap <C-h> <Backspace>
 inoremap <C-d> <Delete>
 cnoremap <C-k> <UP>
