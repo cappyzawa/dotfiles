@@ -25,6 +25,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'tyru/open-browser-github.vim'
     Plug 'b4b4r07/vim-hcl'
     " syntax? language support
+    Plug 'jiangmiao/auto-pairs'
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
     Plug 'prabirshrestha/asyncomplete.vim'
@@ -34,13 +35,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'mattn/goplayground-vim'
-
-    " colorscheme
-    Plug 'b4b4r07/solarized.vim'
-    Plug 'w0ng/vim-hybrid'
-    Plug 'junegunn/seoul256.vim'
-    Plug 'nanotech/jellybeans.vim'
-    Plug 'whatyouhide/vim-gotham'
 
     Plug 'plasticboy/vim-markdown',      { 'for': 'markdown' }
 

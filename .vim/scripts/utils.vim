@@ -2,11 +2,6 @@ if !exists('g:env')
     finish
 endif
 
-augroup vimrc-without-plugin
-    autocmd!
-    autocmd VimEnter * if !argc() | call <SID>b4b4r07() | endif
-augroup END
-
 command! -nargs=? -complete=dir -bang CD call s:change_current_dir('<args>', '<bang>')
 function! s:change_current_dir(directory, bang)
     if a:directory == ''
