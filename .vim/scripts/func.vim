@@ -2,7 +2,7 @@ if !exists('g:env')
   finish
 endif
 
-" func s:toggle_option() {{{1
+" func s:toggle_option()
 function! s:toggle_option(option_name)
     if exists('&' . a:option_name)
         execute 'setlocal' a:option_name . '!'
@@ -10,7 +10,7 @@ function! s:toggle_option(option_name)
     endif
 endfunction
 
-" func s:toggle_variable() {{{1
+" func s:toggle_variable()
 function! s:toggle_variable(variable_name)
     if eval(a:variable_name)
         execute 'let' a:variable_name . ' = 0'
@@ -20,7 +20,7 @@ function! s:toggle_variable(variable_name)
     echo printf('%s = %s', a:variable_name, eval(a:variable_name))
 endfunction
 
-" func s:ls() {{{1
+" func s:ls()
 function! s:ls(path, bang)
     let path = empty(a:path) ? getcwd() : expand(a:path)
     if filereadable(path)
@@ -87,7 +87,7 @@ function! s:ls(path, bang)
     return g:true
 endfunction
 
-" func s:count_buffers() {{{1
+" func s:count_buffers()
 function! s:count_buffers()
     let l:count = 0
     for i in range(1, bufnr('$'))
@@ -98,7 +98,7 @@ function! s:count_buffers()
     return l:count
 endfunction
 
-" func s:get_buflists() {{{1
+" func s:get_buflists()
 function! s:get_buflists(...)
     if a:0 && a:1 ==# 'n'
         silent bnext
@@ -123,7 +123,7 @@ function! s:get_buflists(...)
     redraw | echo join(lists, "")
 endfunction
 
-" func s:smart_bwipeout() {{{1
+" func s:smart_bwipeout()
 function! s:smart_bwipeout(mode)
     " Bwipeout! all buffers except current buffer.
     if a:mode == 1
@@ -181,7 +181,7 @@ function! s:smart_bwipeout(mode)
     endif
 endfunction
 
-" func s:smart_bchange() {{{1
+" func s:smart_bchange()
 function! s:smart_bchange(mode)
     let mode = a:mode
 
@@ -232,7 +232,7 @@ function! s:bufnew(buf, bang)
     endif
 endfunction
 
-" func s:buf_enqueue() {{{1
+" func s:buf_enqueue()
 function! s:buf_enqueue(buf)
     let buf = fnamemodify(a:buf, ':p')
     if bufexists(buf) && buflisted(buf) && filereadable(buf)
@@ -244,7 +244,7 @@ function! s:buf_enqueue(buf)
     endif
 endfunction
 
-" func s:buf_dequeue() {{{1
+" func s:buf_dequeue()
 function! s:buf_dequeue(buf)
     if empty(s:bufqueue)
         throw 'bufqueue: Empty queue.'
@@ -257,7 +257,7 @@ function! s:buf_dequeue(buf)
     endif
 endfunction
 
-" func s:buf_restore() {{{1
+" func s:buf_restore()
 function! s:buf_restore()
     try
         execute 'edit' s:buf_dequeue(-1)
@@ -269,7 +269,7 @@ function! s:buf_restore()
     endtry
 endfunction
 
-" func s:all_buffers_bwipeout() {{{1
+" func s:all_buffers_bwipeout()
 function! s:all_buffers_bwipeout()
     for i in range(1, bufnr('$'))
         if bufexists(i) && buflisted(i)
@@ -278,7 +278,7 @@ function! s:all_buffers_bwipeout()
     endfor
 endfunction
 
-" func s:win_tab_switcher() {{{1
+" func s:win_tab_switcher()
 function! s:win_tab_switcher(...)
     let minus = 0
     if &laststatus == 1 && winnr('$') != 1
@@ -418,7 +418,7 @@ function! s:win_tab_switcher(...)
     endif
 endfunction
 
-" func s:tabdrop() {{{1
+" func s:tabdrop()
 function! s:tabdrop(target)
     let target = empty(a:target) ? expand('%:p') : bufname(a:target + 0)
     if !empty(target) && bufexists(target) && buflisted(target)
@@ -428,7 +428,7 @@ function! s:tabdrop(target)
     endif
 endfunction
 
-" func s:tabnew() {{{1
+" func s:tabnew()
 function! s:tabnew(num)
     let num = empty(a:num) ? 1 : a:num
     for i in range(1, num)
@@ -436,7 +436,7 @@ function! s:tabnew(num)
     endfor
 endfunction
 
-" func s:move_tabpage() {{{1
+" func s:move_tabpage()
 function! s:move_tabpage(dir)
     if a:dir == "right"
         let num = tabpagenr()
@@ -448,7 +448,7 @@ function! s:move_tabpage(dir)
     endif
 endfunction
 
-" func s:close_all_right_tabpages() {{{1
+" func s:close_all_right_tabpages()
 function! s:close_all_right_tabpages()
     let current_tabnr = tabpagenr()
     let last_tabnr = tabpagenr("$")
@@ -460,7 +460,7 @@ function! s:close_all_right_tabpages()
     endwhile
 endfunction
 
-" func s:close_all_left_tabpages() {{{1
+" func s:close_all_left_tabpages()
 function! s:close_all_left_tabpages()
     let current_tabnr = tabpagenr()
     let num_close = current_tabnr - 1
@@ -471,7 +471,7 @@ function! s:close_all_left_tabpages()
     endwhile
 endfunction
 
-" func s:find_tabnr() {{{1
+" func s:find_tabnr()
 function! s:find_tabnr(bufnr)
     for tabnr in range(1, tabpagenr("$"))
         if index(tabpagebuflist(tabnr), a:bufnr) !=# -1
@@ -481,7 +481,7 @@ function! s:find_tabnr(bufnr)
     return -1
 endfunction
 
-" func s:find_winnr() {{{1
+" func s:find_winnr()
 function! s:find_winnr(bufnr)
     for winnr in range(1, winnr("$"))
         if a:bufnr ==# winbufnr(winnr)
@@ -491,7 +491,7 @@ function! s:find_winnr(bufnr)
     return 1
 endfunction
 
-" func s:recycle_open() {{{1
+" func s:recycle_open()
 function! s:recycle_open(default_open, path)
     let default_action = a:default_open . ' ' . a:path
     if bufexists(a:path)
@@ -509,6 +509,6 @@ function! s:recycle_open(default_open, path)
     endif
 endfunction
 
-" __END__ {{{1
+" __END__
 " vim:fdm=marker expandtab fdc=3:
 
