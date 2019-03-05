@@ -103,17 +103,11 @@ endif
 
 call s:load('func.vim')
 call s:load('base.vim')
-" call s:load('view.vim')
 call s:load('map.vim')
 call s:load('command.vim')
 call s:load('utils.vim')
 call s:load('option.vim')
-" call s:load('gui.vim', g:env.is_gui)
 
 " Must be written at the last.  see :help 'secure'.
 set secure
 
-" __END__ {{{1
-" vi:set ts=2 sw=2 sts=2:
-" vim:fdt=substitute(getline(v\:foldstart),'\\(.\*\\){\\{3}','\\1',''):
-" vim:fdm=marker expandtab fdc=3:

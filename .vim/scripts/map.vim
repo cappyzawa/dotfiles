@@ -103,16 +103,6 @@ nnoremap <Leader>Y :<C-u>%y<CR>
 nnoremap <silent> <Leader>l :<C-u>call <SID>toggle_option('cursorline')<CR>
 nnoremap <silent> <Leader>c :<C-u>call <SID>toggle_option('cursorcolumn')<CR>
 
-" Swap jk for gjgk 
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap gj j
-nnoremap gk k
-vnoremap gj j
-vnoremap gk k
-
 if g:env.vimrc.goback_to_eof2bof == g:true
     function! s:up(key)
         if line(".") == 1
