@@ -19,7 +19,9 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-" Base functions "{{{1
+autocmd BufWritePre * :%s/\s\+$//ge
+
+" Base functions
 function! s:glob(from, pattern)
   return split(globpath(a:from, a:pattern), "[\r\n]")
 endfunction
