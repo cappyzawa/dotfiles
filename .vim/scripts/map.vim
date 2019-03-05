@@ -148,12 +148,6 @@ function! s:move_to_tab()
     tabnext
 endfunction
 
-" Tabpages mapping
-nnoremap <silent> <C-t>L  :<C-u>call <SID>move_tabpage("right")<CR>
-nnoremap <silent> <C-t>H  :<C-u>call <SID>move_tabpage("left")<CR>
-nnoremap <silent> <C-t>dh :<C-u>call <SID>close_all_left_tabpages()<CR>
-nnoremap <silent> <C-t>dl :<C-u>call <SID>close_all_right_tabpages()<CR>
-
 " Swap jk for gjgk 
 nnoremap j gj
 nnoremap k gk
