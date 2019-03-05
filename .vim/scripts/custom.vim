@@ -2,47 +2,39 @@ if !exists('g:env')
     finish
 endif
 
-if g:plug.is_installed('enhancd') 
+if g:plug.is_installed('enhancd')
     let g:enhancd_action = g:plug.is_installed('dirvish') ? 'Dirvish' : 'Ex'
 endif
 
-if g:plug.is_installed('asyncomplete.vim') 
+if g:plug.is_installed('asyncomplete.vim')
     let g:lsp_async_completion = 1
 endif
 
-if g:plug.is_installed('fzf.vim') 
+if g:plug.is_installed('fzf.vim')
     let g:fzf_action = {
                 \ 'ctrl-t': 'tab split',
-                \ 'ctrl-x': 'tab split',
-                \ 'ctrl-v': 'tab split' }
+                \ 'ctrl-s': 'split',
+                \ 'ctrl-v': 'vsplit' }
 
-    function! s:search_with_ag_under_cursor()
-        let g:env.vimrc.auto_cd_file_parentdir = g:false
-        let cwd = expand('%:p:h')
-        silent! call s:root()
+    command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-        call fzf#vim#ag(expand('<cword>'), {
-                    \ 'sink': 'edit',
-                    \ 'options': '--ansi --delimiter : --nth 4..,.. --prompt "Ag?> " '.
-                    \            '--color hl:68,hl+:110 --multi '.
-                    \            '--bind=ctrl-d:page-down,ctrl-u:page-up ',
-                    \ 'tmux_height': '40%',
-                    \ })
-        "execute 'lcd' cwd
-        execute 'lcd' expand('%:p:h')
-        let g:env.vimrc.auto_cd_file_parentdir = g:true
-    endfunction
-    nnoremap <silent> K :call <SID>search_with_ag_under_cursor()<CR>
+    command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
-    nnoremap <silent> <Leader>m :call fzf#run({
-                \ 'source': 'sed "1d" $HOME/.vim_mru_files',
-                \ 'options' : '+s -e -m',
-                \ 'tmux_height': '40%',
-                \ 'sink': 'tabe'
-                \ })<CR>
+    imap <C-c><C-w> <plug>(fzf-complete-word)
+    imap <C-c><C-p> <plug>(fzf-complete-path)
+    imap <C-c><C-l> <plug>(fzf-complete-line)
+    nnoremap <silent> ff :<C-u>Files<CR>
+    nnoremap <silent> rg :<C-u>Rg<CR>
+    nnoremap <silent> ag :<C-u>Ag<CR>
 endif
 
-if g:plug.is_installed('mru.vim') 
+if g:plug.is_installed('mru.vim')
     let MRU_Auto_Close = 1
     let MRU_Window_Height = 30
     let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
@@ -260,7 +252,7 @@ else
         setlocal nonumber cursorline nomodifiable
     endfunction
 
-    " MRU Essentials 
+    " MRU Essentials
     let s:mru_list_locked = 0
     call s:MRU_LoadList()
     command! MRU call s:MRU_Create_Window()
