@@ -2,6 +2,8 @@
 bindkey -v
 # Vim-like escaping jj keybind
 bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins '^A'  beginning-of-line
+bindkey -M viins '^E'  end-of-line
 
 # vicmd mode
 bindkey -M vicmd ' h'  beginning-of-line
