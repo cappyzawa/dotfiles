@@ -65,7 +65,6 @@ set wildignore+=*.DS_Store
 " Show line and column number
 set ruler
 set rulerformat=%m%r%=%l/%L
-set number
 
 " String to put at the start of lines that have been wrapped.
 let &showbreak = '+++ '
