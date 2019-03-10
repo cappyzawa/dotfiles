@@ -24,6 +24,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'tyru/open-browser.vim'
     Plug 'tyru/open-browser-github.vim'
     Plug 'b4b4r07/vim-hcl'
+    Plug 'b4b4r07/vim-shellutils'
     " syntax? language support
     Plug 'jiangmiao/auto-pairs'
     Plug 'prabirshrestha/async.vim'
