@@ -31,6 +31,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'prabirshrestha/vim-lsp'
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'leafgarland/typescript-vim'
     Plug 'natebosch/vim-lsc'
     Plug 'zplug/vim-zplug', { 'for': 'zplug' }
     Plug 'cespare/vim-toml', { 'for': 'toml' }
