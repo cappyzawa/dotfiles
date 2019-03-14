@@ -94,6 +94,11 @@ zplug "adrienverge/yamllint", \
      rename-to:"yamllint", \
      hook-build:"python setup.py install"
 
+zplug "github/hub", \
+     as:command, \
+     rename-to:"hub", \
+     hook-build:"go get -d && make install"
+
 zplug 'dracula/zsh', as:theme
 
 export ZSH_HISTORY_AUTO_SYNC=false
