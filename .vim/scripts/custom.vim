@@ -295,6 +295,7 @@ if executable('bingo')
         \ })
 endif
 
+" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby
 if executable('solargraph')
     " gem install solargraph
     au User lsp_setup call lsp#register_server({
@@ -305,3 +306,20 @@ if executable('solargraph')
         \ })
 endif
 
+" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Docker
+if executable('docker-langserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'docker-langserver',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
+        \ 'whitelist': ['dockerfile'],
+        \ })
+endif
+
+" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Rust
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
