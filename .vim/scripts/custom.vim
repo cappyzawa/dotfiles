@@ -276,6 +276,16 @@ endif
 if g:plug.is_installed('')
 endif
 
+nnoremap <buffer><silent> <Leader>d :<C-u>LspDefinition<CR>
+nnoremap <buffer><silent> <Leader>r :<C-u>LspReferences<CR>
+nnoremap <buffer><silent> <Leader>i :<C-u>LspImplementation<CR>
+nnoremap <buffer><silent> <Leader>t :<C-u>LspRename<CR>
+nnoremap <buffer><silent> <Leader>ds  :<C-u>LspDocumentSymbol<CR>
+nnoremap <buffer><silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
+nnoremap <buffer><silent> <Leader>df :<C-u>LspDocumentFormat<CR>
+vnoremap <buffer><silent> <Leader>rs :LspDocumentRangeFormat<CR>
+nnoremap <buffer><silent> <Leader>h :<C-u>LspHover<CR>
+
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
 if executable('bingo')
     au User lsp_setup call lsp#register_server({
@@ -283,14 +293,15 @@ if executable('bingo')
         \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
-    au FileType go nnoremap <buffer><silent> <Leader>d :<C-u>LspDefinition<CR>
-    au FileType go nnoremap <buffer><silent> <Leader>r :<C-u>LspReferences<CR>
-    au FileType go nnoremap <buffer><silent> <Leader>i :<C-u>LspImplementation<CR>
-    au FileType go nnoremap <buffer><silent> <Leader>t :<C-u>LspRename<CR>
-    au FileType go nnoremap <buffer><silent> <Leader>ds  :<C-u>LspDocumentSymbol<CR>
-    au FileType go nnoremap <buffer><silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
-    au FileType go nnoremap <buffer><silent> <Leader>df :<C-u>LspDocumentFormat<CR>
-    au FileType go vnoremap <buffer><silent> <Leader>rs :LspDocumentRangeFormat<CR>
-    au FileType go nnoremap <buffer><silent> <Leader>h :<C-u>LspHover<CR>
-    au FileType go setlocal foldmethod=marker
 endif
+
+if executable('solargraph')
+    " gem install solargraph
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'solargraph',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+        \ 'initialization_options': {"diagnostics": "true"},
+        \ 'whitelist': ['ruby'],
+        \ })
+endif
+
