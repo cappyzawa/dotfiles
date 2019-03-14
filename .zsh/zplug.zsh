@@ -89,6 +89,11 @@ zplug "kislyuk/yq", \
      rename-to:"yq", \
      hook-build:"pip install yq"
 
+zplug "adrienverge/yamllint", \
+     as:command, \
+     rename-to:"yamllint", \
+     hook-build:"python setup.py install"
+
 zplug 'dracula/zsh', as:theme
 
 export ZSH_HISTORY_AUTO_SYNC=false
