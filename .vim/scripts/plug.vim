@@ -45,6 +45,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cocopon/vaffle.vim'
     Plug 'hotwatermorning/auto-git-diff'
 
+    " Utils
+    Plug 'rhysd/git-messenger.vim'
+
     " Add plugins to &runtimepath
     call plug#end()
 endif
