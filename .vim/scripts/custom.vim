@@ -273,6 +273,12 @@ else
     "endif
 endif
 
+if g:plug.is_installed('open-browser-github.vim')
+  nnoremap <silent> [Space]ogf :<C-u>OpenGithubFile<CR>
+  nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
+  nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
+endif
+
 if g:plug.is_installed('')
 endif
 
