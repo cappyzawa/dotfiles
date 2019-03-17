@@ -48,6 +48,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     " Utils
     Plug 'rhysd/git-messenger.vim'
+    Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+    Plug 'cappyzawa/fly-lint.vim'
 
     " Add plugins to &runtimepath
     call plug#end()
