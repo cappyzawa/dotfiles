@@ -9,7 +9,7 @@ endif
 if g:plug.is_installed('asyncomplete.vim')
     let g:lsp_async_completion = 1
 endif
-
+\
 if g:plug.is_installed('fzf.vim')
     let g:fzf_action = {
                 \ 'ctrl-t': 'tab split',
