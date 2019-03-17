@@ -308,10 +308,10 @@ vnoremap <buffer><silent> <Leader>rs :<C-u>LspDocumentRangeFormat<CR>
 nnoremap <buffer><silent> <Leader>h :<C-u>LspHover<CR>
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
-if executable('bingo')
+if executable('gopls')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'bingo',
-        \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
 endif

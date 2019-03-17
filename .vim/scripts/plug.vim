@@ -34,8 +34,10 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'b4b4r07/vim-hcl'
     Plug 'elzr/vim-json', { 'for': 'json' }
+    Plug 'rhysd/vim-fixjson', { 'for': 'json' }
     Plug 'mattn/goplayground-vim'
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+    Plug 'w0rp/ale'
 
     " Utils
     Plug 'tyru/open-browser.vim'
@@ -46,6 +48,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'b4b4r07/vim-shellutils'
     Plug 'hotwatermorning/auto-git-diff'
     Plug 'previm/previm'
+    Plug 'christianrondeau/vim-base64'
 
     " Add plugins to &runtimepath
     call plug#end()
