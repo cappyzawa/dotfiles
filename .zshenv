@@ -95,9 +95,6 @@ if [[ $UID == 0 ]]; then
     export SAVEHIST=0
 fi
 
-setopt HIST_IGNORE_ALL_DUPS
-setopt SHARE_HISTORY
-
 # available $INTERACTIVE_FILTER
 export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"
 
