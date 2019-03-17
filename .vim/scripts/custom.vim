@@ -273,10 +273,25 @@ else
     "endif
 endif
 
+if g:plug.is_installed('open-browser.vim')
+	let g:netrw_nogx = 1 " disable netrw's gx mapping.
+	nmap gx <Plug>(openbrowser-smart-search)
+	vmap gx <Plug>(openbrowser-smart-search)
+endif
+
 if g:plug.is_installed('open-browser-github.vim')
   nnoremap <silent> [Space]ogf :<C-u>OpenGithubFile<CR>
   nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
   nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
+endif
+
+if g:plug.is_installed('vim-markdown')
+
+endif
+
+if g:plug.is_installed('previm')
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
 endif
 
 if g:plug.is_installed('')
@@ -289,7 +304,7 @@ nnoremap <buffer><silent> <Leader>t :<C-u>LspRename<CR>
 nnoremap <buffer><silent> <Leader>ds  :<C-u>LspDocumentSymbol<CR>
 nnoremap <buffer><silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
 nnoremap <buffer><silent> <Leader>df :<C-u>LspDocumentFormat<CR>
-vnoremap <buffer><silent> <Leader>rs :LspDocumentRangeFormat<CR>
+vnoremap <buffer><silent> <Leader>rs :<C-u>LspDocumentRangeFormat<CR>
 nnoremap <buffer><silent> <Leader>h :<C-u>LspHover<CR>
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go

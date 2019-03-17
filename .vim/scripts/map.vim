@@ -53,7 +53,7 @@ nnoremap <Right> <Nop>
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
-" Must 
+" Must
 inoremap jj <ESC>
 cnoremap <expr> j getcmdline() [getcmdops()-2] ==# 'j' ? "\<BS>\<C-c>" : 'j'
 vnoremap <C-j><C-j> <ESC>
@@ -122,7 +122,7 @@ if g:env.vimrc.goback_to_eof2bof == g:true
     nnoremap <expr><silent> j <SID>down("gj")
 endif
 
-" Buffers, windows, and tabpages 
+" Buffers, windows, and tabpages
 if !g:plug.is_installed('vim-buftabs')
     nnoremap <silent> <C-j> :<C-u>silent bnext<CR>
     nnoremap <silent> <C-k> :<C-u>silent bprev<CR>
@@ -134,7 +134,7 @@ endif
 nnoremap <silent> <C-x>u :<C-u>call <SID>buf_restore()<CR>
 nnoremap <silent> <C-x>d     :Delete<CR>
 nnoremap <silent> <C-x><C-d> :Delete!<CR>
-" Tabpages 
+" Tabpages
 function! s:move_to_tab()
     tab split
     tabprevious
@@ -148,7 +148,7 @@ function! s:move_to_tab()
     tabnext
 endfunction
 
-" Swap jk for gjgk 
+" Swap jk for gjgk
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -170,6 +170,15 @@ nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap s0 <C-w>=
+nnoremap s> <C-w>>
+nnoremap s< <C-w><
+nnoremap s+ <C-w>+
+nnoremap s- <C-w>-
 
 nnoremap t <Nop>
 nnoremap <silent> [Space]t :<C-u>tabclose<CR>:<C-u>tabnew<CR>
@@ -180,9 +189,8 @@ nnoremap <silent> to :<C-u>tabonly<CR>
 
 nnoremap <silent>z0 :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
 
-" tig 
+" tig
 nnoremap <silent> [Space]g :<C-u>!tig blame +<C-r>=line('.')<CR> %<CR>:redraw!<CR>:
 
-
-" __END__ 
+" __END__
 " vim:fdm=marker expandtab fdc=3:

@@ -35,7 +35,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'b4b4r07/vim-hcl'
     Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'mattn/goplayground-vim'
-    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+    Plug 'plasticboy/vim-markdown',      { 'for': 'markdown' }
 
     " Utils
     Plug 'tyru/open-browser.vim'
@@ -45,7 +45,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/fly-lint.vim'
     Plug 'b4b4r07/vim-shellutils'
     Plug 'hotwatermorning/auto-git-diff'
-    Plug 'previm/previm'
+    Plug 'kannokanno/previm'
 
     " Add plugins to &runtimepath
     call plug#end()
