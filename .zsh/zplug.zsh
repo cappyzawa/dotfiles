@@ -104,6 +104,11 @@ zplug "hairyhenderson/gomplate", \
      from:"gh-r", \
      rename-to:"gomplate"
 
+zplug "get-ytt/ytt", \
+     as:command, \
+     from:"gh-r", \
+     rename-to:"ytt"
+
 zplug 'dracula/zsh', as:theme
 
 export ZSH_HISTORY_AUTO_SYNC=false
