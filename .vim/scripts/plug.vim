@@ -39,6 +39,10 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'w0rp/ale'
 
+    " Testing Tools
+    Plug 'junegunn/vader.vim'
+    Plug 'thinca/vim-themis'
+
     " Utils
     Plug 'tyru/open-browser.vim'
     Plug 'tyru/open-browser-github.vim'
