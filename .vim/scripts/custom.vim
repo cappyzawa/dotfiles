@@ -320,6 +320,9 @@ if g:plug.is_installed('nerdtree')
   let NERDTreeMapOpenSplit = "s"
 endif
 
+if g:plug.is_installed('vim-emoji')
+  set completefunc=emoji#complete
+endif
 if g:plug.is_installed('')
 endif
 
