@@ -294,6 +294,20 @@ if g:plug.is_installed('previm')
   nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
 endif
 
+if g:plug.is_installed('ale')
+  let g:ale_set_quickfix = 1
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_fix_on_save = 1
+  let g:ale_linters = {
+  \   'go': ['golint'],
+  \}
+  let g:ale_fixers = {
+  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \   'go': ['gofmt','goimports'],
+  \}
+endif
 if g:plug.is_installed('')
 endif
 
@@ -309,11 +323,15 @@ nnoremap <buffer><silent> <Leader>h :<C-u>LspHover<CR>
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
 if executable('gopls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'gopls',
-        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+  augroup LspGo
+    au!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'go-lang',
+        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
         \ 'whitelist': ['go'],
         \ })
+    autocmd FileType python,go nmap gd <plug>(lsp-definition)<CR>
+  augroup END
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby
