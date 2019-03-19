@@ -313,6 +313,13 @@ if g:plug.is_installed('onedark.vim')
   syntax on
   colorscheme onedark
 endif
+
+if g:plug.is_installed('nerdtree')
+  nnoremap <silent> <S-Left> :<C-u>NERDTreeToggle<CR>
+  let NERDTreeMapOpenVSplit = "v"
+  let NERDTreeMapOpenSplit = "s"
+endif
+
 if g:plug.is_installed('')
 endif
 

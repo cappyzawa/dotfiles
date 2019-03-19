@@ -55,6 +55,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'christianrondeau/vim-base64'
     Plug 'tpope/vim-fugitive', { 'for': 'git blame' }
     Plug 'yuttie/comfortable-motion.vim', { 'for': 'scroll' }
+    Plug 'scrooloose/nerdtree'
 
     " Theme
     Plug 'joshdick/onedark.vim'
