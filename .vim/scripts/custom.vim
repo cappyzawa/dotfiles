@@ -315,9 +315,21 @@ if g:plug.is_installed('onedark.vim')
 endif
 
 if g:plug.is_installed('nerdtree')
-  nnoremap <silent> <S-Left> :<C-u>NERDTreeToggle<CR>
+  nnoremap <silent> <C-]> :<C-u>NERDTreeToggle<CR>
   let NERDTreeMapOpenVSplit = "v"
   let NERDTreeMapOpenSplit = "s"
+  let NERDTreeMapToggleHidden = "a"
+endif
+
+if g:plug.is_installed('nerdtree-git-plugin')
+  let g:NERDTreeIndicatorMapCustom = {
+                \ 'Modified'  : '⚡️',
+                \ 'Staged'    : '🎉',
+                \ 'Untracked' : '⭐',
+                \ 'Renamed'   : '🔀',
+                \ 'Deleted'   : '❌',
+                \ 'Clean'     : '🚮',
+                \ }
 endif
 
 if g:plug.is_installed('vim-emoji')
