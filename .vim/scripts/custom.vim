@@ -308,6 +308,11 @@ if g:plug.is_installed('ale')
   \   'go': ['gofmt','goimports'],
   \}
 endif
+
+if g:plug.is_installed('onedark.vim')
+  syntax on
+  colorscheme onedark
+endif
 if g:plug.is_installed('')
 endif
 
@@ -372,4 +377,3 @@ if executable('typescript-language-server')
         \ 'whitelist': ['typescript', 'typescript.tsx'],
         \ })
 endif
-
