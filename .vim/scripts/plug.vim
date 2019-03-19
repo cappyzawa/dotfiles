@@ -23,7 +23,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cocopon/vaffle.vim'
     Plug 'mattn/vim-terminal'
     " syntax? language support
-    Plug 'jiangmiao/auto-pairs'
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
     Plug 'prabirshrestha/asyncomplete.vim'
@@ -44,6 +43,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'thinca/vim-themis'
 
     " Utils
+    Plug 'jiangmiao/auto-pairs'
     Plug 'tyru/open-browser.vim'
     Plug 'tyru/open-browser-github.vim'
     Plug 'rhysd/git-messenger.vim'
