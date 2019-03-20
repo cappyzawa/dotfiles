@@ -335,6 +335,14 @@ endif
 if g:plug.is_installed('vim-emoji')
   set completefunc=emoji#complete
 endif
+
+if g:plug.is_installed('tcomment_vim')
+  let g:tcomment_maps=0
+  nnoremap <silent> <C-/> :<C-u>TComment<CR>
+  vnoremap <silent> <C-/> :<C-u>TComment<CR>
+  inoremap <silent> <C-/> :<C-u>TComment<CR>
+endif
+
 if g:plug.is_installed('')
 endif
 

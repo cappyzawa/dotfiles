@@ -58,6 +58,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'junegunn/vim-emoji'
+    Plug 'tomtom/tcomment_vim'
 
     " Theme
     Plug 'joshdick/onedark.vim'
