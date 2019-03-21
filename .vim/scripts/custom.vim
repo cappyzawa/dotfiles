@@ -285,10 +285,6 @@ if g:plug.is_installed('open-browser-github.vim')
   nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
 endif
 
-if g:plug.is_installed('vim-markdown')
-
-endif
-
 if g:plug.is_installed('previm')
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
@@ -338,23 +334,24 @@ endif
 
 if g:plug.is_installed('tcomment_vim')
   let g:tcomment_maps=0
-  nnoremap <silent> <C-/> :<C-u>TComment<CR>
-  vnoremap <silent> <C-/> :<C-u>TComment<CR>
-  inoremap <silent> <C-/> :<C-u>TComment<CR>
+  " Ctrl + /
+  nnoremap <silent> <C-_><C-_> :<C-u>TComment<CR>
+  vnoremap <silent> <C-_><C-_> :<C-u>TComment<CR>
+  inoremap <silent> <C-_><C-_> :<C-u>TComment<CR>
 endif
 
 if g:plug.is_installed('')
 endif
 
-nnoremap <buffer><silent> <Leader>d :<C-u>LspDefinition<CR>
-nnoremap <buffer><silent> <Leader>r :<C-u>LspReferences<CR>
-nnoremap <buffer><silent> <Leader>i :<C-u>LspImplementation<CR>
-nnoremap <buffer><silent> <Leader>t :<C-u>LspRename<CR>
-nnoremap <buffer><silent> <Leader>ds  :<C-u>LspDocumentSymbol<CR>
-nnoremap <buffer><silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
-nnoremap <buffer><silent> <Leader>df :<C-u>LspDocumentFormat<CR>
-vnoremap <buffer><silent> <Leader>rs :<C-u>LspDocumentRangeFormat<CR>
-nnoremap <buffer><silent> <Leader>h :<C-u>LspHover<CR>
+nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
+nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
+nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
+nnoremap <silent> <Leader>t :<C-u>LspRename<CR>
+nnoremap <silent> <Leader>ds  :<C-u>LspDocumentSymbol<CR>
+nnoremap <silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
+nnoremap <silent> <Leader>df :<C-u>LspDocumentFormat<CR>
+vnoremap <silent> <Leader>rs :<C-u>LspDocumentRangeFormat<CR>
+nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
 if executable('gopls')
