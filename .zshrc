@@ -4,7 +4,7 @@ bindkey -d
 
 # Return if zsh is called from Vim
 if [[ -n $VIMRUNTIME ]]; then
-    return 0
+  return 0
 fi
 
 # Check if zplug is installed
@@ -13,17 +13,17 @@ if [[ ! -d ~/.zplug ]]; then
 fi
 
 if [[ -f ~/.zplug/init.zsh ]]; then
-    export ZPLUG_LOADFILE=~/.zsh/zplug.zsh
-    source ~/.zplug/init.zsh
+  export ZPLUG_LOADFILE=~/.zsh/zplug.zsh
+  source ~/.zplug/init.zsh
 
-    if ! zplug check --verbose; then
-        printf "Install? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        fi
-        echo
+  if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+      echo; zplug install
     fi
-    zplug load
+    echo
+  fi
+  zplug load
 fi
 
 export PATH="$HOME/.anyenv/bin:$PATH"
@@ -36,7 +36,5 @@ if has "direnv"; then
 fi
 
 if [[ -f ~/.zshrc.local ]]; then
-    source ~/.zshrc.local
+  source ~/.zshrc.local
 fi
-
-
