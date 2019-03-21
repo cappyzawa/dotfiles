@@ -158,7 +158,7 @@ nnoremap gk k
 vnoremap gj j
 vnoremap gk k
 nnoremap J 10j
-nnoremap k 10k
+nnoremap K 10k
 vnoremap J 10j
 vnoremap K 10k
 
