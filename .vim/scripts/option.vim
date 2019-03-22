@@ -137,3 +137,6 @@ set wrap
 if has('clipboard')
 	set clipboard=unnamed
 endif
+
+" Open new window on the right
+set splitright
