@@ -340,6 +340,17 @@ if g:plug.is_installed('tcomment_vim')
   inoremap <silent> <C-_><C-_> :<C-u>TComment<CR>
 endif
 
+if g:plug.is_installed('elm-vim')
+  let g:elm_setup_keybindingj = 0
+  nnoremap <silent> <Leader>em :<C-u>ElmMake<CR>
+  nnoremap <silent> <Leader>emm :<C-u>ElmMakeMain<CR>
+  nnoremap <silent> <Leader>et :<C-u>ElmTest<CR>
+  nnoremap <silent> <Leader>er :<C-u>ElmRepl<CR>
+  nnoremap <silent> <Leader>ed :<C-u>ElmErrorDetail<CR>
+  nnoremap <silent> <Leader>es :<C-u>ElmBrowseDocs<CR>
+  nnoremap <silent> <Leader>eb :<C-u>ElmFormat<CR>
+endif
+
 if g:plug.is_installed('')
 endif
 
