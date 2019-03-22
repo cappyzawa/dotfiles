@@ -302,7 +302,12 @@ if g:plug.is_installed('ale')
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'go': ['gofmt','goimports'],
+  \   'elm': ['elm-format'],
   \}
+
+  " for elm
+  let g:ale_elm_format_executable = "elm-format"
+  let g:ale_elm_format_options = "--yes --elm-version=0.19"
 endif
 
 if g:plug.is_installed('onedark.vim')
@@ -341,6 +346,7 @@ if g:plug.is_installed('tcomment_vim')
 endif
 
 if g:plug.is_installed('elm-vim')
+  let g:elm_format_autosave = 0
   let g:elm_setup_keybindingj = 0
   nnoremap <silent> <Leader>em :<C-u>ElmMake<CR>
   nnoremap <silent> <Leader>emm :<C-u>ElmMakeMain<CR>
