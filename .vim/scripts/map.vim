@@ -3,8 +3,8 @@ if !exists('g:env')
 endif
 
 " Define mapleader
-let g:mapleader = ','
-let g:maplocalleader = ','
+let g:mapleader = '\<Space>'
+let g:maplocalleader = '\<Space>'
 
 " Smart space mapping
 nmap <Space> [Space]
