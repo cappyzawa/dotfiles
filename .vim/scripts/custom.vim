@@ -347,7 +347,7 @@ endif
 
 if g:plug.is_installed('elm-vim')
   let g:elm_format_autosave = 0
-  let g:elm_setup_keybindingj = 0
+  let g:elm_setup_keybinding = 0
   nnoremap <silent> <Leader>em :<C-u>ElmMake<CR>
   nnoremap <silent> <Leader>emm :<C-u>ElmMakeMain<CR>
   nnoremap <silent> <Leader>et :<C-u>ElmTest<CR>
