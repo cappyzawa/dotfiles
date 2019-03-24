@@ -357,11 +357,11 @@ nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
 nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
 nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 nnoremap <silent> <Leader>t :<C-u>LspRename<CR>
-nnoremap <silent> <Leader>ds    :<C-u>LspDocumentSymbol<CR>
+nnoremap <silent> <Leader>ds :<C-u>LspDocumentSymbol<CR>
 nnoremap <silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
 nnoremap <silent> <Leader>df :<C-u>LspDocumentFormat<CR>
-vnoremap <silent> <Leader>rs :<C-u>LspDocumentRangeFormat<CR>
-nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
+vnoremap <silent> <Leader>rf :<C-u>LspDocumentRangeFormat<CR>
+nnoremap <silent> <Leader>b :<C-u>LspHover<CR>
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
 if executable('gopls')
