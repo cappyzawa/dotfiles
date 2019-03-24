@@ -2,15 +2,12 @@ if !exists('g:env')
 	finish
 endif
 
-" Define mapleader
-let g:mapleader = '\<Space>'
-let g:maplocalleader = '\<Space>'
-
 " Smart space mapping
 nmap <Space> [Space]
 xmap <Space> [Space]
 nnoremap [Space] <Nop>
 xnoremap [Space] <Nop>
+map [Space] <Leader>
 noremap [Space]h ^
 noremap [Space]l $
 

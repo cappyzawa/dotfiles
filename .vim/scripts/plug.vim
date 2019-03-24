@@ -37,7 +37,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'mattn/goplayground-vim'
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'w0rp/ale'
-    Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+    " Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+    Plug 'Zaptic/elm-vim', {'for': 'elm'}
 
     " Testing Tools
     Plug 'junegunn/vader.vim'
