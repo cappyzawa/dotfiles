@@ -14,6 +14,11 @@ noremap [Space]l $
 
 inoremap <C-h> <Backspace>
 inoremap <C-d> <Delete>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-h> <BS>
+inoremap <C-d> <Del>
+
 cnoremap <C-k> <UP>
 cnoremap <C-j> <DOWN>
 cnoremap <C-l> <RIGHT>
@@ -21,24 +26,10 @@ cnoremap <C-h> <LEFT>
 cnoremap <C-d> <DELETE>
 cnoremap <C-p> <UP>
 cnoremap <C-n> <DOWN>
-cnoremap <C-f> <RIGHT>
-cnoremap <C-b> <LEFT>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
 cnoremap <C-d> <Del>
 cnoremap <C-h> <BS>
-
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-h> <BS>
-inoremap <C-d> <Del>
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>
-inoremap <C-n> <Up>
-inoremap <C-p> <Down>
-inoremap <C-m> <CR>
 
 nnoremap q: <Nop>
 nnoremap q/ <Nop>
