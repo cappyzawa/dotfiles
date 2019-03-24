@@ -1,276 +1,276 @@
 if !exists('g:env')
-    finish
+        finish
 endif
 
 if g:plug.is_installed('enhancd')
-    let g:enhancd_action = g:plug.is_installed('dirvish') ? 'Dirvish' : 'Ex'
+        let g:enhancd_action = g:plug.is_installed('dirvish') ? 'Dirvish' : 'Ex'
 endif
 
 if g:plug.is_installed('asyncomplete.vim')
-    let g:lsp_async_completion = 1
+        let g:lsp_async_completion = 1
 endif
 \
 if g:plug.is_installed('fzf.vim')
-    let g:fzf_action = {
-                \ 'ctrl-t': 'tab split',
-                \ 'ctrl-s': 'split',
-                \ 'ctrl-v': 'vsplit' }
+        let g:fzf_action = {
+                                \ 'ctrl-t': 'tab split',
+                                \ 'ctrl-s': 'split',
+                                \ 'ctrl-v': 'vsplit' }
 
-    command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+        command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-    command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+        command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \     'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+    \     <bang>0 ? fzf#vim#with_preview('up:60%')
+    \                     : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \     <bang>0)
 
-    imap <C-c><C-w> <plug>(fzf-complete-word)
-    imap <C-c><C-p> <plug>(fzf-complete-path)
-    imap <C-c><C-l> <plug>(fzf-complete-line)
-    nnoremap <silent> ff :<C-u>Files<CR>
-    nnoremap <silent> rg :<C-u>Rg<CR>
-    nnoremap <silent> ag :<C-u>Ag<CR>
+        imap <C-c><C-w> <plug>(fzf-complete-word)
+        imap <C-c><C-p> <plug>(fzf-complete-path)
+        imap <C-c><C-l> <plug>(fzf-complete-line)
+        nnoremap <silent> ff :<C-u>Files<CR>
+        nnoremap <silent> rg :<C-u>Rg<CR>
+        nnoremap <silent> ag :<C-u>Ag<CR>
 endif
 
 if g:plug.is_installed('mru.vim')
-    let MRU_Auto_Close = 1
-    let MRU_Window_Height = 30
-    let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
-    let MRU_Max_Entries = 1000
-    nnoremap <silent> [Space]j :<C-u>MRU<CR>
+        let MRU_Auto_Close = 1
+        let MRU_Window_Height = 30
+        let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'    " For Unix
+        let MRU_Max_Entries = 1000
+        nnoremap <silent> [Space]j :<C-u>MRU<CR>
 else
-    " MRU configuration variables
-    if !exists('s:MRU_File')
-        if has('unix') || has('macunix')
-            let s:MRU_File = $HOME . '/.vim_mru_files'
-        else
-            let s:MRU_File = $VIM . '/_vim_mru_files'
-            if has('win32')
-                if $USERPROFILE != ''
-                    let s:MRU_File = $USERPROFILE . '\_vim_mru_files'
+        " MRU configuration variables
+        if !exists('s:MRU_File')
+                if has('unix') || has('macunix')
+                        let s:MRU_File = $HOME . '/.vim_mru_files'
+                else
+                        let s:MRU_File = $VIM . '/_vim_mru_files'
+                        if has('win32')
+                                if $USERPROFILE != ''
+                                        let s:MRU_File = $USERPROFILE . '\_vim_mru_files'
+                                endif
+                        endif
                 endif
-            endif
-        endif
-    endif
-
-    function! s:MRU_LoadList()
-        if filereadable(s:MRU_File)
-            let s:MRU_files = readfile(s:MRU_File)
-            if s:MRU_files[0] =~# '^#'
-                call remove(s:MRU_files, 0)
-            else
-                let s:MRU_files = []
-            endif
-        else
-            let s:MRU_files = []
-        endif
-    endfunction
-
-    function! s:MRU_SaveList()
-        let l = []
-        call add(l, '# Most recently used files list')
-        call extend(l, s:MRU_files)
-        call writefile(l, s:MRU_File)
-    endfunction
-    function! s:MRU_AddList(buf)
-        if s:mru_list_locked
-            return
         endif
 
-        let fname = fnamemodify(bufname(a:buf + 0), ':p')
-        if fname == ''
-            return
-        endif
+        function! s:MRU_LoadList()
+                if filereadable(s:MRU_File)
+                        let s:MRU_files = readfile(s:MRU_File)
+                        if s:MRU_files[0] =~# '^#'
+                                call remove(s:MRU_files, 0)
+                        else
+                                let s:MRU_files = []
+                        endif
+                else
+                        let s:MRU_files = []
+                endif
+        endfunction
 
-        if &buftype != ''
-            return
-        endif
+        function! s:MRU_SaveList()
+                let l = []
+                call add(l, '# Most recently used files list')
+                call extend(l, s:MRU_files)
+                call writefile(l, s:MRU_File)
+        endfunction
+        function! s:MRU_AddList(buf)
+                if s:mru_list_locked
+                        return
+                endif
 
-        if index(s:MRU_files, fname) == -1
-            if !filereadable(fname)
-                return
-            endif
-        endif
+                let fname = fnamemodify(bufname(a:buf + 0), ':p')
+                if fname == ''
+                        return
+                endif
 
+                if &buftype != ''
+                        return
+                endif
+
+                if index(s:MRU_files, fname) == -1
+                        if !filereadable(fname)
+                                return
+                        endif
+                endif
+
+                call s:MRU_LoadList()
+                call filter(s:MRU_files, 'v:val !=# fname')
+                call insert(s:MRU_files, fname, 0)
+
+                "let s:MRU_Max_Entries = 100
+                "if len(s:MRU_files) > s:MRU_Max_Entries
+                " call remove(s:MRU_files, s:MRU_Max_Entries, -1)
+                "endif
+
+                call s:MRU_SaveList()
+
+                let bname = '__MRU_Files__'
+                let winnum = bufwinnr(bname)
+                if winnum != -1
+                        let cur_winnr = winnr()
+                        call s:MRU_Create_Window()
+                        if winnr() != cur_winnr
+                                exe cur_winnr . 'wincmd w'
+                        endif
+                endif
+        endfunction
+
+        function! s:MRU_RemoveList()
+                call s:MRU_LoadList()
+                let lnum = line('.')
+                call remove(s:MRU_files, line('.')-1)
+                call s:MRU_SaveList()
+                close
+                call s:MRU_Create_Window()
+                call cursor(lnum, 1)
+        endfunction
+
+        function! s:MRU_Open_File() range
+                for f in getline(a:firstline, a:lastline)
+                        if f == ''
+                                continue
+                        endif
+
+                        let file = substitute(f, '^.*| ','','')
+
+                        let winnum = bufwinnr('^' . file . '$')
+                        silent quit
+                        if winnum != -1
+                                return
+                        else
+                                if &filetype ==# 'mru'
+                                        silent quit
+                                endif
+                        endif
+
+                        exe 'edit ' . fnameescape(substitute(file, '\\', '/', 'g'))
+                endfor
+        endfunction
+
+        function! s:MRU_Create_Window()
+                if &filetype == 'mru' && bufname("%") ==# '__MRU_Files__'
+                        quit
+                        return
+                endif
+
+                call s:MRU_LoadList()
+                if empty(s:MRU_files)
+                        echohl WarningMsg | echo 'MRU file list is empty' | echohl None
+                        return
+                endif
+
+                let bname = '__MRU_Files__'
+                let winnum = bufwinnr(bname)
+                if winnum != -1
+                        if winnr() != winnum
+                                exe winnum . 'wincmd w'
+                        endif
+
+                        setlocal modifiable
+                        " Delete the contents of the buffer to the black-hole register
+                        silent! %delete _
+                else
+                        " If the __MRU_Files__ buffer exists, then reuse it. Otherwise open
+                        " a new buffer
+                        let bufnum = bufnr(bname)
+                        if bufnum == -1
+                                let wcmd = bname
+                        else
+                                let wcmd = '+buffer' . bufnum
+                        endif
+                        let wcmd = bufnum == -1 ? bname : '+buffer' . bufnum
+                        let s:MRU_Window_Height = &lines / 3
+                        exe 'silent! botright ' . s:MRU_Window_Height . 'split ' . wcmd
+                endif
+
+                " Mark the buffer as scratch
+                setlocal buftype=nofile
+                setlocal bufhidden=delete
+                setlocal noswapfile
+                setlocal nowrap
+                setlocal nobuflisted
+                setlocal filetype=mru
+                setlocal winfixheight
+                setlocal modifiable
+
+                let old_cpoptions = &cpoptions
+                set cpoptions&vim
+
+                " Create mappings to select and edit a file from the MRU list
+                nnoremap <buffer> <silent> <CR>     :call <SID>MRU_Open_File()<CR>
+                vnoremap <buffer> <silent> <CR>     :call <SID>MRU_Open_File()<CR>
+                nnoremap <buffer> <silent> <S-CR> :call <SID>MRU_Open_File_Tab()<CR>
+                vnoremap <buffer> <silent> <S-CR> :call <SID>MRU_Open_File_Tab()<CR>
+                nnoremap <buffer> <silent> K            :call <SID>MRU_RemoveList()<CR>
+                nnoremap <buffer> <silent> S            :setlocal modifiable<CR>:sort<CR>:setlocal nomodifiable<CR>
+
+                " Restore the previous cpoptions settings
+                let &cpoptions = old_cpoptions
+
+                let output = copy(s:MRU_files)
+                let idx = 0
+                for file in output
+                        if !filereadable(file)
+                                call remove(output, idx)
+                                continue
+                        endif
+                        let idx += 1
+                endfor
+
+                silent! 0put =output
+
+                " Delete the empty line at the end of the buffer
+                silent! $delete _
+                let glist = getline(1, '$')
+                let max = 0
+                let max_h = 0
+                for idx in range(0, len(glist)-1)
+                        if strlen(fnamemodify(glist[idx], ':t')) > max
+                                let max = strlen(fnamemodify(glist[idx], ':t'))
+                        endif
+                        if strlen(substitute(fnamemodify(glist[idx], ':p:h'), '^.*\/', '', '')) > max_h
+                                let max_h = strlen(substitute(fnamemodify(glist[idx], ':p:h'), '^.*\/', '', ''))
+                        endif
+                endfor
+                for idx in range(0, len(glist)-1)
+                        let glist[idx] = printf("%-" . max .    "s | %-" . max_h . "s | %s" ,
+                                                \ fnamemodify(glist[idx], ':t'), substitute(fnamemodify(glist[idx], ':p:h'), '^.*\/', '', ''), glist[idx])
+                endfor
+                silent! %delete _
+                call setline(1, glist)
+                if glist[idx] == '| '
+                        silent! $delete _
+                endif
+
+                exe 'syntax match Directory display ' . '"'. '|\zs[^|]*\ze|'. '"'
+                exe 'syntax match Constant    display ' . '"' . '[^|]*[\/]' . '"'
+
+                " Move the cursor to the beginning of the file
+                normal! gg
+
+                setlocal nonumber cursorline nomodifiable
+        endfunction
+
+        " MRU Essentials
+        let s:mru_list_locked = 0
         call s:MRU_LoadList()
-        call filter(s:MRU_files, 'v:val !=# fname')
-        call insert(s:MRU_files, fname, 0)
+        command! MRU call s:MRU_Create_Window()
+        augroup mru-files-vimrc
+                autocmd!
+                autocmd BufRead            * call s:MRU_AddList(expand('<abuf>'))
+                autocmd BufNewFile     * call s:MRU_AddList(expand('<abuf>'))
+                autocmd BufWritePost * call s:MRU_AddList(expand('<abuf>'))
+                autocmd QuickFixCmdPre    *grep* let s:mru_list_locked = 1
+                autocmd QuickFixCmdPost *grep* let s:mru_list_locked = 0
+        augroup END
 
-        "let s:MRU_Max_Entries = 100
-        "if len(s:MRU_files) > s:MRU_Max_Entries
-        " call remove(s:MRU_files, s:MRU_Max_Entries, -1)
+        " MRU within the vimrc
+        "if !g:plug.is_installed('mru.vim')
+        if exists('*s:MRU_Create_Window')
+                nnoremap <silent> [Space]j :<C-u>call <SID>MRU_Create_Window()<CR>
+        endif
         "endif
-
-        call s:MRU_SaveList()
-
-        let bname = '__MRU_Files__'
-        let winnum = bufwinnr(bname)
-        if winnum != -1
-            let cur_winnr = winnr()
-            call s:MRU_Create_Window()
-            if winnr() != cur_winnr
-                exe cur_winnr . 'wincmd w'
-            endif
-        endif
-    endfunction
-
-    function! s:MRU_RemoveList()
-        call s:MRU_LoadList()
-        let lnum = line('.')
-        call remove(s:MRU_files, line('.')-1)
-        call s:MRU_SaveList()
-        close
-        call s:MRU_Create_Window()
-        call cursor(lnum, 1)
-    endfunction
-
-    function! s:MRU_Open_File() range
-        for f in getline(a:firstline, a:lastline)
-            if f == ''
-                continue
-            endif
-
-            let file = substitute(f, '^.*| ','','')
-
-            let winnum = bufwinnr('^' . file . '$')
-            silent quit
-            if winnum != -1
-                return
-            else
-                if &filetype ==# 'mru'
-                    silent quit
-                endif
-            endif
-
-            exe 'edit ' . fnameescape(substitute(file, '\\', '/', 'g'))
-        endfor
-    endfunction
-
-    function! s:MRU_Create_Window()
-        if &filetype == 'mru' && bufname("%") ==# '__MRU_Files__'
-            quit
-            return
-        endif
-
-        call s:MRU_LoadList()
-        if empty(s:MRU_files)
-            echohl WarningMsg | echo 'MRU file list is empty' | echohl None
-            return
-        endif
-
-        let bname = '__MRU_Files__'
-        let winnum = bufwinnr(bname)
-        if winnum != -1
-            if winnr() != winnum
-                exe winnum . 'wincmd w'
-            endif
-
-            setlocal modifiable
-            " Delete the contents of the buffer to the black-hole register
-            silent! %delete _
-        else
-            " If the __MRU_Files__ buffer exists, then reuse it. Otherwise open
-            " a new buffer
-            let bufnum = bufnr(bname)
-            if bufnum == -1
-                let wcmd = bname
-            else
-                let wcmd = '+buffer' . bufnum
-            endif
-            let wcmd = bufnum == -1 ? bname : '+buffer' . bufnum
-            let s:MRU_Window_Height = &lines / 3
-            exe 'silent! botright ' . s:MRU_Window_Height . 'split ' . wcmd
-        endif
-
-        " Mark the buffer as scratch
-        setlocal buftype=nofile
-        setlocal bufhidden=delete
-        setlocal noswapfile
-        setlocal nowrap
-        setlocal nobuflisted
-        setlocal filetype=mru
-        setlocal winfixheight
-        setlocal modifiable
-
-        let old_cpoptions = &cpoptions
-        set cpoptions&vim
-
-        " Create mappings to select and edit a file from the MRU list
-        nnoremap <buffer> <silent> <CR>   :call <SID>MRU_Open_File()<CR>
-        vnoremap <buffer> <silent> <CR>   :call <SID>MRU_Open_File()<CR>
-        nnoremap <buffer> <silent> <S-CR> :call <SID>MRU_Open_File_Tab()<CR>
-        vnoremap <buffer> <silent> <S-CR> :call <SID>MRU_Open_File_Tab()<CR>
-        nnoremap <buffer> <silent> K      :call <SID>MRU_RemoveList()<CR>
-        nnoremap <buffer> <silent> S      :setlocal modifiable<CR>:sort<CR>:setlocal nomodifiable<CR>
-
-        " Restore the previous cpoptions settings
-        let &cpoptions = old_cpoptions
-
-        let output = copy(s:MRU_files)
-        let idx = 0
-        for file in output
-            if !filereadable(file)
-                call remove(output, idx)
-                continue
-            endif
-            let idx += 1
-        endfor
-
-        silent! 0put =output
-
-        " Delete the empty line at the end of the buffer
-        silent! $delete _
-        let glist = getline(1, '$')
-        let max = 0
-        let max_h = 0
-        for idx in range(0, len(glist)-1)
-            if strlen(fnamemodify(glist[idx], ':t')) > max
-                let max = strlen(fnamemodify(glist[idx], ':t'))
-            endif
-            if strlen(substitute(fnamemodify(glist[idx], ':p:h'), '^.*\/', '', '')) > max_h
-                let max_h = strlen(substitute(fnamemodify(glist[idx], ':p:h'), '^.*\/', '', ''))
-            endif
-        endfor
-        for idx in range(0, len(glist)-1)
-            let glist[idx] = printf("%-" . max .  "s | %-" . max_h . "s | %s" ,
-                        \ fnamemodify(glist[idx], ':t'), substitute(fnamemodify(glist[idx], ':p:h'), '^.*\/', '', ''), glist[idx])
-        endfor
-        silent! %delete _
-        call setline(1, glist)
-        if glist[idx] == '| '
-            silent! $delete _
-        endif
-
-        exe 'syntax match Directory display ' . '"'. '|\zs[^|]*\ze|'. '"'
-        exe 'syntax match Constant  display ' . '"' . '[^|]*[\/]' . '"'
-
-        " Move the cursor to the beginning of the file
-        normal! gg
-
-        setlocal nonumber cursorline nomodifiable
-    endfunction
-
-    " MRU Essentials
-    let s:mru_list_locked = 0
-    call s:MRU_LoadList()
-    command! MRU call s:MRU_Create_Window()
-    augroup mru-files-vimrc
-        autocmd!
-        autocmd BufRead      * call s:MRU_AddList(expand('<abuf>'))
-        autocmd BufNewFile   * call s:MRU_AddList(expand('<abuf>'))
-        autocmd BufWritePost * call s:MRU_AddList(expand('<abuf>'))
-        autocmd QuickFixCmdPre  *grep* let s:mru_list_locked = 1
-        autocmd QuickFixCmdPost *grep* let s:mru_list_locked = 0
-    augroup END
-
-    " MRU within the vimrc
-    "if !g:plug.is_installed('mru.vim')
-    if exists('*s:MRU_Create_Window')
-        nnoremap <silent> [Space]j :<C-u>call <SID>MRU_Create_Window()<CR>
-    endif
-    "endif
 endif
 
 if g:plug.is_installed('open-browser.vim')
@@ -280,81 +280,81 @@ if g:plug.is_installed('open-browser.vim')
 endif
 
 if g:plug.is_installed('open-browser-github.vim')
-  nnoremap <silent> [Space]ogf :<C-u>OpenGithubFile<CR>
-  nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
-  nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
+    nnoremap <silent> [Space]ogf :<C-u>OpenGithubFile<CR>
+    nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
+    nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
 endif
 
 if g:plug.is_installed('previm')
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
+    autocmd BufRead,BufNewFile *.md set filetype=markdown
+    nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
 endif
 
 if g:plug.is_installed('ale')
-  let g:ale_set_quickfix = 1
-  let g:ale_echo_msg_error_str = '🔥'
-  let g:ale_echo_msg_warning_str = '⚡️'
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  let g:ale_fix_on_save = 1
-  let g:ale_linters = {
-  \   'go': ['golint'],
-  \}
-  let g:ale_fixers = {
-  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \   'go': ['gofmt','goimports'],
-  \   'elm': ['elm-format'],
-  \}
+    let g:ale_set_quickfix = 1
+    let g:ale_echo_msg_error_str = '🔥'
+    let g:ale_echo_msg_warning_str = '⚡️'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_fix_on_save = 1
+    let g:ale_linters = {
+    \     'go': ['golint'],
+    \}
+    let g:ale_fixers = {
+    \     '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \     'go': ['gofmt','goimports'],
+    \     'elm': ['elm-format'],
+    \}
 
-  " for elm
-  let g:ale_elm_format_executable = "elm-format"
-  let g:ale_elm_format_options = "--yes --elm-version=0.19"
+    " for elm
+    let g:ale_elm_format_executable = "elm-format"
+    let g:ale_elm_format_options = "--yes --elm-version=0.19"
 endif
 
 if g:plug.is_installed('onedark.vim')
-  syntax on
-  colorscheme onedark
+    syntax on
+    colorscheme onedark
 endif
 
 if g:plug.is_installed('nerdtree')
-  nnoremap <silent> <C-]> :<C-u>NERDTreeToggle<CR>
-  let NERDTreeMapOpenVSplit = "v"
-  let NERDTreeMapOpenSplit = "s"
-  let NERDTreeMapToggleHidden = "a"
+    nnoremap <silent> <C-]> :<C-u>NERDTreeToggle<CR>
+    let NERDTreeMapOpenVSplit = "v"
+    let NERDTreeMapOpenSplit = "s"
+    let NERDTreeMapToggleHidden = "a"
 endif
 
 if g:plug.is_installed('nerdtree-git-plugin')
-  let g:NERDTreeIndicatorMapCustom = {
-                \ 'Modified'  : '⚡️',
-                \ 'Staged'    : '🎉',
-                \ 'Untracked' : '⭐',
-                \ 'Renamed'   : '🔀',
-                \ 'Deleted'   : '❌',
-                \ 'Clean'     : '🚮',
-                \ }
+    let g:NERDTreeIndicatorMapCustom = {
+                                \ 'Modified'    : '⚡️',
+                                \ 'Staged'        : '🎉',
+                                \ 'Untracked' : '⭐',
+                                \ 'Renamed'     : '🔀',
+                                \ 'Deleted'     : '❌',
+                                \ 'Clean'         : '🚮',
+                                \ }
 endif
 
 if g:plug.is_installed('vim-emoji')
-  set completefunc=emoji#complete
+    set completefunc=emoji#complete
 endif
 
 if g:plug.is_installed('tcomment_vim')
-  let g:tcomment_maps=0
-  " Ctrl + /
-  nnoremap <silent> <C-_><C-_> :<C-u>TComment<CR>
-  vnoremap <silent> <C-_><C-_> :<C-u>TComment<CR>
-  inoremap <silent> <C-_><C-_> :<C-u>TComment<CR>
+    let g:tcomment_maps=0
+    " Ctrl + /
+    nnoremap <silent> <C-_><C-_> :<C-u>TCommentBlock<CR>
+    vnoremap <silent> <C-_><C-_> :<C-u>TCommentBlock<CR>
+    inoremap <silent> <C-_><C-_> :<C-u>TCommentBlock<CR>
 endif
 
 if g:plug.is_installed('elm-vim')
-  let g:elm_format_autosave = 0
-  let g:elm_setup_keybinding = 0
-  nnoremap <silent> <Leader>em :<C-u>ElmMake<CR>
-  nnoremap <silent> <Leader>emm :<C-u>ElmMakeMain<CR>
-  nnoremap <silent> <Leader>et :<C-u>ElmTest<CR>
-  nnoremap <silent> <Leader>er :<C-u>ElmRepl<CR>
-  nnoremap <silent> <Leader>ed :<C-u>ElmErrorDetail<CR>
-  nnoremap <silent> <Leader>es :<C-u>ElmBrowseDocs<CR>
-  nnoremap <silent> <Leader>eb :<C-u>ElmFormat<CR>
+    let g:elm_format_autosave = 0
+    let g:elm_setup_keybinding = 0
+    nnoremap <silent> <Leader>em :<C-u>ElmMake<CR>
+    nnoremap <silent> <Leader>emm :<C-u>ElmMakeMain<CR>
+    nnoremap <silent> <Leader>et :<C-u>ElmTest<CR>
+    nnoremap <silent> <Leader>er :<C-u>ElmRepl<CR>
+    nnoremap <silent> <Leader>ed :<C-u>ElmErrorDetail<CR>
+    nnoremap <silent> <Leader>es :<C-u>ElmBrowseDocs<CR>
+    nnoremap <silent> <Leader>eb :<C-u>ElmFormat<CR>
 endif
 
 if g:plug.is_installed('')
@@ -364,7 +364,7 @@ nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
 nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
 nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
 nnoremap <silent> <Leader>t :<C-u>LspRename<CR>
-nnoremap <silent> <Leader>ds  :<C-u>LspDocumentSymbol<CR>
+nnoremap <silent> <Leader>ds    :<C-u>LspDocumentSymbol<CR>
 nnoremap <silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
 nnoremap <silent> <Leader>df :<C-u>LspDocumentFormat<CR>
 vnoremap <silent> <Leader>rs :<C-u>LspDocumentRangeFormat<CR>
@@ -372,52 +372,52 @@ nnoremap <silent> <Leader>h :<C-u>LspHover<CR>
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
 if executable('gopls')
-  augroup LspGo
-    au!
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'go-lang',
-        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-        \ 'whitelist': ['go'],
-        \ })
-    autocmd FileType python,go nmap gd <plug>(lsp-definition)<CR>
-  augroup END
+    augroup LspGo
+        au!
+        autocmd User lsp_setup call lsp#register_server({
+                \ 'name': 'go-lang',
+                \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+                \ 'whitelist': ['go'],
+                \ })
+        autocmd FileType python,go nmap gd <plug>(lsp-definition)<CR>
+    augroup END
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby
 if executable('solargraph')
-    " gem install solargraph
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'solargraph',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-        \ 'initialization_options': {"diagnostics": "true"},
-        \ 'whitelist': ['ruby'],
-        \ })
+        " gem install solargraph
+        au User lsp_setup call lsp#register_server({
+                \ 'name': 'solargraph',
+                \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+                \ 'initialization_options': {"diagnostics": "true"},
+                \ 'whitelist': ['ruby'],
+                \ })
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Docker
 if executable('docker-langserver')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'docker-langserver',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
-        \ 'whitelist': ['dockerfile'],
-        \ })
+        au User lsp_setup call lsp#register_server({
+                \ 'name': 'docker-langserver',
+                \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
+                \ 'whitelist': ['dockerfile'],
+                \ })
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Rust
 if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
+        au User lsp_setup call lsp#register_server({
+                \ 'name': 'rls',
+                \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+                \ 'whitelist': ['rust'],
+                \ })
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-TypeScript
 if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-        \ 'whitelist': ['typescript', 'typescript.tsx'],
-        \ })
+        au User lsp_setup call lsp#register_server({
+                \ 'name': 'typescript-language-server',
+                \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+                \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+                \ 'whitelist': ['typescript', 'typescript.tsx'],
+                \ })
 endif
