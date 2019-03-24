@@ -337,14 +337,6 @@ if g:plug.is_installed('vim-emoji')
     set completefunc=emoji#complete
 endif
 
-if g:plug.is_installed('tcomment_vim')
-    let g:tcomment_maps=0
-    " Ctrl + /
-    nnoremap <silent> <C-_><C-_> :<C-u>TCommentBlock<CR>
-    vnoremap <silent> <C-_><C-_> :<C-u>TCommentBlock<CR>
-    inoremap <silent> <C-_><C-_> :<C-u>TCommentBlock<CR>
-endif
-
 if g:plug.is_installed('elm-vim')
     let g:elm_format_autosave = 0
     let g:elm_setup_keybinding = 0
