@@ -12,9 +12,9 @@ set pumheight=10
 set ttyfast
 set lazyredraw
 
-" 1 tab = 4 spaces
-set shiftwidth=4
-set tabstop=4
+" 1 tab = 2 spaces
+set shiftwidth=2
+set tabstop=2
 
 " swap files are not created
 set noswapfile
