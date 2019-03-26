@@ -3,3 +3,4 @@
 *.log
 .config/gcloud/
 .config/direnv/
+.config/anyenv/
