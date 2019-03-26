@@ -34,16 +34,20 @@ if g:plug.is_installed('fzf.vim')
   nnoremap <silent> ag :<C-u>Ag<CR>
 endif
 
-if g:plug.is_installed('denite.vim')
+if g:plug.is_installed('denite.nvim')
   call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
   call denite#custom#map('normal', 'jj', '<denite:quit>', 'noremap')
   call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
-  call denite#custom#map('normal', "v", '<denite:do_action:vsplit>')
+  call denite#custom#map('normal', "<C-v>", '<denite:do_action:vsplit>')
 
+
+  call denite#custom#map('normal', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+  call denite#custom#map('normal', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
   call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
   call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-  noremap <silent> <Leader>ff :Denite file/rec<CR>
-  noremap <silent> <Leader>j :Denite file/old<CR>
+  nnoremap <silent> <Leader>ff :Denite file/rec<CR>
+  nnoremap <silent> <Leader>j :Denite file/old<CR>
+  call denite#custom#option('default', 'prompt', '🔍')
   if executable('rg')
     call denite#custom#var('file_rec', 'command',
           \ ['rg', '--files', '--glob', '!.git'])
