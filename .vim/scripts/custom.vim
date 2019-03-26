@@ -1,37 +1,37 @@
 if !exists('g:env')
-        finish
+  finish
 endif
 
 if g:plug.is_installed('enhancd')
-        let g:enhancd_action = g:plug.is_installed('dirvish') ? 'Dirvish' : 'Ex'
+  let g:enhancd_action = g:plug.is_installed('dirvish') ? 'Dirvish' : 'Ex'
 endif
 
 if g:plug.is_installed('asyncomplete.vim')
-        let g:lsp_async_completion = 1
+  let g:lsp_async_completion = 1
 endif
 \
 if g:plug.is_installed('fzf.vim')
-        let g:fzf_action = {
-                                \ 'ctrl-t': 'tab split',
-                                \ 'ctrl-s': 'split',
-                                \ 'ctrl-v': 'vsplit' }
+  let g:fzf_action = {
+        \ 'ctrl-t': 'tab split',
+        \ 'ctrl-s': 'split',
+        \ 'ctrl-v': 'vsplit' }
 
-        command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+  command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-        command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \     'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-    \     <bang>0 ? fzf#vim#with_preview('up:60%')
-    \                     : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \     <bang>0)
+  command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \       : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
-        imap <C-c><C-w> <plug>(fzf-complete-word)
-        imap <C-c><C-p> <plug>(fzf-complete-path)
-        imap <C-c><C-l> <plug>(fzf-complete-line)
-        nnoremap <silent> ff :<C-u>Files<CR>
-        nnoremap <silent> rg :<C-u>Rg<CR>
-        nnoremap <silent> ag :<C-u>Ag<CR>
+  imap <C-c><C-w> <plug>(fzf-complete-word)
+  imap <C-c><C-p> <plug>(fzf-complete-path)
+  imap <C-c><C-l> <plug>(fzf-complete-line)
+  nnoremap <silent> ff :<C-u>Files<CR>
+  nnoremap <silent> rg :<C-u>Rg<CR>
+  nnoremap <silent> ag :<C-u>Ag<CR>
 endif
 
 if g:plug.is_installed('open-browser.vim')
@@ -41,74 +41,82 @@ if g:plug.is_installed('open-browser.vim')
 endif
 
 if g:plug.is_installed('open-browser-github.vim')
-    nnoremap <silent> [Space]ogf :<C-u>OpenGithubFile<CR>
-    nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
-    nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
+  nnoremap <silent> [Space]ogf :<C-u>OpenGithubFile<CR>
+  nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
+  nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
 endif
 
 if g:plug.is_installed('previm')
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
 endif
 
 if g:plug.is_installed('ale')
-    let g:ale_set_quickfix = 1
-    let g:ale_echo_msg_error_str = '🔥'
-    let g:ale_echo_msg_warning_str = '⚡️'
-    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-    let g:ale_fix_on_save = 1
-    let g:ale_linters = {
-    \     'go': ['golint'],
-    \}
-    let g:ale_fixers = {
-    \     '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \     'go': ['gofmt','goimports'],
-    \     'elm': ['elm-format'],
-    \}
+  let g:ale_set_quickfix = 1
+  let g:ale_echo_msg_error_str = '🔥'
+  let g:ale_echo_msg_warning_str = '⚡️'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_fix_on_save = 1
+  let g:ale_linters = {
+  \   'go': ['golint'],
+  \}
+  let g:ale_fixers = {
+  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \   'go': ['gofmt','goimports'],
+  \   'elm': ['elm-format'],
+  \}
 
-    " for elm
-    let g:ale_elm_format_executable = "elm-format"
-    let g:ale_elm_format_options = "--yes --elm-version=0.19"
+  " for elm
+  let g:ale_elm_format_executable = "elm-format"
+  let g:ale_elm_format_options = "--yes --elm-version=0.19"
 endif
 
 if g:plug.is_installed('onedark.vim')
-    syntax on
-    colorscheme onedark
+  syntax on
+  colorscheme onedark
 endif
 
 if g:plug.is_installed('nerdtree')
-    nnoremap <silent> <C-]> :<C-u>NERDTreeToggle<CR>
-    let NERDTreeMapOpenVSplit = "v"
-    let NERDTreeMapOpenSplit = "s"
-    let NERDTreeMapToggleHidden = "a"
+  nnoremap <silent> <C-]> :<C-u>NERDTreeToggle<CR>
+  let NERDTreeMapOpenVSplit = "v"
+  let NERDTreeMapOpenSplit = "s"
+  let NERDTreeMapToggleHidden = "a"
 endif
 
 if g:plug.is_installed('nerdtree-git-plugin')
-    let g:NERDTreeIndicatorMapCustom = {
-                                \ 'Modified'    : '⚡️',
-                                \ 'Staged'        : '🎉',
-                                \ 'Untracked' : '⭐',
-                                \ 'Renamed'     : '🔀',
-                                \ 'Deleted'     : '❌',
-                                \ 'Clean'         : '🚮',
-                                \ }
+  let g:NERDTreeIndicatorMapCustom = {
+        \ 'Modified'  : '⚡️',
+        \ 'Staged'  : '🎉',
+        \ 'Untracked' : '⭐',
+        \ 'Renamed'   : '🔀',
+        \ 'Deleted'   : '❌',
+        \ 'Clean'   : '🚮',
+        \ }
 endif
 
 if g:plug.is_installed('vim-emoji')
-    set completefunc=emoji#complete
+  set completefunc=emoji#complete
 endif
 
 if g:plug.is_installed('elm-vim')
-    let g:elm_format_autosave = 0
-    let g:elm_setup_keybinding = 0
-    let g:elm_jump_to_error = 1
-    nnoremap <silent> <Leader>em :<C-u>ElmMake<CR>
-    nnoremap <silent> <Leader>emm :<C-u>ElmMakeMain<CR>
-    nnoremap <silent> <Leader>et :<C-u>ElmTest<CR>
-    nnoremap <silent> <Leader>er :<C-u>ElmRepl<CR>
-    nnoremap <silent> <Leader>ed :<C-u>ElmErrorDetail<CR>
-    nnoremap <silent> <Leader>es :<C-u>ElmBrowseDocs<CR>
-    nnoremap <silent> <Leader>eb :<C-u>ElmFormat<CR>
+  let g:elm_format_autosave = 0
+  let g:elm_setup_keybinding = 0
+  let g:elm_jump_to_error = 1
+  nnoremap <silent> <Leader>em :<C-u>ElmMake<CR>
+  nnoremap <silent> <Leader>emm :<C-u>ElmMakeMain<CR>
+  nnoremap <silent> <Leader>et :<C-u>ElmTest<CR>
+  nnoremap <silent> <Leader>er :<C-u>ElmRepl<CR>
+  nnoremap <silent> <Leader>ed :<C-u>ElmErrorDetail<CR>
+  nnoremap <silent> <Leader>es :<C-u>ElmBrowseDocs<CR>
+  nnoremap <silent> <Leader>eb :<C-u>ElmFormat<CR>
+endif
+
+if g:plug.is_installed('vim-airline')
+  let g:airline_theme='dark'
+  let g:airline#extensions#branch#enabled = 1
+  let g:airline#extensions#ale#enabled = 1
+  let airline#extensions#ale#error_symbol = '🔥'
+  let airline#extensions#ale#warning_symbol = '⚡️'
 endif
 
 if g:plug.is_installed('')
@@ -126,52 +134,52 @@ nnoremap <silent> <Leader>b :<C-u>LspHover<CR>
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
 if executable('gopls')
-    augroup LspGo
-        au!
-        autocmd User lsp_setup call lsp#register_server({
-                \ 'name': 'go-lang',
-                \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-                \ 'whitelist': ['go'],
-                \ })
-        autocmd FileType python,go nmap gd <plug>(lsp-definition)<CR>
-    augroup END
+  augroup LspGo
+  au!
+  autocmd User lsp_setup call lsp#register_server({
+    \ 'name': 'go-lang',
+    \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+    \ 'whitelist': ['go'],
+    \ })
+  autocmd FileType python,go nmap gd <plug>(lsp-definition)<CR>
+  augroup END
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby
 if executable('solargraph')
-        " gem install solargraph
-        au User lsp_setup call lsp#register_server({
-                \ 'name': 'solargraph',
-                \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-                \ 'initialization_options': {"diagnostics": "true"},
-                \ 'whitelist': ['ruby'],
-                \ })
+  " gem install solargraph
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'solargraph',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+    \ 'initialization_options': {"diagnostics": "true"},
+    \ 'whitelist': ['ruby'],
+    \ })
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Docker
 if executable('docker-langserver')
-        au User lsp_setup call lsp#register_server({
-                \ 'name': 'docker-langserver',
-                \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
-                \ 'whitelist': ['dockerfile'],
-                \ })
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'docker-langserver',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
+    \ 'whitelist': ['dockerfile'],
+    \ })
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Rust
 if executable('rls')
-        au User lsp_setup call lsp#register_server({
-                \ 'name': 'rls',
-                \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-                \ 'whitelist': ['rust'],
-                \ })
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'rls',
+    \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+    \ 'whitelist': ['rust'],
+    \ })
 endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-TypeScript
 if executable('typescript-language-server')
-        au User lsp_setup call lsp#register_server({
-                \ 'name': 'typescript-language-server',
-                \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-                \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-                \ 'whitelist': ['typescript', 'typescript.tsx'],
-                \ })
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'typescript-language-server',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+    \ 'whitelist': ['typescript', 'typescript.tsx'],
+    \ })
 endif

@@ -55,14 +55,18 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'hotwatermorning/auto-git-diff'
     Plug 'previm/previm'
     Plug 'christianrondeau/vim-base64'
-    Plug 'tpope/vim-fugitive', { 'for': 'git blame' }
+    Plug 'tpope/vim-fugitive'
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'junegunn/vim-emoji'
     Plug 'tomtom/tcomment_vim'
+    Plug 'ludovicchabant/vim-lawrencium'
 
     " Theme
     Plug 'joshdick/onedark.vim'
+
+    " Views
+    Plug 'vim-airline/vim-airline'
     " Add plugins to &runtimepath
     call plug#end()
 endif
