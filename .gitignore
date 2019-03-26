@@ -1,2 +1,5 @@
 .zsh/history/
 *.swp
+*.log
+.config/gcloud/
+.config/direnv/
