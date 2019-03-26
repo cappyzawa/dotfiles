@@ -61,6 +61,13 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'junegunn/vim-emoji'
     Plug 'tomtom/tcomment_vim'
     Plug 'ludovicchabant/vim-lawrencium'
+    if has('nvim')
+      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'roxma/nvim-yarp'
+      Plug 'roxma/vim-hug-neovim-rpc'
+    endif
 
     " Theme
     Plug 'joshdick/onedark.vim'

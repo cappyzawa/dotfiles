@@ -119,6 +119,10 @@ if g:plug.is_installed('vim-airline')
   let airline#extensions#ale#warning_symbol = '⚡️'
 endif
 
+if g:plug.is_installed('deoplete.nvim')
+  let g:deoplete#enable_at_startup = 1
+endif
+
 if g:plug.is_installed('')
 endif
 
