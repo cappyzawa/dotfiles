@@ -106,14 +106,8 @@ if g:env.vimrc.goback_to_eof2bof == g:true
     nnoremap <expr><silent> j <SID>down("gj")
 endif
 
-" Buffers, windows, and tabpages
-if !g:plug.is_installed('vim-buftabs')
-    nnoremap <silent> <C-j> :<C-u>silent bnext<CR>
-    nnoremap <silent> <C-k> :<C-u>silent bprev<CR>
-else
-    nnoremap <silent> <C-j> :<C-u>silent bnext<CR>:<C-u>call <SID>get_buflists()<CR>
-    nnoremap <silent> <C-k> :<C-u>silent bprev<CR>:<C-u>call <SID>get_buflists()<CR>
-endif
+nnoremap <silent> <C-j> :<C-u>silent bnext<CR>:<C-u>call <SID>get_buflists()<CR>
+nnoremap <silent> <C-k> :<C-u>silent bprev<CR>:<C-u>call <SID>get_buflists()<CR>
 
 nnoremap <silent> <C-x>u :<C-u>call <SID>buf_restore()<CR>
 nnoremap <silent> <C-x>d     :Delete<CR>
