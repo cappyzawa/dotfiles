@@ -2,15 +2,14 @@ if !exists('g:env')
 	finish
 endif
 
+let g:mapleader=" "
+let g:maplocalleader=" "
+
 " Smart space mapping
 nmap <Space> [Space]
 xmap <Space> [Space]
-nnoremap [Space] <Nop>
-xnoremap [Space] <Nop>
-map [Space] <Leader>
 noremap [Space]h ^
 noremap [Space]l $
-
 
 inoremap <C-h> <Backspace>
 inoremap <C-d> <Delete>
@@ -87,9 +86,6 @@ nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 " Yank the entire file
 nnoremap <Leader>y :<C-u>%y<CR>
 nnoremap <Leader>Y :<C-u>%y<CR>
-
-nnoremap <silent> <Leader>l :<C-u>call <SID>toggle_option('cursorline')<CR>
-nnoremap <silent> <Leader>c :<C-u>call <SID>toggle_option('cursorcolumn')<CR>
 
 if g:env.vimrc.goback_to_eof2bof == g:true
     function! s:up(key)
@@ -180,9 +176,3 @@ nnoremap <silent> tc :<C-u>tabclose<CR>
 nnoremap <silent> to :<C-u>tabonly<CR>
 
 nnoremap <silent>z0 :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
-
-" tig
-nnoremap <silent> [Space]g :<C-u>!tig blame +<C-r>=line('.')<CR> %<CR>:redraw!<CR>:
-
-" __END__
-" vim:fdm=marker expandtab fdc=3:

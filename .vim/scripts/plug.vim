@@ -18,8 +18,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     call plug#begin(g:plug.base)
 
     " file and directory
-    Plug 'junegunn/fzf'
-    Plug 'junegunn/fzf.vim'
+    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'cocopon/vaffle.vim'
     Plug 'mattn/vim-terminal'
     " syntax? language support
