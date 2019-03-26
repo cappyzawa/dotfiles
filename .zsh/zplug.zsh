@@ -88,7 +88,7 @@ zplug "kislyuk/yq", \
 zplug "Kuniwak/vint", \
   as:command, \
   rename-to:"vint", \
-  hook-build:"pip install vim-vint"
+  hook-build:"pip install vim-vint --user"
 
 zplug "adrienverge/yamllint", \
   as:command, \
