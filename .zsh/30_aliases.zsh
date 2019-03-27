@@ -54,6 +54,10 @@ if has "nvim"; then
   alias vim='nvim'
 fi
 
+if has "lazygit"; then
+  alias lg='lazygit'
+fi
+
 if is_osx; then
   alias -g CP='| pbcopy'
   alias -g CC='| tee /dev/tty | pbcopy'
