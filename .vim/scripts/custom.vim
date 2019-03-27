@@ -73,12 +73,21 @@ if g:plug.is_installed('previm')
   nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
 endif
 
+if g:plug.is_installed('vim-markdown')
+  let g:vim_markdown_folding_disabled = 1
+endif
+
 if g:plug.is_installed('ale')
+  if &filetype != "markdown"
+    let g:ale_fix_on_save = 0
+  else
+    let g:ale_fix_on_save = 1
+  endif
+
   let g:ale_set_quickfix = 1
   let g:ale_echo_msg_error_str = '🔥'
   let g:ale_echo_msg_warning_str = '⚡️'
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  let g:ale_fix_on_save = 1
   let g:ale_linters = {
   \   'go': ['golint'],
   \}
