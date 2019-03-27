@@ -140,3 +140,6 @@ endif
 
 " Open new window on the right
 set splitright
+
+" Auto adjust cursor the first sugget
+set completeopt+=noinsert

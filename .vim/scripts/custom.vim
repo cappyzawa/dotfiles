@@ -45,13 +45,26 @@ if g:plug.is_installed('denite.nvim')
   call denite#custom#map('normal', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
   call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
   call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+
+  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+          \ [ '.git/', '.ropeproject/', '__pycache__/',
+          \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/',
+          \   '.idea/', 'vendor/', 'plugged/'])
+
   nnoremap <silent> <Leader>ff :Denite file/rec<CR>
   nnoremap <silent> <Leader>j :Denite file/old<CR>
+  nnoremap <silent> <C-f><C-f> :Denite grep<CR>
   call denite#custom#option('default', 'prompt', '🔍')
   if executable('rg')
     call denite#custom#var('file_rec', 'command',
           \ ['rg', '--files', '--glob', '!.git'])
     call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'default_opts',
+        \ ['-i', '--vimgrep', '--no-heading', '-uu'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
   endif
 endif
 
