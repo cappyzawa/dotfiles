@@ -92,9 +92,9 @@ endif
 
 if g:plug.is_installed('ale')
   if &filetype != "markdown"
-    let g:ale_fix_on_save = 0
-  else
     let g:ale_fix_on_save = 1
+  else
+    let g:ale_fix_on_save = 0
   endif
 
   let g:ale_set_quickfix = 1
