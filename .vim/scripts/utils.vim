@@ -21,4 +21,4 @@ let s:bufqueue = []
 augroup buffer-queue-restore
   autocmd!
   "autocmd BufDelete * call <SID>buf_enqueue(expand('#'))
-  augroup END
+augroup END
