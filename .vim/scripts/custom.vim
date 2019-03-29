@@ -68,6 +68,9 @@ if g:plug.is_installed('denite.nvim')
   endif
 endif
 
+if g:plug.is_installed('auto_pairs')
+  let g:AutoPairsFlyMode = 1
+endif
 
 if g:plug.is_installed('open-browser.vim')
 	let g:netrw_nogx = 1 " disable netrw's gx mapping.
