@@ -66,6 +66,7 @@ export PATH=~/bin:"$PATH"
 export GOPATH="$HOME/ghq"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
+export GOENV_DISABLE_GOPATH=1
 
 # declare the environment variables
 export CORRECT_IGNORE='_*'
