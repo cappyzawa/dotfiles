@@ -9,29 +9,10 @@ endif
 if g:plug.is_installed('asyncomplete.vim')
   let g:lsp_async_completion = 1
 endif
-\
-if g:plug.is_installed('fzf.vim')
-  let g:fzf_action = {
-        \ 'ctrl-t': 'tab split',
-        \ 'ctrl-s': 'split',
-        \ 'ctrl-v': 'vsplit' }
 
-  command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-  command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \       : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-  imap <C-c><C-w> <plug>(fzf-complete-word)
-  imap <C-c><C-p> <plug>(fzf-complete-path)
-  imap <C-c><C-l> <plug>(fzf-complete-line)
-  nnoremap <silent> ff :<C-u>Files<CR>
-  nnoremap <silent> rg :<C-u>Rg<CR>
-  nnoremap <silent> ag :<C-u>Ag<CR>
+if g:plug.is_installed('tcomment_vim')
+  nnoremap <silent> ytt :<C-u>call tcomment#type#Define('yaml', '#@ %s')<CR>
+  nnoremap <silent> yaml :<C-u>call tcomment#type#Define('yaml', '# %s')<CR>
 endif
 
 if g:plug.is_installed('denite.nvim')
