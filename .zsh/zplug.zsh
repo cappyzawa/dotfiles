@@ -115,6 +115,7 @@ zplug "k14s/ytt", \
   from:"gh-r", \
   rename-to:"ytt"
 
-zplug 'dracula/zsh', as:theme
+zplug "bhilburn/powerlevel9k", \
+  use:powerlevel9k.zsh-theme
 
 export ZSH_HISTORY_AUTO_SYNC=false
