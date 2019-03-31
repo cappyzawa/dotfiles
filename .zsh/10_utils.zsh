@@ -103,3 +103,14 @@ get_os() {
         fi
     done
 }
+
+# zplug_installed returns 0 or 1
+zplug_installed() {
+  local org=$1
+  local repo=$2
+  if [[ -d ${HOME}/.zplug/repos/${org}/${repo} ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
