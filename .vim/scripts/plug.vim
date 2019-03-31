@@ -22,10 +22,10 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cocopon/vaffle.vim'
     Plug 'mattn/vim-terminal'
     " syntax? language support
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    " Plug 'prabirshrestha/async.vim'
+    " Plug 'prabirshrestha/vim-lsp'
+    " Plug 'prabirshrestha/asyncomplete.vim'
+    " Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'leafgarland/typescript-vim'
     Plug 'natebosch/vim-lsc'
     Plug 'fatih/vim-go',{'do':':GoUpdateBinaries'}

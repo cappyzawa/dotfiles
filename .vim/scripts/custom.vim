@@ -178,15 +178,15 @@ endif
 if g:plug.is_installed('')
 endif
 
-nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
-nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
-nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
-nnoremap <silent> <Leader>t :<C-u>LspRename<CR>
-nnoremap <silent> <Leader>ds :<C-u>LspDocumentSymbol<CR>
-nnoremap <silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
-nnoremap <silent> <Leader>df :<C-u>LspDocumentFormat<CR>
-vnoremap <silent> <Leader>rf :<C-u>LspDocumentRangeFormat<CR>
-nnoremap <silent> <Leader>b :<C-u>LspHover<CR>
+" nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
+" nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
+" nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
+" nnoremap <silent> <Leader>t :<C-u>LspRename<CR>
+" nnoremap <silent> <Leader>ds :<C-u>LspDocumentSymbol<CR>
+" nnoremap <silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
+" nnoremap <silent> <Leader>df :<C-u>LspDocumentFormat<CR>
+" vnoremap <silent> <Leader>rf :<C-u>LspDocumentRangeFormat<CR>
+" nnoremap <silent> <Leader>b :<C-u>LspHover<CR>
 
 if g:plug.is_installed('vim-go')
   let g:go_def_mapping_enabled=0
@@ -199,56 +199,4 @@ if g:plug.is_installed('vim-go')
   let g:go_highlight_extra_types = 1
   let g:go_auto_type_info = 1
   autocmd FileType go nnoremap <silent> <Leader>ij :<C-u>GoImplements<CR>
-endif
-
-" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
-if executable('gopls')
-  augroup LspGo
-  au!
-  autocmd User lsp_setup call lsp#register_server({
-    \ 'name': 'go-lang',
-    \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-    \ 'whitelist': ['go'],
-    \ })
-  autocmd FileType python,go nmap gd <plug>(lsp-definition)<CR>
-  augroup END
-endif
-
-" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby
-if executable('solargraph')
-  " gem install solargraph
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'solargraph',
-    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-    \ 'initialization_options': {"diagnostics": "true"},
-    \ 'whitelist': ['ruby'],
-    \ })
-endif
-
-" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Docker
-if executable('docker-langserver')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'docker-langserver',
-    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
-    \ 'whitelist': ['dockerfile'],
-    \ })
-endif
-
-" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Rust
-if executable('rls')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'rls',
-    \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-    \ 'whitelist': ['rust'],
-    \ })
-endif
-
-" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-TypeScript
-if executable('typescript-language-server')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'typescript-language-server',
-    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-    \ 'whitelist': ['typescript', 'typescript.tsx'],
-    \ })
 endif
