@@ -105,8 +105,12 @@ if g:plug.is_installed('onedark.vim')
   colorscheme onedark
 endif
 
+if g:plug.is_installed('tagbar')
+  nnoremap <silent> <C-]> :<C-u>TagbarToggle<CR>
+endif
+
 if g:plug.is_installed('nerdtree')
-  nnoremap <silent> <C-]> :<C-u>NERDTreeToggle<CR>
+  nnoremap <silent> <C-[> :<C-u>NERDTreeToggle<CR>
   let NERDTreeMapOpenVSplit = "v"
   let NERDTreeMapOpenSplit = "s"
   let NERDTreeMapToggleHidden = "a"
