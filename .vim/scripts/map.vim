@@ -174,3 +174,6 @@ nnoremap <silent>z0 :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
 if has("nvim")
   set wildoptions=pum
 endif
+
+" terminal
+tnoremap <silent> jj <C-\><C-n>

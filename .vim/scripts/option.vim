@@ -143,3 +143,6 @@ set splitright
 
 " Auto adjust cursor the first sugget
 set completeopt+=noinsert
+
+" Shell = zsh
+set sh=zsh
