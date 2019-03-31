@@ -73,6 +73,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     " Views
     Plug 'vim-airline/vim-airline'
+    Plug 'simeji/winresizer'
     " Add plugins to &runtimepath
     call plug#end()
 endif
