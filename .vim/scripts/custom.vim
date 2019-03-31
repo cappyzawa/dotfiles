@@ -35,7 +35,6 @@ if g:plug.is_installed('denite.nvim')
   nnoremap <silent> <Leader>ff :Denite file/rec<CR>
   nnoremap <silent> <Leader>j :Denite file/old<CR>
   nnoremap <silent> <C-f><C-f> :Denite grep<CR>
-  call denite#custom#option('default', 'prompt', '🔍')
   if executable('rg')
     call denite#custom#var('file_rec', 'command',
           \ ['rg', '--files', '--glob', '!.git'])
@@ -47,6 +46,18 @@ if g:plug.is_installed('denite.nvim')
     call denite#custom#var('grep', 'separator', ['--'])
     call denite#custom#var('grep', 'final_opts', [])
   endif
+  let s:denite_win_width_percent = 0.8
+  let s:denite_win_height_percent = 0.6
+
+  " Change denite default options
+  call denite#custom#option('default', {
+      \ 'prompt': '🔍',
+      \ 'split': 'floating',
+      \ 'winwidth': &columns * s:denite_win_width_percent,
+      \ 'wincol': (&columns - (&columns * s:denite_win_width_percent)) / 2,
+      \ 'winheight': &lines * s:denite_win_height_percent,
+      \ 'winrow': (&lines - (&lines * s:denite_win_height_percent)) / 2,
+      \ })
 endif
 
 if g:plug.is_installed('auto_pairs')
@@ -176,6 +187,19 @@ nnoremap <silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
 nnoremap <silent> <Leader>df :<C-u>LspDocumentFormat<CR>
 vnoremap <silent> <Leader>rf :<C-u>LspDocumentRangeFormat<CR>
 nnoremap <silent> <Leader>b :<C-u>LspHover<CR>
+
+if g:plug.is_installed('vim-go')
+  let g:go_def_mapping_enabled=0
+  let g:go_doc_keywordprg_enabled = 0
+  let g:go_auto_sameids = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_auto_type_info = 1
+  autocmd FileType go nnoremap <silent> <Leader>ij :<C-u>GoImplements<CR>
+endif
 
 " https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Go
 if executable('gopls')
