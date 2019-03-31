@@ -34,6 +34,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
     Plug 'mattn/goplayground-vim'
+    Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'w0rp/ale'
     " Plug 'ElmCast/elm-vim', { 'for': 'elm' }
