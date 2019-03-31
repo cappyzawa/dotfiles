@@ -154,6 +154,11 @@ if g:plug.is_installed('deoplete.nvim')
   inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 endif
 
+if g:plug.is_installed('winresizer')
+  let g:winresizer_vert_resize = 1
+  let g:winresizer_horiz_resize = 1
+endif
+
 if g:plug.is_installed('')
 endif
 
