@@ -4,7 +4,7 @@
     "noselect": false,
     "minTriggerInputLength": 2,
     "acceptSuggestionOnCommitCharacter": true,
-    "snippetIndicator": "►"
+    "snippetIndicator": " ►"
   },
   "languageserver": {
     "golang": {
@@ -41,6 +41,17 @@
       ],
       "ignoredRootPaths": [
         "~"
+      ]
+    },
+    "rust": {
+      "command": "rustup",
+      "args": [
+        "run",
+        "stable",
+        "rls"
+      ],
+      "filetypes": [
+        "rust"
       ]
     }
   }
