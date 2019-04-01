@@ -207,6 +207,7 @@ if g:plug.is_installed('coc.nvim')
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  nmap <silent> gt <Plug>(coc-rename)
   nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
