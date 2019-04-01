@@ -1,4 +1,11 @@
 {
+  "suggest": {
+    "triggerAfterInsertEnter": true,
+    "noselect": false,
+    "minTriggerInputLength": 2,
+    "acceptSuggestionOnCommitCharacter": true,
+    "snippetIndicator": "►"
+  },
   "languageserver": {
     "golang": {
       "command": "gopls",

@@ -207,8 +207,10 @@ if g:plug.is_installed('coc.nvim')
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
-  " Use K for show documentation in preview window
   nnoremap <silent> gk :call <SID>show_documentation()<CR>
+
+  inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+  inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
   function! s:show_documentation()
     if &filetype == 'vim'
@@ -218,3 +220,5 @@ if g:plug.is_installed('coc.nvim')
     endif
   endfunction
 endif
+
+autocmd FileType go,rust call deoplete#custom#option('auto_complete', v:false)
