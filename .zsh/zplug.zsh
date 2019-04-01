@@ -118,4 +118,9 @@ zplug "k14s/ytt", \
 zplug "bhilburn/powerlevel9k", \
   use:powerlevel9k.zsh-theme
 
+zplug "zlabjp/kubernetes-scripts", \
+  as:command, \
+  use:"create-kubeconfig" \
+  rename-to:"create-kubeconfig"
+
 export ZSH_HISTORY_AUTO_SYNC=false
