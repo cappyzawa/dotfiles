@@ -26,6 +26,10 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " Plug 'prabirshrestha/vim-lsp'
     " Plug 'prabirshrestha/asyncomplete.vim'
     " Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
     Plug 'leafgarland/typescript-vim'
     Plug 'natebosch/vim-lsc'
     Plug 'fatih/vim-go',{'do':':GoUpdateBinaries'}

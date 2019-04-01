@@ -200,3 +200,20 @@ if g:plug.is_installed('vim-go')
   let g:go_auto_type_info = 1
   autocmd FileType go nnoremap <silent> <Leader>ij :<C-u>GoImplements<CR>
 endif
+
+if g:plug.is_installed('LanguageClient-neovim')
+  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+  " Or map each action separately
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition({'gotoCmd': 'tabedit'})<CR>
+  nnoremap <silent> gv :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
+  nnoremap <silent> gs :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
+  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+  let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'go': ['gopls'],
+    \ }
+
+endif
