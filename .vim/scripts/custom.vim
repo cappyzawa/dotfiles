@@ -189,6 +189,7 @@ endif
 " nnoremap <silent> <Leader>b :<C-u>LspHover<CR>
 
 if g:plug.is_installed('vim-go')
+  let g:go_def_mapping_enabled = 0
   let g:go_def_mapping_enabled=0
   let g:go_doc_keywordprg_enabled = 0
   let g:go_auto_sameids = 1
@@ -201,19 +202,19 @@ if g:plug.is_installed('vim-go')
   autocmd FileType go nnoremap <silent> <Leader>ij :<C-u>GoImplements<CR>
 endif
 
-if g:plug.is_installed('LanguageClient-neovim')
-  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  " Or map each action separately
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition({'gotoCmd': 'tabedit'})<CR>
-  nnoremap <silent> gv :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
-  nnoremap <silent> gs :call LanguageClient#textDocument_definition({'gotoCmd': 'split'})<CR>
-  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+if g:plug.is_installed('coc.nvim')
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+  " Use K for show documentation in preview window
+  nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
-  let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'go': ['gopls'],
-    \ }
-
+  function! s:show_documentation()
+    if &filetype == 'vim'
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
 endif

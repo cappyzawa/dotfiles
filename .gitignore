@@ -4,3 +4,4 @@
 .config/gcloud/
 .config/direnv/
 .config/anyenv/
+node_modules/

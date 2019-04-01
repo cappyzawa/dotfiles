@@ -22,14 +22,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cocopon/vaffle.vim'
     Plug 'mattn/vim-terminal'
     " syntax? language support
-    " Plug 'prabirshrestha/async.vim'
-    " Plug 'prabirshrestha/vim-lsp'
-    " Plug 'prabirshrestha/asyncomplete.vim'
-    " Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'leafgarland/typescript-vim'
     Plug 'natebosch/vim-lsc'
     Plug 'fatih/vim-go',{'do':':GoUpdateBinaries'}
