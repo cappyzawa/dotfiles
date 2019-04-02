@@ -123,4 +123,7 @@ zplug "zlabjp/kubernetes-scripts", \
   use:"create-kubeconfig" \
   rename-to:"create-kubeconfig"
 
+zplug "git-duet/git-duet", \
+  hook-build:"GO111MODULE=on GOVENDOREXPERIMENT=1 go get ./..."
+
 export ZSH_HISTORY_AUTO_SYNC=false
