@@ -36,7 +36,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'w0rp/ale'
     " Plug 'ElmCast/elm-vim', { 'for': 'elm' }
     Plug 'Zaptic/elm-vim', {'for': 'elm'}
-
+    " for only syntax
+    Plug 'fatih/vim-go'
+ 
     " Testing Tools
     Plug 'junegunn/vader.vim'
     Plug 'thinca/vim-themis'

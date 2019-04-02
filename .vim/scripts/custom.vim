@@ -190,7 +190,6 @@ endif
 
 if g:plug.is_installed('vim-go')
   let g:go_def_mapping_enabled = 0
-  let g:go_def_mapping_enabled=0
   let g:go_doc_keywordprg_enabled = 0
   let g:go_auto_sameids = 1
   let g:go_highlight_types = 1
@@ -199,7 +198,6 @@ if g:plug.is_installed('vim-go')
   let g:go_highlight_function_calls = 1
   let g:go_highlight_extra_types = 1
   let g:go_auto_type_info = 1
-  autocmd FileType go nnoremap <silent> <Leader>ij :<C-u>GoImplements<CR>
 endif
 
 if g:plug.is_installed('coc.nvim')
