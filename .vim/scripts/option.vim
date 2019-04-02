@@ -141,6 +141,11 @@ endif
 " Open new window on the right
 set splitright
 
+if has("nvim")
+  set wildoptions=pum
+endif
+
+
 " Auto adjust cursor the first sugget
 set completeopt+=noinsert
 
