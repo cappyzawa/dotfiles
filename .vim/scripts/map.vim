@@ -101,12 +101,8 @@ nnoremap s+ <C-w>+
 nnoremap s- <C-w>-
 
 " buffer
-nnoremap <silent> <C-j> :bprev<CR>
-nnoremap <silent> <C-k> :bnext<CR>
-
-" search
-cnoremap <expr> / (getcmdtype() == '/') '\/' : '/'
-cnoremap <C-o> <C-\>e(getcmdtype() == '/' <Bar><Bar> getcmdtype() == '?') ? '\<' . getcmdline() . '\>' : getcmdline()<CR>
+nnoremap <silent> <C-j> :<C-u>bprev<CR>
+nnoremap <silent> <C-k> :<C-u>bnext<CR>
 
 nnoremap t <Nop>
 nnoremap <silent> [Space]t :<C-u>tabclose<CR>:<C-u>tabnew<CR>

@@ -88,6 +88,7 @@ endif
 
 if g:plug.is_installed('vim-bufferline')
   let g:bufferline_active_buffer_right = '🚀'
+  let g:bufferline_echo = 0
 endif
 
 if g:plug.is_installed('ale')
@@ -162,6 +163,7 @@ endif
 
 if g:plug.is_installed('vim-airline')
   let g:airline_theme='dark'
+  let g:airline#extensions#bufferline#overwrite_variables = 0
   let g:airline#extensions#branch#enabled = 1
   let g:airline#extensions#ale#enabled = 1
   let airline#extensions#ale#error_symbol = '🔥'
