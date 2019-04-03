@@ -3,6 +3,7 @@
     "coc-highlight": "^1.0.5",
     "coc-json": "^1.0.12",
     "coc-rls": "^1.0.10",
+    "coc-solargraph": "^1.0.7",
     "coc-yaml": "^1.0.0"
   }
 }

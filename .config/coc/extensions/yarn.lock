@@ -51,6 +51,15 @@ coc-rls@^1.0.10:
     vscode-languageserver-protocol "^3.13.0"
     vscode-uri "^1.0.6"
 
+coc-solargraph@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/coc-solargraph/-/coc-solargraph-1.0.7.tgz#7b87eb8130bce3626ec2c7e8bdccae02cda7c2e2"
+  integrity sha512-9q2nIBArbJkL9nvs1hmlefQDe/BI7ku5TdSJsWJ7Fn2OVPKr+ppmwz8OYiwsTQ/zhvK8immWWjH0t2Q9K8YC8g==
+  dependencies:
+    tslib "^1.9.3"
+    vscode-languageserver-protocol "^3.13.0"
+    which "^1.3.1"
+
 coc-yaml@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/coc-yaml/-/coc-yaml-1.0.0.tgz#0fd2981f831887f83e76bf42d13765bfb970c93a"
@@ -158,6 +167,11 @@ is-arrayish@^0.3.1:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.3.2.tgz#4574a2ae56f7ab206896fb431eaeed066fdf8f03"
   integrity sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==
+
+isexe@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
+  integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
 js-yaml@^3.12.0:
   version "3.13.0"
@@ -344,6 +358,13 @@ vscode-uri@^1.0.3, vscode-uri@^1.0.5, vscode-uri@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-1.0.6.tgz#6b8f141b0bbc44ad7b07e94f82f168ac7608ad4d"
   integrity sha512-sLI2L0uGov3wKVb9EB+vIQBl9tVP90nqRvxSoJ35vI3NjxE8jfsE5DSOhWgSunHSZmKS4OCi2jrtfxK7uyp2ww==
+
+which@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/which/-/which-1.3.1.tgz#a45043d54f5805316da8d62f9f50918d3da70b0a"
+  integrity sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==
+  dependencies:
+    isexe "^2.0.0"
 
 yaml-ast-parser@0.0.40:
   version "0.0.40"
