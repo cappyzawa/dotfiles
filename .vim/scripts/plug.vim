@@ -38,7 +38,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'Zaptic/elm-vim', {'for': 'elm'}
     " for only syntax
     Plug 'fatih/vim-go'
- 
+
     " Testing Tools
     Plug 'junegunn/vader.vim'
     Plug 'thinca/vim-themis'
@@ -59,7 +59,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'junegunn/vim-emoji'
     Plug 'tomtom/tcomment_vim'
-    Plug 'ludovicchabant/vim-lawrencium'
     if has('nvim')
       Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     else
