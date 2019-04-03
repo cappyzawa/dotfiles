@@ -42,7 +42,6 @@ nnoremap ZQ <Nop>
 
 " Must
 inoremap jj <ESC>
-cnoremap <expr> j getcmdline() [getcmdops()-2] ==# 'j' ? "\<BS>\<C-c>" : 'j'
 vnoremap <C-j><C-j> <ESC>
 onoremap jj <ESC>
 inoremap j[Space] j
