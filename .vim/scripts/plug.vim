@@ -19,8 +19,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     " file and directory
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'cocopon/vaffle.vim'
-    Plug 'mattn/vim-terminal'
+
     " syntax? language support
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'leafgarland/typescript-vim'
@@ -74,6 +73,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'vim-airline/vim-airline'
     Plug 'simeji/winresizer'
     Plug 'majutsushi/tagbar'
+    Plug 'bling/vim-bufferline'
+
     " Add plugins to &runtimepath
     call plug#end()
 endif

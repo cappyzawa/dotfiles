@@ -86,6 +86,10 @@ if g:plug.is_installed('vim-markdown')
   let g:vim_markdown_no_default_key_mappings = 1
 endif
 
+if g:plug.is_installed('vim-bufferline')
+  let g:bufferline_active_buffer_right = '🚀'
+endif
+
 if g:plug.is_installed('ale')
 
   let g:ale_fix_on_save = 1
