@@ -87,12 +87,8 @@ if g:plug.is_installed('vim-markdown')
 endif
 
 if g:plug.is_installed('ale')
-  if &filetype != "markdown"
-    let g:ale_fix_on_save = 1
-  else
-    let g:ale_fix_on_save = 0
-  endif
 
+  let g:ale_fix_on_save = 1
   let g:ale_set_quickfix = 1
   let g:ale_echo_msg_error_str = '🔥'
   let g:ale_echo_msg_warning_str = '⚡️'
@@ -109,6 +105,9 @@ if g:plug.is_installed('ale')
   " for elm
   let g:ale_elm_format_executable = "elm-format"
   let g:ale_elm_format_options = "--yes --elm-version=0.19"
+
+  " for markdown
+  autocmd FileType markdown let g:ale_fix_on_save = 0
 endif
 
 if g:plug.is_installed('onedark.vim')
