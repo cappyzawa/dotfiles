@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vim-node-rpc": "^0.1.32"
+  }
+}
