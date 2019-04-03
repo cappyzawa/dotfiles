@@ -11,8 +11,8 @@ xmap <Space> [Space]
 noremap [Space]h ^
 noremap [Space]l $
 
-inoremap <C-h> <Backspace>
-inoremap <C-d> <Delete>
+inoremap <BS> <Nop>
+inoremap <Del> <Nop>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-h> <BS>
@@ -68,62 +68,9 @@ nnoremap Y y$
 cmap <c-x> <c-r>=expand('%:p:h')<cr>/
 " expand file (not ext)
 cmap <c-z> <c-r>=expand('%:p:r')<cr>
-" Add a relative number toggle
-nnoremap <silent> <Leader>r :<C-u>call <SID>toggle_option('relativenumber')<CR>
-" Add a spell check toggle
-nnoremap <silent> <Leader>s :<C-u>call <SID>toggle_option('spell')<CR>
-" Tabs Increase
-nnoremap <silent> ~ :let &tabstop = (&tabstop * 2 > 16) ? 2 : &tabstop * 2<CR>:echo 'tabstop:' &tabstop<CR>
-" Toggle top/center/bottom
-noremap <expr> zz (winline() == (winheight(0)+1)/ 2) ?  'zt' : (winline() == 1)? 'zb' : 'zz'
-" Jump a next blank line
-nnoremap <silent>W :<C-u>keepjumps normal! }<CR>
-nnoremap <silent>B :<C-u>keepjumps normal! {<CR>
-" Save word and exchange it under cursor
-nnoremap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
-nnoremap <silent> cy   ce<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
 " Yank the entire file
 nnoremap <Leader>y :<C-u>%y<CR>
 nnoremap <Leader>Y :<C-u>%y<CR>
-
-if g:env.vimrc.goback_to_eof2bof == g:true
-    function! s:up(key)
-        if line(".") == 1
-            return ":call cursor(line('$'), col('.'))\<CR>"
-        else
-            return a:key
-        endif
-    endfunction
-    function! s:down(key)
-        if line(".") == line("$")
-            return ":call cursor(1, col('.'))\<CR>"
-        else
-            return a:key
-        endif
-    endfunction
-    nnoremap <expr><silent> k <SID>up("gk")
-    nnoremap <expr><silent> j <SID>down("gj")
-endif
-
-nnoremap <silent> <C-j> :<C-u>silent bnext<CR>:<C-u>call <SID>get_buflists()<CR>
-nnoremap <silent> <C-k> :<C-u>silent bprev<CR>:<C-u>call <SID>get_buflists()<CR>
-
-nnoremap <silent> <C-x>u :<C-u>call <SID>buf_restore()<CR>
-nnoremap <silent> <C-x>d     :Delete<CR>
-nnoremap <silent> <C-x><C-d> :Delete!<CR>
-" Tabpages
-function! s:move_to_tab()
-    tab split
-    tabprevious
-
-    if winnr('$') > 1
-        close
-    elseif bufnr('$') > 1
-        buffer #
-    endif
-
-    tabnext
-endfunction
 
 " Swap jk for gjgk
 nnoremap j gj
@@ -139,14 +86,6 @@ nnoremap K 10k
 vnoremap J 10j
 vnoremap K 10k
 
-function! s:vsplit_or_wincmdw()
-    if winnr('$') == 1
-        return ":vsplit\<CR>"
-    else
-        return ":wincmd w\<CR>"
-    endif
-endfunction
-nnoremap <expr><silent> ss <SID>vsplit_or_wincmdw()
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
