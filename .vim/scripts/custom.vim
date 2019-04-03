@@ -95,10 +95,12 @@ if g:plug.is_installed('ale')
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
   let g:ale_linters = {
   \   'go': ['golint'],
+  \   'ruby': ['rubocop'],
   \}
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'go': ['gofmt','goimports'],
+  \   'ruby': ['rubocop'],
   \   'elm': ['elm-format'],
   \}
 
@@ -219,4 +221,4 @@ if g:plug.is_installed('coc.nvim')
   endfunction
 endif
 
-autocmd FileType go,rust call deoplete#custom#option('auto_complete', v:false)
+autocmd FileType go,rust,ruby call deoplete#custom#option('auto_complete', v:false)
