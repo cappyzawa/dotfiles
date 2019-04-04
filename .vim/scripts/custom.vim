@@ -212,6 +212,10 @@ if g:plug.is_installed('vim-go')
   let g:go_auto_type_info = 1
 endif
 
+if g:plug.is_installed('vim-json')
+  let g:vim_json_syntax_conceal = 0
+endif
+
 if g:plug.is_installed('coc.nvim')
   nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)
