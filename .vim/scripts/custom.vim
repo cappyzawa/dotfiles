@@ -35,6 +35,7 @@ if g:plug.is_installed('denite.nvim')
   nnoremap <silent> <Leader>ff :Denite file/rec<CR>
   nnoremap <silent> <Leader>j :Denite file/old<CR>
   nnoremap <silent> <C-f><C-f> :Denite grep<CR>
+  nnoremap <silent> <C-r> :Denite command_history<CR>
   if executable('rg')
     call denite#custom#var('file_rec', 'command',
           \ ['rg', '--files', '--glob', '!.git'])
@@ -46,18 +47,11 @@ if g:plug.is_installed('denite.nvim')
     call denite#custom#var('grep', 'separator', ['--'])
     call denite#custom#var('grep', 'final_opts', [])
   endif
-  let s:denite_win_width_percent = 0.8
-  let s:denite_win_height_percent = 0.6
 
-  " Change denite default options
-  call denite#custom#option('default', {
-      \ 'prompt': '🔍',
-      \ 'split': 'floating',
-      \ 'winwidth': &columns * s:denite_win_width_percent,
-      \ 'wincol': (&columns - (&columns * s:denite_win_width_percent)) / 2,
-      \ 'winheight': &lines * s:denite_win_height_percent,
-      \ 'winrow': (&lines - (&lines * s:denite_win_height_percent)) / 2,
-      \ })
+  " Change default prompt
+	call denite#custom#option('default', 'prompt', '🔍')
+
+  call denite#custom#var('command_history','ignore_command_regexp', '')
 endif
 
 if g:plug.is_installed('auto_pairs')
