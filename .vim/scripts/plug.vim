@@ -23,7 +23,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " syntax? language support
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'leafgarland/typescript-vim'
-    Plug 'natebosch/vim-lsc'
     Plug 'zplug/vim-zplug', { 'for': 'zplug' }
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'b4b4r07/vim-hcl'
