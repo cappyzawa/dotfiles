@@ -18,8 +18,8 @@ endif
 if g:plug.is_installed('denite.nvim')
   call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
   call denite#custom#map('normal', 'jj', '<denite:quit>', 'noremap')
-  call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
-  call denite#custom#map('normal', "<C-v>", '<denite:do_action:vsplit>')
+  call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>')
+  call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>')
 
 
   call denite#custom#map('normal', '<C-j>', '<denite:move_to_next_line>', 'noremap')
@@ -78,7 +78,9 @@ endif
 if g:plug.is_installed('markdown-preview.nvim')
   let g:mkdp_auto_start = 0
   let g:mkdp_auto_close = 1
-  autocmd FileType markdown nnoremap <C-p> :<C-u>MarkdownPreview<CR>
+  augroup MarkdownPreviewCustom
+    autocmd FileType markdown nnoremap <C-p> :<C-u>MarkdownPreview<CR>
+  augroup END
 endif
 
 if g:plug.is_installed('vim-bufferline')
@@ -96,6 +98,7 @@ if g:plug.is_installed('ale')
   let g:ale_linters = {
   \   'go': ['golint'],
   \   'ruby': ['rubocop'],
+  \   'vim': ['vint'],
   \}
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -105,11 +108,14 @@ if g:plug.is_installed('ale')
   \}
 
   " for elm
-  let g:ale_elm_format_executable = "elm-format"
-  let g:ale_elm_format_options = "--yes --elm-version=0.19"
+  let g:ale_elm_format_executable = 'elm-format'
+  let g:ale_elm_format_options = '--yes --elm-version=0.19'
 
   " for markdown
-  autocmd FileType markdown let g:ale_fix_on_save = 0
+  augroup ale_custom
+    autocmd!
+    autocmd FileType markdown let g:ale_fix_on_save = 0
+  augroup END
 endif
 
 if g:plug.is_installed('onedark.vim')
@@ -123,9 +129,9 @@ endif
 
 if g:plug.is_installed('nerdtree')
   nnoremap <silent> <C-[> :<C-u>NERDTreeToggle<CR>
-  let NERDTreeMapOpenVSplit = "v"
-  let NERDTreeMapOpenSplit = "s"
-  let NERDTreeMapToggleHidden = "a"
+  let NERDTreeMapOpenVSplit = 'v'
+  let NERDTreeMapOpenSplit = 's'
+  let NERDTreeMapToggleHidden = 'a'
 endif
 
 if g:plug.is_installed('nerdtree-git-plugin')
@@ -180,16 +186,6 @@ endif
 if g:plug.is_installed('')
 endif
 
-" nnoremap <silent> <Leader>d :<C-u>LspDefinition<CR>
-" nnoremap <silent> <Leader>r :<C-u>LspReferences<CR>
-" nnoremap <silent> <Leader>i :<C-u>LspImplementation<CR>
-" nnoremap <silent> <Leader>t :<C-u>LspRename<CR>
-" nnoremap <silent> <Leader>ds :<C-u>LspDocumentSymbol<CR>
-" nnoremap <silent> <Leader>ws :<C-u>LspWorkspaceSymbol<CR>
-" nnoremap <silent> <Leader>df :<C-u>LspDocumentFormat<CR>
-" vnoremap <silent> <Leader>rf :<C-u>LspDocumentRangeFormat<CR>
-" nnoremap <silent> <Leader>b :<C-u>LspHover<CR>
-
 if g:plug.is_installed('vim-go')
   let g:go_def_mapping_enabled = 0
   let g:go_doc_keywordprg_enabled = 0
@@ -228,12 +224,13 @@ if g:plug.is_installed('coc.nvim')
   inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
   function! s:show_documentation()
-    if &filetype == 'vim'
+    if &filetype ==# 'vim'
       execute 'h '.expand('<cword>')
     else
       call CocAction('doHover')
     endif
   endfunction
+  augroup CocCustom
+    autocmd FileType go,rust,ruby call deoplete#custom#option('auto_complete', v:false)
+  augroup END
 endif
-
-autocmd FileType go,rust,ruby call deoplete#custom#option('auto_complete', v:false)
