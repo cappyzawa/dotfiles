@@ -3,10 +3,10 @@ if !exists('g:env')
 endif
 
 let g:plug = {
-            \ "plug":   expand(g:env.path.vim) . "/autoload/plug.vim",
-            \ "base":   expand(g:env.path.vim) . "/plugged",
-            \ "url":    "https://raw.github.com/junegunn/vim-plug/master/plug.vim",
-            \ "github": "https://github.com/junegunn/vim-plug",
+            \ 'plug':   expand(g:env.path.vim) . '/autoload/plug.vim',
+            \ 'base':   expand(g:env.path.vim) . '/plugged',
+            \ 'url':    'https://raw.github.com/junegunn/vim-plug/master/plug.vim',
+            \ 'github': 'https://github.com/junegunn/vim-plug',
             \ }
 
 function! g:plug.ready()
@@ -85,7 +85,7 @@ let g:plug.list  = keys(g:plug.plugs)
 
 if !g:plug.ready()
     function! g:plug.init()
-        let ret = system(printf("curl -fLo %s --create-dirs %s", self.plug, self.url))
+        let ret = system(printf('curl -fLo %s --create-dirs %s', self.plug, self.url))
         "call system(printf("git clone %s", self.github))
         if v:shell_error
             return Error('g:plug.init: error occured')
@@ -100,10 +100,12 @@ if !g:plug.ready()
     command! PlugInit call g:plug.init()
 
     if g:env.vimrc.suggest_neobundleinit == g:true
+      augroup PlugReady
         autocmd! VimEnter * redraw
                     \ | echohl WarningMsg
                     \ | echo "You should do ':PlugInit' at first!"
                     \ | echohl None
+      augroup END
     else
         " Install vim-plug
         PlugInit
@@ -118,9 +120,9 @@ function! g:plug.is_installed(strict, ...)
     let list += a:000
 
     for arg in list
-        let name   = substitute(arg, '^vim-\|\.vim$', "", "g")
-        let prefix = "vim-" . name
-        let suffix = name . ".vim"
+        let name   = substitute(arg, '^vim-\|\.vim$', '', 'g')
+        let prefix = 'vim-' . name
+        let suffix = name . '.vim'
 
         if a:strict == 1
             let name   = arg
@@ -145,7 +147,7 @@ function! g:plug.is_installed(strict, ...)
 endfunction
 
 function! g:plug.is_rtp(p)
-    return index(split(&rtp, ","), get(self.plugs[a:p], "dir")) != -1
+    return index(split(&runtimepath, ','), get(self.plugs[a:p], 'dir')) != -1
 endfunction
 
 function! g:plug.is_loaded(p)
