@@ -70,14 +70,15 @@ if g:plug.is_installed('open-browser-github.vim')
   nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
 endif
 
-if g:plug.is_installed('previm')
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  nnoremap <silent> <C-p> :<C-u>PrevimOpen<CR>
-endif
-
 if g:plug.is_installed('vim-markdown')
   let g:vim_markdown_folding_disabled = 1
   let g:vim_markdown_no_default_key_mappings = 1
+endif
+
+if g:plug.is_installed('markdown-preview.nvim')
+  let g:mkdp_auto_start = 0
+  let g:mkdp_auto_close = 1
+  autocmd FileType markdown nnoremap <C-p> :<C-u>MarkdownPreview<CR>
 endif
 
 if g:plug.is_installed('vim-bufferline')

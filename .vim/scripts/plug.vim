@@ -50,7 +50,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/fly-lint.vim'
     Plug 'b4b4r07/vim-shellutils'
     Plug 'hotwatermorning/auto-git-diff'
-    Plug 'previm/previm'
     Plug 'christianrondeau/vim-base64'
     Plug 'tpope/vim-fugitive'
     Plug 'scrooloose/nerdtree'
@@ -64,6 +63,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'roxma/nvim-yarp'
       Plug 'roxma/vim-hug-neovim-rpc'
     endif
+
+    Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
 
     " Theme
     Plug 'joshdick/onedark.vim'
