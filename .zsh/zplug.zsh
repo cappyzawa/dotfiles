@@ -126,4 +126,9 @@ zplug "zlabjp/kubernetes-scripts", \
 zplug "git-duet/git-duet", \
   hook-build:"GO111MODULE=on GOVENDOREXPERIMENT=1 go get ./..."
 
+zplug "b4b4r07/zgencomp", \
+  as:command, \
+  rename-to:"zgencomp", \
+  hook-build:"go get -d && make install"
+
 export ZSH_HISTORY_AUTO_SYNC=false
