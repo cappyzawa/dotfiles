@@ -60,8 +60,6 @@ nnoremap <C-g> 1<C-g>
 " Write only when the buffer has been modified
 nnoremap <silent><CR> :<C-u>silent update<CR>
 
-" Type 'v', select end of line in visual mode
-nnoremap v $h
 " Make Y behave like other capitals
 nnoremap Y y$
 " expand path
