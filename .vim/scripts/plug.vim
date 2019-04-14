@@ -37,6 +37,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " for only syntax
     Plug 'fatih/vim-go', { 'for': 'go' }
 
+    " for ytt
+    Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
+
     " Testing Tools
     Plug 'junegunn/vader.vim'
 

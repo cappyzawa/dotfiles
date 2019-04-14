@@ -90,6 +90,8 @@ endif
 
 if g:plug.is_installed('ale')
 
+  nnoremap <silent> <Leader>at :<C-u>ALEToggle<CR>
+
   let g:ale_fix_on_save = 1
   let g:ale_set_quickfix = 1
   let g:ale_echo_msg_error_str = '🔥'
