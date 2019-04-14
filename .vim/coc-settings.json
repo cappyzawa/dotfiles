@@ -5,6 +5,8 @@
   "suggest.acceptSuggestionOnCommitCharacter": true,
   "suggest.snippetIndicator": " ►",
   "suggest.enablePreview": true,
+  "coc.preferences.hoverTarget": "float",
+  "list.autoResize": true,
   "languageserver": {
     "golang": {
       "command": "gopls",

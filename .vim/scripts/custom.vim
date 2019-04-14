@@ -169,8 +169,9 @@ if g:plug.is_installed('vim-airline')
   let g:airline#extensions#bufferline#overwrite_variables = 0
   let g:airline#extensions#branch#enabled = 1
   let g:airline#extensions#ale#enabled = 1
-  let airline#extensions#ale#error_symbol = '🔥'
-  let airline#extensions#ale#warning_symbol = '⚡️'
+
+  let g:airline#extensions#ale#error_symbol = '🔥'
+  let g:airline#extensions#ale#warning_symbol = '⚡️'
 endif
 
 if g:plug.is_installed('deoplete.nvim')
@@ -222,14 +223,15 @@ if g:plug.is_installed('coc.nvim')
   nmap <silent> gt <Plug>(coc-rename)
   nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
-  inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-  inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
   function! s:show_documentation()
     if &filetype ==# 'vim'
       execute 'h '.expand('<cword>')
     else
-      call CocAction('doHover')
+      if coc#util#has_float()
+        pc
+      else
+        call CocAction('doHover')
+      endif
     endif
   endfunction
   augroup CocCustom

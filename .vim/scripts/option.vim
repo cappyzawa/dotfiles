@@ -141,7 +141,7 @@ endif
 " Open new window on the right
 set splitright
 
-if has("nvim")
+if has('nvim')
   set wildoptions=pum
 endif
 
