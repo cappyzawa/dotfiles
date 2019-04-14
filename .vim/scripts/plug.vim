@@ -22,24 +22,23 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     " syntax? language support
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-    Plug 'leafgarland/typescript-vim'
+    Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
     Plug 'zplug/vim-zplug', { 'for': 'zplug' }
     Plug 'cespare/vim-toml', { 'for': 'toml' }
-    Plug 'b4b4r07/vim-hcl'
+    Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
     Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
-    Plug 'mattn/goplayground-vim'
-    Plug 'godlygeek/tabular'
+    Plug 'mattn/goplayground-vim', { 'for': 'go' }
+    Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'w0rp/ale'
     " Plug 'ElmCast/elm-vim', { 'for': 'elm' }
-    Plug 'Zaptic/elm-vim', {'for': 'elm'}
+    Plug 'Zaptic/elm-vim', { 'for': 'elm' }
     " for only syntax
-    Plug 'fatih/vim-go'
+    Plug 'fatih/vim-go', { 'for': 'go' }
 
     " Testing Tools
     Plug 'junegunn/vader.vim'
-    Plug 'thinca/vim-themis'
 
     " Utils
     Plug 'jiangmiao/auto-pairs'
@@ -47,9 +46,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'tyru/open-browser-github.vim'
     Plug 'rhysd/git-messenger.vim'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-    Plug 'cappyzawa/fly-lint.vim'
-    Plug 'b4b4r07/vim-shellutils'
-    Plug 'hotwatermorning/auto-git-diff'
+    Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
     Plug 'christianrondeau/vim-base64'
     Plug 'tpope/vim-fugitive'
     Plug 'scrooloose/nerdtree'
