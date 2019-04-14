@@ -1,0 +1,5 @@
+# default: https://yamllint.readthedocs.io/en/stable/configuration.html#default-configuration
+extends: default
+
+rules:
+  line-length: disable
