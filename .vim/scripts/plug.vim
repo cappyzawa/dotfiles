@@ -49,7 +49,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
     Plug 'christianrondeau/vim-base64'
     Plug 'tpope/vim-fugitive'
-    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'junegunn/vim-emoji'
     Plug 'tomtom/tcomment_vim'
