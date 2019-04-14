@@ -8,10 +8,6 @@ if exists('$SUDO_USER') || exists('$GIT_DIR')
   finish
 endif
 
-if &compatible
-  set nocompatible
-endif
-
 let g:false = 0
 let g:true = 1
 
