@@ -10,7 +10,7 @@ let g:plug = {
             \ }
 
 function! g:plug.ready()
-    return filereadable(self.plug)
+    return filereadable(l:self.plug)
 endfunction
 
 if g:plug.ready() && g:env.vimrc.plugin_on
@@ -147,7 +147,7 @@ function! g:plug.is_installed(strict, ...)
 endfunction
 
 function! g:plug.is_rtp(p)
-    return index(split(&runtimepath, ','), get(self.plugs[a:p], 'dir')) != -1
+    return index(split(&runtimepath, ','), get(l:self.plugs[a:p], 'dir')) != -1
 endfunction
 
 function! g:plug.is_loaded(p)
@@ -155,22 +155,22 @@ function! g:plug.is_loaded(p)
 endfunction
 
 function! g:plug.check_installation()
-    if empty(self.plugs)
+    if empty(l:self.plugs)
         return
     endif
 
-    let list = []
-    for [name, spec] in items(self.plugs)
-        if !isdirectory(spec.dir)
-            call add(list, spec.uri)
+    let l:list = []
+    for [l:name, l:spec] in items(l:self.plugs)
+        if !isdirectory(l:spec.dir)
+            call add(l:list, l:spec.uri)
         endif
     endfor
 
-    if len(list) > 0
-        let unplugged = map(list, 'substitute(v:val, "^.*github\.com/\\(.*/.*\\)\.git$", "\\1", "g")')
+    if len(l:list) > 0
+        let l:unplugged = map(l:list, 'substitute(v:val, "^.*github\.com/\\(.*/.*\\)\.git$", "\\1", "g")')
 
         " Ask whether installing plugs like NeoBundle
-        echomsg 'Not installed plugs: ' . string(unplugged)
+        echomsg 'Not installed plugs: ' . string(l:unplugged)
         if confirm('Install plugs now?', "yes\nNo", 2) == 1
             PlugInstall
             " Close window for vim-plug
