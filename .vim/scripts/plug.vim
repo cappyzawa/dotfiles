@@ -65,6 +65,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     endif
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+    Plug 'cappyzawa/vault.nvim'
 
     " Theme
     Plug 'joshdick/onedark.vim'

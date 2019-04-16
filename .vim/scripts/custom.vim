@@ -131,9 +131,9 @@ endif
 
 if g:plug.is_installed('nerdtree')
   nnoremap <silent> <C-[> :<C-u>NERDTreeToggle<CR>
-  let NERDTreeMapOpenVSplit = 'v'
-  let NERDTreeMapOpenSplit = 's'
-  let NERDTreeMapToggleHidden = 'a'
+  let g:NERDTreeMapOpenVSplit = 'v'
+  let g:NERDTreeMapOpenSplit = 's'
+  let g:NERDTreeMapToggleHidden = 'a'
 endif
 
 if g:plug.is_installed('nerdtree-git-plugin')
@@ -149,6 +149,10 @@ endif
 
 if g:plug.is_installed('vim-emoji')
   set completefunc=emoji#complete
+endif
+
+if g:plug.is_installed('vault.nvim')
+  let g:vault_default_path_prefix = 'concourse/main'
 endif
 
 if g:plug.is_installed('elm-vim')

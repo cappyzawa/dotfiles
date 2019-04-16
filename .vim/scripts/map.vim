@@ -2,8 +2,8 @@ if !exists('g:env')
 	finish
 endif
 
-let g:mapleader=" "
-let g:maplocalleader=" "
+let g:mapleader=' '
+let g:maplocalleader=' '
 
 " Smart space mapping
 nmap <Space> [Space]
