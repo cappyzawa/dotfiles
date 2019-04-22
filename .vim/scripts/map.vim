@@ -57,8 +57,6 @@ nnoremap g# g#zz
 
 " View file information
 nnoremap <C-g> 1<C-g>
-" Write only when the buffer has been modified
-nnoremap <silent><CR> :<C-u>silent update<CR>
 
 " Make Y behave like other capitals
 nnoremap Y y$

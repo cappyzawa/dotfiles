@@ -185,6 +185,57 @@ if g:plug.is_installed('deoplete.nvim')
   inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 endif
 
+augroup defxCustom
+  autocmd!
+  autocmd FileType defx call s:defx_my_settings()
+augroup END
+
+function! s:defx_my_settings() abort
+  nnoremap <silent><buffer><expr> o
+	  \ defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> <CR>
+      \ defx#is_directory() ?
+      \ defx#do_action('open') :
+      \ defx#do_action('multi', ['drop', 'quit'])
+  nnoremap <silent><buffer><expr> v
+      \ defx#is_directory() ?
+      \ defx#do_action('open', 'vsplit') :
+      \ defx#do_action('multi', ['drop', 'quit'])
+  nnoremap <silent><buffer><expr> s
+      \ defx#is_directory() ?
+      \ defx#do_action('open', 'split') :
+      \ defx#do_action('multi', ['drop', 'quit'])
+  nnoremap <silent><buffer><expr> q
+	  \ defx#do_action('quit')
+
+endfunction
+
+if g:plug.is_installed('defx.nvim')
+  " nnoremap <silent><C-[> :<C-u>Defx -split=vertical -winwidth=40
+  "       \ -columns=mark:filename:type:size
+  "       \ -columns=mark:filename:type:size -show-ignored-files
+  "       \ -direction=topleft<CR>
+  nnoremap <silent><C-[> :<C-u>Defx<CR>
+  call defx#custom#option('_', {
+        \ 'winwidth': 30,
+        \ 'split': 'vertical',
+        \ 'direction': 'topleft',
+        \ 'show_ignored_files': 1,
+        \ 'buffer_name': '',
+        \ 'toggle': 1,
+        \ 'resume': 1
+        \ })
+  call defx#custom#column('filename', {
+        \ 'min_width': 40,
+        \ 'max_width': 40,
+        \ })
+  call defx#custom#column('icon', {
+        \ 'directory_icon': '▸',
+        \ 'opened_icon': '▾',
+        \ 'root_icon': ' ',
+        \ })
+endif
+
 if g:plug.is_installed('winresizer')
   let g:winresizer_vert_resize = 1
   let g:winresizer_horiz_resize = 1

@@ -52,16 +52,18 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
     Plug 'christianrondeau/vim-base64'
     Plug 'tpope/vim-fugitive'
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-    Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'junegunn/vim-emoji'
     Plug 'tomtom/tcomment_vim'
     if has('nvim')
       Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+      Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
     else
       Plug 'Shougo/deoplete.nvim'
       Plug 'roxma/nvim-yarp'
       Plug 'roxma/vim-hug-neovim-rpc'
+
+      Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+      Plug 'Xuyuanp/nerdtree-git-plugin'
     endif
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
