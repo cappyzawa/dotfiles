@@ -192,22 +192,15 @@ augroup END
 
 function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> o
-	  \ defx#do_action('open_or_close_tree')
+      \ defx#do_action('open_or_close_tree')
   nnoremap <silent><buffer><expr> <CR>
-      \ defx#is_directory() ?
-      \ defx#do_action('open') :
       \ defx#do_action('multi', ['drop', 'quit'])
   nnoremap <silent><buffer><expr> v
-      \ defx#is_directory() ?
-      \ defx#do_action('open', 'vsplit') :
-      \ defx#do_action('multi', ['drop', 'quit'])
+      \ defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
   nnoremap <silent><buffer><expr> s
-      \ defx#is_directory() ?
-      \ defx#do_action('open', 'split') :
-      \ defx#do_action('multi', ['drop', 'quit'])
+      \ defx#do_action('multi', [['drop', 'split'], 'quit'])
   nnoremap <silent><buffer><expr> q
 	  \ defx#do_action('quit')
-
 endfunction
 
 if g:plug.is_installed('defx.nvim')
