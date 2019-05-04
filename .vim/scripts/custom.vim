@@ -94,6 +94,8 @@ if g:plug.is_installed('ale')
 
   let g:ale_fix_on_save = 1
   let g:ale_set_quickfix = 1
+  let g:ale_sign_error = '🔥'
+  let g:ale_sign_warning = '⚡️'
   let g:ale_echo_msg_error_str = '🔥'
   let g:ale_echo_msg_warning_str = '⚡️'
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -246,6 +248,7 @@ if g:plug.is_installed('vim-go')
   let g:go_jump_to_error = 0
   let g:go_mod_fmt_autosave = 0
   let g:go_def_mode = 'gopls'
+  let g:go_info_mode = 'gopls'
   let g:go_gocode_propose_source = 0
   let g:go_highlight_types = 1
   let g:go_template_autocreate = 0
@@ -256,7 +259,7 @@ if g:plug.is_installed('vim-go')
   let g:go_highlight_build_constraints = 1
   let g:go_gocode_unimported_packages = 1
   let g:sonictemplate_enable_pattern = 0
-  let g:go_auto_type_info = 1
+  let g:go_auto_type_info = 0
 endif
 
 if g:plug.is_installed('vim-json')
@@ -278,7 +281,7 @@ if g:plug.is_installed('coc.nvim')
       if coc#util#has_float()
         pc
       else
-        call CocAction('doHover')
+        call CocActionAsync('doHover')
       endif
     endif
   endfunction
