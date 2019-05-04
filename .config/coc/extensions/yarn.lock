@@ -29,10 +29,10 @@ coc-highlight@^1.0.5:
     vscode-languageserver-protocol "^3.13.0"
     vscode-uri "^1.0.6"
 
-coc-json@^1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/coc-json/-/coc-json-1.0.14.tgz#521dc6447204e8c71a2f53496c89bd11522c699c"
-  integrity sha512-cIIq8n7ajxMU43TYonDBanG8uBeugNFgI/MHidVJbrYtQnXUsHSqXNHUbgIzjnOYVOFwCXd0LacLZOiD6z2K1Q==
+coc-json@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/coc-json/-/coc-json-1.0.15.tgz#da40a929dbbbb6aac54ddd12edb084afaa49e57d"
+  integrity sha512-6UeG42pAyXvdMjV/jI/MXgfWmmD824uHNwOHBnNVvwqhwwi4mte6LA5HIpI+rmIGuC0jESAIwn7SRBk9TsnIAw==
   dependencies:
     find-up "^3.0.0"
     request-light "^0.2.4"
