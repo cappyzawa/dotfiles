@@ -2,7 +2,7 @@
   "dependencies": {
     "coc-highlight": "^1.0.5",
     "coc-json": "^1.0.15",
-    "coc-rls": "^1.0.11",
+    "coc-rls": "^1.1.0",
     "coc-solargraph": "^1.0.7",
     "coc-yaml": "^1.0.1"
   }
