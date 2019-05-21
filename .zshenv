@@ -68,6 +68,9 @@ export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 export GOENV_DISABLE_GOPATH=1
 
+# Setting for rust
+export PATH=$PATH:$HOME/.cargo/bin
+
 # declare the environment variables
 export CORRECT_IGNORE='_*'
 export CORRECT_IGNORE_FILE='.*'
