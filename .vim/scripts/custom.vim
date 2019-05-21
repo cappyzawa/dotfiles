@@ -54,10 +54,6 @@ if g:plug.is_installed('denite.nvim')
   call denite#custom#var('command_history','ignore_command_regexp', '')
 endif
 
-if g:plug.is_installed('auto_pairs')
-  let g:AutoPairsFlyMode = 1
-endif
-
 if g:plug.is_installed('open-browser.vim')
 	let g:netrw_nogx = 1 " disable netrw's gx mapping.
 	nmap gx <Plug>(openbrowser-smart-search)
@@ -103,12 +99,14 @@ if g:plug.is_installed('ale')
   \   'go': ['golint'],
   \   'ruby': ['rubocop'],
   \   'vim': ['vint'],
+  \   'rust': ['rustc'],
   \}
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'go': ['gofmt','goimports'],
   \   'ruby': ['rubocop'],
   \   'elm': ['elm-format'],
+  \   'rust': ['rustfmt'],
   \}
 
   " for elm
@@ -120,6 +118,11 @@ if g:plug.is_installed('ale')
     autocmd!
     autocmd FileType markdown let g:ale_fix_on_save = 0
   augroup END
+endif
+
+if g:plug.is_installed('git-messenger.vim')
+  let g:git_messenger_include_diff='current'
+  let g:git_messenger_always_into_popup=v:true
 endif
 
 if g:plug.is_installed('onedark.vim')
@@ -286,6 +289,6 @@ if g:plug.is_installed('coc.nvim')
     endif
   endfunction
   augroup CocCustom
-    autocmd FileType go,rust,ruby call deoplete#custom#option('auto_complete', v:false)
+    autocmd FileType go,rust,ruby,elm call deoplete#custom#option('auto_complete', v:false)
   augroup END
 endif

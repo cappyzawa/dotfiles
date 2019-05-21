@@ -18,7 +18,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     call plug#begin(g:plug.base)
 
     " file and directory
-    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/denite.nvim', { 'frozen': 1 }
 
     " syntax? language support
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
@@ -31,11 +31,13 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-    Plug 'w0rp/ale'
-    " Plug 'ElmCast/elm-vim', { 'for': 'elm' }
     Plug 'Zaptic/elm-vim', { 'for': 'elm' }
+    Plug 'w0rp/ale'
+
+    Plug 'antew/vim-elm-language-server', { 'for': 'elm' }
     " for only syntax
     Plug 'fatih/vim-go', { 'for': 'go' }
+    Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
 
     " for ytt
     Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
