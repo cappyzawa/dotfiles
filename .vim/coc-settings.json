@@ -21,6 +21,22 @@
         "go"
       ]
     },
+    "elm-ls": {
+      "command": "elm-ls",
+      "args": [
+        "--stdio"
+      ],
+      "filetypes": [
+        "elm"
+      ],
+      "rootPatterns": [
+        "elm.json"
+      ],
+      "initializationOptions": {
+        "runtime": "node"
+      },
+      "settings": {}
+    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": [
