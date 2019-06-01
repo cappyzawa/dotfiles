@@ -107,3 +107,4 @@ export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
 export DOTPATH=${0:A:h}
+export TERM="xterm-256color"
