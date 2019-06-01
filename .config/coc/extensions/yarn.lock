@@ -41,10 +41,10 @@ coc-json@^1.0.17:
     vscode-languageserver "^5.3.0-next.6"
     vscode-uri "^1.0.6"
 
-coc-rls@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/coc-rls/-/coc-rls-1.1.0.tgz#2ffae99f68cddd99f7d174156f2a4c42bb626e6e"
-  integrity sha512-p3XGRRz2nWe08dcd/5faXpinGVFlRMtRDJy+RfxHk87fn5EoyIRBhoalgnAO2vEUUcY4nmVZVjV8hEhth1BLtQ==
+coc-rls@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/coc-rls/-/coc-rls-1.1.1.tgz#7741a0b89ae7e932346ff3fbe98de7682d718abe"
+  integrity sha512-u9Mn3gYvDNiutuV1cmtUhxH/BfYkhzfOIEPe0WUoRIZlW+ANekvZh/iaF3OetICxMefs825R2olyv4GWoqNpHw==
   dependencies:
     tslib "^1.9.3"
     vscode-languageserver-protocol "^3.15.0-next.4"
