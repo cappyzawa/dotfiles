@@ -31,7 +31,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-    Plug 'Zaptic/elm-vim', { 'for': 'elm' }
+    Plug 'ElmCast/elm-vim', { 'for': 'elm' }
     Plug 'w0rp/ale'
 
     Plug 'antew/vim-elm-language-server', { 'for': 'elm' }
