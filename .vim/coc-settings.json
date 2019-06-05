@@ -21,8 +21,8 @@
         "go"
       ]
     },
-    "elm-ls": {
-      "command": "elm-ls",
+    "elmLS": {
+      "command": "elm-language-server",
       "args": [
         "--stdio"
       ],
@@ -33,9 +33,10 @@
         "elm.json"
       ],
       "initializationOptions": {
-        "runtime": "node"
-      },
-      "settings": {}
+        "runtime": "node",
+        "elmPath": "elm",
+        "elmFormatPath": "elm-format"
+      }
     },
     "dockerfile": {
       "command": "docker-langserver",
