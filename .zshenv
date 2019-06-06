@@ -108,3 +108,9 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
 export DOTPATH=${0:A:h}
 export TERM="xterm-256color"
+
+# openssl
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
