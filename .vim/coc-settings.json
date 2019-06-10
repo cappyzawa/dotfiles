@@ -22,6 +22,7 @@
       ]
     },
     "elmLS": {
+      "trace.server": "verbose",
       "command": "elm-language-server",
       "args": [
         "--stdio"
