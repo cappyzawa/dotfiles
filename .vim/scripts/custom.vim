@@ -276,7 +276,7 @@ if g:plug.is_installed('coc.nvim')
       execute 'h '.expand('<cword>')
     else
       if coc#util#has_float()
-        pc
+        call coc#util#float_hide()
       else
         call CocActionAsync('doHover')
       endif
