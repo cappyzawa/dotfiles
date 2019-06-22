@@ -6,7 +6,8 @@
   "suggest.snippetIndicator": " ►",
   "suggest.enablePreview": true,
   "coc.preferences.hoverTarget": "float",
-  "coc.preferences.diagnostic.displayByAle": true,
+  "diagnostic.displayByAle": true,
+  "codeLens.enable": true,
   "list.autoResize": true,
   "languageserver": {
     "golang": {
@@ -22,8 +23,8 @@
       ]
     },
     "elmLS": {
-      "trace.server": "verbose",
       "command": "elm-language-server",
+      "trace.server": "verbose",
       "args": [
         "--stdio"
       ],
@@ -36,7 +37,8 @@
       "initializationOptions": {
         "runtime": "node",
         "elmPath": "elm",
-        "elmFormatPath": "elm-format"
+        "elmFormatPath": "elm-format",
+        "elmTestPath": "elm-test"
       }
     },
     "dockerfile": {

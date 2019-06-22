@@ -269,6 +269,7 @@ if g:plug.is_installed('coc.nvim')
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
   nmap <silent> gt <Plug>(coc-rename)
+  nmap <silent> gl <Plug>(coc-codelens-action)
   nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
   function! s:show_documentation()
@@ -283,6 +284,6 @@ if g:plug.is_installed('coc.nvim')
     endif
   endfunction
   augroup CocCustom
-    autocmd FileType go,rust,ruby,elm call deoplete#custom#option('auto_complete', v:false)
+    autocmd FileType go,rust,ruby,elm,json,sh call deoplete#custom#option('auto_complete', v:false)
   augroup END
 endif
