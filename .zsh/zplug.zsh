@@ -77,6 +77,11 @@ zplug "b4b4r07/release-go", \
   on:"goreleaser/goreleaser", \
   on:"motemen/gobump"
 
+zplug "go-delve/delve", \
+  as:command, \
+  rename-to:"dlv", \
+  hook-build:"go get -d && go build cmd/dlv/..."
+
 zplug "zsh-users/zsh-syntax-highlighting", \
   defer:2
 
