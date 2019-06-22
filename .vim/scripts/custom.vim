@@ -257,6 +257,18 @@ if g:plug.is_installed('vim-go')
   let g:go_gocode_unimported_packages = 1
   let g:sonictemplate_enable_pattern = 0
   let g:go_auto_type_info = 0
+
+  let g:go_debug_windows = {
+        \ 'stack': 'rightbelow 10new',
+        \ 'vars': 'leftabove 50vnew',
+        \ }
+
+  nnoremap <silent> <F9> :GoDebugBreakpoint<CR>
+  nnoremap <silent> <F5> :GoDebugContinue<CR>
+  nnoremap <silent> <F10> :GoDebugNext<CR>
+  nnoremap <silent> <F11> :GoDebugStep<CR>
+  nnoremap <silent> <F12> :GoDebugStepOut<CR>
+  nnoremap <silent> <F6> call go#debug#Print(<q-args>)
 endif
 
 if g:plug.is_installed('vim-json')
