@@ -5,3 +5,4 @@
 .config/direnv/
 .config/anyenv/
 node_modules/
+.config/coc/extensions/db.json
