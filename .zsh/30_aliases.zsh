@@ -34,6 +34,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias flushdns='sudo killall -HUP mDNSResponder'
+
 # Use if colordiff exists
 if has 'colordiff'; then
   alias diff='colordiff -u'

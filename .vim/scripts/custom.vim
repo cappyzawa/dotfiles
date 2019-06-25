@@ -296,6 +296,6 @@ if g:plug.is_installed('coc.nvim')
     endif
   endfunction
   augroup CocCustom
-    autocmd FileType go,rust,ruby,elm,json,sh call deoplete#custom#option('auto_complete', v:false)
+    autocmd FileType go,rust,ruby,elm,json,sh,zsh call deoplete#custom#option('auto_complete', v:false)
   augroup END
 endif
