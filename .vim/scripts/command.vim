@@ -29,3 +29,5 @@ command! WUnicode   WUtf16
 command! -bang -complete=file -nargs=? WUnix write<bang> ++fileformat=unix <args> | edit <args>
 command! -bang -complete=file -nargs=? WDos  write<bang> ++fileformat=dos <args>  | edit <args>
 command! -bang -complete=file -nargs=? WMac  write<bang> ++fileformat=mac <args>  | edit <args>
+
+command! -bar OpenTerminal call OpenTerminal()
