@@ -21,36 +21,36 @@ function! s:glob(from, pattern)
 endfunction
 
 function! s:source(from, ...)
-  let found = g:false
-  for pattern in a:000
-    for script in s:glob(a:from, pattern)
-      execute 'source' escape(script, ' ')
-      let found = g:true
+  let l:found = g:false
+  for l:pattern in a:000
+    for l:script in s:glob(a:from, l:pattern)
+      execute 'source' escape(l:script, ' ')
+      let l:found = g:true
     endfor
   endfor
-  return found
+  return l:found
 endfunction
 
 function! s:load(...) abort
-  let base = expand($HOME.'/.vim/scripts')
-  let found = g:true
+  let l:base = expand($HOME.'/.vim/scripts')
+  let l:found = g:true
 
   if len(a:000) > 0
     " Stop to load
     if index(a:000, g:false) != -1
       return g:false
     endif
-    for file in a:000
-      if !s:source(base, file)
-        let found = s:source(base, '*[0-9]*_'.file)
+    for l:file in a:000
+      if !s:source(l:base, l:file)
+        let l:found = s:source(l:base, '*[0-9]*_'.l:file)
       endif
     endfor
   else
     " Load all files starting with number
-    let found = s:source(base, '*[0-9]*_*.vim')
+    let l:found = s:source(l:base, '*[0-9]*_*.vim')
   endif
 
-  return found
+  return l:found
 endfunction
 "}}}
 
