@@ -1,16 +1,21 @@
 if zplug_installed bhilburn powerlevel9k; then
-  # for prompt
-  export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vi_mode dir vcs)
-  export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time battery)
+  if [[ -n $VIMRUNTIME ]]; then
+    prompt_powerlevel9k_teardown
+    PROMPT='%d%>:%{\e[0m%}>> '
+  else
+    # for prompt
+    export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vi_mode dir vcs)
+    export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time battery)
 
-  # for battery
-  export POWERLEVEL9K_BATTERY_VERBOSE=false
-  export POWERLEVEL9K_BATTERY_STAGES=($'\u2581 ' $'\u2582 ' $'\u2583 ' $'\u2584 ' $'\u2585 ' $'\u2586 ' $'\u2587 ' $'\u2588 ')
+    # for battery
+    export POWERLEVEL9K_BATTERY_VERBOSE=false
+    export POWERLEVEL9K_BATTERY_STAGES=($'\u2581 ' $'\u2582 ' $'\u2583 ' $'\u2584 ' $'\u2585 ' $'\u2586 ' $'\u2587 ' $'\u2588 ')
 
-  # for dir
-  export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-  export POWERLEVEL9K_SHORTEN_DELIMITER="…"
-  export POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+    # for dir
+    export POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+    export POWERLEVEL9K_SHORTEN_DELIMITER="…"
+    export POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+  fi
 fi
 
 if zplug_installed git-duet git-duet; then

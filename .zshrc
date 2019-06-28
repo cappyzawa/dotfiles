@@ -2,11 +2,6 @@ umask 022
 limit coredumpsize 0
 bindkey -d
 
-# Return if zsh is called from Vim
-if [[ -n $VIMRUNTIME ]]; then
-  return 0
-fi
-
 # Check if zplug is installed
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
