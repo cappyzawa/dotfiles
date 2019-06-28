@@ -15,6 +15,13 @@ if g:plug.is_installed('tcomment_vim')
   nnoremap <silent> yaml :<C-u>call tcomment#type#Define('yaml', '# %s')<CR>
 endif
 
+if g:plug.is_installed('deol.nvim')
+  let g:deol#shell_history_path = '~/.zsh_history'
+  nnoremap <silent> <Leader>df :<C-u>Deol -split=floating<CR>
+  nnoremap <silent> <Leader>dv :<C-u>Deol -split=vertical<CR>
+  nnoremap <silent> <Leader>dh :<C-u>Deol -split=horizontal<CR>
+endif
+
 if g:plug.is_installed('denite.nvim')
   call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
   call denite#custom#map('normal', 'jj', '<denite:quit>', 'noremap')

@@ -1,7 +1,7 @@
 if zplug_installed bhilburn powerlevel9k; then
   if [[ -n $VIMRUNTIME ]]; then
     prompt_powerlevel9k_teardown
-    PROMPT='%d%>:%{\e[0m%}>> '
+    PROMPT='$ '
   else
     # for prompt
     export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vi_mode dir vcs)

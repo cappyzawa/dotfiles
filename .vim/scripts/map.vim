@@ -111,5 +111,3 @@ nnoremap <silent>z0 :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
 
 " terminal
 tnoremap <silent> jj <C-\><C-n>
-
-nnoremap <silent> <C-t> :<C-u>OpenTerminal<CR>

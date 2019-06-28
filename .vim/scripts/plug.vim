@@ -18,7 +18,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     call plug#begin(g:plug.base)
 
     " file and directory
-    Plug 'Shougo/denite.nvim', { 'frozen': 1 }
+    Plug 'Shougo/denite.nvim'
+    Plug 'Shougo/deol.nvim'
 
     " syntax? language support
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
