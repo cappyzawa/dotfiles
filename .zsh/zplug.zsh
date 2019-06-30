@@ -105,11 +105,6 @@ zplug "github/hub", \
   rename-to:"hub", \
   hook-build:"go get -d && make install"
 
-zplug "skanehira/docui", \
-  as:command, \
-  rename-to:"docui", \
-  hook-build:"go get -d && GO111MODULE=on go install"
-
 zplug "hairyhenderson/gomplate", \
   as:command, \
   from:"gh-r", \

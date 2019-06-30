@@ -17,7 +17,6 @@ fi
 # Common aliases
 alias ..='cd ..'
 alias l="ls -l"
-alias ld='ls -ld'      # Show info about the directory
 alias lla='ls -lAF'    # Show hidden all files
 alias ll='ls -lF'      # Show long file information
 alias la='ls -AF'      # Show hidden files
@@ -58,6 +57,10 @@ fi
 
 if has "lazygit"; then
   alias lg='lazygit'
+fi
+
+if has "lazydocker"; then
+  alias ld='lazydocker'
 fi
 
 if is_osx; then
