@@ -7,7 +7,7 @@
   "suggest.enablePreview": true,
   "coc.preferences.hoverTarget": "float",
   "diagnostic.displayByAle": true,
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "list.autoResize": true,
   "languageserver": {
     "golang": {

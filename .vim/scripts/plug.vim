@@ -35,7 +35,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'ElmCast/elm-vim', { 'for': 'elm' }
     Plug 'w0rp/ale'
 
-    Plug 'antew/vim-elm-language-server', { 'for': 'elm' }
     " for only syntax
     Plug 'fatih/vim-go', { 'for': 'go' }
     Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
