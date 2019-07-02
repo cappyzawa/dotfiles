@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "coc-highlight": "^1.2.2",
+    "coc-highlight": ">=1.2.3",
     "coc-json": "^1.2.2",
     "coc-rls": "^1.1.2",
     "coc-solargraph": "^1.1.2",
