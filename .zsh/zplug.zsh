@@ -57,6 +57,8 @@ zplug 'b4b4r07/zplug-doctor', lazy:yes
 
 zplug "b4b4r07/ssh-keyreg", as:command, use:bin
 
+zplug "mollifier/zload", as:command
+
 zplug "b4b4r07/stein", \
   as:command, \
   from:gh-r
