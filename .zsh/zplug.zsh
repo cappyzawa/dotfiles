@@ -117,9 +117,6 @@ zplug "k14s/ytt", \
   from:"gh-r", \
   rename-to:"ytt"
 
-zplug "bhilburn/powerlevel9k", \
-  use:powerlevel9k.zsh-theme
-
 zplug "zlabjp/kubernetes-scripts", \
   as:command, \
   use:"create-kubeconfig" \
