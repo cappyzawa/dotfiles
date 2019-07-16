@@ -303,7 +303,7 @@ if g:plug.is_installed('coc.nvim')
     endif
   endfunction
   augroup CocCustom
-    autocmd FileType go,rust,ruby,elm,json,sh,zsh,c call deoplete#custom#option('auto_complete', v:false)
+    autocmd FileType go,rust,ruby,elm,json,sh,zsh,c,vim call deoplete#custom#option('auto_complete', v:false)
     autocmd FileType elm setlocal tabstop=4 softtabstop=4 shiftwidth=4
   augroup END
 endif

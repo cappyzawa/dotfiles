@@ -10,6 +10,13 @@
   "codeLens.enable": false,
   "list.autoResize": true,
   "languageserver": {
+    "efm": {
+      "command": "efm-langserver",
+      "args": [],
+      "filetypes": [
+        "vim"
+      ]
+    },
     "golang": {
       "command": "gopls",
       "rootPatterns": [

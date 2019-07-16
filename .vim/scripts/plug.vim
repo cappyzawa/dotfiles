@@ -52,6 +52,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'rhysd/git-messenger.vim'
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}
     Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
+    Plug 'cappyzawa/sd-validate.vim', { 'for': 'yaml' }
     Plug 'christianrondeau/vim-base64'
     Plug 'tpope/vim-fugitive'
     Plug 'junegunn/vim-emoji'
