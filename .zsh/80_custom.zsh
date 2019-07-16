@@ -1,4 +1,4 @@
-if zplug_installed bhilburn powerlevel9k; then
+if zplug_installed romkatv powerlevel10k; then
   if [[ -n $VIMRUNTIME ]]; then
     prompt_powerlevel9k_teardown
     PROMPT='$ '

@@ -130,6 +130,6 @@ zplug "b4b4r07/zgencomp", \
   rename-to:"zgencomp", \
   hook-build:"go get -d && make install"
 
-zplug "bhilburn/powerlevel9k", \
-  use:powerlevel9k.zsh-theme
+zplug "romkatv/powerlevel10k", \
+  use:powerlevel10k.zsh-theme
 export ZSH_HISTORY_AUTO_SYNC=false
