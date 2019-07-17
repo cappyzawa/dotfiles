@@ -16,3 +16,7 @@ fi
 if zplug_installed git-duet git-duet; then
   export GIT_DUET_AUTHORS_FILE=$HOME/.git-authours
 fi
+
+if has 'kubectl'; then
+  source <(kubectl completion zsh)
+fi
