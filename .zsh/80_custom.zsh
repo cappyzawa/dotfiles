@@ -20,3 +20,7 @@ fi
 if has 'kubectl'; then
   source <(kubectl completion zsh)
 fi
+
+if has 'tkn'; then
+  source <(tkn completion zsh)
+fi
