@@ -105,7 +105,7 @@ zplug "adrienverge/yamllint", \
 zplug "github/hub", \
   as:command, \
   rename-to:"hub", \
-  hook-build:"go get -d && make install"
+  hook-build:"make install prefix=/usr/local"
 
 zplug "hairyhenderson/gomplate", \
   as:command, \
