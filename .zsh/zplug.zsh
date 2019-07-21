@@ -63,10 +63,6 @@ zplug "b4b4r07/stein", \
   as:command, \
   from:gh-r
 
-zplug "motemen/gobump", \
-  as:command, \
-  hook-build:"go get -d && go build cmd/gobump/..."
-
 zplug "goreleaser/goreleaser", \
   as:command, \
   from:"gh-r", \
@@ -80,13 +76,6 @@ zplug "jesseduffield/lazygit", \
   rename-to:"lazygit", \
   use:"*Darwin_x86_64.tar.gz", \
   if:"[[ $OSTYPE == *darwin* ]]"
-
-zplug "b4b4r07/release-go", \
-  as:command, \
-  rename-to:"release-go", \
-  use:"./release-go.sh", \
-  on:"goreleaser/goreleaser", \
-  on:"motemen/gobump"
 
 zplug "go-delve/delve", \
   as:command, \
