@@ -1,5 +1,6 @@
 typeset -gx -U path
 path=( \
+    ~/nvim-nightly/bin(N-/) \
     /usr/local/bin(N-/) \
     ~/bin(N-/) \
     ~/.zplug/bin(N-/) \

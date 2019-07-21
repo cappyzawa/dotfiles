@@ -36,6 +36,9 @@ clean: ## Remove the dot files and this repo
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
 	-rm -rf $(DOTPATH)
 
+neovim:
+	@pushd $$HOME && curl -fsSL https://github.com/neovim/neovim/releases/download/nightly/nvim-{macos,linux64}.tar.gz | tar xzvf - && mv nvim-* nvim-nightly && popd
+
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| sort \
