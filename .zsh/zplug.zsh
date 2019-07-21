@@ -77,6 +77,22 @@ zplug "jesseduffield/lazygit", \
   use:"*Darwin_x86_64.tar.gz", \
   if:"[[ $OSTYPE == *darwin* ]]"
 
+zplug "neovim/neovim", \
+  as:command, \
+  from:"gh-r", \
+  use:"*nvim-macos.tar.gz", \
+  at:"nightly", \
+  hook-build:"cp nvim-osx64/bin/nvim /usr/local/bin", \
+  if:"[[ $OSTYPE == *darwin* ]]"
+
+zplug "neovim/neovim", \
+  from:"gh-r", \
+  as:command, \
+  use:"*nvim.appimage", \
+  rename-to:"nvim", \
+  at:"nightly", \
+  if:"[[ $OSTYPE == *linux* ]]"
+
 zplug "go-delve/delve", \
   as:command, \
   rename-to:"dlv", \
