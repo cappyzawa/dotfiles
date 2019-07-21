@@ -74,6 +74,13 @@ zplug "goreleaser/goreleaser", \
   use:"*Darwin_x86_64.tar.gz", \
   if:"[[ $OSTYPE == *darwin* ]]"
 
+zplug "jesseduffield/lazygit", \
+  as:command, \
+  from:"gh-r", \
+  rename-to:"lazygit", \
+  use:"*Darwin_x86_64.tar.gz", \
+  if:"[[ $OSTYPE == *darwin* ]]"
+
 zplug "b4b4r07/release-go", \
   as:command, \
   rename-to:"release-go", \
