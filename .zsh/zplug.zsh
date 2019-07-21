@@ -69,8 +69,10 @@ zplug "motemen/gobump", \
 
 zplug "goreleaser/goreleaser", \
   as:command, \
+  from:"gh-r", \
   rename-to:"goreleaser", \
-  hook-build:"go get -d && go mod download && go build"
+  use:"*Darwin_x86_64.tar.gz", \
+  if:"[[ $OSTYPE == *darwin* ]]"
 
 zplug "b4b4r07/release-go", \
   as:command, \
