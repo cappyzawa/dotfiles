@@ -104,6 +104,28 @@ get_os() {
     done
 }
 
+update_nvim() {
+  if [[ -d ${HOME}/nvim-nightly ]];then
+    rm -rf ${HOME}/nvim-nightly
+  fi
+
+  local target
+  if is_osx; then
+    target='macos'
+  elif is_linux; then
+    target='linux64'
+  else
+    echo "unkown os"
+    exit 1
+  fi
+
+  pushd ${HOME}
+  curl -fsSL https://github.com/neovim/neovim/releases/download/nightly/nvim-${target}.tar.gz | tar xzvf -
+
+  mv nvim-* nvim-nightly
+  popd
+}
+
 # zplug_installed returns 0 or 1
 zplug_installed() {
   local org=$1
