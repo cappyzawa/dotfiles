@@ -21,7 +21,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'Shougo/denite.nvim'
     Plug 'Shougo/deol.nvim'
 
-    " syntax? language support
+    " syntax
+    " language support
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
     Plug 'zplug/vim-zplug', { 'for': 'zplug' }
@@ -32,6 +33,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+    Plug 'posva/vim-vue', { 'for': 'vue' }
     Plug 'ElmCast/elm-vim', { 'for': 'elm' }
     Plug 'w0rp/ale'
 
