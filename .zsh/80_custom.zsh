@@ -23,6 +23,9 @@ fi
 
 if has 'tkn'; then
   source <(tkn completion zsh)
+  if [[ ! -e '/usr/local/bin/kubectl-tkn' ]]; then
+    ln -s `which tkn` /usr/local/bin/kubectl-tkn
+  fi
 fi
 
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
