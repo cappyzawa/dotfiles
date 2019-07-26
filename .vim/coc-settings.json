@@ -169,5 +169,45 @@
         }
       }
     }
-  }
+  },
+  "list.indicator": " ►",
+  "list.insertMappings": {
+    "<C-t>": "action:tabe",
+    "<C-w>": "command:wincmd k"
+  },
+  "lists.disabledLists": [
+    "words",
+    "lines",
+    "locationlist",
+    "location"
+  ],
+  "list.source.mru.excludePatterns": [
+    "**/.git/*",
+    "/tmp/*",
+    "**/vendor/*"
+  ],
+  "list.source.grep.command": "rg",
+  "list.source.grep.args": [
+    "-i",
+    "--vimgrep",
+    "--no-heading",
+    "-uu"
+  ],
+  "list.source.grep.excludePatterns": [
+    "**/.git/*",
+    "/tmp/*",
+    "**/vendor/*"
+  ],
+  "list.source.files.command": "rg",
+  "list.source.files.args": [
+    "--hidden",
+    "--files",
+    "--glob",
+    "!.git"
+  ],
+  "list.source.files.excludePatterns": [
+    "**/.git/*",
+    "/tmp/*",
+    "**/vendor/*"
+  ]
 }
