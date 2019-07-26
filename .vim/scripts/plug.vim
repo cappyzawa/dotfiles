@@ -18,7 +18,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     call plug#begin(g:plug.base)
 
     " file and directory
-    Plug 'Shougo/denite.nvim'
     Plug 'Shougo/deol.nvim'
 
     " syntax

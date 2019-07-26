@@ -22,45 +22,6 @@ if g:plug.is_installed('deol.nvim')
   nnoremap <silent> <Leader>dh :<C-u>Deol -split=horizontal<CR>
 endif
 
-if g:plug.is_installed('denite.nvim')
-  call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
-  call denite#custom#map('normal', 'jj', '<denite:quit>', 'noremap')
-  call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>')
-  call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>')
-
-
-  call denite#custom#map('normal', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('normal', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-  call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-  call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-
-  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-          \ [ '.git/', '.ropeproject/', '__pycache__/',
-          \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/',
-          \   '.idea/', 'vendor/', 'plugged/'])
-
-  nnoremap <silent> <Leader>ff :Denite file/rec<CR>
-  nnoremap <silent> <Leader>j :Denite file/old<CR>
-  nnoremap <silent> <C-f><C-f> :Denite grep<CR>
-  nnoremap <silent> <C-r> :Denite command_history<CR>
-  if executable('rg')
-    call denite#custom#var('file_rec', 'command',
-          \ ['rg', '--files', '--glob', '!.git'])
-    call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'default_opts',
-        \ ['-i', '--vimgrep', '--no-heading', '-uu'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-  endif
-
-  " Change default prompt
-	call denite#custom#option('default', 'prompt', '🔍')
-
-  call denite#custom#var('command_history','ignore_command_regexp', '')
-endif
-
 if g:plug.is_installed('open-browser.vim')
 	let g:netrw_nogx = 1 " disable netrw's gx mapping.
 	nmap gx <Plug>(openbrowser-smart-search)
