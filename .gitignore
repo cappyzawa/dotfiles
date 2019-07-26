@@ -7,3 +7,7 @@
 .config/configstore/
 node_modules/
 .config/coc/extensions/db.json
+.config/coc/history.json
+.config/coc/lists
+.config/coc/mru
+.vim/sessions
