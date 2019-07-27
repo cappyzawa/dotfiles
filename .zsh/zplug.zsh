@@ -128,6 +128,11 @@ zplug "b4b4r07/zgencomp", \
   rename-to:"zgencomp", \
   hook-build:"go get -d && make install"
 
+zplug "mattn/efm-langserver", \
+  as:command, \
+  from:"gh-r", \
+  rename-to:"efm-langserver"
+
 zplug "romkatv/powerlevel10k", \
   use:powerlevel10k.zsh-theme
 export ZSH_HISTORY_AUTO_SYNC=false
