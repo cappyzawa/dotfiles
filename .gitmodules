@@ -4,3 +4,6 @@
 [submodule ".tmux-onedark-theme"]
 	path = .tmux-onedark-theme
 	url = https://github.com/odedlaz/tmux-onedark-theme
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
