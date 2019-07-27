@@ -150,9 +150,6 @@ if g:plug.is_installed('winresizer')
   let g:winresizer_horiz_resize = 1
 endif
 
-if g:plug.is_installed('')
-endif
-
 if g:plug.is_installed('vim-go')
   let g:go_def_mapping_enabled = 0
   let g:go_doc_keywordprg_enabled = 0
