@@ -111,3 +111,8 @@ nnoremap <silent>z0 :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
 
 " terminal
 tnoremap <silent> jj <C-\><C-n>
+
+if has('nvim')
+  inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+  inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+endif
