@@ -136,7 +136,7 @@ if g:plug.is_installed('elm-vim')
 endif
 
 if g:plug.is_installed('vim-airline')
-  let g:airline_theme='dark'
+  let g:airline_theme='onedark'
   let g:airline#extensions#bufferline#overwrite_variables = 0
   let g:airline#extensions#branch#enabled = 1
   let g:airline#extensions#ale#enabled = 1
