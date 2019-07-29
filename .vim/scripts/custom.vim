@@ -95,6 +95,11 @@ if g:plug.is_installed('git-messenger.vim')
 endif
 
 if g:plug.is_installed('onedark.vim')
+  augroup ondarkGroup
+    autocmd!
+    let s:white = {'gui': '#ABB2BF', 'cterm': '145', 'cterm16': '7'}
+    autocmd ColorScheme * call onedark#set_highlight("Normal", {'fg': s:white})
+  augroup END
   syntax on
   colorscheme onedark
 endif
