@@ -77,6 +77,12 @@ zplug "jesseduffield/lazygit", \
   use:"*Darwin_x86_64.tar.gz", \
   if:"[[ $OSTYPE == *darwin* ]]"
 
+
+zplug "cjbassi/gotop", \
+  as:command, \
+  from:"gh-r", \
+  rename-to:"gotop"
+
 zplug "go-delve/delve", \
   as:command, \
   rename-to:"dlv", \
