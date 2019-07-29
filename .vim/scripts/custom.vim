@@ -198,6 +198,8 @@ if g:plug.is_installed('coc.nvim')
   nmap <silent> gl <Plug>(coc-codelens-action)
   nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
   function! s:show_documentation()
     if &filetype ==# 'vim'
       execute 'h '.expand('<cword>')
