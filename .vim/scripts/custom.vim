@@ -103,24 +103,6 @@ if g:plug.is_installed('tagbar')
   nnoremap <silent> <C-]> :<C-u>TagbarToggle<CR>
 endif
 
-if g:plug.is_installed('nerdtree')
-  nnoremap <silent> <C-[> :<C-u>NERDTreeToggle<CR>
-  let g:NERDTreeMapOpenVSplit = 'v'
-  let g:NERDTreeMapOpenSplit = 's'
-  let g:NERDTreeMapToggleHidden = 'a'
-endif
-
-if g:plug.is_installed('nerdtree-git-plugin')
-  let g:NERDTreeIndicatorMapCustom = {
-        \ 'Modified'  : '⚡️',
-        \ 'Staged'  : '🎉',
-        \ 'Untracked' : '⭐',
-        \ 'Renamed'   : '🔀',
-        \ 'Deleted'   : '❌',
-        \ 'Clean'   : '🚮',
-        \ }
-endif
-
 if g:plug.is_installed('vim-emoji')
   set completefunc=emoji#complete
 endif
