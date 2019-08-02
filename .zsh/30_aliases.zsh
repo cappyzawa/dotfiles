@@ -72,6 +72,10 @@ if is_osx; then
   alias ctags="`brew --prefix`/bin/ctags"
 fi
 
+if has "kubectl"; then
+  alias k='kubectl'
+fi
+
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
