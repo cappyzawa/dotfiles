@@ -30,6 +30,7 @@ fi
 
 if has 'ko'; then
   source <(ko completion --zsh)
+  export KO_DOCKER_REPO='cappyzawa'
 fi
 
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
