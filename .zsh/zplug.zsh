@@ -129,6 +129,11 @@ zplug "zlabjp/kubernetes-scripts", \
 zplug "git-duet/git-duet", \
   hook-build:"GO111MODULE=on GOVENDOREXPERIMENT=1 go get ./..."
 
+zplug "wercker/stern", \
+  as:command, \
+  from:"gh-r", \
+  rename-to:"stern"
+
 zplug "romkatv/powerlevel10k", \
   use:powerlevel10k.zsh-theme
 export ZSH_HISTORY_AUTO_SYNC=false
