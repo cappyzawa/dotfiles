@@ -176,6 +176,24 @@ if g:plug.is_installed('vim-json')
   let g:vim_json_syntax_conceal = 0
 endif
 
+if g:plug.is_installed('vim-silicon')
+  let g:silicon = {
+          \ 'theme':              'Dracula',
+          \ 'font':                  'Hack',
+          \ 'background':         '#ffffff',
+          \ 'shadow-color':       '#555555',
+          \ 'line-pad':                   2,
+          \ 'pad-horiz':                  0,
+          \ 'pad-vert':                   0,
+          \ 'shadow-blur-radius':         0,
+          \ 'shadow-offset-x':            0,
+          \ 'shadow-offset-y':            0,
+          \ 'line-number':           v:true,
+          \ 'round-corner':          v:true,
+          \ 'window-controls':       v:true,
+          \ }
+endif
+
 if g:plug.is_installed('coc.nvim')
   nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)

@@ -59,6 +59,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'junegunn/vim-emoji'
     Plug 'tomtom/tcomment_vim'
     Plug 'guns/xterm-color-table.vim'
+    Plug 'segeljakt/vim-silicon'
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
     Plug 'cappyzawa/vault.nvim'
