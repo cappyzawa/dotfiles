@@ -178,8 +178,8 @@ endif
 
 if g:plug.is_installed('vim-silicon')
   let g:silicon = {
-          \ 'theme':              'Dracula',
-          \ 'font':                  'Hack',
+          \ 'theme':              'OneHalfDark',
+          \ 'font':               'Droid Sans Mono Slashed for Powerline',
           \ 'background':         '#ffffff',
           \ 'shadow-color':       '#555555',
           \ 'line-pad':                   2,
