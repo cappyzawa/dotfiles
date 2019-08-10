@@ -37,3 +37,7 @@ export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
 if [[ -d $KREW_ROOT ]]; then
   export PATH="${KREW_ROOT}/bin:$PATH"
 fi
+
+if has 'jenv'; then
+  export JAVA_HOME="$HOME/.anyenv/envs/jenv/versions/`jenv version-name`"
+fi
