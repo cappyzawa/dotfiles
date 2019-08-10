@@ -38,6 +38,7 @@ if [[ -d $KREW_ROOT ]]; then
   export PATH="${KREW_ROOT}/bin:$PATH"
 fi
 
-if has 'jenv'; then
+which jenv > /dev/null
+if [[ $? == 0 ]]; then
   export JAVA_HOME="$HOME/.anyenv/envs/jenv/versions/`jenv version-name`"
 fi
