@@ -35,7 +35,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'posva/vim-vue', { 'for': 'vue' }
     Plug 'ElmCast/elm-vim', { 'for': 'elm' }
     Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
-    Plug 'w0rp/ale'
+    Plug 'dense-analysis/ale'
 
     " for only syntax
     Plug 'fatih/vim-go', { 'for': 'go' }
