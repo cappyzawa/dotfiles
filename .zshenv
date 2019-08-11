@@ -6,6 +6,7 @@ path=( \
     ~/.zplug/bin(N-/) \
     ~/.local/bin(N-/) \
     ~/.tmux/bin(N-/) \
+    ~/.nimble/bin(N-/) \
     "$path[@]" \
     )
 

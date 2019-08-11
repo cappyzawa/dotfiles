@@ -34,6 +34,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'posva/vim-vue', { 'for': 'vue' }
     Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+    Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
     Plug 'w0rp/ale'
 
     " for only syntax

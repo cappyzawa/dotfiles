@@ -75,6 +75,15 @@
         "rust"
       ]
     },
+    "nim": {
+      "command": "nimlsp",
+      "args": [
+        "~/.choosenim/toolchains/nim-0.20.2"
+      ],
+      "filetypes": [
+        "nim"
+      ]
+    },
     "cquery": {
       "command": "cquery",
       "args": [
