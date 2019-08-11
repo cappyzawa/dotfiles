@@ -64,17 +64,6 @@
         "~"
       ]
     },
-    "rust": {
-      "command": "rustup",
-      "args": [
-        "run",
-        "stable",
-        "rls"
-      ],
-      "filetypes": [
-        "rust"
-      ]
-    },
     "nim": {
       "command": "nimlsp",
       "args": [
