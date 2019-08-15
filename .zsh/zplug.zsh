@@ -43,10 +43,6 @@ zplug "peco/peco", \
 
 zplug 'b4b4r07/zplug-doctor', lazy:yes
 
-zplug "b4b4r07/ssh-keyreg", as:command, use:bin
-
-zplug "mollifier/zload", as:command
-
 zplug "b4b4r07/stein", \
   as:command, \
   from:gh-r
@@ -56,6 +52,7 @@ zplug "goreleaser/goreleaser", \
   from:"gh-r", \
   rename-to:"goreleaser", \
   use:"*Darwin_x86_64.tar.gz", \
+  defer: 3, \
   if:"[[ $OSTYPE == *darwin* ]]"
 
 zplug "jesseduffield/lazygit", \
@@ -63,6 +60,7 @@ zplug "jesseduffield/lazygit", \
   from:"gh-r", \
   rename-to:"lazygit", \
   use:"*Darwin_x86_64.tar.gz", \
+  defer: 3, \
   if:"[[ $OSTYPE == *darwin* ]]"
 
 
@@ -99,11 +97,6 @@ zplug "github/hub", \
   rename-to:"hub", \
   hook-build:"make install prefix=/usr/local"
 
-zplug "hairyhenderson/gomplate", \
-  as:command, \
-  from:"gh-r", \
-  rename-to:"gomplate"
-
 zplug "k14s/ytt", \
   as:command, \
   from:"gh-r", \
@@ -121,8 +114,5 @@ zplug "wercker/stern", \
   as:command, \
   from:"gh-r", \
   rename-to:"stern"
-
-zplug "romkatv/powerlevel10k", \
-  use:powerlevel10k.zsh-theme
 
 export ZSH_HISTORY_AUTO_SYNC=false
