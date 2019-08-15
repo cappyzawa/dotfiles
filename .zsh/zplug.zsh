@@ -7,12 +7,15 @@ zplug "zsh-users/zsh-completions"
 zplug "stedolan/jq", \
   from:gh-r, \
   as:command, \
-  rename-to:jq
+  rename-to:jq, \
+  lazy:true
 
 zplug "b4b4r07/emoji-cli", \
   on:"stedolan/jq"
 
-zplug "mrowa44/emojify", as:command
+zplug "mrowa44/emojify", \
+  as:command, \
+  lazy:true
 
 zplug "junegunn/fzf-bin", \
   as:command, \
@@ -31,7 +34,8 @@ fi
 zplug "motemen/ghq", \
   as:command, \
   from:gh-r, \
-  rename-to:"ghq"
+  rename-to:"ghq", \
+  lazy:true
 
 zplug "b4b4r07/zsh-vimode-visual", \
   defer:3
@@ -41,18 +45,19 @@ zplug "peco/peco", \
   from:gh-r, \
   frozen:1
 
-zplug 'b4b4r07/zplug-doctor', lazy:yes
+zplug 'b4b4r07/zplug-doctor', lazy:true
 
 zplug "b4b4r07/stein", \
   as:command, \
-  from:gh-r
+  from:gh-r, \
+  lazy:true
 
 zplug "goreleaser/goreleaser", \
   as:command, \
   from:"gh-r", \
   rename-to:"goreleaser", \
   use:"*Darwin_x86_64.tar.gz", \
-  defer: 3, \
+  lazy:true, \
   if:"[[ $OSTYPE == *darwin* ]]"
 
 zplug "jesseduffield/lazygit", \
@@ -60,19 +65,21 @@ zplug "jesseduffield/lazygit", \
   from:"gh-r", \
   rename-to:"lazygit", \
   use:"*Darwin_x86_64.tar.gz", \
-  defer: 3, \
+  lazy:true, \
   if:"[[ $OSTYPE == *darwin* ]]"
 
 
 zplug "cjbassi/gotop", \
   as:command, \
   from:"gh-r", \
-  rename-to:"gotop"
+  rename-to:"gotop", \
+  lazy:true
 
 zplug "go-delve/delve", \
   as:command, \
   rename-to:"dlv", \
-  hook-build:"go get -d && go build cmd/dlv/..."
+  hook-build:"go get -d && go build cmd/dlv/...", \
+  lazy:true
 
 zplug "zsh-users/zsh-syntax-highlighting", \
   defer:2
@@ -80,17 +87,20 @@ zplug "zsh-users/zsh-syntax-highlighting", \
 zplug "kislyuk/yq", \
   as:command, \
   rename-to:"yq", \
-  hook-build:"pip install yq"
+  hook-build:"pip install yq", \
+  lazy:true
 
 zplug "Kuniwak/vint", \
   as:command, \
   rename-to:"vint", \
-  hook-build:"pip install vim-vint --user"
+  hook-build:"pip install vim-vint --user", \
+  lazy:true
 
 zplug "adrienverge/yamllint", \
   as:command, \
   rename-to:"yamllint", \
-  hook-build:"python setup.py install"
+  hook-build:"python setup.py install", \
+  lazy:true
 
 zplug "github/hub", \
   as:command, \
@@ -100,19 +110,23 @@ zplug "github/hub", \
 zplug "k14s/ytt", \
   as:command, \
   from:"gh-r", \
-  rename-to:"ytt"
+  rename-to:"ytt", \
+  lazy:true
 
 zplug "zlabjp/kubernetes-scripts", \
   as:command, \
-  use:"create-kubeconfig" \
-  rename-to:"create-kubeconfig"
+  use:"create-kubeconfig", \
+  rename-to:"create-kubeconfig", \
+  lazy:true
 
 zplug "git-duet/git-duet", \
-  hook-build:"GO111MODULE=on GOVENDOREXPERIMENT=1 go get ./..."
+  hook-build:"GO111MODULE=on GOVENDOREXPERIMENT=1 go get ./...", \
+  lazy:true
 
 zplug "wercker/stern", \
   as:command, \
   from:"gh-r", \
-  rename-to:"stern"
+  rename-to:"stern", \
+  lazy:true
 
 export ZSH_HISTORY_AUTO_SYNC=false

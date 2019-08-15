@@ -10,5 +10,3 @@ if has "go"; then
   fi
 
 fi
-
-echo "hello"
