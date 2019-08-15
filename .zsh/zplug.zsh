@@ -12,18 +12,6 @@ zplug "stedolan/jq", \
 zplug "b4b4r07/emoji-cli", \
   on:"stedolan/jq"
 
-zplug "cappyzawa/get-op", \
-  as:command, \
-  hook-build:"./init", \
-  use:"op"
-
-zplug "cappyzawa/op-kv", \
-  from:gh-r, \
-  as:command, \
-  rename-to:op-kv, \
-  on:"stedolan/jq", \
-  on:"cappyzawa/get-op"
-
 zplug "mrowa44/emojify", as:command
 
 zplug "junegunn/fzf-bin", \
@@ -136,4 +124,5 @@ zplug "wercker/stern", \
 
 zplug "romkatv/powerlevel10k", \
   use:powerlevel10k.zsh-theme
+
 export ZSH_HISTORY_AUTO_SYNC=false
