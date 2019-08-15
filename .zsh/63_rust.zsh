@@ -11,3 +11,7 @@ if has "cargo"; then
     cargo install starship
   fi
 fi
+
+if ! has "rls"; then
+  rustup component add rls rust-analysis rust-src
+fi
