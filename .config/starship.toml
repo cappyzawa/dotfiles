@@ -1,0 +1,20 @@
+# Replace the "➜" symbol in the prompt with "❯"
+[character]      # The name of the module we are confguring is "character"
+symbol = "$"     # The "symbol" segment is being set to "❯"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[directory]
+truncation_length = 3
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+added = "➕"
+renamed = "👅"
+deleted = "🗑"

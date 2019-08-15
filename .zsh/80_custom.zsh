@@ -42,3 +42,7 @@ which jenv > /dev/null
 if [[ $? == 0 ]]; then
   export JAVA_HOME="$HOME/.anyenv/envs/jenv/versions/`jenv version-name`"
 fi
+
+if has "starship"; then
+  eval "$(starship init zsh)"
+fi

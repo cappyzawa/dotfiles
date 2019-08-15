@@ -7,6 +7,7 @@ path=( \
     ~/.local/bin(N-/) \
     ~/.tmux/bin(N-/) \
     ~/.nimble/bin(N-/) \
+    ~/.yarn/bin(N-/) \
     "$path[@]" \
     )
 
