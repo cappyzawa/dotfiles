@@ -18,3 +18,12 @@ modified = "📝"
 added = "➕"
 renamed = "👅"
 deleted = "🗑"
+
+[package]
+symbol = "🎁 "
+
+[nodejs]
+symbol = "🤖 "
+
+[rust]
+symbol = "⚙️ "
