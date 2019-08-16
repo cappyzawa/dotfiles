@@ -4,6 +4,9 @@ symbol = "$"     # The "symbol" segment is being set to "❯"
 error_symbol = "✗"
 use_symbol_for_status = true
 
+[battery]
+disabled = true
+
 [directory]
 truncation_length = 3
 
