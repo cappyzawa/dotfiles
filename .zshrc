@@ -30,6 +30,10 @@ if has "direnv"; then
   eval "$(direnv hook zsh)"
 fi
 
+if has "starship"; then
+  eval "$(starship init zsh)"
+fi
+
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
