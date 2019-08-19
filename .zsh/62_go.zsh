@@ -1,12 +1,18 @@
+local go_get(){
+  pkg=$1
+  echo "Install ${pkg}"
+  go get -u ${pkg}
+}
+
 if has "go"; then
 
   if ! has "gopls"; then
-    go get -u golang.org/x/tools/cmd/gopls
+    go_get "golang.org/x/tools/cmd/gopls"
   fi
 
   if ! has "ginkgo"; then
-    go get github.com/onsi/ginkgo/ginkgo
-    go get github.com/onsi/gomega/...
+    go_get "github.com/onsi/ginkgo/ginkgo"
+    go_get "github.com/onsi/gomega/..."
   fi
 
 fi

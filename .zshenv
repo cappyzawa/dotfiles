@@ -38,7 +38,7 @@ export LC_CTYPE="${LANGUAGE}"
 
 # Editor
 export EDITOR=vim
-if [[ `which nvim` ]]; then
+if (which nvim > /dev/null); then
   export EDITOR=nvim
 fi
 export CVSEDITOR="${EDITOR}"
