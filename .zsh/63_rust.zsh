@@ -1,6 +1,6 @@
 local cargo_install() {
   pkg=$1
-  echo "Install ${pkg}"
+  echo "dotfile: Install ${pkg}"
   cargo install "${pkg}"
 }
 

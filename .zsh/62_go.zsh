@@ -1,6 +1,6 @@
 local go_get(){
   pkg=$1
-  echo "Install ${pkg}"
+  echo "dotfile: Install ${pkg}"
   go get -u ${pkg}
 }
 
