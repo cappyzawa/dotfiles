@@ -9,14 +9,14 @@ if ! has "rustup"; then
 fi
 
 if has "cargo"; then
-  if ! has "silicon"; then
-    cargo_install "silicon"
+  if [[ "${PLATFORM}" == "osx" ]]; then
+    if ! has "silicon"; then
+      cargo_install "silicon"
+    fi
   fi
 
   if ! has "starship"; then
-    if [[ "${PLATFORM}" == "osx" ]]; then
-      cargo_install "starship"
-    fi
+    cargo_install "starship"
   fi
 fi
 
