@@ -1,4 +1,4 @@
-local cargo_install() {
+cargo_install() {
   pkg=$1
   echo "dotfile: Install ${pkg}"
   cargo install "${pkg}"
