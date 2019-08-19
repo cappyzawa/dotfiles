@@ -14,7 +14,9 @@ if has "cargo"; then
   fi
 
   if ! has "starship"; then
-    cargo_install "starship"
+    if [[ "${PLATFORM}" == "osx" ]]; then
+      cargo_install "starship"
+    fi
   fi
 fi
 
