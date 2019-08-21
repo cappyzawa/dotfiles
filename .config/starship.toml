@@ -30,3 +30,6 @@ symbol = "🤖 "
 
 [rust]
 symbol = "⚙️ "
+
+[username]
+disabled = false
