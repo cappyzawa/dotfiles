@@ -35,10 +35,7 @@
         "elm.json"
       ],
       "initializationOptions": {
-        "runtime": "node",
-        "elmPath": "elm",
-        "elmFormatPath": "elm-format",
-        "elmTestPath": "elm-test"
+        "elmAnalyseTrigger": "change"
       }
     },
     "dockerfile": {
