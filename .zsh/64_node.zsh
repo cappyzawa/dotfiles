@@ -17,6 +17,10 @@ if has "npm"; then
     npm_global_install "elm-format"
   fi
 
+  if ! has "elm-analyse"; then
+    npm_global_install "elm-analyse"
+  fi
+
   if ! has "elm-language-server"; then
     npm_global_install "@elm-tooling/elm-language-server"
   fi
