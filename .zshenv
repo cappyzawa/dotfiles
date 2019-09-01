@@ -1,6 +1,5 @@
 typeset -gx -U path
 path=( \
-    ~/nvim-nightly/bin(N-/) \
     /usr/local/bin(N-/) \
     ~/bin(N-/) \
     ~/.local/bin(N-/) \
@@ -37,9 +36,6 @@ export LC_CTYPE="${LANGUAGE}"
 
 # Editor
 export EDITOR=vim
-if (which nvim > /dev/null); then
-  export EDITOR=nvim
-fi
 export CVSEDITOR="${EDITOR}"
 export SVN_EDITOR="${EDITOR}"
 export GIT_EDITOR="${EDITOR}"

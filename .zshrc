@@ -17,8 +17,7 @@ if [[ -f ~/.zplugin/bin/zplugin.zsh ]]; then
   source ~/.zsh/zplugin.zsh
 fi
 
-which starship > /dev/null
-if [[ $? == "0" ]] then
+if (which starship > /dev/null) then
   eval "$(starship init zsh)"
 fi
 

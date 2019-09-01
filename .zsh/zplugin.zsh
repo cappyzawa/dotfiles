@@ -23,6 +23,9 @@ zplugin snippet $HOME/.zsh/50_setopt.zsh
 zplugin ice wait"2" lucid
 zplugin snippet $HOME/.zsh/60_lang.zsh
 
+zplugin ice wait'3' lucid
+zplugin snippet $HOME/.zsh/80_custom.zsh
+
 zplugin ice wait"2" as"program" from"gh-r" \
   mv"jq-* -> jq" pick"jq" lucid
 zplugin light stedolan/jq
@@ -82,9 +85,12 @@ zplugin ice wait'3' lucid as"program" pick"$ZPFX/bin/gopls"\
   atclone"go build -o $ZPFX/bin/gopls cmd/gopls/main.go" atpull"%atclone"
 zplugin light golang/tools
 
+zplugin ice wait'2' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
+zplugin light neovim/neovim
 
-zplugin ice as:"completion" wait'1' lucid
-zplugin snippet $HOME/.zsh/80_custom.zsh
 
-zplugin ice as:"completion" wait'1' lucid
+zplugin ice as:"completion" wait'3' lucid
+zplugin snippet $HOME/.zsh/_80_custom.zsh
+
+zplugin ice as:"completion" wait'3' lucid
 zplugin load ~/.zsh/Completion
