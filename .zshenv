@@ -3,7 +3,6 @@ path=( \
     ~/nvim-nightly/bin(N-/) \
     /usr/local/bin(N-/) \
     ~/bin(N-/) \
-    ~/.zplug/bin(N-/) \
     ~/.local/bin(N-/) \
     ~/.tmux/bin(N-/) \
     ~/.nimble/bin(N-/) \

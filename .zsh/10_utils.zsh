@@ -118,13 +118,6 @@ update_nvim() {
   popd
 }
 
-# zplug_installed returns 0 or 1
-zplug_installed() {
-  local org=$1
-  local repo=$2
-  if [[ -d ${HOME}/.zplug/repos/${org}/${repo} ]]; then
-    return 0
-  else
-    return 1
-  fi
-}
+if has 'anyenv'; then
+  eval "$(anyenv init -)"
+fi

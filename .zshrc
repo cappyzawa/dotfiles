@@ -2,35 +2,23 @@ umask 022
 limit coredumpsize 0
 bindkey -d
 
-# Check if zplug is installed
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
+# Check if zplugin is installed
+if [[ ! -d ~/.zplugin ]]; then
+  git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
 fi
 
-if [[ -f ~/.zplug/init.zsh ]]; then
-  export ZPLUG_LOADFILE=~/.zsh/zplug.zsh
-  source ~/.zplug/init.zsh
+if [[ -f ~/.zplugin/bin/zplugin.zsh ]]; then
+  source ~/.zplugin/bin/zplugin.zsh
+  autoload -Uz _zplugin
+  if [[ "${+_comps}" == 1 ]]; then
+    _comps[zplugin]=_zplugin
+  fi
 
-  # if ! zplug check --verbose; then
-  #   printf "Install? [y/N]: "
-  #   if read -q; then
-  #     echo; zplug install
-  #   fi
-  #   echo
-  # fi
-  zplug load
+  source ~/.zsh/zplugin.zsh
 fi
 
-export PATH="$HOME/.anyenv/bin:$PATH"
-if ! eval "$(anyenv init -)"; then
-  anyenv install --force-init
-fi
-
-if has "direnv"; then
-  eval "$(direnv hook zsh)"
-fi
-
-if has "starship"; then
+which starship > /dev/null
+if [[ $? == "0" ]] then
   eval "$(starship init zsh)"
 fi
 
