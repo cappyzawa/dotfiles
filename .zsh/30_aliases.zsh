@@ -46,22 +46,6 @@ if has "emojify"; then
   alias -g E='| emojify'
 fi
 
-if has "jq"; then
-  alias -g JQ='| jq -C .'
-  alias -g JL='| jq -C . | less -R -X'
-fi
-
-if has "nvim"; then
-  alias vim='nvim'
-fi
-
-if has "lazygit"; then
-  alias lg='lazygit'
-fi
-
-if has "lazydocker"; then
-  alias ld='lazydocker'
-fi
 
 if is_osx; then
   alias -g CP='| pbcopy'
@@ -71,12 +55,3 @@ fi
 if is_osx; then
   alias ctags="`brew --prefix`/bin/ctags"
 fi
-
-if has "kubectl"; then
-  alias k='kubectl'
-fi
-
-# TODO: remove
-alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
-
-alias lgtm="echo '![LGTM](//lgtmoon.herokuapp.com/images/23050)'|pbcopy"
