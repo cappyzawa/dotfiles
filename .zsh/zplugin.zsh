@@ -90,7 +90,7 @@ if [[ $PLATFORM == "osx" ]]; then
   zplugin light neovim/neovim
 elif [[ $PLATFORM == "linux" ]]; then
   zplugin ice wait'2' lucid as"program" pick"$ZPFX/bin/nvim" \
-    atclone'CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$ZPFX && make install' \
+    atclone'rm -rf build && CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$ZPFX" && make install' \
     atpull'%atclone'
   zplugin light neovim/neovim
 fi
