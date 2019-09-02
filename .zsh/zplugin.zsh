@@ -66,7 +66,7 @@ zplugin light adrienverge/yamllint
 zplugin ice wait'2' lucid as"program" make"install prefix=$ZPFX" pick"$ZPFX/bin/hub"
 zplugin light github/hub
 
-zplugin ice wait'3' lucid as"program" pick"$ZPFX/bin/dlv"\
+zplugin ice wait'3' lucid as"program" pick"$ZPFX/bin/dlv" has"go" \
   atclone"go build -o $ZPFX/bin/dlv cmd/dlv/main.go" atpull"%atclone"
 zplugin light go-delve/delve
 
@@ -81,19 +81,12 @@ zplugin ice wait'2' lucid as"program" from"gh-r" \
   mv"stern* -> stern"
 zplugin light wercker/stern
 
-zplugin ice wait'3' lucid as"program" pick"$ZPFX/bin/gopls"\
+zplugin ice wait'3' lucid as"program" pick"$ZPFX/bin/gopls" has"go"\
   atclone"go build -o $ZPFX/bin/gopls cmd/gopls/main.go" atpull"%atclone"
 zplugin light golang/tools
 
-if [[ $PLATFORM == "osx" ]]; then
-  zplugin ice wait'2' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
-  zplugin light neovim/neovim
-elif [[ $PLATFORM == "linux" ]]; then
-  zplugin ice wait'2' lucid as"program" pick"$ZPFX/bin/nvim" \
-    atclone'rm -rf build && CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$ZPFX" && make install' \
-    atpull'%atclone'
-  zplugin light neovim/neovim
-fi
+zplugin ice wait'2' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
+zplugin light neovim/neovim
 
 zplugin ice as:"completion" wait'3' lucid
 zplugin snippet $HOME/.zsh/_80_custom.zsh
