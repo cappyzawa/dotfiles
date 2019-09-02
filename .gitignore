@@ -10,4 +10,4 @@ node_modules/
 .config/coc/history.json
 .config/coc/lists
 .config/coc/mru
-.vim/sessions
+.config/nvim/sessions
