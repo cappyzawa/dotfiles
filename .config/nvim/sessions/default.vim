@@ -2,16 +2,17 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/ghq/src/github.com/cappyzawa/dotfiles
+cd ~/
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 .vimrc
+badd +96 ghq/src/github.com/cappyzawa/dotfiles/.zsh/zplugin.zsh
+badd +73 .zsh/10_utils.zsh
 argglobal
 %argdel
-$argadd .vimrc
-edit .vimrc
+$argadd ghq/src/github.com/cappyzawa/dotfiles/.zsh/zplugin.zsh
+edit .zsh/10_utils.zsh
 set splitbelow splitright
 set nosplitbelow
 wincmd t
@@ -28,14 +29,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-399
-normal! zo
-let s:l = 469 - ((12 * winheight(0) + 12) / 25)
+let s:l = 72 - ((8 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-469
-normal! 05|
+72
+normal! 016|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
