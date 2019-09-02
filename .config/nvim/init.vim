@@ -1,12 +1,11 @@
 set foldmethod=marker
+
 " init"{{{
 
-" Use plain vim
-" when vim was invoked by 'sudo' command
-" or, invoked as 'git difftool'
-if exists('$SUDO_USER') || exists('$GIT_DIR')
-  finish
-endif
+" faster
+if has('nvim')
+  let g:python3_host_prog=$HOME . '/.anyenv/envs/pyenv/shims/python'
+end
 
 let g:false = 0
 let g:true = 1
@@ -15,50 +14,79 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-" Base functions
-function! s:glob(from, pattern)
-  return split(globpath(a:from, a:pattern), "[\r\n]")
-endfunction
-
-function! s:source(from, ...)
-  let l:found = g:false
-  for l:pattern in a:000
-    for l:script in s:glob(a:from, l:pattern)
-      execute 'source' escape(l:script, ' ')
-      let l:found = g:true
-    endfor
-  endfor
-  return l:found
-endfunction
-
-function! s:load(...) abort
-  let l:base = expand($HOME.'/.vim')
-  let l:found = g:true
-
-  if len(a:000) > 0
-    " Stop to load
-    if index(a:000, g:false) != -1
-      return g:false
-    endif
-    for l:file in a:000
-      if !s:source(l:base, l:file)
-        let l:found = s:source(l:base, '*[0-9]*_'.l:file)
-      endif
-    endfor
-  else
-    " Load all files starting with number
-    let l:found = s:source(l:base, '*[0-9]*_*.vim')
-  endif
-
-  return l:found
-endfunction
-
 " Init
-if !s:load('env.vim')
-  " Finish if loading env.vim is failed
-  finish
-endif
+" env "{{{
+function! s:vimrc_environment()
+    let env = {}
+    let env.is_ = {}
 
+    let env.is_.windows = has('win16') || has('win32') || has('win64')
+    let env.is_.cygwin = has('win32unix')
+    let env.is_.mac = !env.is_.windows && !env.is_.cygwin
+                \ && (has('mac') || has('macunix') || has('gui_macvim') ||
+                \    (!executable('xdg-open') &&
+                \    system('uname') =~? '^darwin'))
+    let env.is_.linux = !env.is_.mac && has('unix')
+
+
+    let env.is_starting = has('vim_starting')
+    let env.is_gui      = has('gui_running')
+
+    let env.hostname    = substitute(hostname(), '[^\w.]', '', '')
+
+    " vim
+    if env.is_.windows
+        let vimpath = expand('~/vimfiles')
+    else
+        let vimpath = expand('~/.vim')
+    endif
+
+    let env.path = {
+                \ 'vim': vimpath,
+                \ }
+
+    let env.bin = {
+                \ 'ag': executable('ag'),
+                \ 'osascript': executable('osascript'),
+                \ 'open': executable('open'),
+                \ 'chmod': executable('chmod'),
+                \ 'qlmanage': executable('qlmanage'),
+                \ }
+
+    " tmux
+    let env.is_tmux_running = !empty($TMUX)
+    let env.tmux_proc = system('tmux display-message -p "#W"')
+
+  "echo get(g:env.vimrc, 'enable_plugin', g:false)
+    let env.vimrc = {
+              \ 'plugin_on': g:true,
+              \ 'suggest_neobundleinit': g:true,
+              \ 'goback_to_eof2bof': g:false,
+              \ 'save_window_position': g:true,
+              \ 'restore_cursor_position': g:true,
+              \ 'statusline_manually': g:true,
+              \ 'add_execute_perm': g:false,
+              \ 'colorize_statusline_insert': g:true,
+              \ 'manage_rtp_manually': g:true,
+              \ 'auto_cd_file_parentdir': g:true,
+              \ 'ignore_all_settings': g:true,
+              \ 'check_plug_update': g:true,
+              \ }
+
+    return env
+endfunction
+
+" g:env is an environment variable in vimrc
+let g:env = s:vimrc_environment()
+
+function! IsWindows() abort
+    return g:env.is_.windows
+endfunction
+
+function! IsMac() abort
+    return g:env.is_.mac
+endfunction
+" }}}
 let g:env.vimrc.plugin_on = g:true
 let g:env.vimrc.manage_rtp_manually = g:false
 let g:env.vimrc.plugin_on =
@@ -81,52 +109,10 @@ if g:env.is_starting
     endif
   augroup END
 
-  " Vim starting time
-  if has('reltime')
-    let g:startuptime = reltime()
-    augroup vimrc-startuptime
-      autocmd!
-      autocmd VimEnter * let g:startuptime = reltime(g:startuptime) | redraw
-            \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
-    augroup END
-  endif
-endif
-
-
-call s:load('option.vim')
-
-if s:load('plug.vim')
-  call s:load('custom.vim')
 endif
 
 " Must be written at the last.  see :help 'secure'.
 set secure
-" }}}
-
-" func "{{{
-function! s:echomsg(hl, msg)
-	execute 'echohl' a:hl
-	try
-		echomsg a:msg
-	finally
-		echohl None
-	endtry
-endfunction
-
-function! Error(msg) abort
-	echohl ErrorMsg
-	echo 'ERROR: ' . a:msg
-	echohl None
-	return g:false
-endfunction
-
-function! Warn(msg) abort
-	echohl WarningMsg
-	echo 'WARNING: ' . a:msg
-	echohl None
-	return g:true
-endfunction
-
 " }}}
 
 " map "{{{
@@ -174,17 +160,6 @@ vnoremap <C-j><C-j> <ESC>
 onoremap jj <ESC>
 inoremap j[Space] j
 onoremap j[Space] j
-
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap S *zz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-
-" View file information
-nnoremap <C-g> 1<C-g>
 
 " Make Y behave like other capitals
 nnoremap Y y$
@@ -244,36 +219,6 @@ if has('nvim')
   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
   inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 endif
-" }}}
-
-" command "{{{
-" In particular effective when I am garbled in a terminal
-command! -bang -bar -complete=file -nargs=? Utf8      edit<bang> ++enc=utf-8 <args>
-command! -bang -bar -complete=file -nargs=? Iso2022jp edit<bang> ++enc=iso-2022-jp <args>
-command! -bang -bar -complete=file -nargs=? Cp932     edit<bang> ++enc=cp932 <args>
-command! -bang -bar -complete=file -nargs=? Euc       edit<bang> ++enc=euc-jp <args>
-command! -bang -bar -complete=file -nargs=? Utf16     edit<bang> ++enc=ucs-2le <args>
-command! -bang -bar -complete=file -nargs=? Utf16be   edit<bang> ++enc=ucs-2 <args>
-command! -bang -bar -complete=file -nargs=? Jis       Iso2022jp<bang> <args>
-command! -bang -bar -complete=file -nargs=? Sjis      Cp932<bang> <args>
-command! -bang -bar -complete=file -nargs=? Unicode   Utf16<bang> <args>
-
-" Tried to make a file note version
-" Don't save it because dangerous.
-command! WUtf8      setlocal fenc=utf-8
-command! WIso2022jp setlocal fenc=iso-2022-jp
-command! WCp932     setlocal fenc=cp932
-command! WEuc       setlocal fenc=euc-jp
-command! WUtf16     setlocal fenc=ucs-2le
-command! WUtf16be   setlocal fenc=ucs-2
-command! WJis       WIso2022jp
-command! WSjis      WCp932
-command! WUnicode   WUtf16
-
-" Appoint a line feed
-command! -bang -complete=file -nargs=? WUnix write<bang> ++fileformat=unix <args> | edit <args>
-command! -bang -complete=file -nargs=? WDos  write<bang> ++fileformat=dos <args>  | edit <args>
-command! -bang -complete=file -nargs=? WMac  write<bang> ++fileformat=mac <args>  | edit <args>
 " }}}
 
 " utils "{{{
@@ -478,7 +423,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " language support
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-    Plug 'zplug/vim-zplug', { 'for': 'zplug' }
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
     Plug 'elzr/vim-json', { 'for': 'json' }
@@ -486,7 +430,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-    Plug 'posva/vim-vue', { 'for': 'vue' }
+    " Plug 'posva/vim-vue', { 'for': 'vue' }
     Plug 'ElmCast/elm-vim', { 'for': 'elm' }
     Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
     Plug 'dense-analysis/ale'
@@ -499,7 +443,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
 
     " Testing Tools
-    Plug 'junegunn/vader.vim', { 'for': 'vim' }
+    Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
     " Utils
     Plug 'jiangmiao/auto-pairs'
@@ -513,12 +457,16 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
       nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
 
-    Plug 'rhysd/git-messenger.vim'
+    Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
+      let g:git_messenger_include_diff='current'
+      let g:git_messenger_always_into_popup=v:true
+
     Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
     Plug 'cappyzawa/sd-validate.vim', { 'for': 'yaml' }
-    Plug 'christianrondeau/vim-base64'
+    Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
     Plug 'tpope/vim-fugitive'
-    Plug 'tomtom/tcomment_vim'
+    Plug 'tomtom/tcomment_vim', { 'on': 'TComment' }
+      nnoremap <silent> gc :<C-u>TComment<CR>
     Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' }
       let g:silicon = {
         \ 'theme':              'OneHalfDark',
@@ -538,17 +486,17 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-    Plug 'cappyzawa/vault.nvim'
+    Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'ap/vim-css-color'
 
     " Theme
     Plug 'joshdick/onedark.vim'
 
     " Views
+    Plug 'bling/vim-bufferline'
     Plug 'vim-airline/vim-airline'
     Plug 'simeji/winresizer'
-    Plug 'majutsushi/tagbar'
-    Plug 'bling/vim-bufferline'
+    Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -672,18 +620,6 @@ endif
 " }}}
 
 " custom "{{{
-if g:plug.is_installed('enhancd')
-  let g:enhancd_action = g:plug.is_installed('dirvish') ? 'Dirvish' : 'Ex'
-endif
-
-if g:plug.is_installed('asyncomplete.vim')
-  let g:lsp_async_completion = 1
-endif
-
-if g:plug.is_installed('tcomment_vim')
-  nnoremap <silent> ytt :<C-u>call tcomment#type#Define('yaml', '#@ %s')<CR>
-  nnoremap <silent> yaml :<C-u>call tcomment#type#Define('yaml', '# %s')<CR>
-endif
 
 if g:plug.is_installed('vim-markdown')
   let g:vim_markdown_folding_disabled = 1
@@ -740,11 +676,6 @@ if g:plug.is_installed('ale')
   augroup END
 endif
 
-if g:plug.is_installed('git-messenger.vim')
-  let g:git_messenger_include_diff='current'
-  let g:git_messenger_always_into_popup=v:true
-endif
-
 if g:plug.is_installed('onedark.vim')
   augroup ondarkGroup
     autocmd!
@@ -759,10 +690,6 @@ if g:plug.is_installed('tagbar')
   nnoremap <silent> <C-]> :<C-u>TagbarToggle<CR>
 endif
 
-if g:plug.is_installed('vim-emoji')
-  set completefunc=emoji#complete
-endif
-
 if g:plug.is_installed('vault.nvim')
   let g:vault_default_path_prefix = 'concourse/main'
 endif
@@ -774,18 +701,16 @@ if g:plug.is_installed('elm-vim')
 endif
 
 if g:plug.is_installed('vim-airline')
+  let g:airline_powerline_fonts = 1
+  let g:airline_skip_empty_sections = 1
   let g:airline_theme='onedark'
-  let g:airline#extensions#bufferline#overwrite_variables = 0
-  let g:airline#extensions#branch#enabled = 1
-  let g:airline#extensions#ale#enabled = 1
+  let g:airline_extensions = ['branch',
+        \ 'ale',
+        \ 'bufferline']
 
+  let g:airline#extensions#bufferline#overwrite_variables = 0
   let g:airline#extensions#ale#error_symbol = '🔥'
   let g:airline#extensions#ale#warning_symbol = '⚡️'
-endif
-
-if g:plug.is_installed('winresizer')
-  let g:winresizer_vert_resize = 1
-  let g:winresizer_horiz_resize = 1
 endif
 
 if g:plug.is_installed('vim-go')
@@ -821,6 +746,11 @@ if g:plug.is_installed('vim-go')
   nnoremap <silent> <F11> :GoDebugStep<CR>
   nnoremap <silent> <F12> :GoDebugStepOut<CR>
   nnoremap <silent> <F6> call go#debug#Print(<q-args>)
+endif
+
+if g:plug.is_installed('winresizer')
+  let g:winresizer_vert_resize = 1
+  let g:winresizer_horiz_resize = 1
 endif
 
 if g:plug.is_installed('vim-json')

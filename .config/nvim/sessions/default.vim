@@ -8,15 +8,6 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +0 .vimrc
-badd +0 .vim/func.vim
-badd +5 .vim/base.vim
-badd +0 .vim/map.vim
-badd +5 .vim/command.vim
-badd +24 .vim/utils.vim
-badd +5 .vim/option.vim
-badd +5 .vim/plug.vim
-badd +0 .zsh/80_custom.zsh
-badd +5 .vim/custom.vim
 argglobal
 %argdel
 $argadd .vimrc
@@ -37,16 +28,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-2
+399
 normal! zo
-674
-normal! zo
-let s:l = 675 - ((544 * winheight(0) + 12) / 25)
+let s:l = 469 - ((12 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-675
-normal! 0
+469
+normal! 05|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
