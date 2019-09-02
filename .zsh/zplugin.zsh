@@ -89,7 +89,7 @@ zplugin light golang/tools
 if [[ $PLATFORM == "osx" ]]; then
   zplugin ice wait'2' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
   zplugin light neovim/neovim
-else if [[ $PLATFORM == "linux" ]]; then
+elif [[ $PLATFORM == "linux" ]]; then
   zplugin ice wait'2' lucid as"program" from:"gh-r" \
     bpick"nvim.appimage" mv"nvim.appimage -> $ZPFX/bin/nvim" pick"$ZPFX/bin/nvim"
   zplugin light neovim/neovim
