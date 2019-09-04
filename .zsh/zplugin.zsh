@@ -54,7 +54,8 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait'2' lucid atclone"pip install yq" atpull"pip update yq"
 zplugin light kislyuk/yq
 
-zplugin ice wait'2' lucid atclone"pip install vim-vint" atpull"pip update vim-vint"
+zplugin ice wait'2' lucid from:"gh-r" \
+  atclone"pip install vint" atpull"%atclone"
 zplugin light Kuniwak/vint
 
 zplugin ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"
