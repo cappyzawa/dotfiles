@@ -17,35 +17,35 @@ augroup END
 " Init
 " env "{{{
 function! s:vimrc_environment()
-    let env = {}
-    let env.is_ = {}
+    let l:env = {}
+    let l:env.is_ = {}
 
-    let env.is_.windows = has('win16') || has('win32') || has('win64')
-    let env.is_.cygwin = has('win32unix')
-    let env.is_.mac = !env.is_.windows && !env.is_.cygwin
+    let l:env.is_.windows = has('win16') || has('win32') || has('win64')
+    let l:env.is_.cygwin = has('win32unix')
+    let l:env.is_.mac = !l:env.is_.windows && !l:env.is_.cygwin
                 \ && (has('mac') || has('macunix') || has('gui_macvim') ||
                 \    (!executable('xdg-open') &&
                 \    system('uname') =~? '^darwin'))
-    let env.is_.linux = !env.is_.mac && has('unix')
+    let l:env.is_.linux = !l:env.is_.mac && has('unix')
 
 
-    let env.is_starting = has('vim_starting')
-    let env.is_gui      = has('gui_running')
+    let l:env.is_starting = has('vim_starting')
+    let l:env.is_gui      = has('gui_running')
 
-    let env.hostname    = substitute(hostname(), '[^\w.]', '', '')
+    let l:env.hostname    = substitute(hostname(), '[^\w.]', '', '')
 
     " vim
-    if env.is_.windows
-        let vimpath = expand('~/vimfiles')
+    if l:env.is_.windows
+        let l:vimpath = expand('~/vimfiles')
     else
-        let vimpath = expand('~/.vim')
+        let l:vimpath = expand('~/.vim')
     endif
 
-    let env.path = {
-                \ 'vim': vimpath,
+    let l:env.path = {
+                \ 'vim': l:vimpath,
                 \ }
 
-    let env.bin = {
+    let l:env.bin = {
                 \ 'ag': executable('ag'),
                 \ 'osascript': executable('osascript'),
                 \ 'open': executable('open'),
@@ -54,11 +54,11 @@ function! s:vimrc_environment()
                 \ }
 
     " tmux
-    let env.is_tmux_running = !empty($TMUX)
-    let env.tmux_proc = system('tmux display-message -p "#W"')
+    let l:env.is_tmux_running = !empty($TMUX)
+    let l:env.tmux_proc = system('tmux display-message -p "#W"')
 
   "echo get(g:env.vimrc, 'enable_plugin', g:false)
-    let env.vimrc = {
+    let l:env.vimrc = {
               \ 'plugin_on': g:true,
               \ 'suggest_neobundleinit': g:true,
               \ 'goback_to_eof2bof': g:false,
@@ -73,7 +73,7 @@ function! s:vimrc_environment()
               \ 'check_plug_update': g:true,
               \ }
 
-    return env
+    return l:env
 endfunction
 
 " g:env is an environment variable in vimrc
@@ -496,7 +496,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'bling/vim-bufferline'
     Plug 'vim-airline/vim-airline'
     Plug 'simeji/winresizer'
-    Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+    Plug 'majutsushi/tagbar'
+      nnoremap <silent> <C-]> :<C-u>TagbarToggle<CR>
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -536,29 +537,29 @@ if !g:plug.ready()
 endif
 
 function! g:plug.is_installed(strict, ...)
-    let list = []
+    let l:list = []
     if type(a:strict) != type(0)
         call add(list, a:strict)
     endif
-    let list += a:000
+    let l:list += a:000
 
-    for arg in list
-        let name   = substitute(arg, '^vim-\|\.vim$', '', 'g')
-        let prefix = 'vim-' . name
-        let suffix = name . '.vim'
+    for l:arg in l:list
+        let l:name   = substitute(l:arg, '^vim-\|\.vim$', '', 'g')
+        let l:prefix = 'vim-' . l:name
+        let l:suffix = l:name . '.vim'
 
         if a:strict == 1
-            let name   = arg
-            let prefix = arg
-            let suffix = arg
+            let l:name   = l:arg
+            let l:prefix = l:arg
+            let l:suffix = l:arg
         endif
 
-        if has_key(self.plugs, name)
-                    \ ? isdirectory(self.plugs[name].dir)
-                    \ : has_key(self.plugs, prefix)
-                    \ ? isdirectory(self.plugs[prefix].dir)
-                    \ : has_key(self.plugs, suffix)
-                    \ ? isdirectory(self.plugs[suffix].dir)
+        if has_key(l:self.plugs, l:name)
+                    \ ? isdirectory(l:self.plugs[l:name].dir)
+                    \ : has_key(l:self.plugs, l:prefix)
+                    \ ? isdirectory(l:self.plugs[l:prefix].dir)
+                    \ : has_key(l:self.plugs, l:suffix)
+                    \ ? isdirectory(l:self.plugs[l:suffix].dir)
                     \ : g:false
             continue
         else
@@ -583,7 +584,7 @@ function! g:plug.check_installation()
     endif
 
     let l:list = []
-    for [l:name, l:spec] in items(l:self.plugs)
+    for l:spec in items(l:self.plugs)
         if !isdirectory(l:spec.dir)
             call add(l:list, l:spec.uri)
         endif
@@ -686,10 +687,6 @@ if g:plug.is_installed('onedark.vim')
   colorscheme onedark
 endif
 
-if g:plug.is_installed('tagbar')
-  nnoremap <silent> <C-]> :<C-u>TagbarToggle<CR>
-endif
-
 if g:plug.is_installed('vault.nvim')
   let g:vault_default_path_prefix = 'concourse/main'
 endif
@@ -701,13 +698,15 @@ if g:plug.is_installed('elm-vim')
 endif
 
 if g:plug.is_installed('vim-airline')
-  let g:airline_powerline_fonts = 1
   let g:airline_skip_empty_sections = 1
   let g:airline_theme='onedark'
   let g:airline_extensions = ['branch',
         \ 'ale',
         \ 'bufferline']
 
+
+  let g:airline#extensions#tagbar#enabled = 1
+  let g:airline_lazyloaded_tagbar = 1
   let g:airline#extensions#bufferline#overwrite_variables = 0
   let g:airline#extensions#ale#error_symbol = '🔥'
   let g:airline#extensions#ale#warning_symbol = '⚡️'
