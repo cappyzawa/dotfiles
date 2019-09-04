@@ -4,7 +4,7 @@ set foldmethod=marker
 
 " faster
 if has('nvim')
-  let g:python3_host_prog=$HOME . '/.anyenv/envs/pyenv/shims/python'
+  let g:python3_host_prog=$XDG_CONFIG_HOME . '/.anyenv/envs/pyenv/shims/python'
 end
 
 let g:false = 0

@@ -7,3 +7,6 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule ".config/anyenv"]
+	path = .config/anyenv
+	url = https://github.com/anyenv/anyenv

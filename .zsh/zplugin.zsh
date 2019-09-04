@@ -1,6 +1,3 @@
-zplugin ice as"program" pick:"bin/anyenv"
-zplugin light anyenv/anyenv
-
 zplugin ice from"gh-r" as"program" lucid
 zplugin light "junegunn/fzf-bin"
 

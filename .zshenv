@@ -2,6 +2,7 @@ typeset -gx -U path
 path=( \
     /usr/local/bin(N-/) \
     ~/bin(N-/) \
+    ~/.config/anyenv/bin(N-/) \
     ~/.local/bin(N-/) \
     ~/.tmux/bin(N-/) \
     ~/.nimble/bin(N-/) \
@@ -99,6 +100,10 @@ if [[ $UID == 0 ]]; then
     unset HISTFILE
     export SAVEHIST=0
 fi
+
+# Config
+export XDG_CONFIG_HOME="$HOME/.config"
+export ANYENV_ROOT="${XDG_CONFIG_HOME}/anyenv"
 
 # available $INTERACTIVE_FILTER
 export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"
