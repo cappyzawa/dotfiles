@@ -21,6 +21,7 @@ modified = "📝"
 added = "➕"
 renamed = "👅"
 deleted = "🗑"
+show_sync_count = true
 
 [package]
 symbol = "🎁 "
