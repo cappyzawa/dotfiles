@@ -1,6 +1,7 @@
 .zsh/history/
 *.swp
 *.log
+.config/anyenv/
 .config/gcloud/
 .config/direnv/
 .config/configstore/
