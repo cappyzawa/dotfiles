@@ -11,5 +11,5 @@ if has 'ko'; then
 fi
 
 if has 'fly'; then
-  source <(fly completion zsh)
+  source <(fly completion --shell=zsh)
 fi

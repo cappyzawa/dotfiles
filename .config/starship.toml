@@ -3,12 +3,28 @@
 symbol = "$"     # The "symbol" segment is being set to "❯"
 error_symbol = "⚡️"
 use_symbol_for_status = true
+# Green
+style = "bold #98c379"
+
+[cmd_duration]
+# Light Yellow
+style = "#e5c07b"
 
 [battery]
 disabled = true
 
 [directory]
 truncation_length = 3
+# Blue
+style = "#61afef"
+
+[git_branch]
+# Light Red
+style = "#e06c75"
+
+[git_state]
+# Light Red
+style = "#e06c75"
 
 [git_status]
 conflicted = "🏳"
@@ -22,15 +38,27 @@ added = "➕"
 renamed = "👅"
 deleted = "🗑"
 show_sync_count = true
+# Light Red
+style = "#e06c75"
 
 [package]
 symbol = "🎁 "
+# Dark Red
+style = "#be5046"
 
 [nodejs]
 symbol = "🤖 "
+# Green
+style = "#98c379"
 
 [rust]
 symbol = "⚙️ "
+# Dark Yellow
+style = "#d19a66"
+
+[golang]
+# Cyan
+style = "#56b6c2"
 
 [username]
 disabled = false
