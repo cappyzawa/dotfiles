@@ -87,7 +87,7 @@ zplugin ice wait'2' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zplugin light neovim/neovim
 
 if ! (${COMPLETION_LOADED:-false}); then
-  zplugin creinstall %HOME/.zsh/Completion
+  zplugin creinstall %HOME/.zsh/Completion &>/dev/null
   export COMPLETION_LOADED=true
 fi
 
