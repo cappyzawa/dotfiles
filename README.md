@@ -1,5 +1,5 @@
 # dotfiees
-dotfilee for cappyzawa
+dotfile for cappyzawa
 
 ## Setup
 ```bash

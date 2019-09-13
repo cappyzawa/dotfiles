@@ -458,8 +458,11 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
 
     Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
-      let g:git_messenger_include_diff='current'
-      let g:git_messenger_always_into_popup=v:true
+      let g:git_messenger_include_diff = 'current'
+      let g:git_messenger_always_into_popup = v:true
+
+      nnoremap <silent> <Leader>gm :<C-u>GitMessenger<CR>
+      let g:git_messenger_no_default_mappings = v:true
 
     Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
     Plug 'cappyzawa/sd-validate.vim', { 'for': 'yaml' }
