@@ -431,7 +431,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     " Plug 'posva/vim-vue', { 'for': 'vue' }
-    Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+    Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
     Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
     Plug 'dense-analysis/ale'
 
