@@ -66,6 +66,7 @@ if has "npm"; then
     npm_global_install "@elm-tooling/elm-language-server"
   fi
 
-  if ! has "bash-language-server"
+  if ! has "bash-language-server"; then
     npm_global_install "bash-language-server"
+  fi
 fi
