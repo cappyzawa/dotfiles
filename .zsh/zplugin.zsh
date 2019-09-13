@@ -86,8 +86,13 @@ zplugin light golang/tools
 zplugin ice wait'2' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zplugin light neovim/neovim
 
-zplugin ice as:"completion" wait'3' lucid
-zplugin snippet $HOME/.zsh/_80_custom.zsh
+if ! (${COMPLETION_LOADED:-false}); then
+  zplugin creinstall %HOME/.zsh/Completion
+  export COMPLETION_LOADED=true
+fi
 
-zplugin ice as:"completion" wait'3' lucid
-zplugin load ~/.zsh/Completion
+zplugin ice wait'3' as"completion" lucid
+zplugin snippet https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion
+
+zplugin ice wait'3' as"completion" lucid
+zplugin snippet https://raw.githubusercontent.com/docker/compose/1.24.1/contrib/completion/zsh/_docker-compose

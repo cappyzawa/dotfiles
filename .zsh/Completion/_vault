@@ -1,3 +1,0 @@
-if has 'vault'; then
-  complete -o nospace -C vault vault
-fi

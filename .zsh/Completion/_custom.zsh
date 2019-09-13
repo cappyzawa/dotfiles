@@ -1,5 +1,3 @@
-set -x
-
 if has 'kubectl'; then
   source <(kubectl completion zsh)
 fi
@@ -16,4 +14,6 @@ if has 'fly'; then
   source <(fly completion --shell=zsh)
 fi
 
-set +x
+if has 'vault'; then
+  vault -autocomplete-install
+fi
