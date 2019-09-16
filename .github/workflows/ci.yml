@@ -9,6 +9,19 @@ jobs:
         os: [ubuntu-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
     steps:
+    - name: install-zsh
+      run: |
+        zsh_version="5.7.1"
+        export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
+        curl -L http://sourceforge.net/projects/zsh/files/zsh/${zsh_version}/zsh-${zsh_version}.tar.xz/download | tar Jxv
+
+        cd zsh-${zsh_version}
+        ./configure --prefix=$LOCAL --with-tcsetpgrp
+        make
+        make install
+        cd -
+        export PATH="$LOCAL/bin:$PATH"
+        which zsh
     - name: setUP
       run: |
         set -x
