@@ -11,4 +11,10 @@ jobs:
     steps:
     - name: setUP
       run: |
+        set -x
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
+    - name: deploy-links
+      shell: zsh
+      run: |
+        cd ~/.dotfiles
+        make deploy
