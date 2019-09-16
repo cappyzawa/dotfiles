@@ -25,7 +25,7 @@ jobs:
         sudo make install
         cd -
         sudo cp ${LOCAL}/bin/zsh /usr/local/bin/zsh
-        which zsh
+        chsh -s `which zsh`
     - name: setUP
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
@@ -35,9 +35,7 @@ jobs:
         make deploy
     - name: source-zsh
       run: |
-        zsh -c "source ~/.zshenv"
-        zsh -c "source ~/.zshrc"
-      shell: zsh
+        source ~/.bash_profile
     - name: vim PlugInstall
       run: |
         echo $PATH
