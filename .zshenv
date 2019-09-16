@@ -2,6 +2,7 @@ typeset -gx -U path
 path=( \
     /usr/local/bin(N-/) \
     ~/bin(N-/) \
+    /usr/sbin(N-/) \
     ~/.config/anyenv/bin(N-/) \
     ~/.local/bin(N-/) \
     ~/.tmux/bin(N-/) \
