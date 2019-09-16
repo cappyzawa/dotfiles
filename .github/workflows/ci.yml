@@ -35,3 +35,14 @@ jobs:
     - name: source-zshrc
       run: |
         zsh -c "source ~/.zshrc"
+
+  vim:
+    needs: [setUP]
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: vim PlugInstall
+      run: nvim +PlugUpdate +qall
