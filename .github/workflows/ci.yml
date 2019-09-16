@@ -20,7 +20,7 @@ jobs:
 
         cd zsh-${zsh_version}
         ./configure --prefix=${LOCAL} --with-tcsetpgrp
-        make
+        sudo make
         sudo make install
         cd -
         sudo cp ${LOCAL}/bin/zsh /usr/local/bin/zsh
