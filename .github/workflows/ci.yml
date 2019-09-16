@@ -1,0 +1,14 @@
+name: CI
+on: push
+jobs:
+  setUP:
+    name: Set Up
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: setUP
+      run: |
+        curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
