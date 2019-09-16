@@ -12,10 +12,11 @@ jobs:
     - name: install-zsh
       run: |
         zsh_version="5.7.1"
+        LOCAL="/tmp/zcptemp"
         if ! [[ -d /tmp ]]; then
           sudo mkdir /tmp
         fi
-        export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
+        sudo mkdir ${LOCAL}
         curl -L http://sourceforge.net/projects/zsh/files/zsh/${zsh_version}/zsh-${zsh_version}.tar.xz/download | tar Jxv
 
         cd zsh-${zsh_version}
@@ -35,14 +36,5 @@ jobs:
     - name: source-zshrc
       run: |
         zsh -c "source ~/.zshrc"
-
-  vim:
-    needs: [setUP]
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macOS-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
     - name: vim PlugInstall
-      run: nvim +PlugUpdate +qall
+      run: zsh -c "nvim +PlugInstall +qall"
