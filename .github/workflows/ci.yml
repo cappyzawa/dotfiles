@@ -12,22 +12,26 @@ jobs:
     - name: install-zsh
       run: |
         zsh_version="5.7.1"
+        if ! [[ -d /tmp ]]; then
+          sudo mkdir /tmp
+        fi
         export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
         curl -L http://sourceforge.net/projects/zsh/files/zsh/${zsh_version}/zsh-${zsh_version}.tar.xz/download | tar Jxv
 
         cd zsh-${zsh_version}
-        ./configure --prefix=$LOCAL --with-tcsetpgrp
+        ./configure --prefix=${LOCAL} --with-tcsetpgrp
         make
-        make install
+        sudo make install
         cd -
-        export PATH="$LOCAL/bin:$PATH"
+        sudo cp ${LOCAL}/bin/zsh /usr/local/bin/zsh
         which zsh
     - name: setUP
       run: |
-        set -x
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
     - name: deploy-links
-      shell: zsh
       run: |
         cd ~/.dotfiles
         make deploy
+    - name: source-zshrc
+      run: |
+        zsh -c "source ~/.zshrc"
