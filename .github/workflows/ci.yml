@@ -38,4 +38,6 @@ jobs:
         zsh -c "source ~/.zshenv"
         zsh -c "source ~/.zshrc"
     - name: vim PlugInstall
-      run: zsh -c "nvim +PlugInstall +qall"
+      run: |
+        echo $PATH
+        zsh -c "nvim +PlugInstall +qall"
