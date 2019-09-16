@@ -33,8 +33,9 @@ jobs:
       run: |
         cd ~/.dotfiles
         make deploy
-    - name: source-zshrc
+    - name: source-zsh
       run: |
+        zsh -c "source ~/.zshenv"
         zsh -c "source ~/.zshrc"
     - name: vim PlugInstall
       run: zsh -c "nvim +PlugInstall +qall"
