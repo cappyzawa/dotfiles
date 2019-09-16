@@ -37,6 +37,7 @@ jobs:
       run: |
         zsh -c "source ~/.zshenv"
         zsh -c "source ~/.zshrc"
+      shell: zsh
     - name: vim PlugInstall
       run: |
         echo $PATH
