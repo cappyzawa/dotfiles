@@ -25,7 +25,6 @@ jobs:
         sudo make install
         cd -
         sudo cp ${LOCAL}/bin/zsh /usr/local/bin/zsh
-        chsh -s `which zsh`
     - name: setUP
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
@@ -33,10 +32,8 @@ jobs:
       run: |
         cd ~/.dotfiles
         make deploy
-    - name: source-zsh
-      run: |
-        source ~/.bash_profile
     - name: vim PlugInstall
       run: |
-        echo $PATH
-        zsh -c "nvim +PlugInstall +qall"
+        source ~/.bash_profile
+        nvim +PlugInstall +qall
+      shell: bash
