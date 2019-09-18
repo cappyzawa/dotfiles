@@ -491,6 +491,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'ap/vim-css-color'
+    Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
 
     " Theme
     Plug 'joshdick/onedark.vim'
