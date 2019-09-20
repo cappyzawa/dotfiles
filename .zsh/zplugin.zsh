@@ -79,8 +79,8 @@ zplugin ice wait'2' lucid as"program" from"gh-r" \
   mv"stern* -> stern"
 zplugin light wercker/stern
 
-zplugin ice wait'3' lucid as"program" pick"$ZPFX/bin/gopls" has"go"\
-  atclone"go build -o $ZPFX/bin/gopls cmd/gopls/main.go" atpull"%atclone"
+zplugin ice wait'3' lucid as"program" has"go"\
+  atclone"go install ./..." atpull"%atclone"
 zplugin light golang/tools
 
 zplugin ice wait'2' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
