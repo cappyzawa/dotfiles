@@ -60,6 +60,7 @@ export GOPATH="$HOME/ghq"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 export GOENV_DISABLE_GOPATH=1
+export GOPRIVATE="*.yahoo.co.jp"
 
 # Setting for rust
 export PATH=$PATH:$HOME/.cargo/bin

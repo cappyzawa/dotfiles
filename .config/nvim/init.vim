@@ -431,16 +431,13 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     " Plug 'posva/vim-vue', { 'for': 'vue' }
-    Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
-    Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
     Plug 'dense-analysis/ale'
 
     " for only syntax
-    Plug 'fatih/vim-go', { 'for': 'go' }
     Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
-
-    " for ytt
     Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
+    Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
+    Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
 
     " Testing Tools
     Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
@@ -782,8 +779,10 @@ if g:plug.is_installed('coc.nvim')
       endif
     endif
   endfunction
+
   augroup CocCustom
     autocmd FileType elm setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
   augroup END
 
   nnoremap <silent><C-f><C-f> :<C-u>CocList<CR>
