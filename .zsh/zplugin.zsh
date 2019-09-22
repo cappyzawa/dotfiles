@@ -79,9 +79,13 @@ zplugin ice wait'2' lucid as"program" from"gh-r" \
   mv"stern* -> stern"
 zplugin light wercker/stern
 
-zplugin ice wait'3' lucid as"program" has"go"\
+zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ./..." atpull"%atclone"
 zplugin light golang/tools
+
+zplugin ice wait'3' lucid as"program" has"go" \
+  atclone"go install ./cmd/ko" atpull"%atclone"
+zplugin light google/ko
 
 zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn"
 zplugin light tektoncd/cli
