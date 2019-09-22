@@ -83,6 +83,9 @@ zplugin ice wait'3' lucid as"program" has"go"\
   atclone"go install ./..." atpull"%atclone"
 zplugin light golang/tools
 
+zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn"
+zplugin light tektoncd/cli
+
 zplugin ice wait'2' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zplugin light neovim/neovim
 
