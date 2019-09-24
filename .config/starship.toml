@@ -60,5 +60,10 @@ style = "#d19a66"
 # Cyan
 style = "#56b6c2"
 
+[java]
+# Dark Red
+style = "#be5046"
+
+
 [username]
 disabled = false
