@@ -86,6 +86,10 @@ zplugin light cloudfoundry/bosh-cli
 zplugin ice wait'2' lucid as"program" from"gh-r"
 zplugin light cappyzawa/vf
 
+zplugin ice wait'2' lucid as"program" from"gh-r" \
+  has"op"
+zplugin light cappyzawa/op-kv
+
 zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ./..." atpull"%atclone"
 zplugin light golang/tools

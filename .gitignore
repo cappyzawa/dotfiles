@@ -4,6 +4,7 @@
 .config/anyenv/
 .config/gcloud/
 .config/direnv/
+.config/.op/
 .config/configstore/
 node_modules/
 .config/coc/extensions/db.json
