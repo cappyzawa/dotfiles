@@ -32,8 +32,10 @@ jobs:
       run: |
         cd ~/.dotfiles
         make deploy
+        cd -
     - name: vim PlugInstall
       run: |
         source ~/.bash_profile
+        echo $PATH
         nvim +PlugInstall +qall
       shell: bash
