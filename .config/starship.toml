@@ -23,8 +23,7 @@ style = "#61afef"
 style = "#e06c75"
 
 [git_state]
-# Light Red
-style = "#e06c75"
+disabled = true
 
 [git_status]
 conflicted = "🏳"
