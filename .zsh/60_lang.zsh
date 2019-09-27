@@ -69,4 +69,8 @@ if has "npm"; then
   if ! has "bash-language-server"; then
     npm_global_install "bash-language-server"
   fi
+
+  if ! has "dockerfile-language-server-nodejs"; then
+    npm_global_install "dockerfile-language-server-nodejs"
+  fi
 fi

@@ -95,6 +95,10 @@ zplugin ice wait'3' lucid as"program" has"go" \
 zplugin light golang/tools
 
 zplugin ice wait'3' lucid as"program" has"go" \
+  atclone"./install.sh" atpull"%atclone"
+zplugin light golang/dep
+
+zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ./cmd/ko" atpull"%atclone"
 zplugin light google/ko
 
