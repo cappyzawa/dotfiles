@@ -28,22 +28,3 @@ jobs:
     - name: setUP
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
-    - name: deploy-links
-      run: |
-        cd ~/.dotfiles
-        make deploy
-        cd -
-    - name: source profile
-      run: |
-        zsh -c "source ~/.zshenv"
-        zsh -c "source ~/.zshrc"
-        sleep 60
-        echo "1"
-        sleep 60
-        echo "2"
-        sleep 60
-        echo "3"
-        echo "done"
-    - name: vim PlugInstall
-      run: |
-        zsh -c "nvim +PlugInstall +qall"
