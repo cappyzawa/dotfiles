@@ -1,6 +1,11 @@
-# Replace the "➜" symbol in the prompt with "❯"
-[character]      # The name of the module we are confguring is "character"
-symbol = "$"     # The "symbol" segment is being set to "❯"
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[character]
+symbol = "$"
 error_symbol = "⚡️"
 use_symbol_for_status = true
 # Green
@@ -10,13 +15,15 @@ style = "bold #98c379"
 # Light Yellow
 style = "#e5c07b"
 
-[battery]
-disabled = true
-
 [directory]
 truncation_length = 3
 # Blue
 style = "#61afef"
+
+[env_var]
+# TODO
+# Green
+style = "#98c379"
 
 [git_branch]
 # Light Red
@@ -40,8 +47,25 @@ show_sync_count = true
 # Light Red
 style = "#e06c75"
 
-[package]
-symbol = "🎁 "
+[golang]
+# Cyan
+style = "#56b6c2"
+
+[hostname]
+# Green
+style = "#98c379"
+
+[jobs]
+# Blue
+style = "#61afef"
+
+[line_break]
+disabled = false
+
+[nix_shell]
+disabled = true
+
+[java]
 # Dark Red
 style = "#be5046"
 
@@ -50,19 +74,28 @@ symbol = "🤖 "
 # Green
 style = "#98c379"
 
+[package]
+symbol = "🎁 "
+# Dark Red
+style = "#be5046"
+
+[python]
+# Light Yellow
+style = "#e5c07b"
+
+[ruby]
+# Dark Red
+style = "#be5046"
+
 [rust]
 symbol = "⚙️ "
 # Dark Yellow
 style = "#d19a66"
 
-[golang]
-# Cyan
-style = "#56b6c2"
-
-[java]
-# Dark Red
-style = "#be5046"
-
+[time]
+disabled = true
 
 [username]
 disabled = false
+# Light Yellow
+style_user = "#e5c07b"
