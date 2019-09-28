@@ -408,6 +408,11 @@ function! g:plug.ready()
     return filereadable(l:self.plug)
 endfunction
 
+" custom syntax
+augroup CustomSyntax
+  autocmd BufNewFile,BufRead *.cw,*.jira set filetype=confluencewiki
+augroup END
+
 if g:plug.ready() && g:env.vimrc.plugin_on
     " start to manage with vim-plug
     call plug#begin(g:plug.base)
@@ -430,6 +435,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+    Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
     " Plug 'posva/vim-vue', { 'for': 'vue' }
     Plug 'dense-analysis/ale'
 
