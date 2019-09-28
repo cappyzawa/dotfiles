@@ -118,6 +118,11 @@ update_nvim() {
   popd
 }
 
+gitlocal() {
+  git config --local user.name cappyzawa
+  git config --local user.email "cappyzawa@yahoo.ne.jp"
+}
+
 if has 'anyenv'; then
   eval "$(anyenv init -)"
 fi
