@@ -90,6 +90,10 @@ zplugin ice wait'2' lucid as"program" from"gh-r" \
   has"op"
 zplugin light cappyzawa/op-kv
 
+zplugin ice wait'2' lucid as"program" from"gh-r" ver"v5.5.1" id-as"concourse/fly"\
+  bpick"fly-*" atclone"./fly completion --shell=zsh > ~/.zsh/Completion/_fly" atpull"%atclone"
+zplugin light concourse/concourse
+
 zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ./..." atpull"%atclone"
 zplugin light golang/tools
@@ -99,10 +103,11 @@ zplugin ice wait'3' lucid as"program" has"go" \
 zplugin light golang/dep
 
 zplugin ice wait'3' lucid as"program" has"go" \
-  atclone"go install ./cmd/ko" atpull"%atclone"
+  atclone"go install ./cmd/ko && ko completion --zsh > ~/.zsh/Completion/_ko" atpull"%atclone"
 zplugin light google/ko
 
-zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn"
+zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
+  atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn" atpull"%atclone"
 zplugin light tektoncd/cli
 
 zplugin ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
@@ -112,9 +117,3 @@ if ! (${COMPLETION_LOADED:-false}); then
   zplugin creinstall %HOME/.zsh/Completion &>/dev/null
   export COMPLETION_LOADED=true
 fi
-
-zplugin ice wait'3' as"completion" lucid
-zplugin snippet https://raw.githubusercontent.com/github/hub/master/etc/hub.zsh_completion
-
-zplugin ice wait'3' as"completion" lucid
-zplugin snippet https://raw.githubusercontent.com/docker/compose/1.24.1/contrib/completion/zsh/_docker-compose

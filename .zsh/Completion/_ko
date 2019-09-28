@@ -1,0 +1,177 @@
+#compdef _ko ko
+
+
+function _ko {
+  local -a commands
+
+  _arguments -C \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "apply:Apply the input files with image references resolved to built/pushed image digests."
+      "completion:Output shell completion code (default Bash)"
+      "create:Create the input files with image references resolved to built/pushed image digests."
+      "delete:See "kubectl help delete" for detailed usage."
+      "help:Help about any command"
+      "publish:Build and publish container images from the given importpaths."
+      "resolve:Print the input files with image references resolved to built/pushed image digests."
+      "run:A variant of `kubectl run` that containerizes IMPORTPATH first."
+      "version:Print ko version."
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  apply)
+    _ko_apply
+    ;;
+  completion)
+    _ko_completion
+    ;;
+  create)
+    _ko_create
+    ;;
+  delete)
+    _ko_delete
+    ;;
+  help)
+    _ko_help
+    ;;
+  publish)
+    _ko_publish
+    ;;
+  resolve)
+    _ko_resolve
+    ;;
+  run)
+    _ko_run
+    ;;
+  version)
+    _ko_version
+    ;;
+  esac
+}
+
+function _ko_apply {
+  _arguments \
+    '--as[Username to impersonate for the operation]:' \
+    '*--as-group[Group to impersonate for the operation, this flag can be repeated to specify multiple groups.]:' \
+    '(-B --base-import-paths)'{-B,--base-import-paths}'[Whether to use the base path without MD5 hash after KO_DOCKER_REPO.]' \
+    '--cache-dir[Default HTTP cache directory]:' \
+    '--certificate-authority[Path to a cert file for the certificate authority]:' \
+    '--client-certificate[Path to a client certificate file for TLS]:' \
+    '--client-key[Path to a client key file for TLS]:' \
+    '--cluster[The name of the kubeconfig cluster to use]:' \
+    '--context[The name of the kubeconfig context to use]:' \
+    '--disable-optimizations[Disable optimizations when building Go code. Useful when you want to interactively debug the created container.]' \
+    '(*-f *--filename)'{\*-f,\*--filename}'[Filename, directory, or URL to files to use to create the resource]:' \
+    '--insecure-registry[Whether to skip TLS verification on the registry]' \
+    '--insecure-skip-tls-verify[If true, the server'\''s certificate will not be checked for validity. This will make your HTTPS connections insecure]' \
+    '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
+    '--kubeconfig[Path to the kubeconfig file to use for CLI requests.]:' \
+    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-n --namespace)'{-n,--namespace}'[If present, the namespace scope for this CLI request]:' \
+    '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
+    '(-R --recursive)'{-R,--recursive}'[Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.]' \
+    '--request-timeout[The length of time to wait before giving up on a single server request. Non-zero values should contain a corresponding time unit (e.g. 1s, 2m, 3h). A value of zero means don'\''t timeout requests.]:' \
+    '(-l --selector)'{-l,--selector}'[Selector (label query) to filter on, supports '\''='\'', '\''=='\'', and '\''!='\''.(e.g. -l key1=value1,key2=value2)]:' \
+    '(-s --server)'{-s,--server}'[The address and port of the Kubernetes API server]:' \
+    '--strict[If true, require package references to be explicitly prefixed with "ko://"]' \
+    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:' \
+    '--token[Bearer token for authentication to the API server]:' \
+    '--user[The name of the kubeconfig user to use]:' \
+    '(-W --watch)'{-W,--watch}'[Continuously monitor the transitive dependencies of the passed yaml files, and redeploy whenever anything changes.]'
+}
+
+function _ko_completion {
+  _arguments \
+    '(-h --help)'{-h,--help}'[help for completion]' \
+    '--zsh[Generates completion code for Zsh shell.]'
+}
+
+function _ko_create {
+  _arguments \
+    '--as[Username to impersonate for the operation]:' \
+    '*--as-group[Group to impersonate for the operation, this flag can be repeated to specify multiple groups.]:' \
+    '(-B --base-import-paths)'{-B,--base-import-paths}'[Whether to use the base path without MD5 hash after KO_DOCKER_REPO.]' \
+    '--cache-dir[Default HTTP cache directory]:' \
+    '--certificate-authority[Path to a cert file for the certificate authority]:' \
+    '--client-certificate[Path to a client certificate file for TLS]:' \
+    '--client-key[Path to a client key file for TLS]:' \
+    '--cluster[The name of the kubeconfig cluster to use]:' \
+    '--context[The name of the kubeconfig context to use]:' \
+    '--disable-optimizations[Disable optimizations when building Go code. Useful when you want to interactively debug the created container.]' \
+    '(*-f *--filename)'{\*-f,\*--filename}'[Filename, directory, or URL to files to use to create the resource]:' \
+    '--insecure-registry[Whether to skip TLS verification on the registry]' \
+    '--insecure-skip-tls-verify[If true, the server'\''s certificate will not be checked for validity. This will make your HTTPS connections insecure]' \
+    '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
+    '--kubeconfig[Path to the kubeconfig file to use for CLI requests.]:' \
+    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-n --namespace)'{-n,--namespace}'[If present, the namespace scope for this CLI request]:' \
+    '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
+    '(-R --recursive)'{-R,--recursive}'[Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.]' \
+    '--request-timeout[The length of time to wait before giving up on a single server request. Non-zero values should contain a corresponding time unit (e.g. 1s, 2m, 3h). A value of zero means don'\''t timeout requests.]:' \
+    '(-l --selector)'{-l,--selector}'[Selector (label query) to filter on, supports '\''='\'', '\''=='\'', and '\''!='\''.(e.g. -l key1=value1,key2=value2)]:' \
+    '(-s --server)'{-s,--server}'[The address and port of the Kubernetes API server]:' \
+    '--strict[If true, require package references to be explicitly prefixed with "ko://"]' \
+    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:' \
+    '--token[Bearer token for authentication to the API server]:' \
+    '--user[The name of the kubeconfig user to use]:' \
+    '(-W --watch)'{-W,--watch}'[Continuously monitor the transitive dependencies of the passed yaml files, and redeploy whenever anything changes.]'
+}
+
+function _ko_delete {
+  _arguments
+}
+
+function _ko_help {
+  _arguments
+}
+
+function _ko_publish {
+  _arguments \
+    '(-B --base-import-paths)'{-B,--base-import-paths}'[Whether to use the base path without MD5 hash after KO_DOCKER_REPO.]' \
+    '--disable-optimizations[Disable optimizations when building Go code. Useful when you want to interactively debug the created container.]' \
+    '--insecure-registry[Whether to skip TLS verification on the registry]' \
+    '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
+    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
+    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:'
+}
+
+function _ko_resolve {
+  _arguments \
+    '(-B --base-import-paths)'{-B,--base-import-paths}'[Whether to use the base path without MD5 hash after KO_DOCKER_REPO.]' \
+    '--disable-optimizations[Disable optimizations when building Go code. Useful when you want to interactively debug the created container.]' \
+    '(*-f *--filename)'{\*-f,\*--filename}'[Filename, directory, or URL to files to use to create the resource]:' \
+    '--insecure-registry[Whether to skip TLS verification on the registry]' \
+    '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
+    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
+    '(-R --recursive)'{-R,--recursive}'[Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.]' \
+    '(-l --selector)'{-l,--selector}'[Selector (label query) to filter on, supports '\''='\'', '\''=='\'', and '\''!='\''.(e.g. -l key1=value1,key2=value2)]:' \
+    '--strict[If true, require package references to be explicitly prefixed with "ko://"]' \
+    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:' \
+    '(-W --watch)'{-W,--watch}'[Continuously monitor the transitive dependencies of the passed yaml files, and redeploy whenever anything changes.]'
+}
+
+function _ko_run {
+  _arguments \
+    '(-B --base-import-paths)'{-B,--base-import-paths}'[Whether to use the base path without MD5 hash after KO_DOCKER_REPO.]' \
+    '--disable-optimizations[Disable optimizations when building Go code. Useful when you want to interactively debug the created container.]' \
+    '(-i --image)'{-i,--image}'[The import path of the binary to publish.]:' \
+    '--insecure-registry[Whether to skip TLS verification on the registry]' \
+    '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
+    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
+    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:'
+}
+
+function _ko_version {
+  _arguments
+}
+
