@@ -27,7 +27,8 @@ zplugin ice wait"2" as"program" from"gh-r" \
   mv"jq-* -> jq" pick"jq" lucid
 zplugin light stedolan/jq
 
-zplugin ice wait"2" as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh" lucid
+zplugin ice wait"3" as"program" has"go" \
+  make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh" lucid
 zplugin light direnv/direnv
 
 zplugin ice wait"2" as"program" from"gh-r" pick"ghq_*/ghq" lucid
@@ -118,7 +119,7 @@ zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn" atpull"%atclone"
 zplugin light tektoncd/cli
 
-zplugin ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
+zplugin ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zplugin light neovim/neovim
 
 if ! (${COMPLETION_LOADED:-false}); then

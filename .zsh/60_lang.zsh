@@ -31,6 +31,10 @@ if has "cargo"; then
   if ! has "starship"; then
     cargo_install "starship"
   fi
+
+  if ! has "rg"; then
+    cargo_install "ripgrep"
+  fi
 fi
 
 if ! has "rls"; then
