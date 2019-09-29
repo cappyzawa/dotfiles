@@ -106,6 +106,14 @@ zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ./cmd/ko && ko completion --zsh > ~/.zsh/Completion/_ko" atpull"%atclone"
 zplugin light google/ko
 
+zplugin ice wait'3' lucid as"program" has"go" \
+  atclone"go install ./cmd/jira && jira --completion-script-zsh > ~/.zsh/Completion/_jira" atpull"%atclone"
+zplugin light go-jira/jira
+
+zplugin ice wait'3' lucid as"program" has"go" \
+  atclone"go install ." atpull"%atclone"
+zplugin light timakin/md2mid
+
 zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn" atpull"%atclone"
 zplugin light tektoncd/cli
