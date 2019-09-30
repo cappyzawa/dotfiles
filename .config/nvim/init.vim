@@ -794,4 +794,16 @@ if g:plug.is_installed('coc.nvim')
 
   nnoremap <silent><C-f><C-f> :<C-u>CocList<CR>
 endif
+
+if executable('jira')
+  function! s:excute_jira(...) abort
+    let l:opts = ''
+    for l:opt in a:000
+      let l:opts = l:opts . ' ' . l:opt
+    endfor
+  endfunction
+
+  let l:cmd = 'jira' . l:opts
+  execute ':Deol -command '. l:cmd
+endif
 " }}}

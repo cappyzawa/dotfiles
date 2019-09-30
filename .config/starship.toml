@@ -6,10 +6,11 @@ disabled = true
 
 [character]
 symbol = "$"
-error_symbol = "⚡️"
-use_symbol_for_status = true
+use_symbol_for_status = false
 # Green
-style = "bold #98c379"
+style_success = "bold #98c379"
+# Light Red
+style_failure = "bold #e06c75"
 
 [cmd_duration]
 # Light Yellow
