@@ -40,6 +40,9 @@ zplugin light goreleaser/goreleaser
 zplugin ice wait"2" as"program" from"gh-r" pick"lazygit" lucid
 zplugin light jesseduffield/lazygit
 
+zplugin ice wait'2' as"program" from"gh-r" pick"hyperfine-*/hyperfine" lucid
+zplugin light sharkdp/hyperfine
+
 zplugin ice wait"2" as"program" from"gh-r" pick"gotop" lucid
 zplugin light cjbassi/gotop
 
