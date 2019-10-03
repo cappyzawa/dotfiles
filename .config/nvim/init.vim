@@ -435,12 +435,13 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+    Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
 
     Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
     " Plug 'posva/vim-vue', { 'for': 'vue' }
     Plug 'dense-analysis/ale'
 
-    " for only syntax
+    " For only syntax
     Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
     Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
     Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
