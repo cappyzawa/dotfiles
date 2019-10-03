@@ -18,7 +18,7 @@ if [[ -d $KREW_ROOT ]]; then
 fi
 
 if (which jenv > /dev/null); then
-  export JAVA_HOME="$HOME/.anyenv/envs/jenv/versions/`jenv version-name`"
+  export JAVA_HOME="${ANYENV_ROOT}/envs/jenv/versions/`jenv version-name`"
 fi
 
 if has "jq"; then
