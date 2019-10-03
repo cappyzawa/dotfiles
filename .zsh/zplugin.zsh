@@ -109,7 +109,7 @@ zplugin light google/ko
 
 zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ./cmd/jira && jira --completion-script-zsh > ~/.zsh/Completion/_jira" atpull"%atclone"
-zplugin light cappyzawa/jira
+zplugin light go-jira/jira
 
 zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ." atpull"%atclone"
