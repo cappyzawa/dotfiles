@@ -60,6 +60,12 @@ style = "#98c379"
 # Blue
 style = "#61afef"
 
+[kubernetes]
+symbol = "⎈ "
+# Cyan
+style = "#56b6c2"
+disabled = true
+
 [line_break]
 disabled = false
 
