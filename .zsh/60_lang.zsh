@@ -15,6 +15,27 @@ if has 'anyenv'; then
   if ! has 'pyenv'; then
     anyenv install pyenv
   fi
+  exec $SHELL -l
+fi
+
+if has "goenv"; then
+  version="1.13.1"
+  goenv install ${version} && goenv global ${version}
+fi
+
+if has "nodenv"; then
+  version="10.16.3"
+  nodenv install ${version} && nodenv global ${version}
+fi
+
+if has "rbenv"; then
+  version="2.6.5"
+  rbenv install ${version} && rbenv global ${version}
+fi
+
+if has "pyenv"; then
+  version="3.7.4"
+  pyenv install ${version} && pyenv global ${version}
 fi
 
 # for rust
