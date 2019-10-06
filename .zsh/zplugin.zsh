@@ -98,7 +98,10 @@ zplugin ice wait'2' lucid as"program" from"gh-r" \
   pick"jqlb"
 zplugin light cappyzawa/jql-builder
 
-zplugin ice wait'2' lucid as"program" from"gh-r" ver"v5.5.1" id-as"concourse/fly"\
+zplugin ice wait'2' lucid as"program" pick:"kubectx"
+zplugin light ahmetb/kubectx
+
+zplugin ice wait'2' lucid as"program" from"gh-r" id-as"concourse/fly"\
   bpick"fly-*" atclone"./fly completion --shell=zsh > ~/.zsh/Completion/_fly" atpull"%atclone"
 zplugin light concourse/concourse
 
