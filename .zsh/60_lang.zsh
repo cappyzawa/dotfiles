@@ -9,6 +9,12 @@ if has 'anyenv'; then
     nodenv install 12.5.0
     nodenv global 12.5.0
   fi
+  if ! has 'rbenv'; then
+    anyenv install rbenv
+  fi
+  if ! has 'pyenv'; then
+    anyenv install pyenv
+  fi
 fi
 
 # for rust
@@ -76,5 +82,30 @@ if has "npm"; then
 
   if ! has "docker-langserver"; then
     npm_global_install "dockerfile-language-server-nodejs"
+  fi
+fi
+
+# for Ruby
+gem_install(){
+  pkg=$1
+  echo "dotfile: Install ${pkg}"
+  gem install ${pkg}
+}
+
+if has "gem"; then
+  if ! has "solargraph"; then
+    gem_install solargraph
+  fi
+fi
+
+pip_instal() {
+  pkg=$1
+  echo "dotfile: Install ${pkg}"
+  pip install ${pkg}
+}
+
+if has "pip"; then
+  if ! has "vint"; then
+    pip_instal vim-vint
   fi
 fi
