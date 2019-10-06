@@ -1,15 +1,39 @@
 if has 'anyenv'; then
   if ! has 'goenv'; then
-    anyenv install goenv
+    anyenv install goenv && exec $SHELL -l
   fi
   if ! has 'nodenv'; then
-    anyenv install nodenv
+    anyenv install nodenv && exec $SHELL -l
   fi
   if ! has 'rbenv'; then
-    anyenv install rbenv
+    anyenv install rbenv && exec $SHELL -l
   fi
   if ! has 'pyenv'; then
-    anyenv install pyenv
+    anyenv install pyenv && exec $SHELL -l
+  fi
+fi
+
+if has "goenv"; then
+  if ! [[ -d "${ANYENV_ROOT}/envs/goenv/versions/1.13.1" ]]; then
+    goenv install 1.13.1 && goenv global 1.13.1
+  fi
+fi
+
+if has "nodenv"; then
+  if ! [[ -d "${ANYENV_ROOT}/envs/nodenv/versions/10.16.3" ]]; then
+    nodenv install 10.16.3 && nodenv global 10.16.3
+  fi
+fi
+
+if has "rbenv"; then
+  if ! [[ -d "${ANYENV_ROOT}/envs/rbenv/versions/2.6.5" ]]; then
+    rbenv install 2.6.5 && rbenv global 2.6.5
+  fi
+fi
+
+if has "pyenv"; then
+  if ! [[ -d "${ANYENV_ROOT}/envs/pyenv/versions/3.7.4" ]]; then
+    pyenv install 3.7.4 && pyenv global 3.7.4
   fi
 fi
 
