@@ -8,6 +8,6 @@
     "coc-tsserver": ">=1.4.0",
     "coc-tslint-plugin": ">=1.1.1",
     "coc-vetur": ">=1.1.5",
-    "coc-lists": ">=1.3.3"
+    "coc-lists": ">=1.3.4"
   }
 }
