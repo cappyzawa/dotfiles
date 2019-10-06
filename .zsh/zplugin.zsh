@@ -132,7 +132,4 @@ zplugin light tektoncd/cli
 zplugin ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zplugin light neovim/neovim
 
-if ! (${COMPLETION_LOADED:-false}); then
-  zplugin creinstall %HOME/.zsh/Completion &>/dev/null
-  export COMPLETION_LOADED=true
-fi
+zplugin creinstall %HOME/.zsh/Completion
