@@ -128,4 +128,5 @@ if has "pip"; then
   if ! has "vint"; then
     pip_instal vim-vint
   fi
+  pip install pynvim
 fi
