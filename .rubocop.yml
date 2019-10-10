@@ -1,0 +1,11 @@
+---
+Style/AsciiComments:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Naming/FileName:
+  Enabled: false
+SignalException:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
