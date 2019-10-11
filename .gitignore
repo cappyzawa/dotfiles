@@ -1,6 +1,7 @@
 .zsh/history/
 *.swp
 *.log
+*.pem
 .config/anyenv/*.swp
 .config/anyenv/envs/
 .config/anyenv/plugins/

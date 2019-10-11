@@ -9,3 +9,8 @@ SignalException:
   Enabled: false
 Metrics/MethodLength:
   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+Style/FrozenStringLiteralComment:
+  Enabled: false
