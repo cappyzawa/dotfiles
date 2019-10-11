@@ -225,19 +225,18 @@ endif
 " Restore cursor position
 if g:env.vimrc.restore_cursor_position == g:true
   function! s:restore_cursor_postion()
-    if line("'\"") <= line("$")
+    if line("'\"") <= line('$')
       normal! g`"
       return 1
     endif
   endfunction
   augroup restore-cursor-position
     autocmd!
-    autocmd BufWinEnter * call <SID>restore_cursor_postion()
+    autocmd BufWinEnter * call s:restore_cursor_postion()
   augroup END
 endif
 
 " Restore the buffer that has been deleted
-let s:bufqueue = []
 augroup buffer-queue-restore
   autocmd!
   "autocmd BufDelete * call <SID>buf_enqueue(expand('#'))
@@ -433,7 +432,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
-    Plug 'godlygeek/tabular', {'for': 'markdown'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
 
@@ -794,5 +792,12 @@ if g:plug.is_installed('coc.nvim')
   augroup END
 
   nnoremap <silent><C-f><C-f> :<C-u>CocList<CR>
+endif
+
+if executable('vim-language-sever')
+  let g:markdown_forced_languages = [
+    \ 'vim',
+    \ 'help'
+    \ ]
 endif
 " }}}

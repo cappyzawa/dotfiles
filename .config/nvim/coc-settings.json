@@ -38,6 +38,32 @@
         "elmAnalyseTrigger": "change"
       }
     },
+    "vimls": {
+      "command": "vim-language-server",
+      "args": [
+        "--stdio"
+      ],
+      "initializationOptions": {
+        "iskeyword": "vim iskeyword option",
+        "vimruntime": "$VIMRUNTIME",
+        "runtimepath": false,
+        "diagnostic": {
+          "enable": false
+        },
+        "indexes": {
+          "runtimepath": true,
+          "gap": 100,
+          "count": 3
+        },
+        "suggest": {
+          "fromVimruntime": true,
+          "fromRuntimepath": false
+        }
+      },
+      "filetypes": [
+        "vim"
+      ]
+    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": [
