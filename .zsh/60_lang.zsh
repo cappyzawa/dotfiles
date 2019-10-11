@@ -103,6 +103,16 @@ if has "npm"; then
   if ! has "docker-langserver"; then
     npm_global_install "dockerfile-language-server-nodejs"
   fi
+
+  if ! has "yarn"; then
+    npm_global_install "yarn"
+  fi
+fi
+
+if has "yarn"; then
+  if ! has "vim-language-server"; then
+    yarn global add vim-language-server
+  fi
 fi
 
 # for Ruby
