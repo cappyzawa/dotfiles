@@ -1,0 +1,4 @@
+.idea/*
+.envrc
+.go-version
+.DS_STORE
