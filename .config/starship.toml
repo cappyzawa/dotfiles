@@ -64,7 +64,7 @@ style = "#61afef"
 symbol = "⎈ "
 # Cyan
 style = "#56b6c2"
-disabled = true
+disabled = false
 
 [line_break]
 disabled = false
