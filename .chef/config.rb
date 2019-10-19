@@ -12,4 +12,8 @@ client_key               ENV['CHEF_CLIENT_KEY']
 chef_server_url          ENV['CHEF_SERVER_URL']
 cookbook_path            [current_dir]
 
-knife[:vault_mode] = 'client' 
+knife[:vault_mode] = 'client'
+
+# Set admins as CHEF_ADMINS, delimiter should be ','
+admins_str = ENV['CHEF_ADMINS']
+knife[:vault_admins] = admins_str.split(',')
