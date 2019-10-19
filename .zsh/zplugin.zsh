@@ -124,6 +124,10 @@ zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ." atpull"%atclone"
 zplugin light timakin/md2mid
 
+zplugin ice wait'3' lucid as"program" has"go" \
+  atclone"go install ." atpull"%atclone"
+zplugin light kubernetes-sigs/kind
+
 zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn" atpull"%atclone"
 zplugin light tektoncd/cli
