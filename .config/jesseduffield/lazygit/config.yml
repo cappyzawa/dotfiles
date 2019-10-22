@@ -1,0 +1,24 @@
+confirmonquit: false
+git:
+  autofetch: true
+  merging:
+    manualcommit: false
+  skiphookprefix: WIP
+gui:
+  commitlength:
+    show: true
+  scrollheight: 2
+  scrollpastbottom: true
+  theme:
+    activebordercolor:
+    - green
+    - reverse
+    inactivebordercolor:
+    - white
+    lighttheme: true
+    optionstextcolor:
+    - blue
+reporting: "on"
+update:
+  days: 14
+  method: prompt
