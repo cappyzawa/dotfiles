@@ -32,6 +32,10 @@ fi
 
 if has "lazygit"; then
   alias lg='lazygit'
+
+  if [[ "${PLATFORM}" == "osx" ]] && ! [[ -d ~/Library/Application\ Support/jesseduffield/lazygit ]]; then
+    ln -s ~/.config/jesseduffield/lazygit ~/Library/Application\ Support/jesseduffield/lazygit
+  fi
 fi
 
 if has "lazydocker"; then
