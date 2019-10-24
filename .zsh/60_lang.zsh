@@ -32,8 +32,8 @@ if has "rbenv"; then
 fi
 
 if has "pyenv"; then
-  if ! [[ -d "${ANYENV_ROOT}/envs/pyenv/versions/3.7.4" ]]; then
-    pyenv install "3.7.4" && pyenv global "3.7.4"
+  if ! [[ -d "${ANYENV_ROOT}/envs/pyenv/versions/anaconda3-5.3.1" ]]; then
+    pyenv install "anaconda3-5.3.1" && pyenv global "anaconda3-5.3.1"
   fi
 fi
 
