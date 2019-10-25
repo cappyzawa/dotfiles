@@ -434,6 +434,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
+    Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
 
     Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
     " Plug 'posva/vim-vue', { 'for': 'vue' }
@@ -702,6 +703,10 @@ if g:plug.is_installed('elm-vim')
   let g:elm_format_autosave = 0
   let g:elm_setup_keybinding = 0
   let g:elm_jump_to_error = 0
+endif
+
+if g:plug.is_installed('julia-vim')
+  let g:default_julia_version = "1.2.0"
 endif
 
 if g:plug.is_installed('vim-airline')
