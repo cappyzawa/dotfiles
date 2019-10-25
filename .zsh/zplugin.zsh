@@ -52,6 +52,9 @@ zplugin light sharkdp/hyperfine
 zplugin ice wait"2" as"program" from"gh-r" pick"gotop" lucid
 zplugin light cjbassi/gotop
 
+zplugin ice wait"2" as"program" from"gh-r" pick"*/ccat" lucid
+zplugin light jingweno/ccat
+
 zplugin ice wait'2' lucid
 zplugin light zsh-users/zsh-completions
 

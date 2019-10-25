@@ -42,6 +42,10 @@ else
   alias diff='diff -u'
 fi
 
+if has "ccat"; then
+  alias cat='ccat'
+fi
+
 if has "emojify"; then
   alias -g E='| emojify'
 fi
