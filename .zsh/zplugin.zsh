@@ -131,6 +131,10 @@ zplugin ice wait'3' lucid as"program" has"go" \
 zplugin light timakin/md2mid
 
 zplugin ice wait'3' lucid as"program" has"go" \
+  atclone"go install ." atpull"%atclone"
+zplugin light skanehira/gtran
+
+zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install . && kind completion zsh > ~/.zsh/Completion/_kind" atpull"%atclone"
 zplugin light kubernetes-sigs/kind
 

@@ -454,14 +454,13 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " Utils
     Plug 'jiangmiao/auto-pairs'
 
-    Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
-      let g:netrw_nogx = 1 " disable netrw's gx mapping.
-      nmap gx <Plug>(openbrowser-smart-search)
-      vmap gx <Plug>(openbrowser-smart-search)
     Plug 'tyru/open-browser-github.vim', { 'on' : ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq'] }
       nnoremap <silent> [Space]ogf :<C-u>OpenGithubFile<CR>
       nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
       nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
+        Plug 'tyru/open-browser.vim'
+        nmap gx <Plug>(openbrowser-smart-search)
+        vmap gx <Plug>(openbrowser-smart-search)
 
     Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
       let g:git_messenger_include_diff = 'current'
@@ -498,6 +497,13 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'ap/vim-css-color'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+    if ! has('nvim')
+      Plug 'skanehira/translate.vim', { 'on': 'Translate' }
+        let g:translate_source = "en"
+        let g:translate_target = "ja"
+        let g:translate_winsize = 10
+    endif
+
 
     " Theme
     Plug 'joshdick/onedark.vim'
