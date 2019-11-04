@@ -110,6 +110,11 @@ zplugin ice wait'2' lucid as"program" from"gh-r" id-as"concourse/fly"\
   bpick"fly-*" atclone"./fly completion --shell=zsh > ~/.zsh/Completion/_fly" atpull"%atclone"
 zplugin light concourse/concourse
 
+zplugin ice wait'3' lucid has"java" \
+  atclone"./gradlew shadowJar && mv EmmyLua-LS/build/libs/EmmyLua-LS-all.jar ~/bin/EmmyLua-LS-all.jar" \
+  atpull"%atclone"
+zplugin light EmmyLua/EmmyLua-LanguageServer
+
 zplugin ice wait'3' lucid as"program" has"go" \
   atclone"go install ./..." atpull"%atclone"
 zplugin light golang/tools
