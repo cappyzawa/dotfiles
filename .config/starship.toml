@@ -1,3 +1,6 @@
+[prompt]
+add_newline = true
+
 [aws]
 disabled = true
 
@@ -16,15 +19,20 @@ style_failure = "bold #e06c75"
 # Light Yellow
 style = "#e5c07b"
 
-[directory]
-truncation_length = 3
-# Blue
-style = "#61afef"
-
-[env_var]
-# TODO
+[conda]
 # Green
 style = "#98c379"
+
+[directory]
+truncation_length = 3
+# Cyan
+style = "bold #56b6c2"
+
+[dotnet]
+disabled = true
+
+[env_var]
+disabled = true
 
 [git_branch]
 # Light Red
@@ -38,10 +46,13 @@ conflicted = "🏳"
 ahead = "🏎💨"
 behind = "😰"
 diverged = "😵"
-untracked = "🤷‍"
+untracked = "🤷"
 stashed = "📦"
 modified = "📝"
-added = "➕"
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "#98c379"
 renamed = "👅"
 deleted = "🗑"
 show_sync_count = true
@@ -62,14 +73,17 @@ style = "#61afef"
 
 [kubernetes]
 symbol = "⎈ "
-# Cyan
-style = "#56b6c2"
+# Blue
+style = "#61afef"
 disabled = false
 
 [line_break]
 disabled = false
 
 [nix_shell]
+disabled = true
+
+[memory_usage]
 disabled = true
 
 [java]
