@@ -1,5 +1,5 @@
+editor.action.organizeImport
 workspace.showOutput
 workspace.clearWatchman
-editor.action.organizeImport
 rls.update
 rls.findImpls
