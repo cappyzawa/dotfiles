@@ -494,6 +494,36 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+    " TODO: replace this
+    " See: original plugin has an issue: https://github.com/glacambre/firenvim/issues/175
+    " Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
+    Plug 'cappyzawa/firenvim', { 'do': function('firenvim#install') }
+      let g:firenvim_config = {
+        \ 'localSettings': {
+          \ 'github\.com': {
+            \ 'selector': 'textarea',
+            \ 'priority': 0,
+      \       },
+      \     }
+        \ }
+
+      let g:dont_write = v:false
+      function! My_Write(timer) abort
+        let g:dont_write = v:false
+        write
+      endfunction
+
+      function! Delay_My_Write() abort
+        if g:dont_write
+          return
+        end
+        let g:dont_write = v:true
+        call timer_start(10000, 'My_Write')
+      endfunction
+
+      au TextChanged * ++nested call Delay_My_Write()
+      au TextChangedI * ++nested call Delay_My_Write()
+
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'ap/vim-css-color'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
@@ -570,12 +600,12 @@ function! g:plug.is_installed(strict, ...)
             let l:suffix = l:arg
         endif
 
-        if has_key(l:self.plugs, l:name)
-                    \ ? isdirectory(l:self.plugs[l:name].dir)
-                    \ : has_key(l:self.plugs, l:prefix)
-                    \ ? isdirectory(l:self.plugs[l:prefix].dir)
-                    \ : has_key(l:self.plugs, l:suffix)
-                    \ ? isdirectory(l:self.plugs[l:suffix].dir)
+        if has_key(self.plugs, l:name)
+                    \ ? isdirectory(self.plugs[l:name].dir)
+                    \ : has_key(self.plugs, l:prefix)
+                    \ ? isdirectory(self.plugs[l:prefix].dir)
+                    \ : has_key(self.plugs, l:suffix)
+                    \ ? isdirectory(self.plugs[l:suffix].dir)
                     \ : g:false
             continue
         else
@@ -595,22 +625,22 @@ function! g:plug.is_loaded(p)
 endfunction
 
 function! g:plug.check_installation()
-    if empty(l:self.plugs)
+    if empty(self.plugs)
         return
     endif
 
-    let l:list = []
-    for l:spec in items(l:self.plugs)
-        if !isdirectory(l:spec.dir)
-            call add(l:list, l:spec.uri)
+    let list = []
+    for [name, spec] in items(self.plugs)
+        if !isdirectory(spec.dir)
+            call add(list, spec.uri)
         endif
     endfor
 
-    if len(l:list) > 0
-        let l:unplugged = map(l:list, 'substitute(v:val, "^.*github\.com/\\(.*/.*\\)\.git$", "\\1", "g")')
+    if len(list) > 0
+        let unplugged = map(list, 'substitute(v:val, "^.*github\.com/\\(.*/.*\\)\.git$", "\\1", "g")')
 
         " Ask whether installing plugs like NeoBundle
-        echomsg 'Not installed plugs: ' . string(l:unplugged)
+        echomsg 'Not installed plugs: ' . string(unplugged)
         if confirm('Install plugs now?', "yes\nNo", 2) == 1
             PlugInstall
             " Close window for vim-plug
@@ -634,6 +664,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
                 \ | echo g:plug.plugs['<args>'].dir
                 \ | endif
 endif
+
 " }}}
 
 " custom "{{{
