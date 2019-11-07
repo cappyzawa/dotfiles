@@ -109,12 +109,6 @@ if has "npm"; then
   fi
 fi
 
-if has "yarn"; then
-  if ! has "vim-language-server"; then
-    yarn global add vim-language-server
-  fi
-fi
-
 # for Ruby
 gem_install(){
   pkg=$1
