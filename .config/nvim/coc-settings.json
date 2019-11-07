@@ -44,16 +44,22 @@
         "--stdio"
       ],
       "initializationOptions": {
-        "iskeyword": "vim iskeyword option",
-        "vimruntime": "$VIMRUNTIME",
-        "runtimepath": false,
+        "iskeyword": "@,48-57,_,192-255,-#",
+        "vimruntime": "",
+        "runtimepath": "",
         "diagnostic": {
-          "enable": false
+          "enable": true
         },
         "indexes": {
           "runtimepath": true,
           "gap": 100,
-          "count": 3
+          "count": 3,
+          "projectRootPatterns": [
+            "strange-root-pattern",
+            ".git",
+            "autoload",
+            "plugin"
+          ]
         },
         "suggest": {
           "fromVimruntime": true,
