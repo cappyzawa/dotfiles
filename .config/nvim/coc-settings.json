@@ -112,6 +112,19 @@
       }
     }
   },
+  "yaml.format.enable": true,
+  "yaml.format.singleQuote": false,
+  "yaml.format.bracketSpacing": true,
+  "yaml.format.proseWrap": "always",
+  "yaml.validate": true,
+  "yaml.hover": true,
+  "yaml.completion": true,
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml",
+    "http://json.schemastore.org/kustomization": "/kustomization.yaml",
+    "https://raw.githubusercontent.com/wdstar/vscode-screwdriver/master/snippets/screwdriver-pipeline.json": "/screwdriver.yaml"
+  },
+  "yaml.trace.server": "verbose",
   "list.indicator": " ►",
   "list.insertMappings": {
     "<C-t>": "action:tabe",
