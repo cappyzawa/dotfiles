@@ -147,6 +147,10 @@ zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn" atpull"%atclone"
 zplugin light tektoncd/cli
 
+zplugin ice wait'2' lucid as"program" from:"gh-r" \
+  mv"bazel-*-*-x86_64*->bazel"
+zplugin light bazelbuild/bazel
+
 zplugin ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zplugin light neovim/neovim
 
