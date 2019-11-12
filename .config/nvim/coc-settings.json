@@ -20,7 +20,12 @@
       ],
       "filetypes": [
         "go"
-      ]
+      ],
+      "settings": {
+        "gopls": {
+          "completeUnimported": true
+        }
+      }
     },
     "elmLS": {
       "command": "elm-language-server",

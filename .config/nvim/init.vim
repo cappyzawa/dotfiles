@@ -832,7 +832,6 @@ if g:plug.is_installed('coc.nvim')
 
   augroup CocCustom
     autocmd FileType elm setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
   augroup END
 
   nnoremap <silent><C-f><C-f> :<C-u>CocList<CR>

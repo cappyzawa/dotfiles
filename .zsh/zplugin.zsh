@@ -116,7 +116,7 @@ zplugin ice wait'3' lucid has"java" \
 zplugin light EmmyLua/EmmyLua-LanguageServer
 
 zplugin ice wait'3' lucid as"program" has"go" \
-  atclone"go install ./..." atpull"%atclone"
+  atclone"GO111MODULE=on go install ./..." atpull"%atclone"
 zplugin light golang/tools
 
 zplugin ice wait'3' lucid as"program" has"go" \
