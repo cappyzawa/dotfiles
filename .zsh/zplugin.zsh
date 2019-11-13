@@ -49,6 +49,9 @@ zplugin light jesseduffield/lazydocker
 zplugin ice wait'2' as"program" from"gh-r" pick"hyperfine-*/hyperfine" lucid
 zplugin light sharkdp/hyperfine
 
+zplugin ice wait'2' as"program" from"gh-r" pick"golangci-lint-*/golangci-lint" lucid
+zplugin light golangci/golangci-lint
+
 zplugin ice wait"2" as"program" from"gh-r" pick"gotop" lucid
 zplugin light cjbassi/gotop
 
