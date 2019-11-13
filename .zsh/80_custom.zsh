@@ -42,6 +42,14 @@ if has "lazydocker"; then
   alias ld='lazydocker'
 fi
 
+if has "vault"; then
+  complete -o nospace -C `which vault` vault
+fi
+
+if has "mc"; then
+  complete -o nospace -C `which mc` mc
+fi
+
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
