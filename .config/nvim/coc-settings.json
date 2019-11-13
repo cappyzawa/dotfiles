@@ -127,7 +127,8 @@
   "yaml.schemas": {
     "kubernetes": "/*.yaml",
     "http://json.schemastore.org/kustomization": "/kustomization.yaml",
-    "https://raw.githubusercontent.com/wdstar/vscode-screwdriver/master/snippets/screwdriver-pipeline.json": "/screwdriver.yaml"
+    "https://raw.githubusercontent.com/wdstar/vscode-screwdriver/master/snippets/screwdriver-pipeline.json": "/screwdriver.yaml",
+    "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v3.7.json": "/*docker-compose*.yaml"
   },
   "yaml.trace.server": "verbose",
   "list.indicator": " ►",
