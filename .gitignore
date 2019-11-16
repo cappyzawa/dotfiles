@@ -9,6 +9,7 @@
 .config/direnv/
 .config/.op/
 .config/configstore/
+.config/helm/*
 node_modules/
 .config/coc/extensions/db.json
 .config/coc/history.json
