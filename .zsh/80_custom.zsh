@@ -9,7 +9,7 @@ if has 'tkn'; then
 fi
 
 if has 'ko'; then
-  export KO_DOCKER_REPO='cappyzawa'
+  export KO_DOCKER_REPO='docker.io/cappyzawa'
 fi
 
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
