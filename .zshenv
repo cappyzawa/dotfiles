@@ -47,10 +47,6 @@ export LESS_TERMCAP_so=$'\E[00;44;37m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# ls command colors
-export CLICOLOR=1
-export LS_COLORS=ExFxBxDxCxegedabagacad
-
 setopt no_global_rcs
 # Add ~/bin to PATH
 export PATH=~/bin:"$PATH"
