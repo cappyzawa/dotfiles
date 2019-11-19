@@ -455,9 +455,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'jiangmiao/auto-pairs'
 
     Plug 'tyru/open-browser-github.vim', { 'on' : ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq'] }
-      nnoremap <silent> [Space]ogf :<C-u>OpenGithubFile<CR>
-      nnoremap <silent> [Space]ogi :<C-u>OpenGithubIssue<CR>
-      nnoremap <silent> [Space]ogp :<C-u>OpenGithubPullReq<CR>
+      nnoremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
+      nnoremap <silent> <Leader>gi :<C-u>OpenGithubIssue<CR>
+      nnoremap <silent> <Leader>gp :<C-u>OpenGithubPullReq<CR>
         Plug 'tyru/open-browser.vim'
         nmap gx <Plug>(openbrowser-smart-search)
         vmap gx <Plug>(openbrowser-smart-search)
@@ -842,5 +842,38 @@ if executable('vim-language-sever')
     \ 'vim',
     \ 'help'
     \ ]
+endif
+" }}}
+
+" lsp {{{
+if has('nvim')
+  call lsp#set_log_level("debug")
+  function! s:show_documentation_for_lsp()
+    if &filetype ==# 'vim'
+      execute 'h '.expand('<cword>')
+    else
+      call lsp#text_document_hover()
+    endif
+  endfunction
+
+  call lsp#add_filetype_config({
+        \ 'filetype': 'rust',
+        \ 'name': 'rls',
+        \ 'cmd': 'rls',
+        \ 'capabilities': {
+        \   'clippy_preference': 'on',
+        \   'all_targets': v:false,
+        \   'build_on_save': v:true,
+        \   'wait_to_build': 0
+        \ }})
+
+  function! s:use_builtin_lspc()
+    nnoremap <silent> gk :call <SID>show_documentation_for_lsp()<CR>
+    nnoremap <silent> gd :call lsp#text_document_definition()<CR>
+    nnoremap <silent> gi :call lsp#text_document_implementation()<CR>
+    nnoremap <silent> gt :call lsp#text_document_rename()<CR>
+  endfunction
+
+  autocmd FileType rust call s:use_builtin_lspc()
 endif
 " }}}
