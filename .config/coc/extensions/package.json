@@ -3,7 +3,6 @@
     "coc-highlight": ">=1.2.5",
     "coc-json": ">=1.2.4",
     "coc-lists": ">=1.3.4",
-    "coc-solargraph": ">=1.1.3",
     "coc-tslint-plugin": ">=1.1.1",
     "coc-tsserver": ">=1.4.6",
     "coc-vetur": ">=1.1.7",

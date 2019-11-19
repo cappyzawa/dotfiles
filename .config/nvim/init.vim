@@ -701,14 +701,12 @@ if g:plug.is_installed('ale')
   let g:ale_disable_lsp = 1
   let g:ale_linters = {
   \   'go': ['golint'],
-  \   'ruby': ['rubocop'],
   \   'vim': ['vint'],
   \   'rust': ['rustc'],
   \}
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'go': ['gofmt','goimports'],
-  \   'ruby': ['rubocop'],
   \   'elm': ['elm-format'],
   \   'rust': ['rustfmt'],
   \}
@@ -720,7 +718,7 @@ if g:plug.is_installed('ale')
   " for markdown
   augroup ale_custom
     autocmd!
-    autocmd FileType markdown let g:ale_fix_on_save = 0
+    autocmd FileType markdown,ruby let g:ale_fix_on_save = 0
   augroup END
 endif
 
