@@ -84,6 +84,17 @@ zplugin ice wait'2' lucid as"program" from"gh-r" \
   mv"ytt-* -> ytt" pick"ytt"
 zplugin light "k14s/ytt"
 
+if [[ `uname` == "Darwin" ]]; then
+  zplugin ice wait'2' lucid as"program" from"gh-r" bpick"ninja-mac*"
+elif [[ uname == "Linux" ]]; then
+  zplugin ice wait'2' lucid as"program" from"gh-r" bpick"ninja-linux*"
+fi
+zplugin light "ninja-build/ninja"
+
+zplugin ice wait'2' lucid has"git" \
+  atclone"git submodule update --init --recursive" atpull"%atclone"
+zplugin light "sumneko/lua-language-server"
+
 zplugin ice wait'2' lucid as"program" pick"create-kubeconfig"
 zplugin light zlabjp/kubernetes-scripts
 

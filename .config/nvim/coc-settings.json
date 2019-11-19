@@ -22,17 +22,6 @@
         "go"
       ]
     },
-    "lua": {
-      "command": "java",
-      "args": [
-        "-cp",
-        "~/bin/EmmyLua-LS-all.jar",
-        "com.tang.vscode.MainKt"
-      ],
-      "filetypes": [
-        "lua"
-      ]
-    },
     "julia": {
       "command": "julia",
       "args": [
