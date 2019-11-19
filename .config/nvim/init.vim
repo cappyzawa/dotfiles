@@ -925,6 +925,6 @@ if has('nvim')
     nnoremap <silent> gt :call lsp#text_document_rename()<CR>
   endfunction
 
-  autocmd FileType rust,bash,sh,zsh,elm call s:use_builtin_lspc()
+  autocmd FileType rust,bash,sh,zsh,elm,dockerfile call s:use_builtin_lspc()
 endif
 " }}}
