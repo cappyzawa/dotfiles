@@ -871,29 +871,29 @@ if has('nvim')
     \ 'name': 'bashls',
     \ 'cmd': ['bash-language-server', 'start'],
     \ })
-  call lsp#add_filetype_config({
-    \ 'filetype': 'vim',
-    \ 'name': 'vimls',
-    \ 'cmd': ['vim-language-server', '--stdio'],
-    \ 'init_options': {
-      \ 'iskeyword':'@,48-57,_,192-255,-#',
-      \ 'vimruntime': '',
-      \ 'runtimepath': '',
-      \ 'diagnostic': {
-        \ 'enable': v:true,
-        \ },
-      \ 'indexes': {
-        \ 'runtimepath': v:true,
-        \ 'gap': 100,
-        \ 'count': 3,
-        \ 'projectRootPatterns': ['strange-root-pattern', '.git', 'autoload', 'plugin']
-        \ },
-      \ 'suggest': {
-        \ 'fromVimruntime': v:true,
-        \ 'fromRuntimepath': v:false,
-        \ },
-      \ },
-    \ })
+
+  " call lsp#add_filetype_config({
+  "   \ 'filetype': 'vim',
+  "   \ 'name': 'vimls',
+  "   \ 'cmd': ['vim-language-server', '--stdio'],
+  "   \ 'init_options': {
+  "     \ 'iskeyword':'@,48-57,_,192-255,-#',
+  "     \ 'vimruntime': '',
+  "     \ 'runtimepath': '',
+  "     \ 'diagnostic': {
+  "       \ 'enable': v:true,
+  "       \ },
+  "     \ 'indexes': {
+  "       \ 'runtimepath': v:true,
+  "       \ 'gap': 100,
+  "       \ 'count': 3,
+  "       \ },
+  "     \ 'suggest': {
+  "       \ 'fromVimruntime': v:true,
+  "       \ 'fromRuntimepath': v:false,
+  "       \ },
+  "     \ },
+  "   \ })
 
   function! s:use_builtin_lspc()
     nnoremap <silent> gk :call <SID>show_documentation_for_lsp()<CR>
@@ -902,6 +902,6 @@ if has('nvim')
     nnoremap <silent> gt :call lsp#text_document_rename()<CR>
   endfunction
 
-  autocmd FileType rust,bash,sh,zsh,vim call s:use_builtin_lspc()
+  autocmd FileType rust,bash,sh,zsh call s:use_builtin_lspc()
 endif
 " }}}
