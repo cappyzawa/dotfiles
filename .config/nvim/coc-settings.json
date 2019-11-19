@@ -22,22 +22,6 @@
         "go"
       ]
     },
-    "elmLS": {
-      "command": "elm-language-server",
-      "trace.server": "verbose",
-      "args": [
-        "--stdio"
-      ],
-      "filetypes": [
-        "elm"
-      ],
-      "rootPatterns": [
-        "elm.json"
-      ],
-      "initializationOptions": {
-        "elmAnalyseTrigger": "change"
-      }
-    },
     "lua": {
       "command": "java",
       "args": [

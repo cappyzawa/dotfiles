@@ -895,6 +895,14 @@ if has('nvim')
   "     \ },
   "   \ })
 
+  call lsp#add_filetype_config({
+    \ 'filetype': 'elm',
+    \ 'name': 'elmls',
+    \ 'cmd': ['elm-language-server', '--stdio'],
+    \ 'init_options': {
+    \   'elmAnalyseTrigger': 'change',
+    \ }})
+
   function! s:use_builtin_lspc()
     nnoremap <silent> gk :call <SID>show_documentation_for_lsp()<CR>
     nnoremap <silent> gd :call lsp#text_document_definition()<CR>
@@ -902,6 +910,6 @@ if has('nvim')
     nnoremap <silent> gt :call lsp#text_document_rename()<CR>
   endfunction
 
-  autocmd FileType rust,bash,sh,zsh call s:use_builtin_lspc()
+  autocmd FileType rust,bash,sh,zsh,elm call s:use_builtin_lspc()
 endif
 " }}}
