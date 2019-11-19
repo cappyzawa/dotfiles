@@ -20,7 +20,49 @@
       ],
       "filetypes": [
         "go"
+      ],
+      "settings": {
+        "gopls": {
+          "completeUnimported": true
+        }
+      }
+    },
+    "elmLS": {
+      "command": "elm-language-server",
+      "trace.server": "verbose",
+      "args": [
+        "--stdio"
+      ],
+      "filetypes": [
+        "elm"
+      ],
+      "rootPatterns": [
+        "elm.json"
+      ],
+      "initializationOptions": {
+        "elmAnalyseTrigger": "change"
+      }
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": [
+        "dockerfile"
+      ],
+      "args": [
+        "--stdio"
       ]
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh",
+        "bash",
+        "zsh"
+      ],
+      "ignoredRootPaths": []
     },
     "julia": {
       "command": "julia",
