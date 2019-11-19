@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "vim-language-server": "^1.4.0",
     "vim-node-rpc": "^0.1.32"
   }
 }

@@ -857,15 +857,43 @@ if has('nvim')
   endfunction
 
   call lsp#add_filetype_config({
-        \ 'filetype': 'rust',
-        \ 'name': 'rls',
-        \ 'cmd': 'rls',
-        \ 'capabilities': {
-        \   'clippy_preference': 'on',
-        \   'all_targets': v:false,
-        \   'build_on_save': v:true,
-        \   'wait_to_build': 0
-        \ }})
+    \ 'filetype': 'rust',
+    \ 'name': 'rls',
+    \ 'cmd': 'rls',
+    \ 'capabilities': {
+    \   'clippy_preference': 'on',
+    \   'all_targets': v:false,
+    \   'build_on_save': v:true,
+    \   'wait_to_build': 0
+    \ }})
+  call lsp#add_filetype_config({
+    \ 'filetype': ['bash', 'sh', 'zsh'],
+    \ 'name': 'bashls',
+    \ 'cmd': ['bash-language-server', 'start'],
+    \ })
+  call lsp#add_filetype_config({
+    \ 'filetype': 'vim',
+    \ 'name': 'vimls',
+    \ 'cmd': ['vim-language-server', '--stdio'],
+    \ 'init_options': {
+      \ 'iskeyword':'@,48-57,_,192-255,-#',
+      \ 'vimruntime': '',
+      \ 'runtimepath': '',
+      \ 'diagnostic': {
+        \ 'enable': v:true,
+        \ },
+      \ 'indexes': {
+        \ 'runtimepath': v:true,
+        \ 'gap': 100,
+        \ 'count': 3,
+        \ 'projectRootPatterns': ['strange-root-pattern', '.git', 'autoload', 'plugin']
+        \ },
+      \ 'suggest': {
+        \ 'fromVimruntime': v:true,
+        \ 'fromRuntimepath': v:false,
+        \ },
+      \ },
+    \ })
 
   function! s:use_builtin_lspc()
     nnoremap <silent> gk :call <SID>show_documentation_for_lsp()<CR>
@@ -874,6 +902,6 @@ if has('nvim')
     nnoremap <silent> gt :call lsp#text_document_rename()<CR>
   endfunction
 
-  autocmd FileType rust call s:use_builtin_lspc()
+  autocmd FileType rust,bash,sh,zsh,vim call s:use_builtin_lspc()
 endif
 " }}}

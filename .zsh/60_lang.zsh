@@ -107,6 +107,12 @@ if has "npm"; then
   if ! has "yarn"; then
     npm_global_install "yarn"
   fi
+
+  if has "yarn"; then
+    if ! has "vim-language-server"; then
+      yarn global add vim-language-server
+    fi
+  fi
 fi
 
 # for Ruby
