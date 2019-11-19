@@ -856,22 +856,28 @@ if has('nvim')
     endif
   endfunction
 
-  call lsp#add_filetype_config({
-    \ 'filetype': 'rust',
-    \ 'name': 'rls',
-    \ 'cmd': 'rls',
-    \ 'capabilities': {
-    \   'clippy_preference': 'on',
-    \   'all_targets': v:false,
-    \   'build_on_save': v:true,
-    \   'wait_to_build': 0
-    \ }})
-  call lsp#add_filetype_config({
-    \ 'filetype': ['bash', 'sh', 'zsh'],
-    \ 'name': 'bashls',
-    \ 'cmd': ['bash-language-server', 'start'],
-    \ })
+  if executable('rls')
+    call lsp#add_filetype_config({
+      \ 'filetype': 'rust',
+      \ 'name': 'rls',
+      \ 'cmd': 'rls',
+      \ 'capabilities': {
+      \   'clippy_preference': 'on',
+      \   'all_targets': v:false,
+      \   'build_on_save': v:true,
+      \   'wait_to_build': 0
+      \ }})
+  endif
 
+  if executable('bash-language-server')
+    call lsp#add_filetype_config({
+      \ 'filetype': ['bash', 'sh', 'zsh'],
+      \ 'name': 'bashls',
+      \ 'cmd': ['bash-language-server', 'start'],
+      \ })
+  endif
+
+  if executable('vim-language-server')
   " call lsp#add_filetype_config({
   "   \ 'filetype': 'vim',
   "   \ 'name': 'vimls',
@@ -894,14 +900,25 @@ if has('nvim')
   "       \ },
   "     \ },
   "   \ })
+  endif
 
-  call lsp#add_filetype_config({
-    \ 'filetype': 'elm',
-    \ 'name': 'elmls',
-    \ 'cmd': ['elm-language-server', '--stdio'],
-    \ 'init_options': {
-    \   'elmAnalyseTrigger': 'change',
-    \ }})
+  if executable('elm-language-server')
+    call lsp#add_filetype_config({
+      \ 'filetype': 'elm',
+      \ 'name': 'elmls',
+      \ 'cmd': ['elm-language-server', '--stdio'],
+      \ 'init_options': {
+      \   'elmAnalyseTrigger': 'change',
+      \ }})
+  endif
+
+  if executable('docker-langserver')
+    call lsp#add_filetype_config({
+      \ 'filetype':'dockerfile',
+      \ 'name': 'dockerfilels',
+      \ 'cmd': ['docker-langserver', '--stdio']
+      \ })
+  endif
 
   function! s:use_builtin_lspc()
     nnoremap <silent> gk :call <SID>show_documentation_for_lsp()<CR>
