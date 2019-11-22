@@ -4,7 +4,9 @@ set foldmethod=marker
 
 " faster
 if has('nvim')
-  let g:python3_host_prog=$XDG_CONFIG_HOME . '/.anyenv/envs/pyenv/shims/python'
+  let g:loaded_python3_provider = 1
+  let g:python_host_prog=$XDG_CONFIG_HOME . '/anyenv/envs/pyenv/versions/2.7.13/bin/python'
+  let g:python3_host_prog=$XDG_CONFIG_HOME . '/anyenv/envs/pyenv/shims/python3'
 end
 
 let g:false = 0
@@ -421,6 +423,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       nnoremap <silent> <Leader>df :<C-u>Deol -split=floating<CR>
       nnoremap <silent> <Leader>dv :<C-u>Deol -split=vertical<CR>
       nnoremap <silent> <Leader>dh :<C-u>Deol -split=horizontal<CR>
+
     Plug 't9md/vim-choosewin', { 'on': '<Plug>(choosewin)' }
       let g:choosewin_overlay_enable = 1
       nmap - <Plug>(choosewin)
@@ -690,7 +693,6 @@ endif
 if g:plug.is_installed('ale')
 
   nnoremap <silent> <Leader>at :<C-u>ALEToggle<CR>
-
   let g:ale_fix_on_save = 1
   let g:ale_set_quickfix = 1
   let g:ale_sign_error = '🔥'
@@ -845,14 +847,14 @@ endif
 
 " lsp {{{
 " if has('nvim')
-"   call lsp#set_log_level("debug")
-"   function! s:show_documentation_for_lsp()
-"     if &filetype ==# 'vim'
-"       execute 'h '.expand('<cword>')
-"     else
-"       call lsp#text_document_hover()
-"     endif
-"   endfunction
+  " call lsp#set_log_level("debug")
+  " function! s:show_documentation_for_lsp()
+  "   if &filetype ==# 'vim'
+  "     execute 'h '.expand('<cword>')
+  "   else
+  "     call lsp#text_document_hover()
+  "   endif
+  " endfunction
 "
 "   if executable('rls')
 "     call lsp#add_filetype_config({
@@ -866,65 +868,70 @@ endif
 "       \   'wait_to_build': 0
 "       \ }})
 "   endif
-"
-"   if executable('bash-language-server')
-"     call lsp#add_filetype_config({
-"       \ 'filetype': ['bash', 'sh', 'zsh'],
-"       \ 'name': 'bashls',
-"       \ 'cmd': ['bash-language-server', 'start'],
-"       \ })
-"   endif
-"
-"   if executable('vim-language-server')
-"   " call lsp#add_filetype_config({
-"   "   \ 'filetype': 'vim',
-"   "   \ 'name': 'vimls',
-"   "   \ 'cmd': ['vim-language-server', '--stdio'],
-"   "   \ 'init_options': {
-"   "     \ 'iskeyword':'@,48-57,_,192-255,-#',
-"   "     \ 'vimruntime': '',
-"   "     \ 'runtimepath': '',
-"   "     \ 'diagnostic': {
-"   "       \ 'enable': v:true,
-"   "       \ },
-"   "     \ 'indexes': {
-"   "       \ 'runtimepath': v:true,
-"   "       \ 'gap': 100,
-"   "       \ 'count': 3,
-"   "       \ },
-"   "     \ 'suggest': {
-"   "       \ 'fromVimruntime': v:true,
-"   "       \ 'fromRuntimepath': v:false,
-"   "       \ },
-"   "     \ },
-"   "   \ })
-"   endif
-"
-"   if executable('elm-language-server')
-"     call lsp#add_filetype_config({
-"       \ 'filetype': 'elm',
-"       \ 'name': 'elmls',
-"       \ 'cmd': ['elm-language-server', '--stdio'],
-"       \ 'init_options': {
-"       \   'elmAnalyseTrigger': 'change',
-"       \ }})
-"   endif
-"
-"   if executable('docker-langserver')
-"     call lsp#add_filetype_config({
-"       \ 'filetype':'dockerfile',
-"       \ 'name': 'dockerfilels',
-"       \ 'cmd': ['docker-langserver', '--stdio']
-"       \ })
-"   endif
-"
+" "
+" "   if executable('bash-language-server')
+" "     call lsp#add_filetype_config({
+" "       \ 'filetype': ['bash', 'sh', 'zsh'],
+" "       \ 'name': 'bashls',
+" "       \ 'cmd': ['bash-language-server', 'start'],
+" "       \ })
+" "   endif
+" "
+" "   if executable('vim-language-server')
+" "   " call lsp#add_filetype_config({
+" "   "   \ 'filetype': 'vim',
+" "   "   \ 'name': 'vimls',
+" "   "   \ 'cmd': ['vim-language-server', '--stdio'],
+" "   "   \ 'init_options': {
+" "   "     \ 'iskeyword':'@,48-57,_,192-255,-#',
+" "   "     \ 'vimruntime': '',
+" "   "     \ 'runtimepath': '',
+" "   "     \ 'diagnostic': {
+" "   "       \ 'enable': v:true,
+" "   "       \ },
+" "   "     \ 'indexes': {
+" "   "       \ 'runtimepath': v:true,
+" "   "       \ 'gap': 100,
+" "   "       \ 'count': 3,
+" "   "       \ },
+" "   "     \ 'suggest': {
+" "   "       \ 'fromVimruntime': v:true,
+" "   "       \ 'fromRuntimepath': v:false,
+" "   "       \ },
+" "   "     \ },
+" "   "   \ })
+" "   endif
+" "
+" "   if executable('elm-language-server')
+" "     call lsp#add_filetype_config({
+" "       \ 'filetype': 'elm',
+" "       \ 'name': 'elmls',
+" "       \ 'cmd': ['elm-language-server', '--stdio'],
+" "       \ 'init_options': {
+" "       \   'elmAnalyseTrigger': 'change',
+" "       \ }})
+" "   endif
+" "
+" "   if executable('docker-langserver')
+" "     call lsp#add_filetype_config({
+" "       \ 'filetype':'dockerfile',
+" "       \ 'name': 'dockerfilels',
+" "       \ 'cmd': ['docker-langserver', '--stdio']
+" "       \ })
+" "   endif
+" "
 "   function! s:use_builtin_lspc()
 "     nnoremap <silent> gk :call <SID>show_documentation_for_lsp()<CR>
 "     nnoremap <silent> gd :call lsp#text_document_definition()<CR>
 "     nnoremap <silent> gi :call lsp#text_document_implementation()<CR>
 "     nnoremap <silent> gt :call lsp#text_document_rename()<CR>
 "   endfunction
+" "
+"   augroup BuiltinLsp
+"     autocmd FileType rust,bash,sh,zsh,elm,dockerfile,vim call s:use_builtin_lspc()
+"     autocmd FileType rust,bash,sh,zsh,elm,dockerfile,vim set omnifunc=lsp#omnifunc
+"     autocmd CompleteDone rust,bash,sh,zsh,elm,dockerfile pclose
+"   augroup END
 "
-"   autocmd FileType rust,bash,sh,zsh,elm,dockerfile call s:use_builtin_lspc()
 " endif
 " }}}
