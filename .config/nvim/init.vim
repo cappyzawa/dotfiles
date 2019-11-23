@@ -499,34 +499,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
     " TODO: replace this
     " See: original plugin has an issue: https://github.com/glacambre/firenvim/issues/175
-    " Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
-    Plug 'cappyzawa/firenvim', { 'do': function('firenvim#install') }
-      let g:firenvim_config = {
-        \ 'localSettings': {
-          \ 'github\.com': {
-            \ 'selector': 'textarea',
-            \ 'priority': 0,
-      \       },
-      \     }
-        \ }
-
-      let g:dont_write = v:false
-      function! My_Write(timer) abort
-        let g:dont_write = v:false
-        write
-      endfunction
-
-      function! Delay_My_Write() abort
-        if g:dont_write
-          return
-        end
-        let g:dont_write = v:true
-        call timer_start(10000, 'My_Write')
-      endfunction
-
-      au TextChanged * ++nested call Delay_My_Write()
-      au TextChangedI * ++nested call Delay_My_Write()
-
+    Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'ap/vim-css-color'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
@@ -843,6 +816,37 @@ if executable('vim-language-sever')
     \ 'help'
     \ ]
 endif
+
+if g:plug.is_installed('firenvim')
+  let g:firenvim_config = {
+    \ 'localSettings': {
+      \ 'github\.com': {
+        \ 'selector': 'textarea',
+        \ 'priority': 0,
+  \       },
+  \     }
+    \ }
+
+  let g:dont_write = v:false
+  function! My_Write(timer) abort
+    let g:dont_write = v:false
+    write
+  endfunction
+
+  function! Delay_My_Write() abort
+    if g:dont_write
+      return
+    end
+    let g:dont_write = v:true
+    call timer_start(10000, 'My_Write')
+  endfunction
+  augroup Firenvim
+    au TextChanged * ++nested call Delay_My_Write()
+    au TextChangedI * ++nested call Delay_My_Write()
+    au BufEnter github.com_*.txt set filetype=markdown
+  augroup END
+endif
+
 " }}}
 
 " lsp {{{
