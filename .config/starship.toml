@@ -42,19 +42,13 @@ style = "#e06c75"
 disabled = true
 
 [git_status]
-conflicted = "🏳 "
-ahead = "🏎 "
-behind = "😰 "
-diverged = "😵 "
-untracked = "🤷 "
-stashed = "📦 "
-modified = "📝 "
-staged.value = "++"
-staged.style = "green"
+conflicted_count.enabled = true
+untracked_count.enabled = true
+modified_count.enabled = true
 staged_count.enabled = true
-staged_count.style = "#98c379"
-renamed = "👅 "
-deleted = "🗑  "
+renamed_count.enabled = true
+deleted_count.enabled = true
+stashed_count.enabled = true
 show_sync_count = true
 # Light Red
 style = "#e06c75"
