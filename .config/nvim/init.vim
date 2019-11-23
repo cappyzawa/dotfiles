@@ -840,10 +840,17 @@ if g:plug.is_installed('firenvim')
     let g:dont_write = v:true
     call timer_start(10000, 'My_Write')
   endfunction
+
+  function! s:Set_Monaco() abort
+    set guifont=Monaco:h14
+  endfunction
+
   augroup Firenvim
     au TextChanged * ++nested call Delay_My_Write()
     au TextChangedI * ++nested call Delay_My_Write()
-    au BufEnter github.com_*.txt set filetype=markdown
+    au BufEnter github.com_*.txt set filetype=markdown | call s:Set_Monaco()
+    au BufEnter play.rust-lang.org_*.txt set filetype=rust | call s:Set_Monaco()
+    au BufEnter play.golang.org_*.txt set filetype=go |call s:Set_Monaco()
   augroup END
 endif
 
