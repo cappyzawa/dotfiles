@@ -841,16 +841,18 @@ if g:plug.is_installed('firenvim')
     call timer_start(10000, 'My_Write')
   endfunction
 
-  function! s:Set_Monaco() abort
-    set guifont=Monaco:h14
+
+  let g:firenvim_font = 'Droid\ Sans\ Mono\ Slashed\ for\ Powerline'
+  function! Set_Font(font) abort
+    execute 'set guifont=' . a:font . ':h14'
   endfunction
 
   augroup Firenvim
     au TextChanged * ++nested call Delay_My_Write()
     au TextChangedI * ++nested call Delay_My_Write()
-    au BufEnter github.com_*.txt set filetype=markdown | call s:Set_Monaco()
-    au BufEnter play.rust-lang.org_*.txt set filetype=rust | call s:Set_Monaco()
-    au BufEnter play.golang.org_*.txt set filetype=go |call s:Set_Monaco()
+    au BufEnter github.com_*.txt set filetype=markdown | call Set_Font(g:firenvim_font)
+    au BufEnter play.rust-lang.org_*.txt set filetype=rust | call Set_Font(g:firenvim_font)
+    au BufEnter play.golang.org_*.txt set filetype=go |call Set_Font(g:firenvim_font)
   augroup END
 endif
 
