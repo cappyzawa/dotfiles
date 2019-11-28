@@ -123,6 +123,24 @@ gitlocal() {
   git config --local user.email "cappyzawa@yahoo.ne.jp"
 }
 
+kind_start() {
+  if ! has "kind"; then
+    echo "kind command is missing"
+    exit 1
+  fi
+
+  if ! has "docker"; then
+    echo "docker command is missing"
+    exit 1
+  fi
+
+  set -x
+  kind get nodes | while read n; do
+    docker start $n
+  done
+  set +x
+}
+
 if has 'anyenv'; then
   eval "$(anyenv init -)"
 fi
