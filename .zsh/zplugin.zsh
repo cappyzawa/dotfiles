@@ -58,10 +58,10 @@ zplugin light cjbassi/gotop
 zplugin ice wait"2" as"program" from"gh-r" pick"*/ccat" lucid
 zplugin light jingweno/ccat
 
-zplugin ice wait'2' lucid
+zplugin ice wait"2" lucid blockf atinit"zpcompinit; zpcdreplay"
 zplugin light zsh-users/zsh-completions
 
-zplugin ice wait'3' lucid
+zplugin ice wait'3' lucid atinit"zpcompinit; zpcdreplay"
 zplugin light zdharma/fast-syntax-highlighting
 
 zplugin ice wait'3' lucid
@@ -178,4 +178,8 @@ zplugin light bazelbuild/bazel
 zplugin ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zplugin light neovim/neovim
 
-zplugin creinstall %HOME/.zsh/Completion
+for f in $HOME/.zsh/Completion/*
+do
+  zplugin ice wait"2" lucid blockf atinit'zpcompinit; zpcdreplay'
+  zplugin snippet ${f}
+done
