@@ -88,6 +88,13 @@
         "julia"
       ]
     },
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": [
+        "terraform"
+      ],
+      "initializationOptions": {}
+    },
     "nim": {
       "command": "nimlsp",
       "args": [

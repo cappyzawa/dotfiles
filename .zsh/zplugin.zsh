@@ -165,6 +165,12 @@ zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn" atpull"%atclone"
 zplugin light tektoncd/cli
 
+zplugin ice wait'2' lucid as"program" from:"gh-r" has"terraform"
+zplugin light terraform-linters/tflint
+
+zplugin ice wait'2' lucid as"program" from:"gh-r" has"terraform"
+zplugin light juliosueiras/terraform-lsp
+
 zplugin ice wait'2' lucid as"program" from:"gh-r" \
   mv"bazel-*-*-x86_64*->bazel"
 zplugin light bazelbuild/bazel

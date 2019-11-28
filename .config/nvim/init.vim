@@ -500,6 +500,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " TODO: replace this
     " See: original plugin has an issue: https://github.com/glacambre/firenvim/issues/175
     Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
+    if executable('terraform')
+      Plug 'hashivim/vim-terraform'
+    endif
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'ap/vim-css-color'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
@@ -695,6 +698,12 @@ if g:plug.is_installed('ale')
     autocmd!
     autocmd FileType markdown,ruby let g:ale_fix_on_save = 0
   augroup END
+endif
+
+if g:plug.is_installed('vim-terraform')
+  let g:terraform_align=1
+  let g:terraform_fold_sections=1
+  let g:terraform_fmt_on_save=1
 endif
 
 if g:plug.is_installed('onedark.vim')
