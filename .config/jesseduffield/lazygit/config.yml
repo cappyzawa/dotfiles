@@ -19,6 +19,7 @@ gui:
     optionstextcolor:
     - blue
 reporting: "on"
+startuppopupversion: 1
 update:
   days: 14
   method: prompt
