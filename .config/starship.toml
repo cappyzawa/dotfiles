@@ -38,6 +38,11 @@ disabled = true
 # Light Red
 style = "#e06c75"
 
+[git_commit]
+disabled = false
+commit_hash_length = 4
+style = "#98c379"
+
 [git_state]
 disabled = true
 
