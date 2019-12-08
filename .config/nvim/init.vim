@@ -187,6 +187,7 @@ nnoremap K 10k
 vnoremap J 10j
 vnoremap K 10k
 
+" window
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
@@ -201,6 +202,10 @@ nnoremap s< <C-w><
 nnoremap s+ <C-w>+
 nnoremap s- <C-w>-
 
+" indent
+" See: https://twitter.com/mattn_jp/status/1202603537521401856
+vnoremap < <gv
+vnoremap > >gv
 " buffer
 nnoremap <silent> <C-j> :<C-u>bprev<CR>
 nnoremap <silent> <C-k> :<C-u>bnext<CR>
