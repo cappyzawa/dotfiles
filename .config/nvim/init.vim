@@ -526,7 +526,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'bling/vim-bufferline'
     Plug 'vim-airline/vim-airline'
     Plug 'simeji/winresizer'
-    Plug 'majutsushi/tagbar'
+
+    Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
       nnoremap <silent> <C-]> :<C-u>TagbarToggle<CR>
 
     " Add plugins to &runtimepath
