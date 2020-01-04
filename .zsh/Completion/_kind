@@ -296,7 +296,6 @@ function _kind_get {
     commands=(
       "clusters:lists existing kind clusters by their name"
       "kubeconfig:prints cluster kubeconfig"
-      "kubeconfig-path:DEPRECATED: prints the default kubeconfig path for the kind cluster by --name"
       "nodes:lists existing kind nodes by their name"
     )
     _describe "command" commands
@@ -309,9 +308,6 @@ function _kind_get {
     ;;
   kubeconfig)
     _kind_get_kubeconfig
-    ;;
-  kubeconfig-path)
-    _kind_get_kubeconfig-path
     ;;
   nodes)
     _kind_get_nodes
@@ -329,14 +325,6 @@ function _kind_get_clusters {
 function _kind_get_kubeconfig {
   _arguments \
     '--internal[use internal address instead of external]' \
-    '--name[the cluster context name]:' \
-    '--loglevel[DEPRECATED: see -v instead]:' \
-    '(-q --quiet)'{-q,--quiet}'[silence all stderr output]' \
-    '(-v --verbosity)'{-v,--verbosity}'[info log verbosity]:'
-}
-
-function _kind_get_kubeconfig-path {
-  _arguments \
     '--name[the cluster context name]:' \
     '--loglevel[DEPRECATED: see -v instead]:' \
     '(-q --quiet)'{-q,--quiet}'[silence all stderr output]' \
