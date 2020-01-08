@@ -141,6 +141,11 @@ kind_start() {
   set +x
 }
 
+gcd() {
+  local repo_path=`ghq list --full-path | fzf --reverse --preview "less {1}/README.md"`
+  \cd ${repo_path}
+}
+
 if has 'anyenv'; then
   eval "$(anyenv init -)"
 fi
