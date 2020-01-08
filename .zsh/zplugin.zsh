@@ -168,6 +168,10 @@ zplugin light tektoncd/cli
 zplugin ice wait'2' lucid as"program" from:"gh-r" pick:"kustomize"
 zplugin light kubernetes-sigs/kustomize
 
+zplugin ice wait'2' lucid as"program" from:"gh-r" \
+  mv"operator-sdk-v*-x86_64-*->operator-sdk"
+zplugin light operator-framework/operator-sdk
+
 zplugin ice wait'2' lucid as"program" from:"gh-r" has"terraform"
 zplugin light terraform-linters/tflint
 
