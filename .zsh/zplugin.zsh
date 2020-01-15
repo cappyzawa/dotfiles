@@ -5,6 +5,10 @@ zplugin ice pick"init.sh" lucid \
   atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1'
 zplugin light "b4b4r07/enhancd"
 
+zplugin ice lucid as"program" from"gh-r" \
+  atload'export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml'
+zplugin light starship/starship
+
 zplugin ice as"program" pick:"bin/anyenv"
 zplugin light anyenv/anyenv
 
