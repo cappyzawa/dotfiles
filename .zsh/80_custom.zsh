@@ -54,6 +54,10 @@ if ! has "helm"; then
   curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 fi
 
+if has "go"; then
+  export GOPRIVATE="*.yahoo.co.jp"
+fi
+
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
