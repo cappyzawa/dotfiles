@@ -868,6 +868,7 @@ if g:plug.is_installed('firenvim')
     au BufEnter github.com_*.txt set filetype=markdown | call Set_Font(g:firenvim_font)
     au BufEnter play.rust-lang.org_*.txt set filetype=rust | call Set_Font(g:firenvim_font)
     au BufEnter play.golang.org_*.txt set filetype=go |call Set_Font(g:firenvim_font)
+    au BufEnter tour.golang.org_*.txt set filetype=go |call Set_Font(g:firenvim_font)
   augroup END
 endif
 
