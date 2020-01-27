@@ -163,7 +163,6 @@ function _ko_run {
   _arguments \
     '(-B --base-import-paths)'{-B,--base-import-paths}'[Whether to use the base path without MD5 hash after KO_DOCKER_REPO.]' \
     '--disable-optimizations[Disable optimizations when building Go code. Useful when you want to interactively debug the created container.]' \
-    '(-i --image)'{-i,--image}'[The import path of the binary to publish.]:' \
     '--insecure-registry[Whether to skip TLS verification on the registry]' \
     '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
     '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
