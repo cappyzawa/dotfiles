@@ -7,4 +7,5 @@ $ curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/insta
 ```
 
 ## Required
-[powerline/fonts: Patched fonts for Powerline users\.](https://github.com/powerline/fonts#quick-installation)
+* [tonsky/FiraCode: Monospaced font with programming ligatures](https://github.com/tonsky/FiraCode)
+* [powerline/fonts: Patched fonts for Powerline users\.](https://github.com/powerline/fonts#quick-installation) (will not been used)

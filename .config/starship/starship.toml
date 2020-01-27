@@ -5,28 +5,29 @@ add_newline = true
 disabled = true
 
 [battery]
-disabled = true
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+[[battery.display]]
+threshold = 99
+style = "bold green"
 
 [character]
 symbol = "$"
 use_symbol_for_status = false
 # Green
-style_success = "bold #98c379"
 # Light Red
-style_failure = "bold #e06c75"
 
 [cmd_duration]
-# Light Yellow
-style = "#e5c07b"
 
 [conda]
-# Green
-style = "#98c379"
 
 [directory]
 truncation_length = 3
-# Cyan
-style = "bold #56b6c2"
 
 [dotnet]
 disabled = true
@@ -35,13 +36,10 @@ disabled = true
 disabled = true
 
 [git_branch]
-# Light Red
-style = "#e06c75"
 
 [git_commit]
 disabled = false
 commit_hash_length = 4
-style = "#98c379"
 
 [git_state]
 disabled = true
@@ -55,25 +53,15 @@ renamed_count.enabled = true
 deleted_count.enabled = true
 stashed_count.enabled = true
 show_sync_count = true
-# Light Red
-style = "#e06c75"
 
 [golang]
-# Cyan
-style = "#56b6c2"
 
 [hostname]
-# Green
-style = "#98c379"
 
 [jobs]
-# Blue
-style = "#61afef"
 
 [kubernetes]
 symbol = "⎈ "
-# Blue
-style = "#61afef"
 disabled = false
 
 [line_break]
@@ -86,36 +74,22 @@ disabled = true
 disabled = true
 
 [java]
-# Dark Red
-style = "#be5046"
 
 [nodejs]
 symbol = "🤖 "
-# Green
-style = "#98c379"
 
 [package]
 symbol = "🎁 "
-# Dark Red
-style = "#be5046"
 
 [python]
-# Light Yellow
-style = "#e5c07b"
 
 [ruby]
-# Dark Red
-style = "#be5046"
 
 [rust]
 symbol = "⚙️ "
-# Dark Yellow
-style = "#d19a66"
 
 [time]
 disabled = true
 
 [username]
 disabled = false
-# Light Yellow
-style_user = "#e5c07b"

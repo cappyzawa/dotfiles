@@ -502,9 +502,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-    " TODO: replace this
-    " See: original plugin has an issue: https://github.com/glacambre/firenvim/issues/175
-    Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
     endif
@@ -520,8 +518,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
 
     " Theme
-    Plug 'joshdick/onedark.vim'
-
+    " Plug 'joshdick/onedark.vim'
+    Plug 'morhetz/gruvbox'
     " Views
     Plug 'bling/vim-bufferline'
     Plug 'vim-airline/vim-airline'
@@ -722,6 +720,11 @@ if g:plug.is_installed('onedark.vim')
   colorscheme onedark
 endif
 
+if g:plug.is_installed('gruvbox')
+  syntax on
+  colorscheme gruvbox
+endif
+
 if g:plug.is_installed('vault.nvim')
   let g:vault_default_path_prefix = 'concourse/main'
 endif
@@ -738,7 +741,7 @@ endif
 
 if g:plug.is_installed('vim-airline')
   let g:airline_skip_empty_sections = 1
-  let g:airline_theme='onedark'
+  let g:airline_theme='gruvbox'
   let g:airline_extensions = ['branch',
         \ 'ale',
         \ 'bufferline']
@@ -857,7 +860,7 @@ if g:plug.is_installed('firenvim')
   endfunction
 
 
-  let g:firenvim_font = 'Droid\ Sans\ Mono\ Slashed\ for\ Powerline'
+  let g:firenvim_font = 'Fira\ Mono\ for\ Powerline'
   function! Set_Font(font) abort
     execute 'set guifont=' . a:font . ':h14'
   endfunction
