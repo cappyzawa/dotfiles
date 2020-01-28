@@ -16,7 +16,7 @@ zinit light anyenv/anyenv
 zinit cdreplay -q
 
 # local snippets
-zinit ice wait "1" lucid
+zinit ice wait"1" lucid
 zinit snippet $HOME/.zsh/10_utils.zsh
 zinit ice wait"1" lucid
 zinit snippet $HOME/.zsh/20_keybinds.zsh
