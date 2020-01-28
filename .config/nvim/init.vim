@@ -228,7 +228,7 @@ if has('nvim')
 endif
 " }}}
 
-" utils "{{{
+" utils "{{{{{{
 " Restore cursor position
 if g:env.vimrc.restore_cursor_position == g:true
   function! s:restore_cursor_postion()
@@ -248,7 +248,7 @@ augroup buffer-queue-restore
   autocmd!
   "autocmd BufDelete * call <SID>buf_enqueue(expand('#'))
 augroup END
-" }}}
+" }}}}}}
 
 " option "{{{
 " set 256 colors
@@ -675,12 +675,13 @@ if g:plug.is_installed('ale')
   nnoremap <silent> <Leader>at :<C-u>ALEToggle<CR>
   let g:ale_fix_on_save = 1
   let g:ale_set_quickfix = 1
-  let g:ale_sign_error = '🔥'
-  let g:ale_sign_warning = '⚡️'
-  let g:ale_echo_msg_error_str = '🔥'
-  let g:ale_echo_msg_warning_str = '⚡️'
+  let g:ale_sign_error = '◉'
+  let g:ale_sign_warning = '◉'
+  highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
+  highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
   let g:ale_disable_lsp = 1
+  let g:ale_virtualtext_cursor = 1
   let g:ale_linters = {
   \   'go': ['golint'],
   \   'vim': ['vint'],

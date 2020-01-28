@@ -1,0 +1,91 @@
+setenv LANG en_US.UTF-8
+
+set-option -g prefix C-t
+bind-key C-t send-prefix
+unbind-key C-b
+
+set-option -g default-shell /usr/local/bin/zsh
+set-option -g default-command /usr/local/bin/zsh
+set-option -s escape-time 0
+
+# Split window from current path
+bind-key \ split-window -h -c '#{pane_current_path}'
+
+# Vertical split window from current path
+bind-key - split-window -v -c '#{pane_current_path}'
+
+bind-key c new-window -c '#{pane_current_path}'
+
+# Custom mouse settings
+set-option -g mouse on
+unbind-key -T root MouseDown1Pane
+unbind-key -T root MouseDown3Pane
+
+# Start window index 1 origin
+set-option -g base-index 1
+
+# Resize pane
+bind-key -r H resize-pane -L 5
+bind-key -r J resize-pane -D 5
+bind-key -r K resize-pane -U 5
+bind-key -r L resize-pane -R 5
+
+# Change active pane
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
+# Reload config file
+bind-key r source-file ~/.tmux.conf\; display-message "[tmux] ~/.tmux.conf reloaded!"
+
+# sync
+bind a setw synchronize-panes \; display "synchronize-panes #{?pane_synchronized,on,off}"
+
+# Look up in a man-page
+bind-key m command-prompt -p "Man:" "split-window 'man %%'"
+
+# active
+set-option -g default-terminal "screen-256color"
+
+# status bar
+set-option -g status-position top
+
+# like a vim
+set-window-option -g mode-keys vi
+set -g status-keys vi
+
+bind-key v copy-mode \; display "Copy mode!"
+
+bind-key p paste-buffer
+
+bind-key -T edit-mode-vi Up send-keys -X history-up
+bind-key -T edit-mode-vi Down send-keys -X history-down
+unbind-key -T copy-mode-vi Space
+
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi V send-keys -X select-line
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
+bind-key -T copy-mode-vi C-a send-keys -X start-of-line
+bind-key -T copy-mode-vi C-e send-keys -X end-of-line
+bind-key -T copy-mode-vi w send-keys -X next-word
+bind-key -T copy-mode-vi e send-keys -X next-word-end
+bind-key -T copy-mode-vi g send-keys -X top-line
+bind-key -T copy-mode-vi G send-keys -X bottom-line
+bind-key -T copy-mode-vi / send-keys -X search-forward
+bind-key -T copy-mode-vi ? send-keys -X search-backward
+
+set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+set -g @plugin 'tmux-plugins/tmux-open'
+
+set -g @plugin 'egel/tmux-gruvbox'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
