@@ -722,6 +722,7 @@ if g:plug.is_installed('onedark.vim')
 endif
 
 if g:plug.is_installed('gruvbox')
+  let g:gruvbox_contrast_dark = 'soft'
   syntax on
   colorscheme gruvbox
 endif
@@ -737,7 +738,7 @@ if g:plug.is_installed('elm-vim')
 endif
 
 if g:plug.is_installed('julia-vim')
-  let g:default_julia_version = "1.2.0"
+  let g:default_julia_version = '1.2.0'
 endif
 
 if g:plug.is_installed('vim-airline')
