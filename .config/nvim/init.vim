@@ -502,7 +502,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.17' }
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
     endif
