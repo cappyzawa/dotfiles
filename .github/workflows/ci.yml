@@ -17,7 +17,7 @@ jobs:
           sudo mkdir /tmp
         fi
         sudo mkdir ${LOCAL}
-        curl -L http://sourceforge.net/projects/zsh/files/zsh/${zsh_version}/zsh-${zsh_version}.tar.xz/download | tar Jxv
+        curl -L https://sourceforge.net/projects/zsh/files/zsh/${zsh_version}/zsh-${zsh_version}.tar.xz/download | tar Jxv
 
         cd zsh-${zsh_version}
         ./configure --prefix=${LOCAL} --with-tcsetpgrp
