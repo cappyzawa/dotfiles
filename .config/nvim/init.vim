@@ -506,16 +506,11 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
     endif
+    Plug 'hashicorp/sentinel.vim'
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
-    Plug 'ap/vim-css-color'
+    Plug 'guns/xterm-color-table.vim'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
-    if ! has('nvim')
-      Plug 'skanehira/translate.vim', { 'on': 'Translate' }
-        let g:translate_source = "en"
-        let g:translate_target = "ja"
-        let g:translate_winsize = 10
-    endif
-
+    Plug 'wellle/context.vim'
 
     " Theme
     " Plug 'joshdick/onedark.vim'
