@@ -474,8 +474,12 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/sd-validate.vim', { 'for': 'yaml' }
     Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
     Plug 'tpope/vim-fugitive'
+      Plug 'tpope/vim-rhubarb'
+      noremap <silent> <Leader>gf :<C-u>Gbrowse<CR>
+      vnoremap <silent> <Leader>gf :<C-u>'<,'>Gbrowse<CR>
     Plug 'tomtom/tcomment_vim', { 'on': 'TComment' }
       nnoremap <silent> gc :<C-u>TComment<CR>
+      vnoremap <silent> gc :<C-u>'<,'>TComment<CR>
     Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' }
       let g:silicon = {
         \ 'theme':              'OneHalfDark',
