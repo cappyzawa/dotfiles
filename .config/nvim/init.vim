@@ -461,6 +461,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     " Utils
     Plug 'jiangmiao/auto-pairs'
+      let g:AutoPairsMapCR = 0
 
     Plug 'tyru/open-browser-github.vim', { 'on' : ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq'] }
       nnoremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
@@ -703,7 +704,7 @@ endif
 if g:plug.is_installed('vim-terraform')
   let g:terraform_align=1
   let g:terraform_fold_sections=1
-  let g:terraform_fmt_on_save=1
+  let g:terraform_fmt_on_save=0
 endif
 
 if g:plug.is_installed('onedark.vim')
