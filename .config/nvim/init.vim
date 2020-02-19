@@ -463,14 +463,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'jiangmiao/auto-pairs'
       let g:AutoPairsMapCR = 0
 
-    Plug 'tyru/open-browser-github.vim', { 'on' : ['OpenGithubFile', 'OpenGithubIssue', 'OpenGithubPullReq'] }
-      nnoremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
-      nnoremap <silent> <Leader>gi :<C-u>OpenGithubIssue<CR>
-      nnoremap <silent> <Leader>gp :<C-u>OpenGithubPullReq<CR>
-        Plug 'tyru/open-browser.vim'
-        nmap gx <Plug>(openbrowser-smart-search)
-        vmap gx <Plug>(openbrowser-smart-search)
-
     Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
       let g:git_messenger_include_diff = 'current'
       let g:git_messenger_always_into_popup = v:true
