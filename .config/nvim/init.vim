@@ -460,6 +460,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
     " Utils
+    if executable('dlv')
+      Plug 'jodosha/vim-godebug'
+    endif
     Plug 'jiangmiao/auto-pairs'
       let g:AutoPairsMapCR = 0
 
