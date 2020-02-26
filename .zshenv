@@ -52,6 +52,9 @@ setopt no_global_rcs
 export PATH=~/bin:"$PATH"
 
 # Settings for golang
+if ! [ -d $HOME/ghq ]; then
+  mkdir $HOME/ghq
+fi
 export GOPATH="$HOME/ghq"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
@@ -96,15 +99,5 @@ export ANYENV_ROOT="${XDG_CONFIG_HOME}/anyenv"
 # available $INTERACTIVE_FILTER
 export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"
 
-# zlib
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
-
 export DOTPATH=${0:A:h}
 export TERM="xterm-256color"
-
-# openssl
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"

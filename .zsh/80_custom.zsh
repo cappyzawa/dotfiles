@@ -26,8 +26,17 @@ if has "jq"; then
   alias -g JL='| jq -C . | less -R -X'
 fi
 
+change_editor_env() {
+  local editor=$1
+  for e in `env | grep EDITOR | sed -e "s/=.[a-zA-Z]*//g"`;
+  do
+    export $e=$editor
+  done
+}
+
 if has "nvim"; then
   alias vim='nvim'
+  change_editor_env nvim
 fi
 
 if has "lazygit"; then
