@@ -9,6 +9,10 @@ zinit ice lucid as"program" from"gh-r" \
   atload'export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml'
 zinit light starship/starship
 
+zinit ice lucid as"program" from"gh-r" \
+  mv"exa-*->exa"
+zinit light ogham/exa
+
 zinit ice as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
 

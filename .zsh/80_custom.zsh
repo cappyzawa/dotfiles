@@ -58,6 +58,10 @@ if has "go"; then
   export GOPRIVATE="*.yahoo.co.jp"
 fi
 
+if has "exa"; then
+  alias ls='exa'
+fi
+
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
