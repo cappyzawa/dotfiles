@@ -92,6 +92,10 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"ytt-* -> ytt" pick"ytt"
 zinit light "k14s/ytt"
 
+zinit ice wait'3' lucid as"program" from"gh-r" \
+  mv"gh*/bin/gh -> gh"
+zinit light "cli/cli"
+
 if [[ `uname` == "Darwin" ]]; then
   zinit ice wait'2' lucid as"program" from"gh-r" bpick"ninja-mac*"
 elif [[ uname == "Linux" ]]; then
