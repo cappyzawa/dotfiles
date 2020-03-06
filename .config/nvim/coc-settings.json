@@ -102,7 +102,7 @@
   },
   "yaml.format.enable": true,
   "yaml.format.singleQuote": false,
-  "yaml.format.bracketSpacing": true,
+  "yaml.format.bracketSpacing": false,
   "yaml.format.proseWrap": "always",
   "yaml.validate": true,
   "yaml.hover": true,
@@ -111,7 +111,8 @@
     "kubernetes": "/*.yaml",
     "http://json.schemastore.org/kustomization": "/kustomization.yaml",
     "https://raw.githubusercontent.com/wdstar/vscode-screwdriver/master/snippets/screwdriver-pipeline.json": "/screwdriver.yaml",
-    "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v3.7.json": "/*docker-compose*.yaml"
+    "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v3.7.json": "/*docker-compose*.yaml",
+    "https://raw.githubusercontent.com/cappyzawa/concourse-pipeline-jsonschema/master/concourse_jsonschema.json": "/pipeline.yml"
   },
   "yaml.trace.server": "verbose",
   "list.indicator": " ►",
