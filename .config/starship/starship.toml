@@ -5,16 +5,7 @@ add_newline = true
 disabled = true
 
 [battery]
-
-[[battery.display]]
-threshold = 10
-style = "bold red"
-[[battery.display]]
-threshold = 30
-style = "bold yellow"
-[[battery.display]]
-threshold = 99
-style = "bold green"
+disabled = true
 
 [character]
 symbol = "$"

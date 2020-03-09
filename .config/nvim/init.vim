@@ -513,8 +513,12 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'wellle/context.vim'
 
     " Theme
-    " Plug 'joshdick/onedark.vim'
-    Plug 'morhetz/gruvbox'
+    if has('nvim')
+      Plug 'morhetz/gruvbox'
+    else
+      Plug 'joshdick/onedark.vim'
+    endif
+
     " Views
     Plug 'bling/vim-bufferline'
     Plug 'vim-airline/vim-airline'
