@@ -687,12 +687,14 @@ if g:plug.is_installed('ale')
   \   'go': ['golint'],
   \   'vim': ['vint'],
   \   'rust': ['rustc'],
+  \   'terraform': ['tflint'],
   \}
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'go': ['gofmt','goimports'],
   \   'elm': ['elm-format'],
   \   'rust': ['rustfmt'],
+  \   'terraform': ['terraform'],
   \   'markdown': [],
   \}
 
