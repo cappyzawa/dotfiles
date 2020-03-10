@@ -16,7 +16,8 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-" Init
+" }}}
+
 " env "{{{
 function! s:vimrc_environment()
     let l:env = {}
@@ -59,7 +60,7 @@ function! s:vimrc_environment()
     let l:env.is_tmux_running = !empty($TMUX)
     let l:env.tmux_proc = system('tmux display-message -p "#W"')
 
-  "echo get(g:env.vimrc, 'enable_plugin', g:false)
+    "echo get(g:env.vimrc, 'enable_plugin', g:false)
     let l:env.vimrc = {
               \ 'plugin_on': g:true,
               \ 'suggest_neobundleinit': g:true,
@@ -88,7 +89,7 @@ endfunction
 function! IsMac() abort
     return g:env.is_.mac
 endfunction
-" }}}
+
 let g:env.vimrc.plugin_on = g:true
 let g:env.vimrc.manage_rtp_manually = g:false
 let g:env.vimrc.plugin_on =
@@ -228,7 +229,7 @@ if has('nvim')
 endif
 " }}}
 
-" utils "{{{{{{
+" utils " {{{
 " Restore cursor position
 if g:env.vimrc.restore_cursor_position == g:true
   function! s:restore_cursor_postion()
@@ -248,7 +249,8 @@ augroup buffer-queue-restore
   autocmd!
   "autocmd BufDelete * call <SID>buf_enqueue(expand('#'))
 augroup END
-" }}}}}}
+
+" }}}
 
 " option "{{{
 " set 256 colors
@@ -691,17 +693,13 @@ if g:plug.is_installed('ale')
   \   'go': ['gofmt','goimports'],
   \   'elm': ['elm-format'],
   \   'rust': ['rustfmt'],
+  \   'markdown': [],
   \}
 
   " for elm
   let g:ale_elm_format_executable = 'elm-format'
   let g:ale_elm_format_options = '--yes --elm-version=0.19'
 
-  " for markdown
-  augroup ale_custom
-    autocmd!
-    autocmd FileType markdown,ruby let g:ale_fix_on_save = 0
-  augroup END
 endif
 
 if g:plug.is_installed('vim-terraform')
