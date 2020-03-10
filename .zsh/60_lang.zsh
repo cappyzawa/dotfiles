@@ -118,11 +118,11 @@ gem_install(){
   gem install ${pkg}
 }
 
-if has "gem"; then
-  if ! has "solargraph"; then
-    gem_install solargraph
-  fi
-fi
+# if has "gem"; then
+#   if ! has "solargraph"; then
+#     gem_install solargraph
+#   fi
+# fi
 
 pip_instal() {
   pkg=$1

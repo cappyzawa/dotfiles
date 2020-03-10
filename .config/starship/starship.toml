@@ -53,7 +53,7 @@ show_sync_count = true
 
 [kubernetes]
 symbol = "⎈ "
-disabled = false
+disabled = true
 
 [line_break]
 disabled = false

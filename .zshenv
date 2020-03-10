@@ -8,7 +8,6 @@ path=( \
     ~/.tmux/bin(N-/) \
     ~/.nimble/bin(N-/) \
     ~/.yarn/bin(N-/) \
-    ~/.gem/bin(N-/) \
     "$path[@]" \
     )
 
