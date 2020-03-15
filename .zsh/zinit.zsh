@@ -75,8 +75,9 @@ zinit light zdharma/fast-syntax-highlighting
 zinit ice wait'3' lucid
 zinit light zsh-users/zsh-autosuggestions
 
-zinit ice wait'2' lucid atclone"pip install yq" atpull"pip update yq"
-zinit light kislyuk/yq
+zinit ice wait'2' lucid as"program" from:"gh-r" \
+  mv"yq* -> yq"
+zinit light mikefarah/yq
 
 zinit ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"
 zinit light adrienverge/yamllint
