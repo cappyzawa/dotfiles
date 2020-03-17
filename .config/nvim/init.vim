@@ -447,6 +447,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
     Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
+    Plug 'jparise/vim-graphql'
 
     Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
     " Plug 'posva/vim-vue', { 'for': 'vue' }
@@ -871,8 +872,8 @@ if g:plug.is_installed('firenvim')
     au TextChangedI * ++nested call Delay_My_Write()
     au BufEnter github.com_*.txt set filetype=markdown | call Set_Font(g:firenvim_font)
     au BufEnter play.rust-lang.org_*.txt set filetype=rust | call Set_Font(g:firenvim_font)
-    au BufEnter play.golang.org_*.txt set filetype=go |call Set_Font(g:firenvim_font)
-    au BufEnter tour.golang.org_*.txt set filetype=go |call Set_Font(g:firenvim_font)
+    au BufEnter play.golang.org_*.txt set filetype=go | call Set_Font(g:firenvim_font)
+    au BufEnter tour.golang.org_*.txt set filetype=go | call Set_Font(g:firenvim_font)
   augroup END
 endif
 
