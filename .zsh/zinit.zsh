@@ -5,7 +5,7 @@ zinit ice pick"init.sh" lucid \
   atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1'
 zinit light "b4b4r07/enhancd"
 
-zinit ice lucid as"program" from"gh-r" \
+zinit ice lucid as"program" from"gh-r" bpick"starship-x86_64-*.tar.gz"\
   atload'export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml'
 zinit light starship/starship
 
@@ -189,6 +189,10 @@ zinit light juliosueiras/terraform-lsp
 zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"bazel-*-*-x86_64*->bazel"
 zinit light bazelbuild/bazel
+
+zinit ice wait'2' lucid as"program" from:"gh-r" \
+  mv"sd-local_*->sd-local"
+zinit light screwdriver-cd/sd-local
 
 zinit ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zinit light neovim/neovim
