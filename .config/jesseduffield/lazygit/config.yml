@@ -1,6 +1,5 @@
 confirmonquit: false
 git:
-  autofetch: true
   merging:
     manualcommit: false
   skiphookprefix: WIP
@@ -11,14 +10,13 @@ gui:
   scrollpastbottom: true
   theme:
     activebordercolor:
-    - green
-    - reverse
+    - yellow
+    - bold
     inactivebordercolor:
     - white
-    lighttheme: true
     optionstextcolor:
     - blue
-reporting: "on"
+reporting: "off"
 startuppopupversion: 1
 update:
   days: 14
