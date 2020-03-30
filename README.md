@@ -1,4 +1,4 @@
-# dotfiees
+# dotfiles
 dotfile for cappyzawa
 
 ## Setup
