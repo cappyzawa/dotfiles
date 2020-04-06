@@ -5,7 +5,7 @@ zinit ice pick"init.sh" lucid \
   atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1'
 zinit light "b4b4r07/enhancd"
 
-zinit ice lucid as"program" from"gh-r" bpick"starship-x86_64-*.tar.gz"\
+zinit ice lucid as"program" from"gh-r" bpick"starship-x86_64-*.tar.gz" \
   atload'export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml'
 zinit light starship/starship
 

@@ -477,7 +477,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       let g:git_messenger_no_default_mappings = v:true
 
     Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
-    Plug 'cappyzawa/sd-validate.vim', { 'for': 'yaml' }
+    " Plug 'cappyzawa/sd-validate.vim', { 'for': 'yaml' }
     Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
     Plug 'tpope/vim-fugitive'
       Plug 'tpope/vim-rhubarb'
