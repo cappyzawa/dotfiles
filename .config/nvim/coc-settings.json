@@ -115,6 +115,10 @@
     "https://raw.githubusercontent.com/cappyzawa/concourse-pipeline-jsonschema/master/concourse_jsonschema.json": "/pipeline.yml"
   },
   "yaml.trace.server": "verbose",
+  "markdownlint.config": {
+    "default": true,
+    "line_length": false
+  },
   "list.indicator": " ►",
   "list.insertMappings": {
     "<C-t>": "action:tabe",
