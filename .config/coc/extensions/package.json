@@ -7,7 +7,7 @@
     "coc-markdownlint": ">=1.1.1",
     "coc-rls": ">=1.1.4",
     "coc-tslint-plugin": ">=1.1.1",
-    "coc-tsserver": ">=1.4.12",
+    "coc-tsserver": ">=1.4.13",
     "coc-vetur": ">=1.1.10",
     "coc-vimlsp": ">=0.5.1",
     "coc-yaml": ">=1.0.4"

@@ -31,6 +31,7 @@ disabled = true
 [git_commit]
 disabled = false
 commit_hash_length = 4
+tag_disabled = false
 
 [git_state]
 disabled = true
