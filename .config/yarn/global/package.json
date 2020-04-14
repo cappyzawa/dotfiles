@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "minimist": "1.2.2",
+    "minimist": "1.2.3",
     "vim-language-server": "^1.4.0",
     "vim-node-rpc": "^0.1.32"
   }
