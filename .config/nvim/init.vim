@@ -423,7 +423,7 @@ augroup END
 
 if g:plug.ready() && g:env.vimrc.plugin_on
     " start to manage with vim-plug
-    call plug#begin(g:plug.base)
+  call plug#begin(g:plug.base)
 
     Plug 'Shougo/deol.nvim', { 'on': 'Deol' }
       let g:deol#shell_history_path = '~/.zsh_history'
@@ -513,7 +513,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'guns/xterm-color-table.vim'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
-    Plug 'wellle/context.vim'
+    Plug 'Yggdroot/indentLine'
+      let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
     " Theme
     if has('nvim')
