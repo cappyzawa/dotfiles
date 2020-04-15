@@ -26,6 +26,9 @@ disabled = true
 [env_var]
 disabled = true
 
+[elm]
+symbol = " "
+
 [git_branch]
 
 [git_commit]
@@ -47,6 +50,7 @@ stashed_count.enabled = true
 show_sync_count = true
 
 [golang]
+symbol = " "
 
 [hostname]
 
@@ -54,7 +58,7 @@ show_sync_count = true
 
 [kubernetes]
 symbol = "⎈ "
-disabled = false
+disabled = true
 
 [line_break]
 disabled = false
@@ -66,19 +70,23 @@ disabled = true
 disabled = true
 
 [java]
+symbol = " "
+
+[julia]
+symbol = " "
 
 [nodejs]
-symbol = "🤖 "
+symbol = ""
 
 [package]
-symbol = "🎁 "
+symbol = ""
 
 [python]
 
 [ruby]
 
 [rust]
-symbol = "⚙️ "
+symbol = " "
 
 [time]
 disabled = true
