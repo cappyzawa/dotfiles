@@ -82,6 +82,9 @@ zinit light mikefarah/yq
 zinit ice wait'2' lucid as"program" from:"gh-r"
 zinit light wagoodman/dive
 
+zinit ice wait'2' lucid as"program" from:"gh-r"
+zinit light nektos/act
+
 zinit ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"
 zinit light adrienverge/yamllint
 
