@@ -513,8 +513,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'guns/xterm-color-table.vim'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
-    Plug 'Yggdroot/indentLine'
-      let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
     " Theme
     if has('nvim')
