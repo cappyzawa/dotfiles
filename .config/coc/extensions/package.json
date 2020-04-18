@@ -9,7 +9,7 @@
     "coc-tslint-plugin": ">=1.1.1",
     "coc-tsserver": ">=1.4.15",
     "coc-vetur": ">=1.1.10",
-    "coc-vimlsp": ">=0.5.1",
+    "coc-vimlsp": ">=0.5.2",
     "coc-yaml": ">=1.0.4"
   }
 }
