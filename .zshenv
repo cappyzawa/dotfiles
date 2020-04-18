@@ -94,6 +94,7 @@ fi
 
 # Config
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 export ANYENV_ROOT="${XDG_CONFIG_HOME}/anyenv"
 
 # available $INTERACTIVE_FILTER

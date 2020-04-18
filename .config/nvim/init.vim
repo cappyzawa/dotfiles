@@ -505,7 +505,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.21' }
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.23' }
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
     endif
@@ -838,42 +838,35 @@ endif
 
 if g:plug.is_installed('firenvim')
   let g:firenvim_config = {
-    \ 'localSettings': {
-      \ 'github\.com': {
-        \ 'selector': 'textarea',
-        \ 'priority': 0,
-  \       },
-  \     }
-    \ }
+      \ 'globalSettings': {
+          \ 'alt': 'all',
+      \  },
+      \ 'localSettings': {
+          \ '.*': {
+              \ 'cmdline': 'neovim',
+              \ 'priority': 0,
+              \ 'selector': 'textarea',
+              \ 'takeover': 'always',
+          \ },
+      \ }
+  \ }
 
-  let g:dont_write = v:false
-  function! My_Write(timer) abort
-    let g:dont_write = v:false
-    write
-  endfunction
-
-  function! Delay_My_Write() abort
-    if g:dont_write
-      return
-    end
-    let g:dont_write = v:true
-    call timer_start(10000, 'My_Write')
-  endfunction
-
-
-  let g:firenvim_font = 'Fira\ Mono\ for\ Powerline'
+  let g:firenvim_font = 'FiraCode\ Nerd\ Font'
   function! Set_Font(font) abort
     execute 'set guifont=' . a:font . ':h14'
   endfunction
 
-  augroup Firenvim
-    au TextChanged * ++nested call Delay_My_Write()
-    au TextChangedI * ++nested call Delay_My_Write()
-    au BufEnter github.com_*.txt set filetype=markdown | call Set_Font(g:firenvim_font)
-    au BufEnter play.rust-lang.org_*.txt set filetype=rust | call Set_Font(g:firenvim_font)
-    au BufEnter play.golang.org_*.txt set filetype=go | call Set_Font(g:firenvim_font)
-    au BufEnter tour.golang.org_*.txt set filetype=go | call Set_Font(g:firenvim_font)
-  augroup END
+  if exists('g:started_by_firenvim')
+    augroup Firenvim
+      au TextChanged * ++nested write
+      au TextChangedI * ++nested write
+      au BufEnter github.com_* set filetype=markdown | call Set_Font(g:firenvim_font)
+      au BufEnter play.rust-lang.org_* set filetype=rust | call Set_Font(g:firenvim_font)
+      au BufEnter play.golang.org_* set filetype=go | call Set_Font(g:firenvim_font)
+      au BufEnter tour.golang.org_* set filetype=go | call Set_Font(g:firenvim_font)
+    augroup END
+  endif
+
 endif
 
 " }}}
