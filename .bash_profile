@@ -6,3 +6,5 @@ if [ -n "$PS1" ]; then # interactive only
 fi
 
 complete -C /usr/local/bin/vault vault
+
+export PATH="$HOME/.cargo/bin:$PATH"
