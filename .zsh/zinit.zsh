@@ -179,9 +179,6 @@ zinit ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn" atpull"%atclone"
 zinit light tektoncd/cli
 
-zinit ice wait'2' lucid as"program" from:"gh-r" pick:"kustomize"
-zinit light kubernetes-sigs/kustomize
-
 zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"operator-sdk-v*-x86_64-*->operator-sdk"
 zinit light operator-framework/operator-sdk

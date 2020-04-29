@@ -15,25 +15,29 @@ fi
 
 if has "goenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/goenv/versions/1.13.1" ]]; then
-    goenv install "1.13.1" && goenv global "1.13.1"
+    goenv install "1.13.1"
+    goenv global "1.13.1"
   fi
 fi
 
 if has "nodenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/nodenv/versions/10.16.3" ]]; then
-    nodenv install "10.16.3" && nodenv global "10.16.3"
+    nodenv install "10.16.3"
+    nodenv global "10.16.3"
   fi
 fi
 
 if has "rbenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/rbenv/versions/2.6.5" ]]; then
-    rbenv install "2.6.5" && rbenv global "2.6.5"
+    rbenv install "2.6.5"
+    rbenv global "2.6.5"
   fi
 fi
 
 if has "pyenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/pyenv/versions/anaconda3-5.3.1" ]]; then
-    pyenv install "anaconda3-5.3.1" && pyenv global "anaconda3-5.3.1"
+    pyenv install "anaconda3-5.3.1"
+    pyenv global "anaconda3-5.3.1"
   fi
 fi
 
