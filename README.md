@@ -10,5 +10,4 @@ curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install
 
 ## Required
 
-* [tonsky/FiraCode: Monospaced font with programming ligatures](https://github.com/tonsky/FiraCode)
-* [powerline/fonts: Patched fonts for Powerline users\.](https://github.com/powerline/fonts#quick-installation) (will not been used)
+* [Nerd Fonts(FiraCode)](https://www.nerdfonts.com/)
