@@ -73,15 +73,18 @@ function _ko_apply {
     '--insecure-skip-tls-verify[If true, the server'\''s certificate will not be checked for validity. This will make your HTTPS connections insecure]' \
     '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
     '--kubeconfig[Path to the kubeconfig file to use for CLI requests.]:' \
-    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-L --local)'{-L,--local}'[Load into images to local docker daemon.]' \
     '(-n --namespace)'{-n,--namespace}'[If present, the namespace scope for this CLI request]:' \
+    '--oci-layout-path[Path to save the OCI image layout of the built images]:' \
     '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
+    '--push[Push images to KO_DOCKER_REPO]' \
     '(-R --recursive)'{-R,--recursive}'[Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.]' \
     '--request-timeout[The length of time to wait before giving up on a single server request. Non-zero values should contain a corresponding time unit (e.g. 1s, 2m, 3h). A value of zero means don'\''t timeout requests.]:' \
     '(-l --selector)'{-l,--selector}'[Selector (label query) to filter on, supports '\''='\'', '\''=='\'', and '\''!='\''.(e.g. -l key1=value1,key2=value2)]:' \
     '(-s --server)'{-s,--server}'[The address and port of the Kubernetes API server]:' \
     '--strict[If true, require package references to be explicitly prefixed with "ko://"]' \
     '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:' \
+    '--tarball[File to save images tarballs]:' \
     '--token[Bearer token for authentication to the API server]:' \
     '--user[The name of the kubeconfig user to use]:' \
     '(-W --watch)'{-W,--watch}'[Continuously monitor the transitive dependencies of the passed yaml files, and redeploy whenever anything changes.]'
@@ -110,15 +113,18 @@ function _ko_create {
     '--insecure-skip-tls-verify[If true, the server'\''s certificate will not be checked for validity. This will make your HTTPS connections insecure]' \
     '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
     '--kubeconfig[Path to the kubeconfig file to use for CLI requests.]:' \
-    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-L --local)'{-L,--local}'[Load into images to local docker daemon.]' \
     '(-n --namespace)'{-n,--namespace}'[If present, the namespace scope for this CLI request]:' \
+    '--oci-layout-path[Path to save the OCI image layout of the built images]:' \
     '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
+    '--push[Push images to KO_DOCKER_REPO]' \
     '(-R --recursive)'{-R,--recursive}'[Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.]' \
     '--request-timeout[The length of time to wait before giving up on a single server request. Non-zero values should contain a corresponding time unit (e.g. 1s, 2m, 3h). A value of zero means don'\''t timeout requests.]:' \
     '(-l --selector)'{-l,--selector}'[Selector (label query) to filter on, supports '\''='\'', '\''=='\'', and '\''!='\''.(e.g. -l key1=value1,key2=value2)]:' \
     '(-s --server)'{-s,--server}'[The address and port of the Kubernetes API server]:' \
     '--strict[If true, require package references to be explicitly prefixed with "ko://"]' \
     '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:' \
+    '--tarball[File to save images tarballs]:' \
     '--token[Bearer token for authentication to the API server]:' \
     '--user[The name of the kubeconfig user to use]:' \
     '(-W --watch)'{-W,--watch}'[Continuously monitor the transitive dependencies of the passed yaml files, and redeploy whenever anything changes.]'
@@ -138,9 +144,12 @@ function _ko_publish {
     '--disable-optimizations[Disable optimizations when building Go code. Useful when you want to interactively debug the created container.]' \
     '--insecure-registry[Whether to skip TLS verification on the registry]' \
     '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
-    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-L --local)'{-L,--local}'[Load into images to local docker daemon.]' \
+    '--oci-layout-path[Path to save the OCI image layout of the built images]:' \
     '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
-    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:'
+    '--push[Push images to KO_DOCKER_REPO]' \
+    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:' \
+    '--tarball[File to save images tarballs]:'
 }
 
 function _ko_resolve {
@@ -150,12 +159,15 @@ function _ko_resolve {
     '(*-f *--filename)'{\*-f,\*--filename}'[Filename, directory, or URL to files to use to create the resource]:' \
     '--insecure-registry[Whether to skip TLS verification on the registry]' \
     '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
-    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-L --local)'{-L,--local}'[Load into images to local docker daemon.]' \
+    '--oci-layout-path[Path to save the OCI image layout of the built images]:' \
     '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
+    '--push[Push images to KO_DOCKER_REPO]' \
     '(-R --recursive)'{-R,--recursive}'[Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.]' \
     '(-l --selector)'{-l,--selector}'[Selector (label query) to filter on, supports '\''='\'', '\''=='\'', and '\''!='\''.(e.g. -l key1=value1,key2=value2)]:' \
     '--strict[If true, require package references to be explicitly prefixed with "ko://"]' \
     '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:' \
+    '--tarball[File to save images tarballs]:' \
     '(-W --watch)'{-W,--watch}'[Continuously monitor the transitive dependencies of the passed yaml files, and redeploy whenever anything changes.]'
 }
 
@@ -165,9 +177,12 @@ function _ko_run {
     '--disable-optimizations[Disable optimizations when building Go code. Useful when you want to interactively debug the created container.]' \
     '--insecure-registry[Whether to skip TLS verification on the registry]' \
     '(-j --jobs)'{-j,--jobs}'[The maximum number of concurrent builds]:' \
-    '(-L --local)'{-L,--local}'[Whether to publish images to a local docker daemon vs. a registry.]' \
+    '(-L --local)'{-L,--local}'[Load into images to local docker daemon.]' \
+    '--oci-layout-path[Path to save the OCI image layout of the built images]:' \
     '(-P --preserve-import-paths)'{-P,--preserve-import-paths}'[Whether to preserve the full import path after KO_DOCKER_REPO.]' \
-    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:'
+    '--push[Push images to KO_DOCKER_REPO]' \
+    '(*-t *--tags)'{\*-t,\*--tags}'[Which tags to use for the produced image instead of the default '\''latest'\'' tag.]:' \
+    '--tarball[File to save images tarballs]:'
 }
 
 function _ko_version {

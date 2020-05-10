@@ -14,6 +14,7 @@ function _tkn {
   cmnds)
     commands=(
       "clustertask:Manage clustertasks"
+      "clustertriggerbinding:Manage clustertriggerbindings"
       "completion:Prints shell completion scripts"
       "condition:Manage conditions"
       "eventlistener:Manage eventlisteners"
@@ -34,6 +35,9 @@ function _tkn {
   case "$words[1]" in
   clustertask|clustertasks|ct)
     _tkn_clustertask
+    ;;
+  clustertriggerbinding|clustertriggerbindings|ctb)
+    _tkn_clustertriggerbinding
     ;;
   completion)
     _tkn_completion
@@ -81,7 +85,6 @@ function _tkn_clustertask {
   _arguments -C \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
-    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
     '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -123,7 +126,6 @@ function _tkn_clustertask_delete {
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
-    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
     '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
     '1: :__tkn_get_clustertasks'
 }
@@ -135,7 +137,6 @@ function _tkn_clustertask_describe {
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
-    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
     '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
     '1: :__tkn_get_clustertasks'
 }
@@ -147,7 +148,6 @@ function _tkn_clustertask_list {
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
-    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
     '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]'
 }
 
@@ -159,15 +159,83 @@ function _tkn_clustertask_start {
     '(-L --last)'{-L,--last}'[re-run the clustertask using last taskrun values]' \
     '--output[format of taskrun dry-run (yaml or json)]:()' \
     '(*-o *--outputresource)'{\*-o,\*--outputresource}'[pass the output resource name and ref as name=ref]:()' \
-    '(*-p *--param)'{\*-p,\*--param}'[pass the param as key=value or key=value1,value2]:()' \
+    '(*-p *--param)'{\*-p,\*--param}'[pass the param as key=value for string type, or key=value1,value2,... for array type]:()' \
     '(-s --serviceaccount)'{-s,--serviceaccount}'[pass the serviceaccount name]: :__kubectl_get_serviceaccount' \
     '--showlog[show logs right after starting the clustertask]' \
     '(-t --timeout)'{-t,--timeout}'[timeout for taskrun in seconds]:()' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
-    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
     '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
     '1: :__tkn_get_clustertask'
+}
+
+
+function _tkn_clustertriggerbinding {
+  local -a commands
+
+  _arguments -C \
+    '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
+    '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
+    '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "delete:Delete clustertriggerbindings"
+      "describe:Describes a clustertriggerbinding"
+      "list:Lists clustertriggerbindings in a namespace"
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  delete|rm)
+    _tkn_clustertriggerbinding_delete
+    ;;
+  describe|desc)
+    _tkn_clustertriggerbinding_describe
+    ;;
+  list|ls)
+    _tkn_clustertriggerbinding_list
+    ;;
+  esac
+}
+
+function _tkn_clustertriggerbinding_delete {
+  _arguments \
+    '--all[Delete all ClusterTriggerBindings (default: false)]' \
+    '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
+    '(-f --force)'{-f,--force}'[Whether to force deletion (default: false)]' \
+    '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
+    '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
+    '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
+    '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
+    '1: :__tkn_get_clustertriggerbinding'
+}
+
+function _tkn_clustertriggerbinding_describe {
+  _arguments \
+    '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
+    '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
+    '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
+    '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
+    '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
+    '1: :__tkn_get_clustertriggerbindings'
+}
+
+function _tkn_clustertriggerbinding_list {
+  _arguments \
+    '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
+    '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
+    '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
+    '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
+    '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]'
 }
 
 function _tkn_completion {
@@ -192,6 +260,7 @@ function _tkn_condition {
   cmnds)
     commands=(
       "delete:Delete a condition in a namespace"
+      "describe:Describe Conditions in a namespace"
       "list:Lists conditions in a namespace"
     )
     _describe "command" commands
@@ -201,6 +270,9 @@ function _tkn_condition {
   case "$words[1]" in
   delete|rm)
     _tkn_condition_delete
+    ;;
+  describe|desc)
+    _tkn_condition_describe
     ;;
   list|ls)
     _tkn_condition_list
@@ -213,6 +285,18 @@ function _tkn_condition_delete {
     '--all[Delete all Conditions in a namespace (default: false)]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-f --force)'{-f,--force}'[Whether to force deletion (default: false)]' \
+    '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
+    '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
+    '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
+    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
+    '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
+    '1: :__tkn_get_condition'
+}
+
+function _tkn_condition_describe {
+  _arguments \
+    '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
@@ -249,6 +333,7 @@ function _tkn_eventlistener {
   cmnds)
     commands=(
       "delete:Delete EventListeners in a namespace"
+      "describe:Describe EventListener in a namespace"
       "list:Lists eventlisteners in a namespace"
     )
     _describe "command" commands
@@ -258,6 +343,9 @@ function _tkn_eventlistener {
   case "$words[1]" in
   delete|rm)
     _tkn_eventlistener_delete
+    ;;
+  describe|desc)
+    _tkn_eventlistener_describe
     ;;
   list|ls)
     _tkn_eventlistener_list
@@ -270,6 +358,18 @@ function _tkn_eventlistener_delete {
     '--all[Delete all EventListeners in a namespace (default: false)]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-f --force)'{-f,--force}'[Whether to force deletion (default: false)]' \
+    '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
+    '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
+    '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
+    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
+    '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
+    '1: :__tkn_get_eventlistener'
+}
+
+function _tkn_eventlistener_describe {
+  _arguments \
+    '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
@@ -356,10 +456,11 @@ function _tkn_pipeline_create {
 
 function _tkn_pipeline_delete {
   _arguments \
-    '(-a --all)'{-a,--all}'[Whether to also delete related resources (pipelineruns) (default: false)]' \
+    '--all[Delete all Pipelines in a namespace (default: false)]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-f --force)'{-f,--force}'[Whether to force deletion (default: false)]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--prs[Whether to delete pipeline(s) and related resources (pipelineruns) (default: false)]' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
@@ -382,7 +483,9 @@ function _tkn_pipeline_describe {
 
 function _tkn_pipeline_list {
   _arguments \
+    '(-A --all-namespaces)'{-A,--all-namespaces}'[list pipelines from all namespaces]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
+    '--no-headers[do not print column headers with output (default print column headers with output)]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
@@ -407,17 +510,20 @@ function _tkn_pipeline_logs {
 function _tkn_pipeline_start {
   _arguments \
     '--dry-run[preview pipelinerun without running it]' \
+    '(-f --filename)'{-f,--filename}'[local or remote file name containing a pipeline definition to start a pipelinerun]:()' \
     '(*-l *--labels)'{\*-l,\*--labels}'[pass labels as label=value.]:()' \
     '(-L --last)'{-L,--last}'[re-run the pipeline using last pipelinerun values]' \
     '--output[format of pipelinerun dry-run (yaml or json)]:()' \
-    '(*-p *--param)'{\*-p,\*--param}'[pass the param as key=value or key=value1,value2]:()' \
+    '(*-p *--param)'{\*-p,\*--param}'[pass the param as key=value for string type, or key=value1,value2,... for array type]:()' \
     '--prefix-name[specify a prefix for the pipelinerun name (must be lowercase alphanumeric characters)]:()' \
     '(*-r *--resource)'{\*-r,\*--resource}'[pass the resource name and ref as name=ref]:()' \
     '(-s --serviceaccount)'{-s,--serviceaccount}'[pass the serviceaccount name]: :__kubectl_get_serviceaccount' \
     '--showlog[show logs right after starting the pipeline]' \
     '*--task-serviceaccount[pass the service account corresponding to the task]: :__kubectl_get_serviceaccount' \
     '--timeout[timeout for pipelinerun]:()' \
+    '--use-param-defaults[use default parameter values without prompting for input]' \
     '--use-pipelinerun[use this pipelinerun values to re-run the pipeline. ]: :__tkn_get_pipelinerun' \
+    '(*-w *--workspace)'{\*-w,\*--workspace}'[pass the workspace.]:()' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
     '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
@@ -483,7 +589,7 @@ function _tkn_pipelinerun_delete {
     '--all[Delete all pipelineruns in a namespace (default: false)]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-f --force)'{-f,--force}'[Whether to force deletion (default: false)]' \
-    '--keep[Keep n least recent number of pipelineruns when deleting alls]:()' \
+    '--keep[Keep n most recent number of pipelineruns]:()' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '(-p --pipeline)'{-p,--pipeline}'[The name of a pipeline whose pipelineruns should be deleted (does not delete the pipeline)]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
@@ -508,10 +614,13 @@ function _tkn_pipelinerun_describe {
 
 function _tkn_pipelinerun_list {
   _arguments \
+    '(-A --all-namespaces)'{-A,--all-namespaces}'[list pipelineruns from all namespaces]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '--label[A selector (label query) to filter on, supports '\''='\'', '\''=='\'', and '\''!='\'']:()' \
     '--limit[limit pipelineruns listed (default: return all pipelineruns)]:()' \
+    '--no-headers[do not print column headers with output (default print column headers with output)]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--reverse[list pipelineruns in reverse order]' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
@@ -577,7 +686,6 @@ function _tkn_resource {
 function _tkn_resource_create {
   _arguments \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
-    '(-f --from)'{-f,--from}'[local or remote filename to use to create the pipeline resource]:()' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
@@ -686,11 +794,12 @@ function _tkn_task_create {
 
 function _tkn_task_delete {
   _arguments \
-    '(-a --all)'{-a,--all}'[Whether to also delete related resources (taskruns) (default: false)]' \
+    '--all[Delete all Tasks in a namespace (default: false)]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-f --force)'{-f,--force}'[Whether to force deletion (default: false)]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
+    '--trs[Whether to delete Task(s) and related resources (TaskRuns) (default: false)]' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
     '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
@@ -712,7 +821,9 @@ function _tkn_task_describe {
 
 function _tkn_task_list {
   _arguments \
+    '(-A --all-namespaces)'{-A,--all-namespaces}'[list tasks from all namespaces]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
+    '--no-headers[do not print column headers with output (default print column headers with output)]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
@@ -737,18 +848,19 @@ function _tkn_task_logs {
 function _tkn_task_start {
   _arguments \
     '--dry-run[preview taskrun without running it]' \
-    '(-f --filename)'{-f,--filename}'[local or remote file name containing a task definition]:()' \
+    '(-f --filename)'{-f,--filename}'[local or remote file name containing a task definition to start a taskrun]:()' \
     '(*-i *--inputresource)'{\*-i,\*--inputresource}'[pass the input resource name and ref as name=ref]:()' \
     '(*-l *--labels)'{\*-l,\*--labels}'[pass labels as label=value.]:()' \
     '(-L --last)'{-L,--last}'[re-run the task using last taskrun values]' \
     '--output[format of taskrun dry-run (yaml or json)]:()' \
     '(*-o *--outputresource)'{\*-o,\*--outputresource}'[pass the output resource name and ref as name=ref]:()' \
-    '(*-p *--param)'{\*-p,\*--param}'[pass the param as key=value or key=value1,value2]:()' \
+    '(*-p *--param)'{\*-p,\*--param}'[pass the param as key=value for string type, or key=value1,value2,... for array type]:()' \
     '--prefix-name[specify a prefix for the taskrun name (must be lowercase alphanumeric characters)]:()' \
     '(-s --serviceaccount)'{-s,--serviceaccount}'[pass the serviceaccount name]: :__kubectl_get_serviceaccount' \
     '--showlog[show logs right after starting the task]' \
-    '(-t --timeout)'{-t,--timeout}'[timeout for taskrun in seconds]:()' \
+    '--timeout[timeout for taskrun]:()' \
     '--use-taskrun[specify a taskrun name to use its values to re-run the taskrun]: :__tkn_get_taskrun' \
+    '(*-w *--workspace)'{\*-w,\*--workspace}'[pass the workspace.]:()' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
     '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
@@ -814,7 +926,7 @@ function _tkn_taskrun_delete {
     '--all[Delete all taskruns in a namespace (default: false)]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-f --force)'{-f,--force}'[Whether to force deletion (default: false)]' \
-    '--keep[Keep n least recent number of pipelineruns when deleting alls]:()' \
+    '--keep[Keep n most recent number of taskruns]:()' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '(-t --task)'{-t,--task}'[The name of a task whose taskruns should be deleted (does not delete the task)]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
@@ -839,10 +951,13 @@ function _tkn_taskrun_describe {
 
 function _tkn_taskrun_list {
   _arguments \
+    '(-A --all-namespaces)'{-A,--all-namespaces}'[list taskruns from all namespaces]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '--label[A selector (label query) to filter on, supports '\''='\'', '\''=='\'', and '\''!='\'']:()' \
     '--limit[limit taskruns listed (default: return all taskruns)]:()' \
+    '--no-headers[do not print column headers with output (default print column headers with output)]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--reverse[list taskruns in reverse order]' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
@@ -881,6 +996,7 @@ function _tkn_triggerbinding {
   cmnds)
     commands=(
       "delete:Delete triggerbindings in a namespace"
+      "describe:Describes a triggerbinding in a namespace"
       "list:Lists triggerbindings in a namespace"
     )
     _describe "command" commands
@@ -890,6 +1006,9 @@ function _tkn_triggerbinding {
   case "$words[1]" in
   delete|rm)
     _tkn_triggerbinding_delete
+    ;;
+  describe|desc)
+    _tkn_triggerbinding_describe
     ;;
   list|ls)
     _tkn_triggerbinding_list
@@ -909,6 +1028,18 @@ function _tkn_triggerbinding_delete {
     '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
     '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
     '1: :__tkn_get_triggerbinding'
+}
+
+function _tkn_triggerbinding_describe {
+  _arguments \
+    '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
+    '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
+    '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
+    '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
+    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
+    '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
+    '1: :__tkn_get_triggerbindings'
 }
 
 function _tkn_triggerbinding_list {
@@ -938,6 +1069,7 @@ function _tkn_triggertemplate {
   cmnds)
     commands=(
       "delete:Delete triggertemplates in a namespace"
+      "describe:Describes a triggertemplate in a namespace"
       "list:Lists triggertemplates in a namespace"
     )
     _describe "command" commands
@@ -947,6 +1079,9 @@ function _tkn_triggertemplate {
   case "$words[1]" in
   delete|rm)
     _tkn_triggertemplate_delete
+    ;;
+  describe|desc)
+    _tkn_triggertemplate_describe
     ;;
   list|ls)
     _tkn_triggertemplate_list
@@ -959,6 +1094,18 @@ function _tkn_triggertemplate_delete {
     '--all[Delete all TriggerTemplates in a namespace (default: false)]' \
     '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-f --force)'{-f,--force}'[Whether to force deletion (default: false)]' \
+    '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
+    '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
+    '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
+    '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
+    '(-n --namespace)'{-n,--namespace}'[namespace to use (default: from $KUBECONFIG)]: :__kubectl_get_namespace' \
+    '(-C --nocolour)'{-C,--nocolour}'[disable colouring (default: false)]' \
+    '1: :__tkn_get_triggertemplate'
+}
+
+function _tkn_triggertemplate_describe {
+  _arguments \
+    '--allow-missing-template-keys[If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.]' \
     '(-o --output)'{-o,--output}'[Output format. One of: json|yaml|name|go-template|go-template-file|template|templatefile|jsonpath|jsonpath-file.]:()' \
     '--template[Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates \[http://golang.org/pkg/text/template/#pkg-overview\].]:filename:_files' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
