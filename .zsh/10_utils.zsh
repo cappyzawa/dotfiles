@@ -119,7 +119,7 @@ update_nvim() {
 }
 
 gitlocal() {
-  git config --local user.name cappyzawa
+  git config --local user.name "Shu Kutsuzawa"
   git config --local user.email "cappyzawa@yahoo.ne.jp"
 }
 
@@ -142,7 +142,7 @@ kind_start() {
 }
 
 gcd() {
-  local repo_path=`ghq list --full-path | fzf --reverse --preview "less {1}/README.md"`
+  local repo_path=`ghq list --full-path | fzf --reverse --preview "glow -s dark {1}/README.md"`
   \cd ${repo_path}
 }
 

@@ -71,9 +71,6 @@ export CORRECT_IGNORE_FILE='.*'
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export WORDCHARS='*?.[]~&;!#$%^(){}<>'
 
-# fzf - command-line fuzzy finder (https://github.com/junegunn/fzf)
-export FZF_DEFAULT_OPTS="--extended --ansi --multi"
-
 # Cask
 #export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
@@ -96,6 +93,8 @@ fi
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export ANYENV_ROOT="${XDG_CONFIG_HOME}/anyenv"
+
+export FZF_DEFAULT_OPTS='--color=fg:#928374,bg:#32302f,hl:#79740e --color=fg+:#928374,bg+:#32302f,hl+:#b8bb26 --color=info:#98971a,prompt:#fabd2f,pointer:#fabd2f --color=marker:#83a598,spinner:#fabd2f,header:#928374 --extended --ansi --multi'
 
 # available $INTERACTIVE_FILTER
 export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"
