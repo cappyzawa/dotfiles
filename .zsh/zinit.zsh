@@ -203,6 +203,10 @@ zinit light screwdriver-cd/sd-local
 zinit ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
 zinit light neovim/neovim
 
+zinit ice wait'2' lucid as"program" \
+  atclone"curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=$ZPFX sh && deno completions zsh > ~/.zsh/Completion/_deno" atpull"%atclone"
+zinit light denoland/deno_install
+
 for f in $HOME/.zsh/Completion/*
 do
   zinit ice wait"2" lucid blockf atinit'zpcompinit; zpcdreplay'
