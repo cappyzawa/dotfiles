@@ -170,8 +170,9 @@ zinit ice wait'3' lucid as"program" has"go" \
   atclone"go install ." atpull"%atclone"
 zinit light skanehira/gtran
 
-zinit ice wait'3' lucid as"program" has"go" \
-  atclone"go install . && kind completion zsh > ~/.zsh/Completion/_kind" atpull"%atclone"
+zinit ice wait'3' lucid as"program" from:"gh-r" \
+  mv"kind-*->kind" \
+  atclone"kind completion zsh > ~/.zsh/Completion/_kind" atpull"%atclone"
 zinit light kubernetes-sigs/kind
 
 zinit ice wait'3' lucid as"program" has"go" \
