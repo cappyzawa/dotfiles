@@ -102,6 +102,14 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"ytt-* -> ytt" pick"ytt"
 zinit light "k14s/ytt"
 
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  mv"kapp-* -> kapp" pick"kapp"
+zinit light "k14s/kapp"
+
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  mv"kbld-* -> kbld" pick"kbld"
+zinit light "k14s/kbld"
+
 zinit ice wait'3' lucid as"program" from"gh-r" \
   mv"gh*/bin/gh -> gh"
 zinit light "cli/cli"
