@@ -116,14 +116,13 @@ zinit light "cli/cli"
 
 if [[ `uname` == "Darwin" ]]; then
   zinit ice wait'2' lucid as"program" from"gh-r" bpick"ninja-mac*"
-elif [[ uname == "Linux" ]]; then
-  zinit ice wait'2' lucid as"program" from"gh-r" bpick"ninja-linux*"
-fi
-zinit light "ninja-build/ninja"
+  zinit light "ninja-build/ninja"
 
-zinit ice wait'2' lucid has"git" \
-  atclone"git submodule update --init --recursive" atpull"%atclone"
-zinit light "sumneko/lua-language-server"
+  zinit ice wait'2' lucid has"git" \
+    atclone"git submodule update --init --recursive && cd 3rd/luamake && ninja -f ninja/macos.ninja && cd ../../ && 3rd/luamake rebuild" atpull"%atclone"
+  zinit light "sumneko/lua-language-server"
+fi
+
 
 zinit ice wait'2' lucid as"program" pick"create-kubeconfig"
 zinit light zlabjp/kubernetes-scripts

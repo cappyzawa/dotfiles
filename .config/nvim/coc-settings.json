@@ -60,12 +60,13 @@
       "ignoredRootPaths": []
     },
     "lua": {
-      "command": "~/.zplugin/plugins/sumneko---lua-language-server/server/macOS/bin/lua",
+      "cwd": "~/.zinit/plugins",
+      "command": "~/.zinit/plugins/sumneko---lua-language-server/bin/macOS/lua-language-server",
       "args": [
         "-E",
         "-e",
         "LANG=en",
-        "~/bin/main.lua"
+        "~/.zinit/plugins/sumneko---lua-language-server/main.lua"
       ],
       "filetypes": [
         "lua"
