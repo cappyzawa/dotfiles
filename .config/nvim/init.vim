@@ -513,6 +513,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'guns/xterm-color-table.vim'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+    Plug 'zinit-zsh/zinit-vim-syntax'
 
     " Theme
     if has('nvim')
