@@ -110,6 +110,10 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"kbld-* -> kbld" pick"kbld"
 zinit light "k14s/kbld"
 
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  atload". $(pack completion --shell zsh)"
+zinit light "buildpacks/pack"
+
 zinit ice wait'3' lucid as"program" from"gh-r" \
   mv"gh*/bin/gh -> gh"
 zinit light "cli/cli"
@@ -126,6 +130,10 @@ fi
 
 zinit ice wait'2' lucid as"program" pick"create-kubeconfig"
 zinit light zlabjp/kubernetes-scripts
+
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  mv"kustomize* -> kustomize"
+zinit light kubernetes-sigs/kustomize
 
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"stern* -> stern"
