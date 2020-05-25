@@ -1,3 +1,7 @@
+# zinit annexes {{{
+zinit light zinit-zsh/z-a-rust
+# }}}
+
 zinit ice from"gh-r" as"program" lucid
 zinit light "junegunn/fzf-bin"
 
@@ -110,9 +114,10 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"kbld-* -> kbld" pick"kbld"
 zinit light "k14s/kbld"
 
-zinit ice wait'2' lucid as"program" from"gh-r" \
-  atload". $(pack completion --shell zsh)"
-zinit light "buildpacks/pack"
+# is blocked by https://github.com/buildpacks/pack/pull/639
+# zinit ice wait'2' lucid as"program" from"gh-r" \
+#   atload". $(pack completion --shell zsh)"
+# zinit light "buildpacks/pack"
 
 zinit ice wait'3' lucid as"program" from"gh-r" \
   mv"gh*/bin/gh -> gh"
@@ -222,6 +227,21 @@ zinit light neovim/neovim
 zinit ice wait'2' lucid as"program" \
   atclone"curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=$ZPFX sh && deno completions zsh > ~/.zsh/Completion/_deno" atpull"%atclone"
 zinit light denoland/deno_install
+
+zinit ice wait'3' lucid rustup cargo'!silicon'
+zinit light zdharma/null
+
+zinit ice wait'3' lucid rustup cargo'!ripgrep'
+zinit light zdharma/null
+
+zinit ice wait'3' lucid rustup cargo'!rls'
+zinit light zdharma/null
+
+zinit ice wait'3' lucid rustup cargo'!rust-analysis'
+zinit light zdharma/null
+
+zinit ice wait'3' lucid rustup cargo'!rust-src'
+zinit light zdharma/null
 
 for f in $HOME/.zsh/Completion/*
 do
