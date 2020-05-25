@@ -15,4 +15,6 @@ node_modules/
 .config/coc/history.json
 .config/coc/lists
 .config/coc/mru
+.config/coc/commands
+.config/coc/extensions/coc-java-data/
 .config/nvim/sessions
