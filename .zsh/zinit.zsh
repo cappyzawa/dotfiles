@@ -115,9 +115,8 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
 zinit light "k14s/kbld"
 
 # is blocked by https://github.com/buildpacks/pack/pull/639
-# zinit ice wait'2' lucid as"program" from"gh-r" \
-#   atload". $(pack completion --shell zsh)"
-# zinit light "buildpacks/pack"
+zinit ice wait'2' lucid as"program" from"gh-r"
+zinit light "buildpacks/pack"
 
 zinit ice wait'3' lucid as"program" from"gh-r" \
   mv"gh*/bin/gh -> gh"
