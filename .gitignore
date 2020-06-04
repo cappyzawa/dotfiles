@@ -18,3 +18,5 @@ node_modules/
 .config/coc/commands
 .config/coc/extensions/coc-java-data/
 .config/nvim/sessions
+.chef/
+.zsh/Completion/_flctl
