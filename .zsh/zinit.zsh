@@ -209,8 +209,11 @@ zinit light operator-framework/operator-sdk
 zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
 zinit light terraform-linters/tflint
 
+# zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
+# zinit light hashicorp/terraform-ls
+
 zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
-zinit light hashicorp/terraform-ls
+zinit light juliosueiras/terraform-lsp
 
 zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"bazel-*-*-x86_64*->bazel"

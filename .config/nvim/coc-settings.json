@@ -85,7 +85,7 @@
       ]
     },
     "terraform": {
-      "command": "terraform-ls",
+      "command": "terraform-lsp",
       "filetypes": [
         "terraform"
       ],
