@@ -203,6 +203,10 @@ zinit ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
 zinit light tektoncd/cli
 
 zinit ice wait'2' lucid as"program" from:"gh-r" \
+  mv"kubebuilder*/bin/kubebuilder->$ZPFX/bin/kubebuilder"
+zinit light kubernetes-sigs/kubebuilder
+
+zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"operator-sdk-v*-x86_64-*->operator-sdk"
 zinit light operator-framework/operator-sdk
 
