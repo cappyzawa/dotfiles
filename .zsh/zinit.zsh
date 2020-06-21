@@ -103,6 +103,10 @@ zinit ice wait'3' lucid as"program" pick"$ZPFX/bin/dlv" has"go" \
   atclone"go build -o $ZPFX/bin/dlv cmd/dlv/main.go" atpull"%atclone"
 zinit light go-delve/delve
 
+zinit ice wait'3' lucid as"program" has"go" \
+  atclone"GO111MODULE=on go install ./..."
+zinit light GoogleContainerTools/kpt
+
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"ytt-* -> ytt" pick"ytt"
 zinit light "k14s/ytt"
