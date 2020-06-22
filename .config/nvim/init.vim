@@ -429,6 +429,10 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       let g:choosewin_overlay_enable = 1
       nmap - <Plug>(choosewin)
 
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
+      let g:fzf_command_prefix = 'Fzf'
+
     " syntax
     " language support
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
