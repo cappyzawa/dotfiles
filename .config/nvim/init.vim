@@ -425,12 +425,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " start to manage with vim-plug
   call plug#begin(g:plug.base)
 
-    Plug 'Shougo/deol.nvim', { 'on': 'Deol' }
-      let g:deol#shell_history_path = '~/.zsh_history'
-      nnoremap <silent> <Leader>df :<C-u>Deol -split=floating<CR>
-      nnoremap <silent> <Leader>dv :<C-u>Deol -split=vertical<CR>
-      nnoremap <silent> <Leader>dh :<C-u>Deol -split=horizontal<CR>
-
     Plug 't9md/vim-choosewin', { 'on': '<Plug>(choosewin)' }
       let g:choosewin_overlay_enable = 1
       nmap - <Plug>(choosewin)
