@@ -1,4 +1,4 @@
-# Recent settings file for Wireshark 2.6.4.
+# Recent settings file for Wireshark 3.2.4.
 #
 # This file is regenerated each time Wireshark is quit
 # and when changing configuration profile.
@@ -71,7 +71,14 @@ gui.geometry_main_lower_pane: 272
 
 # Packet list column pixel widths.
 # Each pair of strings consists of a column format and its pixel width.
-column.width: %m, -1, %t, -1, %s, -1, %d, -1, %p, -1, %L, -1, %i, 341
+column.width:
+        %m, -1,
+        %t, -1,
+        %s, -1,
+        %d, -1,
+        %p, -1,
+        %L, -1,
+        %i, 325
 
 # Open conversation dialog tabs.
 # List of conversation names, e.g. "TCP", "IPv6".
@@ -86,7 +93,7 @@ gui.endpoint_tabs:
 gui.rlc_pdus_from_mac_frames: FALSE
 
 # Last directory navigated to in File Open dialog.
-gui.fileopen_remembered_dir: /Users/skutsuza/tmp/
+gui.fileopen_remembered_dir: /Users/skutsuza/Downloads/
 
 # Additional Toolbars shown
 # List of additional toolbars to show.
