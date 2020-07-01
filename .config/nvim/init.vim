@@ -685,8 +685,8 @@ if g:plug.is_installed('ale')
   let g:ale_set_quickfix = 1
   let g:ale_sign_error = '◉'
   let g:ale_sign_warning = '◉'
-  highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
-  highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
+  highlight link ALEErrorSign GruvboxRed
+  highlight link ALEWarningSign GruvboxYellow
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
   let g:ale_disable_lsp = 1
   let g:ale_virtualtext_cursor = 1
