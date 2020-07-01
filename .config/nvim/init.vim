@@ -422,6 +422,13 @@ augroup CustomSyntax
   autocmd BufNewFile,BufRead *.cw,*.jira set filetype=confluencewiki
 augroup END
 
+if has('nvim')
+  augroup LuaHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+  augroup END
+endif
+
 if g:plug.ready() && g:env.vimrc.plugin_on
     " start to manage with vim-plug
   call plug#begin(g:plug.base)
