@@ -814,6 +814,7 @@ if g:plug.is_installed('coc.nvim')
   nmap <silent> gt <Plug>(coc-rename)
   nmap <silent> gl <Plug>(coc-codelens-action)
   nmap <silent> gk :call <SID>show_documentation()<CR>
+  nmap <silent> gf :<C-u>CocAction("refactor.rewrite")<CR>
 
   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
