@@ -394,6 +394,7 @@ set splitright
 
 if has('nvim')
   set wildoptions=pum
+  set inccommand=nosplit
 endif
 
 
