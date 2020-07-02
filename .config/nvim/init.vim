@@ -450,6 +450,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
+    Plug 'mattn/vim-godoc', {'for': 'go'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
     Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
@@ -775,16 +776,25 @@ if g:plug.is_installed('coc.nvim')
   nmap <silent> gr <Plug>(coc-references)
   nmap <silent> gt <Plug>(coc-rename)
   nmap <silent> gl <Plug>(coc-codelens-action)
-  nmap <silent> gk :call <SID>show_documentation()<CR>
+  nmap <silent> gk :call <SID>do_hover()<CR>
   nmap <silent> gf :<C-u>CocAction("refactor.rewrite")<CR>
+  nmap <silent> gs :call <SID>show_documentaion()<CR>
 
   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-  function! s:show_documentation()
+  function! s:do_hover()
     if coc#util#has_float()
       call coc#util#float_hide()
     else
       call CocActionAsync('doHover')
+    endif
+  endfunction
+
+  function! s:show_documentaion()
+    if &filetype ==# 'vim'
+      execute 'h '.expand('<cword>')
+    elseif &filetype ==# 'go'
+      Godoc
     endif
   endfunction
 
