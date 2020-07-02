@@ -469,9 +469,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
     " Utils
-    if executable('dlv')
-      Plug 'jodosha/vim-godebug'
-    endif
     Plug 'jiangmiao/auto-pairs'
       let g:AutoPairsMapCR = 0
 
@@ -760,41 +757,6 @@ if g:plug.is_installed('vim-airline')
   let g:airline#extensions#bufferline#overwrite_variables = 0
   let g:airline#extensions#ale#error_symbol = '🔥'
   let g:airline#extensions#ale#warning_symbol = '⚡️'
-endif
-
-if g:plug.is_installed('vim-go')
-  let g:go_def_mapping_enabled = 0
-  let g:go_doc_keywordprg_enabled = 0
-  let g:go#use_vimproc = 0
-  let g:go_auto_sameids = 1
-  let g:go_fmt_autosave = 0
-  let g:go_jump_to_error = 0
-  let g:go_mod_fmt_autosave = 0
-  let g:go_def_mode = 'gopls'
-  let g:go_info_mode = 'gopls'
-  let g:go_gocode_propose_source = 0
-  let g:go_highlight_types = 1
-  let g:go_template_autocreate = 0
-  let g:go_highlight_fields = 1
-  let g:go_highlight_functions = 1
-  let g:go_highlight_function_calls = 1
-  let g:go_highlight_extra_types = 1
-  let g:go_highlight_build_constraints = 1
-  let g:go_gocode_unimported_packages = 1
-  let g:sonictemplate_enable_pattern = 0
-  let g:go_auto_type_info = 0
-
-  let g:go_debug_windows = {
-        \ 'stack': 'rightbelow 10new',
-        \ 'vars': 'leftabove 50vnew',
-        \ }
-
-  nnoremap <silent> <F9> :GoDebugBreakpoint<CR>
-  nnoremap <silent> <F5> :GoDebugContinue<CR>
-  nnoremap <silent> <F10> :GoDebugNext<CR>
-  nnoremap <silent> <F11> :GoDebugStep<CR>
-  nnoremap <silent> <F12> :GoDebugStepOut<CR>
-  nnoremap <silent> <F6> call go#debug#Print(<q-args>)
 endif
 
 if g:plug.is_installed('winresizer')
