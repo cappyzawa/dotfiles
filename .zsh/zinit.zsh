@@ -119,8 +119,9 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"kbld-* -> kbld" pick"kbld"
 zinit light "k14s/kbld"
 
-# is blocked by https://github.com/buildpacks/pack/pull/639
-zinit ice wait'2' lucid as"program" from"gh-r"
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  atclone'cp $(./pack completion --shell zsh) ~/.zsh/Completion/_pack' \
+  atpull"%atclone"
 zinit light "buildpacks/pack"
 
 zinit ice wait'3' lucid as"program" from"gh-r" \
@@ -254,8 +255,6 @@ zinit light zdharma/null
 zinit ice wait'3' lucid rustup cargo'!rust-src'
 zinit light zdharma/null
 
-for f in $HOME/.zsh/Completion/*
-do
-  zinit ice wait"2" lucid blockf atinit'zpcompinit; zpcdreplay'
-  zinit snippet ${f}
-done
+if [[ -z ${INSTALLED_COMPS} ]]; then
+  zinit creinstall -q $HOME/.zsh/Completion
+fi
