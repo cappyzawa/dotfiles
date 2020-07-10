@@ -455,10 +455,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
     Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
     Plug 'jparise/vim-graphql'
-
     Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
-    " Plug 'posva/vim-vue', { 'for': 'vue' }
     Plug 'dense-analysis/ale'
+    Plug 'nvim-treesitter/nvim-treesitter'
 
     " For only syntax
     Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
@@ -806,13 +805,6 @@ if g:plug.is_installed('coc.nvim')
   nnoremap <silent><C-f><C-f> :<C-u>CocList<CR>
 endif
 
-if executable('vim-language-sever')
-  let g:markdown_forced_languages = [
-    \ 'vim',
-    \ 'help'
-    \ ]
-endif
-
 if g:plug.is_installed('firenvim')
   let g:firenvim_config = {
       \ 'globalSettings': {
@@ -844,6 +836,34 @@ if g:plug.is_installed('firenvim')
     augroup END
   endif
 
+endif
+
+if g:plug.is_installed('nvim-treesitter')
+lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,                    -- false will disable the whole extension
+        disable = {},        -- list of language that will be disabled
+    },
+    incremental_selection = {
+        enable = true,
+        disable = {},
+        keymaps = {},
+    },
+    refactor = {
+      highlight_defintions = {
+        enable = true
+      },
+      smart_rename = {
+        enable = false,
+      },
+      navigation = {
+        enable = false,
+      }
+    },
+    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
+  }
+EOF
 endif
 
 " }}}
