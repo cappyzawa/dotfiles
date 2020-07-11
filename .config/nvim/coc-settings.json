@@ -6,6 +6,7 @@
   "suggest.snippetIndicator": " ►",
   "suggest.enablePreview": true,
   "coc.preferences.hoverTarget": "float",
+  "coc.preferences.formatOnType": true,
   "diagnostic.displayByAle": true,
   "codeLens.enable": false,
   "list.autoResize": true,

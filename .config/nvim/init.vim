@@ -472,9 +472,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
     " Utils
-    Plug 'jiangmiao/auto-pairs'
-      let g:AutoPairsMapCR = 0
-
     Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
       let g:git_messenger_include_diff = 'current'
       let g:git_messenger_always_into_popup = v:true
