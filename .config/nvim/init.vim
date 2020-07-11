@@ -458,6 +458,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
     Plug 'dense-analysis/ale'
     Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'liuchengxu/vista.vim'
+      nmap <silent>tg :Vista coc<CR>
+      let g:vista#renderer#inable_icon = 1
 
     " For only syntax
     Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
@@ -749,14 +752,15 @@ if g:plug.is_installed('vim-airline')
   let g:airline_theme='gruvbox'
   let g:airline_extensions = ['branch',
         \ 'ale',
-        \ 'bufferline']
-
+        \ 'bufferline',
+        \ 'vista']
 
   let g:airline#extensions#tagbar#enabled = 1
   let g:airline_lazyloaded_tagbar = 1
   let g:airline#extensions#bufferline#overwrite_variables = 0
   let g:airline#extensions#ale#error_symbol = '🔥'
   let g:airline#extensions#ale#warning_symbol = '⚡️'
+  let g:airline#extensions#vista#enabled = 1
 endif
 
 if g:plug.is_installed('winresizer')
