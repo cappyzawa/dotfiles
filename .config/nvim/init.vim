@@ -4,8 +4,7 @@ set foldmethod=marker
 
 " faster
 if has('nvim')
-  let g:loaded_python3_provider = 1
-  let g:python_host_prog=$XDG_CONFIG_HOME . '/anyenv/envs/pyenv/versions/2.7.13/bin/python'
+  let g:loaded_python_provider = 0
   let g:python3_host_prog=$XDG_CONFIG_HOME . '/anyenv/envs/pyenv/shims/python3'
 end
 
@@ -467,6 +466,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
     Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
     Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
+
+    Plug 'jiangmiao/auto-pairs'
+      let g:AutoPairsMapCR = 0
 
     " Testing Tools
     Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
