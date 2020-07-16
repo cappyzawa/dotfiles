@@ -75,14 +75,13 @@ zinit light cjbassi/gotop
 zinit ice wait"2" as"program" from"gh-r" pick"*/ccat" lucid
 zinit light jingweno/ccat
 
-zinit ice wait"2" lucid blockf atinit"zpcompinit; zpcdreplay"
-zinit light zsh-users/zsh-completions
-
-zinit ice wait'3' lucid atinit"zpcompinit; zpcdreplay"
-zinit light zdharma/fast-syntax-highlighting
-
-zinit ice wait'3' lucid
-zinit light zsh-users/zsh-autosuggestions
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
+    zdharma/fast-syntax-highlighting \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions \
+ blockf \
+    zsh-users/zsh-completions
 
 zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"yq* -> yq"
