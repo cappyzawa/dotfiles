@@ -869,4 +869,13 @@ lua <<EOF
 EOF
 endif
 
+if has('nvim')
+  let $GIT_EDITOR='nvr -cc split --remote-wait'
+endif
+
+augroup NeovimRemote
+  autocmd!
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+augroup END
+
 " }}}
