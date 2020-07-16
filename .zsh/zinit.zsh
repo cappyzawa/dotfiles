@@ -43,6 +43,10 @@ zinit ice wait"2" as"program" from"gh-r" \
   mv"jq-* -> jq" pick"jq" lucid
 zinit light stedolan/jq
 
+zinit ice wait"2" as"program" lucid \
+  make"install prefix=$ZPFX" pick"$ZPFX/bin/tig"
+zinit light jonas/tig
+
 zinit ice wait"3" as"program" has"go" \
   make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh" lucid
 zinit light direnv/direnv
