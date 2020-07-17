@@ -22,18 +22,18 @@ zinit ice as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
 
 # local snippets
-zinit ice lucid
+zinit ice wait"1" lucid
 zinit snippet $HOME/.zsh/10_utils.zsh
-zinit ice lucid
+zinit ice wait"1" lucid
 zinit snippet $HOME/.zsh/20_keybinds.zsh
-zinit ice lucid
+zinit ice wait"1" lucid
 zinit snippet $HOME/.zsh/30_aliases.zsh
-zinit ice lucid
+zinit ice wait"1" lucid
 zinit snippet $HOME/.zsh/50_setopt.zsh
-zinit ice lucid
+zinit ice wait"2" lucid
 zinit snippet $HOME/.zsh/60_lang.zsh
 
-zinit ice lucid
+zinit ice wait"3" lucid
 zinit snippet $HOME/.zsh/80_custom.zsh
 
 zinit ice wait"2" as"program" from"gh-r" \
