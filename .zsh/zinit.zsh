@@ -21,9 +21,6 @@ zinit light ogham/exa
 zinit ice as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
 
-# compinit
-zinit cdreplay -q
-
 # local snippets
 zinit ice lucid
 zinit snippet $HOME/.zsh/10_utils.zsh
@@ -258,6 +255,4 @@ zinit light zdharma/null
 zinit ice wait'3' lucid rustup cargo'!rust-src'
 zinit light zdharma/null
 
-if [[ -z ${INSTALLED_COMPS} ]]; then
-  zinit creinstall -q $HOME/.zsh/Completion
-fi
+zinit cdreplay -q

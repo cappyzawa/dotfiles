@@ -19,10 +19,10 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
 fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit installer's chunk
 source ~/.zsh/zinit.zsh
+autoload -Uz _zinit
+compinit
+### End of Zinit installer's chunk
 
 if (command -v starship > /dev/null) then
   eval "$(starship init zsh)"
