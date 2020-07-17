@@ -221,6 +221,8 @@ nnoremap <silent>z0 :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
 
 " terminal
 tnoremap <silent> jj <C-\><C-n>
+tnoremap <silent> <C-j> j
+tnoremap <silent> <C-k> k
 
 if has('nvim')
   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -456,7 +458,15 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'jparise/vim-graphql'
     Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
     Plug 'dense-analysis/ale'
-    Plug 'nvim-treesitter/nvim-treesitter'
+    if has('nvim')
+      Plug 'nvim-treesitter/nvim-treesitter'
+      Plug 'Shougo/deol.nvim', { 'on': 'Deol' }
+        let g:deol#shell_history_path = '~/.zsh_history'
+        nnoremap <silent> <Leader>df :<C-u>Deol -split=floating<CR>
+        nnoremap <silent> <Leader>dv :<C-u>Deol -split=vertical<CR>
+        nnoremap <silent> <Leader>ti :<C-u>Deol -split=vertical -command=tig<CR>
+        nnoremap <silent> <Leader>dh :<C-u>Deol -split=horizontal<CR>
+    endif
     Plug 'liuchengxu/vista.vim'
       nmap <silent>tg :Vista coc<CR>
       let g:vista#renderer#inable_icon = 1
@@ -509,23 +519,21 @@ if g:plug.ready() && g:env.vimrc.plugin_on
         \ }
 
 
-    Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.23' }
+    if has('nvim')
+      Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+      Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.23' }
+      Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
+    endif
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
     endif
     Plug 'hashicorp/sentinel.vim'
-    Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     Plug 'guns/xterm-color-table.vim'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
     Plug 'zinit-zsh/zinit-vim-syntax'
 
     " Theme
-    if has('nvim')
-      Plug 'morhetz/gruvbox'
-    else
-      Plug 'joshdick/onedark.vim'
-    endif
+    Plug 'morhetz/gruvbox'
 
     " Views
     Plug 'bling/vim-bufferline'

@@ -17,13 +17,14 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
         print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
+
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit installer's chunk
 source ~/.zsh/zinit.zsh
 
-if (which starship > /dev/null) then
+if (command -v starship > /dev/null) then
   eval "$(starship init zsh)"
 fi
 
