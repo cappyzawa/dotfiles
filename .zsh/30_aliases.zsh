@@ -4,6 +4,10 @@ if has 'git'; then
   alias gst='git status'
 fi
 
+if has 'nvim'; then
+  alias vim='nvim'
+fi
+
 if (( $+commands[gls] )); then
   alias ls='gls -F --color --group-directories-first'
 elif (( $+commands[ls] )); then

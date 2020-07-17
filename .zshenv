@@ -28,6 +28,13 @@ export LC_CTYPE="${LANGUAGE}"
 
 # Editor
 export EDITOR=vim
+if (command -v nvim > /dev/null); then
+  export EDITOR=nvim
+fi
+if (command -v nvr > /dev/null); then
+  export EDITOR='nvr --remote-wait-silent'
+fi
+
 export CVSEDITOR="${EDITOR}"
 export SVN_EDITOR="${EDITOR}"
 export GIT_EDITOR="${EDITOR}"
@@ -101,3 +108,4 @@ export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"
 
 export DOTPATH=${0:A:h}
 export TERM="xterm-256color"
+export ZDOTDIR=${HOME}
