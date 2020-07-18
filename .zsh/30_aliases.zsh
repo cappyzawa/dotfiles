@@ -6,6 +6,9 @@ fi
 
 if has 'nvim'; then
   alias vim='nvim'
+  if [[ -n ${VIMRUNTIME} ]]; then
+    alias vim='nvr --remote-wait-silent'
+  fi
 fi
 
 if (( $+commands[gls] )); then
