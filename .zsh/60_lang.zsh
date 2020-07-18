@@ -91,6 +91,10 @@ if has "npm"; then
       yarn global add vim-language-server
     fi
   fi
+
+  if ! has "ng"; then
+    npm_global_install "@angular/cli"
+  fi
 fi
 
 # for Ruby
