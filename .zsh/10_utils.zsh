@@ -142,7 +142,7 @@ kind_start() {
 }
 
 gcd() {
-  local repo_path=`ghq list --full-path | fzf --reverse --preview "glow -s dark {1}/README.md"`
+  local repo_path=`ghq list --full-path | fzf --reverse --preview "bat --color=always {1}/README.md"`
   \cd ${repo_path}
 }
 

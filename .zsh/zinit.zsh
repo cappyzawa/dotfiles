@@ -15,7 +15,8 @@ zinit ice lucid as"program" from"gh-r" bpick"starship-x86_64-*.tar.gz" \
 zinit light starship/starship
 
 zinit ice lucid as"program" from"gh-r" \
-  mv"exa-*->exa"
+  mv"exa-*->exa" \
+  atload="alias ls='exa'"
 zinit light ogham/exa
 
 zinit ice as"program" pick:"bin/anyenv"
@@ -69,9 +70,6 @@ zinit light golangci/golangci-lint
 zinit ice wait"2" as"program" from"gh-r" pick"gotop" lucid
 zinit light cjbassi/gotop
 
-zinit ice wait"2" as"program" from"gh-r" pick"*/ccat" lucid
-zinit light jingweno/ccat
-
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
     zdharma/fast-syntax-highlighting \
@@ -89,9 +87,6 @@ zinit light wagoodman/dive
 
 zinit ice wait'2' lucid as"program" from:"gh-r"
 zinit light nektos/act
-
-zinit ice wait"2" lucid as"program" from"gh-r"
-zinit light charmbracelet/glow
 
 zinit ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"
 zinit light adrienverge/yamllint
@@ -224,6 +219,11 @@ zinit light terraform-linters/tflint
 
 zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
 zinit light juliosueiras/terraform-lsp
+
+zinit ice wait'2' lucid as"program" from:"gh-r" \
+  pick"bat-v*-*.tar.gz" \
+  mv"bat-v*/bat->bat"
+zinit light sharkdp/bat
 
 zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"bazel-*-*-x86_64*->bazel"
