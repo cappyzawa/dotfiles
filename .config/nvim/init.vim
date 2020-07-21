@@ -524,7 +524,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     if has('nvim')
       Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-      Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.23' }
+      Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.30' }
       Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
     endif
     if executable('terraform')
