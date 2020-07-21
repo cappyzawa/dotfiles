@@ -705,13 +705,18 @@ if g:plug.is_installed('ale')
   \   'vim': ['vint'],
   \   'rust': ['rustc'],
   \   'terraform': ['tflint'],
+  \   'javascript': ['eslint'],
+  \   'typescript': ['tslint'],
   \}
+
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'go': ['gofmt','goimports'],
   \   'elm': ['elm-format'],
   \   'rust': ['rustfmt'],
   \   'terraform': ['terraform'],
+  \   'javascript': ['eslint'],
+  \   'typescript': ['tslint'],
   \   'markdown': [],
   \}
 

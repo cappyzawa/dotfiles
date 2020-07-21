@@ -102,6 +102,7 @@
       ]
     }
   },
+  "tsserver.implicitProjectConfig.experimentalDecorators": true,
   "yaml.format.enable": true,
   "yaml.format.singleQuote": false,
   "yaml.format.bracketSpacing": false,
