@@ -220,9 +220,16 @@ zinit light terraform-linters/tflint
 zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
 zinit light juliosueiras/terraform-lsp
 
-zinit ice wait'2' lucid as"program" from:"gh-r" \
-  pick"bat-v*-*.tar.gz" \
-  mv"bat-v*/bat->bat"
+# zinit ice wait'2' lucid as"program" from:"gh-r" \
+#   pick"bat-v*-*.tar.gz" \
+#   mv"bat-v*/bat->bat" \
+#   atload"alias cat='bat'"
+# zinit light sharkdp/bat
+
+zinit ice wait'3' lucid as"program" has:"cargo" \
+  atclone"cargo build --bins" atpull"%atclone" \
+  pick"target/debug/bat" \
+  atload"alias cat='bat'"
 zinit light sharkdp/bat
 
 zinit ice wait'2' lucid as"program" from:"gh-r" \
