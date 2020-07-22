@@ -224,8 +224,10 @@ tnoremap <silent> jj <C-\><C-n>
 tnoremap <silent> <C-j> j
 tnoremap <silent> <C-k> k
 
-nnoremap <silent> <Leader>vst :<C-u>vs \| terminal<CR>
-nnoremap <silent> <Leader>spt :<C-u>sp \| terminal<CR>
+nnoremap <silent> <Leader>vt :<C-u>vs \| terminal<CR>
+nnoremap <silent> <Leader>st :<C-u>sp \| terminal<CR>
+nnoremap <silent> <Leader>ve :<C-u>vs \| edit .<CR>
+nnoremap <silent> <Leader>se :<C-u>sp \| edit .<CR>
 nnoremap <silent> <Leader>ti :call <SID>vertical_tig()<CR>
 
 function s:vertical_tig() abort
