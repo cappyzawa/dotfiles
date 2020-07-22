@@ -5,9 +5,13 @@ zinit light zinit-zsh/z-a-rust
 zinit ice lucid from"gh-r" as"program"
 zinit light "junegunn/fzf-bin"
 
+# zinit ice pick"init.sh" lucid \
+#   atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1'
+# zinit light "b4b4r07/enhancd"
+
 zinit ice pick"init.sh" lucid \
   atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1'
-zinit light "b4b4r07/enhancd"
+zinit light "cappyzawa/enhancd"
 
 zinit ice lucid as"program" from"gh-r" bpick"starship-x86_64-*.tar.gz" \
   atclone'starship completions > ~/.zsh/Completion/_starship' atpull'%atclone' \
