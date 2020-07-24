@@ -708,7 +708,7 @@ if g:plug.is_installed('ale')
   \   'rust': ['rustc'],
   \   'terraform': ['tflint'],
   \   'javascript': ['eslint'],
-  \   'typescript': ['tslint'],
+  \   'typescript': ['eslint'],
   \}
 
   let g:ale_fixers = {
@@ -718,7 +718,7 @@ if g:plug.is_installed('ale')
   \   'rust': ['rustfmt'],
   \   'terraform': ['terraform'],
   \   'javascript': ['eslint'],
-  \   'typescript': ['tslint'],
+  \   'typescript': ['eslint'],
   \   'markdown': [],
   \}
 
