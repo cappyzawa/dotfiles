@@ -9,22 +9,11 @@ jobs:
         os: [ubuntu-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
     steps:
-    - name: install-zsh
+    - name: Install zsh
+      if: runner.os == 'Linux'
       run: |
-        zsh_version="5.7.1"
-        LOCAL="/tmp/zcptemp"
-        if ! [[ -d /tmp ]]; then
-          sudo mkdir /tmp
-        fi
-        sudo mkdir ${LOCAL}
-        curl -L https://sourceforge.net/projects/zsh/files/zsh/${zsh_version}/zsh-${zsh_version}.tar.xz/download | tar Jxv
-
-        cd zsh-${zsh_version}
-        ./configure --prefix=${LOCAL} --with-tcsetpgrp
-        sudo make
-        sudo make install
-        cd -
-        sudo cp ${LOCAL}/bin/zsh /usr/local/bin/zsh
+        sudo apt-get update
+        sudo apt-get install zsh
     - name: setUP
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
