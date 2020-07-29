@@ -17,3 +17,6 @@ jobs:
     - name: setUP
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
+    - name: Reboot shell
+      run: |
+        zsh -c "source ~/.zshrc"
