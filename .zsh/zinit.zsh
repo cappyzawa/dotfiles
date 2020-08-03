@@ -224,6 +224,10 @@ zinit light terraform-linters/tflint
 zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
 zinit light juliosueiras/terraform-lsp
 
+zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform" \
+  mv"terraform-docs-*->terraform-docs"
+zinit light terraform-docs/terraform-docs
+
 # zinit ice wait'2' lucid as"program" from:"gh-r" \
 #   pick"bat-v*-*.tar.gz" \
 #   mv"bat-v*/bat->bat" \
