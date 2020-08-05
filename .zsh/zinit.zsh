@@ -129,7 +129,8 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
 zinit light "buildpacks/pack"
 
 zinit ice wait'3' lucid as"program" from"gh-r" \
-  mv"gh*/bin/gh -> gh"
+  mv"gh*/bin/gh -> gh" \
+  atclone"gh completion --shell zsh > ~/.zsh/Completion/_gh" atpull"%atclone"
 zinit light "cli/cli"
 
 if [[ `uname` == "Darwin" ]]; then
