@@ -229,6 +229,10 @@ zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform" \
   mv"terraform-docs-*->terraform-docs"
 zinit light terraform-docs/terraform-docs
 
+zinit ice wait'3' lucid as"program" has"terraform" id-as"hashicorp/terraform-bundle"\
+  atclone"go install ./tools/terraform-bundle" atpull"%atclone"
+zinit light hashicorp/terraform
+
 # zinit ice wait'2' lucid as"program" from:"gh-r" \
 #   pick"bat-v*-*.tar.gz" \
 #   mv"bat-v*/bat->bat" \
