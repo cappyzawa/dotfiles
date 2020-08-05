@@ -68,7 +68,8 @@ zinit light jesseduffield/lazydocker
 zinit ice wait'2' as"program" from"gh-r" pick"hyperfine-*/hyperfine" lucid
 zinit light sharkdp/hyperfine
 
-zinit ice wait'2' as"program" from"gh-r" pick"golangci-lint-*/golangci-lint" lucid
+zinit ice wait'2' as"program" from"gh-r" pick"golangci-lint-*/golangci-lint" lucid \
+  atclone"golangci-lint completion zsh > ~/.zsh/Completion/_golangci-lint"
 zinit light golangci/golangci-lint
 
 zinit ice wait"2" as"program" from"gh-r" pick"gotop" lucid
