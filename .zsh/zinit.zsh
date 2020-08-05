@@ -107,6 +107,10 @@ zinit ice wait'3' lucid as"program" has"go" \
   atclone"GO111MODULE=on go install ./..."
 zinit light GoogleContainerTools/kpt
 
+zinit ice wait'3' lucid as"program" has"go" \
+  atclone"GO111MODULE=on go install ./..."
+zinit light 110y/go-expr-completion
+
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"ytt-* -> ytt" pick"ytt"
 zinit light "k14s/ytt"
@@ -229,7 +233,7 @@ zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform" \
   mv"terraform-docs-*->terraform-docs"
 zinit light terraform-docs/terraform-docs
 
-zinit ice wait'3' lucid as"program" has"terraform" id-as"hashicorp/terraform-bundle"\
+zinit ice wait'3' lucid as"program" has"go" id-as"hashicorp/terraform-bundle"\
   atclone"go install ./tools/terraform-bundle" atpull"%atclone"
 zinit light hashicorp/terraform
 

@@ -463,6 +463,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'mattn/vim-godoc', {'for': 'go'}
+    Plug '110y/vim-go-expr-completion', {'branch': 'master', 'for': 'go'}
+      autocmd FileType go nnoremap <silent> ge :<C-u>silent call go#expr#complete()<CR>
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
     Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
