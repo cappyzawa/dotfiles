@@ -121,6 +121,7 @@ update_nvim() {
 gitlocal() {
   git config --local user.name "Shu Kutsuzawa"
   git config --local user.email "cappyzawa@yahoo.ne.jp"
+  echo "export GITHUB_TOKEN=${GITHUB_COM_TOKEN}" >> .envrc
 }
 
 kind_start() {
