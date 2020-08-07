@@ -58,6 +58,17 @@ if has "exa"; then
   alias ls='exa'
 fi
 
+# TODO: until merging: https://github.com/cli/cli/pull/1445
+if has "gh"; then
+  alias gh="$GOPATH/bin/gh"
+  gli() {
+    local args="$@"
+    local cmd="gh issue list ${args} | fzf --reverse --preview \"gh issue view {1}\""
+    selected=`eval ${cmd}`
+    gh issue view --web $(echo ${selected} | awk '{print $1}')
+  }
+fi
+
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
