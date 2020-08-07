@@ -133,6 +133,10 @@ zinit ice wait'3' lucid as"program" from"gh-r" \
   atclone"gh completion --shell zsh > ~/.zsh/Completion/_gh" atpull"%atclone"
 zinit light "cli/cli"
 
+zinit ice wait'3' lucid as"program" from"gh-r" \
+  mv"step_*/bin/step -> $ZPFX/bin/step"
+zinit light "smallstep/cli"
+
 if [[ `uname` == "Darwin" ]]; then
   zinit ice wait'2' lucid as"program" from"gh-r" bpick"ninja-mac*"
   zinit light "ninja-build/ninja"
