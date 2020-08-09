@@ -262,7 +262,8 @@ zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"sd-local_*->sd-local"
 zinit light screwdriver-cd/sd-local
 
-zinit ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r"
+zinit ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
+  ver"nightly"
 zinit light neovim/neovim
 
 zinit ice wait'2' lucid as"program" \
