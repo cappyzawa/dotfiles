@@ -15,6 +15,7 @@ function _gh {
     commands=(
       "alias:Create command shortcuts"
       "api:Make an authenticated GitHub API request"
+      "auth:Login, logout, and refresh your authentication"
       "completion:Generate shell completion scripts"
       "config:Manage configuration for gh"
       "gist:Create gists"
@@ -33,6 +34,9 @@ function _gh {
     ;;
   api)
     _gh_api
+    ;;
+  auth)
+    _gh_auth
     ;;
   completion)
     _gh_completion
@@ -117,6 +121,38 @@ function _gh_api {
     '--paginate[Make additional HTTP requests to fetch all pages of results]' \
     '(*-f *--raw-field)'{\*-f,\*--raw-field}'[Add a string parameter]:' \
     '--silent[Do not print the response body]' \
+    '--help[Show help for command]'
+}
+
+
+function _gh_auth {
+  local -a commands
+
+  _arguments -C \
+    '--help[Show help for command]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "login:Authenticate with a GitHub host"
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  login)
+    _gh_auth_login
+    ;;
+  esac
+}
+
+function _gh_auth_login {
+  _arguments \
+    '(-h --hostname)'{-h,--hostname}'[The hostname of the GitHub instance to authenticate with]:' \
+    '--with-token[Read token from standard input]' \
     '--help[Show help for command]'
 }
 
