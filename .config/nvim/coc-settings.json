@@ -9,7 +9,7 @@
   "coc.preferences.hoverTarget": "float",
   "coc.preferences.formatOnType": true,
   "diagnostic.displayByAle": true,
-  "codeLens.enable": false,
+  "codeLens.enable": true,
   "list.autoResize": true,
   "languageserver": {
     "golang": {
