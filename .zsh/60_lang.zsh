@@ -41,11 +41,6 @@ if has "pyenv"; then
   fi
 fi
 
-# for rust
-if ! has "rustup"; then
-  curl https://sh.rustup.rs -sSf | sh -s -- -y
-fi
-
 # for node
 npm_global_install(){
   pkg=$1

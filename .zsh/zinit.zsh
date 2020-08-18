@@ -1,5 +1,7 @@
 # zinit annexes {{{
-zinit light zinit-zsh/z-a-rust
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-bin-gem-node
 # }}}
 
 zinit ice lucid from"gh-r" as"program"
@@ -270,19 +272,28 @@ zinit ice wait'2' lucid as"program" \
   atclone"curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=$ZPFX sh && deno completions zsh > ~/.zsh/Completion/_deno" atpull"%atclone"
 zinit light denoland/deno_install
 
-zinit ice wait'3' lucid rustup cargo'!silicon'
-zinit light zdharma/null
+zinit id-as=rust as=null sbin="bin/*" lucid rustup \
+    atload="[[ ! -f ${ZINIT[COMPLETIONS_DIR]}/_cargo ]] && zi creinstall rust; \
+    export CARGO_HOME=\$PWD RUSTUP_HOME=\$PWD/rustup" for \
+        zdharma/null
 
-zinit ice wait'3' lucid rustup cargo'!ripgrep'
-zinit light zdharma/null
+zinit id-as=silicon wait'3' lucid cargo'!silicon'
+zinit load zdharma/null
 
-zinit ice wait'3' lucid rustup cargo'!rls'
-zinit light zdharma/null
+zinit id-as=ripgrep wait'3' lucid cargo'!ripgrep'
+zinit load zdharma/null
 
-zinit ice wait'3' lucid rustup cargo'!rust-analysis'
-zinit light zdharma/null
+zinit id-as=rls ice wait'3' lucid cargo'!rls'
+zinit load zdharma/null
 
-zinit ice wait'3' lucid rustup cargo'!rust-src'
-zinit light zdharma/null
+zinit id-as=rust-analysis wait'3' lucid cargo'!rust-analysis'
+zinit load zdharma/null
+
+zinit id-as=rust-src wait'3' lucid cargo'!rust-src'
+zinit load zdharma/null
+
+zinit id-as=dust wait'3' lucid cargo'!du-dust -> dust'
+zinit load zdharma/null
+
 
 zinit cdreplay -q
