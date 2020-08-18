@@ -125,3 +125,9 @@ if has "pip"; then
     pip_instal neovim-remote
   fi
 fi
+
+if has "luarocks"; then
+  if ! has "luacheck"; then
+    luarocks install luacheck
+  fi
+fi
