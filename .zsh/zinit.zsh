@@ -142,7 +142,7 @@ if [[ `uname` == "Darwin" ]]; then
   zinit light "ninja-build/ninja"
 
   zinit ice wait'2' lucid has"git" \
-    atclone"git submodule update --init --recursive && cd 3rd/luamake && ninja -f ninja/macos.ninja && cd ../../ && 3rd/luamake rebuild" atpull"%atclone"
+    atclone"git submodule update --init --recursive && cd 3rd/luamake && ninja -f ninja/macos.ninja && cd ../.. && ./3rd/luamake/luamake rebuild && ln -s $HOME/.zinit/plugins/sumneko---lua-language-server /usr/local/share/lua-language-server" atpull"%atclone"
   zinit light "sumneko/lua-language-server"
 fi
 
