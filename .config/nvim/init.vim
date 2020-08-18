@@ -396,6 +396,9 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,ucs-2le,ucs-2,cp932
 set history=10000
 set wrap
 
+" Enalbe termguicolors
+set termguicolors
+
 if has('clipboard')
 	set clipboard=unnamed
 endif
@@ -530,6 +533,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
       Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.30' }
       Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
+      Plug 'norcalli/nvim-colorizer.lua'
     endif
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
@@ -859,6 +863,10 @@ if g:plug.is_installed('firenvim')
     augroup END
   endif
 
+endif
+
+if g:plug.is_installed('nvim-colorizer.lua')
+  lua require'colorizer'.setup()
 endif
 
 if g:plug.is_installed('nvim-treesitter')
