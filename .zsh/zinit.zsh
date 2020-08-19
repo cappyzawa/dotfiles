@@ -277,22 +277,22 @@ zinit id-as=rust as=null sbin="bin/*" lucid rustup \
     export CARGO_HOME=\$PWD RUSTUP_HOME=\$PWD/rustup" for \
         zdharma/null
 
-zinit id-as=silicon wait'3' lucid cargo'!silicon'
+zinit ice id-as=silicon wait'3' lucid cargo'!silicon'
 zinit load zdharma/null
 
-zinit id-as=ripgrep wait'3' lucid cargo'!ripgrep'
+zinit ice id-as=ripgrep wait'3' lucid cargo'!ripgrep'
 zinit load zdharma/null
 
-zinit id-as=rls ice wait'3' lucid cargo'!rls'
+zinit ice id-as=rls ice wait'3' lucid cargo'!rls'
 zinit load zdharma/null
 
-zinit id-as=rust-analysis wait'3' lucid cargo'!rust-analysis'
+zinit ice id-as=rust-analysis wait'3' lucid cargo'!rust-analysis'
 zinit load zdharma/null
 
-zinit id-as=rust-src wait'3' lucid cargo'!rust-src'
+zinit ice id-as=rust-src wait'3' lucid cargo'!rust-src'
 zinit load zdharma/null
 
-zinit id-as=dust wait'3' lucid cargo'!du-dust -> dust'
+zinit ice id-as=dust wait'3' lucid cargo'!du-dust -> dust'
 zinit load zdharma/null
 
 
