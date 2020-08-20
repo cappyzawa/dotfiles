@@ -98,6 +98,10 @@ zinit light nektos/act
 zinit ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"
 zinit light adrienverge/yamllint
 
+zinit ice wait'2' lucid as"program" has"pyenv" \
+  atclone'python setup.py install && ln -s $(pyenv which nvr) $ZPFX/bin/nvr' atpull"%atclone"
+zinit light mhinz/neovim-remote
+
 zinit ice wait'2' lucid as"program" make"install prefix=$ZPFX" pick"$ZPFX/bin/hub"
 zinit light github/hub
 

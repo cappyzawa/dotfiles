@@ -115,10 +115,6 @@ if has "pip"; then
   if ! has "vint"; then
     pip_instal vim-vint
   fi
-
-  if ! has "nvr"; then
-    pip_instal neovim-remote
-  fi
 fi
 
 if has "luarocks"; then
