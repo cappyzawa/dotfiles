@@ -503,6 +503,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
     " Plug 'cappyzawa/sd-validate.vim', { 'for': 'yaml' }
     Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
+    Plug 'mattn/webapi-vim'
+    Plug 'mattn/goplayground-vim', { 'for': 'go' }
+      let g:goplayground_open_browser = 'open %URL%'
     Plug 'tpope/vim-fugitive'
       Plug 'tpope/vim-rhubarb'
     Plug 'tyru/open-browser.vim', { 'on': 'OpenGithubFile' }
