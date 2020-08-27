@@ -506,8 +506,10 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
     Plug 'tpope/vim-fugitive'
       Plug 'tpope/vim-rhubarb'
-      noremap <silent> <Leader>gf :<C-u>Gbrowse<CR>
-      vnoremap <silent> <Leader>gf :<C-u>'<,'>Gbrowse<CR>
+    Plug 'tyru/open-browser.vim', { 'on': 'OpenGithubFile' }
+      Plug 'tyru/open-browser-github.vim', { 'on': 'OpenGithubFile' }
+        noremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
+        vnoremap <silent> <Leader>gf :<C-u>'<,'>OpenGithubFile<CR>
     Plug 'tomtom/tcomment_vim', { 'on': 'TComment' }
       nnoremap <silent> gc :<C-u>TComment<CR>
       vnoremap <silent> gc :<C-u>'<,'>TComment<CR>
