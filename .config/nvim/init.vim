@@ -464,7 +464,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
     Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
-    Plug 'mattn/goplayground-vim', { 'for': 'go' }
     Plug 'mattn/vim-godoc', {'for': 'go'}
     Plug '110y/vim-go-expr-completion', {'branch': 'master', 'for': 'go'}
       autocmd FileType go nnoremap <silent> ge :<C-u>silent call go#expr#complete()<CR>
