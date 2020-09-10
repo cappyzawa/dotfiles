@@ -134,8 +134,9 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
   atpull"%atclone"
 zinit light "buildpacks/pack"
 
-zinit ice wait'3' lucid as"program" \
-  atclone"GO111MODULE=on go build ./cmd/gh/... && gh completion --shell zsh > ~/.zsh/Completion/_gh" \
+zinit ice wait'3' lucid as"program" from:"gh-r" \
+  mv"gh*/bin/gh->gh" \
+  atclone"gh completion --shell zsh > ~/.zsh/Completion/_gh" \
   atpull"%atclone"
 zinit light "cli/cli"
 

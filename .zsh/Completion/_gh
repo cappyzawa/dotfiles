@@ -20,8 +20,8 @@ function _gh {
       "config:Manage configuration for gh"
       "gist:Create gists"
       "help:Help about any command"
-      "issue:Create and view issues"
-      "pr:Create, view, and checkout pull requests"
+      "issue:Manage issues"
+      "pr:Manage pull requests"
       "repo:Create, clone, fork, and view repositories"
     )
     _describe "command" commands
@@ -74,7 +74,7 @@ function _gh_alias {
   case $state in
   cmnds)
     commands=(
-      "delete:Delete an alias."
+      "delete:Delete an alias"
       "list:List your aliases"
       "set:Create a shortcut for a gh command"
     )
@@ -137,6 +137,9 @@ function _gh_auth {
   cmnds)
     commands=(
       "login:Authenticate with a GitHub host"
+      "logout:Log out of a GitHub host"
+      "refresh:Refresh stored authentication credentials"
+      "status:View authentication status"
     )
     _describe "command" commands
     ;;
@@ -146,6 +149,15 @@ function _gh_auth {
   login)
     _gh_auth_login
     ;;
+  logout)
+    _gh_auth_logout
+    ;;
+  refresh)
+    _gh_auth_refresh
+    ;;
+  status)
+    _gh_auth_status
+    ;;
   esac
 }
 
@@ -153,6 +165,25 @@ function _gh_auth_login {
   _arguments \
     '(-h --hostname)'{-h,--hostname}'[The hostname of the GitHub instance to authenticate with]:' \
     '--with-token[Read token from standard input]' \
+    '--help[Show help for command]'
+}
+
+function _gh_auth_logout {
+  _arguments \
+    '(-h --hostname)'{-h,--hostname}'[The hostname of the GitHub instance to log out of]:' \
+    '--help[Show help for command]'
+}
+
+function _gh_auth_refresh {
+  _arguments \
+    '(-h --hostname)'{-h,--hostname}'[The GitHub host to use for authentication]:' \
+    '(*-s *--scopes)'{\*-s,\*--scopes}'[Additional authentication scopes for gh to have]:' \
+    '--help[Show help for command]'
+}
+
+function _gh_auth_status {
+  _arguments \
+    '(-h --hostname)'{-h,--hostname}'[Check a specific hostname'\''s auth status]:' \
     '--help[Show help for command]'
 }
 
@@ -193,11 +224,13 @@ function _gh_config {
 
 function _gh_config_get {
   _arguments \
+    '(-h --host)'{-h,--host}'[Get per-host setting]:' \
     '--help[Show help for command]'
 }
 
 function _gh_config_set {
   _arguments \
+    '(-h --host)'{-h,--host}'[Set per-host setting]:' \
     '--help[Show help for command]'
 }
 
@@ -243,7 +276,7 @@ function _gh_issue {
   local -a commands
 
   _arguments -C \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:' \
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:' \
     '--help[Show help for command]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -287,7 +320,7 @@ function _gh_issue {
 function _gh_issue_close {
   _arguments \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_issue_create {
@@ -300,7 +333,7 @@ function _gh_issue_create {
     '(-t --title)'{-t,--title}'[Supply a title. Will prompt for one otherwise.]:' \
     '(-w --web)'{-w,--web}'[Open the browser to create an issue]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_issue_list {
@@ -310,30 +343,30 @@ function _gh_issue_list {
     '(*-l *--label)'{\*-l,\*--label}'[Filter by labels]:' \
     '(-L --limit)'{-L,--limit}'[Maximum number of issues to fetch]:' \
     '--mention[Filter by mention]:' \
-    '(-m --milestone)'{-m,--milestone}'[Filter by milestone `name`]:' \
+    '(-m --milestone)'{-m,--milestone}'[Filter by milestone `number` or `title`]:' \
     '(-s --state)'{-s,--state}'[Filter by state: {open|closed|all}]:' \
     '(-w --web)'{-w,--web}'[Open the browser to list the issue(s)]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_issue_reopen {
   _arguments \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_issue_status {
   _arguments \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_issue_view {
   _arguments \
     '(-w --web)'{-w,--web}'[Open an issue in the browser]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 
@@ -341,7 +374,7 @@ function _gh_pr {
   local -a commands
 
   _arguments -C \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:' \
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:' \
     '--help[Show help for command]' \
     "1: :->cmnds" \
     "*::arg:->args"
@@ -349,10 +382,10 @@ function _gh_pr {
   case $state in
   cmnds)
     commands=(
-      "checkout:Check out a pull request in Git"
+      "checkout:Check out a pull request in git"
       "close:Close a pull request"
       "create:Create a pull request"
-      "diff:View a pull request's changes."
+      "diff:View changes in a pull request"
       "list:List and filter pull requests in this repository"
       "merge:Merge a pull request"
       "ready:Mark a pull request as ready for review"
@@ -404,14 +437,16 @@ function _gh_pr {
 
 function _gh_pr_checkout {
   _arguments \
+    '--recurse-submodules[Update all active submodules (recursively)]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_close {
   _arguments \
+    '(-d --delete-branch)'{-d,--delete-branch}'[Delete the local and remote branch after close]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_create {
@@ -428,14 +463,14 @@ function _gh_pr_create {
     '(-t --title)'{-t,--title}'[Supply a title. Will prompt for one otherwise.]:' \
     '(-w --web)'{-w,--web}'[Open the web browser to create a pull request]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_diff {
   _arguments \
-    '(-c --color)'{-c,--color}'[Whether or not to output color: {always|never|auto}]:' \
+    '--color[Use color in diff output: {always|never|auto}]:' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_list {
@@ -445,9 +480,9 @@ function _gh_pr_list {
     '(*-l *--label)'{\*-l,\*--label}'[Filter by labels]:' \
     '(-L --limit)'{-L,--limit}'[Maximum number of items to fetch]:' \
     '(-s --state)'{-s,--state}'[Filter by state: {open|closed|merged|all}]:' \
-    '(-w --web)'{-w,--web}'[Open the browser to list the pull request(s)]' \
+    '(-w --web)'{-w,--web}'[Open the browser to list the pull requests]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_merge {
@@ -457,19 +492,19 @@ function _gh_pr_merge {
     '(-r --rebase)'{-r,--rebase}'[Rebase the commits onto the base branch]' \
     '(-s --squash)'{-s,--squash}'[Squash the commits into one commit and merge it into the base branch]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_ready {
   _arguments \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_reopen {
   _arguments \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_review {
@@ -479,20 +514,20 @@ function _gh_pr_review {
     '(-c --comment)'{-c,--comment}'[Comment on a pull request]' \
     '(-r --request-changes)'{-r,--request-changes}'[Request changes on a pull request]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_status {
   _arguments \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 function _gh_pr_view {
   _arguments \
     '(-w --web)'{-w,--web}'[Open a pull request in the browser]' \
     '--help[Show help for command]' \
-    '(-R --repo)'{-R,--repo}'[Select another repository using the `OWNER/REPO` format]:'
+    '(-R --repo)'{-R,--repo}'[Select another repository using the `[HOST/]OWNER/REPO` format]:'
 }
 
 
@@ -539,12 +574,16 @@ function _gh_repo_clone {
 
 function _gh_repo_create {
   _arguments \
+    '(-y --confirm)'{-y,--confirm}'[Confirm the submission directly]' \
     '(-d --description)'{-d,--description}'[Description of repository]:' \
     '--enable-issues[Enable issues in the new repository]' \
     '--enable-wiki[Enable wiki in the new repository]' \
     '(-h --homepage)'{-h,--homepage}'[Repository home page URL]:' \
-    '--public[Make the new repository public (default: private)]' \
+    '--internal[Make the new repository internal]' \
+    '--private[Make the new repository private]' \
+    '--public[Make the new repository public]' \
     '(-t --team)'{-t,--team}'[The name of the organization team to be granted access]:' \
+    '(-p --template)'{-p,--template}'[Make the new repository based on a template repository]:' \
     '--help[Show help for command]'
 }
 
