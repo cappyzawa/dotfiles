@@ -553,6 +553,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " Views
     Plug 'bling/vim-bufferline'
     Plug 'vim-airline/vim-airline'
+    Plug 'ryanoasis/vim-devicons'
     Plug 'simeji/winresizer'
 
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
