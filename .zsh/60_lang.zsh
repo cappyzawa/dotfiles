@@ -11,6 +11,9 @@ if has 'anyenv'; then
   if ! has 'pyenv'; then
     anyenv install pyenv && exec $SHELL -l
   fi
+  if ! has 'scalaenv'; then
+    anyenv install scalaenv && exec $SHELL -l
+  fi
 fi
 
 if has "goenv"; then
@@ -38,6 +41,13 @@ if has "pyenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/pyenv/versions/anaconda3-5.3.1" ]]; then
     pyenv install "anaconda3-5.3.1"
     pyenv global "anaconda3-5.3.1"
+  fi
+fi
+
+if has "scalaenv"; then
+  if ! [[ -d "${ANYENV_ROOT}/envs/scalaenv/versions/scala-2.13.2" ]]; then
+    scalaenv install scala-2.13.2
+    scalaenv global scala-2.13.2
   fi
 fi
 
