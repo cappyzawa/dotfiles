@@ -187,9 +187,9 @@ zinit ice wait'2' lucid as"program" from"gh-r" id-as"concourse/fly"\
   bpick"fly-*" atclone"./fly completion --shell=zsh > ~/.zsh/Completion/_fly" atpull"%atclone"
 zinit light concourse/concourse
 
-zinit ice wait'3' lucid as"program" id-as"golang/lsp" has"go" \
-  atclone"GO111MODULE=on go build -o $ZPFX/bin/gopls ./gopls/main.go" atpull"%atclone"
-zinit light golang/tools
+# zinit ice wait'3' lucid as"program" id-as"golang/lsp" has"go" \
+#   atclone"GO111MODULE=on go install golang.org/x/tools/gopls@latest" atpull"%atclone"
+# zinit light golang/tools
 
 zinit ice wait'3' lucid as"program" has"go" \
   atclone"./install.sh" atpull"%atclone"
