@@ -465,8 +465,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
     Plug 'mattn/vim-godoc', {'for': 'go'}
-    Plug '110y/vim-go-expr-completion', {'branch': 'master', 'for': 'go'}
-      autocmd FileType go nnoremap <silent> ge :<C-u>silent call go#expr#complete()<CR>
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
     Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
@@ -500,8 +498,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       nnoremap <silent> <Leader>gm :<C-u>GitMessenger<CR>
       let g:git_messenger_no_default_mappings = v:true
 
-    Plug 'cappyzawa/fly-lint.vim', { 'for': 'yaml' }
-    " Plug 'cappyzawa/sd-validate.vim', { 'for': 'yaml' }
     Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
     Plug 'mattn/webapi-vim'
     Plug 'mattn/goplayground-vim', { 'for': 'go' }
@@ -536,7 +532,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     if has('nvim')
       Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
       Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.30' }
-      Plug 'cappyzawa/vault.nvim', { 'for': 'yaml' }
       Plug 'norcalli/nvim-colorizer.lua'
     endif
     if executable('terraform')
