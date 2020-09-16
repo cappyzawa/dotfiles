@@ -870,13 +870,13 @@ if g:plug.is_installed('nvim-colorizer.lua')
 endif
 
 if g:plug.is_installed('trim.nvim')
-  lua require('trim').setup()
-  augroup CappyzawaTrim
-    autocmd!
-    autocmd BufWritePre * if &filetype != "markdown"
-                          \ | Trim
-                          \ | endif
-  augroup END
+lua <<EOF
+  require('trim').setup({
+    -- if you want to ignore markdown file.
+    -- you can specify filetypes.
+    disable = {"markdown"},
+  })
+EOF
 endif
 
 if g:plug.is_installed('nvim-treesitter')
