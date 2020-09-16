@@ -873,7 +873,9 @@ if g:plug.is_installed('trim.nvim')
   lua require('trim').setup()
   augroup CappyzawaTrim
     autocmd!
-    autocmd BufWritePre * Trim
+    autocmd BufWritePre * if &filetype != "markdown"
+                          \ | Trim
+                          \ | endif
   augroup END
 endif
 
