@@ -473,6 +473,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'dense-analysis/ale'
     if has('nvim')
       Plug 'nvim-treesitter/nvim-treesitter'
+      Plug 'cappyzawa/trim.nvim'
     endif
     Plug 'liuchengxu/vista.vim'
       nmap <silent>tg :Vista coc<CR>
@@ -718,7 +719,6 @@ if g:plug.is_installed('ale')
   \}
 
   let g:ale_fixers = {
-  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'go': ['gofmt','goimports'],
   \   'elm': ['elm-format'],
   \   'rust': ['rustfmt'],
@@ -867,6 +867,14 @@ endif
 
 if g:plug.is_installed('nvim-colorizer.lua')
   lua require'colorizer'.setup()
+endif
+
+if g:plug.is_installed('trim.nvim')
+  lua require('trim').setup()
+  augroup CappyzawaTrim
+    autocmd!
+    autocmd BufWritePre * Trim
+  augroup END
 endif
 
 if g:plug.is_installed('nvim-treesitter')
