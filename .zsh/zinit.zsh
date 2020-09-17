@@ -77,6 +77,10 @@ zinit light golangci/golangci-lint
 zinit ice wait"2" as"program" from"gh-r" pick"gotop" lucid
 zinit light cjbassi/gotop
 
+zinit ice lucid wait"2" as"program" from"gh-r" \
+  has"fzf" mv"chrome-tab-activate->tl"
+zinit light Rasukarusan/fzf-chrome-active-tab
+
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
     zdharma/fast-syntax-highlighting \
