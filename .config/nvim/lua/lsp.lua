@@ -43,3 +43,29 @@ nvim_lsp.gopls.setup{
 nvim_lsp.dockerls.setup{
   cmd = {"docker-langserver", "--stdio"}
 }
+
+--yaml
+--yaml-language-server is installed by nvim
+nvim_lsp.yamlls.setup{
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = true
+      },
+    }
+  }
+}
+
+--elm
+--elm-language-server is installed by nvim
+nvim_lsp.elmls.setup{}
+
+--bash
+--bash-language-server is installed by nvim
+nvim_lsp.bashls.setup{
+  filetypes = {"sh", "bash", "zsh"}
+}
+
+--typescript
+--typescript-language-server is installed by nvim
+nvim_lsp.tsserver.setup{}

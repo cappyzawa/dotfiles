@@ -75,22 +75,8 @@ if has "npm"; then
     npm_global_install "elm-analyse"
   fi
 
-  if ! has "elm-language-server"; then
-    npm_global_install "@elm-tooling/elm-language-server"
-  fi
-
-  if ! has "bash-language-server"; then
-    npm_global_install "bash-language-server"
-  fi
-
   if ! has "yarn"; then
     npm_global_install "yarn"
-  fi
-
-  if has "yarn"; then
-    if ! has "vim-language-server"; then
-      yarn global add vim-language-server
-    fi
   fi
 
   if ! has "ng"; then
@@ -104,12 +90,6 @@ gem_install(){
   echo "dotfile: Install ${pkg}"
   gem install ${pkg}
 }
-
-# if has "gem"; then
-#   if ! has "solargraph"; then
-#     gem_install solargraph
-#   fi
-# fi
 
 pip_instal() {
   pkg=$1
