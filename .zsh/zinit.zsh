@@ -151,12 +151,7 @@ zinit light "smallstep/cli"
 if [[ `uname` == "Darwin" ]]; then
   zinit ice wait'2' lucid as"program" from"gh-r" bpick"ninja-mac*"
   zinit light "ninja-build/ninja"
-
-  zinit ice wait'2' lucid has"git" \
-    atclone"git submodule update --init --recursive && cd 3rd/luamake && ninja -f ninja/macos.ninja && cd ../.. && ./3rd/luamake/luamake rebuild && ln -s $HOME/.zinit/plugins/sumneko---lua-language-server /usr/local/share/lua-language-server" atpull"%atclone"
-  zinit light "sumneko/lua-language-server"
 fi
-
 
 zinit ice wait'2' lucid as"program" pick"create-kubeconfig"
 zinit light zlabjp/kubernetes-scripts
@@ -242,9 +237,6 @@ zinit light terraform-linters/tflint
 zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
 zinit light hashicorp/terraform-ls
 
-zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
-zinit light juliosueiras/terraform-lsp
-
 zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform" \
   mv"terraform-docs-*->terraform-docs"
 zinit light terraform-docs/terraform-docs
@@ -252,12 +244,6 @@ zinit light terraform-docs/terraform-docs
 zinit ice wait'3' lucid as"program" has"go" id-as"hashicorp/terraform-bundle"\
   atclone"go install ./tools/terraform-bundle" atpull"%atclone"
 zinit light hashicorp/terraform
-
-# zinit ice wait'2' lucid as"program" from:"gh-r" \
-#   pick"bat-v*-*.tar.gz" \
-#   mv"bat-v*/bat->bat" \
-#   atload"alias cat='bat'"
-# zinit light sharkdp/bat
 
 zinit ice wait'3' lucid as"program" has:"cargo" \
   atclone"cargo build --bins" atpull"%atclone" \

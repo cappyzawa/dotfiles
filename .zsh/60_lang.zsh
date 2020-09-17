@@ -83,10 +83,6 @@ if has "npm"; then
     npm_global_install "bash-language-server"
   fi
 
-  if ! has "docker-langserver"; then
-    npm_global_install "dockerfile-language-server-nodejs"
-  fi
-
   if ! has "yarn"; then
     npm_global_install "yarn"
   fi

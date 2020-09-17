@@ -410,11 +410,9 @@ set splitbelow
 if has('nvim')
   set wildoptions=pum
   set inccommand=nosplit
+  set completeopt=menuone,noinsert,noselect
+  set shortmess+=c
 endif
-
-
-" Auto adjust cursor the first sugget
-set completeopt+=noinsert
 
 " Shell = zsh
 set sh=zsh
@@ -458,7 +456,13 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     " syntax
     " language support
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    if has('nvim')
+      Plug 'neovim/nvim-lspconfig'
+      Plug 'nvim-lua/completion-nvim'
+      Plug 'nvim-lua/diagnostic-nvim'
+    else
+      Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    endif
     Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
@@ -877,6 +881,10 @@ lua <<EOF
     disable = {"markdown"},
   })
 EOF
+endif
+
+if g:plug.is_installed('nvim-lspconfig')
+luafile $XDG_CONFIG_HOME/nvim/lua/lsp.lua
 endif
 
 if g:plug.is_installed('nvim-treesitter')
