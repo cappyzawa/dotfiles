@@ -474,6 +474,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     if has('nvim')
       Plug 'nvim-treesitter/nvim-treesitter'
       Plug 'cappyzawa/trim.nvim'
+      Plug 'cappyzawa/go-playground.nvim'
     endif
     Plug 'liuchengxu/vista.vim'
       nmap <silent>tg :Vista coc<CR>
@@ -501,8 +502,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
     Plug 'mattn/webapi-vim'
-    Plug 'mattn/goplayground-vim', { 'for': 'go' }
-      let g:goplayground_open_browser = 'open %URL%'
     Plug 'tpope/vim-fugitive'
       Plug 'tpope/vim-rhubarb'
     Plug 'tyru/open-browser.vim', { 'on': 'OpenGithubFile' }
@@ -876,6 +875,10 @@ lua <<EOF
     disable = {"markdown"},
   })
 EOF
+endif
+
+if g:plug.is_installed('go-playground.nvim')
+lua require'playground'.setup()
 endif
 
 if g:plug.is_installed('nvim-lspconfig')
