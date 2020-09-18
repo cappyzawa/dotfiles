@@ -22,6 +22,8 @@ nnoremap <silent> gt <cmd>lua vim.lsp.buf.rename()<CR>
 ]]
 
 local nvim_lsp = require'nvim_lsp'
+local configs = require'nvim_lsp/configs'
+local util = require'nvim_lsp/util'
 
 --lua
 --lua-language-server is installed by nvim
@@ -36,7 +38,19 @@ nvim_lsp.vimls.setup{}
 nvim_lsp.julials.setup{}
 
 --terraform
-nvim_lsp.terraformls.setup{}
+-- terraformls does not work...
+-- nvim_lsp.terraformls.setup{}
+if not configs.terraformlsp then
+  configs.terraformlsp = {
+    default_config = {
+      cmd = {'terraform-lsp'};
+      filetypes = {'terraform'};
+      root_dir = util.root_pattern(".terraform", ".git");
+      settings = {};
+    };
+  }
+end
+nvim_lsp.terraformlsp.setup{}
 
 --go
 nvim_lsp.gopls.setup{
