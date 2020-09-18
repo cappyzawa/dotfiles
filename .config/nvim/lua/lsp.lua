@@ -1,9 +1,16 @@
 vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
 vim.cmd [[autocmd BufEnter * lua require'diagnostic'.on_attach()]]
 
+-- icons
+local w_sign = ""
+local e_sign = ""
+local h_sign = "ﯦ"
+
+
 -- hilight
-vim.fn.sign_define("LspDiagnosticsErrorSign", {text = "◉", texthl = "LspDiagnosticsError"})
-vim.fn.sign_define("LspDiagnosticsWarningSign", {text = "◉", texthl = "LspDiagnosticsWarning"})
+vim.fn.sign_define("LspDiagnosticsErrorSign", {text = e_sign, texthl = "LspDiagnosticsError"})
+vim.fn.sign_define("LspDiagnosticsWarningSign", {text = w_sign, texthl = "LspDiagnosticsWarning"})
+vim.fn.sign_define("LspDiagnosticsHintSign", {text = h_sign, texthl = "LspDiagnosticsHint"})
 
 -- map
 vim.cmd [[
@@ -29,9 +36,7 @@ nvim_lsp.vimls.setup{}
 nvim_lsp.julials.setup{}
 
 --terraform
-nvim_lsp.terraformls.setup{
-  cmd = {"terraform-ls", "serve"};
-}
+nvim_lsp.terraformls.setup{}
 
 --go
 nvim_lsp.gopls.setup{

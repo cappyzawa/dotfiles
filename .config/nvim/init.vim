@@ -379,10 +379,6 @@ set virtualedit& virtualedit+=block
 set fileformat=unix
 " Automatic recognition of a new line cord.
 set fileformats=unix,dos,mac
-" A fullwidth character is displayed in vim properly.
-if exists('&ambiwidth')
-    set ambiwidth=double
-endif
 
 " Select newline character (either or both of CR and LF depending on system) automatically
 set foldenable
@@ -706,8 +702,7 @@ if g:plug.is_installed('ale')
   nnoremap <silent> <Leader>at :<C-u>ALEToggle<CR>
   let g:ale_fix_on_save = 1
   let g:ale_set_quickfix = 1
-  let g:ale_sign_error = '◉'
-  let g:ale_sign_warning = '◉'
+  let g:ale_set_signs = 0
   highlight link ALEErrorSign GruvboxRed
   highlight link ALEWarningSign GruvboxYellow
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
