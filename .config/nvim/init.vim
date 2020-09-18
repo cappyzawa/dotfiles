@@ -406,7 +406,7 @@ set splitbelow
 if has('nvim')
   set wildoptions=pum
   set inccommand=nosplit
-  set completeopt=menuone,noinsert,noselect
+  set completeopt=menuone,noinsert
   set shortmess+=c
 endif
 
