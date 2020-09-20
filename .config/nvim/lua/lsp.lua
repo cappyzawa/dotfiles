@@ -1,3 +1,5 @@
+local vim = vim
+
 vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
 vim.cmd [[autocmd BufEnter * lua require'diagnostic'.on_attach()]]
 
@@ -6,20 +8,28 @@ local w_sign = ""
 local e_sign = ""
 local h_sign = "ﯦ"
 
-
 -- hilight
 vim.fn.sign_define("LspDiagnosticsErrorSign", {text = e_sign, texthl = "LspDiagnosticsError"})
 vim.fn.sign_define("LspDiagnosticsWarningSign", {text = w_sign, texthl = "LspDiagnosticsWarning"})
 vim.fn.sign_define("LspDiagnosticsHintSign", {text = h_sign, texthl = "LspDiagnosticsHint"})
 
--- map
-vim.cmd [[
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> gk <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gt <cmd>lua vim.lsp.buf.rename()<CR>
-]]
+-- dignostic
+vim.api.nvim_set_var("diagnostic_enable_virtual_text", 1)
+vim.api.nvim_set_var("diagnostic_virtual_text_prefix", "廓")
+
+-- keymap
+local keymap_lsp_func = {
+  gd = "definition()",
+  gi = "implementation()",
+  gk = "hover()",
+  gr = "references()",
+  gt = "rename()"
+}
+
+local opts = { noremap=true, silent=true }
+for k, v in pairs(keymap_lsp_func) do
+  vim.api.nvim_set_keymap('n', k, string.format("<cmd>lua vim.lsp.buf.%s<CR>", v), opts)
+end
 
 local nvim_lsp = require'nvim_lsp'
 local configs = require'nvim_lsp/configs'
