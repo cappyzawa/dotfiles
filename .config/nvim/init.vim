@@ -456,6 +456,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'neovim/nvim-lspconfig'
       Plug 'nvim-lua/completion-nvim'
       Plug 'nvim-lua/diagnostic-nvim'
+      Plug 'nvim-lua/popup.nvim'
+      Plug 'nvim-lua/plenary.nvim'
+      Plug 'nvim-lua/telescope.nvim'
     else
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
     endif
@@ -883,6 +886,10 @@ endif
 
 if g:plug.is_installed('nvim-lspconfig')
 luafile $XDG_CONFIG_HOME/nvim/lua/lsp.lua
+endif
+
+if g:plug.is_installed('telescope.nvim')
+luafile $XDG_CONFIG_HOME/nvim/lua/telescope.lua
 endif
 
 if g:plug.is_installed('nvim-treesitter')
