@@ -453,33 +453,42 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " syntax
     " language support
     if has('nvim')
+      " lsp
       Plug 'neovim/nvim-lspconfig'
       Plug 'nvim-lua/completion-nvim'
         Plug 'steelsojka/completion-buffers'
       Plug 'nvim-lua/diagnostic-nvim'
+
+      " finder
       Plug 'nvim-lua/popup.nvim'
       Plug 'nvim-lua/plenary.nvim'
       Plug 'nvim-lua/telescope.nvim'
+
+      " syntax
+      Plug 'nvim-treesitter/nvim-treesitter'
+
+      Plug 'cappyzawa/trim.nvim'
+      Plug 'cappyzawa/go-playground.nvim'
     else
+      " lsp
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+      " syntax
+      Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
+      Plug 'elzr/vim-json', { 'for': 'json' }
+      Plug 'cespare/vim-toml', { 'for': 'toml' }
+      Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+      Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
     endif
-    Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-    Plug 'cespare/vim-toml', { 'for': 'toml' }
+
     Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
-    Plug 'elzr/vim-json', { 'for': 'json' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
     Plug 'mattn/vim-godoc', {'for': 'go'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
-    Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
     Plug 'jparise/vim-graphql'
     Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
     Plug 'dense-analysis/ale'
-    if has('nvim')
-      Plug 'nvim-treesitter/nvim-treesitter'
-      Plug 'cappyzawa/trim.nvim'
-      Plug 'cappyzawa/go-playground.nvim'
-    endif
     Plug 'liuchengxu/vista.vim'
       nmap <silent>tg :Vista coc<CR>
       let g:vista#renderer#inable_icon = 1
@@ -487,7 +496,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " For only syntax
     Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
     Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
-    Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
     Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
 
     Plug 'jiangmiao/auto-pairs'
@@ -540,8 +548,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     endif
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
+      Plug 'hashicorp/sentinel.vim'
     endif
-    Plug 'hashicorp/sentinel.vim'
     Plug 'guns/xterm-color-table.vim'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
     Plug 'zinit-zsh/zinit-vim-syntax'
