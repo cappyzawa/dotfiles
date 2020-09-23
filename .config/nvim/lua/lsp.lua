@@ -17,6 +17,14 @@ vim.fn.sign_define("LspDiagnosticsHintSign", {text = h_sign, texthl = "LspDiagno
 vim.api.nvim_set_var("diagnostic_enable_virtual_text", 1)
 vim.api.nvim_set_var("diagnostic_virtual_text_prefix", "廓")
 
+-- completion
+local completion_chain_complete_list = {
+  {
+    ["complete_items"] = {"lsp", "buffers"},
+  }
+}
+vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete_list)
+
 -- keymap
 local keymap_lsp_func = {
   gd = "definition()",
