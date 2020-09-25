@@ -1,9 +1,3 @@
-# zinit annexes {{{
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-bin-gem-node
-# }}}
-
 zinit ice lucid from"gh-r" as"program"
 zinit light "junegunn/fzf-bin"
 
@@ -24,6 +18,10 @@ zinit ice lucid as"program" from"gh-r" \
   mv"exa-*->exa" \
   atload="alias ls='exa'"
 zinit light ogham/exa
+
+zinit ice lucid as"program" from"gh-r" \
+  pick:"ripgrep-*/rg"
+zinit light BurntSushi/ripgrep
 
 zinit ice as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
@@ -69,6 +67,9 @@ zinit light jesseduffield/lazydocker
 
 zinit ice wait'2' as"program" from"gh-r" pick"hyperfine-*/hyperfine" lucid
 zinit light sharkdp/hyperfine
+
+zinit ice lucid wait"2" as"program" from"gh-r"
+zinit light Aloxaf/silicon
 
 zinit ice wait'2' as"program" from"gh-r" pick"golangci-lint-*/golangci-lint" lucid \
   atclone"golangci-lint completion zsh > ~/.zsh/Completion/_golangci-lint"
@@ -269,29 +270,5 @@ zinit light neovim/neovim
 zinit ice wait'2' lucid as"program" \
   atclone"curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=$ZPFX sh && deno completions zsh > ~/.zsh/Completion/_deno" atpull"%atclone"
 zinit light denoland/deno_install
-
-zinit id-as=rust as=null sbin="bin/*" lucid rustup \
-    atload="[[ ! -f ${ZINIT[COMPLETIONS_DIR]}/_cargo ]] && zi creinstall rust; \
-    export CARGO_HOME=\$PWD RUSTUP_HOME=\$PWD/rustup" for \
-        zdharma/null
-
-zinit ice id-as=silicon wait'3' lucid cargo'!silicon'
-zinit load zdharma/null
-
-zinit ice id-as=ripgrep wait'3' lucid cargo'!ripgrep'
-zinit load zdharma/null
-
-zinit ice id-as=rls ice wait'3' lucid cargo'!rls'
-zinit load zdharma/null
-
-zinit ice id-as=rust-analysis wait'3' lucid cargo'!rust-analysis'
-zinit load zdharma/null
-
-zinit ice id-as=rust-src wait'3' lucid cargo'!rust-src'
-zinit load zdharma/null
-
-zinit ice id-as=dust wait'3' lucid cargo'!du-dust -> dust'
-zinit load zdharma/null
-
 
 zinit cdreplay -q
