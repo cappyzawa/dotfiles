@@ -38,9 +38,6 @@ zinit snippet $HOME/.zsh/50_setopt.zsh
 zinit ice wait"2" lucid
 zinit snippet $HOME/.zsh/60_lang.zsh
 
-zinit ice wait"3" lucid
-zinit snippet $HOME/.zsh/80_custom.zsh
-
 zinit ice wait"2" as"program" from"gh-r" \
   mv"jq-* -> jq" pick"jq" lucid
 zinit light stedolan/jq
@@ -270,5 +267,13 @@ zinit light neovim/neovim
 zinit ice wait'2' lucid as"program" \
   atclone"curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=$ZPFX sh && deno completions zsh > ~/.zsh/Completion/_deno" atpull"%atclone"
 zinit light denoland/deno_install
+
+zinit ice wait'2' lucid as"program" from:"gh-r" \
+  mv"rust-analyzer* -> rust-analyzer" has:"rustup"
+zinit light rust-analyzer/rust-analyzer
+
+zinit ice wait"3" lucid
+zinit snippet $HOME/.zsh/80_custom.zsh
+
 
 zinit cdreplay -q

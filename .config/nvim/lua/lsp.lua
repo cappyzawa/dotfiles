@@ -75,6 +75,9 @@ nvim_lsp.gopls.setup{
   cmd = {"gopls"};
 }
 
+--rust
+require'nvim_lsp'.rust_analyzer.setup{}
+
 --docker
 --docker-langserver is installed by nvim
 nvim_lsp.dockerls.setup{
