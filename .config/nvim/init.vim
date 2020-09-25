@@ -889,10 +889,6 @@ lua <<EOF
 EOF
 endif
 
-if g:plug.is_installed('go-playground.nvim')
-lua require'playground'.setup()
-endif
-
 if g:plug.is_installed('nvim-lspconfig')
 luafile $XDG_CONFIG_HOME/nvim/lua/lsp.lua
 endif
