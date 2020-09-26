@@ -12,12 +12,15 @@ jobs:
     - name: Install zsh
       if: runner.os == 'Linux'
       run: |
-        sudo apt-get update
-        sudo apt-get install zsh
+        sudo apt-get update -y
+        sudo apt-get install -y zsh curl make git
     - name: setUP
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
-        ls -al
+        ls -al ${HOME}
     - name: Reboot shell
       run: |
         zsh -c "source ~/.zshrc"
+      # https://github.com/actions/virtual-environments/issues/264#issuecomment-574032011
+      # use zsh
+      shell: zsh {0}
