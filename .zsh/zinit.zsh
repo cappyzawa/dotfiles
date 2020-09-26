@@ -5,7 +5,8 @@ zinit light "junegunn/fzf-bin"
 # }}}
 # cappyzawa/enhancd (instead of https://github.com/b4b4r07/enhancd) {{{
 zinit ice pick"init.sh" lucid \
-  atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1'
+  atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1' \
+  atclone"zinit cclear" atpull"%atclone"
 zinit light "cappyzawa/enhancd"
 # }}}
 # starship/starship {{{
@@ -30,7 +31,7 @@ zinit ice as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
 # }}}
 # neovim/neovim {{{
-zinit ice wait'1' lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
+zinit ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
   ver"nightly"
 zinit light neovim/neovim
 # }}}

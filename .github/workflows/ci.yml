@@ -20,8 +20,7 @@ jobs:
     - name: Reboot shell
       run: |
         source ~/.zshenv
-        compaudit | source ~/.zshrc
-        zinit cclear
+        source ~/.zshrc
       # https://github.com/actions/virtual-environments/issues/264#issuecomment-574032011
       # use zsh
       shell: zsh {0}
