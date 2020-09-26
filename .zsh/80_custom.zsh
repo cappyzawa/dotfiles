@@ -2,16 +2,6 @@ if has "kubectl"; then
   alias k='kubectl'
 fi
 
-if has 'tkn'; then
-  if [[ ! -e '/usr/local/bin/kubectl-tkn' ]]; then
-    ln -s `which tkn` /usr/local/bin/kubectl-tkn
-  fi
-fi
-
-if has 'ko'; then
-  export KO_DOCKER_REPO='docker.io/cappyzawa'
-fi
-
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
 if [[ -d $KREW_ROOT ]]; then
   export PATH="${KREW_ROOT}/bin:$PATH"
@@ -19,23 +9,6 @@ fi
 
 if (which jenv > /dev/null); then
   export JAVA_HOME="${ANYENV_ROOT}/envs/jenv/versions/`jenv version-name`"
-fi
-
-if has "jq"; then
-  alias -g JQ='| jq -C .'
-  alias -g JL='| jq -C . | less -R -X'
-fi
-
-if has "lazygit"; then
-  alias lg='lazygit'
-
-  if [[ "${PLATFORM}" == "osx" ]] && ! [[ -d ~/Library/Application\ Support/jesseduffield/lazygit ]]; then
-    ln -s ~/.config/jesseduffield/lazygit ~/Library/Application\ Support/jesseduffield/lazygit
-  fi
-fi
-
-if has "lazydocker"; then
-  alias ld='lazydocker'
 fi
 
 if has "vault"; then
@@ -52,10 +25,6 @@ fi
 
 if has "go"; then
   export GOPRIVATE="*.yahoo.co.jp"
-fi
-
-if has "exa"; then
-  alias ls='exa'
 fi
 
 if has "gh"; then
