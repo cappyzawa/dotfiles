@@ -20,6 +20,7 @@ jobs:
         ls -al ${HOME}
     - name: Reboot shell
       run: |
+        compinit -i
         source ~/.zshrc
         zinit cclear
       # https://github.com/actions/virtual-environments/issues/264#issuecomment-574032011
