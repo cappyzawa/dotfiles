@@ -20,7 +20,8 @@ jobs:
         ls -al ${HOME}
     - name: Reboot shell
       run: |
-        zsh -c "source ~/.zshrc"
+        source ~/.zshrc
+        zinit cclear
       # https://github.com/actions/virtual-environments/issues/264#issuecomment-574032011
       # use zsh
       shell: zsh {0}
