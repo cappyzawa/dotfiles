@@ -17,11 +17,10 @@ jobs:
     - name: setUP
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
-        ls -al ${HOME}
     - name: Reboot shell
       run: |
-        compinit -i
-        source ~/.zshrc
+        source ~/.zshenv
+        compaudit | source ~/.zshrc
         zinit cclear
       # https://github.com/actions/virtual-environments/issues/264#issuecomment-574032011
       # use zsh
