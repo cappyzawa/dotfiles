@@ -17,8 +17,6 @@ jobs:
     - name: setUP
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
-    - name: debug
-      run: |
         ls -al
     - name: Reboot shell
       run: |
