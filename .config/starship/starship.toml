@@ -1,5 +1,4 @@
-[prompt]
-add_newline = true
+add_newline = false
 
 [aws]
 disabled = true
@@ -8,10 +7,8 @@ disabled = true
 disabled = true
 
 [character]
-symbol = "$"
-use_symbol_for_status = false
-# Green
-# Light Red
+success_symbol = "[\\$](bold green)"
+error_symbol = "[\\$](bold red)"
 
 [cmd_duration]
 
