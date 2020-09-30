@@ -476,11 +476,11 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       " syntax
       Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
       Plug 'elzr/vim-json', { 'for': 'json' }
-      Plug 'cespare/vim-toml', { 'for': 'toml' }
       Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-      Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
     endif
 
+    Plug 'cespare/vim-toml', { 'for': 'toml' }
+    Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
     Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
     Plug 'mattn/vim-godoc', {'for': 'go'}
