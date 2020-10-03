@@ -1,4 +1,4 @@
-add_newline = false
+add_newline = true
 
 [aws]
 disabled = true
@@ -23,6 +23,9 @@ disabled = true
 [env_var]
 disabled = true
 
+[elixir]
+symbol = " "
+
 [elm]
 symbol = " "
 
@@ -31,20 +34,21 @@ symbol = " "
 [git_commit]
 disabled = false
 commit_hash_length = 4
-tag_disabled = false
 
 [git_state]
 disabled = true
 
 [git_status]
-conflicted_count.enabled = true
-untracked_count.enabled = true
-modified_count.enabled = true
-staged_count.enabled = true
-renamed_count.enabled = true
-deleted_count.enabled = true
-stashed_count.enabled = true
-show_sync_count = true
+conflicted = "=${count}"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count}"
+stashed = "\\$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
 
 [golang]
 symbol = " "
@@ -54,7 +58,7 @@ symbol = " "
 [jobs]
 
 [kubernetes]
-symbol = "⎈ "
+symbol = "ﴱ "
 disabled = false
 
 [line_break]
@@ -72,18 +76,26 @@ symbol = " "
 [julia]
 symbol = " "
 
+[nim]
+symbol = " "
+
 [nodejs]
 symbol = ""
 
 [package]
 symbol = ""
 
+[php]
+symbol = " "
+
 [python]
+symbol = " "
 
 [ruby]
+symbol = " "
 
 [rust]
-symbol = " "
+symbol = " "
 
 [time]
 disabled = true
