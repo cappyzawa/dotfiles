@@ -110,6 +110,10 @@ zinit ice wait'3' lucid as"program" has:"cargo" \
   atload"alias cat='bat'"
 zinit light sharkdp/bat
 # }}}
+# o2sh/onefetch {{{
+zinit ice wait'1' lucid as"program" from:"gh-r"
+zinit light o2sh/onefetch
+# }}}
 # }}}
 
 # docker {{{
