@@ -75,6 +75,10 @@ if has "npm"; then
     npm_global_install "elm-analyse"
   fi
 
+  if ! has "elm-live"; then
+    npm_global_install "elm-live"
+  fi
+
   if ! has "yarn"; then
     npm_global_install "yarn"
   fi
