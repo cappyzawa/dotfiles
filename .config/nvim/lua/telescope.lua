@@ -11,7 +11,8 @@ local keymap_telescope_func = {
   ["<Leader>ff"] = [[require'telescope.builtin'.find_files{find_command = {"rg", "-i", "--hidden", "--files", "-g", "!.git"}}]],
   ["<Leader>rg"] = "require'telescope.builtin'.live_grep()",
   ["<Leader>ch"] = "require'telescope.builtin'.command_history{}",
-  ["<Leader>bl"] = [[require'telescope.builtin'.buffers{show_all_buffers = true}]]
+  ["<Leader>bl"] = [[require'telescope.builtin'.buffers{show_all_buffers = true}]],
+  ["gr"] = "require'telescope.builtin'.lsp_references{ shorten_path = true }",
 }
 
 for k, v in pairs(keymap_telescope_func) do
