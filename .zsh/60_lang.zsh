@@ -17,9 +17,10 @@ if has 'anyenv'; then
 fi
 
 if has "goenv"; then
-  if ! [[ -d "${ANYENV_ROOT}/envs/goenv/versions/1.13.1" ]]; then
-    goenv install "1.13.1"
-    goenv global "1.13.1"
+  local version="1.15.2"
+  if ! [[ -d "${ANYENV_ROOT}/envs/goenv/versions/${version}" ]]; then
+    goenv install ${version}
+    goenv global ${version}
   fi
 fi
 
