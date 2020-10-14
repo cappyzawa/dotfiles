@@ -18,7 +18,7 @@ function _gh {
       "auth:Login, logout, and refresh your authentication"
       "completion:Generate shell completion scripts"
       "config:Manage configuration for gh"
-      "gist:Create gists"
+      "gist:Manage gists"
       "help:Help about any command"
       "issue:Manage issues"
       "pr:Manage pull requests"
@@ -741,6 +741,7 @@ function _gh_repo_fork {
 
 function _gh_repo_view {
   _arguments \
+    '(-b --branch)'{-b,--branch}'[View a specific branch of the repository]:' \
     '(-w --web)'{-w,--web}'[Open a repository in the browser]' \
     '--help[Show help for command]'
 }
