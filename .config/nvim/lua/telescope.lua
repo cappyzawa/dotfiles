@@ -1,8 +1,23 @@
 local vim = vim
 
+local actions = require'telescope.actions'
+
 require'telescope.init'.setup{
   defaults = {
     vimgrep_arguments = {'rg', '-i', '--hidden', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'},
+    mappings = {
+      i = {
+        ["<c-j>"] = actions.move_selection_next,
+        ["<c-k>"] = actions.move_selection_previous,
+        ["<c-x>"] = false,
+        ["<c-s>"] = actions.goto_file_selection_split,
+      },
+      n = {
+        ["jj"] = actions.close,
+        ["<c-x>"] = false,
+        ["<c-s>"] = actions.goto_file_selection_split,
+      },
+    }
   }
 }
 
