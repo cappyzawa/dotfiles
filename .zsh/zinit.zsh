@@ -114,6 +114,11 @@ zinit light sharkdp/bat
 zinit ice wait'1' lucid as"program" from:"gh-r"
 zinit light o2sh/onefetch
 # }}}
+# google/starlark-go {{{
+zinit ice wait'3' lucid as"program" has"go" \
+  atclone"go install ./cmd/starlark/..."
+zinit light google/starlark-go
+# }}}
 # }}}
 
 # docker {{{
