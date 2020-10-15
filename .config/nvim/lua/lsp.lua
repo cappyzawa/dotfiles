@@ -92,6 +92,11 @@ nvim_lsp.yamlls.setup{
       schemaStore = {
         enable = true
       },
+      schemas = {
+        kubernetes = "/*.yaml";
+        ["http://json.schemastore.org/kustomization"] = "/kustomization.yaml";
+        ["https://raw.githubusercontent.com/cappyzawa/concourse-pipeline-jsonschema/master/concourse_jsonschema.json"] = "/pipeline.yml";
+      }
     }
   }
 }
