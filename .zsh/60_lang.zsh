@@ -56,6 +56,22 @@ if has "scalaenv"; then
   fi
 fi
 
+if has "tfenv"; then
+  local version="0.13.4"
+  if ! [[ -d "${ANYENV_ROOT}/envs/tfenv/versions/${version}" ]]; then
+    tfenv install ${version}
+    tfenv use ${version}
+  fi
+fi
+
+if has "luaenv"; then
+  local version="5.4.0"
+  if ! [[ -d "${ANYENV_ROOT}/envs/luaenv/versions/${version}" ]]; then
+    luaenv install ${version}
+    luaenv global ${version}
+  fi
+fi
+
 # for node
 npm_global_install(){
   pkg=$1
