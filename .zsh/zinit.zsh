@@ -103,6 +103,11 @@ zinit ice wait'1' lucid as"program" from:"gh-r" \
   atpull"%atclone"
 zinit light "cli/cli"
 # }}}
+# hashicorp/waypoint {{{
+zinit ice wait"1" lucid as"program" from:"gh-r" \
+  bpick"waypoint_*.zip"
+zinit light hashicorp/waypoint
+# }}}
 # sharkdp/bat {{{
 zinit ice wait'3' lucid as"program" has:"cargo" \
   atclone"cargo build --bins" atpull"%atclone" \
