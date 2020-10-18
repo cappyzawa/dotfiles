@@ -1,19 +1,19 @@
+local install_by_anyenv() {
+  local restart_flag=false
+  target=('goenv' 'nodenv' 'rbenv' 'pyenv' 'scalaenv' 'luaenv' 'tfenv')
+  for t in ${target}; do
+    if ! has ${t}; then
+      anyenv install ${t}
+      restart_flag=true
+    fi
+  done
+  if (${restart_flag}); then
+    exec $SHELL -l
+  fi
+}
+
 if has 'anyenv'; then
-  if ! has 'goenv'; then
-    anyenv install goenv && exec $SHELL -l
-  fi
-  if ! has 'nodenv'; then
-    anyenv install nodenv && exec $SHELL -l
-  fi
-  if ! has 'rbenv'; then
-    anyenv install rbenv && exec $SHELL -l
-  fi
-  if ! has 'pyenv'; then
-    anyenv install pyenv && exec $SHELL -l
-  fi
-  if ! has 'scalaenv'; then
-    anyenv install scalaenv && exec $SHELL -l
-  fi
+  install_by_anyenv
 fi
 
 if has "goenv"; then
@@ -25,30 +25,34 @@ if has "goenv"; then
 fi
 
 if has "nodenv"; then
-  if ! [[ -d "${ANYENV_ROOT}/envs/nodenv/versions/10.16.3" ]]; then
-    nodenv install "10.16.3"
-    nodenv global "10.16.3"
+  local version="10.16.3"
+  if ! [[ -d "${ANYENV_ROOT}/envs/nodenv/versions/${version}" ]]; then
+    nodenv install ${version}
+    nodenv global ${version}
   fi
 fi
 
 if has "rbenv"; then
-  if ! [[ -d "${ANYENV_ROOT}/envs/rbenv/versions/2.6.5" ]]; then
-    rbenv install "2.6.5"
-    rbenv global "2.6.5"
+  local version="2.6.5"
+  if ! [[ -d "${ANYENV_ROOT}/envs/rbenv/versions/${version}" ]]; then
+    rbenv install ${version}
+    rbenv global ${version}
   fi
 fi
 
 if has "pyenv"; then
-  if ! [[ -d "${ANYENV_ROOT}/envs/pyenv/versions/anaconda3-5.3.1" ]]; then
-    pyenv install "anaconda3-5.3.1"
-    pyenv global "anaconda3-5.3.1"
+  local version="anaconda3-5.3.1"
+  if ! [[ -d "${ANYENV_ROOT}/envs/pyenv/versions/${version}" ]]; then
+    pyenv install ${version}
+    pyenv global ${version}
   fi
 fi
 
 if has "scalaenv"; then
-  if ! [[ -d "${ANYENV_ROOT}/envs/scalaenv/versions/scala-2.13.2" ]]; then
-    scalaenv install scala-2.13.2
-    scalaenv global scala-2.13.2
+  local version="scala-2.13.2"
+  if ! [[ -d "${ANYENV_ROOT}/envs/scalaenv/versions/${version}" ]]; then
+    scalaenv install ${version}
+    scalaenv global ${version}
   fi
 fi
 
