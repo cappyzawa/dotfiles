@@ -20,6 +20,7 @@ function _pack {
       "build:Generate app image from source code"
       "rebase:Rebase app image with latest run image"
       "inspect-image:Show information about a built image"
+      "inspect-buildpack:Show information about a buildpack"
       "set-run-image-mirrors:Set mirrors to other repositories for a given run image"
       "set-default-builder:Set default builder used by other commands"
       "inspect-builder:Show information about a builder"
@@ -48,6 +49,9 @@ function _pack {
     ;;
   inspect-image)
     _pack_inspect-image
+    ;;
+  inspect-buildpack)
+    _pack_inspect-buildpack
     ;;
   set-run-image-mirrors)
     _pack_set-run-image-mirrors
@@ -104,7 +108,7 @@ function _pack_build {
 Repeat for each buildpack in order,
   or supply once by comma-separated list]:' \
     '--clear-cache[Clear image'\''s associated cache before building]' \
-    '(-D --default-process)'{-D,--default-process}'[Set the default process type]:' \
+    '(-D --default-process)'{-D,--default-process}'[Set the default process type. (default "web")]:' \
     '(-d --descriptor)'{-d,--descriptor}'[Path to the project descriptor file]:' \
     '(*-e *--env)'{\*-e,\*--env}'[Build-time environment variable, in the form '\''VAR=VALUE'\'' or '\''VAR'\''.
 When using latter value-less form, value will be taken from current
@@ -117,13 +121,13 @@ When using latter value-less form, value will be taken from current
   environment at the time this command is executed]:' \
     '(-h --help)'{-h,--help}'[Help for '\''build'\'']' \
     '--network[Connect detect and build containers to network]:' \
-    '--no-pull[Skip pulling builder and run images before use]' \
     '(-p --path)'{-p,--path}'[Path to app dir or zip-formatted file (defaults to current working directory)]:' \
     '--publish[Publish to registry]' \
+    '--pull-policy[Pull policy to use. Accepted values are always, never, and if-not-present. (default "always")]:' \
     '--run-image[Run image (defaults to default stack'\''s run image)]:' \
     '--trust-builder[Trust the provided builder
 All lifecycle phases will be run in a single container (if supported by the lifecycle).]' \
-    '*--volume[Mount host volume into the build container, in the form '\''<host path>:<target path>'\''. Target path will be prefixed with '\''/platform/'\''
+    '*--volume[Mount host volume into the build container, in the form '\''<host path>:<target path>[:<mode>]'\''.
 Repeat for each volume in order,
   or supply once by comma-separated list]:' \
     '--no-color[Disable color output]' \
@@ -135,8 +139,8 @@ Repeat for each volume in order,
 function _pack_rebase {
   _arguments \
     '(-h --help)'{-h,--help}'[Help for '\''rebase'\'']' \
-    '--no-pull[Skip pulling app and run images before use]' \
     '--publish[Publish to registry]' \
+    '--pull-policy[Pull policy to use. Accepted values are always, never, and if-not-present. The default is always]:' \
     '--run-image[Run image to use for rebasing]:' \
     '--no-color[Disable color output]' \
     '(-q --quiet)'{-q,--quiet}'[Show less output]' \
@@ -148,6 +152,18 @@ function _pack_inspect-image {
   _arguments \
     '--bom[print bill of materials]' \
     '(-h --help)'{-h,--help}'[Help for '\''inspect-image'\'']' \
+    '--no-color[Disable color output]' \
+    '(-q --quiet)'{-q,--quiet}'[Show less output]' \
+    '--timestamps[Enable timestamps in output]' \
+    '(-v --verbose)'{-v,--verbose}'[Show more output]'
+}
+
+function _pack_inspect-buildpack {
+  _arguments \
+    '(-d --depth)'{-d,--depth}'[Max depth to display for Detection Order.
+Omission of this flag or values < 0 will display the entire tree.]:' \
+    '(-h --help)'{-h,--help}'[Help for '\''inspect-buildpack'\'']' \
+    '(-r --registry)'{-r,--registry}'[buildpack registry that may be searched]:' \
     '--no-color[Disable color output]' \
     '(-q --quiet)'{-q,--quiet}'[Show less output]' \
     '--timestamps[Enable timestamps in output]' \
@@ -177,6 +193,8 @@ function _pack_set-default-builder {
 
 function _pack_inspect-builder {
   _arguments \
+    '(-d --depth)'{-d,--depth}'[Max depth to display for Detection Order.
+Omission of this flag or values < 0 will display the entire tree.]:' \
     '(-h --help)'{-h,--help}'[Help for '\''inspect-builder'\'']' \
     '--no-color[Disable color output]' \
     '(-q --quiet)'{-q,--quiet}'[Show less output]' \
@@ -224,8 +242,8 @@ function _pack_create-builder {
   _arguments \
     '(-c --config)'{-c,--config}'[Path to builder TOML file (required)]:' \
     '(-h --help)'{-h,--help}'[Help for '\''create-builder'\'']' \
-    '--no-pull[Skip pulling build image before use]' \
     '--publish[Publish to registry]' \
+    '--pull-policy[Pull policy to use. Accepted values are always, never, and if-not-present. The default is always]:' \
     '--no-color[Disable color output]' \
     '(-q --quiet)'{-q,--quiet}'[Show less output]' \
     '--timestamps[Enable timestamps in output]' \
@@ -237,8 +255,8 @@ function _pack_package-buildpack {
     '(-c --config)'{-c,--config}'[Path to package TOML config (required)]:' \
     '(-f --format)'{-f,--format}'[Format to save package as ("image" or "file")]:' \
     '(-h --help)'{-h,--help}'[Help for '\''package-buildpack'\'']' \
-    '--no-pull[Skip pulling packages before use]' \
     '--publish[Publish to registry (applies to "--image" only)]' \
+    '--pull-policy[Pull policy to use. Accepted values are always, never, and if-not-present. The default is always]:' \
     '--no-color[Disable color output]' \
     '(-q --quiet)'{-q,--quiet}'[Show less output]' \
     '--timestamps[Enable timestamps in output]' \
@@ -265,6 +283,7 @@ function _pack_version {
 
 function _pack_report {
   _arguments \
+    '(-e --explicit)'{-e,--explicit}'[Print config without redacting information]' \
     '(-h --help)'{-h,--help}'[Help for '\''report'\'']' \
     '--no-color[Disable color output]' \
     '(-q --quiet)'{-q,--quiet}'[Show less output]' \

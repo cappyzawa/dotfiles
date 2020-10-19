@@ -162,10 +162,12 @@ function _tkn_clustertask_start {
     '(*-o *--outputresource)'{\*-o,\*--outputresource}'[pass the output resource name and ref as name=ref]:()' \
     '(*-p *--param)'{\*-p,\*--param}'[pass the param as key=value for string type, or key=value1,value2,... for array type]:()' \
     '--pod-template[local or remote file containing a PodTemplate definition]:()' \
+    '--prefix-name[specify a prefix for the TaskRun name (must be lowercase alphanumeric characters)]:()' \
     '(-s --serviceaccount)'{-s,--serviceaccount}'[pass the serviceaccount name]: :__kubectl_get_serviceaccount' \
     '--showlog[show logs right after starting the ClusterTask]' \
     '--timeout[timeout for TaskRun]:()' \
     '--use-param-defaults[use default parameter values without prompting for input]' \
+    '--use-taskrun[specify a TaskRun name to use its values to re-run the TaskRun]: :__tkn_get_taskrun' \
     '(*-w *--workspace)'{\*-w,\*--workspace}'[pass one or more workspaces to map to the corresponding physical volumes as name=name,claimName=pvcName or name=name,emptyDir=]:()' \
     '(-c --context)'{-c,--context}'[name of the kubeconfig context to use (default: kubectl config current-context)]:()' \
     '(-k --kubeconfig)'{-k,--kubeconfig}'[kubectl config file (default: $HOME/.kube/config)]: :_filedir' \
@@ -1111,7 +1113,8 @@ function _tkn_triggertemplate_list {
 
 function _tkn_version {
   _arguments \
-    '(-c --check)'{-c,--check}'[check if a newer version is available]'
+    '(-c --check)'{-c,--check}'[check if a newer version is available]' \
+    '(-n --namespace)'{-n,--namespace}'[namespace to check installed controller version]:()'
 }
 
 
