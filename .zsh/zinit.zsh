@@ -311,6 +311,14 @@ zinit light hashicorp/terraform
 # }}}
 # }}}
 
+# tonsky/FiraCode {{{
+if [[ `uname` == "Darwin" ]]; then
+zinit ice wait'1' lucid as"program" from:"gh-r" \
+  atclone"cp ttf/FiraCode*.ttf ~/Library/Fonts"
+zinit light tonsky/FiraCode
+fi
+# }}}
+
 # smallstep/cli {{{
 zinit ice wait'3' lucid as"program" from"gh-r" \
   mv"step_*/bin/step -> $ZPFX/bin/step"

@@ -12,4 +12,6 @@ curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install
 
 ## Required
 
-* [Nerd Fonts(FiraCode)](https://www.nerdfonts.com/)
+* `git`
+* `tmux`
+* [tonsky/FiraCode: Free monospaced font with programming ligatures](https://github.com/tonsky/FiraCode)
