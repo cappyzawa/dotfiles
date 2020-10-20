@@ -332,7 +332,7 @@ zinit light cloudfoundry/bosh-cli
 # }}}
 
 # concourse/fly {{{
-zinit ice wait'2' lucid as"program" from"gh-r" id-as"concourse/fly"\
+zinit ice wait'2' lucid as"program" from"gh-r" id-as"concourse/fly" ver:"v5.8.0" \
   bpick"fly-*" atclone"./fly completion --shell=zsh > ~/.zsh/Completion/_fly" atpull"%atclone"
 zinit light concourse/concourse
 # }}}
