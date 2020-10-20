@@ -560,8 +560,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     " Plug 'morhetz/gruvbox'
     "   let g:airline_theme='gruvbox'
     Plug 'ghifarit53/tokyonight-vim'
-      let g:tokyonight_enable_italic = 1
-      let g:airline_theme='tokyonight'
+      let g:airline_theme = 'tokyonight'
 
     " Views
     Plug 'bling/vim-bufferline'
@@ -893,6 +892,13 @@ lua <<EOF
 EOF
 endif
 
+if g:plug.is_installed('tokyonight-vim')
+  set termguicolors
+  let g:tokyonight_style = 'night' " available: night, storm
+  let g:tokyonight_menu_selection_background = 'blue'
+  colorscheme tokyonight
+endif
+
 if g:plug.is_installed('nvim-lspconfig')
 luafile $XDG_CONFIG_HOME/nvim/lua/lsp.lua
 endif
@@ -938,4 +944,5 @@ augroup NeovimRemote
   autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 augroup END
 
+colorscheme tokyonight
 " }}}
