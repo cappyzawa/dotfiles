@@ -554,12 +554,17 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
     Plug 'zinit-zsh/zinit-vim-syntax'
 
+    " StatusLine
+    Plug 'vim-airline/vim-airline'
     " Theme
-    Plug 'morhetz/gruvbox'
+    " Plug 'morhetz/gruvbox'
+    "   let g:airline_theme='gruvbox'
+    Plug 'ghifarit53/tokyonight-vim'
+      let g:tokyonight_enable_italic = 1
+      let g:airline_theme='tokyonight'
 
     " Views
     Plug 'bling/vim-bufferline'
-    Plug 'vim-airline/vim-airline'
     Plug 'ryanoasis/vim-devicons'
     Plug 'simeji/winresizer'
 
@@ -782,7 +787,6 @@ endif
 
 if g:plug.is_installed('vim-airline')
   let g:airline_skip_empty_sections = 1
-  let g:airline_theme='gruvbox'
   let g:airline_extensions = ['branch',
         \ 'ale',
         \ 'bufferline',
