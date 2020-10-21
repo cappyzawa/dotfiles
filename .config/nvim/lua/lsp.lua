@@ -76,7 +76,9 @@ nvim_lsp.gopls.setup{
 }
 
 --rust
-require'nvim_lsp'.rust_analyzer.setup{}
+nvim_lsp.rust_analyzer.setup{
+  cmd = {"rust-analyzer"}
+}
 
 --docker
 --docker-langserver is installed by nvim
