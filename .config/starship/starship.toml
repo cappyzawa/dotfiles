@@ -64,6 +64,9 @@ disabled = false
 [line_break]
 disabled = false
 
+[lua]
+symbol = " "
+
 [nix_shell]
 disabled = true
 
