@@ -20,7 +20,7 @@ vim.api.nvim_set_var("diagnostic_virtual_text_prefix", "廓")
 -- completion
 local completion_chain_complete_list = {
   {
-    ["complete_items"] = {"lsp", "buffers"},
+    ["complete_items"] = {"lsp", "path"},
   }
 }
 vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete_list)
