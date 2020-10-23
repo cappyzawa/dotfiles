@@ -36,6 +36,10 @@ if has "gh"; then
   }
 fi
 
+if has "consul"; then
+  complete -o nospace -C `which consul` consul
+fi
+
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
