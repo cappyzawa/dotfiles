@@ -944,5 +944,4 @@ augroup NeovimRemote
   autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 augroup END
 
-colorscheme tokyonight
 " }}}

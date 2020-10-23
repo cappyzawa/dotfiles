@@ -3,24 +3,28 @@ local vim = vim
 vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
 vim.cmd [[autocmd BufEnter * lua require'diagnostic'.on_attach()]]
 
--- icons
+-- dignostic
+vim.api.nvim_set_var("diagnostic_enable_virtual_text", 1)
+vim.api.nvim_set_var("diagnostic_virtual_text_prefix", "廓")
+---- icons
 local w_sign = ""
 local e_sign = ""
 local h_sign = "ﯦ"
 
--- hilight
+---- hilight
 vim.fn.sign_define("LspDiagnosticsErrorSign", {text = e_sign, texthl = "LspDiagnosticsError"})
 vim.fn.sign_define("LspDiagnosticsWarningSign", {text = w_sign, texthl = "LspDiagnosticsWarning"})
 vim.fn.sign_define("LspDiagnosticsHintSign", {text = h_sign, texthl = "LspDiagnosticsHint"})
 
--- dignostic
-vim.api.nvim_set_var("diagnostic_enable_virtual_text", 1)
-vim.api.nvim_set_var("diagnostic_virtual_text_prefix", "廓")
+vim.cmd [[highlight! link LspDiagnosticsError Red]]
+vim.cmd [[highlight! link LspDiagnosticsWarning Yellow]]
+vim.cmd [[highlight! link LspDiagnosticsHint Green]]
+vim.cmd [[highlight! link LspDiagnosticsInfomation Gray]]
 
 -- completion
 local completion_chain_complete_list = {
   {
-    ["complete_items"] = {"lsp", "path"},
+    ["complete_items"] = {"lsp", "path", "buffer"},
   }
 }
 vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete_list)
