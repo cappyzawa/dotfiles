@@ -13,5 +13,5 @@ curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install
 ## Required
 
 * `git`
-* `tmux`
+* `tmux` 3.2+
 * [tonsky/FiraCode: Free monospaced font with programming ligatures](https://github.com/tonsky/FiraCode)
