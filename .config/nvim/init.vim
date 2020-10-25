@@ -464,6 +464,10 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'nvim-lua/plenary.nvim'
       Plug 'nvim-lua/telescope.nvim'
 
+      " statusline
+      Plug 'glepnir/galaxyline.nvim'
+      Plug 'kyazdani42/nvim-web-devicons'
+
       " syntax
       Plug 'nvim-treesitter/nvim-treesitter'
 
@@ -472,6 +476,9 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     else
       " lsp
       Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+      " statusline
+      Plug 'vim-airline/vim-airline'
 
       " syntax
       Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
@@ -555,7 +562,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'zinit-zsh/zinit-vim-syntax'
 
     " StatusLine
-    Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline'
     " Theme
     " Plug 'morhetz/gruvbox'
     "   let g:airline_theme='gruvbox'
@@ -794,8 +801,8 @@ if g:plug.is_installed('vim-airline')
   let g:airline#extensions#tagbar#enabled = 1
   let g:airline_lazyloaded_tagbar = 1
   let g:airline#extensions#bufferline#overwrite_variables = 0
-  let g:airline#extensions#ale#error_symbol = '🔥'
-  let g:airline#extensions#ale#warning_symbol = '⚡️'
+  let g:airline#extensions#ale#error_symbol = ''
+  let g:airline#extensions#ale#warning_symbol = ''
   let g:airline#extensions#vista#enabled = 1
 endif
 
@@ -905,6 +912,10 @@ endif
 
 if g:plug.is_installed('telescope.nvim')
 luafile $XDG_CONFIG_HOME/nvim/lua/telescope.lua
+endif
+
+if g:plug.is_installed('galaxyline.nvim')
+luafile $XDG_CONFIG_HOME/nvim/lua/gl.lua
 endif
 
 if g:plug.is_installed('nvim-treesitter')
