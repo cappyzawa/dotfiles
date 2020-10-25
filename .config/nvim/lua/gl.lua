@@ -3,6 +3,7 @@ local gl = require'galaxyline'
 local gls = gl.section
 gl.short_line_list = {'LuaTree','vista','dbui'}
 
+-- based on tokyonight
 local colors = {
   bg = '#1a1b26',
   yellow = '#E0AF68',
