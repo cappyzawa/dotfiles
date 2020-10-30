@@ -19,7 +19,7 @@ vim.fn.sign_define("LspDiagnosticsHintSign", {text = h_sign, texthl = "LspDiagno
 vim.cmd [[highlight! link LspDiagnosticsError Red]]
 vim.cmd [[highlight! link LspDiagnosticsWarning Yellow]]
 vim.cmd [[highlight! link LspDiagnosticsHint Green]]
-vim.cmd [[highlight! link LspDiagnosticsInfomation Gray]]
+vim.cmd [[highlight! link LspDiagnosticsInfomation Grey]]
 
 -- completion
 local completion_chain_complete_list = {
