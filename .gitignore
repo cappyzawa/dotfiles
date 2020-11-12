@@ -18,6 +18,6 @@ node_modules/
 .config/coc/commands
 .config/coc/extensions/coc-java-data/
 .config/nvim/sessions
-.config/waypoint
+.config/waypoint/
 .chef/
 .zsh/Completion/_flctl

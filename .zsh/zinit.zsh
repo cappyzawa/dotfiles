@@ -296,7 +296,7 @@ zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
 zinit light hashicorp/terraform-ls
 # }}}
 # juliosueiras/terraform-lsp {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
+zinit ice wait'2' lucid as"program" from"gh-r" has"terraform"
 zinit light juliosueiras/terraform-lsp
 # }}}
 # terraform-docs/terraform-docs {{{
