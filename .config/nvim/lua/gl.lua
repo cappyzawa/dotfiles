@@ -119,25 +119,25 @@ gls.left[10] = {
     highlight = {colors.purple,colors.purple}
   }
 }
-gls.left[11] = {
-  DiagnosticError = {
-    provider = 'DiagnosticError',
-    icon = '  ',
-    highlight = {colors.red,colors.bg}
-  }
-}
-gls.left[12] = {
-  Space = {
-    provider = function () return ' ' end
-  }
-}
-gls.left[13] = {
-  DiagnosticWarn = {
-    provider = 'DiagnosticWarn',
-    icon = '  ',
-    highlight = {colors.yellow,colors.bg},
-  }
-}
+-- gls.left[11] = {
+--   DiagnosticError = {
+--     provider = 'DiagnosticError',
+--     icon = '  ',
+--     highlight = {colors.red,colors.bg}
+--   }
+-- }
+-- gls.left[12] = {
+--   Space = {
+--     provider = function () return ' ' end
+--   }
+-- }
+-- gls.left[13] = {
+--   DiagnosticWarn = {
+--     provider = 'DiagnosticWarn',
+--     icon = '  ',
+--     highlight = {colors.yellow,colors.bg},
+--   }
+-- }
 gls.right[1]= {
   FileFormat = {
     provider = 'FileFormat',
