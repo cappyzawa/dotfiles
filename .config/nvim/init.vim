@@ -829,8 +829,8 @@ if g:plug.is_installed('coc.nvim')
   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
   function! s:do_hover()
-    if coc#util#has_float()
-      call coc#util#float_hide()
+    if coc#float#has_float()
+      call coc#float#close_all()
     else
       call CocActionAsync('doHover')
     endif
@@ -920,31 +920,7 @@ luafile $XDG_CONFIG_HOME/nvim/lua/gl.lua
 endif
 
 if g:plug.is_installed('nvim-treesitter')
-lua <<EOF
-  require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,                    -- false will disable the whole extension
-        disable = {},        -- list of language that will be disabled
-    },
-    incremental_selection = {
-        enable = true,
-        disable = {},
-        keymaps = {},
-    },
-    refactor = {
-      highlight_defintions = {
-        enable = true
-      },
-      smart_rename = {
-        enable = false,
-      },
-      navigation = {
-        enable = false,
-      }
-    },
-    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
-  }
-EOF
+luafile $XDG_CONFIG_HOME/nvim/lua/treesitter.lua
 endif
 
 if has('nvim')
