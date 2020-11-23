@@ -31,8 +31,10 @@ zinit ice as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
 # }}}
 # neovim/neovim {{{
-zinit ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
-  ver"nightly"
+# zinit ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
+#   ver"nightly"
+zinit ice lucid as"program" \
+  make"CMAKE_INSTALL_PREFIX=${ZPFX} install"
 zinit light neovim/neovim
 # }}}
 # }}}

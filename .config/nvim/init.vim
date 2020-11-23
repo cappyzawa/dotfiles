@@ -457,7 +457,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'neovim/nvim-lspconfig'
       Plug 'nvim-lua/completion-nvim'
         Plug 'steelsojka/completion-buffers'
-      Plug 'nvim-lua/diagnostic-nvim'
 
       " finder
       Plug 'nvim-lua/popup.nvim'

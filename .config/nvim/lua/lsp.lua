@@ -1,25 +1,42 @@
 local vim = vim
 
 vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
-vim.cmd [[autocmd BufEnter * lua require'diagnostic'.on_attach()]]
 
 -- dignostic
-vim.api.nvim_set_var("diagnostic_enable_virtual_text", 1)
-vim.api.nvim_set_var("diagnostic_virtual_text_prefix", "廓")
+vim.lsp.diagnostic.set_signs()
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      spacing = 4,
+      prefix = "廓",
+    },
+
+    -- This is similar to:
+    -- let g:diagnostic_show_sign = 1
+    -- To configure sign display,
+    --  see: ":help vim.lsp.diagnostic.set_signs()"
+    signs = true,
+
+    -- This is similar to:
+    -- "let g:diagnostic_insert_delay = 1"
+    update_in_insert = false,
+  }
+)
+
 ---- icons
 local w_sign = ""
 local e_sign = ""
 local h_sign = "ﯦ"
 
 ---- hilight
-vim.fn.sign_define("LspDiagnosticsErrorSign", {text = e_sign, texthl = "LspDiagnosticsError"})
-vim.fn.sign_define("LspDiagnosticsWarningSign", {text = w_sign, texthl = "LspDiagnosticsWarning"})
-vim.fn.sign_define("LspDiagnosticsHintSign", {text = h_sign, texthl = "LspDiagnosticsHint"})
+vim.fn.sign_define("LspDiagnosticsSignError", {text = e_sign, texthl = "LspDiagnosticsSignError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = w_sign, texthl = "LspDiagnosticsSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = h_sign, texthl = "LspDiagnosticsSignHint"})
 
-vim.cmd [[highlight! link LspDiagnosticsError Red]]
-vim.cmd [[highlight! link LspDiagnosticsWarning Yellow]]
-vim.cmd [[highlight! link LspDiagnosticsHint Green]]
-vim.cmd [[highlight! link LspDiagnosticsInfomation Grey]]
+vim.cmd [[highlight! link LspDiagnosticsDefaultError Red]]
+vim.cmd [[highlight! link LspDiagnosticsDefaultWarning Yellow]]
+vim.cmd [[highlight! link LspDiagnosticsDefaultHint Green]]
+vim.cmd [[highlight! link LspDiagnosticsDefaultInfomation Grey]]
 
 -- completion
 local completion_chain_complete_list = {
@@ -75,9 +92,7 @@ lspconfig.terraformls.setup{}
 -- lspconfig.terraform.setup{}
 
 --go
-lspconfig.gopls.setup{
-  cmd = {"gopls"};
-}
+lspconfig.gopls.setup{}
 
 --rust
 lspconfig.rust_analyzer.setup{
