@@ -76,20 +76,9 @@ lspconfig.vimls.setup{}
 lspconfig.julials.setup{}
 
 --terraform
-lspconfig.terraformls.setup{}
--- if not lspconfig.terraform_lsp then
---   configs.terraform_lsp = {
---     default_config = {
---       cmd = {'terraform-lsp'};
---       filetypes = {'terraform'};
---       root_dir = function(fname)
---         return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
---       end;
---       settings = {};
---     };
---   }
--- end
--- lspconfig.terraform.setup{}
+lspconfig.terraformls.setup{
+  cmd = {"terraform-lsp"}
+}
 
 --go
 lspconfig.gopls.setup{}

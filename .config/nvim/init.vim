@@ -468,7 +468,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'kyazdani42/nvim-web-devicons'
 
       " syntax
-      Plug 'nvim-treesitter/nvim-treesitter'
+      Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
       Plug 'cappyzawa/trim.nvim'
       Plug 'cappyzawa/go-playground.nvim'
