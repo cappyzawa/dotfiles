@@ -531,26 +531,28 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       vnoremap <silent> gc :<C-u>'<,'>TComment<CR>
     Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' }
       let g:silicon = {
-        \ 'theme':              'OneHalfDark',
-        \ 'font':               'Droid Sans Mono Slashed for Powerline',
-        \ 'background':         '#ffffff',
-        \ 'shadow-color':       '#555555',
-        \ 'line-pad':                   2,
-        \ 'pad-horiz':                  0,
-        \ 'pad-vert':                   0,
-        \ 'shadow-blur-radius':         0,
-        \ 'shadow-offset-x':            0,
-        \ 'shadow-offset-y':            0,
-        \ 'line-number':           v:true,
-        \ 'round-corner':          v:true,
-        \ 'window-controls':       v:true,
-        \ }
+            \   'theme':              'gruvbox',
+            \   'font':               'FiraCode Nerd Font',
+            \   'background':         '#FFFFFF',
+            \   'shadow-color':       '#555555',
+            \   'line-pad':                   2,
+            \   'pad-horiz':                 80,
+            \   'pad-vert':                 100,
+            \   'shadow-blur-radius':         0,
+            \   'shadow-offset-x':            0,
+            \   'shadow-offset-y':            0,
+            \   'line-number':           v:true,
+            \   'round-corner':          v:true,
+            \   'window-controls':       v:true,
+            \ }
 
+      let g:silicon['output'] = '~/Desktop/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
     if has('nvim')
       Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
       Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.31' }
       Plug 'norcalli/nvim-colorizer.lua'
+      Plug 'yamatsum/nvim-cursorline'
     endif
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
