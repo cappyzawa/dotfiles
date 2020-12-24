@@ -1,8 +1,12 @@
 local vim = vim
 
+local telescope = require'telescope'
 local actions = require'telescope.actions'
 
-require'telescope.init'.setup{
+-- extensions
+telescope.load_extension('ghcli')
+
+telescope.setup{
   defaults = {
     mappings = {
       i = {
@@ -28,6 +32,8 @@ local keymap_telescope_func = {
   ["<Leader>rg"] = "require'telescope.builtin'.live_grep()",
   ["<Leader>ch"] = "require'telescope.builtin'.command_history{}",
   ["<Leader>bl"] = "require'telescope.builtin'.buffers{show_all_buffers = true}",
+  ["<Leader>gi"] = "require'telescope.builtin'.gh_issues()",
+  ["<Leader>gp"] = "require'telescope.builtin'.gh_pull_request()",
   ["gr"] = "require'telescope.builtin'.lsp_references{ shorten_path = true }",
 }
 

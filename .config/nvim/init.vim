@@ -462,6 +462,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'nvim-lua/popup.nvim'
       Plug 'nvim-lua/plenary.nvim'
       Plug 'nvim-telescope/telescope.nvim'
+      Plug 'nvim-telescope/telescope-github.nvim'
 
       " statusline
       Plug 'glepnir/galaxyline.nvim'
@@ -913,7 +914,7 @@ luafile $XDG_CONFIG_HOME/nvim/lua/lsp.lua
 endif
 
 if g:plug.is_installed('telescope.nvim')
-luafile $XDG_CONFIG_HOME/nvim/lua/telescope.lua
+luafile $XDG_CONFIG_HOME/nvim/lua/finder.lua
 endif
 
 if g:plug.is_installed('galaxyline.nvim')
