@@ -34,6 +34,7 @@ local keymap_telescope_func = {
   ["<Leader>bl"] = "require'telescope.builtin'.buffers{show_all_buffers = true}",
   ["<Leader>gi"] = "require'telescope.builtin'.gh_issues()",
   ["<Leader>gp"] = "require'telescope.builtin'.gh_pull_request()",
+  ["<Leader>gst"] = "require'telescope.builtin'.git_status()",
   ["gr"] = "require'telescope.builtin'.lsp_references{ shorten_path = true }",
 }
 
