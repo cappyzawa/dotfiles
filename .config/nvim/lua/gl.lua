@@ -6,6 +6,7 @@ gl.short_line_list = {'LuaTree','vista','dbui'}
 -- based on tokyonight
 local colors = {
   bg = '#1a1b26',
+  line_gb = '#1a1b26',
   yellow = '#E0AF68',
   cyan = '#4abaaf',
   darkblue = '#3e5380',
@@ -61,11 +62,10 @@ gls.left[4] = {
     highlight = {colors.fg,colors.line_bg,'bold'}
   }
 }
-
 gls.left[5] = {
   GitIcon = {
-    provider = function() return '  ' end,
-    condition = require('galaxyline.provider_vcs').check_git_workspace,
+    provider = function() return '  ' end,
+    condition = buffer_not_empty,
     highlight = {colors.orange,colors.line_bg},
   }
 }
@@ -136,7 +136,15 @@ gls.left[13] = {
     highlight = {colors.blue,colors.bg},
   }
 }
-gls.right[1]= {
+gls.right[1] = {
+  TSStatus = {
+    provider = function () return vim.api.nvim_exec("echo nvim_treesitter#statusline(50)", true) end,
+    separator =' | ',
+    separator_highlight = {colors.blue,colors.line_bg},
+    highlight = {colors.fg,colors.line_bg},
+  },
+}
+gls.right[2]= {
   FileFormat = {
     provider = 'FileFormat',
     separator = ' ',
@@ -144,7 +152,7 @@ gls.right[1]= {
     highlight = {colors.fg,colors.line_bg,'bold'},
   }
 }
-gls.right[2] = {
+gls.right[3] = {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' | ',
@@ -152,7 +160,7 @@ gls.right[2] = {
     highlight = {colors.fg,colors.line_bg},
   },
 }
-gls.right[3] = {
+gls.right[4] = {
   PerCent = {
     provider = 'LinePercent',
     separator = ' ',
@@ -160,7 +168,7 @@ gls.right[3] = {
     highlight = {colors.cyan,colors.darkblue,'bold'},
   }
 }
-gls.right[4] = {
+gls.right[5] = {
   ScrollBar = {
     provider = 'ScrollBar',
     highlight = {colors.blue,colors.purple},
