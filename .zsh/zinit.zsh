@@ -205,6 +205,13 @@ if [[ `uname` == "Darwin" ]]; then
   zinit light "ninja-build/ninja"
 fi
 # }}}
+# sumneko/lua-language-server {{{
+if [[ `uname` == "Darwin" ]]; then
+  zinit ice wait'2' lucid has"git" \
+    atclone"git submodule update --init --recursive && cd 3rd/luamake && ninja -f ninja/macos.ninja && cd ../.. && ./3rd/luamake/luamake rebuild" atpull"%atclone"
+  zinit light "sumneko/lua-language-server"
+fi
+# }}}
 # }}}
 
 # for only vim plugins {{{

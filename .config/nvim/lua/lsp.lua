@@ -64,16 +64,71 @@ local lspconfig = require'lspconfig'
 local configs = require'lspconfig/configs'
 
 --lua
---lua-language-server is installed by nvim
-lspconfig.sumneko_lua.setup{}
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+local sumneko_root_path = vim.fn.expand('$HOME')..'/.zinit/plugins/sumneko---lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+lspconfig.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    },
+  },
+}
 
 --vim
---vim-language-server is installed by nvim
 lspconfig.vimls.setup{}
 
 --julia
---LanguageServer.jl is installed by nvim
-lspconfig.julials.setup{}
+lspconfig.julials.setup{
+    on_new_config = function(new_config,new_root_dir)
+      server_path = vim.fn.expand('$HOME').."/.julia/packages/LanguageServer/y1ebo/src/LanguageServer.jl/src"
+      cmd = {
+        "julia",
+        "--project="..server_path,
+        "--startup-file=no",
+        "--history-file=no",
+        "-e", [[
+          using Pkg;
+          Pkg.instantiate()
+          using LanguageServer; using SymbolServer;
+          depot_path = get(ENV, "JULIA_DEPOT_PATH", "")
+          project_path = dirname(something(Base.current_project(pwd()), Base.load_path_expand(LOAD_PATH[2])))
+          # Make sure that we only load packages from this environment specifically.
+          @info "Running language server" env=Base.load_path()[1] pwd() project_path depot_path
+          server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path);
+          server.runlinter = true;
+          run(server);
+        ]]
+    };
+      new_config.cmd = cmd
+    end
+}
 
 --terraform
 lspconfig.terraformls.setup{
@@ -89,14 +144,13 @@ lspconfig.rust_analyzer.setup{
 }
 
 --docker
---docker-langserver is installed by nvim
 lspconfig.dockerls.setup{
   cmd = {"docker-langserver", "--stdio"}
 }
 
 --yaml
---yaml-language-server is installed by nvim
 lspconfig.yamlls.setup{
+  cmd = {"yaml-language-server", "--stdio"},
   settings = {
     yaml = {
       schemaStore = {
@@ -112,15 +166,12 @@ lspconfig.yamlls.setup{
 }
 
 --elm
---elm-language-server is installed by nvim
 lspconfig.elmls.setup{}
 
 --bash
---bash-language-server is installed by nvim
 lspconfig.bashls.setup{
   filetypes = {"sh", "bash", "zsh"}
 }
 
 --typescript
---typescript-language-server is installed by nvim
 lspconfig.tsserver.setup{}
