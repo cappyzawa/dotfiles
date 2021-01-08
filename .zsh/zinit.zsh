@@ -3,11 +3,11 @@
 zinit ice lucid from"gh-r" as"program"
 zinit light "junegunn/fzf-bin"
 # }}}
-# cappyzawa/enhancd (instead of https://github.com/b4b4r07/enhancd) {{{
+# b4b4r07/enhancd {{{
 zinit ice pick"init.sh" lucid \
   atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1' \
   atclone"zinit cclear" atpull"%atclone"
-zinit light "cappyzawa/enhancd"
+zinit light "b4b4r07/enhancd"
 # }}}
 # starship/starship {{{
 zinit ice lucid as"program" from"gh-r" bpick"starship-x86_64-*.tar.gz" \
