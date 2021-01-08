@@ -100,6 +100,10 @@ symbol = " "
 [rust]
 symbol = " "
 
+[terraform]
+symbol = "🪁 "
+format = "via [$symbol$version]($style)"
+
 [time]
 disabled = true
 
