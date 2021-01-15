@@ -101,7 +101,6 @@ symbol = " "
 symbol = " "
 
 [terraform]
-symbol = "🪁 "
 format = "via [$symbol$version]($style)"
 
 [time]

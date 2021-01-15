@@ -1,6 +1,6 @@
 local install_by_anyenv() {
   local restart_flag=false
-  target=('goenv' 'nodenv' 'rbenv' 'pyenv' 'scalaenv' 'luaenv' 'tfenv')
+  target=('goenv' 'nodenv' 'rbenv' 'pyenv' 'scalaenv' 'luaenv')
   for t in ${target}; do
     if ! has ${t}; then
       anyenv install ${t}
@@ -53,14 +53,6 @@ if has "scalaenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/scalaenv/versions/${version}" ]]; then
     scalaenv install ${version}
     scalaenv global ${version}
-  fi
-fi
-
-if has "tfenv"; then
-  local version="0.13.4"
-  if ! [[ -d "${ANYENV_ROOT}/envs/tfenv/versions/${version}" ]]; then
-    tfenv install ${version}
-    tfenv use ${version}
   fi
 fi
 

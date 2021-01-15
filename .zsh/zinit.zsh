@@ -316,6 +316,10 @@ zinit ice wait'3' lucid as"program" has"go" id-as"hashicorp/terraform-bundle"\
   atclone"go install ./tools/terraform-bundle" atpull"%atclone"
 zinit light hashicorp/terraform
 # }}}
+# cappyzawa/tfswitch {{{
+zinit ice wait'1' lucid as"program" from:"gh-r"
+zinit light cappyzawa/tfswitch
+# }}}
 # }}}
 
 # tonsky/FiraCode {{{

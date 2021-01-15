@@ -40,6 +40,10 @@ if has "consul"; then
   complete -o nospace -C `which consul` consul
 fi
 
+if has "terraform"; then
+  export TF_VERSION=`terraform version | sed -e "s/Terraform //g"`
+fi
+
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
