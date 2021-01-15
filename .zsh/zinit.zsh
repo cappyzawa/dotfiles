@@ -181,10 +181,10 @@ zinit light rust-analyzer/rust-analyzer
 zinit ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"
 zinit light adrienverge/yamllint
 # }}}
-# k14s/ytt {{{
+# vmware-tanzu/carvel-ytt {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"ytt-* -> ytt" pick"ytt"
-zinit light "k14s/ytt"
+zinit light "vmware-tanzu/carvel-ytt"
 # }}}
 # }}}
 
@@ -236,15 +236,15 @@ zinit ice wait'3' lucid as"program" has"go" \
   atclone"GO111MODULE=on go install ./..."
 zinit light GoogleContainerTools/kpt
 # }}}
-# k14s/kapp {{{
+# vmware-tanzu/carvel-kapp {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"kapp-* -> kapp" pick"kapp"
-zinit light "k14s/kapp"
+zinit light "vmware-tanzu/carvel-kapp"
 # }}}
-# k14s/kbld {{{
+# vmware-tanzu/carvel-kbld {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"kbld-* -> kbld" pick"kbld"
-zinit light "k14s/kbld"
+zinit light "vmware-tanzu/carvel-kbld"
 # }}}
 # zlabjp/kubernetes-scripts (as create-kubeconfig) {{{
 zinit ice wait'2' lucid as"program" pick"create-kubeconfig"
