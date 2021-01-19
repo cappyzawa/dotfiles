@@ -132,7 +132,7 @@ lspconfig.julials.setup{
 
 --terraform
 lspconfig.terraformls.setup{
-  cmd = {"terraform-ls", "serve"}
+  cmd = {"terraform-lsp"}
 }
 
 --go
