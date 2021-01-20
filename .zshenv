@@ -106,7 +106,10 @@ export ANYENV_ROOT="${XDG_CONFIG_HOME}/anyenv"
 # export FZF_DEFAULT_OPTS='--color=fg:#928374,bg:#282828,hl:#79740e --color=fg+:#928374,bg+:#282828,hl+:#b8bb26 --color=info:#98971a,prompt:#fabd2f,pointer:#fabd2f --color=marker:#83a598,spinner:#fabd2f,header:#928374 --extended --ansi --multi'
 
 ## tokyonight
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#a9b1d6,bg+:#1a1b26,hl+:#4abaaf --color=info:#e0af68,prompt:#f7768e,pointer:#a9b1d6 --color=marker:#9ece6a,spinner:#9a7ecc,header:#acb0d0'
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#a9b1d6,bg+:#1a1b26,hl+:#4abaaf --color=info:#e0af68,prompt:#f7768e,pointer:#a9b1d6 --color=marker:#9ece6a,spinner:#9a7ecc,header:#acb0d0'
+
+## zephyr
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#bbc2cf,bg:#282c34,hl:#51afef --color=fg+:#5b6268,bg+:#b3deef,hl+:#3bb6c4 --color=info:#afaf87,prompt:#ff6c6b,pointer:#d16d9e --color=marker:#98be65,spinner:#d16d9e,header:#1abc9c'
 
 # available $INTERACTIVE_FILTER
 export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"

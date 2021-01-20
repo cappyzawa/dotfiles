@@ -470,6 +470,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
       " syntax
       Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+      Plug 'glepnir/zephyr-nvim'
 
       Plug 'cappyzawa/trim.nvim'
       Plug 'cappyzawa/go-playground.nvim'
@@ -553,7 +554,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
       Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.31' }
       Plug 'norcalli/nvim-colorizer.lua'
-      Plug 'yamatsum/nvim-cursorline'
     endif
     if executable('terraform')
       Plug 'hashivim/vim-terraform'
@@ -562,14 +562,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'guns/xterm-color-table.vim'
     Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
     Plug 'zinit-zsh/zinit-vim-syntax'
-
-    " StatusLine
-    " Plug 'vim-airline/vim-airline'
-    " Theme
-    " Plug 'morhetz/gruvbox'
-    "   let g:airline_theme='gruvbox'
-    Plug 'ghifarit53/tokyonight-vim'
-      let g:airline_theme = 'tokyonight'
 
     " Views
     Plug 'bling/vim-bufferline'
@@ -907,6 +899,10 @@ if g:plug.is_installed('tokyonight-vim')
   let g:tokyonight_enable_italic = 0
   let g:tokyonight_menu_selection_background = 'blue'
   colorscheme tokyonight
+endif
+
+if g:plug.is_installed('zephyr-nvim')
+  lua require('zephyr')
 endif
 
 if g:plug.is_installed('nvim-lspconfig')
