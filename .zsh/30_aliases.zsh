@@ -4,6 +4,10 @@ if has 'git'; then
   alias gst='git status'
 fi
 
+if has 'nvim'; then
+  alias vim='nvr --remote-wait-silent'
+fi
+
 # Common aliases
 alias ..='cd ..'
 alias l="ls -l"
