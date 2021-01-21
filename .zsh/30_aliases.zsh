@@ -4,23 +4,6 @@ if has 'git'; then
   alias gst='git status'
 fi
 
-if has 'nvim'; then
-  alias vim='nvim'
-  if [[ -n ${VIMRUNTIME} ]]; then
-    alias vim='nvr --remote-wait-silent'
-  fi
-fi
-
-if (( $+commands[gls] )); then
-  alias ls='gls -F --color --group-directories-first'
-elif (( $+commands[ls] )); then
-  if is_osx; then
-    alias ls='ls -GF'
-  else
-  alias ls='ls -F --color'
-  fi
-fi
-
 # Common aliases
 alias ..='cd ..'
 alias l="ls -l"
@@ -41,22 +24,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias flushdns='sudo killall -HUP mDNSResponder'
-
-# Use if colordiff exists
-if has 'colordiff'; then
-  alias diff='colordiff -u'
-else
-  alias diff='diff -u'
-fi
-
-if has "emojify"; then
-  alias -g E='| emojify'
-fi
-
-if is_osx; then
-  alias -g CP='| pbcopy'
-  alias -g CC='| tee /dev/tty | pbcopy'
-fi
 
 if is_osx; then
   alias ctags="`brew --prefix`/bin/ctags"

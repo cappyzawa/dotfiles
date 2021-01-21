@@ -488,10 +488,8 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     endif
 
     Plug 'cespare/vim-toml', { 'for': 'toml' }
-    Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
     Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
     Plug 'rhysd/vim-fixjson', { 'for': 'json' }
-    Plug 'mattn/vim-godoc', {'for': 'go'}
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
     Plug 'jparise/vim-graphql'
@@ -505,6 +503,7 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
     Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
     Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
+    Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
 
     Plug 'jiangmiao/auto-pairs'
       let g:AutoPairsMapCR = 0
@@ -560,16 +559,12 @@ if g:plug.ready() && g:env.vimrc.plugin_on
       Plug 'hashicorp/sentinel.vim'
     endif
     Plug 'guns/xterm-color-table.vim'
-    Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
     Plug 'zinit-zsh/zinit-vim-syntax'
 
     " Views
     Plug 'bling/vim-bufferline'
     Plug 'ryanoasis/vim-devicons'
     Plug 'simeji/winresizer'
-
-    Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-      nnoremap <silent> <C-]> :<C-u>TagbarToggle<CR>
 
     " Add plugins to &runtimepath
     call plug#end()
@@ -902,7 +897,8 @@ if g:plug.is_installed('tokyonight-vim')
 endif
 
 if g:plug.is_installed('zephyr-nvim')
-  lua require('zephyr')
+  colorscheme zephyr
+  lua require('zephyr').get_zephyr_color()
 endif
 
 if g:plug.is_installed('nvim-lspconfig')

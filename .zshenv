@@ -109,7 +109,7 @@ export ANYENV_ROOT="${XDG_CONFIG_HOME}/anyenv"
 # export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a9b1d6,bg:#1a1b26,hl:#7aa2f7 --color=fg+:#a9b1d6,bg+:#1a1b26,hl+:#4abaaf --color=info:#e0af68,prompt:#f7768e,pointer:#a9b1d6 --color=marker:#9ece6a,spinner:#9a7ecc,header:#acb0d0'
 
 ## zephyr
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#bbc2cf,bg:#282c34,hl:#51afef --color=fg+:#5b6268,bg+:#b3deef,hl+:#3bb6c4 --color=info:#afaf87,prompt:#ff6c6b,pointer:#d16d9e --color=marker:#98be65,spinner:#d16d9e,header:#1abc9c'
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#bbc2cf,bg:#282c34,hl:#2e323c --color=fg+:#5b6268,bg+:#504945,hl+:#b3deef --color=info:#ecbe7b,prompt:#ff6c6b,pointer:#1abc9c --color=marker:#98be65,spinner:#a9a1e1,header:#98be65'
 
 # available $INTERACTIVE_FILTER
 export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"
