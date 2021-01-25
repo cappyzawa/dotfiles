@@ -439,135 +439,137 @@ if has('nvim')
 endif
 
 if g:plug.ready() && g:env.vimrc.plugin_on
-    " start to manage with vim-plug
+  " start to manage with vim-plug
   call plug#begin(g:plug.base)
 
-    Plug 't9md/vim-choosewin', { 'on': '<Plug>(choosewin)' }
-      let g:choosewin_overlay_enable = 1
-      nmap - <Plug>(choosewin)
+  Plug 't9md/vim-choosewin', { 'on': '<Plug>(choosewin)' }
+    let g:choosewin_overlay_enable = 1
+    nmap - <Plug>(choosewin)
 
-    Plug 'junegunn/fzf'
-    Plug 'junegunn/fzf.vim'
-      let g:fzf_command_prefix = 'Fzf'
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+    let g:fzf_command_prefix = 'Fzf'
+
+  " syntax
+  " language support
+  if has('nvim')
+    " lsp
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
+      Plug 'steelsojka/completion-buffers'
+
+    Plug 'glepnir/lspsaga.nvim'
+
+    " finder
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-github.nvim'
+
+    " statusline
+    Plug 'glepnir/galaxyline.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
 
     " syntax
-    " language support
-    if has('nvim')
-      " lsp
-      Plug 'neovim/nvim-lspconfig'
-      Plug 'nvim-lua/completion-nvim'
-        Plug 'steelsojka/completion-buffers'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'glepnir/zephyr-nvim'
 
-      " finder
-      Plug 'nvim-lua/popup.nvim'
-      Plug 'nvim-lua/plenary.nvim'
-      Plug 'nvim-telescope/telescope.nvim'
-      Plug 'nvim-telescope/telescope-github.nvim'
+    Plug 'cappyzawa/trim.nvim'
+    Plug 'cappyzawa/go-playground.nvim'
+  else
+    " lsp
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-      " statusline
-      Plug 'glepnir/galaxyline.nvim'
-      Plug 'kyazdani42/nvim-web-devicons'
+    " statusline
+    Plug 'vim-airline/vim-airline'
 
-      " syntax
-      Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-      Plug 'glepnir/zephyr-nvim'
+    " syntax
+    Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
+    Plug 'elzr/vim-json', { 'for': 'json' }
+    Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+  endif
 
-      Plug 'cappyzawa/trim.nvim'
-      Plug 'cappyzawa/go-playground.nvim'
-    else
-      " lsp
-      Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'cespare/vim-toml', { 'for': 'toml' }
+  Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
+  Plug 'rhysd/vim-fixjson', { 'for': 'json' }
+  Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+  Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
+  Plug 'jparise/vim-graphql'
+  Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
+  Plug 'dense-analysis/ale'
+  Plug 'liuchengxu/vista.vim'
+    nmap <silent>tg :Vista coc<CR>
+    let g:vista#renderer#inable_icon = 1
 
-      " statusline
-      Plug 'vim-airline/vim-airline'
+  " For only syntax
+  Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
+  Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
+  Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
+  Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
 
-      " syntax
-      Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
-      Plug 'elzr/vim-json', { 'for': 'json' }
-      Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-    endif
+  Plug 'jiangmiao/auto-pairs'
+    let g:AutoPairsMapCR = 0
 
-    Plug 'cespare/vim-toml', { 'for': 'toml' }
-    Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
-    Plug 'rhysd/vim-fixjson', { 'for': 'json' }
-    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-    Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
-    Plug 'jparise/vim-graphql'
-    Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
-    Plug 'dense-analysis/ale'
-    Plug 'liuchengxu/vista.vim'
-      nmap <silent>tg :Vista coc<CR>
-      let g:vista#renderer#inable_icon = 1
+  " Testing Tools
+  Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
-    " For only syntax
-    Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
-    Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
-    Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
-    Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+  " Utils
+  Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
+    let g:git_messenger_include_diff = 'current'
+    let g:git_messenger_always_into_popup = v:true
 
-    Plug 'jiangmiao/auto-pairs'
-      let g:AutoPairsMapCR = 0
+    nnoremap <silent> <Leader>gm :<C-u>GitMessenger<CR>
+    let g:git_messenger_no_default_mappings = v:true
 
-    " Testing Tools
-    Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
+  Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
+  Plug 'mattn/webapi-vim'
+  Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
+  Plug 'tyru/open-browser.vim', { 'on': 'OpenGithubFile' }
+    Plug 'tyru/open-browser-github.vim', { 'on': 'OpenGithubFile' }
+      noremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
+      vnoremap <silent> <Leader>gf :<C-u>'<,'>OpenGithubFile<CR>
+  Plug 'tomtom/tcomment_vim', { 'on': 'TComment' }
+    nnoremap <silent> gc :<C-u>TComment<CR>
+    vnoremap <silent> gc :<C-u>'<,'>TComment<CR>
+  Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' }
+    let g:silicon = {
+          \   'theme':              'gruvbox',
+          \   'font':               'FiraCode Nerd Font',
+          \   'background':         '#FFFFFF',
+          \   'shadow-color':       '#555555',
+          \   'line-pad':                   2,
+          \   'pad-horiz':                 80,
+          \   'pad-vert':                 100,
+          \   'shadow-blur-radius':         0,
+          \   'shadow-offset-x':            0,
+          \   'shadow-offset-y':            0,
+          \   'line-number':           v:true,
+          \   'round-corner':          v:true,
+          \   'window-controls':       v:true,
+          \ }
 
-    " Utils
-    Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
-      let g:git_messenger_include_diff = 'current'
-      let g:git_messenger_always_into_popup = v:true
+    let g:silicon['output'] = '~/Desktop/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
-      nnoremap <silent> <Leader>gm :<C-u>GitMessenger<CR>
-      let g:git_messenger_no_default_mappings = v:true
+  if has('nvim')
+    Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.31' }
+    Plug 'norcalli/nvim-colorizer.lua'
+  endif
+  if executable('terraform')
+    Plug 'hashivim/vim-terraform'
+    Plug 'hashicorp/sentinel.vim'
+  endif
+  Plug 'guns/xterm-color-table.vim'
+  Plug 'zinit-zsh/zinit-vim-syntax'
 
-    Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
-    Plug 'mattn/webapi-vim'
-    Plug 'tpope/vim-fugitive'
-      Plug 'tpope/vim-rhubarb'
-    Plug 'tyru/open-browser.vim', { 'on': 'OpenGithubFile' }
-      Plug 'tyru/open-browser-github.vim', { 'on': 'OpenGithubFile' }
-        noremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
-        vnoremap <silent> <Leader>gf :<C-u>'<,'>OpenGithubFile<CR>
-    Plug 'tomtom/tcomment_vim', { 'on': 'TComment' }
-      nnoremap <silent> gc :<C-u>TComment<CR>
-      vnoremap <silent> gc :<C-u>'<,'>TComment<CR>
-    Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' }
-      let g:silicon = {
-            \   'theme':              'gruvbox',
-            \   'font':               'FiraCode Nerd Font',
-            \   'background':         '#FFFFFF',
-            \   'shadow-color':       '#555555',
-            \   'line-pad':                   2,
-            \   'pad-horiz':                 80,
-            \   'pad-vert':                 100,
-            \   'shadow-blur-radius':         0,
-            \   'shadow-offset-x':            0,
-            \   'shadow-offset-y':            0,
-            \   'line-number':           v:true,
-            \   'round-corner':          v:true,
-            \   'window-controls':       v:true,
-            \ }
+  " Views
+  Plug 'bling/vim-bufferline'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'simeji/winresizer'
 
-      let g:silicon['output'] = '~/Desktop/silicon-{time:%Y-%m-%d-%H%M%S}.png'
-
-    if has('nvim')
-      Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-      Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.31' }
-      Plug 'norcalli/nvim-colorizer.lua'
-    endif
-    if executable('terraform')
-      Plug 'hashivim/vim-terraform'
-      Plug 'hashicorp/sentinel.vim'
-    endif
-    Plug 'guns/xterm-color-table.vim'
-    Plug 'zinit-zsh/zinit-vim-syntax'
-
-    " Views
-    Plug 'bling/vim-bufferline'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'simeji/winresizer'
-
-    " Add plugins to &runtimepath
-    call plug#end()
+  " Add plugins to &runtimepath
+  call plug#end()
 endif
 
 " Add plug's plugins
@@ -897,8 +899,7 @@ if g:plug.is_installed('tokyonight-vim')
 endif
 
 if g:plug.is_installed('zephyr-nvim')
-  colorscheme zephyr
-  lua require('zephyr').get_zephyr_color()
+  lua require('zephyr')
 endif
 
 if g:plug.is_installed('nvim-lspconfig')
