@@ -5,7 +5,7 @@ if has 'git'; then
 fi
 
 if has 'nvim'; then
-  alias vim='nvr --remote-wait-silent'
+  alias vim='nvim'
 fi
 
 # Common aliases

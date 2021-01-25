@@ -86,11 +86,6 @@ zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"yq* -> yq"
 zinit light mikefarah/yq
 # }}}
-# mhinz/neovim-remote (as nvr) {{{
-zinit ice wait'2' lucid as"program" has"pyenv" \
-  atclone'python setup.py install && ln -s $(pyenv which nvr) ~/bin/nvr' atpull"%atclone"
-zinit light mhinz/neovim-remote
-# }}}
 # direnv/direnv {{{
 zinit ice wait"3" as"program" has"go" \
   make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh" lucid

@@ -38,6 +38,16 @@ vim.cmd [[highlight! link LspDiagnosticsDefaultWarning Yellow]]
 vim.cmd [[highlight! link LspDiagnosticsDefaultHint Green]]
 vim.cmd [[highlight! link LspDiagnosticsDefaultInfomation Grey]]
 
+---- saga
+local saga = require 'lspsaga'
+local saga_opts = {
+  error_sign = e_sign,
+  warn_sign = w_sign,
+  hint_sign = h_sign,
+}
+
+saga.init_lsp_saga(saga_opts)
+
 -- completion
 local completion_chain_complete_list = {
   {
@@ -48,16 +58,23 @@ vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete
 
 -- keymap
 local keymap_lsp_func = {
-  gd = "definition()",
-  gi = "implementation()",
-  gk = "hover()",
-  gr = "references()",
-  gt = "rename()"
+  gd = "require'lspsaga.provider'.preview_definiton()",
+  gi = "vim.lsp.buf.implementation()",
+  gk = "vim.lsp.buf.hover()",
+  gr = "vim.lsp.buf.references()",
+  gt = "vim.lsp.buf.rename()",
+  gh = "require'lspsaga.provider'.lsp_finder()",
+  ca = "require'lspsaga.codeaction'.code_action()",
+  ["[e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()",
+  ["]e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()",
+  et = "require'lspsaga.floaterm'.open_float_terminal()",
+  qt = "require'lspsaga.floaterm'.close_float_terminal()",
+  ti = "require'lspsaga.floaterm'.open_float_terminal('tig')"
 }
 
 local opts = { noremap=true, silent=true }
 for k, v in pairs(keymap_lsp_func) do
-  vim.api.nvim_set_keymap('n', k, string.format("<cmd>lua vim.lsp.buf.%s<CR>", v), opts)
+  vim.api.nvim_set_keymap('n', k, string.format("<cmd>lua %s<CR>", v), opts)
 end
 
 local lspconfig = require'lspconfig'
