@@ -383,7 +383,6 @@ set fileformats=unix,dos,mac
 " Select newline character (either or both of CR and LF depending on system) automatically
 set foldenable
 set foldlevel=0
-set foldcolumn=2
 
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,ucs-2le,ucs-2,cp932
