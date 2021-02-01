@@ -718,43 +718,6 @@ if g:plug.is_installed('ale')
 
 endif
 
-if g:plug.is_installed('coc.nvim')
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-  nmap <silent> gt <Plug>(coc-rename)
-  nmap <silent> gl <Plug>(coc-codelens-action)
-  nmap <silent> gk :call <SID>do_hover()<CR>
-  nmap <silent> gf :<C-u>CocAction("refactor.rewrite")<CR>
-  nmap <silent> gs :call <SID>show_documentaion()<CR>
-
-  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-  function! s:do_hover()
-    if coc#float#has_float()
-      call coc#float#close_all()
-    else
-      call CocActionAsync('doHover')
-    endif
-  endfunction
-
-  function! s:show_documentaion()
-    if &filetype ==# 'vim'
-      execute 'h '.expand('<cword>')
-    elseif &filetype ==# 'go'
-      Godoc
-    endif
-  endfunction
-
-  augroup CocCustom
-    autocmd FileType elm setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-  augroup END
-
-  nnoremap <silent><C-f><C-f> :<C-u>CocList<CR>
-endif
-
 if g:plug.is_installed('nvim-colorizer.lua')
   lua require'colorizer'.setup()
 endif
