@@ -427,10 +427,6 @@ function! g:plug.ready()
 endfunction
 
 " custom syntax
-augroup CustomSyntax
-  autocmd BufNewFile,BufRead *.cw,*.jira set filetype=confluencewiki
-augroup END
-
 if has('nvim')
   augroup LuaHighlight
     autocmd!
@@ -476,26 +472,12 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
     Plug 'cappyzawa/trim.nvim'
     Plug 'cappyzawa/go-playground.nvim'
-  else
-    " lsp
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-    " statusline
-    Plug 'vim-airline/vim-airline'
-
-    " syntax
-    Plug 'JuliaEditorSupport/julia-vim', { 'for': 'julia' }
-    Plug 'elzr/vim-json', { 'for': 'json' }
-    Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
   endif
 
-  Plug 'cespare/vim-toml', { 'for': 'toml' }
   Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
   Plug 'rhysd/vim-fixjson', { 'for': 'json' }
-  Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
   Plug 'jparise/vim-graphql'
-  Plug 'vim-scripts/confluencewiki.vim', { 'for': 'confluencewiki' }
   Plug 'dense-analysis/ale'
   Plug 'liuchengxu/vista.vim'
     nmap <silent>tg :Vista coc<CR>
@@ -504,14 +486,10 @@ if g:plug.ready() && g:env.vimrc.plugin_on
   " For only syntax
   Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
   Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
-  Plug 'cappyzawa/nim.vim', { 'for': 'nim' }
   Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
 
   Plug 'jiangmiao/auto-pairs'
     let g:AutoPairsMapCR = 0
-
-  " Testing Tools
-  Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
   " Utils
   Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
@@ -521,10 +499,6 @@ if g:plug.ready() && g:env.vimrc.plugin_on
     nnoremap <silent> <Leader>gm :<C-u>GitMessenger<CR>
     let g:git_messenger_no_default_mappings = v:true
 
-  Plug 'christianrondeau/vim-base64', { 'for': 'yaml' }
-  Plug 'mattn/webapi-vim'
-  Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-rhubarb'
   Plug 'tyru/open-browser.vim', { 'on': 'OpenGithubFile' }
     Plug 'tyru/open-browser-github.vim', { 'on': 'OpenGithubFile' }
       noremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
@@ -553,20 +527,24 @@ if g:plug.ready() && g:env.vimrc.plugin_on
 
   if has('nvim')
     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }, 'tag': 'v0.1.31' }
     Plug 'norcalli/nvim-colorizer.lua'
   endif
   if executable('terraform')
     Plug 'hashivim/vim-terraform'
+      let g:terraform_align=1
+      let g:terraform_fold_sections=1
+      let g:terraform_fmt_on_save=0
     Plug 'hashicorp/sentinel.vim'
   endif
   Plug 'guns/xterm-color-table.vim'
   Plug 'zinit-zsh/zinit-vim-syntax'
 
   " Views
-  Plug 'bling/vim-bufferline'
   Plug 'ryanoasis/vim-devicons'
   Plug 'simeji/winresizer'
+    let g:winresizer_vert_resize = 1
+    let g:winresizer_horiz_resize = 1
+
 
   " Add plugins to &runtimepath
   call plug#end()
@@ -705,13 +683,7 @@ if g:plug.is_installed('markdown-preview.nvim')
   augroup END
 endif
 
-if g:plug.is_installed('vim-bufferline')
-  let g:bufferline_active_buffer_right = '🚀'
-  let g:bufferline_echo = 0
-endif
-
 if g:plug.is_installed('ale')
-
   nnoremap <silent> <Leader>at :<C-u>ALEToggle<CR>
   let g:ale_fix_on_save = 1
   let g:ale_set_quickfix = 1
@@ -744,66 +716,6 @@ if g:plug.is_installed('ale')
   let g:ale_elm_format_executable = 'elm-format'
   let g:ale_elm_format_options = '--yes --elm-version=0.19'
 
-endif
-
-if g:plug.is_installed('vim-terraform')
-  let g:terraform_align=1
-  let g:terraform_fold_sections=1
-  let g:terraform_fmt_on_save=0
-endif
-
-if g:plug.is_installed('onedark.vim')
-  augroup onedarkGroup
-    autocmd!
-    let s:white = {'gui': '#ABB2BF', 'cterm': '145', 'cterm16': '7'}
-    autocmd ColorScheme * call onedark#set_highlight("Normal", {'fg': s:white})
-  augroup END
-  syntax on
-  colorscheme onedark
-endif
-
-if g:plug.is_installed('gruvbox')
-  let g:gruvbox_contrast_dark = 'soft'
-  syntax on
-  colorscheme gruvbox
-endif
-
-if g:plug.is_installed('vault.nvim')
-  let g:vault_default_path_prefix = 'concourse/main'
-endif
-
-if g:plug.is_installed('elm-vim')
-  let g:elm_format_autosave = 0
-  let g:elm_setup_keybinding = 0
-  let g:elm_jump_to_error = 0
-endif
-
-if g:plug.is_installed('julia-vim')
-  let g:default_julia_version = '1.2.0'
-endif
-
-if g:plug.is_installed('vim-airline')
-  let g:airline_skip_empty_sections = 1
-  let g:airline_extensions = ['branch',
-        \ 'ale',
-        \ 'bufferline',
-        \ 'vista']
-
-  let g:airline#extensions#tagbar#enabled = 1
-  let g:airline_lazyloaded_tagbar = 1
-  let g:airline#extensions#bufferline#overwrite_variables = 0
-  let g:airline#extensions#ale#error_symbol = ''
-  let g:airline#extensions#ale#warning_symbol = ''
-  let g:airline#extensions#vista#enabled = 1
-endif
-
-if g:plug.is_installed('winresizer')
-  let g:winresizer_vert_resize = 1
-  let g:winresizer_horiz_resize = 1
-endif
-
-if g:plug.is_installed('vim-json')
-  let g:vim_json_syntax_conceal = 0
 endif
 
 if g:plug.is_installed('coc.nvim')
@@ -843,39 +755,6 @@ if g:plug.is_installed('coc.nvim')
   nnoremap <silent><C-f><C-f> :<C-u>CocList<CR>
 endif
 
-if g:plug.is_installed('firenvim')
-  let g:firenvim_config = {
-      \ 'globalSettings': {
-          \ 'alt': 'all',
-      \  },
-      \ 'localSettings': {
-          \ '.*': {
-              \ 'cmdline': 'neovim',
-              \ 'priority': 0,
-              \ 'selector': 'textarea',
-              \ 'takeover': 'always',
-          \ },
-      \ }
-  \ }
-
-  let g:firenvim_font = 'FiraCode\ Nerd\ Font'
-  function! Set_Font(font) abort
-    execute 'set guifont=' . a:font . ':h14'
-  endfunction
-
-  if exists('g:started_by_firenvim')
-    augroup Firenvim
-      au TextChanged * ++nested write
-      au TextChangedI * ++nested write
-      au BufEnter github.com_* set filetype=markdown | call Set_Font(g:firenvim_font)
-      au BufEnter play.rust-lang.org_* set filetype=rust | call Set_Font(g:firenvim_font)
-      au BufEnter play.golang.org_* set filetype=go | call Set_Font(g:firenvim_font)
-      au BufEnter tour.golang.org_* set filetype=go | call Set_Font(g:firenvim_font)
-    augroup END
-  endif
-
-endif
-
 if g:plug.is_installed('nvim-colorizer.lua')
   lua require'colorizer'.setup()
 endif
@@ -888,14 +767,6 @@ lua <<EOF
     disable = {"markdown"},
   })
 EOF
-endif
-
-if g:plug.is_installed('tokyonight-vim')
-  set termguicolors
-  let g:tokyonight_style = 'night' " available: night, storm
-  let g:tokyonight_enable_italic = 0
-  let g:tokyonight_menu_selection_background = 'blue'
-  colorscheme tokyonight
 endif
 
 if g:plug.is_installed('zephyr-nvim')
@@ -917,14 +788,5 @@ endif
 if g:plug.is_installed('nvim-treesitter')
 luafile $XDG_CONFIG_HOME/nvim/lua/treesitter.lua
 endif
-
-if has('nvim')
-  let $GIT_EDITOR='nvr --remote-wait-silent'
-endif
-
-augroup NeovimRemote
-  autocmd!
-  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
-augroup END
 
 " }}}
