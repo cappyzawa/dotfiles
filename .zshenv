@@ -31,9 +31,6 @@ export EDITOR=vim
 if (command -v nvim > /dev/null); then
   export EDITOR=nvim
 fi
-if (command -v nvr > /dev/null); then
-  export EDITOR='nvr --remote-wait-silent'
-fi
 
 export CVSEDITOR="${EDITOR}"
 export SVN_EDITOR="${EDITOR}"
