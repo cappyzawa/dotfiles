@@ -35,18 +35,24 @@ return require'packer'.startup(function()
     end
   }
   use {
-    'nvim-lua/completion-nvim',
-    requires = {
-      {'steelsojka/completion-buffers'}
-    },
+    'hrsh7th/nvim-compe',
     config = function()
-      vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
-      local completion_chain_complete_list = {
-        {
-          ["complete_items"] = {"lsp", "path", "buffer"},
+      vim.o.completeopt = "menu,menuone,noselect"
+      require'compe'.setup{
+        enabled = true,
+        autocomplete = true,
+        min_length = 1,
+
+        source = {
+          path = true,
+          buffer = true,
+          calc = true,
+          nvim_lsp = true,
+          nvim_lua = true,
+          spell = true,
+          tags = true,
         }
       }
-      vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete_list)
     end
   }
   use {
