@@ -135,6 +135,12 @@ return require'packer'.startup(function()
       vim.g.winresizer_horiz_resize = 1
     end
   }
+  use {
+    'dense-analysis/ale',
+    config = function()
+      require'ale'
+    end,
+  }
   use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/starlark.vim'
   use 'aklt/plantuml-syntax'
