@@ -109,10 +109,9 @@ return require'packer'.startup(function()
     config = function()
       local remap = vim.api.nvim_set_keymap
       local npairs = require('nvim-autopairs')
-
+      npairs.setup{}
       -- skip it, if you use another global object
       _G.MUtils= {}
-
       vim.g.completion_confirm_key = ""
       MUtils.completion_confirm=function()
         if vim.fn.pumvisible() ~= 0  then
@@ -120,15 +119,15 @@ return require'packer'.startup(function()
             vim.fn["compe#confirm"]()
             return npairs.esc("<c-y>")
           else
-            vim.fn.nvim_select_popupmenu_item(0, false, false,{})
+            vim.fn.nvim_select_popupmenu_item(0, false, false, {})
             vim.fn["compe#confirm"]()
             return npairs.esc("<c-n><c-y>")
           end
         else
           return npairs.check_break_line_char()
         end
-        remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
       end
+      remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
     end
   }
   use {
@@ -170,7 +169,7 @@ return require'packer'.startup(function()
     config = function()
       vim.g.terraform_align = 1
       vim.g.terraform_fold_sections = 1
-      vim.g.terraform_fmt_on_save = 0
+      vim.g.terraform_fmt_on_save = 1
     end,
     cond = [[vim.fn.executable('terraform')]]
   }
@@ -192,12 +191,6 @@ return require'packer'.startup(function()
       vim.g.winresizer_vert_resize = 1
       vim.g.winresizer_horiz_resize = 1
     end
-  }
-  use {
-    'dense-analysis/ale',
-    config = function()
-      require'ale'
-    end,
   }
   use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/starlark.vim'
