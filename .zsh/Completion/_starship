@@ -98,6 +98,16 @@ _arguments "${_arguments_options[@]}" \
 '::value -- Value to place into that key:_files' \
 && ret=0
 ;;
+(toggle)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':name -- The name of the module to be toggled:_files' \
+':key -- The key of the config to be toggled:_files' \
+&& ret=0
+;;
 (bug-report)
 _arguments "${_arguments_options[@]}" \
 '-h[Prints help information]' \
@@ -167,6 +177,7 @@ _starship_commands() {
 "prompt:Prints the full starship prompt" \
 "module:Prints a specific prompt module" \
 "config:Edit the starship configuration" \
+"toggle:Toggle a given starship module" \
 "bug-report:Create a pre-populated GitHub issue with information about your configuration" \
 "time:Prints time in milliseconds" \
 "explain:Explains the currently showing modules" \
@@ -267,6 +278,13 @@ _starship__timings_commands() {
         
     )
     _describe -t commands 'starship timings commands' commands "$@"
+}
+(( $+functions[_starship__toggle_commands] )) ||
+_starship__toggle_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship toggle commands' commands "$@"
 }
 
 _starship "$@"
