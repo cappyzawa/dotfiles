@@ -17,106 +17,6 @@ augroup END
 
 " }}}
 
-" env "{{{
-function! s:vimrc_environment()
-    let l:env = {}
-    let l:env.is_ = {}
-
-    let l:env.is_.windows = has('win16') || has('win32') || has('win64')
-    let l:env.is_.cygwin = has('win32unix')
-    let l:env.is_.mac = !l:env.is_.windows && !l:env.is_.cygwin
-                \ && (has('mac') || has('macunix') || has('gui_macvim') ||
-                \    (!executable('xdg-open') &&
-                \    system('uname') =~? '^darwin'))
-    let l:env.is_.linux = !l:env.is_.mac && has('unix')
-
-
-    let l:env.is_starting = has('vim_starting')
-    let l:env.is_gui      = has('gui_running')
-
-    let l:env.hostname    = substitute(hostname(), '[^\w.]', '', '')
-
-    " vim
-    if l:env.is_.windows
-        let l:vimpath = expand('~/vimfiles')
-    else
-        let l:vimpath = expand('~/.vim')
-    endif
-
-    let l:env.path = {
-                \ 'vim': l:vimpath,
-                \ }
-
-    let l:env.bin = {
-                \ 'ag': executable('ag'),
-                \ 'osascript': executable('osascript'),
-                \ 'open': executable('open'),
-                \ 'chmod': executable('chmod'),
-                \ 'qlmanage': executable('qlmanage'),
-                \ }
-
-    " tmux
-    let l:env.is_tmux_running = !empty($TMUX)
-    let l:env.tmux_proc = system('tmux display-message -p "#W"')
-
-    "echo get(g:env.vimrc, 'enable_plugin', g:false)
-    let l:env.vimrc = {
-              \ 'plugin_on': g:true,
-              \ 'suggest_neobundleinit': g:true,
-              \ 'goback_to_eof2bof': g:false,
-              \ 'save_window_position': g:true,
-              \ 'restore_cursor_position': g:true,
-              \ 'statusline_manually': g:true,
-              \ 'add_execute_perm': g:false,
-              \ 'colorize_statusline_insert': g:true,
-              \ 'manage_rtp_manually': g:true,
-              \ 'auto_cd_file_parentdir': g:true,
-              \ 'ignore_all_settings': g:true,
-              \ 'check_plug_update': g:true,
-              \ }
-
-    return l:env
-endfunction
-
-" g:env is an environment variable in vimrc
-let g:env = s:vimrc_environment()
-
-function! IsWindows() abort
-    return g:env.is_.windows
-endfunction
-
-function! IsMac() abort
-    return g:env.is_.mac
-endfunction
-
-let g:env.vimrc.plugin_on = g:true
-let g:env.vimrc.manage_rtp_manually = g:false
-let g:env.vimrc.plugin_on =
-      \ g:env.vimrc.manage_rtp_manually == g:true
-      \ ? g:false
-      \ : g:env.vimrc.plugin_on
-
-if g:env.is_starting
-  " Necesary for lots of cool vim things
-  " http://rbtnn.hateblo.jp/entry/2014/11/30/174749
-
-  scriptencoding utf-8
-  set runtimepath&
-
-  " Check if there are plugins not to be installed
-  augroup vimrc-check-plug
-    autocmd!
-    if g:env.vimrc.check_plug_update == g:true
-      autocmd VimEnter * if !argc() | call g:plug.check_installation() | endif
-    endif
-  augroup END
-
-endif
-
-" Must be written at the last.  see :help 'secure'.
-set secure
-" }}}
-
 " map "{{{
 let g:mapleader=' '
 let g:maplocalleader=' '
@@ -264,6 +164,10 @@ augroup END
 " }}}
 
 " option "{{{
+
+" Must be written at the last.  see :help 'secure'.
+set secure
+
 " set 256 colors
 set t_Co=256
 
@@ -414,16 +318,6 @@ set sh=zsh
 " }}}
 
 " plug "{{{
-let g:plug = {
-            \ 'plug':   expand(g:env.path.vim) . '/autoload/plug.vim',
-            \ 'base':   expand(g:env.path.vim) . '/plugged',
-            \ 'url':    'https://raw.github.com/junegunn/vim-plug/master/plug.vim',
-            \ 'github': 'https://github.com/junegunn/vim-plug',
-            \ }
-
-function! g:plug.ready()
-    return filereadable(l:self.plug)
-endfunction
 
 " custom syntax
 if has('nvim')
@@ -433,322 +327,198 @@ if has('nvim')
   augroup END
 endif
 
-if g:plug.ready() && g:env.vimrc.plugin_on
-  " start to manage with vim-plug
-  call plug#begin(g:plug.base)
 
-  Plug 't9md/vim-choosewin', { 'on': '<Plug>(choosewin)' }
-    let g:choosewin_overlay_enable = 1
-    nmap - <Plug>(choosewin)
+lua require'plugins'
 
-  Plug 'junegunn/fzf'
-  Plug 'junegunn/fzf.vim'
-    let g:fzf_command_prefix = 'Fzf'
-
-  " syntax
-  " language support
-  if has('nvim')
-    " lsp
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'nvim-lua/completion-nvim'
-      Plug 'steelsojka/completion-buffers'
-
-    Plug 'glepnir/lspsaga.nvim'
-
-    " finder
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-telescope/telescope-github.nvim'
-
-    " statusline
-    Plug 'glepnir/galaxyline.nvim'
-    Plug 'kyazdani42/nvim-web-devicons'
-
-    " syntax
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'glepnir/zephyr-nvim'
-
-    Plug 'cappyzawa/trim.nvim'
-    Plug 'cappyzawa/go-playground.nvim'
-  endif
-
-  Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
-  Plug 'rhysd/vim-fixjson', { 'for': 'json' }
-  Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
-  Plug 'jparise/vim-graphql'
-  Plug 'dense-analysis/ale'
-  Plug 'liuchengxu/vista.vim'
-    nmap <silent>tg :Vista coc<CR>
-    let g:vista#renderer#inable_icon = 1
-
-  " For only syntax
-  Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
-  Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
-  Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
-
-  Plug 'jiangmiao/auto-pairs'
-    let g:AutoPairsMapCR = 0
-
-  " Utils
-  Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
-    let g:git_messenger_include_diff = 'current'
-    let g:git_messenger_always_into_popup = v:true
-
-    nnoremap <silent> <Leader>gm :<C-u>GitMessenger<CR>
-    let g:git_messenger_no_default_mappings = v:true
-
-  Plug 'tyru/open-browser.vim', { 'on': 'OpenGithubFile' }
-    Plug 'tyru/open-browser-github.vim', { 'on': 'OpenGithubFile' }
-      noremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
-      vnoremap <silent> <Leader>gf :<C-u>'<,'>OpenGithubFile<CR>
-  Plug 'tomtom/tcomment_vim', { 'on': 'TComment' }
-    nnoremap <silent> gc :<C-u>TComment<CR>
-    vnoremap <silent> gc :<C-u>'<,'>TComment<CR>
-  Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' }
-    let g:silicon = {
-          \   'theme':              'gruvbox',
-          \   'font':               'FiraCode Nerd Font',
-          \   'background':         '#FFFFFF',
-          \   'shadow-color':       '#555555',
-          \   'line-pad':                   2,
-          \   'pad-horiz':                 80,
-          \   'pad-vert':                 100,
-          \   'shadow-blur-radius':         0,
-          \   'shadow-offset-x':            0,
-          \   'shadow-offset-y':            0,
-          \   'line-number':           v:true,
-          \   'round-corner':          v:true,
-          \   'window-controls':       v:true,
-          \ }
-
-    let g:silicon['output'] = '~/Desktop/silicon-{time:%Y-%m-%d-%H%M%S}.png'
-
-  if has('nvim')
-    Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
-    Plug 'norcalli/nvim-colorizer.lua'
-  endif
-  if executable('terraform')
-    Plug 'hashivim/vim-terraform'
-      let g:terraform_align=1
-      let g:terraform_fold_sections=1
-      let g:terraform_fmt_on_save=0
-    Plug 'hashicorp/sentinel.vim'
-  endif
-  Plug 'guns/xterm-color-table.vim'
-  Plug 'zinit-zsh/zinit-vim-syntax'
-
-  " Views
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'simeji/winresizer'
-    let g:winresizer_vert_resize = 1
-    let g:winresizer_horiz_resize = 1
-
-
-  " Add plugins to &runtimepath
-  call plug#end()
-endif
-
-" Add plug's plugins
-let g:plug.plugs = get(g:, 'plugs', {})
-let g:plug.list  = keys(g:plug.plugs)
-
-if !g:plug.ready()
-    function! g:plug.init()
-        let ret = system(printf('curl -fLo %s --create-dirs %s', self.plug, self.url))
-        "call system(printf("git clone %s", self.github))
-        if v:shell_error
-            return Error('g:plug.init: error occured')
-        endif
-
-        " Restart vim
-        if !g:env.is_gui
-            silent! !vim
-            quit!
-        endif
-    endfunction
-    command! PlugInit call g:plug.init()
-
-    if g:env.vimrc.suggest_neobundleinit == g:true
-      augroup PlugReady
-        autocmd! VimEnter * redraw
-                    \ | echohl WarningMsg
-                    \ | echo "You should do ':PlugInit' at first!"
-                    \ | echohl None
-      augroup END
-    else
-        " Install vim-plug
-        PlugInit
-    endif
-endif
-
-function! g:plug.is_installed(strict, ...)
-    let l:list = []
-    if type(a:strict) != type(0)
-        call add(list, a:strict)
-    endif
-    let l:list += a:000
-
-    for l:arg in l:list
-        let l:name   = substitute(l:arg, '^vim-\|\.vim$', '', 'g')
-        let l:prefix = 'vim-' . l:name
-        let l:suffix = l:name . '.vim'
-
-        if a:strict == 1
-            let l:name   = l:arg
-            let l:prefix = l:arg
-            let l:suffix = l:arg
-        endif
-
-        if has_key(self.plugs, l:name)
-                    \ ? isdirectory(self.plugs[l:name].dir)
-                    \ : has_key(self.plugs, l:prefix)
-                    \ ? isdirectory(self.plugs[l:prefix].dir)
-                    \ : has_key(self.plugs, l:suffix)
-                    \ ? isdirectory(self.plugs[l:suffix].dir)
-                    \ : g:false
-            continue
-        else
-            return g:false
-        endif
-    endfor
-
-    return g:true
-endfunction
-
-function! g:plug.is_rtp(p)
-    return index(split(&runtimepath, ','), get(l:self.plugs[a:p], 'dir')) != -1
-endfunction
-
-function! g:plug.is_loaded(p)
-    return g:plug.is_installed(1, a:p) && g:plug.is_rtp(a:p)
-endfunction
-
-function! g:plug.check_installation()
-    if empty(self.plugs)
-        return
-    endif
-
-    let list = []
-    for [name, spec] in items(self.plugs)
-        if !isdirectory(spec.dir)
-            call add(list, spec.uri)
-        endif
-    endfor
-
-    if len(list) > 0
-        let unplugged = map(list, 'substitute(v:val, "^.*github\.com/\\(.*/.*\\)\.git$", "\\1", "g")')
-
-        " Ask whether installing plugs like NeoBundle
-        echomsg 'Not installed plugs: ' . string(unplugged)
-        if confirm('Install plugs now?', "yes\nNo", 2) == 1
-            PlugInstall
-            " Close window for vim-plug
-            silent! close
-            " Restart vim
-            if !g:env.is_gui
-                silent! !vim
-                quit!
-            endif
-        endif
-    endif
-endfunction
-
-if g:plug.ready() && g:env.vimrc.plugin_on
-    function! PlugList(A,L,P)
-        return join(g:plug.list, "\n")
-    endfunction
-
-    command! -nargs=1 -complete=custom,PlugList PlugHas
-                \ if g:plug.is_installed('<args>')
-                \ | echo g:plug.plugs['<args>'].dir
-                \ | endif
-endif
-
-" }}}
+" if g:plug.ready() && g:env.vimrc.plugin_on
+"   " start to manage with vim-plug
+"   call plug#begin(g:plug.base)
+"
+"   Plug 'junegunn/fzf'
+"   Plug 'junegunn/fzf.vim'
+"     let g:fzf_command_prefix = 'Fzf'
+"
+"   " syntax
+"   " language support
+"   if has('nvim')
+"     " lsp
+"     Plug 'neovim/nvim-lspconfig'
+"     Plug 'nvim-lua/completion-nvim'
+"       Plug 'steelsojka/completion-buffers'
+"
+"     Plug 'glepnir/lspsaga.nvim'
+"
+"     " finder
+"     Plug 'nvim-lua/popup.nvim'
+"     Plug 'nvim-lua/plenary.nvim'
+"     Plug 'nvim-telescope/telescope.nvim'
+"     Plug 'nvim-telescope/telescope-github.nvim'
+"
+"     " statusline
+"     Plug 'glepnir/galaxyline.nvim'
+"     Plug 'kyazdani42/nvim-web-devicons'
+"
+"     " syntax
+"     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"     Plug 'glepnir/zephyr-nvim'
+"
+"     Plug 'cappyzawa/trim.nvim'
+"     Plug 'cappyzawa/go-playground.nvim'
+"   endif
+"
+"   Plug 'b4b4r07/vim-hcl', { 'for': 'hcl' }
+"   Plug 'rhysd/vim-fixjson', { 'for': 'json' }
+"   Plug 'google/vim-jsonnet', { 'for': ['jsonnet', 'libsonnet'] }
+"   Plug 'jparise/vim-graphql'
+"   Plug 'dense-analysis/ale'
+"   Plug 'liuchengxu/vista.vim'
+"     nmap <silent>tg :Vista coc<CR>
+"     let g:vista#renderer#inable_icon = 1
+"
+"   " For only syntax
+"   Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
+"   Plug 'cappyzawa/ytt.vim', { 'for': 'yaml' }
+"   Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+"
+"   Plug 'jiangmiao/auto-pairs'
+"     let g:AutoPairsMapCR = 0
+"
+"   " Utils
+"   Plug 'rhysd/git-messenger.vim', { 'on': 'GitMessenger' }
+"     let g:git_messenger_include_diff = 'current'
+"     let g:git_messenger_always_into_popup = v:true
+"
+"     nnoremap <silent> <Leader>gm :<C-u>GitMessenger<CR>
+"     let g:git_messenger_no_default_mappings = v:true
+"
+"   Plug 'tyru/open-browser.vim', { 'on': 'OpenGithubFile' }
+"     Plug 'tyru/open-browser-github.vim', { 'on': 'OpenGithubFile' }
+"       noremap <silent> <Leader>gf :<C-u>OpenGithubFile<CR>
+"       vnoremap <silent> <Leader>gf :<C-u>'<,'>OpenGithubFile<CR>
+"   Plug 'tomtom/tcomment_vim', { 'on': 'TComment' }
+"     nnoremap <silent> gc :<C-u>TComment<CR>
+"     vnoremap <silent> gc :<C-u>'<,'>TComment<CR>
+"   Plug 'segeljakt/vim-silicon', { 'on': 'Silicon' }
+"     let g:silicon = {
+"           \   'theme':              'gruvbox',
+"           \   'font':               'FiraCode Nerd Font',
+"           \   'background':         '#FFFFFF',
+"           \   'shadow-color':       '#555555',
+"           \   'line-pad':                   2,
+"           \   'pad-horiz':                 80,
+"           \   'pad-vert':                 100,
+"           \   'shadow-blur-radius':         0,
+"           \   'shadow-offset-x':            0,
+"           \   'shadow-offset-y':            0,
+"           \   'line-number':           v:true,
+"           \   'round-corner':          v:true,
+"           \   'window-controls':       v:true,
+"           \ }
+"
+"     let g:silicon['output'] = '~/Desktop/silicon-{time:%Y-%m-%d-%H%M%S}.png'
+"
+"   if has('nvim')
+"     Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+"     Plug 'norcalli/nvim-colorizer.lua'
+"   endif
+"   if executable('terraform')
+"     Plug 'hashivim/vim-terraform'
+"       let g:terraform_align=1
+"       let g:terraform_fold_sections=1
+"       let g:terraform_fmt_on_save=0
+"     Plug 'hashicorp/sentinel.vim'
+"   endif
+"   Plug 'guns/xterm-color-table.vim'
+"   Plug 'zinit-zsh/zinit-vim-syntax'
+"
+"   " Views
+"   Plug 'ryanoasis/vim-devicons'
+"   Plug 'simeji/winresizer'
+"     let g:winresizer_vert_resize = 1
+"     let g:winresizer_horiz_resize = 1
+"
+"
+"   " Add plugins to &runtimepath
+"   call plug#end()
+" endif
 
 " custom "{{{
-
-if g:plug.is_installed('vim-markdown')
-  let g:vim_markdown_folding_disabled = 1
-  let g:vim_markdown_no_default_key_mappings = 1
-endif
-
-if g:plug.is_installed('markdown-preview.nvim')
-  let g:mkdp_auto_start = 0
-  let g:mkdp_auto_close = 1
-  augroup MarkdownPreviewCustom
-    autocmd FileType markdown nnoremap <C-p> :<C-u>MarkdownPreview<CR>
-  augroup END
-endif
-
-if g:plug.is_installed('ale')
-  nnoremap <silent> <Leader>at :<C-u>ALEToggle<CR>
-  let g:ale_fix_on_save = 1
-  let g:ale_set_quickfix = 1
-  let g:ale_set_signs = 0
-  highlight link ALEErrorSign GruvboxRed
-  highlight link ALEWarningSign GruvboxYellow
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  let g:ale_disable_lsp = 1
-  let g:ale_virtualtext_cursor = 1
-  let g:ale_linters = {
-  \   'go': ['golint'],
-  \   'vim': ['vint'],
-  \   'rust': ['rustc'],
-  \   'terraform': ['tflint'],
-  \   'javascript': ['eslint'],
-  \   'typescript': ['eslint'],
-  \}
-
-  let g:ale_fixers = {
-  \   'go': ['gofmt','goimports'],
-  \   'elm': ['elm-format'],
-  \   'rust': ['rustfmt'],
-  \   'terraform': ['terraform'],
-  \   'javascript': ['eslint'],
-  \   'typescript': ['eslint'],
-  \   'markdown': [],
-  \}
-
-  " for elm
-  let g:ale_elm_format_executable = 'elm-format'
-  let g:ale_elm_format_options = '--yes --elm-version=0.19'
-
-endif
-
-if g:plug.is_installed('nvim-colorizer.lua')
-  lua require'colorizer'.setup()
-endif
-
-if g:plug.is_installed('trim.nvim')
-lua <<EOF
-  require('trim').setup({
-    -- if you want to ignore markdown file.
-    -- you can specify filetypes.
-    disable = {"markdown"},
-  })
-EOF
-endif
-
-if g:plug.is_installed('zephyr-nvim')
-  lua require('zephyr')
-endif
-
-if g:plug.is_installed('nvim-lspconfig')
-luafile $XDG_CONFIG_HOME/nvim/lua/lsp.lua
-endif
-
-if g:plug.is_installed('telescope.nvim')
-luafile $XDG_CONFIG_HOME/nvim/lua/finder.lua
-endif
-
-if g:plug.is_installed('galaxyline.nvim')
-luafile $XDG_CONFIG_HOME/nvim/lua/gl.lua
-endif
-
-if g:plug.is_installed('nvim-treesitter')
-luafile $XDG_CONFIG_HOME/nvim/lua/treesitter.lua
-endif
-
+" if g:plug.is_installed('markdown-preview.nvim')
+"   let g:mkdp_auto_start = 0
+"   let g:mkdp_auto_close = 1
+"   augroup MarkdownPreviewCustom
+"     autocmd FileType markdown nnoremap <C-p> :<C-u>MarkdownPreview<CR>
+"   augroup END
+" endif
+"
+" if g:plug.is_installed('ale')
+"   nnoremap <silent> <Leader>at :<C-u>ALEToggle<CR>
+"   let g:ale_fix_on_save = 1
+"   let g:ale_set_quickfix = 1
+"   let g:ale_set_signs = 0
+"   highlight link ALEErrorSign GruvboxRed
+"   highlight link ALEWarningSign GruvboxYellow
+"   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"   let g:ale_disable_lsp = 1
+"   let g:ale_virtualtext_cursor = 1
+"   let g:ale_linters = {
+"   \   'go': ['golint'],
+"   \   'vim': ['vint'],
+"   \   'rust': ['rustc'],
+"   \   'terraform': ['tflint'],
+"   \   'javascript': ['eslint'],
+"   \   'typescript': ['eslint'],
+"   \}
+"
+"   let g:ale_fixers = {
+"   \   'go': ['gofmt','goimports'],
+"   \   'elm': ['elm-format'],
+"   \   'rust': ['rustfmt'],
+"   \   'terraform': ['terraform'],
+"   \   'javascript': ['eslint'],
+"   \   'typescript': ['eslint'],
+"   \   'markdown': [],
+"   \}
+"
+"   " for elm
+"   let g:ale_elm_format_executable = 'elm-format'
+"   let g:ale_elm_format_options = '--yes --elm-version=0.19'
+"
+" endif
+"
+" if g:plug.is_installed('nvim-colorizer.lua')
+"   lua require'colorizer'.setup()
+" endif
+"
+" if g:plug.is_installed('trim.nvim')
+" lua <<EOF
+"   require('trim').setup({
+"     -- if you want to ignore markdown file.
+"     -- you can specify filetypes.
+"     disable = {"markdown"},
+"   })
+" EOF
+" endif
+"
+" if g:plug.is_installed('zephyr-nvim')
+"   lua require('zephyr')
+" endif
+"
+" if g:plug.is_installed('nvim-lspconfig')
+" luafile $XDG_CONFIG_HOME/nvim/lua/lsp.lua
+" endif
+"
+" if g:plug.is_installed('telescope.nvim')
+" luafile $XDG_CONFIG_HOME/nvim/lua/finder.lua
+" endif
+"
+" if g:plug.is_installed('galaxyline.nvim')
+" luafile $XDG_CONFIG_HOME/nvim/lua/gl.lua
+" endif
+"
+" if g:plug.is_installed('nvim-treesitter')
+" luafile $XDG_CONFIG_HOME/nvim/lua/treesitter.lua
+" endif
+"
 " }}}
+"
