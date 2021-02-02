@@ -31,11 +31,6 @@ vim.fn.sign_define("LspDiagnosticsSignError", {text = vim.g.e_sign, texthl = "Ls
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = vim.g.w_sign, texthl = "LspDiagnosticsSignWarning"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = vim.g.h_sign, texthl = "LspDiagnosticsSignHint"})
 
-vim.cmd [[highlight! link LspDiagnosticsDefaultError Red]]
-vim.cmd [[highlight! link LspDiagnosticsDefaultWarning Yellow]]
-vim.cmd [[highlight! link LspDiagnosticsDefaultHint Green]]
-vim.cmd [[highlight! link LspDiagnosticsDefaultInfomation Grey]]
-
 -- keymap
 local keymap_lsp_func = {
   gd = "vim.lsp.buf.definition()",

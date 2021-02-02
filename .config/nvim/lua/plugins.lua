@@ -82,9 +82,19 @@ return require'packer'.startup(function()
     end
   }
   use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
+  use {
     'glepnir/galaxyline.nvim',
     requires = {
-      {'kyazdani42/nvim-web-devicons'}
+      {'kyazdani42/nvim-web-devicons'},
+      {'lewis6991/gitsigns.nvim'}
     },
     config = function()
       require'gl'
