@@ -1,7 +1,5 @@
 local vim = vim
 
-vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
-
 -- dignostic
 vim.lsp.diagnostic.set_signs()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -24,45 +22,30 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 ---- icons
-local w_sign = ""
-local e_sign = ""
-local h_sign = "ﯦ"
+vim.g.w_sign = ""
+vim.g.e_sign = ""
+vim.g.h_sign = "ﯦ"
 
 ---- hilight
-vim.fn.sign_define("LspDiagnosticsSignError", {text = e_sign, texthl = "LspDiagnosticsSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = w_sign, texthl = "LspDiagnosticsSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = h_sign, texthl = "LspDiagnosticsSignHint"})
+vim.fn.sign_define("LspDiagnosticsSignError", {text = vim.g.e_sign, texthl = "LspDiagnosticsSignError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = vim.g.w_sign, texthl = "LspDiagnosticsSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = vim.g.h_sign, texthl = "LspDiagnosticsSignHint"})
 
 vim.cmd [[highlight! link LspDiagnosticsDefaultError Red]]
 vim.cmd [[highlight! link LspDiagnosticsDefaultWarning Yellow]]
 vim.cmd [[highlight! link LspDiagnosticsDefaultHint Green]]
 vim.cmd [[highlight! link LspDiagnosticsDefaultInfomation Grey]]
 
----- saga
-local saga = require 'lspsaga'
-local saga_opts = {
-  error_sign = e_sign,
-  warn_sign = w_sign,
-  hint_sign = h_sign,
-}
-
-saga.init_lsp_saga(saga_opts)
-
--- completion
-local completion_chain_complete_list = {
-  {
-    ["complete_items"] = {"lsp", "path", "buffer"},
-  }
-}
-vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete_list)
-
 -- keymap
 local keymap_lsp_func = {
-  gd = "require'lspsaga.provider'.preview_definiton()",
+  gd = "vim.lsp.buf.definition()",
+  gp = "require'lspsaga.provider'.preview_definition()",
   gi = "vim.lsp.buf.implementation()",
-  gk = "vim.lsp.buf.hover()",
+  gk = "require'lspsaga.hover'.render_hover_doc()",
+  ["<C-j>"] = "require'lspsaga.hover'.smart_scroll_hover(1)",
+  ["<C-k>"] = "require'lspsaga.hover'.smart_scroll_hover(-1)",
   gr = "vim.lsp.buf.references()",
-  gt = "vim.lsp.buf.rename()",
+  gt = "require'lspsaga.rename'.rename()",
   gh = "require'lspsaga.provider'.lsp_finder()",
   ca = "require'lspsaga.codeaction'.code_action()",
   ["[e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()",

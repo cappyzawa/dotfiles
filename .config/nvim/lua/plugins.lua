@@ -19,17 +19,34 @@ return require'packer'.startup(function()
   use {
     'glepnir/lspsaga.nvim',
     requires = {
-      'neovim/nvim-lspconfig'
-    }
+      {
+        'neovim/nvim-lspconfig'
+      }
+    },
+    config = function()
+      local saga = require 'lspsaga'
+      local saga_opts = {
+        error_sign = vim.g.e_sign,
+        warn_sign = vim.g.w_sign,
+        hint_sign = vim.g.h_sign
+      }
+      saga.init_lsp_saga(saga_opts)
+      require'lsp'
+    end
   }
   use {
     'nvim-lua/completion-nvim',
     requires = {
-      {'steelsojka/completion-buffers'},
-      {'glepnir/lspsaga.nvim'},
+      {'steelsojka/completion-buffers'}
     },
     config = function()
-      require'lsp'
+      vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
+      local completion_chain_complete_list = {
+        {
+          ["complete_items"] = {"lsp", "path", "buffer"},
+        }
+      }
+      vim.api.nvim_set_var("completion_chain_complete_list", completion_chain_complete_list)
     end
   }
   use {
@@ -37,13 +54,27 @@ return require'packer'.startup(function()
     requires = {
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
-      {'nvim-telescope/telescope-github.nvim'}
+      {'nvim-telescope/telescope-github.nvim'},
+      {'nvim-telescope/telescope-packer.nvim'}
     },
     config = function()
       require'finder'
     end
   }
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      local treesitter_configs = require'nvim-treesitter.configs'
+
+      treesitter_configs.setup {
+        highlight = {
+            enable = true,
+            disable = {},
+        },
+      }
+    end
+  }
   use {
     'glepnir/galaxyline.nvim',
     requires = {
