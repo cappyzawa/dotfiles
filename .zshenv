@@ -112,5 +112,5 @@ export ANYENV_ROOT="${XDG_CONFIG_HOME}/anyenv"
 export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"
 
 export DOTPATH=${0:A:h}
-export TERM="xterm-256color"
+export TERM="screen-256color"
 export ZDOTDIR=${HOME}

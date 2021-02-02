@@ -128,11 +128,6 @@ nnoremap <silent> <Leader>vt :<C-u>vs \| terminal<CR>
 nnoremap <silent> <Leader>st :<C-u>sp \| terminal<CR>
 nnoremap <silent> <Leader>ve :<C-u>vs \| edit .<CR>
 nnoremap <silent> <Leader>se :<C-u>sp \| edit .<CR>
-nnoremap <silent> <Leader>ti :call <SID>vertical_tig()<CR>
-
-function s:vertical_tig() abort
-  vs | terminal tig
-endfunction
 
 if has('nvim')
   inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -144,9 +139,6 @@ endif
 
 " Must be written at the last.  see :help 'secure'.
 set secure
-
-" set 256 colors
-set t_Co=256
 
 " Height for completion
 set pumheight=10
@@ -256,17 +248,9 @@ set mousehide
 set virtualedit=block
 set virtualedit& virtualedit+=block
 
-" Default fileformat.
-set fileformat=unix
-" Automatic recognition of a new line cord.
-set fileformats=unix,dos,mac
-
 " Select newline character (either or both of CR and LF depending on system) automatically
 set foldenable
 set foldlevel=0
-
-set encoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,ucs-2le,ucs-2,cp932
 
 " History size
 set history=10000

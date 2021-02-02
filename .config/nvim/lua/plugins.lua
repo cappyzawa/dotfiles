@@ -15,7 +15,7 @@ vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
 return require'packer'.startup(function()
   local use = require('packer').use
-  use {'wbthomason/packer.nvim', opt = true}
+  use {'wbthomason/packer.nvim', opt = true, commit = '8262aa68acb1b3e95f96bc66d70e92578fd82a6d'}
   use {
     'glepnir/lspsaga.nvim',
     requires = {
