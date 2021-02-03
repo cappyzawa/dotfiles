@@ -15,7 +15,7 @@ vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
 return require'packer'.startup(function()
   local use = require('packer').use
-  use {'wbthomason/packer.nvim', opt = true, commit = '8262aa68acb1b3e95f96bc66d70e92578fd82a6d'}
+  use {'wbthomason/packer.nvim', opt = true}
   use {
     'glepnir/lspsaga.nvim',
     requires = {
@@ -148,16 +148,7 @@ return require'packer'.startup(function()
         -- you can specify filetypes.
         disable = {"markdown"},
       })
-    end
-  }
-  use {
-    'junegunn/fzf.vim',
-    requires = {
-      {'junegunn/fzf'}
-    },
-    config = function()
-      vim.g.fzf_command_prefix = 'Fzf'
-    end
+    end,
   }
   use {
     'iamcco/markdown-preview.nvim',
@@ -173,15 +164,6 @@ return require'packer'.startup(function()
     config = function()
       require'colorizer'.setup()
     end
-  }
-  use {
-    'hashivim/vim-terraform',
-    config = function()
-      vim.g.terraform_align = 1
-      vim.g.terraform_fold_sections = 1
-      vim.g.terraform_fmt_on_save = 1
-    end,
-    cond = [[vim.fn.executable('terraform')]]
   }
   use {
     'rhysd/git-messenger.vim',
@@ -200,7 +182,18 @@ return require'packer'.startup(function()
     config = function()
       vim.g.winresizer_vert_resize = 1
       vim.g.winresizer_horiz_resize = 1
-    end
+    end,
+    cmd = {'WinResizerStartResize'},
+    keys = {'<C-e>'}
+  }
+  use {
+    'hashivim/vim-terraform',
+    config = function()
+      vim.g.terraform_align = 1
+      vim.g.terraform_fold_sections = 1
+      vim.g.terraform_fmt_on_save = 1
+    end,
+    cond = [[vim.fn.executable('terraform')]]
   }
   use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/starlark.vim'
