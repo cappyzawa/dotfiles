@@ -97,7 +97,8 @@ return require'packer'.startup(function()
       {'lewis6991/gitsigns.nvim'}
     },
     config = function()
-      require'gl'
+      local eviline = vim.fn.stdpath('data') .. '/site/pack/packer/start/galaxyline.nvim/example/eviline.lua'
+      vim.cmd('luafile ' .. eviline)
     end
   }
   use {
