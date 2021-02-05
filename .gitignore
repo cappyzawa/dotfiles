@@ -11,12 +11,7 @@
 .config/configstore/
 .config/helm/*
 node_modules/
-.config/coc/extensions/db.json
-.config/coc/history.json
-.config/coc/lists
-.config/coc/mru
-.config/coc/commands
-.config/coc/extensions/coc-java-data/
+.config/coc/
 .config/nvim/sessions
 .config/nvim/plugin/packer_compiled.vim
 .config/waypoint/
