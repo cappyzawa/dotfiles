@@ -105,6 +105,7 @@ return require'packer'.startup(function()
     'glepnir/zephyr-nvim',
     config = function()
       require'zephyr'
+      vim.g.colors_name = 'zephyr'
     end
   }
   use {
@@ -186,6 +187,12 @@ return require'packer'.startup(function()
     end,
     cmd = {'WinResizerStartResize'},
     keys = {'<C-e>'}
+  }
+  use {
+    'phaazon/hop.nvim',
+    config = function()
+      vim.api.nvim_set_keymap('n', '$', "<cmd>lua require'hop'.jump_words()<cr>", {})
+    end,
   }
   use {
     'hashivim/vim-terraform',
