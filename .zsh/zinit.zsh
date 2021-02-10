@@ -64,6 +64,10 @@ zinit ice wait"1" as"program" lucid \
   make"install prefix=$ZPFX" pick"$ZPFX/bin/tig"
 zinit light jonas/tig
 # }}}
+# jesseduffield/lazygit {{{
+zinit ice wait"1" as"program" from:"gh-r" lucid
+zinit light jesseduffield/lazygit
+# }}}
 # x-motemen/ghq {{{
 zinit ice wait"1" as"program" from"gh-r" pick"ghq_*/ghq" lucid
 zinit light x-motemen/ghq
