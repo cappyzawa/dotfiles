@@ -5,6 +5,7 @@ local actions = require'telescope.actions'
 
 -- extensions
 telescope.load_extension('gh')
+telescope.load_extension('ghq')
 
 telescope.setup{
   defaults = {
@@ -32,8 +33,9 @@ local keymap_telescope_func = {
   ["<Leader>rg"] = "require'telescope.builtin'.live_grep()",
   ["<Leader>ch"] = "require'telescope.builtin'.command_history{}",
   ["<Leader>bl"] = "require'telescope.builtin'.buffers{show_all_buffers = true}",
-  ["<Leader>gi"] = "require'telescope.builtin'.extensions.issues()",
-  ["<Leader>gp"] = "require'telescope.builtin'.extensions.pull_request()",
+  ["<Leader>gi"] = "require'telescope'.extensions.gh.issues()",
+  ["<Leader>gp"] = "require'telescope'.extensions.gh.pull_request()",
+  ["<Leader>ghq"] = "require'telescope'.extensions.ghq.list()",
   ["<Leader>gst"] = "require'telescope.builtin'.git_status()",
   ["gr"] = "require'telescope.builtin'.lsp_references{ shorten_path = true }",
 }
