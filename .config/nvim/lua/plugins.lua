@@ -37,7 +37,7 @@ return require'packer'.startup(function()
   use {
     'hrsh7th/nvim-compe',
     config = function()
-      vim.o.completeopt = "menu,menuone,noselect"
+      vim.o.completeopt = "menuone,noselect"
       require'compe'.setup{
         enabled = true,
         autocomplete = true,
@@ -62,7 +62,8 @@ return require'packer'.startup(function()
       {'nvim-lua/plenary.nvim'},
       {'nvim-telescope/telescope-github.nvim'},
       {'nvim-telescope/telescope-ghq.nvim'},
-      {'nvim-telescope/telescope-packer.nvim'}
+      {'nvim-telescope/telescope-packer.nvim'},
+      {'cappyzawa/telescope-terraform.nvim'}
     },
     config = function()
       require'finder'

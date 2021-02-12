@@ -6,6 +6,7 @@ local actions = require'telescope.actions'
 -- extensions
 telescope.load_extension('gh')
 telescope.load_extension('ghq')
+telescope.load_extension('terraform')
 
 telescope.setup{
   defaults = {
