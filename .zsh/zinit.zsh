@@ -336,7 +336,7 @@ zinit light smallstep/cli
 # }}}
 
 # cloudfoundry/bosh-cli {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
+zinit ice wait'2' lucid as"program" from"gh-r" ver"v6.2.0"\
   mv"bosh-cli* -> bosh"
 zinit light cloudfoundry/bosh-cli
 # }}}

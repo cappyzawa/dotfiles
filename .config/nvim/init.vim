@@ -24,8 +24,8 @@ let g:maplocalleader=' '
 " Smart space mapping
 nmap <Space> [Space]
 xmap <Space> [Space]
-noremap [Space]h ^
-noremap [Space]l $
+noremap <Leader>h ^
+noremap <Leader>l $
 
 inoremap <BS> <Nop>
 inoremap <Del> <Nop>

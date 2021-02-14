@@ -47,7 +47,7 @@ local keymap_lsp_func = {
   ["]e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()",
   et = "require'lspsaga.floaterm'.open_float_terminal()",
   qt = "require'lspsaga.floaterm'.close_float_terminal()",
-  lg = "require'lspsaga.floaterm'.open_float_terminal('lazygit')"
+  ["<Leader>x"] = "require'lspsaga.floaterm'.open_float_terminal('lazygit')"
 }
 
 local opts = { noremap=true, silent=true }
