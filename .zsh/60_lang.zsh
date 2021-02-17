@@ -25,7 +25,7 @@ if has "goenv"; then
 fi
 
 if has "nodenv"; then
-  local version="10.16.3"
+  local version="14.13.1"
   if ! [[ -d "${ANYENV_ROOT}/envs/nodenv/versions/${version}" ]]; then
     nodenv install ${version}
     nodenv global ${version}

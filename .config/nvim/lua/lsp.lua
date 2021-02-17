@@ -162,7 +162,21 @@ vim.cmd([[ autocmd BufWritePost *.go lua Goimports(1000) ]])
 
 --rust
 lspconfig.rust_analyzer.setup{
-  cmd = {"rust-analyzer"}
+  cmd = {"rust-analyzer"},
+  settings = {
+      ["rust-analyzer"] = {
+          assist = {
+              importMergeBehavior = "last",
+              importPrefix = "by_self",
+          },
+          cargo = {
+              loadOutDirsFromCheck = true
+          },
+          procMacro = {
+              enable = true
+          },
+      }
+  }
 }
 
 --docker

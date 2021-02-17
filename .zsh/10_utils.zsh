@@ -120,10 +120,10 @@ update_nvim() {
 
 gitlocal() {
   git config --local user.name "Shu Kutsuzawa"
-  git config --local user.email "cappyzawa@yahoo.ne.jp"
+  git config --local user.email "cappyzawa@gmail.com"
   git config --local hub.host "github.com"
   git config --local gpg.program gpg
-  git config --local user.signingkey A066B4C8A3505FCCCA7606EB507E4B79DB2F5588
+  git config --local user.signingkey 95FACBF514EBED07EFF2461812D20A0BDD2B2A46
   echo "export GITHUB_TOKEN=${GITHUB_COM_TOKEN}" >> .envrc
 }
 

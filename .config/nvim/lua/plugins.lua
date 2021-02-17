@@ -162,11 +162,12 @@ return require'packer'.startup(function()
   use {
     'iamcco/markdown-preview.nvim',
     setup = function()
-      vim.cmd [[nnoremap <silent> <C-p> :<C-u>MarkdownPreview<CR>]]
+      vim.cmd [[autocmd FileType markdown nnoremap <silent> <C-p> :<C-u>MarkdownPreview<CR>]]
     end,
     config = {'vim.cmd[[doautocmd BufEnter]]', 'vim.cmd[[MarkdownPreview]]'},
     run = 'cd app && yarn install',
-    cmd = 'MarkdownPreview'
+    cmd = 'MarkdownPreview',
+    ft = 'markdown',
   }
   use {
     'norcalli/nvim-colorizer.lua',
