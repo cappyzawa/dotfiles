@@ -214,4 +214,11 @@ return require'packer'.startup(function()
   use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/starlark.vim'
   use 'aklt/plantuml-syntax'
+  use {
+    'rust-lang/rust.vim',
+    config = function()
+      vim.g.rustfmt_autosave = 1
+    end
+  }
+
 end)
