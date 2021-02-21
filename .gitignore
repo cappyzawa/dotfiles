@@ -15,5 +15,6 @@ node_modules/
 .config/nvim/sessions
 .config/nvim/plugin/packer_compiled.vim
 .config/waypoint/
+.config/iterm2/
 .chef/
 .zsh/Completion/_flctl
