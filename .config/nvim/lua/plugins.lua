@@ -199,7 +199,7 @@ return require'packer'.startup(function()
   use {
     'phaazon/hop.nvim',
     config = function()
-      vim.api.nvim_set_keymap('n', '$', "<cmd>lua require'hop'.jump_words()<cr>", {})
+      vim.api.nvim_set_keymap('n', '$', "<cmd>lua require'hop'.hint_words()<cr>", {})
     end,
   }
   use {
