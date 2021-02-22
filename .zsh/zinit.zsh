@@ -371,4 +371,12 @@ zinit ice wait'2' lucid as"program" \
 zinit light denoland/deno_install
 # }}}
 
+# protocolbuffers/protobuf {{{
+if [[ `uname` == "Darwin" ]]; then
+zinit ice wait'2' lucid as"program" from:"gh-r" \
+  bpick:"protoc-*-osx-*.zip" mv"bin/protoc->$ZPFX/bin/protoc"
+zinit light protocolbuffers/protobuf
+fi
+# }}}
+
 zinit cdreplay -q

@@ -66,6 +66,7 @@ disabled = false
 
 [lua]
 symbol = " "
+lua_binary = "luajit"
 
 [nix_shell]
 disabled = true
