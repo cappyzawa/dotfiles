@@ -15,14 +15,14 @@ telescope.setup{
         ["<c-j>"] = actions.move_selection_next,
         ["<c-k>"] = actions.move_selection_previous,
         ["<c-x>"] = false,
-        ["<c-s>"] = actions.goto_file_selection_split,
-        ["<c-v>"] = actions.goto_file_selection_vsplit
+        ["<c-s>"] = actions.select_horizontal,
+        ["<c-v>"] = actions.select_vertical,
       },
       n = {
         ["jj"] = actions.close,
         ["<c-x>"] = false,
-        ["<c-s>"] = actions.goto_file_selection_split,
-        ["<c-v>"] = actions.goto_file_selection_vsplit
+        ["<c-s>"] = actions.select_horizontal,
+        ["<c-v>"] = actions.select_vertical
       },
     }
   }
