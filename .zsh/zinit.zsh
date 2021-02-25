@@ -30,6 +30,11 @@ zinit light BurntSushi/ripgrep
 zinit ice as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
 # }}}
+# direnv/direnv {{{
+zinit ice as"program" has"go" \
+  make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh" lucid
+zinit light direnv/direnv
+# }}}
 # neovim/neovim {{{
 zinit ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
   ver"nightly"
@@ -89,11 +94,6 @@ zinit light Rasukarusan/fzf-chrome-active-tab
 zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"yq* -> yq"
 zinit light mikefarah/yq
-# }}}
-# direnv/direnv {{{
-zinit ice wait"3" as"program" has"go" \
-  make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh" lucid
-zinit light direnv/direnv
 # }}}
 # cli/cli (as gh) {{{
 zinit ice wait'1' lucid as"program" from:"gh-r" \

@@ -157,6 +157,9 @@ return require'packer'.startup(function()
         -- you can specify filetypes.
         disable = {"markdown"},
       })
+      vim.cmd [[augroup CursorRestore]]
+      vim.cmd [[  au Bufread * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif ]]
+      vim.cmd [[augroup END]]
     end,
   }
   use {
