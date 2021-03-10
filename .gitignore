@@ -2,6 +2,7 @@
 *.swp
 *.log
 *.pem
+.config/alfred
 .config/anyenv/*.swp
 .config/anyenv/envs/
 .config/anyenv/plugins/

@@ -76,6 +76,7 @@ return require'packer'.startup(function()
       local treesitter_configs = require'nvim-treesitter.configs'
 
       treesitter_configs.setup {
+        ensure_installed = "all",
         highlight = {
             enable = true,
             disable = {},
@@ -131,6 +132,7 @@ return require'packer'.startup(function()
       npairs.setup{}
       -- skip it, if you use another global object
       _G.MUtils= {}
+
       vim.g.completion_confirm_key = ""
       MUtils.completion_confirm=function()
         if vim.fn.pumvisible() ~= 0  then
@@ -138,14 +140,17 @@ return require'packer'.startup(function()
             vim.fn["compe#confirm"]()
             return npairs.esc("<c-y>")
           else
-            vim.fn.nvim_select_popupmenu_item(0, false, false, {})
-            vim.fn["compe#confirm"]()
-            return npairs.esc("<c-n><c-y>")
+            vim.defer_fn(function()
+              vim.fn["compe#confirm"]("<cr>")
+            end, 20)
+            return npairs.esc("<c-n>")
           end
         else
           return npairs.check_break_line_char()
         end
       end
+
+
       remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
     end
   }
