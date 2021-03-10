@@ -71,33 +71,49 @@ npm_global_install(){
   npm install -g ${pkg}
 }
 
-if has "npm"; then
-  if ! has "elm"; then
+if has "npm" && has "nodenv" ; then
+  if ! $(nodenv which elm > /dev/null); then
     npm_global_install elm
   fi
 
-  if ! has "elm-test"; then
+  if ! $(nodenv which elm-language-server > /dev/null); then
+    npm_global_install "@elm-tooling/elm-language-serve"
+  fi
+
+  if ! $(nodenv which elm-test > /dev/null); then
     npm_global_install "elm-test"
   fi
 
-  if ! has "elm-format"; then
+  if ! $(nodenv which elm-format > /dev/null); then
     npm_global_install "elm-format"
   fi
 
-  if ! has "elm-analyse"; then
+  if ! $(nodenv which elm-analyse > /dev/null); then
     npm_global_install "elm-analyse"
   fi
 
-  if ! has "elm-live"; then
+  if ! $(nodenv which elm-live > /dev/null); then
     npm_global_install "elm-live"
   fi
 
-  if ! has "yarn"; then
+  if ! $(nodenv which yarn > /dev/null); then
     npm_global_install "yarn"
   fi
 
-  if ! has "ng"; then
+  if ! $(nodenv which ng > /dev/null); then
     npm_global_install "@angular/cli"
+  fi
+
+  if ! $(nodenv which create-elm-app > /dev/null); then
+    npm_global_install "create-elm-app"
+  fi
+
+  if ! $(nodenv which serve > /dev/null); then
+    npm_global_install serve
+  fi
+
+  if ! $(nodenv which surge > /dev/null); then
+    npm_global_install surge
   fi
 fi
 

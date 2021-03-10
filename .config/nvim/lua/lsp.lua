@@ -206,7 +206,19 @@ lspconfig.yamlls.setup{
 }
 
 --elm
-lspconfig.elmls.setup{}
+local custom_attach = function(client)
+  if client.config.flags then
+    client.config.flags.allow_incremental_sync = true
+  end
+end
+
+lspconfig.elmls.setup({
+  on_attach = custom_attach;
+})
+vim.cmd([[ autocmd BufWritePre *.elm lua vim.lsp.buf.formatting() ]])
+
+--deno
+lspconfig.denols.setup{}
 
 --bash
 lspconfig.bashls.setup{
