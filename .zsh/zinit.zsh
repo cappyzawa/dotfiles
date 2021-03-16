@@ -1,7 +1,7 @@
 # required for activatioin {{{
 # junegunn/fzf-bin {{{
 zinit ice lucid from"gh-r" as"program"
-zinit light "junegunn/fzf-bin"
+zinit light "junegunn/fzf"
 # }}}
 # b4b4r07/enhancd {{{
 zinit ice pick"init.sh" lucid \

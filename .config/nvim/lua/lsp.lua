@@ -126,9 +126,7 @@ lspconfig.julials.setup{
 }
 
 --terraform
-lspconfig.terraformls.setup{
-  cmd = {"terraform-lsp"}
-}
+lspconfig.terraformls.setup{}
 
 --go
 function goimports(timeoutms)
