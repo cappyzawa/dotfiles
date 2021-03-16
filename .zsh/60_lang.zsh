@@ -12,6 +12,11 @@ local install_by_anyenv() {
   fi
 }
 
+has_image() {
+  local img=$1
+  has docker && docker image ls --format "{{.Repository}}:{{.Tag}}" "${img}" | grep "${img}" > /dev/null
+}
+
 if has 'anyenv'; then
   install_by_anyenv
 fi
