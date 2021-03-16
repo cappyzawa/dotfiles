@@ -28,7 +28,14 @@ return require'packer'.startup(function()
       local saga_opts = {
         error_sign = vim.g.e_sign,
         warn_sign = vim.g.w_sign,
-        hint_sign = vim.g.h_sign
+        hint_sign = vim.g.h_sign,
+        finder_action_keys = {
+          open = 'o',
+          vsplit = '<C-v>',
+          split = '<C-s>',
+          scroll_down = '<C-j>',
+          scroll_up = '<C-k>',
+        },
       }
       saga.init_lsp_saga(saga_opts)
       require'lsp'
