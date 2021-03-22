@@ -40,6 +40,11 @@ zinit ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
   ver"nightly"
 zinit light neovim/neovim
 # }}}
+# tree-sitter/tree-sitter {{{
+zinit ice lucid as"program" from:"gh-r" \
+  mv"tree-sitter-* -> tree-sitter"
+zinit light tree-sitter/tree-sitter
+# }}}
 # }}}
 
 # local snippets {{{

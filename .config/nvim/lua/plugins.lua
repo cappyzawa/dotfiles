@@ -83,7 +83,7 @@ return require'packer'.startup(function()
       local treesitter_configs = require'nvim-treesitter.configs'
 
       treesitter_configs.setup {
-        ensure_installed = "all",
+        ensure_installed = "maintained",
         highlight = {
             enable = true,
             disable = {},
