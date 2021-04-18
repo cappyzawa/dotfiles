@@ -50,6 +50,9 @@ staged = "+${count}"
 renamed = "»${count}"
 deleted = "✘${count}"
 
+[gcloud]
+disabled = true
+
 [golang]
 symbol = " "
 
