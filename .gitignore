@@ -8,7 +8,7 @@
 .config/anyenv/plugins/
 .config/gcloud/
 .config/direnv/
-.config/.op/
+.config/op/
 .config/configstore/
 .config/helm/*
 node_modules/
