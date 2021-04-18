@@ -55,3 +55,8 @@ fi
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
 alias lgtm="echo '![LGTM](//lgtmoon.herokuapp.com/images/23050)'|pbcopy"
+
+if [[ -d "/usr/local/Caskroom/google-cloud-sdk" ]]; then
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+fi
