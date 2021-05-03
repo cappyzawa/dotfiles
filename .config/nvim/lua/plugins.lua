@@ -223,12 +223,14 @@ return require'packer'.startup(function()
       vim.g.terraform_align = 1
       vim.g.terraform_fold_sections = 1
       vim.g.terraform_fmt_on_save = 1
+      vim.cmd [[autocmd BufRead,BufNewFile waypoint.hcl set filetype=terraform]]
     end,
     cond = [[vim.fn.executable('terraform')]]
   }
   use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/starlark.vim'
   use 'aklt/plantuml-syntax'
+  use 'JuliaEditorSupport/julia-vim'
   use {
     'rust-lang/rust.vim',
     config = function()

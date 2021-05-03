@@ -102,10 +102,8 @@ lspconfig.vimls.setup{}
 --julia
 lspconfig.julials.setup{
     on_new_config = function(new_config,new_root_dir)
-      server_path = vim.fn.expand('$HOME').."/.julia/packages/LanguageServer/y1ebo/src/LanguageServer.jl/src"
       cmd = {
         "julia",
-        "--project="..server_path,
         "--startup-file=no",
         "--history-file=no",
         "-e", [[

@@ -18,4 +18,5 @@ node_modules/
 .config/waypoint/
 .config/iterm2/
 .chef/
+.jupyter/migrated
 .zsh/Completion/_flctl

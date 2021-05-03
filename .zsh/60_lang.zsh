@@ -1,6 +1,6 @@
 local install_by_anyenv() {
   local restart_flag=false
-  target=('goenv' 'nodenv' 'rbenv' 'pyenv' 'scalaenv' 'luaenv')
+  target=('goenv' 'nodenv' 'rbenv' 'scalaenv' 'luaenv')
   for t in ${target}; do
     if ! has ${t}; then
       anyenv install ${t}
@@ -42,14 +42,6 @@ if has "rbenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/rbenv/versions/${version}" ]]; then
     rbenv install ${version}
     rbenv global ${version}
-  fi
-fi
-
-if has "pyenv"; then
-  local version="anaconda3-5.3.1"
-  if ! [[ -d "${ANYENV_ROOT}/envs/pyenv/versions/${version}" ]]; then
-    pyenv install ${version}
-    pyenv global ${version}
   fi
 fi
 

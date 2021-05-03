@@ -60,3 +60,7 @@ if [[ -d "/usr/local/Caskroom/google-cloud-sdk" ]]; then
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
+
+if has "julia"; then
+  export LD_LIBRARY_PATH=$HOME/.julia/conda/3/lib
+fi
