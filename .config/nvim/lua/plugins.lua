@@ -231,6 +231,7 @@ return require'packer'.startup(function()
   use 'cappyzawa/starlark.vim'
   use 'aklt/plantuml-syntax'
   use 'JuliaEditorSupport/julia-vim'
+  use 'alaviss/nim.nvim'
   use {
     'rust-lang/rust.vim',
     config = function()

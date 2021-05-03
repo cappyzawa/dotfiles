@@ -179,6 +179,9 @@ lspconfig.rust_analyzer.setup{
   }
 }
 
+--nim
+lspconfig.nimls.setup{}
+
 --docker
 lspconfig.dockerls.setup{
   cmd = {"docker-langserver", "--stdio"}
