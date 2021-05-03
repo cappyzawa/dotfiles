@@ -297,13 +297,14 @@ zinit light tektoncd/cli
 # }}}
 # }}}
 
+# hashicorp tools {{{
 # terraform {{{
 # terraform-linters/tflint {{{
 zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
 zinit light terraform-linters/tflint
 # }}}
 # hashicorp/terraform-ls {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
+zinit ice wait'2' lucid as"program" from"gh-r" has"terraform"
 zinit light hashicorp/terraform-ls
 # }}}
 # juliosueiras/terraform-lsp {{{
@@ -323,6 +324,7 @@ zinit light hashicorp/terraform
 # cappyzawa/tfswitch {{{
 zinit ice wait'1' lucid as"program" from:"gh-r"
 zinit light cappyzawa/tfswitch
+# }}}
 # }}}
 # }}}
 
