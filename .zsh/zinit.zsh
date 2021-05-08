@@ -322,8 +322,13 @@ zinit ice wait'3' lucid as"program" has"go" id-as"hashicorp/terraform-bundle"\
 zinit light hashicorp/terraform
 # }}}
 # cappyzawa/tfswitch {{{
-zinit ice wait'1' lucid as"program" from:"gh-r"
+zinit ice wait'1' lucid as"program" from"gh-r"
 zinit light cappyzawa/tfswitch
+# }}}
+# jrhouston/tfk8s {{{
+zinit ice wait'1' lucid as"program" has"go" \
+  make"install"
+zinit light jrhouston/tfk8s
 # }}}
 # }}}
 # }}}
