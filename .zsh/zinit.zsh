@@ -160,6 +160,11 @@ zinit ice wait"3" as"program" from"gh-r" pick"golangci-lint-*/golangci-lint" luc
   atclone"golangci-lint completion zsh > ~/.zsh/Completion/_golangci-lint"
 zinit light golangci/golangci-lint
 # }}}
+# dominikh/go-tools (id-as"golang/staticcheck") {{{
+zinit ice wait"1" lucid as"program" from"gh-r" id-as"golang/staticcheck" \
+  pick"staticcheck/staticcheck"
+zinit light dominikh/go-tools
+# }}}
 # go-delve/delve {{{
 zinit ice wait'3' lucid as"program" pick"$ZPFX/bin/dlv" has"go" \
   atclone"go build -o $ZPFX/bin/dlv cmd/dlv/main.go" atpull"%atclone"
