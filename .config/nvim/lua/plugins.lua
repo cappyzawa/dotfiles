@@ -108,12 +108,13 @@ return require'packer'.startup(function()
   use {
     'glepnir/galaxyline.nvim',
     requires = {
+      {'yamatsum/nvim-nonicons'},
       {'kyazdani42/nvim-web-devicons'},
       {'lewis6991/gitsigns.nvim'}
     },
     config = function()
-      local eviline = vim.fn.stdpath('data') .. '/site/pack/packer/start/galaxyline.nvim/example/eviline.lua'
-      vim.cmd('luafile ' .. eviline)
+      -- local eviline = vim.fn.stdpath('data') .. '/site/pack/packer/start/galaxyline.nvim/example/eviline.lua'
+      require'status'
     end
   }
   use {

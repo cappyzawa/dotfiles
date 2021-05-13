@@ -6,7 +6,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = {
       spacing = 4,
-      prefix = "廓",
+      prefix = "",
     },
 
     -- This is similar to:
@@ -22,9 +22,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 ---- icons
-vim.g.w_sign = ""
-vim.g.e_sign = ""
-vim.g.h_sign = "ﯦ"
+vim.g.w_sign = ""
+vim.g.e_sign = ""
+vim.g.h_sign = ""
 
 ---- hilight
 vim.fn.sign_define("LspDiagnosticsSignError", {text = vim.g.e_sign, texthl = "LspDiagnosticsSignError"})
