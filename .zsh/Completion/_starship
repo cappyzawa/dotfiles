@@ -36,15 +36,17 @@ _arguments "${_arguments_options[@]}" \
 '-V[Prints version information]' \
 '--version[Prints version information]' \
 ':shell -- The name of the currently running shell
-Currently supported options: bash, zsh, fish, powershell, ion, elvish:_files' \
+Currently supported options: bash, zsh, fish, powershell, ion, elvish, tcsh:_files' \
 && ret=0
 ;;
 (prompt)
 _arguments "${_arguments_options[@]}" \
 '-s+[The status code of the previously run command]' \
 '--status=[The status code of the previously run command]' \
-'-p+[The path that the prompt should render for]' \
-'--path=[The path that the prompt should render for]' \
+'-p+[The path that the prompt should render for.]' \
+'--path=[The path that the prompt should render for.]' \
+'-P+[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'--logical-path=[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
 '-d+[The execution duration of the last command, in milliseconds]' \
 '--cmd-duration=[The execution duration of the last command, in milliseconds]' \
 '-k+[The keymap of fish/zsh]' \
@@ -61,8 +63,10 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '-s+[The status code of the previously run command]' \
 '--status=[The status code of the previously run command]' \
-'-p+[The path that the prompt should render for]' \
-'--path=[The path that the prompt should render for]' \
+'-p+[The path that the prompt should render for.]' \
+'--path=[The path that the prompt should render for.]' \
+'-P+[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'--logical-path=[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
 '-d+[The execution duration of the last command, in milliseconds]' \
 '--cmd-duration=[The execution duration of the last command, in milliseconds]' \
 '-k+[The keymap of fish/zsh]' \
@@ -96,6 +100,16 @@ _arguments "${_arguments_options[@]}" \
 '--version[Prints version information]' \
 '::name -- Configuration key to edit:_files' \
 '::value -- Value to place into that key:_files' \
+&& ret=0
+;;
+(print-config)
+_arguments "${_arguments_options[@]}" \
+'-d[Print the default instead of the computed config]' \
+'--default[Print the default instead of the computed config]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
 && ret=0
 ;;
 (toggle)
@@ -177,6 +191,7 @@ _starship_commands() {
 "prompt:Prints the full starship prompt" \
 "module:Prints a specific prompt module" \
 "config:Edit the starship configuration" \
+"print-config:Prints the computed starship configuration" \
 "toggle:Toggle a given starship module" \
 "bug-report:Create a pre-populated GitHub issue with information about your configuration" \
 "time:Prints time in milliseconds" \
@@ -250,6 +265,13 @@ _starship__module_commands() {
         
     )
     _describe -t commands 'starship module commands' commands "$@"
+}
+(( $+functions[_starship__print-config_commands] )) ||
+_starship__print-config_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship print-config commands' commands "$@"
 }
 (( $+functions[_starship__prompt_commands] )) ||
 _starship__prompt_commands() {
