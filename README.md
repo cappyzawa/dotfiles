@@ -15,4 +15,3 @@ curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install
 * `git`
 * `tmux` 3.2+
 * [tonsky/FiraCode: Free monospaced font with programming ligatures](https://github.com/tonsky/FiraCode)
-* [yamatsum/nonicons](https://github.com/yamatsum/nonicons) (For non-ASCII text)

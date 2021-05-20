@@ -1,4 +1,5 @@
 add_newline = true
+command_timeout = 2000
 
 [aws]
 disabled = true
@@ -7,9 +8,9 @@ disabled = true
 disabled = true
 
 [character]
-success_symbol = "[](bold green)"
-error_symbol = "[](bold red)"
-vicmd_symbol = "[](bold green)"
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
+vicmd_symbol = "[](bold yellow)"
 
 [cmd_duration]
 
@@ -25,13 +26,13 @@ disabled = true
 disabled = true
 
 [elixir]
-symbol = " "
+symbol = " "
 
 [elm]
-symbol = " "
+symbol = " "
 
 [git_branch]
-symbol = " "
+symbol = " "
 
 [git_commit]
 disabled = false
@@ -56,21 +57,21 @@ deleted = "✘${count}"
 disabled = true
 
 [golang]
-symbol = " "
+symbol = " "
 
 [hostname]
 
 [jobs]
 
 [kubernetes]
-symbol = " "
+symbol = "ﴱ "
 disabled = false
 
 [line_break]
 disabled = false
 
 [lua]
-symbol = " "
+symbol = " "
 lua_binary = "luajit"
 
 [nix_shell]
@@ -80,35 +81,37 @@ disabled = true
 disabled = true
 
 [java]
-symbol = " "
+symbol = " "
 
 [julia]
+symbol = " "
 
 [nim]
+symbol = " "
 
 [nodejs]
-symbol = " "
+symbol = " "
 
 [package]
-symbol = " "
+symbol = " "
 
 [php]
-symbol = " "
+symbol = " "
 
 [python]
-symbol = " "
+symbol = " "
 
 [ruby]
-symbol = " "
+symbol = " "
 
 [rust]
-symbol = " "
+symbol = " "
 
 [scala]
-symbol = " "
+symbol = " "
 
 [terraform]
-symbol = " "
+symbol = " "
 format = "via [$symbol$version]($style)"
 
 [time]
