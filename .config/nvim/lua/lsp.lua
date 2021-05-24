@@ -4,26 +4,32 @@ local vim = vim
 vim.lsp.diagnostic.set_signs()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- Enable underline, use default values
+    underline = true,
+    -- Enable virtual text, override spacing to 4
     virtual_text = {
       spacing = 4,
-      prefix = "",
+      prefix = "",
     },
+    -- Use a function to dynamically turn signs off
+    -- and on, using buffer local variables
+    signs = function(bufnr, client_id)
+      local ok, result = pcall(vim.api.nvim_buf_get_var, bufnr, 'show_signs')
+      -- No buffer local variable set, so just enable by default
+      if not ok then
+        return true
+      end
 
-    -- This is similar to:
-    -- let g:diagnostic_show_sign = 1
-    -- To configure sign display,
-    --  see: ":help vim.lsp.diagnostic.set_signs()"
-    signs = true,
-
-    -- This is similar to:
-    -- "let g:diagnostic_insert_delay = 1"
+      return result
+    end,
+    -- Disable a feature
     update_in_insert = false,
   }
 )
 
 ---- icons
 vim.g.w_sign = ""
-vim.g.e_sign = "⚡"
+vim.g.e_sign = ""
 vim.g.h_sign = "ﯦ"
 
 ---- hilight
@@ -37,14 +43,15 @@ local keymap_lsp_func = {
   gp = "require'lspsaga.provider'.preview_definition()",
   gi = "vim.lsp.buf.implementation()",
   gk = "require'lspsaga.hover'.render_hover_doc()",
-  ["<C-j>"] = "require'lspsaga.hover'.smart_scroll_hover(1)",
-  ["<C-k>"] = "require'lspsaga.hover'.smart_scroll_hover(-1)",
+  ["<C-j>"] = "require'lspsaga.action'.smart_scroll_with_saga(1)",
+  ["<C-k>"] = "require'lspsaga.action'.smart_scroll_with_saga(-1)",
   gr = "vim.lsp.buf.references()",
   gt = "require'lspsaga.rename'.rename()",
   gh = "require'lspsaga.provider'.lsp_finder()",
   ca = "require'lspsaga.codeaction'.code_action()",
   ["[e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()",
   ["]e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()",
+  cc = "require'lspsaga.diagnostic'.show_line_diagnostics()",
   et = "require'lspsaga.floaterm'.open_float_terminal()",
   qt = "require'lspsaga.floaterm'.close_float_terminal()",
   ["<Leader>x"] = "require'lspsaga.floaterm'.open_float_terminal('lazygit')"
@@ -148,16 +155,17 @@ function goimports(timeoutms)
 end
 vim.cmd([[ autocmd BufWritePre *.go lua goimports(1000) ]])
 
-lspconfig.gopls.setup{
-    cmd = {"gopls", "serve"},
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        }
-    }
+lspconfig.gopls.setup {
+  cmd = {"gopls", "serve"},
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
 }
 
 --rust
