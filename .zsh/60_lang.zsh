@@ -22,7 +22,7 @@ if has 'anyenv'; then
 fi
 
 if has "goenv"; then
-  local version="1.15.2"
+  local version="1.16.2"
   if ! [[ -d "${ANYENV_ROOT}/envs/goenv/versions/${version}" ]]; then
     goenv install ${version}
     goenv global ${version}
