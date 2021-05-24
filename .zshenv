@@ -10,6 +10,7 @@ path=( \
     ~/.yarn/bin(N-/) \
     ~/.julia/conda/3/bin(N-/) \
     ~/.nimble/bin(N-/) \
+    ~/Library/ApplicationSupport/Coursier/bin(N-/) \
     "$path[@]" \
     )
 

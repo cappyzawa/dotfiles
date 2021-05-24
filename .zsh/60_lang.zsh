@@ -1,6 +1,6 @@
 local install_by_anyenv() {
   local restart_flag=false
-  target=('goenv' 'nodenv' 'rbenv' 'scalaenv' 'luaenv')
+  target=('goenv' 'nodenv' 'rbenv' 'luaenv')
   for t in ${target}; do
     if ! has ${t}; then
       anyenv install ${t}
@@ -42,14 +42,6 @@ if has "rbenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/rbenv/versions/${version}" ]]; then
     rbenv install ${version}
     rbenv global ${version}
-  fi
-fi
-
-if has "scalaenv"; then
-  local version="scala-2.13.2"
-  if ! [[ -d "${ANYENV_ROOT}/envs/scalaenv/versions/${version}" ]]; then
-    scalaenv install ${version}
-    scalaenv global ${version}
   fi
 fi
 
