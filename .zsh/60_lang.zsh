@@ -1,15 +1,11 @@
 local install_by_anyenv() {
-  local restart_flag=false
-  target=('goenv' 'nodenv' 'rbenv' 'luaenv')
+  target=('goenv' 'nodenv')
   for t in ${target}; do
     if ! has ${t}; then
       anyenv install ${t}
       restart_flag=true
     fi
   done
-  if (${restart_flag}); then
-    exec $SHELL -l
-  fi
 }
 
 has_image() {
@@ -34,22 +30,6 @@ if has "nodenv"; then
   if ! [[ -d "${ANYENV_ROOT}/envs/nodenv/versions/${version}" ]]; then
     nodenv install ${version}
     nodenv global ${version}
-  fi
-fi
-
-if has "rbenv"; then
-  local version="2.6.5"
-  if ! [[ -d "${ANYENV_ROOT}/envs/rbenv/versions/${version}" ]]; then
-    rbenv install ${version}
-    rbenv global ${version}
-  fi
-fi
-
-if has "luaenv"; then
-  local version="5.4.0"
-  if ! [[ -d "${ANYENV_ROOT}/envs/luaenv/versions/${version}" ]]; then
-    luaenv install ${version}
-    luaenv global ${version}
   fi
 fi
 
