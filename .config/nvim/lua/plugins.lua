@@ -229,6 +229,7 @@ return require'packer'.startup(function()
   }
   use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/starlark.vim'
+  use 'cappyzawa/go-playground.nvim'
   use 'aklt/plantuml-syntax'
   use 'JuliaEditorSupport/julia-vim'
   use 'alaviss/nim.nvim'

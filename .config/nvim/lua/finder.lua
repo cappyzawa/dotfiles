@@ -39,7 +39,7 @@ local keymap_telescope_func = {
   ["<Leader>ghq"] = "require'telescope'.extensions.ghq.list()",
   ["<Leader>gst"] = "require'telescope.builtin'.git_status()",
   ["gr"] = "require'telescope.builtin'.lsp_references{ shorten_path = true }",
-  ["gi"] = "require'telescope.builtin'.lsp_implementations"
+  ["gi"] = "require'telescope.builtin'.lsp_implementations()",
 }
 
 for k, v in pairs(keymap_telescope_func) do
