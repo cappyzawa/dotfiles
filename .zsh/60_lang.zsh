@@ -1,13 +1,3 @@
-local install_by_anyenv() {
-  target=('goenv' 'nodenv')
-  for t in ${target}; do
-    if ! has ${t}; then
-      anyenv install ${t}
-      restart_flag=true
-    fi
-  done
-}
-
 has_image() {
   local img=$1
   has docker && docker image ls --format "{{.Repository}}:{{.Tag}}" "${img}" | grep "${img}" > /dev/null
