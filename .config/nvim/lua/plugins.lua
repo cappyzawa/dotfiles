@@ -81,6 +81,9 @@ return require'packer'.startup(function()
     run = ':TSUpdate',
     config = function()
       local treesitter_configs = require'nvim-treesitter.configs'
+      local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+      local execute = vim.api.nvim_command
+      local tree_sitter_path = vim.fn.stdpath('data')..'/site/pack/packer/start/nvim-treesitter'
 
       treesitter_configs.setup {
         ensure_installed = "maintained",
@@ -88,7 +91,38 @@ return require'packer'.startup(function()
             enable = true,
             disable = {},
         },
+        indent = {
+            enable = true,
+        }
       }
+
+      -- hcl {{{
+      execute('autocmd BufRead,BufNewFile *.hcl set filetype=hcl')
+      local tree_sitter_hcl = {
+        remote_url = "https://github.com/mitchellh/tree-sitter-hcl",
+        remote_raw_url = "https://raw.githubusercontent.com/mitchellh/tree-sitter-hcl",
+        remote_branch = "main",
+        local_queries_path = tree_sitter_path..'/queries/hcl'
+      }
+
+      parser_config.hcl = {
+        install_info = {
+          url = tree_sitter_hcl.remote_url,
+          branch = tree_sitter_hcl.remote_branch,
+          files = {"src/parser.c", "src/scanner.cc"}
+        },
+        filetype = "hcl"
+      }
+
+      local hcl_highlights = tree_sitter_hcl.local_queries_path..'/highlights.scm'
+      local hcl_folds = tree_sitter_hcl.local_queries_path..'/folds.scm'
+      local hcl_raw_branch_url = tree_sitter_hcl.remote_raw_url..'/'..tree_sitter_hcl.remote_branch
+      if vim.fn.empty(vim.fn.glob(tree_sitter_hcl.local_queries_path)) > 0 then
+        execute('!mkdir '..tree_sitter_hcl.local_queries_path)
+        execute('!curl -s '..hcl_raw_branch_url..'/queries/highlights.scm -o '..hcl_highlights)
+        execute('!curl -s '..hcl_raw_branch_url..'/queries/folds.scm -o '..hcl_folds)
+      end
+      -- }}}
     end
   }
   use {
@@ -223,7 +257,6 @@ return require'packer'.startup(function()
       vim.g.terraform_align = 1
       vim.g.terraform_fold_sections = 1
       vim.g.terraform_fmt_on_save = 1
-      vim.cmd [[autocmd BufRead,BufNewFile waypoint.hcl set filetype=terraform]]
     end,
     cond = [[vim.fn.executable('terraform')]]
   }
