@@ -17,7 +17,7 @@ zinit light starship/starship
 # }}}
 # ogham/exa (as ls) {{{
 zinit ice lucid as"program" from"gh-r" \
-  mv"exa-*->exa" \
+  pick"bin/exa" \
   atload="alias ls='exa'"
 zinit light ogham/exa
 # }}}
@@ -37,7 +37,7 @@ zinit light direnv/direnv
 # }}}
 # neovim/neovim {{{
 zinit ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
-  ver"nightly"
+  bpick"nvim-macos.tar.gz" ver"nightly"
 zinit light neovim/neovim
 # }}}
 # tree-sitter/tree-sitter {{{
@@ -217,7 +217,7 @@ fi
 # sumneko/lua-language-server {{{
 if [[ `uname` == "Darwin" ]]; then
   zinit ice wait'2' lucid has"git" \
-    atclone"git submodule update --init --recursive && cd 3rd/luamake && ninja -f ninja/macos.ninja && cd ../.. && ./3rd/luamake/luamake rebuild" atpull"%atclone"
+    atclone"git submodule update --init --recursive && cd 3rd/luamake && compile/install.sh && cd ../.. && ./3rd/luamake/luamake rebuild" atpull"%atclone"
   zinit light "sumneko/lua-language-server"
 fi
 # }}}

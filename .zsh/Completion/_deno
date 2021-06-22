@@ -47,7 +47,7 @@ _arguments "${_arguments_options[@]}" \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--watch[Watch for file changes and restart process automatically]' \
+'--watch[UNSTABLE: Watch for file changes and restart process automatically]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -95,6 +95,8 @@ _arguments "${_arguments_options[@]}" \
 '--allow-read=[Allow file system read access]' \
 '--allow-write=[Allow file system write access]' \
 '--allow-net=[Allow network access]' \
+'--allow-env=[Allow environment access]' \
+'--allow-run=[Allow running subprocesses]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
 '--v8-flags=[Set V8 command line options (for help: --v8-flags=--help)]' \
 '--seed=[Seed Math.random()]' \
@@ -106,14 +108,12 @@ _arguments "${_arguments_options[@]}" \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--allow-env[Allow environment access]' \
-'--allow-run[Allow running subprocesses]' \
 '--allow-plugin[Allow loading plugins]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
+'--prompt[Fallback to prompt if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
-'--lite[Use lite runtime]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -214,11 +214,11 @@ _arguments "${_arguments_options[@]}" \
 (fmt)
 _arguments "${_arguments_options[@]}" \
 '--ext=[Set standard input (stdin) content type]: :(ts tsx js jsx md json jsonc)' \
-'--ignore=[Ignore formatting particular source files. Use with --unstable]' \
+'--ignore=[Ignore formatting particular source files]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--check[Check if the source files are formatted]' \
-'--watch[Watch for file changes and restart process automatically]' \
+'--watch[UNSTABLE: Watch for file changes and restart process automatically]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -234,11 +234,12 @@ _arguments "${_arguments_options[@]}" \
 '-r+[Reload source code cache (recompile TypeScript)]' \
 '--reload=[Reload source code cache (recompile TypeScript)]' \
 '--cert=[Load certificate authority from PEM encoded file]' \
+'--location=[Show files used for origin bound APIs like the Web Storage API when running a script with '\''--location=<HREF>'\'']' \
 '--import-map=[Load import map file]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-check[Skip type checking modules]' \
-'--json[Outputs the information in JSON format]' \
+'--json[UNSTABLE: Outputs the information in JSON format]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -261,6 +262,8 @@ _arguments "${_arguments_options[@]}" \
 '--allow-read=[Allow file system read access]' \
 '--allow-write=[Allow file system write access]' \
 '--allow-net=[Allow network access]' \
+'--allow-env=[Allow environment access]' \
+'--allow-run=[Allow running subprocesses]' \
 '--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
 '--inspect-brk=[Activate inspector on host:port and break at start of user script]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
@@ -274,12 +277,11 @@ _arguments "${_arguments_options[@]}" \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--allow-env[Allow environment access]' \
-'--allow-run[Allow running subprocesses]' \
 '--allow-plugin[Allow loading plugins]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
+'--prompt[Fallback to prompt if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '-f[Forcefully overwrite existing installation]' \
 '--force[Forcefully overwrite existing installation]' \
@@ -364,6 +366,8 @@ _arguments "${_arguments_options[@]}" \
 '--allow-read=[Allow file system read access]' \
 '--allow-write=[Allow file system write access]' \
 '--allow-net=[Allow network access]' \
+'--allow-env=[Allow environment access]' \
+'--allow-run=[Allow running subprocesses]' \
 '--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
 '--inspect-brk=[Activate inspector on host:port and break at start of user script]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
@@ -374,14 +378,13 @@ _arguments "${_arguments_options[@]}" \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--allow-env[Allow environment access]' \
-'--allow-run[Allow running subprocesses]' \
 '--allow-plugin[Allow loading plugins]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
+'--prompt[Fallback to prompt if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
-'(--inspect --inspect-brk)--watch[Watch for file changes and restart process automatically]' \
+'(--inspect --inspect-brk)--watch[UNSTABLE: Watch for file changes and restart process automatically]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -404,28 +407,33 @@ _arguments "${_arguments_options[@]}" \
 '--allow-read=[Allow file system read access]' \
 '--allow-write=[Allow file system write access]' \
 '--allow-net=[Allow network access]' \
+'--allow-env=[Allow environment access]' \
+'--allow-run=[Allow running subprocesses]' \
 '--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
 '--inspect-brk=[Activate inspector on host:port and break at start of user script]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
 '--v8-flags=[Set V8 command line options (for help: --v8-flags=--help)]' \
 '--seed=[Seed Math.random()]' \
 '--filter=[Run tests with this string or pattern in the test name]' \
-'(--inspect --inspect-brk)--coverage=[Collect coverage profile data]' \
+'(--inspect --inspect-brk)--coverage=[UNSTABLE: Collect coverage profile data]' \
+'-j+[]' \
+'--jobs=[]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--allow-env[Allow environment access]' \
-'--allow-run[Allow running subprocesses]' \
 '--allow-plugin[Allow loading plugins]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
+'--prompt[Fallback to prompt if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--no-run[Cache test modules, but don'\''t run tests]' \
+'--doc[UNSTABLE: type check code blocks]' \
 '--fail-fast[Stop on first error]' \
 '--allow-none[Don'\''t return error code if no test files are found]' \
+'(--no-run --coverage)--watch[UNSTABLE: Watch for file changes and restart process automatically]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -491,7 +499,7 @@ _deno_commands() {
     local commands; commands=(
         "bundle:Bundle module and dependencies into single file" \
 "cache:Cache the dependencies" \
-"compile:Compile the script into a self contained executable" \
+"compile:UNSTABLE: Compile the script into a self contained executable" \
 "completions:Generate shell completions" \
 "coverage:Print coverage reports" \
 "doc:Show documentation for a module" \
@@ -502,7 +510,7 @@ _deno_commands() {
 "lsp:Start the language server" \
 "lint:Lint source files" \
 "repl:Read Eval Print Loop" \
-"run:Run a program given a filename or url to the module. Use '-' as a filename to read from stdin." \
+"run:Run a JavaScript or TypeScript program" \
 "test:Run tests" \
 "types:Print runtime TypeScript declarations" \
 "upgrade:Upgrade deno executable to given version" \
