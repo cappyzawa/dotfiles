@@ -207,22 +207,6 @@ zinit wait lucid for \
     zsh-users/zsh-completions
 # }}}
 
-# lua {{{
-# ninja-build/ninja {{{
-if [[ `uname` == "Darwin" ]]; then
-  zinit ice wait'2' lucid as"program" from"gh-r" bpick"ninja-mac*"
-  zinit light "ninja-build/ninja"
-fi
-# }}}
-# sumneko/lua-language-server {{{
-if [[ `uname` == "Darwin" ]]; then
-  zinit ice wait'2' lucid has"git" \
-    atclone"git submodule update --init --recursive && cd 3rd/luamake && compile/install.sh && cd ../.. && ./3rd/luamake/luamake rebuild" atpull"%atclone"
-  zinit light "sumneko/lua-language-server"
-fi
-# }}}
-# }}}
-
 # for only vim plugins {{{
 # Aloxaf/silicon {{{
 zinit ice lucid wait"2" as"program" from"gh-r"
