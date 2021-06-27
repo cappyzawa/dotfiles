@@ -297,6 +297,7 @@ _arguments "${_arguments_options[@]}" \
 ;;
 (lsp)
 _arguments "${_arguments_options[@]}" \
+'--parent-pid=[The parent process id to periodically check for the existence of or exit]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '-h[Prints help information]' \

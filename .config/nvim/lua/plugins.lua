@@ -91,9 +91,6 @@ return require'packer'.startup(function()
             enable = true,
             disable = {},
         },
-        indent = {
-            enable = true,
-        }
       }
 
       -- hcl {{{
