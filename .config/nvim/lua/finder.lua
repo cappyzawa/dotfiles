@@ -38,6 +38,7 @@ local keymap_telescope_func = {
   ["<Leader>gp"] = "require'telescope'.extensions.gh.pull_request()",
   ["<Leader>ghq"] = "require'telescope'.extensions.ghq.list()",
   ["<Leader>gst"] = "require'telescope.builtin'.git_status()",
+  ["<Leader>p"] = "require'telescope.builtin'.registers()",
   ["gr"] = "require'telescope.builtin'.lsp_references{ shorten_path = true }",
   ["gi"] = "require'telescope.builtin'.lsp_implementations()",
 }
