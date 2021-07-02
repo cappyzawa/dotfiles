@@ -228,5 +228,5 @@ lspconfig.pyls.setup{
   before_init = function(params)
     params.processId = vim.NIL
   end,
-  cmd = lspcontainers.command('pyls'),
+  cmd = lspcontainers.command('pylsp'),
 }

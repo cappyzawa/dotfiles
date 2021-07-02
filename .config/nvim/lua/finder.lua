@@ -7,7 +7,6 @@ local actions = require'telescope.actions'
 telescope.load_extension('gh')
 telescope.load_extension('ghq')
 telescope.load_extension('terraform')
-
 telescope.setup{
   defaults = {
     mappings = {
@@ -39,6 +38,9 @@ local keymap_telescope_func = {
   ["<Leader>ghq"] = "require'telescope'.extensions.ghq.list()",
   ["<Leader>gst"] = "require'telescope.builtin'.git_status()",
   ["<Leader>p"] = "require'telescope.builtin'.registers()",
+  ["<Leader>ej"] = "require'telescope.builtin'.symbols{ sources = {'emoji'} }",
+  ["<Leader>gj"] = "require'telescope.builtin'.symbols{ sources = {'gitmoji'} }",
+  ["<Leader>mj"] = "require'telescope.builtin'.symbols{ sources = {'math'} }",
   ["gr"] = "require'telescope.builtin'.lsp_references{ shorten_path = true }",
   ["gi"] = "require'telescope.builtin'.lsp_implementations()",
 }

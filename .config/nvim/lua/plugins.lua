@@ -71,6 +71,7 @@ return require'packer'.startup(function()
       {'nvim-telescope/telescope-github.nvim'},
       {'nvim-telescope/telescope-ghq.nvim'},
       {'nvim-telescope/telescope-packer.nvim'},
+      {'nvim-telescope/telescope-symbols.nvim'},
       {'cappyzawa/telescope-terraform.nvim'}
     },
     config = function()
