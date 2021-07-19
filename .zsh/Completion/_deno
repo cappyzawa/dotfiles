@@ -297,7 +297,6 @@ _arguments "${_arguments_options[@]}" \
 ;;
 (lsp)
 _arguments "${_arguments_options[@]}" \
-'--parent-pid=[The parent process id to periodically check for the existence of or exit]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '-h[Prints help information]' \
@@ -415,7 +414,9 @@ _arguments "${_arguments_options[@]}" \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
 '--v8-flags=[Set V8 command line options (for help: --v8-flags=--help)]' \
 '--seed=[Seed Math.random()]' \
+'--fail-fast=[Stop after N errors. Defaults to stopping after first failure.]' \
 '--filter=[Run tests with this string or pattern in the test name]' \
+'--shuffle=[(UNSTABLE): Shuffle the order in which the tests are run]' \
 '(--inspect --inspect-brk)--coverage=[UNSTABLE: Collect coverage profile data]' \
 '-j+[]' \
 '--jobs=[]' \
@@ -432,7 +433,6 @@ _arguments "${_arguments_options[@]}" \
 '--cached-only[Require that remote dependencies are already cached]' \
 '--no-run[Cache test modules, but don'\''t run tests]' \
 '--doc[UNSTABLE: type check code blocks]' \
-'--fail-fast[Stop on first error]' \
 '--allow-none[Don'\''t return error code if no test files are found]' \
 '(--no-run --coverage)--watch[UNSTABLE: Watch for file changes and restart process automatically]' \
 '-h[Prints help information]' \
