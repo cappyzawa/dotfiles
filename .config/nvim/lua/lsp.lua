@@ -66,15 +66,17 @@ local lspconfig = require'lspconfig'
 local lspcontainers = require'lspcontainers'
 local configs = require'lspconfig/configs'
 
---lua
+--lua {{{
 lspconfig.sumneko_lua.setup {
   cmd = lspcontainers.command('sumneko_lua'),
 }
+--- }}}
 
---vim
+--vim {{{
 lspconfig.vimls.setup{}
+--- }}}
 
---julia
+--julia {{{
 lspconfig.julials.setup{
     on_new_config = function(new_config,new_root_dir)
       cmd = {
@@ -97,11 +99,13 @@ lspconfig.julials.setup{
       new_config.cmd = cmd
     end
 }
+--- }}}
 
---terraform
+--terraform {{{
 lspconfig.terraformls.setup{}
+--- }}}
 
---go
+--go {{{
 function goimports(timeoutms)
   local context = { source = { organizeImports = true } }
   vim.validate { context = { context, "t", true } }
@@ -135,8 +139,9 @@ lspconfig.gopls.setup {
     },
   },
 }
+--- }}}
 
---rust
+--rust {{{
 lspconfig.rust_analyzer.setup{
   cmd = {"rust-analyzer"},
   settings = {
@@ -154,19 +159,22 @@ lspconfig.rust_analyzer.setup{
       }
   }
 }
+--- }}}
 
---nim
+--nim {{{
 lspconfig.nimls.setup{}
+--- }}}
 
---docker
+--docker {{{
 lspconfig.dockerls.setup{
   before_init = function(params)
     params.processId = vim.NIL
   end,
   cmd = lspcontainers.command('dockerls'),
 }
+--- }}}
 
---yaml
+--yaml {{{
 lspconfig.yamlls.setup{
   before_init = function(params)
     params.processId = vim.NIL
@@ -181,12 +189,16 @@ lspconfig.yamlls.setup{
         kubernetes = "/*.yaml";
         ["http://json.schemastore.org/kustomization"] = "/kustomization.yaml";
         ["https://raw.githubusercontent.com/cappyzawa/concourse-pipeline-jsonschema/master/concourse_jsonschema.json"] = "/pipeline.yml";
-      }
+      },
+      trace = {
+        server = "verbose"
+      },
     }
   }
 }
+--- }}}
 
---elm
+--elm {{{
 local custom_attach = function(client)
   if client.config.flags then
     client.config.flags.allow_incremental_sync = true
@@ -197,8 +209,9 @@ lspconfig.elmls.setup({
   on_attach = custom_attach;
 })
 vim.cmd([[ autocmd BufWritePre *.elm lua vim.lsp.buf.formatting() ]])
+--- }}}
 
---bash
+--bash {{{
 lspconfig.bashls.setup{
   before_init = function(params)
     params.processId = vim.NIL
@@ -206,27 +219,31 @@ lspconfig.bashls.setup{
   cmd = lspcontainers.command('bashls'),
   filetypes = {"sh", "bash", "zsh"}
 }
+--- }}}
 
---typescript
+--typescript {{{
 lspconfig.tsserver.setup{
   before_init = function(params)
     params.processId = vim.NIL
   end,
   cmd = lspcontainers.command('tsserver'),
 }
+--- }}}
 
---json
+--json {{{
 lspconfig.jsonls.setup{
   before_init = function(params)
     params.processId = vim.NIL
   end,
   cmd = lspcontainers.command('jsonls'),
 }
+--- }}}
 
---python
-lspconfig.pyls.setup{
+--python {{{
+lspconfig.pylsp.setup{
   before_init = function(params)
     params.processId = vim.NIL
   end,
   cmd = lspcontainers.command('pylsp'),
 }
+--- }}}
