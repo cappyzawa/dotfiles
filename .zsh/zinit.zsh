@@ -113,9 +113,8 @@ zinit ice wait"1" lucid as"program" from:"gh-r" \
 zinit light hashicorp/waypoint
 # }}}
 # sharkdp/bat {{{
-zinit ice wait'3' lucid as"program" has:"cargo" \
-  atclone"cargo build --bins" atpull"%atclone" \
-  pick"target/debug/bat" \
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  pick"bat-v*/bat"
 zinit light sharkdp/bat
 # }}}
 # o2sh/onefetch {{{
