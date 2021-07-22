@@ -278,7 +278,7 @@ zinit ice wait'3' lucid as"program" from:"gh-r" \
 zinit light kubernetes-sigs/kind
 # }}}
 # tektoncd/cli {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" pick:"tkn" \
+zinit ice wait'2' lucid as"program" from"gh-r" pick"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn && ln -s `which tkn` /usr/local/bin/kubectl-tkn" atpull"%atclone"
 zinit light tektoncd/cli
 # }}}

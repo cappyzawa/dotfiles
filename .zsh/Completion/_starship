@@ -36,7 +36,7 @@ _arguments "${_arguments_options[@]}" \
 '-V[Prints version information]' \
 '--version[Prints version information]' \
 ':shell -- The name of the currently running shell
-Currently supported options: bash, zsh, fish, powershell, ion, elvish, tcsh:_files' \
+Currently supported options: bash, zsh, fish, powershell, ion, elvish, tcsh, nu:_files' \
 && ret=0
 ;;
 (prompt)
