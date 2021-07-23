@@ -12,6 +12,7 @@ path=( \
     ~/.nimble/bin(N-/) \
     ~/Library/ApplicationSupport/Coursier/bin(N-/) \
     /usr/local/opt/libpq/bin(N-/) \
+    /usr/local/opt/llvm/bin(N-/) \
     "$path[@]" \
     )
 

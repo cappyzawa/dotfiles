@@ -247,3 +247,7 @@ lspconfig.pylsp.setup{
   cmd = lspcontainers.command('pylsp'),
 }
 --- }}}
+
+--- clang {{{
+lspconfig.clangd.setup{}
+--- }}}
