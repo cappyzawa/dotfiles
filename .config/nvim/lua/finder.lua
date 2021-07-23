@@ -9,6 +9,19 @@ telescope.load_extension('ghq')
 telescope.load_extension('terraform')
 telescope.setup{
   defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--hidden',
+    },
+    file_ignore_patterns = {
+      'node_modules',
+      '.git',
+    },
     mappings = {
       i = {
         ["<c-j>"] = actions.move_selection_next,
@@ -28,6 +41,7 @@ telescope.setup{
 }
 
 local opts = { noremap=true, silent=true }
+
 local keymap_telescope_func = {
   ["<Leader>ff"] = "require'telescope.builtin'.find_files()",
   ["<Leader>rg"] = "require'telescope.builtin'.live_grep()",
