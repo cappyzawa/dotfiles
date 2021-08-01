@@ -126,6 +126,15 @@ zinit ice wait'3' lucid as"program" has"go" \
   atclone"go install ./cmd/starlark/..." atpull"%atclone"
 zinit light google/starlark-go
 # }}}
+# open-policy-agent/conftest {{{
+zinit ice wait'2' lucid as"program" from"gh-r"
+zinit light open-policy-agent/conftest
+# }}}
+# open-policy-agent/opa {{{
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  mv"opa* -> opa"
+zinit light open-policy-agent/opa
+# }}}
 # }}}
 
 # docker {{{

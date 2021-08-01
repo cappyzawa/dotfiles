@@ -266,5 +266,6 @@ return require'packer'.startup(function()
       vim.g.rustfmt_autosave = 1
     end
   }
+  use 'tsandall/vim-rego'
 
 end)
