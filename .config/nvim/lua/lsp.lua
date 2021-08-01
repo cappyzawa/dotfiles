@@ -37,13 +37,13 @@ vim.fn.sign_define("LspDiagnosticsSignError", {text = vim.g.e_sign, texthl = "Ls
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = vim.g.w_sign, texthl = "LspDiagnosticsSignWarning"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = vim.g.h_sign, texthl = "LspDiagnosticsSignHint"})
 
--- keymap
+-- keymap {{{
 local keymap_lsp_func = {
   gd = "vim.lsp.buf.definition()",
   gp = "require'lspsaga.provider'.preview_definition()",
   gi = "vim.lsp.buf.implementation()",
   gk = "require'lspsaga.hover'.render_hover_doc()",
-  ["<C-j>"] = "require'lspsaga.action'.smart_scroll_with_saga(1)",
+  ["<Leader>8"] = "require'lspsaga.action'.smart_scroll_with_saga(1)",
   ["<C-k>"] = "require'lspsaga.action'.smart_scroll_with_saga(-1)",
   gr = "vim.lsp.buf.references()",
   gt = "require'lspsaga.rename'.rename()",
@@ -56,6 +56,7 @@ local keymap_lsp_func = {
   qt = "require'lspsaga.floaterm'.close_float_terminal()",
   ["<Leader>x"] = "require'lspsaga.floaterm'.open_float_terminal('lazygit')"
 }
+-- }}}
 
 local opts = { noremap=true, silent=true }
 for k, v in pairs(keymap_lsp_func) do
@@ -249,5 +250,10 @@ lspconfig.pylsp.setup{
 -- }}}
 
 -- clang {{{
-lspconfig.clangd.setup{}
+lspconfig.clangd.setup{
+  before_init = function(params)
+    params.processId = vim.NIL
+  end,
+  cmd = require'lspcontainers'.command('clangd'),
+}
 -- }}}
