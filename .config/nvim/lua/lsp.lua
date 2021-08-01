@@ -27,12 +27,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
----- icons
+--- icons
 vim.g.w_sign = ""
 vim.g.e_sign = ""
 vim.g.h_sign = "ﯦ"
 
----- hilight
+--- hilight
 vim.fn.sign_define("LspDiagnosticsSignError", {text = vim.g.e_sign, texthl = "LspDiagnosticsSignError"})
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = vim.g.w_sign, texthl = "LspDiagnosticsSignWarning"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = vim.g.h_sign, texthl = "LspDiagnosticsSignHint"})
@@ -70,11 +70,11 @@ local configs = require'lspconfig/configs'
 lspconfig.sumneko_lua.setup {
   cmd = lspcontainers.command('sumneko_lua'),
 }
---- }}}
+-- }}}
 
 --vim {{{
 lspconfig.vimls.setup{}
---- }}}
+-- }}}
 
 --julia {{{
 lspconfig.julials.setup{
@@ -99,11 +99,11 @@ lspconfig.julials.setup{
       new_config.cmd = cmd
     end
 }
---- }}}
+-- }}}
 
 --terraform {{{
 lspconfig.terraformls.setup{}
---- }}}
+-- }}}
 
 --go {{{
 function goimports(timeoutms)
@@ -139,7 +139,7 @@ lspconfig.gopls.setup {
     },
   },
 }
---- }}}
+-- }}}
 
 --rust {{{
 lspconfig.rust_analyzer.setup{
@@ -159,11 +159,11 @@ lspconfig.rust_analyzer.setup{
       }
   }
 }
---- }}}
+-- }}}
 
 --nim {{{
 lspconfig.nimls.setup{}
---- }}}
+-- }}}
 
 --docker {{{
 lspconfig.dockerls.setup{
@@ -172,7 +172,7 @@ lspconfig.dockerls.setup{
   end,
   cmd = lspcontainers.command('dockerls'),
 }
---- }}}
+-- }}}
 
 --yaml {{{
 lspconfig.yamlls.setup{
@@ -196,7 +196,7 @@ lspconfig.yamlls.setup{
     }
   }
 }
---- }}}
+-- }}}
 
 --elm {{{
 local custom_attach = function(client)
@@ -209,7 +209,7 @@ lspconfig.elmls.setup({
   on_attach = custom_attach;
 })
 vim.cmd([[ autocmd BufWritePre *.elm lua vim.lsp.buf.formatting() ]])
---- }}}
+-- }}}
 
 --bash {{{
 lspconfig.bashls.setup{
@@ -219,7 +219,7 @@ lspconfig.bashls.setup{
   cmd = lspcontainers.command('bashls'),
   filetypes = {"sh", "bash", "zsh"}
 }
---- }}}
+-- }}}
 
 --typescript {{{
 lspconfig.tsserver.setup{
@@ -228,7 +228,7 @@ lspconfig.tsserver.setup{
   end,
   cmd = lspcontainers.command('tsserver'),
 }
---- }}}
+-- }}}
 
 --json {{{
 lspconfig.jsonls.setup{
@@ -237,7 +237,7 @@ lspconfig.jsonls.setup{
   end,
   cmd = lspcontainers.command('jsonls'),
 }
---- }}}
+-- }}}
 
 --python {{{
 lspconfig.pylsp.setup{
@@ -246,8 +246,8 @@ lspconfig.pylsp.setup{
   end,
   cmd = lspcontainers.command('pylsp'),
 }
---- }}}
+-- }}}
 
---- clang {{{
+-- clang {{{
 lspconfig.clangd.setup{}
---- }}}
+-- }}}
