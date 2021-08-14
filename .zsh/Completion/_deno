@@ -95,8 +95,10 @@ _arguments "${_arguments_options[@]}" \
 '--allow-read=[Allow file system read access]' \
 '--allow-write=[Allow file system write access]' \
 '--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
 '--allow-env=[Allow environment access]' \
 '--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
 '--v8-flags=[Set V8 command line options (for help: --v8-flags=--help)]' \
 '--seed=[Seed Math.random()]' \
@@ -108,12 +110,12 @@ _arguments "${_arguments_options[@]}" \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--allow-plugin[Allow loading plugins]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
 '--prompt[Fallback to prompt if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
+'--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -197,6 +199,7 @@ _arguments "${_arguments_options[@]}" \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--cached-only[Require that remote dependencies are already cached]' \
+'--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
 '-T[Treat eval input as TypeScript]' \
 '--ts[Treat eval input as TypeScript]' \
 '-p[print result to stdout]' \
@@ -262,8 +265,10 @@ _arguments "${_arguments_options[@]}" \
 '--allow-read=[Allow file system read access]' \
 '--allow-write=[Allow file system write access]' \
 '--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
 '--allow-env=[Allow environment access]' \
 '--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
 '--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
 '--inspect-brk=[Activate inspector on host:port and break at start of user script]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
@@ -277,12 +282,12 @@ _arguments "${_arguments_options[@]}" \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--allow-plugin[Allow loading plugins]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
 '--prompt[Fallback to prompt if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
+'--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
 '-f[Forcefully overwrite existing installation]' \
 '--force[Forcefully overwrite existing installation]' \
 '-h[Prints help information]' \
@@ -339,12 +344,14 @@ _arguments "${_arguments_options[@]}" \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
 '--v8-flags=[Set V8 command line options (for help: --v8-flags=--help)]' \
 '--seed=[Seed Math.random()]' \
+'--eval=[Evaluates the provided code when the REPL starts.]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
 '--cached-only[Require that remote dependencies are already cached]' \
+'--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -366,8 +373,10 @@ _arguments "${_arguments_options[@]}" \
 '--allow-read=[Allow file system read access]' \
 '--allow-write=[Allow file system write access]' \
 '--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
 '--allow-env=[Allow environment access]' \
 '--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
 '--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
 '--inspect-brk=[Activate inspector on host:port and break at start of user script]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
@@ -378,12 +387,12 @@ _arguments "${_arguments_options[@]}" \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--allow-plugin[Allow loading plugins]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
 '--prompt[Fallback to prompt if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
+'--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
 '(--inspect --inspect-brk)--watch[UNSTABLE: Watch for file changes and restart process automatically]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
@@ -407,8 +416,10 @@ _arguments "${_arguments_options[@]}" \
 '--allow-read=[Allow file system read access]' \
 '--allow-write=[Allow file system write access]' \
 '--allow-net=[Allow network access]' \
+'--unsafely-ignore-certificate-errors=[DANGER: Disables verification of TLS certificates]' \
 '--allow-env=[Allow environment access]' \
 '--allow-run=[Allow running subprocesses]' \
+'--allow-ffi=[Allow loading dynamic libraries]' \
 '--inspect=[Activate inspector on host:port (default: 127.0.0.1:9229)]' \
 '--inspect-brk=[Activate inspector on host:port and break at start of user script]' \
 '--location=[Value of '\''globalThis.location'\'' used by some web APIs]' \
@@ -418,19 +429,19 @@ _arguments "${_arguments_options[@]}" \
 '--filter=[Run tests with this string or pattern in the test name]' \
 '--shuffle=[(UNSTABLE): Shuffle the order in which the tests are run]' \
 '(--inspect --inspect-brk)--coverage=[UNSTABLE: Collect coverage profile data]' \
-'-j+[]' \
-'--jobs=[]' \
+'-j+[Number of parallel workers, defaults to # of CPUs when no value is provided. Defaults to 1 when the option is not present.]' \
+'--jobs=[Number of parallel workers, defaults to # of CPUs when no value is provided. Defaults to 1 when the option is not present.]' \
 '-L+[Set log level]: :(debug info)' \
 '--log-level=[Set log level]: :(debug info)' \
 '--no-remote[Do not resolve remote modules]' \
 '--no-check[Skip type checking modules]' \
 '--lock-write[Write lock file (use with --lock)]' \
-'--allow-plugin[Allow loading plugins]' \
 '--allow-hrtime[Allow high resolution time measurement]' \
 '-A[Allow all permissions]' \
 '--allow-all[Allow all permissions]' \
 '--prompt[Fallback to prompt if required permission wasn'\''t passed]' \
 '--cached-only[Require that remote dependencies are already cached]' \
+'--enable-testing-features-do-not-use[INTERNAL: Enable internal features used during integration testing]' \
 '--no-run[Cache test modules, but don'\''t run tests]' \
 '--doc[UNSTABLE: type check code blocks]' \
 '--allow-none[Don'\''t return error code if no test files are found]' \
