@@ -66,6 +66,7 @@ end
 local lspconfig = require'lspconfig'
 local lspcontainers = require'lspcontainers'
 local configs = require'lspconfig/configs'
+local lsputil = require'lspconfig/util'
 
 --lua {{{
 lspconfig.sumneko_lua.setup {
@@ -219,6 +220,12 @@ lspconfig.bashls.setup{
   end,
   cmd = lspcontainers.command('bashls'),
   filetypes = {"sh", "bash", "zsh"}
+}
+-- }}}
+
+--deno {{{
+lspconfig.denols.setup{
+  root_dir = lsputil.root_pattern("deps.ts", "dev_deps.ts", "mod.ts")
 }
 -- }}}
 
