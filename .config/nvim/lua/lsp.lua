@@ -235,6 +235,7 @@ lspconfig.tsserver.setup{
     params.processId = vim.NIL
   end,
   cmd = lspcontainers.command('tsserver'),
+  root_dir = lsputil.root_pattern("package.json", "package-lock.json", "yarh-lock.json")
 }
 -- }}}
 
