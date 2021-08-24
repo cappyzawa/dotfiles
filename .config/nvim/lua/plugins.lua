@@ -72,7 +72,8 @@ return require'packer'.startup(function()
       {'nvim-telescope/telescope-ghq.nvim'},
       {'nvim-telescope/telescope-packer.nvim'},
       {'nvim-telescope/telescope-symbols.nvim'},
-      {'cappyzawa/telescope-terraform.nvim'}
+      {'cappyzawa/telescope-terraform.nvim'},
+      {'glepnir/lspsaga.nvim'},
     },
     config = function()
       require'finder'
@@ -165,7 +166,6 @@ return require'packer'.startup(function()
           return npairs.check_break_line_char()
         end
       end
-
 
       remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
     end

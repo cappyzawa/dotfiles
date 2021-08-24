@@ -10,6 +10,7 @@ path=( \
     ~/.yarn/bin(N-/) \
     ~/.julia/conda/3/bin(N-/) \
     ~/.nimble/bin(N-/) \
+    ~/.deno/bin(N-/) \
     ~/Library/ApplicationSupport/Coursier/bin(N-/) \
     /usr/local/opt/libpq/bin(N-/) \
     /usr/local/opt/llvm/bin(N-/) \
@@ -23,7 +24,6 @@ autoload -Uz colors && colors
 autoload -Uz compinit && compinit -u
 autoload -Uz is-at-least
 autoload -U +X bashcompinit && bashcompinit
-
 
 # LANGUAGE must be set by en_US
 export LANGUAGE="en_US.UTF-8"

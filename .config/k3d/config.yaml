@@ -1,0 +1,9 @@
+apiVersion: k3d.io/v1alpha2
+kind: Simple
+name: cappyzawa
+servers: 1
+agents: 3
+options:
+  k3d:
+    wait: true
+    timeout: "120s"
