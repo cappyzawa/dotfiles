@@ -291,6 +291,12 @@ zinit ice wait'2' lucid as"program" from"gh-r" pick"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn && ln -s `which tkn` /usr/local/bin/kubectl-tkn" atpull"%atclone"
 zinit light tektoncd/cli
 # }}}
+# argoproj/argo-cd {{{
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  mv"argocd-*->argocd" \
+  atclone"argocd completion zsh > ~/.zsh/Completion/_argocd" atpull"%atclone"
+zinit light argoproj/argo-cd
+# }}}
 # }}}
 
 # hashicorp tools {{{
