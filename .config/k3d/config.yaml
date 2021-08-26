@@ -6,4 +6,3 @@ agents: 3
 options:
   k3d:
     wait: true
-    timeout: "120s"
