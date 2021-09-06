@@ -135,6 +135,15 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"opa* -> opa"
 zinit light open-policy-agent/opa
 # }}}
+# smallstep/cli {{{
+zinit ice wait'3' lucid as"program" from"gh-r" \
+  mv"step_*/bin/step -> $ZPFX/bin/step"
+zinit light smallstep/cli
+# }}}
+# mike-engel/jwt-cli {{{
+zinit ice wait'2' lucid as"program" from"gh-r"
+zinit light mike-engel/jwt-cli
+# }}}
 # }}}
 
 # docker {{{
@@ -292,10 +301,15 @@ zinit ice wait'2' lucid as"program" from"gh-r" pick"tkn" \
 zinit light tektoncd/cli
 # }}}
 # argoproj/argo-cd {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
+zinit ice wait'1' lucid as"program" from"gh-r" \
   mv"argocd-*->argocd" \
   atclone"argocd completion zsh > ~/.zsh/Completion/_argocd" atpull"%atclone"
 zinit light argoproj/argo-cd
+# }}}
+# argoproj/argo-rollouts {{{
+zinit ice wait'2' lucid as"program" from"gh-r" has"kubectl" \
+  mv"kubectl-argo-rollouts-*->/usr/local/bin/kubectl-argo-rollouts"
+zinit light argoproj/argo-rollouts
 # }}}
 # }}}
 
@@ -341,12 +355,6 @@ zinit ice wait'1' lucid as"program" from:"gh-r" \
   atclone"cp ttf/FiraCode*.ttf ~/Library/Fonts"
 zinit light tonsky/FiraCode
 fi
-# }}}
-
-# smallstep/cli {{{
-zinit ice wait'3' lucid as"program" from"gh-r" \
-  mv"step_*/bin/step -> $ZPFX/bin/step"
-zinit light smallstep/cli
 # }}}
 
 # cloudfoundry/bosh-cli {{{

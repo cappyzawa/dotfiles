@@ -239,7 +239,7 @@ lspconfig.tsserver.setup{
 }
 -- }}}
 
---json {{{
+-- json {{{
 lspconfig.jsonls.setup{
   before_init = function(params)
     params.processId = vim.NIL
@@ -264,4 +264,8 @@ lspconfig.clangd.setup{
   end,
   cmd = require'lspcontainers'.command('clangd'),
 }
+-- }}}
+
+-- ruby {{{
+lspconfig.solargraph.setup{}
 -- }}}
