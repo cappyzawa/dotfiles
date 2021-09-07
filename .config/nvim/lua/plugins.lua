@@ -43,22 +43,30 @@ return require'packer'.startup(function()
     end
   }
   use {
-    'hrsh7th/nvim-compe',
+    'hrsh7th/nvim-cmp',
+    requires = {
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-emoji",
+    },
     config = function()
-      vim.o.completeopt = "menuone,noselect"
-      require'compe'.setup{
-        enabled = true,
-        autocomplete = true,
-        min_length = 1,
-
-        source = {
-          path = true,
-          buffer = true,
-          calc = true,
-          nvim_lsp = true,
-          nvim_lua = true,
-          spell = true,
-          tags = true,
+      local cmp = require'cmp'
+      cmp.setup{
+        completion = {
+          completeopt = 'menu,menuone,noinsert'
+        },
+        mapping = {
+          ['<CR>'] = cmp.mapping.confirm()
+        },
+        sources = {
+          {name = "nvim_lsp"},
+          {name = "buffer"},
+          {name = "path"},
+          {name = "nvim_lua"},
+          {name = "emoji"},
         }
       }
     end
@@ -142,33 +150,7 @@ return require'packer'.startup(function()
     keys = {'gc'}
   }
   use {
-    'windwp/nvim-autopairs',
-    config = function()
-      local remap = vim.api.nvim_set_keymap
-      local npairs = require('nvim-autopairs')
-      npairs.setup{}
-      -- skip it, if you use another global object
-      _G.MUtils= {}
-
-      vim.g.completion_confirm_key = ""
-      MUtils.completion_confirm=function()
-        if vim.fn.pumvisible() ~= 0  then
-          if vim.fn.complete_info()["selected"] ~= -1 then
-            vim.fn["compe#confirm"]()
-            return npairs.esc("<c-y>")
-          else
-            vim.defer_fn(function()
-              vim.fn["compe#confirm"]("<cr>")
-            end, 20)
-            return npairs.esc("<c-n>")
-          end
-        else
-          return npairs.check_break_line_char()
-        end
-      end
-
-      remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
-    end
+    'jiangmiao/auto-pairs'
   }
   use {
     'cappyzawa/trim.nvim',
