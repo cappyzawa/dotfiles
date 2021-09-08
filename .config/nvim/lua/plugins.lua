@@ -249,5 +249,11 @@ return require'packer'.startup(function()
     end
   }
   use 'tsandall/vim-rego'
-
+  use {
+    'tyru/open-browser-github.vim',
+    requires = {
+      'tyru/open-browser.vim'
+    },
+    cmd = {'OpenGithubFile'}
+  }
 end)
