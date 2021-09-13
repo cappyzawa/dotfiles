@@ -67,7 +67,7 @@ schemes:
       cyan: '#33AFBE'
       white: '#9197a3'
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. The number of columns
@@ -89,9 +89,9 @@ schemes:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  # padding:
-  #  x: 0
-  #  y: 0
+  padding:
+   x: 1
+   y: 0
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
