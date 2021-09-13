@@ -136,9 +136,11 @@ return require'packer'.startup(function()
   }
   use {
     'glepnir/zephyr-nvim',
+    requires = {
+      'nvim-treesitter/nvim-treesitter'
+    },
     config = function()
       require'zephyr'
-      vim.g.colors_name = 'zephyr'
     end
   }
   use {

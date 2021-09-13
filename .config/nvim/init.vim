@@ -258,6 +258,8 @@ set wrap
 
 " Enalbe termguicolors
 set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 if has('clipboard')
 	set clipboard=unnamed
@@ -287,7 +289,6 @@ if has('nvim')
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
   augroup END
 endif
-
 
 lua require'plugins'
 " }}}
