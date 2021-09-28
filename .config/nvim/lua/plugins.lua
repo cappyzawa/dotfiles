@@ -17,31 +17,37 @@ return require'packer'.startup(function()
   local use = require('packer').use
   use {'wbthomason/packer.nvim', opt = true}
   use {
-    'glepnir/lspsaga.nvim',
+    'neovim/nvim-lspconfig',
     requires = {
-      {
-        'neovim/nvim-lspconfig',
-        'lspcontainers/lspcontainers.nvim',
-      }
+      'lspcontainers/lspcontainers.nvim',
     },
     config = function()
-      local saga = require 'lspsaga'
-      local saga_opts = {
-        error_sign = vim.g.e_sign,
-        warn_sign = vim.g.w_sign,
-        hint_sign = vim.g.h_sign,
-        finder_action_keys = {
-          open = 'o',
-          vsplit = '<C-v>',
-          split = '<C-s>',
-          scroll_down = '<C-j>',
-          scroll_up = '<C-k>',
-        },
-      }
-      saga.init_lsp_saga(saga_opts)
       require'lsp'
     end
   }
+  -- use {
+  --   'glepnir/lspsaga.nvim',
+  --   requires = {
+  --     'neovim/nvim-lspconfig',
+  --   },
+  --   config = function()
+  --     local saga = require 'lspsaga'
+  --     local saga_opts = {
+  --       error_sign = vim.g.e_sign,
+  --       warn_sign = vim.g.w_sign,
+  --       hint_sign = vim.g.h_sign,
+  --       finder_action_keys = {
+  --         open = 'o',
+  --         vsplit = '<C-v>',
+  --         split = '<C-s>',
+  --         scroll_down = '<C-j>',
+  --         scroll_up = '<C-k>',
+  --       },
+  --     }
+  --     saga.init_lsp_saga(saga_opts)
+  --     require'lsp'
+  --   end
+  -- }
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -88,7 +94,6 @@ return require'packer'.startup(function()
       {'nvim-telescope/telescope-packer.nvim'},
       {'nvim-telescope/telescope-symbols.nvim'},
       {'cappyzawa/telescope-terraform.nvim'},
-      {'glepnir/lspsaga.nvim'},
     },
     config = function()
       require'finder'
@@ -142,7 +147,7 @@ return require'packer'.startup(function()
     end
   }
   use {
-    'glepnir/zephyr-nvim',
+    'cappyzawa/zephyr-nvim',
     requires = {
       'nvim-treesitter/nvim-treesitter'
     },

@@ -1,7 +1,6 @@
 local vim = vim
 
 -- dignostic
-vim.lsp.diagnostic.set_signs()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     -- Enable underline, use default values
@@ -13,17 +12,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     },
     -- Use a function to dynamically turn signs off
     -- and on, using buffer local variables
-    signs = function(bufnr, client_id)
-      local ok, result = pcall(vim.api.nvim_buf_get_var, bufnr, 'show_signs')
-      -- No buffer local variable set, so just enable by default
-      if not ok then
-        return true
-      end
-
-      return result
-    end,
+    signs = true,
     -- Disable a feature
-    update_in_insert = false,
+    update_in_insert = true,
   }
 )
 
@@ -33,35 +24,47 @@ vim.g.e_sign = ""
 vim.g.h_sign = "ﯦ"
 
 --- hilight
-vim.fn.sign_define("LspDiagnosticsSignError", {text = vim.g.e_sign, texthl = "LspDiagnosticsSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = vim.g.w_sign, texthl = "LspDiagnosticsSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = vim.g.h_sign, texthl = "LspDiagnosticsSignHint"})
+vim.fn.sign_define("DiagnosticSignError", {text = vim.g.e_sign, texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn", {text = vim.g.w_sign, texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignHint", {text = vim.g.h_sign, texthl = "DiagnosticSignHint"})
+
+-- attach {{{
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  local opts = { noremap=true, silent=true }
+  -- keymap {{{
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', 'gk', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  --- }}}
+end
+--- }}}
 
 -- keymap {{{
-local keymap_lsp_func = {
-  gd = "vim.lsp.buf.definition()",
-  gp = "require'lspsaga.provider'.preview_definition()",
-  gi = "vim.lsp.buf.implementation()",
-  gk = "require'lspsaga.hover'.render_hover_doc()",
-  ["<Leader>8"] = "require'lspsaga.action'.smart_scroll_with_saga(1)",
-  ["<C-k>"] = "require'lspsaga.action'.smart_scroll_with_saga(-1)",
-  gr = "vim.lsp.buf.references()",
-  gt = "require'lspsaga.rename'.rename()",
-  gh = "require'lspsaga.provider'.lsp_finder()",
-  ca = "require'lspsaga.codeaction'.code_action()",
-  ["[e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()",
-  ["]e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()",
-  cc = "require'lspsaga.diagnostic'.show_line_diagnostics()",
-  et = "require'lspsaga.floaterm'.open_float_terminal()",
-  qt = "require'lspsaga.floaterm'.close_float_terminal()",
-  ["<Leader>x"] = "require'lspsaga.floaterm'.open_float_terminal('lazygit')"
-}
+-- local keymap_lsp_func = {
+--   gd = "vim.lsp.buf.definition()",
+--   gp = "require'lspsaga.provider'.preview_definition()",
+--   gi = "vim.lsp.buf.implementation()",
+--   gk = "require'lspsaga.hover'.render_hover_doc()",
+--   gk = "vim.lsp.buf.hover()",
+--   ["<C-j>"] = "require'lspsaga.action'.smart_scroll_with_saga(1)",
+--   ["<C-k>"] = "require'lspsaga.action'.smart_scroll_with_saga(-1)",
+--   gr = "vim.lsp.buf.references()",
+--   gt = "vim.lsp.buf.rename()",
+--   gh = "require'lspsaga.provider'.lsp_finder()",
+--   ca = "require'lspsaga.codeaction'.code_action()",
+--   ["[e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()",
+--   ["]e"] = "require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()",
+--   cc = "require'lspsaga.diagnostic'.show_line_diagnostics()",
+--   et = "require'lspsaga.floaterm'.open_float_terminal()",
+--   qt = "require'lspsaga.floaterm'.close_float_terminal()",
+--   ["<Leader>x"] = "require'lspsaga.floaterm'.open_float_terminal('lazygit')"
+-- }
 -- }}}
-
-local opts = { noremap=true, silent=true }
-for k, v in pairs(keymap_lsp_func) do
-  vim.api.nvim_set_keymap('n', k, string.format("<cmd>lua %s<CR>", v), opts)
-end
 
 local lspconfig = require'lspconfig'
 local lspcontainers = require'lspcontainers'
@@ -70,16 +73,20 @@ local lsputil = require'lspconfig/util'
 
 --lua {{{
 lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
   cmd = lspcontainers.command('sumneko_lua'),
 }
 -- }}}
 
 --vim {{{
-lspconfig.vimls.setup{}
+lspconfig.vimls.setup{
+  on_attach = on_attach,
+}
 -- }}}
 
 --julia {{{
 lspconfig.julials.setup{
+    on_attach = on_attach,
     on_new_config = function(new_config,new_root_dir)
       cmd = {
         "julia",
@@ -104,7 +111,9 @@ lspconfig.julials.setup{
 -- }}}
 
 --terraform {{{
-lspconfig.terraformls.setup{}
+lspconfig.terraformls.setup{
+  on_attach = on_attach,
+}
 -- }}}
 
 --go {{{
@@ -140,7 +149,7 @@ end
 vim.cmd([[ autocmd BufWritePre *.go lua goimports(1000) ]])
 
 lspconfig.gopls.setup {
-  cmd = {"gopls", "serve"},
+  on_attach = on_attach,
   settings = {
     gopls = {
       analyses = {
@@ -155,30 +164,20 @@ lspconfig.gopls.setup {
 
 --rust {{{
 lspconfig.rust_analyzer.setup{
+  on_attach = on_attach,
   cmd = {"rust-analyzer"},
-  settings = {
-      ["rust-analyzer"] = {
-          assist = {
-              importMergeBehavior = "last",
-              importPrefix = "by_self",
-          },
-          cargo = {
-              loadOutDirsFromCheck = true
-          },
-          procMacro = {
-              enable = true
-          },
-      }
-  }
 }
 -- }}}
 
 --nim {{{
-lspconfig.nimls.setup{}
+lspconfig.nimls.setup{
+  on_attach = on_attach,
+}
 -- }}}
 
 --docker {{{
 lspconfig.dockerls.setup{
+  on_attach = on_attach,
   before_init = function(params)
     params.processId = vim.NIL
   end,
@@ -188,6 +187,7 @@ lspconfig.dockerls.setup{
 
 --yaml {{{
 lspconfig.yamlls.setup{
+  on_attach = on_attach,
   before_init = function(params)
     params.processId = vim.NIL
   end,
@@ -212,6 +212,7 @@ lspconfig.yamlls.setup{
 
 --elm {{{
 local custom_attach = function(client)
+  on_attach(client)
   if client.config.flags then
     client.config.flags.allow_incremental_sync = true
   end
@@ -225,6 +226,7 @@ vim.cmd([[ autocmd BufWritePre *.elm lua vim.lsp.buf.formatting() ]])
 
 --bash {{{
 lspconfig.bashls.setup{
+  on_attach = on_attach,
   before_init = function(params)
     params.processId = vim.NIL
   end,
@@ -235,12 +237,14 @@ lspconfig.bashls.setup{
 
 --deno {{{
 lspconfig.denols.setup{
+  on_attach = on_attach,
   root_dir = lsputil.root_pattern("deps.ts", "dev_deps.ts", "mod.ts")
 }
 -- }}}
 
 --typescript {{{
 lspconfig.tsserver.setup{
+  on_attach = on_attach,
   before_init = function(params)
     params.processId = vim.NIL
   end,
@@ -251,6 +255,7 @@ lspconfig.tsserver.setup{
 
 -- json {{{
 lspconfig.jsonls.setup{
+  on_attach = on_attach,
   before_init = function(params)
     params.processId = vim.NIL
   end,
@@ -260,6 +265,7 @@ lspconfig.jsonls.setup{
 
 --python {{{
 lspconfig.pylsp.setup{
+  on_attach = on_attach,
   before_init = function(params)
     params.processId = vim.NIL
   end,
@@ -269,6 +275,7 @@ lspconfig.pylsp.setup{
 
 -- clang {{{
 lspconfig.clangd.setup{
+  on_attach = on_attach,
   before_init = function(params)
     params.processId = vim.NIL
   end,
@@ -277,5 +284,7 @@ lspconfig.clangd.setup{
 -- }}}
 
 -- ruby {{{
-lspconfig.solargraph.setup{}
+lspconfig.solargraph.setup{
+  on_attach = on_attach,
+}
 -- }}}

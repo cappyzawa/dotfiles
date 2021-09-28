@@ -37,7 +37,7 @@ zinit light direnv/direnv
 # }}}
 # neovim/neovim {{{
 zinit ice lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
-  bpick"nvim-macos.tar.gz" ver"v0.5.0"
+  bpick"nvim-macos.tar.gz" ver"nightly"
 zinit light neovim/neovim
 # }}}
 # tree-sitter/tree-sitter {{{
