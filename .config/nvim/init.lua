@@ -85,7 +85,10 @@ local common_opts = {
   sh = 'zsh',
   completeopt = 'menu,menuone,noselect',
   clipboard = 'unnamedplus',
+  ignorecase = true,
+  smartcase = true,
 }
+
 vim.cmd [[ set shortmess+=c ]]
 vim.cmd [[ inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>" ]]
 vim.cmd [[ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>" ]]
