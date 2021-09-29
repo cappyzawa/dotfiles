@@ -68,7 +68,6 @@ for k, v in pairs(vmap) do
   set_keymap('v', k, v, keymap_opt)
 end
 -- }}}
-
 -- }}}
 
 -- option {{{
@@ -85,6 +84,7 @@ local common_opts = {
   sh = 'zsh',
   completeopt = 'menu,menuone,noselect',
   clipboard = 'unnamedplus',
+  swapfile = false,
   ignorecase = true,
   smartcase = true,
 }
@@ -113,8 +113,6 @@ end
 local buffer_opts = {
   autoindent = true,
   smartindent = true,
-  tabstop = 2,
-  shiftwidth = 2,
   expandtab = true,
   undofile = true,
 }
@@ -123,8 +121,11 @@ local cur_buf = vim.api.nvim_get_current_buf()
 for k, v in pairs(buffer_opts) do
   vim.api.nvim_buf_set_option(cur_buf, k, v)
 end
--- }}}
 
+-- https://github.com/neovim/neovim/issues/13433
+vim.cmd [[set shiftwidth=2]]
+vim.cmd [[set tabstop=2]]
+-- }}}
 -- }}}
 
 -- au {{{
@@ -132,6 +133,143 @@ vim.cmd [[augroup LuaHighlight]]
 vim.cmd [[  autocmd!]]
 vim.cmd [[  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()]]
 vim.cmd [[augroup END]]
+
+vim.cmd [[augroup CursorRestore]]
+vim.cmd [[  au Bufread * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif ]]
+vim.cmd [[augroup END]]
 -- }}}
 
-require'plugins'
+-- plugins {{{
+-- install packer {{{
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+
+vim.api.nvim_exec(
+  [[
+  augroup Packer
+    autocmd!
+    autocmd BufWritePost init.lua PackerCompile
+  augroup end
+]],
+  false
+)
+-- }}}
+local use = require('packer').use
+require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require'plugins'.telescope()
+    end
+  }
+  use {
+    'cappyzawa/zephyr-nvim',
+    requires = {
+      'nvim-treesitter/nvim-treesitter'
+    },
+    config = function()
+      require'zephyr'
+    end,
+  }
+  use {
+    'glepnir/galaxyline.nvim',
+    requires = {
+      {'kyazdani42/nvim-web-devicons'},
+      {'lewis6991/gitsigns.nvim'}
+    },
+    config = function()
+      require'plugins'.galaxyline()
+    end
+  }
+  use {
+    'tomtom/tcomment_vim',
+    config = function()
+      require'plugins'.tcomment_vim()
+    end
+  }
+  use 'jiangmiao/auto-pairs'
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    requires = {
+      'nvim-treesitter/nvim-treesitter-textobjects'
+    },
+    run = ':TSUpdate',
+    config = function()
+      require'plugins'.treesitter()
+    end
+  }
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      'lspcontainers/lspcontainers.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+    config = function()
+      require'plugins'.lspconfig()
+    end
+  }
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-emoji",
+    },
+    config = function()
+      require'plugins'.nvim_cmp()
+    end
+  }
+  use {
+    'cappyzawa/trim.nvim',
+    config = function ()
+      require'trim'.setup({
+        disable = {'markdown'},
+      })
+    end
+  }
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require'colorizer'.setup()
+    end
+  }
+  use {
+    'rhysd/git-messenger.vim',
+    config = function()
+      require'plugins'.git_messenger()
+    end
+  }
+  use {
+    'ggandor/lightspeed.nvim',
+    config = function()
+      require'plugins'.lightspeed()
+    end
+  }
+  use 'zinit-zsh/zinit-vim-syntax'
+  use 'cappyzawa/go-playground.nvim'
+  use {
+    'hashivim/vim-terraform',
+    config = function()
+      require'plugins'.terraform()
+    end,
+  }
+  use {
+    'tyru/open-browser-github.vim',
+    requires = {
+      'tyru/open-browser.vim'
+    },
+    cmd = {'OpenGithubFile'}
+  }
+  end)
+-- }}}

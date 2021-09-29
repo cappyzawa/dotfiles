@@ -1,273 +1,192 @@
--- bootstrapping {{{
-local execute = vim.api.nvim_command
-local fn = vim.fn
+local M = {}
+local vim = vim
+local api = vim.api
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) > 0 then
- execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
- execute 'packadd packer.nvim'
+M.galaxyline = function()
+  local eviline = vim.fn.stdpath('data') .. '/site/pack/packer/start/galaxyline.nvim/example/eviline.lua'
+  vim.cmd('luafile ' .. eviline)
 end
--- }}}
 
-vim.cmd [[packadd packer.nvim]]
-vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
+M.tcomment_vim = function()
+  local opt = { noremap=true, silent=true }
+  api.nvim_set_keymap('n', 'gc', [[:<C-u>TComment<CR>]], opt)
+  api.nvim_set_keymap('v', 'gc', [[:<C-u>'<,'>TComment<CR>]], opt)
+end
 
-return require'packer'.startup(function()
-  local use = require('packer').use
-  use {'wbthomason/packer.nvim', opt = true}
-  use {
-    'neovim/nvim-lspconfig',
-    requires = {
-      'lspcontainers/lspcontainers.nvim',
-    },
-    config = function()
-      require'lsp'
-    end
-  }
-  -- use {
-  --   'glepnir/lspsaga.nvim',
-  --   requires = {
-  --     'neovim/nvim-lspconfig',
-  --   },
-  --   config = function()
-  --     local saga = require 'lspsaga'
-  --     local saga_opts = {
-  --       error_sign = vim.g.e_sign,
-  --       warn_sign = vim.g.w_sign,
-  --       hint_sign = vim.g.h_sign,
-  --       finder_action_keys = {
-  --         open = 'o',
-  --         vsplit = '<C-v>',
-  --         split = '<C-s>',
-  --         scroll_down = '<C-j>',
-  --         scroll_up = '<C-k>',
-  --       },
-  --     }
-  --     saga.init_lsp_saga(saga_opts)
-  --     require'lsp'
-  --   end
-  -- }
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      "hrsh7th/vim-vsnip",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-emoji",
-    },
-    config = function()
-      local cmp = require'cmp'
-      cmp.setup{
-        completion = {
-          completeopt = 'menu,menuone,noinsert'
-        },
-        mapping = {
-          ['<CR>'] = cmp.mapping.confirm()
-        },
-        sources = {
-          {name = "nvim_lsp"},
-          {
-            name = "buffer",
-            opts = {
-              get_bufnrs = function()
-                return vim.api.nvim_list_bufs()
-              end
-            }
-          },
-          {name = "path"},
-          {name = "nvim_lua"},
-          {name = "emoji"},
-        }
-      }
-    end
-  }
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {
-      {'nvim-lua/popup.nvim'},
-      {'nvim-lua/plenary.nvim'},
-      {'nvim-telescope/telescope-github.nvim'},
-      {'nvim-telescope/telescope-ghq.nvim'},
-      {'nvim-telescope/telescope-packer.nvim'},
-      {'nvim-telescope/telescope-symbols.nvim'},
-      {'cappyzawa/telescope-terraform.nvim'},
-    },
-    config = function()
-      require'finder'
-    end
-  }
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    config = function()
-      local treesitter_configs = require'nvim-treesitter.configs'
-      local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-      local execute = vim.api.nvim_command
-      local tree_sitter_path = vim.fn.stdpath('data')..'/site/pack/packer/start/nvim-treesitter'
+M.nvim_cmp = function()
+	local cmp = require'cmp'
+	cmp.setup{
+		snippet = {
+			expand = function(args)
+				vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
+			end,
+		},
+		completion = {
+			completeopt = 'menu,menuone,noinsert'
+		},
+		mapping = {
+			['<CR>'] = cmp.mapping.confirm()
+		},
+		sources = {
+			{name = "nvim_lsp"},
+			{
+				name = "buffer",
+				opts = {
+					get_bufnrs = function()
+						return vim.api.nvim_list_bufs()
+					end
+				}
+			},
+			{name = "path"},
+			{name = "nvim_lua"},
+			{name = "emoji"},
+			{name = "vsnip"},
+		}
+	}
+end
 
-      treesitter_configs.setup {
-        ensure_installed = "maintained",
-        highlight = {
-            enable = true,
-            disable = {},
-        },
-      }
+M.goimports = function(timeout_ms)
+  local context = { only = { "source.organizeImports" } }
+  vim.validate { context = { context, "t", true } }
 
-      -- hcl {{{
-      execute('autocmd BufRead,BufNewFile *.hcl set filetype=hcl')
-      -- }}}
+  local params = vim.lsp.util.make_range_params()
+  params.context = context
+
+  -- See the implementation of the textDocument/codeAction callback
+  -- (lua/vim/lsp/handler.lua) for how to do this properly.
+  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+  if not result or next(result) == nil then return end
+  local actions = result[1].result
+  if not actions then return end
+  local action = actions[1]
+
+  -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
+  -- is a CodeAction, it can have either an edit, a command or both. Edits
+  -- should be executed first.
+  if action.edit or type(action.command) == "table" then
+    if action.edit then
+      vim.lsp.util.apply_workspace_edit(action.edit)
     end
-  }
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-    config = function()
-      require('gitsigns').setup({
-        keymaps = {
-          noremap = true,
-          buffer = true,
-        }
-      })
+    if type(action.command) == "table" then
+      vim.lsp.buf.execute_command(action.command)
     end
-  }
-  use {
-    'glepnir/galaxyline.nvim',
-    requires = {
-      {'kyazdani42/nvim-web-devicons'},
-      {'lewis6991/gitsigns.nvim'}
-    },
-    config = function()
-      local eviline = vim.fn.stdpath('data') .. '/site/pack/packer/start/galaxyline.nvim/example/eviline.lua'
-      vim.cmd('luafile ' .. eviline)
-    end
-  }
-  use {
-    'cappyzawa/zephyr-nvim',
-    requires = {
-      'nvim-treesitter/nvim-treesitter'
-    },
-    config = function()
-      require'zephyr'
-    end
-  }
-  use {
-    'tomtom/tcomment_vim',
-    setup = function()
-      vim.cmd [[nnoremap <silent> gc :<C-u>TComment<CR>]]
-      vim.cmd [[vnoremap <silent> gc :<C-u>'<,'>TComment<CR>]]
-    end,
-    keys = {'gc'}
-  }
-  use {
-    'jiangmiao/auto-pairs'
-  }
-  use {
-    'cappyzawa/trim.nvim',
-    config = function()
-      require('trim').setup({
-        -- if you want to ignore markdown file.
-        -- you can specify filetypes.
-        disable = {"markdown"},
-      })
-      vim.cmd [[augroup CursorRestore]]
-      vim.cmd [[  au Bufread * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif ]]
-      vim.cmd [[augroup END]]
-    end,
-  }
-  use {
-    'iamcco/markdown-preview.nvim',
-    setup = function()
-      vim.cmd [[autocmd FileType markdown nnoremap <silent> <C-p> :<C-u>MarkdownPreview<CR>]]
-    end,
-    config = {'vim.cmd[[doautocmd BufEnter]]', 'vim.cmd[[MarkdownPreview]]'},
-    run = 'cd app && yarn install',
-    cmd = 'MarkdownPreview',
-    ft = 'markdown',
-  }
-  use {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require'colorizer'.setup()
-    end
-  }
-  use {
-    'rhysd/git-messenger.vim',
-    cmd = {'GitMessenger'},
-    config = function()
-      vim.g.git_messenger_include_diff = 'current'
-      vim.g.git_messenger_always_into_popup = true
-      vim.g.git_messenger_no_default_mappings = true
-    end,
-    setup = function()
-      vim.cmd[[nnoremap <silent> <Leader>gm :<C-u>GitMessenger<CR>]]
-    end
-  }
-  use {
-    'simeji/winresizer',
-    config = function()
-      vim.g.winresizer_vert_resize = 1
-      vim.g.winresizer_horiz_resize = 1
-    end,
-    cmd = {'WinResizerStartResize'},
-    keys = {'<C-e>'}
-  }
-  use {
-    'ggandor/lightspeed.nvim',
-    config = function()
-      require'lightspeed'.setup {
-        jump_to_first_match = true,
-        jump_on_partial_input_safety_timeout = 400,
-        -- This can get _really_ slow if the window has a lot of content,
-        -- turn it on only if your machine can always cope with it.
-        highlight_unique_chars = false,
-        grey_out_search_area = true,
-        match_only_the_start_of_same_char_seqs = true,
-        limit_ft_matches = 5,
-        full_inclusive_prefix_key = '<c-x>',
-        -- By default, the values of these will be decided at runtime,
-        -- based on `jump_to_first_match`.
-        labels = nil,
-        cycle_group_fwd_key = nil,
-        cycle_group_bwd_key = nil,
-      }
-      local lightspeed_sc = {'f', 'F', 't', 'T'}
-      for _, v in pairs(lightspeed_sc) do
-        vim.api.nvim_set_keymap('n', v, string.format('reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_%s" : "%s"', v, v), {expr = true})
-      end
-    end,
-  }
-  use {
-    'hashivim/vim-terraform',
-    config = function()
-      vim.g.terraform_align = 1
-      vim.g.terraform_fold_sections = 1
-      vim.g.terraform_fmt_on_save = 1
-    end,
-    cond = [[vim.fn.executable('terraform')]]
-  }
-  use 'zinit-zsh/zinit-vim-syntax'
-  use 'cappyzawa/starlark.vim'
-  use 'cappyzawa/go-playground.nvim'
-  use 'aklt/plantuml-syntax'
-  use 'JuliaEditorSupport/julia-vim'
-  use 'alaviss/nim.nvim'
-  use {
-    'rust-lang/rust.vim',
-    config = function()
-      vim.g.rustfmt_autosave = 1
-    end
-  }
-  use 'tsandall/vim-rego'
-  use {
-    'tyru/open-browser-github.vim',
-    requires = {
-      'tyru/open-browser.vim'
-    },
-    cmd = {'OpenGithubFile'}
-  }
-end)
+  else
+    vim.lsp.buf.execute_command(action)
+  end
+end
+
+M.lspconfig = function()
+	require'lsp'
+	vim.cmd [[autocmd BufWritePre *.go lua require'plugins'.goimports(1000)]]
+  vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.formatting()]]
+end
+
+M.git_messenger = function()
+  local opt = { noremap=true, silent=true }
+	vim.g.git_messenger_include_diff = 'current'
+	vim.g.git_messenger_always_into_popup = true
+	vim.g.git_messenger_no_default_mappings = true
+	api.nvim_set_keymap('n', '<Leader>gm', ':<C-u>GitMessenger<CR>', opt)
+end
+
+M.lightspeed = function()
+	require'lightspeed'.setup {
+		jump_to_first_match = true,
+		jump_on_partial_input_safety_timeout = 400,
+		-- This can get _really_ slow if the window has a lot of content,
+		-- turn it on only if your machine can always cope with it.
+		highlight_unique_chars = false,
+		grey_out_search_area = true,
+		match_only_the_start_of_same_char_seqs = true,
+		limit_ft_matches = 5,
+		full_inclusive_prefix_key = '<c-x>',
+		-- By default, the values of these will be decided at runtime,
+		-- based on `jump_to_first_match`.
+		labels = nil,
+		cycle_group_fwd_key = nil,
+		cycle_group_bwd_key = nil,
+	}
+	local lightspeed_sc = {'f', 'F', 't', 'T'}
+	for _, v in pairs(lightspeed_sc) do
+		vim.api.nvim_set_keymap('n', v, string.format('reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_%s" : "%s"', v, v), {expr = true})
+	end
+end
+
+M.terraform = function ()
+	vim.g.terraform_align = 1
+	vim.g.terraform_fold_sections = 1
+	vim.g.terraform_fmt_on_save = 1
+end
+
+M.treesitter = function()
+	local treesitter_configs = require'nvim-treesitter.configs'
+	local execute = vim.api.nvim_command
+
+	treesitter_configs.setup {
+		ensure_installed = "maintained",
+		highlight = {
+				enable = true,
+				disable = {},
+		},
+	}
+
+	-- hcl {{{
+	execute('autocmd BufRead,BufNewFile *.hcl set filetype=hcl')
+	-- }}}
+end
+
+M.telescope = function()
+	local telescope = require'telescope'
+	local actions = require'telescope.actions'
+	telescope.setup{
+		defaults = {
+			vimgrep_arguments = {
+				'rg',
+				'--color=never',
+				'--no-heading',
+				'--with-filename',
+				'--line-number',
+				'--column',
+				'--hidden',
+			},
+			file_ignore_patterns = {
+				'node_modules',
+				'.git',
+			},
+			mappings = {
+				i = {
+					["<c-j>"] = actions.move_selection_next,
+					["<c-k>"] = actions.move_selection_previous,
+					["<c-x>"] = false,
+					["<c-s>"] = actions.select_horizontal,
+					["<c-v>"] = actions.select_vertical,
+				},
+				n = {
+					["jj"] = actions.close,
+					["<c-x>"] = false,
+					["<c-s>"] = actions.select_horizontal,
+					["<c-v>"] = actions.select_vertical
+				},
+			}
+		}
+	}
+
+	local opts = { noremap=true, silent=true }
+
+	local keymap_telescope_func = {
+		["<Leader>ff"] = "require'telescope.builtin'.find_files()",
+		["<Leader>rg"] = "require'telescope.builtin'.live_grep()",
+		["<Leader>ch"] = "require'telescope.builtin'.command_history{}",
+		["<Leader>bl"] = "require'telescope.builtin'.buffers{show_all_buffers = true}",
+		["<Leader>gst"] = "require'telescope.builtin'.git_status()",
+		["<Leader>p"] = "require'telescope.builtin'.registers()",
+		["gr"] = "require'telescope.builtin'.lsp_references()",
+		["gi"] = "require'telescope.builtin'.lsp_implementations()",
+	}
+
+	for k, v in pairs(keymap_telescope_func) do
+		api.nvim_set_keymap('n', k, string.format("<cmd> lua %s<CR>", v), opts)
+	end
+end
+
+return M
