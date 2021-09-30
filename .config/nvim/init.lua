@@ -239,6 +239,12 @@ require('packer').startup(function()
     end
   }
   use {
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && yarn install',
+    cmd = 'MarkdownPreview',
+    ft = 'markdown',
+  }
+  use {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require'colorizer'.setup()
