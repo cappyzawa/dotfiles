@@ -188,10 +188,16 @@ require('packer').startup(function()
       require'galaxyline.themes.eviline'
     end
   }
+  -- use {
+  --   'tomtom/tcomment_vim',
+  --   config = function()
+  --     require'plugins'.tcomment_vim()
+  --   end
+  -- }
   use {
-    'tomtom/tcomment_vim',
-    config = function()
-      require'plugins'.tcomment_vim()
+    'b3nj5m1n/kommentary',
+    config = function ()
+      require'plugins'.kommentary()
     end
   }
   use 'jiangmiao/auto-pairs'

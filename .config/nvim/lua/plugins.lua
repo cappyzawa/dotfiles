@@ -2,12 +2,6 @@ local M = {}
 local vim = vim
 local api = vim.api
 
-M.tcomment_vim = function()
-  local opt = { noremap=true, silent=true }
-  api.nvim_set_keymap('n', 'gc', [[:<C-u>TComment<CR>]], opt)
-  api.nvim_set_keymap('v', 'gc', [[:<C-u>'<,'>TComment<CR>]], opt)
-end
-
 M.nvim_cmp = function()
 	local cmp = require'cmp'
 	cmp.setup{
@@ -197,6 +191,11 @@ M.telescope = function()
 	for k, v in pairs(keymap_telescope_func) do
 		api.nvim_set_keymap('n', k, string.format("<cmd> lua %s<CR>", v), opts)
 	end
+end
+
+M.kommentary = function()
+	local config = require'kommentary.config'
+	config.use_extended_mappings()
 end
 
 return M
