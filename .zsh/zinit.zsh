@@ -342,9 +342,14 @@ zinit ice wait'1' lucid as"program" from"gh-r"
 zinit light cappyzawa/tfswitch
 # }}}
 # jrhouston/tfk8s {{{
-zinit ice wait'1' lucid as"program" has"go" \
+zinit ice wait'2' lucid as"program" has"go" \
   make"install"
 zinit light jrhouston/tfk8s
+# }}}
+# im2nguyen/rover {{{
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  mv"rover_* -> rover"
+zinit light im2nguyen/rover
 # }}}
 # }}}
 # }}}
