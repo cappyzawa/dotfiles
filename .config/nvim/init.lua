@@ -265,12 +265,6 @@ require('packer').startup(function()
   use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/go-playground.nvim'
   use {
-    'hashivim/vim-terraform',
-    config = function()
-      require'plugins'.terraform()
-    end,
-  }
-  use {
     'tyru/open-browser-github.vim',
     requires = {
       'tyru/open-browser.vim'

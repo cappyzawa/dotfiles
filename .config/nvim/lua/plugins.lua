@@ -79,6 +79,7 @@ M.lspconfig = function()
 	require'lsp'
 	vim.cmd [[autocmd BufWritePre *.go lua require'plugins'.goimports(1000)]]
   vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.formatting()]]
+  vim.cmd [[autocmd BufWritePre *.tf lua vim.lsp.buf.formatting()]]
 end
 
 M.git_messenger = function()
@@ -110,12 +111,6 @@ M.lightspeed = function()
 	for _, v in pairs(lightspeed_sc) do
 		vim.api.nvim_set_keymap('n', v, string.format('reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_%s" : "%s"', v, v), {expr = true})
 	end
-end
-
-M.terraform = function ()
-	vim.g.terraform_align = 1
-	vim.g.terraform_fold_sections = 1
-	vim.g.terraform_fmt_on_save = 1
 end
 
 M.treesitter = function()
