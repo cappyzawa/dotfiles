@@ -2,11 +2,6 @@ local M = {}
 local vim = vim
 local api = vim.api
 
-M.galaxyline = function()
-  local eviline = vim.fn.stdpath('data') .. '/site/pack/packer/start/galaxyline.nvim/example/eviline.lua'
-  vim.cmd('luafile ' .. eviline)
-end
-
 M.tcomment_vim = function()
   local opt = { noremap=true, silent=true }
   api.nvim_set_keymap('n', 'gc', [[:<C-u>TComment<CR>]], opt)

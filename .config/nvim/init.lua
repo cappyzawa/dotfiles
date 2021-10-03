@@ -179,13 +179,13 @@ require('packer').startup(function()
     end,
   }
   use {
-    'glepnir/galaxyline.nvim',
+    'NTBBloodbath/galaxyline.nvim',
     requires = {
       {'kyazdani42/nvim-web-devicons'},
       {'lewis6991/gitsigns.nvim'}
     },
     config = function()
-      require'plugins'.galaxyline()
+      require'galaxyline.themes.eviline'
     end
   }
   use {
