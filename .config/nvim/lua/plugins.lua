@@ -113,6 +113,26 @@ M.lightspeed = function()
 	end
 end
 
+M.lspsaga = function()
+	local saga = require'lspsaga'
+	local saga_opt = {
+		error_sign = vim.g.e_sign,
+		warn_sign = vim.g.w_sign,
+		hint_sign = vim.g.h_sign,
+		finder_action_keys = {
+			scroll_down = '<C-j>',
+			scroll_up = '<C-k>',
+		}
+	}
+	saga.init_lsp_saga(saga_opt)
+
+	set_keymap = api.nvim_set_keymap
+  local opt = { noremap=true, silent=true }
+	set_keymap('n', 'gh', [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opt)
+	set_keymap('n', '<Leader>ca', [[<cmd>lua require('lspsaga.codeaction').code_action()<CR>]], opt)
+	set_keymap('v', '<Leader>ca', [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>]], opt)
+end
+
 M.treesitter = function()
 	local treesitter_configs = require'nvim-treesitter.configs'
 	local execute = vim.api.nvim_command

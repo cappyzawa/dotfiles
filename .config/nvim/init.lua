@@ -210,6 +210,7 @@ require('packer').startup(function()
     'neovim/nvim-lspconfig',
     requires = {
       'lspcontainers/lspcontainers.nvim',
+      'glepnir/lspsaga.nvim',
       'hrsh7th/nvim-cmp',
     },
     config = function()

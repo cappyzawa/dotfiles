@@ -7,6 +7,41 @@ vim.g.w_sign = ""
 vim.g.e_sign = ""
 vim.g.h_sign = "ﯦ"
 
+local override_keymap_with_lspsaga = function(opts)
+	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+	local saga_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/lspsaga.nvim'
+	if vim.fn.empty(vim.fn.glob(saga_path)) > 0 then
+		return
+	end
+
+	-- saga settings {{{
+	local saga = require'lspsaga'
+	local saga_opt = {
+		error_sign = vim.g.e_sign,
+		warn_sign = vim.g.w_sign,
+		hint_sign = vim.g.h_sign,
+		finder_action_keys = {
+			scroll_down = '<C-j>',
+			scroll_up = '<C-k>',
+		}
+	}
+	saga.init_lsp_saga(saga_opt)
+	-- }}}
+
+	buf_set_keymap('n', 'gh', [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
+	-- buf_set_keymap('n', '<Leader>ca', [[<cmd>lua require('lspsaga.codeaction').code_action()<CR>]], opts)
+	-- buf_set_keymap('v', '<Leader>ca', [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>]], opts)
+	-- buf_set_keymap('n', 'gk', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]], opts)
+  -- buf_set_keymap('n', 'gK', [[<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]], opts)
+  buf_set_keymap('n', 'gt', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
+  -- buf_set_keymap('n', 'gd', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
+  -- buf_set_keymap('n', '<C-f>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
+  -- buf_set_keymap('n', '<C-b>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
+  -- buf_set_keymap('n', '[d', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], opts)
+  -- buf_set_keymap('n', ']d', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]], opts)
+end
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
@@ -27,16 +62,23 @@ local on_attach = function(client, bufnr)
       severity_sort = true,
   }
 
+  local signs = {
+    Error = vim.g.e_sign,
+    Warn = vim.g.w_sign,
+    Hint = vim.g.h_sign,
+    Info = vim.g.h_sign,
+  }
+
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     diag_config
   )
 
   -- hilight
-  vim.fn.sign_define("DiagnosticSignError", {text = vim.g.e_sign, texthl = "DiagnosticSignError"})
-  vim.fn.sign_define("DiagnosticSignWarn", {text = vim.g.w_sign, texthl = "DiagnosticSignWarn"})
-  vim.fn.sign_define("DiagnosticSignInfo", {text = vim.g.w_sign, texthl = "DiagnosticSignInfo"})
-  vim.fn.sign_define("DiagnosticSignHint", {text = vim.g.h_sign, texthl = "DiagnosticSignHint"})
+  for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign"..type
+    vim.fn.sign_define(hl, { test = icon, texthl = hl, numhl = "" })
+  end
 
   -- keymap
   local opts = { noremap=true, silent=true }
@@ -49,8 +91,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-end
 
+	override_keymap_with_lspsaga(opts)
+end
 local lspconfig = require'lspconfig'
 local lspcontainers = require'lspcontainers'
 local lsputil = require'lspconfig/util'
