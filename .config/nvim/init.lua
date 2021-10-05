@@ -263,12 +263,6 @@ require('packer').startup(function()
       require'plugins'.git_messenger()
     end
   }
-  use {
-    'ggandor/lightspeed.nvim',
-    config = function()
-      require'plugins'.lightspeed()
-    end
-  }
   use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/go-playground.nvim'
   use {
