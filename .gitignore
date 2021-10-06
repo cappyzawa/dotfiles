@@ -14,6 +14,7 @@
 node_modules/
 .config/coc/
 .config/nvim/sessions
+.config/cheat/cheatsheets
 .config/nvim/plugin/packer_compiled.lua
 .config/waypoint/
 .config/iterm2/

@@ -144,6 +144,11 @@ zinit light smallstep/cli
 zinit ice wait'2' lucid as"program" from"gh-r"
 zinit light mike-engel/jwt-cli
 # }}}
+# cheat/cheat {{{
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  mv"cheat-*->cheat"
+zinit light cheat/cheat
+# }}}
 # }}}
 
 # docker {{{
