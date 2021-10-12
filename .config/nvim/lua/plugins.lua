@@ -14,6 +14,8 @@ M.nvim_cmp = function()
 			completeopt = 'menu,menuone,noinsert'
 		},
 		mapping = {
+      ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+      ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 			['<CR>'] = cmp.mapping.confirm()
 		},
 		sources = {
