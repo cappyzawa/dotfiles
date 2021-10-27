@@ -71,6 +71,7 @@ M.lspconfig = function()
 	vim.cmd [[autocmd BufWritePre *.go lua require'plugins'.goimports(1000)]]
   vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.formatting()]]
   vim.cmd [[autocmd BufWritePre *.tf lua vim.lsp.buf.formatting()]]
+  vim.cmd [[autocmd BufWritePre *.ts lua vim.lsp.buf.formatting()]]
 end
 
 M.git_messenger = function()
