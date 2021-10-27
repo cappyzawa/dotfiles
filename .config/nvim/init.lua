@@ -188,12 +188,6 @@ require('packer').startup(function()
       require'galaxyline.themes.eviline'
     end
   }
-  -- use {
-  --   'tomtom/tcomment_vim',
-  --   config = function()
-  --     require'plugins'.tcomment_vim()
-  --   end
-  -- }
   use {
     'b3nj5m1n/kommentary',
     config = function ()
@@ -201,7 +195,13 @@ require('packer').startup(function()
     end
   }
   use 'jiangmiao/auto-pairs'
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use {
+   'lewis6991/gitsigns.nvim',
+   requires = { 'nvim-lua/plenary.nvim' },
+   config = function()
+     require('gitsigns').setup()
+   end
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = {
