@@ -16,7 +16,7 @@ M.nvim_cmp = function()
 		mapping = {
       ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-			['<CR>'] = cmp.mapping.confirm()
+			['<CR>'] = cmp.mapping.confirm({ select = true }),
 		},
 		sources = {
 			{name = "nvim_lsp"},
@@ -34,6 +34,20 @@ M.nvim_cmp = function()
 			{name = "vsnip"},
 		}
 	}
+
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
 end
 
 M.goimports = function(timeout_ms)
