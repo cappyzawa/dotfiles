@@ -1,6 +1,6 @@
 local vim = vim
 
-vim.lsp.set_log_level("info")
+vim.lsp.set_log_level("trace")
 
 --- icons
 vim.g.w_sign = ""
@@ -38,7 +38,7 @@ local override_keymap_with_lspsaga = function(opts)
   -- buf_set_keymap('n', 'gd', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
   -- buf_set_keymap('n', '<C-f>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
   -- buf_set_keymap('n', '<C-b>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
-  -- buf_set_keymap('n', '[d', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], opts)
+  -- buf_set_keymap('n', '[d', [[<cmdua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], opts)
   -- buf_set_keymap('n', ']d', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]], opts)
 end
 
@@ -95,15 +95,36 @@ local on_attach = function(client, bufnr)
 	override_keymap_with_lspsaga(opts)
 end
 local lspconfig = require'lspconfig'
-local lspcontainers = require'lspcontainers'
+local lsp_installer_servers = require'nvim-lsp-installer.servers'
+local installed_lsp_servers = vim.fn.stdpath('data')..'/lsp_servers'
 local lsputil = require'lspconfig/util'
 
 local cmp_nvim_lsp = require'cmp_nvim_lsp'
 local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 --lua {{{
+local ok, sumneko_lua = lsp_installer_servers.get_server("sumneko_lua")
+if ok then
+  if not sumneko_lua:is_installed() then
+    sumneko_lua:install()
+  end
+end
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+local sumneko_root_path = installed_lsp_servers .. '/sumneko_lua/extension/server/bin/' .. system_name
+local sumneko_binary = sumneko_root_path .. "/lua-language-server"
+local sumneko_main = sumneko_root_path .. "/main.lua"
+
 local lua_lsp_config = {
-  cmd = lspcontainers.command('sumneko_lua'),
+  cmd = {sumneko_binary, "-E", sumneko_main},
 }
 -- }}}
 
@@ -122,19 +143,28 @@ local go_lsp_config = {
 -- }}}
 
 -- docker {{{
+local ok, dockerls = lsp_installer_servers.get_server("dockerls")
+if ok then
+  if not dockerls:is_installed() then
+    dockerls:install()
+  end
+end
+local dockerls_binary = installed_lsp_servers .. '/dockerfile/node_modules/.bin/docker-langserver'
 local docker_lsp_config = {
-  before_init = function (params)
-    params.processId = vim.NIL
-  end,
-  cmd = lspcontainers.command('dockerls')
+  cmd = {dockerls_binary, "--stdio"}
 }
 -- }}}
 
 -- yaml {{{
+local ok, yamlls = lsp_installer_servers.get_server("yamlls")
+if ok then
+  if not yamlls:is_installed() then
+    yamlls:install()
+  end
+end
+local yamlls_binary = installed_lsp_servers .. '/lsp_servers/yaml/node_modules/.bin/yaml-language-server'
 local yaml_lsp_config = {
-  before_init = function (params)
-    params.processId = vim.NIL
-  end,
+  cmd = {yamlls_binary, "--stdio"},
   settings = {
     yaml = {
       schemaStore = {
@@ -154,11 +184,15 @@ local yaml_lsp_config = {
 -- }}}
 
 -- bash {{{
+local ok, bashls = lsp_installer_servers.get_server("bashls")
+if ok then
+  if not bashls:is_installed() then
+    bashls:install()
+  end
+end
+local bashls_binary = installed_lsp_servers ..'/bash/node_modules/.bin/bash-language-server'
 local bash_lsp_config = {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = lspcontainers.command('bashls'),
+  cmd = {bashls_binary, "start"},
   filetypes = {"sh", "bash", "zsh"}
 }
 -- }}}
@@ -170,39 +204,55 @@ local deno_lsp_config = {
 -- }}}
 
 -- ts {{{
+local ok, tsserver = lsp_installer_servers.get_server("tsserver")
+if ok then
+  if not tsserver:is_installed() then
+    tsserver:install()
+  end
+end
+local tsserver_binary = installed_lsp_servers .. '/tsserver/node_modules/.bin/tsserver'
 local ts_lsp_config = {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = lspcontainers.command('tsserver'),
+  cmd = {tsserver_binary, "--stdio"},
   root_dir = lsputil.root_pattern("package.json", "package-lock.json", "yarh-lock.json")
 }
 -- }}}
 
 -- json {{{
+local ok, jsonls = lsp_installer_servers.get_server("jsonls")
+if ok then
+  if not jsonls:is_installed() then
+    jsonls:install()
+  end
+end
+local jsonls_binary = installed_lsp_servers .. '/jsonls/node_modules/.bin/vscode-json-language-server'
 local json_lsp_config = {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = lspcontainers.command('jsonls'),
+  cmd = {jsonls_binary, "--stdio"},
 }
 -- }}}
 
 -- python {{{
+local ok, pylsp = lsp_installer_servers.get_server("pylsp")
+if ok then
+  if not pylsp:is_installed() then
+    pylsp:install()
+  end
+end
+local pylsp_binary = installed_lsp_servers .. '/pylsp/venv/bin/pylsp'
 local python_lsp_config = {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = lspcontainers.command('pylsp'),
+  cmd = {pylsp_binary},
 }
 -- }}}
 
 -- clang {{{
+local ok, clangd = lsp_installer_servers.get_server("clangd")
+if ok then
+  if not clangd:is_installed() then
+    clangd:install()
+  end
+end
+local clangd_binary = installed_lsp_servers .. '/clangd/clangd'
 local clang_lsp_config = {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = lspcontainers.command('clangd'),
+  cmd = {clangd_binary, "--background-index"},
 }
 -- }}}
 
@@ -258,6 +308,7 @@ local servers = {
   dockerls = docker_lsp_config,
   yamlls = yaml_lsp_config,
   bashls = bash_lsp_config,
+  jsonls = json_lsp_config,
   denols = deno_lsp_config,
   tsserver = ts_lsp_config,
   pylsp = python_lsp_config,

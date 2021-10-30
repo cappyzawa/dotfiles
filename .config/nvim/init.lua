@@ -215,7 +215,7 @@ require('packer').startup(function()
   use {
     'neovim/nvim-lspconfig',
     requires = {
-      'lspcontainers/lspcontainers.nvim',
+      'williamboman/nvim-lsp-installer',
       'glepnir/lspsaga.nvim',
       'hrsh7th/nvim-cmp',
     },
@@ -264,7 +264,6 @@ require('packer').startup(function()
       require'plugins'.git_messenger()
     end
   }
-  use 'zinit-zsh/zinit-vim-syntax'
   use 'cappyzawa/go-playground.nvim'
   use {
     'tyru/open-browser-github.vim',
