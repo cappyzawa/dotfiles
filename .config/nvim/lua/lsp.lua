@@ -236,7 +236,7 @@ if ok then
     tsserver:install()
   end
 end
-local tsserver_binary = installed_lsp_servers .. '/tsserver/node_modules/.bin/tsserver'
+local tsserver_binary = installed_lsp_servers .. '/tsserver/node_modules/.bin/typescript-language-server'
 local ts_lsp_config = {
   cmd = {tsserver_binary, "--stdio"},
   root_dir = lsputil.root_pattern("package.json", "package-lock.json", "yarh-lock.json")
