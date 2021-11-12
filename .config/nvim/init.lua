@@ -224,6 +224,16 @@ require('packer').startup(function()
     end
   }
   use {
+    'github/copilot.vim',
+    run = ':Copilot enable',
+  }
+  use {
+    'hrsh7th/cmp-copilot',
+    requires = {
+      'github/copilot.vim',
+    },
+  }
+  use {
     'hrsh7th/nvim-cmp',
     requires = {
       "hrsh7th/vim-vsnip",
@@ -233,6 +243,7 @@ require('packer').startup(function()
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-copilot",
     },
     config = function()
       require'plugins'.nvim_cmp()
@@ -272,6 +283,5 @@ require('packer').startup(function()
     },
     cmd = {'OpenGithubFile'}
   }
-  use 'github/copilot.vim'
   end)
 -- }}}

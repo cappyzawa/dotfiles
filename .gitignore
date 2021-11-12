@@ -8,6 +8,7 @@
 .config/anyenv/plugins/
 .config/gcloud/
 .config/direnv/
+.config/github-copilot/hosts.json
 .config/op/
 .config/configstore/
 .config/helm/*
