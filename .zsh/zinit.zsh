@@ -346,6 +346,10 @@ zinit light hashicorp/terraform
 zinit ice wait'1' lucid as"program" from"gh-r"
 zinit light cappyzawa/tfswitch
 # }}}
+# minamijoyo/tfmigrate {{{
+zinit ice wait'1' lucid as"program" from"gh-r" has"terraform"
+zinit light minamijoyo/tfmigrate
+# }}}
 # jrhouston/tfk8s {{{
 zinit ice wait'2' lucid as"program" has"go" \
   make"install"

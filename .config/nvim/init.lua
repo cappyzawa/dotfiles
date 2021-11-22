@@ -225,7 +225,7 @@ require('packer').startup(function()
   }
   use {
     'github/copilot.vim',
-    run = ':Copilot enable',
+    -- run = ':Copilot enable',
   }
   use {
     'hrsh7th/cmp-copilot',
@@ -282,6 +282,9 @@ require('packer').startup(function()
       'tyru/open-browser.vim'
     },
     cmd = {'OpenGithubFile'}
+  }
+  use {
+    'tsandall/vim-rego',
   }
   end)
 -- }}}
