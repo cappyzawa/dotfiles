@@ -36,14 +36,13 @@ _arguments "${_arguments_options[@]}" \
 '-V[Prints version information]' \
 '--version[Prints version information]' \
 ':shell -- The name of the currently running shell
-Currently supported options: bash, zsh, fish, powershell, ion, elvish, tcsh, nu, xonsh:_files' \
+Currently supported options: bash, zsh, fish, powershell, ion, elvish, tcsh:_files' \
 && ret=0
 ;;
 (prompt)
 _arguments "${_arguments_options[@]}" \
 '-s+[The status code of the previously run command]' \
 '--status=[The status code of the previously run command]' \
-'*--pipestatus=[Status codes from a command pipeline]' \
 '-p+[The path that the prompt should render for.]' \
 '--path=[The path that the prompt should render for.]' \
 '-P+[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
@@ -54,7 +53,6 @@ _arguments "${_arguments_options[@]}" \
 '--keymap=[The keymap of fish/zsh]' \
 '-j+[The number of currently running jobs]' \
 '--jobs=[The number of currently running jobs]' \
-'--right[Print the right prompt (instead of the standard left prompt)]' \
 '-h[Prints help information]' \
 '--help[Prints help information]' \
 '-V[Prints version information]' \
@@ -65,7 +63,6 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '-s+[The status code of the previously run command]' \
 '--status=[The status code of the previously run command]' \
-'*--pipestatus=[Status codes from a command pipeline]' \
 '-p+[The path that the prompt should render for.]' \
 '--path=[The path that the prompt should render for.]' \
 '-P+[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \

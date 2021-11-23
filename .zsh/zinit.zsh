@@ -107,11 +107,6 @@ zinit ice wait'1' lucid as"program" from:"gh-r" \
   atpull"%atclone"
 zinit light "cli/cli"
 # }}}
-# hashicorp/waypoint {{{
-zinit ice wait"1" lucid as"program" from:"gh-r" \
-  bpick"waypoint_*.zip"
-zinit light hashicorp/waypoint
-# }}}
 # sharkdp/bat {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
   pick"bat-v*/bat"
@@ -160,12 +155,6 @@ zinit light jesseduffield/lazydocker
 # wagoodman/dive {{{
 zinit ice wait'2' lucid as"program" from:"gh-r"
 zinit light wagoodman/dive
-# }}}
-# buildpacks/pack {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-  atclone'cp $(./pack completion --shell zsh) ~/.zsh/Completion/_pack' \
-  atpull"%atclone"
-zinit light "buildpacks/pack"
 # }}}
 # }}}
 
@@ -221,7 +210,7 @@ zinit light "vmware-tanzu/carvel-ytt"
 # zsh {{{
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
-    zdharma/fast-syntax-highlighting \
+    zdharma-continuum/fast-syntax-highlighting \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
  blockf \
@@ -304,17 +293,6 @@ zinit light kubernetes-sigs/kind
 zinit ice wait'2' lucid as"program" from"gh-r" pick"tkn" \
   atclone"./tkn completion zsh > ~/.zsh/Completion/_tkn && ln -s `which tkn` /usr/local/bin/kubectl-tkn" atpull"%atclone"
 zinit light tektoncd/cli
-# }}}
-# argoproj/argo-cd {{{
-zinit ice wait'1' lucid as"program" from"gh-r" \
-  mv"argocd-*->argocd" \
-  atclone"argocd completion zsh > ~/.zsh/Completion/_argocd" atpull"%atclone"
-zinit light argoproj/argo-cd
-# }}}
-# argoproj/argo-rollouts {{{
-zinit ice wait'2' lucid as"program" from"gh-r" has"kubectl" \
-  mv"kubectl-argo-rollouts-*->/usr/local/bin/kubectl-argo-rollouts"
-zinit light argoproj/argo-rollouts
 # }}}
 # }}}
 

@@ -5,6 +5,7 @@ path=( \
     /usr/sbin(N-/) \
     ~/.config/anyenv/bin(N-/) \
     ~/.local/bin(N-/) \
+    ~/.local/share/zinit/bin(N-/) \
     ~/.tmux/bin(N-/) \
     ~/.nimble/bin(N-/) \
     ~/.yarn/bin(N-/) \
@@ -111,3 +112,5 @@ export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"
 export DOTPATH=${0:A:h}
 # export TERM="screen-256color"
 export ZDOTDIR=${HOME}
+
+export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
