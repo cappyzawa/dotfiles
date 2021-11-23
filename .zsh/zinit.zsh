@@ -268,8 +268,8 @@ zinit ice wait'2' lucid as"program" pick:"kubectx"
 zinit light ahmetb/kubectx
 # }}}
 # google/ko {{{
-zinit ice wait'3' lucid as"program" has"go" \
-  atclone"go install ./cmd/ko && ko completion --zsh > ~/.zsh/Completion/_ko" atpull"%atclone" \
+zinit ice wait'3' lucid as"program" from"gh-r" \
+  atclone"ko completion --zsh > ~/.zsh/Completion/_ko" atpull"%atclone" \
   atload"export KO_DOCKER_REPO='docker.io/cappyzawa'"
 zinit light google/ko
 # }}}
