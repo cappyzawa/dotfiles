@@ -225,7 +225,7 @@ require('packer').startup(function()
   }
   use {
     'github/copilot.vim',
-    -- run = ':Copilot enable',
+    run = ':Copilot disable',
   }
   use {
     'hrsh7th/cmp-copilot',

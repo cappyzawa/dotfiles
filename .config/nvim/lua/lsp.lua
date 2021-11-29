@@ -188,7 +188,7 @@ if ok then
     yamlls:install()
   end
 end
-local yamlls_binary = installed_lsp_servers .. '/lsp_servers/yaml/node_modules/.bin/yaml-language-server'
+local yamlls_binary = installed_lsp_servers .. '/yaml/node_modules/.bin/yaml-language-server'
 local yaml_lsp_config = {
   cmd = {yamlls_binary, "--stdio"},
   settings = {
