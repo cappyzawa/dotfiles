@@ -14,9 +14,9 @@ M.nvim_cmp = function()
 			completeopt = 'menu,menuone,noinsert'
 		},
 		mapping = {
-      ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-      ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-			['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's', 'c'}),
+      ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's', 'c'}),
+			['<CR>'] = cmp.mapping.confirm({ select = true })
 		},
 		sources = {
 			{name = "nvim_lsp"},
@@ -37,7 +37,14 @@ M.nvim_cmp = function()
 
   cmp.setup.cmdline('/', {
     sources = {
-      { name = 'buffer' }
+      {
+        name = 'buffer',
+				options = {
+					get_bufnrs = function()
+						return vim.api.nvim_list_bufs()
+					end
+				}
+      }
     }
   })
 
