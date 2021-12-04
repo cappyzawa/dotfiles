@@ -10,6 +10,7 @@
 .config/direnv/
 .config/github-copilot/hosts.json
 .config/op/
+.config/okteto/*.config
 .config/configstore/
 .config/helm/*
 node_modules/
