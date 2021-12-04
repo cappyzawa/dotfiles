@@ -22,7 +22,7 @@ M.nvim_cmp = function()
 			{name = "nvim_lsp"},
 			{
 				name = "buffer",
-				opts = {
+				options = {
 					get_bufnrs = function()
 						return vim.api.nvim_list_bufs()
 					end
@@ -32,7 +32,6 @@ M.nvim_cmp = function()
 			{name = "nvim_lua"},
 			{name = "emoji"},
 			{name = "vsnip"},
-			{name = "copilot"},
 		}
 	}
 
@@ -87,6 +86,7 @@ M.lspconfig = function()
   vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.formatting()]]
   vim.cmd [[autocmd BufWritePre *.tf lua vim.lsp.buf.formatting()]]
   vim.cmd [[autocmd BufWritePre *.ts lua vim.lsp.buf.formatting()]]
+  vim.cmd [[autocmd BufWritePre *.rego lua vim.lsp.buf.formatting()]]
 end
 
 M.git_messenger = function()
