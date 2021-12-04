@@ -324,6 +324,27 @@ lspconfig.elmls.setup({
 vim.cmd([[ autocmd BufWritePre *.elm lua vim.lsp.buf.formatting() ]])
 -- }}}
 
+-- efm {{{
+local ok, efmls = lsp_installer_servers.get_server("efmls")
+if ok then
+  if not efmls:is_installed() then
+    efmls:install()
+  end
+end
+local efmls_binary = installed_lsp_servers .. '/efm/efm-langserver'
+local efm_lsp_config = {
+  cmd = {efmls_binary, '-logfile', '/tmp/efm.log', '-loglevel', '5'},
+  filetypes = {"rego"},
+  init_options = {
+    documentFormatting = true,
+    hover = true,
+    documentSymbol = true,
+    codeAction = true,
+    completion = true,
+  },
+}
+-- }}}
+
 local servers = {
   sumneko_lua = lua_lsp_config,
   vimls = {},
@@ -340,6 +361,7 @@ local servers = {
   pylsp = python_lsp_config,
   clangd = clang_lsp_config,
   solargraph = {},
+  efm = efm_lsp_config,
 }
 
 for ls, config in pairs(servers) do
@@ -348,6 +370,7 @@ for ls, config in pairs(servers) do
     capabilities = capabilities,
     before_init = config.before_init,
     cmd = config.cmd,
+    init_options = config.init_options,
     filetypes = config.filetypes,
     root_dir = config.root_dir,
     settings = config.settings,

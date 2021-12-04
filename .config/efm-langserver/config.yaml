@@ -1,4 +1,15 @@
+version: 2
+root-markers:
+- .git/
+
+tools:
+  rego-opa: &rego-opa
+    format-command: 'opa fmt'
+    lint-command: 'opa check'
+    lint-formats:
+    - '%m: %f:%l: %m'
+    - '%f:%l: %m'
+
 languages:
-  vim:
-    lint-command: 'vint -'
-    lint-stdin: true
+  rego:
+  - <<: *rego-opa
