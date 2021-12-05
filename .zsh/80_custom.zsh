@@ -64,3 +64,7 @@ fi
 if has "julia"; then
   export LD_LIBRARY_PATH=$HOME/.julia/conda/3/lib
 fi
+
+if has "terraform"; then
+  complete -o nospace -C /usr/local/bin/terraform terraform
+fi
