@@ -24,22 +24,26 @@ local override_keymap_with_lspsaga = function(opts)
 		finder_action_keys = {
 			scroll_down = '<C-j>',
 			scroll_up = '<C-k>',
+      open = 'e',
+      vsplit = '\\',
+      split = '-',
 		}
 	}
 	saga.init_lsp_saga(saga_opt)
 	-- }}}
 
 	buf_set_keymap('n', 'gh', [[<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]], opts)
-	-- buf_set_keymap('n', '<Leader>ca', [[<cmd>lua require('lspsaga.codeaction').code_action()<CR>]], opts)
-	-- buf_set_keymap('v', '<Leader>ca', [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>]], opts)
-	-- buf_set_keymap('n', 'gk', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]], opts)
-  -- buf_set_keymap('n', 'gK', [[<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]], opts)
+	buf_set_keymap('n', '<Leader>ca', [[<cmd>lua require('lspsaga.codeaction').code_action()<CR>]], opts)
+	buf_set_keymap('v', '<Leader>ca', [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>]], opts)
+	buf_set_keymap('n', 'gk', [[<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]], opts)
+  buf_set_keymap('n', 'gK', [[<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]], opts)
   buf_set_keymap('n', 'gt', [[<cmd>lua require('lspsaga.rename').rename()<CR>]], opts)
-  -- buf_set_keymap('n', 'gd', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
-  -- buf_set_keymap('n', '<C-f>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
-  -- buf_set_keymap('n', '<C-b>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
-  -- buf_set_keymap('n', '[d', [[<cmdua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], opts)
-  -- buf_set_keymap('n', ']d', [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]], opts)
+  buf_set_keymap('n', 'gp', [[<cmd>lua require'lspsaga.provider'.preview_definition()<CR>]], opts)
+  buf_set_keymap('n', '<C-j>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]], opts)
+  buf_set_keymap('n', '<C-k>', [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]], opts)
+  buf_set_keymap('n', 'sd', [[<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>]], opts)
+  buf_set_keymap('n', '[d', [[<cmd>Lspsaga diagnostic_jump_prev<CR>]], opts)
+  buf_set_keymap('n', ']d', [[<cmd>Lspsaga diagnostic_jump_next<CR>]], opts)
 end
 
 local on_attach = function(client, bufnr)

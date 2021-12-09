@@ -216,7 +216,7 @@ require('packer').startup(function()
     'neovim/nvim-lspconfig',
     requires = {
       'williamboman/nvim-lsp-installer',
-      'glepnir/lspsaga.nvim',
+      'tami5/lspsaga.nvim',
       'hrsh7th/nvim-cmp',
     },
     config = function()
