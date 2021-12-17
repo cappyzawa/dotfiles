@@ -275,5 +275,8 @@ require('packer').startup(function()
   use {
     'tsandall/vim-rego',
   }
+  use {
+    'cappyzawa/starlark.vim'
+  }
   end)
 -- }}}
