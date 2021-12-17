@@ -1,7 +1,5 @@
 local vim = vim
 
-vim.lsp.set_log_level("trace")
-
 --- icons
 vim.g.w_sign = ""
 vim.g.e_sign = ""
