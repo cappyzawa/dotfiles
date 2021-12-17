@@ -22,7 +22,7 @@ M.nvim_cmp = function()
 			{name = "nvim_lsp"},
 			{
 				name = "buffer",
-				options = {
+				option = {
 					get_bufnrs = function()
 						return vim.api.nvim_list_bufs()
 					end
@@ -39,7 +39,7 @@ M.nvim_cmp = function()
     sources = {
       {
         name = 'buffer',
-				options = {
+				option = {
 					get_bufnrs = function()
 						return vim.api.nvim_list_bufs()
 					end
