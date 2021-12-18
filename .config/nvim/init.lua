@@ -169,6 +169,15 @@ require('packer').startup(function()
       require'plugins'.telescope()
     end
   }
+  use{
+    'cappyzawa/telescope-terraform.nvim',
+    requires = {
+      'nvim-telescope/telescope.nvim',
+    },
+    config = function()
+      require'telescope'.load_extension'terraform'
+    end,
+  }
   use {
     'cappyzawa/zephyr-nvim',
     requires = {
@@ -277,6 +286,9 @@ require('packer').startup(function()
   }
   use {
     'cappyzawa/starlark.vim'
+  }
+  use {
+    'mattn/vim-maketable'
   }
   end)
 -- }}}
