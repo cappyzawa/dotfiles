@@ -170,6 +170,26 @@ local go_lsp_config = {
 }
 -- }}}
 
+--rust {{{
+--https://rust-analyzer.github.io/manual.html#nvim-lsp
+local rust_lsp_config = {
+  settings = {
+    ["rust-analyzer"] = {
+      assist = {
+        importGranularity = "module",
+        importPrefix = "by_self",
+      },
+      cargo = {
+        loadOutDirsFromCheck = true
+      },
+      procMacro = {
+        enable = true
+      },
+    }
+  }
+}
+--}}}
+
 -- docker {{{
 local ok, dockerls = lsp_installer_servers.get_server("dockerls")
 if ok then
@@ -349,7 +369,7 @@ local servers = {
   vimls = {},
   terraformls = {},
   gopls = go_lsp_config,
-  rust_analyzer = {},
+  rust_analyzer = rust_lsp_config,
   nimls = {},
   dockerls = docker_lsp_config,
   yamlls = yaml_lsp_config,
