@@ -68,6 +68,16 @@ for k, v in pairs(vmap) do
   set_keymap('v', k, v, keymap_opt)
 end
 -- }}}
+
+-- tnoremap {{{
+local tmap = {
+  ['<ESC>'] = [[<c-\><c-n>]]
+}
+
+for k, v in pairs(tmap) do
+  set_keymap('t', k, v, keymap_opt)
+end
+-- }}}
 -- }}}
 
 -- option {{{
@@ -229,6 +239,7 @@ require('packer').startup(function()
       'hrsh7th/nvim-cmp',
     },
     config = function()
+			require'plugins'.lspsaga()
       require'plugins'.lspconfig()
     end
   }

@@ -97,6 +97,14 @@ M.lspconfig = function()
   vim.cmd [[autocmd BufWritePre *.yaml lua vim.lsp.buf.formatting()]]
 end
 
+M.lspsaga = function ()
+  local keymap_opt = { noremap=true, silent=true }
+  local set_keymap = vim.api.nvim_set_keymap
+  set_keymap('n', '<Leader>ot', [[<cmd>Lspsaga open_floaterm<CR>]], keymap_opt)
+  set_keymap('n', '<Leader>ct', [[<cmd>Lspsaga close_floaterm<CR>]], keymap_opt)
+  set_keymap('n', '<Leader>ct', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], keymap_opt)
+end
+
 M.git_messenger = function()
   local opt = { noremap=true, silent=true }
 	vim.g.git_messenger_include_diff = 'current'
