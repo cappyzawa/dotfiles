@@ -152,7 +152,9 @@ M.telescope = function()
 					["jj"] = actions.close,
 					["<c-x>"] = false,
 					["<c-s>"] = actions.select_horizontal,
-					["<c-v>"] = actions.select_vertical
+					["<c-v>"] = actions.select_vertical,
+					["<c-j>"] = actions.preview_scrolling_down,
+					["<c-k>"] = actions.preview_scrolling_up,
 				},
 			}
 		}
