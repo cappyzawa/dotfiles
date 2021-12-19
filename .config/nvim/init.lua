@@ -94,7 +94,6 @@ local common_opts = {
   sh = 'zsh',
   completeopt = 'menu,menuone,noselect',
   clipboard = 'unnamedplus',
-  swapfile = false,
   ignorecase = true,
   smartcase = true,
 }
@@ -125,6 +124,7 @@ local buffer_opts = {
   smartindent = true,
   expandtab = true,
   undofile = true,
+  swapfile = false,
 }
 
 local cur_buf = vim.api.nvim_get_current_buf()
