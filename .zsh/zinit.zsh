@@ -297,7 +297,7 @@ zinit light tektoncd/cli
 # okteto/okteto {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
   mv"okteto-*->okteto" \
-  atload"export KUBECONFIG=$HOME/.config/okteto/okteto-kube.config:$HOME/.kube/config"
+  atload"export KUBECONFIG=$HOME/.kube/config:$HOME/.config/okteto/okteto-kube.config"
 zinit light okteto/okteto
 # }}}
 # }}}

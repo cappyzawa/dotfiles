@@ -262,6 +262,19 @@ local ts_lsp_config = {
 }
 -- }}}
 
+-- zig {{{
+local ok, zls = lsp_installer_servers.get_server("zls")
+if ok then
+  if not zls:is_installed() then
+    zls:install()
+  end
+end
+local zls_binary = installed_lsp_servers .. '/zls/package/zls'
+local zig_lsp_config = {
+  cmd = {zls_binary},
+}
+-- }}}
+
 -- json {{{
 local ok, jsonls = lsp_installer_servers.get_server("jsonls")
 if ok then
@@ -377,6 +390,7 @@ local servers = {
   jsonls = json_lsp_config,
   denols = deno_lsp_config,
   tsserver = ts_lsp_config,
+  zls = zig_lsp_config,
   pylsp = python_lsp_config,
   clangd = clang_lsp_config,
   solargraph = {},
