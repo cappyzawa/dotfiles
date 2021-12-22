@@ -105,6 +105,33 @@ M.lspsaga = function ()
   set_keymap('n', '<Leader>ct', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], keymap_opt)
 end
 
+M.kanagawa = function ()
+	vim.cmd [[colorscheme kanagawa]]
+end
+
+M.galaxyline = function ()
+	local present, galaxyline_colors = pcall(require, "galaxyline.themes.colors")
+	if not present then
+		return
+	end
+
+  galaxyline_colors.default.darkblue = "#1F1F28"
+
+	galaxyline_colors["doom-one"] = {
+		bg = "#1F1F28",
+		fg = "#DCD7BA",
+		fg_alt = "#727169",
+		yellow = "#DCA561",
+		cyan = "#A3D4D5",
+		green = "#98BB6C",
+		orange = "#FFA066",
+		magenta = "#D27E99",
+		blue = "#7E9CD8",
+		red = "#FF5D62",
+	}
+	require'galaxyline.themes.eviline'
+end
+
 M.git_messenger = function()
   local opt = { noremap=true, silent=true }
 	vim.g.git_messenger_include_diff = 'current'

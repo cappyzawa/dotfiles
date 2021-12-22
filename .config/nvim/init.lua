@@ -189,22 +189,23 @@ require('packer').startup(function()
     end,
   }
   use {
-    'cappyzawa/zephyr-nvim',
+    'rebelot/kanagawa.nvim',
     requires = {
       'nvim-treesitter/nvim-treesitter'
     },
     config = function()
-      require'zephyr'
+      require'plugins'.kanagawa()
     end,
   }
   use {
     'NTBBloodbath/galaxyline.nvim',
     requires = {
       {'kyazdani42/nvim-web-devicons'},
-      {'lewis6991/gitsigns.nvim'}
+      {'lewis6991/gitsigns.nvim'},
+      {'rebelot/kanagawa.nvim'},
     },
     config = function()
-      require'galaxyline.themes.eviline'
+      require'plugins'.galaxyline()
     end
   }
   use {
