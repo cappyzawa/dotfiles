@@ -189,20 +189,17 @@ require('packer').startup(function()
     end,
   }
   use {
-    'rebelot/kanagawa.nvim',
-    requires = {
-      'nvim-treesitter/nvim-treesitter'
-    },
-    config = function()
-      require'plugins'.kanagawa()
-    end,
+    'folke/tokyonight.nvim',
+    config = function ()
+      require'plugins'.tokyonight()
+    end
   }
   use {
     'nvim-lualine/lualine.nvim',
     requires = {
       {'kyazdani42/nvim-web-devicons'},
       {'lewis6991/gitsigns.nvim'},
-      {'rebelot/kanagawa.nvim'},
+      {'folke/tokyonight.nvim'},
     },
     config = function ()
       require'plugins'.lualine()

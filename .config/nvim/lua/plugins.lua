@@ -105,31 +105,9 @@ M.lspsaga = function ()
   set_keymap('n', '<Leader>ct', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], keymap_opt)
 end
 
-M.kanagawa = function ()
-	vim.cmd [[colorscheme kanagawa]]
-end
-
-M.galaxyline = function ()
-	local present, galaxyline_colors = pcall(require, "galaxyline.themes.colors")
-	if not present then
-		return
-	end
-
-  galaxyline_colors.default.darkblue = "#1F1F28"
-
-	galaxyline_colors["doom-one"] = {
-		bg = "#1F1F28",
-		fg = "#DCD7BA",
-		fg_alt = "#727169",
-		yellow = "#DCA561",
-		cyan = "#A3D4D5",
-		green = "#98BB6C",
-		orange = "#FFA066",
-		magenta = "#D27E99",
-		blue = "#7E9CD8",
-		red = "#FF5D62",
-	}
-	require'galaxyline.themes.eviline'
+M.tokyonight = function ()
+	vim.g.tokyonight_style = 'night'
+	vim.cmd [[colorscheme tokyonight]]
 end
 
 M.lualine = function ()
@@ -161,36 +139,37 @@ M.lualine = function ()
   end
   local diff_symbols = { added = ' ', modified = '柳 ', removed = ' ' }
 
-  local colors = require'kanagawa.colors'
+	local config = require'tokyonight.config'
+  local colors = require'tokyonight.colors'.setup(config)
   local evel_mode = function ()
     local mode_color = {
-      n = colors.springGreen,
-      i = colors.peachRed,
-      v = colors.autumnYellow,
-      [''] = colors.crystalBlue,
-      V = colors.crystalBlue,
-      c = colors.sakuraPink,
-      no = colors.peachRed,
-      s = colors.surimiOrange,
-      S = colors.surimiOrange,
-      [''] = colors.surimiOrange,
-      ic = colors.autumnYellow,
-      R = colors.oniViolet,
-      Rv = colors.oniViolet,
-      cv = colors.peachRed,
-      ce = colors.peachRed,
-      r = colors.lightBlue,
-      rm = colors.lightBlue,
-      ['r?'] = colors.lightBlue,
-      ['!'] = colors.peachRed,
-      t = colors.peachRed,
+      n = colors.blue,
+      i = colors.green,
+      v = colors.purple,
+      [''] = colors.purple,
+      V = colors.purple,
+      c = colors.yellow,
+      no = colors.red,
+      s = colors.orange,
+      S = colors.orange,
+      [''] = colors.orange,
+      ic = colors.yellow,
+      R = colors.purple,
+      Rv = colors.purple,
+      cv = colors.red,
+      ce = colors.red,
+      r = colors.cyan,
+      rm = colors.cyan,
+      ['r?'] = colors.cyan,
+      ['!'] = colors.red,
+      t = colors.red,
     }
     vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
     return ''
   end
   require'lualine'.setup {
     options = {
-      theme = require'lualine.themes.kanagawa'
+      theme = 'tokyonight'
     },
     sections = {
       lualine_a = {{evel_mode, color='LualineMode'}},
