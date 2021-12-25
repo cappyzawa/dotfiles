@@ -112,6 +112,12 @@ zinit ice wait'1' lucid as"program" from"gh-r" \
   pick"bat-v*/bat"
 zinit light sharkdp/bat
 # }}}
+# dandavison/delta {{{
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  pick"delta-*/delta" \
+  atload"compdef _gnu_generic delta"
+zinit light dandavison/delta
+# }}}
 # o2sh/onefetch {{{
 zinit ice wait'1' lucid as"program" from:"gh-r"
 zinit light o2sh/onefetch

@@ -1,0 +1,27 @@
+[include]
+	path = ~/.gitconfig.local
+[core]
+	excludesfile = ~/.gitignore_global
+	ignorecase = false
+  pager = delta
+[gpg]
+	program = gpg2
+[alias]
+	cm = checkout master
+  graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+[ghq]
+	root = ~/ghq/src
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  line-numbers = true
+  side-by-side = true
+[merge]
+  conflictstyle = diff3
+[diff]
+    colorMoved = default
+[difftool "nvimdiff"]
+  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+[pull]
+	rebase = true
