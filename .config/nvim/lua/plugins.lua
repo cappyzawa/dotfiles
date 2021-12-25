@@ -132,6 +132,74 @@ M.galaxyline = function ()
 	require'galaxyline.themes.eviline'
 end
 
+M.lualine = function ()
+  local function clients_name()
+    local msg = 'No Active Lsp'
+    local icon = ' LSP:'
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return msg
+    end
+    for _, client in ipairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        return icon .. client.name
+      end
+    end
+    return msg
+  end
+  local function diff_source()
+    local gitsigns = vim.b.gitsigns_status_dict
+    if gitsigns then
+      return {
+        added = gitsigns.added,
+        modified = gitsigns.changed,
+        removed = gitsigns.removed,
+      }
+    end
+  end
+  local diff_symbols = { added = ' ', modified = '柳 ', removed = ' ' }
+
+  local colors = require'kanagawa.colors'
+  local evel_mode = function ()
+    local mode_color = {
+      n = colors.springGreen,
+      i = colors.peachRed,
+      v = colors.autumnYellow,
+      [''] = colors.crystalBlue,
+      V = colors.crystalBlue,
+      c = colors.sakuraPink,
+      no = colors.peachRed,
+      s = colors.surimiOrange,
+      S = colors.surimiOrange,
+      [''] = colors.surimiOrange,
+      ic = colors.autumnYellow,
+      R = colors.oniViolet,
+      Rv = colors.oniViolet,
+      cv = colors.peachRed,
+      ce = colors.peachRed,
+      r = colors.lightBlue,
+      rm = colors.lightBlue,
+      ['r?'] = colors.lightBlue,
+      ['!'] = colors.peachRed,
+      t = colors.peachRed,
+    }
+    vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
+    return ''
+  end
+  require'lualine'.setup {
+    options = {
+      theme = require'lualine.themes.kanagawa'
+    },
+    sections = {
+      lualine_a = {{evel_mode, color='LualineMode'}},
+      lualine_b = {{'b:gitsigns_head', icon = ''}, {'diff', source = diff_source, symbols = diff_symbols}, 'diagnostics'},
+      lualine_c = {'filename', {clients_name}}
+    },
+  }
+end
+
 M.git_messenger = function()
   local opt = { noremap=true, silent=true }
 	vim.g.git_messenger_include_diff = 'current'

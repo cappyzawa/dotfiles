@@ -198,14 +198,14 @@ require('packer').startup(function()
     end,
   }
   use {
-    'NTBBloodbath/galaxyline.nvim',
+    'nvim-lualine/lualine.nvim',
     requires = {
       {'kyazdani42/nvim-web-devicons'},
       {'lewis6991/gitsigns.nvim'},
       {'rebelot/kanagawa.nvim'},
     },
-    config = function()
-      require'plugins'.galaxyline()
+    config = function ()
+      require'plugins'.lualine()
     end
   }
   use {
