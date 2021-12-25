@@ -22,4 +22,4 @@ node_modules/
 .config/iterm2/
 .chef/
 .jupyter/migrated
-.zsh/Completion/_flctl
+.zsh/Completion/_*
