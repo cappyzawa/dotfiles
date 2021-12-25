@@ -132,6 +132,7 @@ M.lspconfig = function()
     vim.cmd [[autocmd BufWritePre *.ts lua vim.lsp.buf.formatting()]]
     vim.cmd [[autocmd BufWritePre *.rego lua vim.lsp.buf.formatting()]]
     vim.cmd [[autocmd BufWritePre *.yaml lua vim.lsp.buf.formatting()]]
+    vim.cmd [[autocmd BufWritePre *.lua lua vim.lsp.buf.formatting()]]
 end
 
 M.lspsaga = function()

@@ -201,6 +201,14 @@ zinit light rust-analyzer/rust-analyzer
 # }}}
 # }}}
 
+# lua {{{
+# Koihik/vscode-lua-format {{{
+zinit ice wait'2' lucid as"program" \
+  pick"bin/$(ostype)/lua-format"
+zinit light Koihik/vscode-lua-format
+# }}}
+# }}}
+
 # yaml {{{
 # adrienverge/yamllint {{{
 zinit ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"

@@ -9,7 +9,12 @@ tools:
     lint-formats:
     - '%m: %f:%l: %m'
     - '%f:%l: %m'
+  lua-lua-format: &lua-lua-format
+    format-command: 'lua-format -i'
+    format-stdin: true
 
 languages:
   rego:
   - <<: *rego-opa
+  lua:
+  - <<: *lua-lua-format
