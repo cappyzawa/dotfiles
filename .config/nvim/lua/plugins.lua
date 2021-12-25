@@ -113,7 +113,7 @@ end
 M.lualine = function ()
   local function clients_name()
     local msg = 'No Active Lsp'
-    local icon = ' LSP:'
+    local icon = ' '
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
@@ -169,12 +169,25 @@ M.lualine = function ()
   end
   require'lualine'.setup {
     options = {
-      theme = 'tokyonight'
+      theme = 'tokyonight',
+      section_separators = '',
+      component_separators = '',
     },
     sections = {
-      lualine_a = {{evel_mode, color='LualineMode'}},
-      lualine_b = {{'b:gitsigns_head', icon = ''}, {'diff', source = diff_source, symbols = diff_symbols}, 'diagnostics'},
-      lualine_c = {'filename', {clients_name}}
+      lualine_a = {
+        {evel_mode, color = 'LualineMode'}
+      },
+      lualine_b = {
+        {'b:gitsigns_head', icon = ''},
+        {'diff', source = diff_source, symbols = diff_symbols},
+        {'diagnostics'},
+      },
+      lualine_c = {
+        {'filetype', icon_only = true, padding = {left = 1, right = 0} },
+        {'filename'},
+        {clients_name, color = {fg = colors.blue}},
+      },
+      lualine_x = {'encoding', 'fileformat'},
     },
   }
 end
