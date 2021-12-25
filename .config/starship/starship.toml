@@ -13,6 +13,7 @@ error_symbol = "[](bold red)"
 vicmd_symbol = "[](bold yellow)"
 
 [cmd_duration]
+style = "yellow"
 
 [conda]
 
@@ -66,6 +67,7 @@ symbol = " "
 [kubernetes]
 symbol = "ﴱ "
 disabled = false
+style = "cyan"
 
 [line_break]
 disabled = false
