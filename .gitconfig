@@ -1,5 +1,7 @@
 [include]
 	path = ~/.gitconfig.local
+[include]
+	path = ~/.gitconfig.themes
 [core]
 	excludesfile = ~/.gitignore_global
 	ignorecase = false
@@ -14,6 +16,7 @@
 [interactive]
   diffFilter = delta --color-only
 [delta]
+  features = tokyonight
   navigate = true
   line-numbers = true
   side-by-side = true
