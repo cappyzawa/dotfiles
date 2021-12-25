@@ -48,7 +48,7 @@ zinit light tree-sitter/tree-sitter
 # }}}
 
 # local snippets {{{
-zinit ice wait"1" lucid
+zinit ice lucid
 zinit snippet $HOME/.zsh/10_utils.zsh
 zinit ice wait"1" lucid
 zinit snippet $HOME/.zsh/20_keybinds.zsh
@@ -149,6 +149,15 @@ zinit light mike-engel/jwt-cli
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"cheat-*->cheat"
 zinit light cheat/cheat
+# }}}
+# alacritty/alacritty {{{
+zinit ice wait'2' lucid as"program" \
+  if'[[ "$(ostype)" == "darwin" ]]' \
+  make!"app" \
+  atclone"cp -r target/release/${PLATFORM}/Alacritty.app /Applications" \
+  atpull"%atclone" \
+  has"cargo"
+zinit light alacritty/alacritty
 # }}}
 # }}}
 
@@ -362,11 +371,10 @@ zinit light im2nguyen/rover
 # }}}
 
 # tonsky/FiraCode {{{
-if [[ `uname` == "Darwin" ]]; then
 zinit ice wait'1' lucid as"program" from:"gh-r" \
+  if'[[ "$(ostype)" == "darwin" ]]' \
   atclone"cp ttf/FiraCode*.ttf ~/Library/Fonts"
 zinit light tonsky/FiraCode
-fi
 # }}}
 
 # cloudfoundry/bosh-cli {{{
@@ -406,11 +414,10 @@ zinit light denoland/deno_install
 # }}}
 
 # protocolbuffers/protobuf {{{
-if [[ `uname` == "Darwin" ]]; then
 zinit ice wait'2' lucid as"program" from:"gh-r" \
+  if'[[ "$(ostype)" == "darwin" ]]' \
   bpick:"protoc-*-osx-*.zip" mv"bin/protoc->$ZPFX/bin/protoc"
 zinit light protocolbuffers/protobuf
-fi
 # }}}
 
 zinit cdreplay -q
