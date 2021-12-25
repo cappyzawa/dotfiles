@@ -151,20 +151,6 @@ M.tokyonight = function()
 end
 
 M.lualine = function()
-    local function clients_name()
-        local msg = 'No Active Lsp'
-        local icon = ' '
-        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-        local clients = vim.lsp.get_active_clients()
-        if next(clients) == nil then return msg end
-        for _, client in ipairs(clients) do
-            local filetypes = client.config.filetypes
-            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                return icon .. client.name
-            end
-        end
-        return msg
-    end
     local function diff_source()
         local gitsigns = vim.b.gitsigns_status_dict
         if gitsigns then
@@ -222,7 +208,42 @@ M.lualine = function()
             },
             lualine_c = {
                 {'filetype', icon_only = true, padding = {left = 1, right = 0}},
-                {'filename'}, {clients_name, color = {fg = colors.blue}}
+                {'filename'}, {
+                    'lsp_progress',
+                    colors = {
+                        percentage = colors.yellow,
+                        title = colors.fg,
+                        message = colors.yellow,
+                        spinner = colors.yellow,
+                        lsp_client_name = colors.blue,
+                        use = true
+                    },
+                    separators = {
+                        component = ' ',
+                        progress = ' | ',
+                        percentage = {pre = '', post = '%% '},
+                        title = {pre = '', post = ': '},
+                        lsp_client_name = {pre = '[', post = ']'},
+                        spinner = {pre = '', post = ''},
+                        message = {
+                            commenced = 'In Progress',
+                            completed = 'Completed'
+                        }
+                    },
+                    display_components = {
+                        'lsp_client_name', 'spinner',
+                        {'title', 'percentage', 'message'}
+                    },
+                    timer = {
+                        progress_enddelay = 500,
+                        spinner = 1000,
+                        lsp_client_name_enddelay = 1000
+                    },
+                    spinner_symbols = {
+                        '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ',
+                        '🌗 ', '🌘 '
+                    }
+                }
             },
             lualine_x = {'encoding', 'fileformat'}
         }

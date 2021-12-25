@@ -169,7 +169,7 @@ require('packer').startup(function()
         'nvim-lualine/lualine.nvim',
         requires = {
             {'kyazdani42/nvim-web-devicons'}, {'lewis6991/gitsigns.nvim'},
-            {'folke/tokyonight.nvim'}
+            {'folke/tokyonight.nvim'}, {'arkav/lualine-lsp-progress'}
         },
         config = function() require'plugins'.lualine() end
     }
@@ -181,7 +181,17 @@ require('packer').startup(function()
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        config = function() require('gitsigns').setup() end
+        config = function()
+            require('gitsigns').setup {
+                signs = {
+                    add = {hl = 'GitGutterAdd', text = '+'},
+                    change = {hl = 'GitGutterChange', text = '~'},
+                    delete = {hl = 'GitGutterDelete', text = '-'},
+                    topdelete = {hl = 'GitGutterDelete', text = '‾'},
+                    changedelete = {hl = 'GitGutterChange', text = '~'}
+                }
+            }
+        end
     }
     use {
         'nvim-treesitter/nvim-treesitter',
