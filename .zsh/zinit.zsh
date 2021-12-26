@@ -109,8 +109,15 @@ zinit light "cli/cli"
 # }}}
 # sharkdp/bat {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
-  pick"bat-v*/bat"
+  pick"bat-v*/bat" \
+  atload"compdef _gnu_generic bat"
 zinit light sharkdp/bat
+# }}}
+# sharkdp/fd {{{
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  pick"fd-*/fd" \
+  atload"compdef _gnu_generic fd"
+zinit light sharkdp/fd
 # }}}
 # dandavison/delta {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
