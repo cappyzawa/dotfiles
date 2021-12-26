@@ -44,13 +44,6 @@ if has "consul"; then
   complete -o nospace -C `which consul` consul
 fi
 
-if has "nvim"; then
-  export EDITOR=nvim
-  export CVSEDITOR="${EDITOR}"
-  export SVN_EDITOR="${EDITOR}"
-  export GIT_EDITOR="${EDITOR}"
-fi
-
 # TODO: remove
 alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 

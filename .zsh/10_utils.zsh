@@ -96,28 +96,6 @@ get_os() {
     done
 }
 
-update_nvim() {
-  if [[ -d ${HOME}/nvim-nightly ]];then
-    rm -rf ${HOME}/nvim-nightly
-  fi
-
-  local target
-  if is_osx; then
-    target='macos'
-  elif is_linux; then
-    target='linux64'
-  else
-    echo "unkown os"
-    exit 1
-  fi
-
-  pushd ${HOME}
-  curl -fsSL https://github.com/neovim/neovim/releases/download/nightly/nvim-${target}.tar.gz | tar xzvf -
-
-  mv nvim-* nvim-nightly
-  popd
-}
-
 gitlocal() {
   git config --local user.name "Shu Kutsuzawa"
   git config --local user.email "cappyzawa@gmail.com"

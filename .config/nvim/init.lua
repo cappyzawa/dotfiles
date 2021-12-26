@@ -153,13 +153,11 @@ require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = {
+            {'nvim-lua/plenary.nvim'}, {'cappyzawa/telescope-terraform.nvim'},
+            {'nvim-telescope/telescope-ghq.nvim'}
+        },
         config = function() require'plugins'.telescope() end
-    }
-    use {
-        'cappyzawa/telescope-terraform.nvim',
-        requires = {'nvim-telescope/telescope.nvim'},
-        config = function() require'telescope'.load_extension 'terraform' end
     }
     use {
         'folke/tokyonight.nvim',
