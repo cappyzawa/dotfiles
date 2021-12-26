@@ -119,6 +119,12 @@ zinit ice wait'1' lucid as"program" from"gh-r" \
   atload"compdef _gnu_generic fd"
 zinit light sharkdp/fd
 # }}}
+# sharkdp/diskus {{{
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  pick"diskus-*/diskus" \
+  atload"compdef _gnu_generic diskus"
+zinit light sharkdp/diskus
+# }}}
 # dandavison/delta {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
   pick"delta-*/delta" \
