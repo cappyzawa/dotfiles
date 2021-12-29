@@ -327,4 +327,24 @@ M.telescope = function()
     end
 end
 
+M.searchx = function()
+    local opts = {noremap = true, silent = true}
+    api.nvim_set_keymap('n', [[/]], '<Cmd>call searchx#run(1)<CR>', opts)
+    api.nvim_set_keymap('n', [[?]], '<Cmd>call searchx#run(0)<CR>', opts)
+    api.nvim_set_keymap('x', [[/]], '<Cmd>call searchx#run(1)<CR>', opts)
+    api.nvim_set_keymap('x', [[?]], '<Cmd>call searchx#run(0)<CR>', opts)
+
+    api.nvim_set_keymap('n', 'n', '<Cmd>call searchx#search_next()<CR>', opts)
+    api.nvim_set_keymap('n', 'N', '<Cmd>call searchx#search_prev()<CR>', opts)
+    api.nvim_set_keymap('x', 'n', '<Cmd>call searchx#search_next()<CR>', opts)
+    api.nvim_set_keymap('x', 'N', '<Cmd>call searchx#search_prev()<CR>', opts)
+
+    api.nvim_set_keymap('c', '<C-j>', '<Cmd>call searchx#search_next()<CR>',
+                        opts)
+    api.nvim_set_keymap('c', '<C-k>', '<Cmd>call searchx#search_prev()<CR>',
+                        opts)
+
+    api.nvim_set_keymap('n', '<C-l>', '<Cmd>call searchx#clear()<CR>', opts)
+end
+
 return M

@@ -244,5 +244,9 @@ require('packer').startup(function()
     use {'tsandall/vim-rego'}
     use {'cappyzawa/starlark.vim'}
     use {'mattn/vim-maketable'}
+    use {
+        'hrsh7th/vim-searchx',
+        config = function() require'plugins'.searchx() end
+    }
 end)
 -- }}}
