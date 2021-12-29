@@ -10,9 +10,10 @@ zinit ice pick"init.sh" lucid \
 zinit light "b4b4r07/enhancd"
 # }}}
 # starship/starship {{{
-zinit ice lucid as"program" from"gh-r" bpick"starship-x86_64-*.tar.gz" \
-  atclone'starship completions zsh > ~/.zsh/Completion/_starship' atpull'%atclone' \
-  atload'export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml'
+zinit ice as"command" from"gh-r" \
+  atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+  atpull"%atclone" src"init.zsh" \
+  atload"export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml"
 zinit light starship/starship
 # }}}
 # ogham/exa (as ls) {{{
