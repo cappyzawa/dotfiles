@@ -172,8 +172,8 @@ require('packer').startup(function()
         config = function() require'plugins'.lualine() end
     }
     use {
-        'b3nj5m1n/kommentary',
-        config = function() require'plugins'.kommentary() end
+        'numToStr/Comment.nvim',
+        config = function() require('Comment').setup() end
     }
     use 'jiangmiao/auto-pairs'
     use {

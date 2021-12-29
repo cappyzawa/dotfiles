@@ -327,15 +327,4 @@ M.telescope = function()
     end
 end
 
-M.kommentary = function()
-    local config = require 'kommentary.config'
-    config.use_extended_mappings()
-    config.configure_language("default", {prefer_single_line_comments = true})
-    config.configure_language("terraform", {
-        single_line_comment = "//",
-        multi_line_comment_strings = {"/*", "*/"},
-        prefer_single_line_comments = true
-    })
-end
-
 return M
