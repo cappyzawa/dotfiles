@@ -32,8 +32,9 @@ zinit ice as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
 # }}}
 # direnv/direnv {{{
-zinit ice as"program" has"go" \
-  make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh" lucid
+zinit ice wait"2" lucid as"program" make'!' \
+  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+  src"zhook.zsh" has"go"
 zinit light direnv/direnv
 # }}}
 # neovim/neovim {{{
