@@ -102,7 +102,7 @@ gitlocal() {
   git config --local hub.host "github.com"
   git config --local gpg.program gpg
   git config --local user.signingkey 95FACBF514EBED07EFF2461812D20A0BDD2B2A46
-  echo "export GITHUB_TOKEN=${GITHUB_COM_TOKEN}" >> .envrc
+  echo 'export GITHUB_TOKEN=${GITHUB_COM_TOKEN}' >> .envrc
 }
 
 kind_start() {
