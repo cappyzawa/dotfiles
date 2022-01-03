@@ -1,10 +1,5 @@
 local vim = vim
 
---- icons
-vim.g.w_sign = ""
-vim.g.e_sign = ""
-vim.g.h_sign = "ﯦ"
-
 local override_keymap_with_lspsaga = function(opts)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -86,7 +81,7 @@ local on_attach = function(client, bufnr)
         Error = vim.g.e_sign,
         Warn = vim.g.w_sign,
         Hint = vim.g.h_sign,
-        Info = vim.g.h_sign
+        Info = vim.g.i_sign
     }
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] =

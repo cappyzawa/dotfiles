@@ -1,5 +1,12 @@
 local vim = vim
 
+-- icons {{{
+vim.g.w_sign = "ﯦ"
+vim.g.e_sign = ""
+vim.g.i_sign = ""
+vim.g.h_sign = "ﯧ"
+-- }}}
+
 -- map {{{
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -207,6 +214,11 @@ require('packer').startup(function()
             require'plugins'.lspsaga()
             require'plugins'.lspconfig()
         end
+    }
+    use {
+        "folke/trouble.nvim",
+        requires = {"kyazdani42/nvim-web-devicons", "neovim/nvim-lspconfig"},
+        config = function() require'plugins'.trouble() end
     }
     use {
         'hrsh7th/nvim-cmp',

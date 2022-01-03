@@ -164,7 +164,13 @@ M.lualine = function()
             }
         end
     end
-    local diff_symbols = {added = ' ', modified = '柳 ', removed = ' '}
+    local diff_symbols = {added = ' ', modified = ' ', removed = ' '}
+    local diag_symbols = {
+        error = vim.g.e_sign .. ' ',
+        warn = vim.g.w_sign .. ' ',
+        info = vim.g.i_sign .. ' ',
+        hint = vim.g.h_sign .. ' '
+    }
 
     local config = require 'tokyonight.config'
     local colors = require'tokyonight.colors'.setup(config)
@@ -207,7 +213,7 @@ M.lualine = function()
             lualine_b = {
                 {'b:gitsigns_head', icon = ''},
                 {'diff', source = diff_source, symbols = diff_symbols},
-                {'diagnostics'}
+                {'diagnostics', symbols = diag_symbols}
             },
             lualine_c = {
                 {'filetype', icon_only = true, padding = {left = 1, right = 0}},
@@ -329,22 +335,44 @@ end
 
 M.searchx = function()
     local opts = {noremap = true, silent = true}
-    api.nvim_set_keymap('n', [[/]], '<Cmd>call searchx#run(1)<CR>', opts)
-    api.nvim_set_keymap('n', [[?]], '<Cmd>call searchx#run(0)<CR>', opts)
-    api.nvim_set_keymap('x', [[/]], '<Cmd>call searchx#run(1)<CR>', opts)
-    api.nvim_set_keymap('x', [[?]], '<Cmd>call searchx#run(0)<CR>', opts)
 
-    api.nvim_set_keymap('n', 'n', '<Cmd>call searchx#search_next()<CR>', opts)
-    api.nvim_set_keymap('n', 'N', '<Cmd>call searchx#search_prev()<CR>', opts)
-    api.nvim_set_keymap('x', 'n', '<Cmd>call searchx#search_next()<CR>', opts)
-    api.nvim_set_keymap('x', 'N', '<Cmd>call searchx#search_prev()<CR>', opts)
+    api.nvim_set_keymap('n', [[?]],
+                        [[<Cmd>call searchx#start({ 'dir': 0 })<CR>]], opts)
+    api.nvim_set_keymap('n', [[/]],
+                        [[<Cmd>call searchx#start({ 'dir': 1 })<CR>]], opts)
+    api.nvim_set_keymap('x', [[?]],
+                        [[<Cmd>call searchx#start({ 'dir': 0 })<CR>]], opts)
+    api.nvim_set_keymap('x', [[/]],
+                        [[<Cmd>call searchx#start({ 'dir': 1 })<CR>]], opts)
+    api.nvim_set_keymap('c', [[;]], [[<Cmd>call searchx#select()<CR>]], opts)
 
-    api.nvim_set_keymap('c', '<C-j>', '<Cmd>call searchx#search_next()<CR>',
-                        opts)
-    api.nvim_set_keymap('c', '<C-k>', '<Cmd>call searchx#search_prev()<CR>',
-                        opts)
+    api.nvim_set_keymap('n', 'N', '<Cmd>call searchx#prev_dir()<CR>', opts)
+    api.nvim_set_keymap('n', 'n', '<Cmd>call searchx#next_dir()<CR>', opts)
+    api.nvim_set_keymap('x', 'N', '<Cmd>call searchx#prev_dir()<CR>', opts)
+    api.nvim_set_keymap('x', 'n', '<Cmd>call searchx#next_dir()<CR>', opts)
+
+    api.nvim_set_keymap('n', '<C-k>', '<Cmd>call searchx#prev()<CR>', opts)
+    api.nvim_set_keymap('n', '<C-j>', '<Cmd>call searchx#next()<CR>', opts)
+    api.nvim_set_keymap('c', '<C-k>', '<Cmd>call searchx#prev()<CR>', opts)
+    api.nvim_set_keymap('c', '<C-j>', '<Cmd>call searchx#next()<CR>', opts)
+    api.nvim_set_keymap('x', '<C-k>', '<Cmd>call searchx#prev()<CR>', opts)
+    api.nvim_set_keymap('x', '<C-j>', '<Cmd>call searchx#next()<CR>', opts)
 
     api.nvim_set_keymap('n', '<C-l>', '<Cmd>call searchx#clear()<CR>', opts)
+end
+
+M.trouble = function()
+    require'trouble'.setup {
+        signs = {
+            error = vim.g.e_sign,
+            warning = vim.g.w_sign,
+            info = vim.g.i_sign,
+            hint = vim.g.h_sign
+        }
+    }
+
+    local opts = {noremap = true, silent = true}
+    api.nvim_set_keymap('n', 'gR', '<Cmd>TroubleToggle<CR>', opts)
 end
 
 return M
