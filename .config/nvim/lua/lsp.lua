@@ -1,6 +1,6 @@
 local vim = vim
 
-local override_keymap_with_lspsaga = function(opts)
+local override_keymap_with_lspsaga = function(bufnr, opts)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -108,7 +108,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
                    opts)
 
-    override_keymap_with_lspsaga(opts)
+    override_keymap_with_lspsaga(bufnr, opts)
 end
 local lspconfig = require 'lspconfig'
 local lsp_installer_servers = require 'nvim-lsp-installer.servers'
