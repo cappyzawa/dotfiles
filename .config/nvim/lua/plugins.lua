@@ -359,6 +359,8 @@ M.searchx = function()
     api.nvim_set_keymap('x', '<C-j>', '<Cmd>call searchx#next()<CR>', opts)
 
     api.nvim_set_keymap('n', '<C-l>', '<Cmd>call searchx#clear()<CR>', opts)
+
+    vim.g.searchx = {auto_accept = true}
 end
 
 M.trouble = function()
