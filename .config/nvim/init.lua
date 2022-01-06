@@ -260,5 +260,9 @@ require('packer').startup(function()
         'hrsh7th/vim-searchx',
         config = function() require'plugins'.searchx() end
     }
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function() require'plugins'.indent_blankline() end
+    }
 end)
 -- }}}
