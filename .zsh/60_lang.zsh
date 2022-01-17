@@ -3,14 +3,6 @@ has_image() {
   has docker && docker image ls --format "{{.Repository}}:{{.Tag}}" "${img}" | grep "${img}" > /dev/null
 }
 
-if has "goenv"; then
-  local version="1.16.2"
-  if ! [[ -d "${ANYENV_ROOT}/envs/goenv/versions/${version}" ]]; then
-    goenv install ${version}
-    goenv global ${version}
-  fi
-fi
-
 if has "nodenv"; then
   local version="14.13.1"
   if ! [[ -d "${ANYENV_ROOT}/envs/nodenv/versions/${version}" ]]; then
