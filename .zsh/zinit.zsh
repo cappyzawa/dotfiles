@@ -24,8 +24,13 @@ zinit light ogham/exa
 # }}}
 # BurntSushi/ripgrep {{{
 zinit ice lucid as"program" from"gh-r" \
-  pick:"ripgrep-*/rg"
+  pick"ripgrep-*/rg"
 zinit light BurntSushi/ripgrep
+# }}}
+# phiresky/ripgrep-all {{{
+zinit ice lucid as"program" from"gh-r" \
+  pick"ripgrep_all-*/rga"
+zinit light phiresky/ripgrep-all
 # }}}
 # anyenv/anyenv {{{
 zinit ice as"program" pick:"bin/anyenv"

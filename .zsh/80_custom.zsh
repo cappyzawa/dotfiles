@@ -61,3 +61,24 @@ fi
 if has "terraform"; then
   complete -o nospace -C /usr/local/bin/terraform terraform
 fi
+
+if has "rga"; then
+  rga-fzf() {
+    RG_PREFIX="rga --files-with-matches"
+    local file
+    file="$(
+      FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+        fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+          --phony -q "$1" \
+          --bind "change:reload:$RG_PREFIX {q}" \
+          --preview-window="70%:wrap"
+    )" &&
+    echo "opening $file" &&
+
+    if [[ `basename "${file}"` =~ ".gz" ]]; then
+      gzip -dc ${file} | vim -
+    else
+      vim ${file}
+    fi
+  }
+fi
