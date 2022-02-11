@@ -332,7 +332,7 @@ M.telescope = function()
     }
 
     for k, v in pairs(keymap_telescope_func) do
-        api.nvim_set_keymap('n', k, string.format("<cmd> lua %s<CR>", v), opts)
+        api.nvim_set_keymap('n', k, string.format("<cmd>lua %s<CR>", v), opts)
     end
 end
 

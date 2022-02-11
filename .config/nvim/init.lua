@@ -159,14 +159,6 @@ local use = require('packer').use
 require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-            {'nvim-lua/plenary.nvim'}, {'cappyzawa/telescope-terraform.nvim'},
-            {'nvim-telescope/telescope-ghq.nvim'}
-        },
-        config = function() require'plugins'.telescope() end
-    }
-    use {
         'folke/tokyonight.nvim',
         config = function() require'plugins'.tokyonight() end
     }
@@ -232,6 +224,14 @@ require('packer').startup(function()
     use {
         'cappyzawa/trim.nvim',
         config = function() require'trim'.setup({disable = {'markdown'}}) end
+    }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            {'nvim-lua/plenary.nvim'}, {'cappyzawa/telescope-terraform.nvim'},
+            {'nvim-telescope/telescope-ghq.nvim'}
+        },
+        config = function() require'plugins'.telescope() end
     }
     use {
         'iamcco/markdown-preview.nvim',
