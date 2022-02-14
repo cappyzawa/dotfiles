@@ -237,6 +237,12 @@ local ts_lsp_config = {
 }
 -- }}}
 
+-- java {{{
+local java_lsp_binary = os.getenv("HOME") ..
+                            '/.local/share/zinit/plugins/georgewfraser---java-language-server/dist/lang_server_mac.sh'
+lspconfig.java_language_server.setup {cmd = {"bash", java_lsp_binary}}
+-- }}}
+
 -- zig {{{
 local ok, zls = lsp_installer_servers.get_server("zls")
 if ok then if not zls:is_installed() then zls:install() end end

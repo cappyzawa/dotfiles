@@ -260,6 +260,13 @@ zinit wait lucid for \
     zsh-users/zsh-completions
 # }}}
 
+# java
+zinit ice lucid wait"2" as"program" has"mvn" \
+  if'is_mac' \
+  atclone"mvn package -DskipTests" \
+  atpull"%atclone"
+zinit light georgewfraser/java-language-server
+
 # for only vim plugins {{{
 # Aloxaf/silicon {{{
 zinit ice lucid wait"2" as"program" from"gh-r"
