@@ -257,10 +257,6 @@ require('packer').startup(function()
     use {'cappyzawa/starlark.vim'}
     use {'mattn/vim-maketable'}
     use {
-        'hrsh7th/vim-searchx',
-        config = function() require'plugins'.searchx() end
-    }
-    use {
         'lukas-reineke/indent-blankline.nvim',
         config = function() require'plugins'.indent_blankline() end
     }
