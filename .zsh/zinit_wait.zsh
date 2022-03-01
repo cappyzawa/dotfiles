@@ -42,10 +42,6 @@ zinit ice wait lucid as"program" from"gh-r" \
   atload="alias ls='exa'"
 zinit light ogham/exa
 # }}}
-# anyenv/anyenv {{{
-zinit ice wait lucid as"program" pick:"bin/anyenv"
-zinit light anyenv/anyenv
-# }}}
 # BurntSushi/ripgrep {{{
 zinit ice wait lucid as"program" from"gh-r" \
   pick"ripgrep-*/rg"

@@ -9,6 +9,10 @@ zinit ice lucid as"program" make'!' \
   src"zhook.zsh" has"go"
 zinit light direnv/direnv
 # }}}
+# anyenv/anyenv {{{
+zinit ice lucid as"program" pick:"bin/anyenv"
+zinit light anyenv/anyenv
+# }}}
 zinit ice lucid
 zinit snippet $HOME/.zsh/10_utils.zsh
 # }}}
