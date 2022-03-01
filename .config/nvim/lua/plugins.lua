@@ -36,8 +36,8 @@ M.nvim_cmp = function()
             format = function(entry, vim_item)
                 -- Kind icons
                 vim_item.kind = string.format('%s %s',
-                                              kind_icons[vim_item.kind],
-                                              vim_item.kind) -- This concatonates the icons with the name of the item kind
+                    kind_icons[vim_item.kind],
+                    vim_item.kind) -- This concatonates the icons with the name of the item kind
                 -- Source
                 vim_item.menu = ({
                     buffer = "[Buffer]",
@@ -54,24 +54,24 @@ M.nvim_cmp = function()
                 vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
             end
         },
-        completion = {completeopt = 'menu,menuone,noinsert'},
+        completion = { completeopt = 'menu,menuone,noinsert' },
         mapping = {
-            ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(),
-                                    {'i', 's', 'c'}),
-            ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(),
-                                    {'i', 's', 'c'}),
-            ['<CR>'] = cmp.mapping.confirm({select = true})
+             ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(),
+                 { 'i', 's', 'c' }),
+             ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(),
+                 { 'i', 's', 'c' }),
+             ['<CR>'] = cmp.mapping.confirm({ select = true })
         },
         sources = {
-            {name = "nvim_lsp"}, {
+            { name = "nvim_lsp" }, {
                 name = "buffer",
                 option = {
                     get_bufnrs = function()
                         return vim.api.nvim_list_bufs()
                     end
                 }
-            }, {name = "path"}, {name = "nvim_lua"}, {name = "emoji"},
-            {name = "vsnip"}
+            }, { name = "path" }, { name = "nvim_lua" }, { name = "emoji" },
+            { name = "vsnip" }
         }
     }
 
@@ -89,13 +89,13 @@ M.nvim_cmp = function()
     })
 
     cmp.setup.cmdline(':', {
-        sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
+        sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } })
     })
 end
 
 M.goimports = function(timeout_ms)
-    local context = {only = {"source.organizeImports"}}
-    vim.validate {context = {context, "t", true}}
+    local context = { only = { "source.organizeImports" } }
+    vim.validate { context = { context, "t", true } }
 
     local params = vim.lsp.util.make_range_params()
     params.context = context
@@ -103,7 +103,7 @@ M.goimports = function(timeout_ms)
     -- See the implementation of the textDocument/codeAction callback
     -- (lua/vim/lsp/handler.lua) for how to do this properly.
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction",
-                                            params, timeout_ms)
+        params, timeout_ms)
     if not result or next(result) == nil then return end
     local client_id = next(result)
     local actions = result[1].result
@@ -117,7 +117,7 @@ M.goimports = function(timeout_ms)
         if action.edit then
             local client = vim.lsp.get_client_by_id(client_id)
             vim.lsp.util.apply_workspace_edit(action.edit,
-                                              client.offset_encoding)
+                client.offset_encoding)
         end
         if type(action.command) == "table" then
             vim.lsp.buf.execute_command(action.command)
@@ -129,26 +129,42 @@ end
 
 M.lspconfig = function()
     require 'lsp'
-    vim.cmd [[autocmd BufWritePre *.go lua require'plugins'.goimports(1000)]]
-    vim.cmd [[autocmd BufWritePre *.go lua vim.lsp.buf.formatting()]]
-    vim.cmd [[autocmd BufWritePre *.tf lua vim.lsp.buf.formatting()]]
-    vim.cmd [[autocmd BufWritePre *.ts lua vim.lsp.buf.formatting()]]
-    vim.cmd [[autocmd BufWritePre *.rs lua vim.lsp.buf.formatting()]]
-    vim.cmd [[autocmd BufWritePre *.rego lua vim.lsp.buf.formatting()]]
-    vim.cmd [[autocmd BufWritePre *.yaml lua vim.lsp.buf.formatting()]]
-    vim.cmd [[autocmd BufWritePre *.lua lua vim.lsp.buf.formatting()]]
-    vim.cmd [[autocmd BufWritePre *.zig lua vim.lsp.buf.formatting()]]
-    vim.cmd [[autocmd BufWritePre *.json lua vim.lsp.buf.formatting()]]
+    vim.api.nvim_create_augroup('lsp_formatter', { clear = true })
+
+    local ext_patterns = {
+        ['*.go'] = function()
+            M.goimports(1000)
+            vim.lsp.buf.formatting()
+        end,
+        ['*.tf'] = function()
+            vim.lsp.buf.formatting()
+        end,
+        ['*.ts'] = function() vim.lsp.buf.formatting() end,
+        ['*.rs'] = function() vim.lsp.buf.formatting() end,
+        ['*.rego'] = function() vim.lsp.buf.formatting() end,
+        ['*.yaml'] = function() vim.lsp.buf.formatting() end,
+        ['*.lua'] = function() vim.lsp.buf.formatting() end,
+        ['*.zig'] = function() vim.lsp.buf.formatting() end,
+        ['*.json'] = function() vim.lsp.buf.formatting() end,
+        ['*.elm'] = function() vim.lsp.buf.formatting() end
+    }
+    for ext, f in pairs(ext_patterns) do
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            pattern = ext,
+            callback = f,
+            group = 'lsp_formatter'
+        })
+    end
 end
 
 M.lspsaga = function()
-    local keymap_opt = {noremap = true, silent = true}
+    local keymap_opt = { noremap = true, silent = true }
     local set_keymap = vim.api.nvim_set_keymap
     set_keymap('n', '<Leader>ot', [[<cmd>Lspsaga open_floaterm<CR>]], keymap_opt)
     set_keymap('n', '<Leader>ct', [[<cmd>Lspsaga close_floaterm<CR>]],
-               keymap_opt)
+        keymap_opt)
     set_keymap('n', '<Leader>ct', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]],
-               keymap_opt)
+        keymap_opt)
 end
 
 M.tokyonight = function()
@@ -167,7 +183,8 @@ M.lualine = function()
             }
         end
     end
-    local diff_symbols = {added = ' ', modified = ' ', removed = ' '}
+
+    local diff_symbols = { added = ' ', modified = ' ', removed = ' ' }
     local diag_symbols = {
         error = vim.g.e_sign .. ' ',
         warn = vim.g.w_sign .. ' ',
@@ -176,7 +193,7 @@ M.lualine = function()
     }
 
     local config = require 'tokyonight.config'
-    local colors = require'tokyonight.colors'.setup(config)
+    local colors = require 'tokyonight.colors'.setup(config)
     local evel_mode = function()
         local mode_color = {
             n = colors.blue,
@@ -201,26 +218,26 @@ M.lualine = function()
             t = colors.red
         }
         vim.api.nvim_command('hi! LualineMode guifg=' ..
-                                 mode_color[vim.fn.mode()] .. ' guibg=' ..
-                                 colors.bg)
+            mode_color[vim.fn.mode()] .. ' guibg=' ..
+            colors.bg)
         return ''
     end
-    require'lualine'.setup {
+    require 'lualine'.setup {
         options = {
             theme = 'tokyonight',
             section_separators = '',
             component_separators = ''
         },
         sections = {
-            lualine_a = {{evel_mode, color = 'LualineMode'}},
+            lualine_a = { { evel_mode, color = 'LualineMode' } },
             lualine_b = {
-                {'b:gitsigns_head', icon = ''},
-                {'diff', source = diff_source, symbols = diff_symbols},
-                {'diagnostics', symbols = diag_symbols}
+                { 'b:gitsigns_head', icon = '' },
+                { 'diff', source = diff_source, symbols = diff_symbols },
+                { 'diagnostics', symbols = diag_symbols }
             },
             lualine_c = {
-                {'filetype', icon_only = true, padding = {left = 1, right = 0}},
-                {'filename'}, {
+                { 'filetype', icon_only = true, padding = { left = 1, right = 0 } },
+                { 'filename' }, {
                     'lsp_progress',
                     colors = {
                         percentage = colors.yellow,
@@ -233,10 +250,10 @@ M.lualine = function()
                     separators = {
                         component = ' ',
                         progress = ' | ',
-                        percentage = {pre = '', post = '%% '},
-                        title = {pre = '', post = ': '},
-                        lsp_client_name = {pre = '[', post = ']'},
-                        spinner = {pre = '', post = ''},
+                        percentage = { pre = '', post = '%% ' },
+                        title = { pre = '', post = ': ' },
+                        lsp_client_name = { pre = '[', post = ']' },
+                        spinner = { pre = '', post = '' },
                         message = {
                             commenced = 'In Progress',
                             completed = 'Completed'
@@ -244,7 +261,7 @@ M.lualine = function()
                     },
                     display_components = {
                         'lsp_client_name', 'spinner',
-                        {'title', 'percentage', 'message'}
+                        { 'title', 'percentage', 'message' }
                     },
                     timer = {
                         progress_enddelay = 500,
@@ -257,13 +274,13 @@ M.lualine = function()
                     }
                 }
             },
-            lualine_x = {'encoding', 'fileformat'}
+            lualine_x = { 'encoding', 'fileformat' }
         }
     }
 end
 
 M.git_messenger = function()
-    local opt = {noremap = true, silent = true}
+    local opt = { noremap = true, silent = true }
     vim.g.git_messenger_include_diff = 'current'
     vim.g.git_messenger_always_into_popup = true
     vim.g.git_messenger_no_default_mappings = true
@@ -276,7 +293,7 @@ M.treesitter = function()
 
     treesitter_configs.setup {
         ensure_installed = "maintained",
-        highlight = {enable = true, disable = {}}
+        highlight = { enable = true, disable = {} }
     }
 
     -- hcl {{{
@@ -288,7 +305,7 @@ M.telescope = function()
     local telescope = require 'telescope'
     local actions = require 'telescope.actions'
 
-    local extensions = {"terraform", "ghq"}
+    local extensions = { "terraform", "ghq" }
     for _, v in pairs(extensions) do telescope.load_extension(v) end
 
     telescope.setup {
@@ -297,7 +314,7 @@ M.telescope = function()
                 'rg', '--color=never', '--no-heading', '--with-filename',
                 '--line-number', '--column', '--hidden'
             },
-            file_ignore_patterns = {'node_modules', '.git'},
+            file_ignore_patterns = { 'node_modules', '.git' },
             mappings = {
                 i = {
                     ["<c-j>"] = actions.move_selection_next,
@@ -318,7 +335,7 @@ M.telescope = function()
         }
     }
 
-    local opts = {noremap = true, silent = true}
+    local opts = { noremap = true, silent = true }
 
     local keymap_telescope_func = {
         ["<Leader>ff"] = "require'telescope.builtin'.find_files()",
@@ -337,16 +354,16 @@ M.telescope = function()
 end
 
 M.searchx = function()
-    local opts = {noremap = true, silent = true}
+    local opts = { noremap = true, silent = true }
 
     api.nvim_set_keymap('n', [[?]],
-                        [[<Cmd>call searchx#start({ 'dir': 0 })<CR>]], opts)
+        [[<Cmd>call searchx#start({ 'dir': 0 })<CR>]], opts)
     api.nvim_set_keymap('n', [[/]],
-                        [[<Cmd>call searchx#start({ 'dir': 1 })<CR>]], opts)
+        [[<Cmd>call searchx#start({ 'dir': 1 })<CR>]], opts)
     api.nvim_set_keymap('x', [[?]],
-                        [[<Cmd>call searchx#start({ 'dir': 0 })<CR>]], opts)
+        [[<Cmd>call searchx#start({ 'dir': 0 })<CR>]], opts)
     api.nvim_set_keymap('x', [[/]],
-                        [[<Cmd>call searchx#start({ 'dir': 1 })<CR>]], opts)
+        [[<Cmd>call searchx#start({ 'dir': 1 })<CR>]], opts)
     api.nvim_set_keymap('c', [[;]], [[<Cmd>call searchx#select()<CR>]], opts)
 
     api.nvim_set_keymap('n', 'N', '<Cmd>call searchx#prev_dir()<CR>', opts)
@@ -363,11 +380,11 @@ M.searchx = function()
 
     api.nvim_set_keymap('n', '<C-l>', '<Cmd>call searchx#clear()<CR>', opts)
 
-    vim.g.searchx = {auto_accept = true}
+    vim.g.searchx = { auto_accept = true }
 end
 
 M.trouble = function()
-    require'trouble'.setup {
+    require 'trouble'.setup {
         signs = {
             error = vim.g.e_sign,
             warning = vim.g.w_sign,
@@ -376,12 +393,12 @@ M.trouble = function()
         }
     }
 
-    local opts = {noremap = true, silent = true}
+    local opts = { noremap = true, silent = true }
     api.nvim_set_keymap('n', 'gR', '<Cmd>TroubleToggle<CR>', opts)
 end
 
 M.indent_blankline = function()
-    require'indent_blankline'.setup {
+    require 'indent_blankline'.setup {
         show_current_context = true,
         show_current_context_start = true
     }

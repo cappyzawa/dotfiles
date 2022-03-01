@@ -131,7 +131,7 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local lua_lsp_config = {
-    cmd = {sumneko_binary},
+    cmd = {sumneko_binary, "--preview"},
     settings = {
         Lua = {
             runtime = {
@@ -287,7 +287,6 @@ lspconfig.elmls.setup({
     on_attach = custom_attach
     -- capabilities = capabilities,
 })
-vim.cmd([[ autocmd BufWritePre *.elm lua vim.lsp.buf.formatting() ]])
 -- }}}
 
 -- efm {{{
@@ -296,7 +295,7 @@ if ok then if not efmls:is_installed() then efmls:install() end end
 local efmls_binary = installed_lsp_servers .. '/efm/efm-langserver'
 local efm_lsp_config = {
     cmd = {efmls_binary, '-logfile', '/tmp/efm.log', '-loglevel', '5'},
-    filetypes = {"rego", "lua"},
+    filetypes = {"rego"},
     init_options = {
         documentFormatting = true,
         hover = true,

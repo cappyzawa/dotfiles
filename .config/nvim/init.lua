@@ -128,11 +128,6 @@ vim.cmd [[set tabstop=2]]
 -- }}}
 
 -- au {{{
-vim.cmd [[augroup LuaHighlight]]
-vim.cmd [[  autocmd!]]
-vim.cmd [[  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()]]
-vim.cmd [[augroup END]]
-
 vim.cmd [[augroup CursorRestore]]
 vim.cmd [[  au Bufread * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif ]]
 vim.cmd [[augroup END]]
