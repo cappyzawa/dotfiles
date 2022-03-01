@@ -56,6 +56,11 @@ fi
 
 if has "julia"; then
   export LD_LIBRARY_PATH=$HOME/.julia/conda/3/lib
+  if is_osx; then
+    export JULIA_NUM_THREADS=`sysctl -n hw.physicalcpu`
+  elif is_linux; then
+    export JULIA_NUM_THREADS=`nproc`
+  fi
 fi
 
 if has "terraform"; then
