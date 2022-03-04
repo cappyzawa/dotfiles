@@ -56,11 +56,16 @@ M.nvim_cmp = function()
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
         mapping = {
-             ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(),
-                 { 'i', 's', 'c' }),
-             ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(),
-                 { 'i', 's', 'c' }),
-             ['<CR>'] = cmp.mapping.confirm({ select = true })
+            ['<C-y>'] = cmp.config.disable,
+            ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(),
+                { 'i', 'c' }),
+            ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(),
+                { 'i', 'c' }),
+            ['<C-e>'] = cmp.mapping({
+                i = cmp.mapping.abort(),
+                c = cmp.mapping.close(),
+            }),
+            ['<CR>'] = cmp.mapping.confirm({ select = true })
         },
         sources = {
             { name = "nvim_lsp" }, {
@@ -74,6 +79,14 @@ M.nvim_cmp = function()
             { name = "vsnip" }
         }
     }
+
+    cmp.setup.filetype('gitcommit', {
+      sources = cmp.config.sources({
+        { name = 'cmp_git' },
+      }, {
+        { name = 'buffer' },
+      })
+    })
 
     cmp.setup.cmdline('/', {
         sources = {

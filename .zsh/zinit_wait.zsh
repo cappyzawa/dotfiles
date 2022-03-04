@@ -392,3 +392,4 @@ zinit light protocolbuffers/protobuf
 # }}}
 
 zinit ice wait cdreplay -q
+zinit creinstall -Q %HOME/.zsh/Completion
