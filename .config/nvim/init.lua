@@ -11,7 +11,7 @@ vim.g.h_sign = "ﯧ"
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local keymap_opt = {noremap = true, silent = true}
+local keymap_opt = { noremap = true, silent = true }
 local set_keymap = vim.api.nvim_set_keymap
 
 -- nnoremap {{{
@@ -71,7 +71,7 @@ for k, v in pairs(vmap) do set_keymap('v', k, v, keymap_opt) end
 -- }}}
 
 -- tnoremap {{{
-local tmap = {['<ESC>'] = [[<c-\><c-n>]]}
+local tmap = { ['<ESC>'] = [[<c-\><c-n>]] }
 
 for k, v in pairs(tmap) do set_keymap('t', k, v, keymap_opt) end
 -- }}}
@@ -103,7 +103,7 @@ for k, v in pairs(common_opts) do vim.api.nvim_set_option(k, v) end
 -- }}}
 
 -- window {{{
-local window_opts = {foldmethod = 'marker'}
+local window_opts = { foldmethod = 'marker' }
 
 local cur_win = vim.api.nvim_get_current_win()
 for k, v in pairs(window_opts) do vim.api.nvim_win_set_option(cur_win, k, v) end
@@ -136,11 +136,11 @@ vim.cmd [[augroup END]]
 -- plugins {{{
 -- install packer {{{
 local install_path = vim.fn.stdpath 'data' ..
-                         '/site/pack/packer/start/packer.nvim'
+    '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' ..
-                       install_path)
+        install_path)
 end
 
 vim.api.nvim_exec([[
@@ -155,15 +155,15 @@ require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use {
         'folke/tokyonight.nvim',
-        config = function() require'plugins'.tokyonight() end
+        config = function() require 'plugins'.tokyonight() end
     }
     use {
         'nvim-lualine/lualine.nvim',
         requires = {
-            {'kyazdani42/nvim-web-devicons'}, {'lewis6991/gitsigns.nvim'},
-            {'folke/tokyonight.nvim'}, {'arkav/lualine-lsp-progress'}
+            { 'kyazdani42/nvim-web-devicons' }, { 'lewis6991/gitsigns.nvim' },
+            { 'folke/tokyonight.nvim' }, { 'arkav/lualine-lsp-progress' }
         },
-        config = function() require'plugins'.lualine() end
+        config = function() require 'plugins'.lualine() end
     }
     use {
         'numToStr/Comment.nvim',
@@ -172,24 +172,24 @@ require('packer').startup(function()
     use 'jiangmiao/auto-pairs'
     use {
         'lewis6991/gitsigns.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('gitsigns').setup {
                 signs = {
-                    add = {hl = 'GitGutterAdd', text = '+'},
-                    change = {hl = 'GitGutterChange', text = '~'},
-                    delete = {hl = 'GitGutterDelete', text = '-'},
-                    topdelete = {hl = 'GitGutterDelete', text = '‾'},
-                    changedelete = {hl = 'GitGutterChange', text = '~'}
+                    add = { hl = 'GitGutterAdd', text = '+' },
+                    change = { hl = 'GitGutterChange', text = '~' },
+                    delete = { hl = 'GitGutterDelete', text = '-' },
+                    topdelete = { hl = 'GitGutterDelete', text = '‾' },
+                    changedelete = { hl = 'GitGutterChange', text = '~' }
                 }
             }
         end
     }
     use {
         'nvim-treesitter/nvim-treesitter',
-        requires = {'nvim-treesitter/nvim-treesitter-textobjects'},
+        requires = { 'nvim-treesitter/nvim-treesitter-textobjects' },
         run = ':TSUpdate',
-        config = function() require'plugins'.treesitter() end
+        config = function() require 'plugins'.treesitter() end
     }
     use {
         'neovim/nvim-lspconfig',
@@ -198,14 +198,14 @@ require('packer').startup(function()
             'hrsh7th/nvim-cmp'
         },
         config = function()
-            require'plugins'.lspsaga()
-            require'plugins'.lspconfig()
+            require 'plugins'.lspsaga()
+            require 'plugins'.lspconfig()
         end
     }
     use {
         "folke/trouble.nvim",
-        requires = {"kyazdani42/nvim-web-devicons", "neovim/nvim-lspconfig"},
-        config = function() require'plugins'.trouble() end
+        requires = { "kyazdani42/nvim-web-devicons", "neovim/nvim-lspconfig" },
+        config = function() require 'plugins'.trouble() end
     }
     use {
         'hrsh7th/nvim-cmp',
@@ -214,19 +214,19 @@ require('packer').startup(function()
             "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-path", "hrsh7th/cmp-emoji",
             "hrsh7th/cmp-cmdline"
         },
-        config = function() require'plugins'.nvim_cmp() end
+        config = function() require 'plugins'.nvim_cmp() end
     }
     use {
         'cappyzawa/trim.nvim',
-        config = function() require'trim'.setup({disable = {'markdown'}}) end
+        config = function() require 'trim'.setup({ disable = { 'markdown' } }) end
     }
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
-            {'nvim-lua/plenary.nvim'}, {'cappyzawa/telescope-terraform.nvim'},
-            {'nvim-telescope/telescope-ghq.nvim'}
+            { 'nvim-lua/plenary.nvim' }, { 'cappyzawa/telescope-terraform.nvim' },
+            { 'nvim-telescope/telescope-ghq.nvim' }
         },
-        config = function() require'plugins'.telescope() end
+        config = function() require 'plugins'.telescope() end
     }
     use {
         'iamcco/markdown-preview.nvim',
@@ -236,24 +236,24 @@ require('packer').startup(function()
     }
     use {
         'norcalli/nvim-colorizer.lua',
-        config = function() require'colorizer'.setup() end
+        config = function() require 'colorizer'.setup() end
     }
     use {
         'rhysd/git-messenger.vim',
-        config = function() require'plugins'.git_messenger() end
+        config = function() require 'plugins'.git_messenger() end
     }
     use 'cappyzawa/go-playground.nvim'
     use {
         'tyru/open-browser-github.vim',
-        requires = {'tyru/open-browser.vim'},
-        cmd = {'OpenGithubFile'}
+        requires = { 'tyru/open-browser.vim' },
+        cmd = { 'OpenGithubFile' }
     }
-    use {'tsandall/vim-rego'}
-    use {'cappyzawa/starlark.vim'}
-    use {'mattn/vim-maketable'}
+    use { 'tsandall/vim-rego' }
+    use { 'cappyzawa/starlark.vim' }
+    use { 'mattn/vim-maketable' }
     use {
         'lukas-reineke/indent-blankline.nvim',
-        config = function() require'plugins'.indent_blankline() end
+        config = function() require 'plugins'.indent_blankline() end
     }
 end)
 -- }}}
