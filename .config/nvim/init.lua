@@ -79,8 +79,6 @@ for k, v in pairs(tmap) do set_keymap('t', k, v, keymap_opt) end
 
 -- option {{{
 -- common {{{
-vim.o.termguicolors = true
-
 local common_opts = {
     hidden = true,
     splitright = true,
@@ -92,7 +90,8 @@ local common_opts = {
     completeopt = 'menu,menuone,noselect',
     clipboard = 'unnamedplus',
     ignorecase = true,
-    smartcase = true
+    smartcase = true,
+    termguicolors = true,
 }
 
 vim.cmd [[ set shortmess+=c ]]

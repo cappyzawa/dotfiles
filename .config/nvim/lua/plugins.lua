@@ -239,7 +239,8 @@ M.lualine = function()
         options = {
             theme = 'tokyonight',
             section_separators = '',
-            component_separators = ''
+            component_separators = '',
+            globalstatus = true,
         },
         sections = {
             lualine_a = { { evel_mode, color = 'LualineMode' } },
