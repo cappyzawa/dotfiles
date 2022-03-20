@@ -254,5 +254,9 @@ require('packer').startup(function()
         'lukas-reineke/indent-blankline.nvim',
         config = function() require 'plugins'.indent_blankline() end
     }
+    use {
+        'phaazon/hop.nvim',
+        config = function() require 'plugins'.hop() end
+    }
 end)
 -- }}}
