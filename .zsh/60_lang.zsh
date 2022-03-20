@@ -24,7 +24,7 @@ if has "npm" && has "nodenv" ; then
   fi
 
   if ! $(nodenv which elm-language-server > /dev/null); then
-    npm_global_install "@elm-tooling/elm-language-serve"
+    npm_global_install "@elm-tooling/elm-language-server"
   fi
 
   if ! $(nodenv which elm-test > /dev/null); then
