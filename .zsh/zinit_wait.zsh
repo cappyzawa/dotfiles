@@ -268,7 +268,9 @@ zinit light zlabjp/kubernetes-scripts
 # }}}
 # kubernetes-sigs/kustomize {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
-  mv"kustomize* -> kustomize"
+  mv"kustomize* -> kustomize" \
+  atclone"./kustomize completion zsh > ~/.zsh/Completion/_kustomize" \
+  atpull"%atclone"
 zinit light kubernetes-sigs/kustomize
 # }}}
 # wercker/stern {{{
@@ -293,7 +295,9 @@ zinit light operator-framework/operator-sdk
 # }}}
 # kubernetes-sigs/kubebuilder {{{
 zinit ice wait'2' lucid as"program" from:"gh-r" \
-  mv"kubebuilder*/bin/kubebuilder->$ZPFX/bin/kubebuilder"
+  mv"kubebuilder_*->kubebuilder" \
+  atclone"kubebuilder completion zsh > ~/.zsh/Completion/_kubebuilder" \
+  atpull"%atclone"
 zinit light kubernetes-sigs/kubebuilder
 # }}}
 # kubernetes-sigs/kind {{{
@@ -312,6 +316,13 @@ zinit ice wait'1' lucid as"program" from"gh-r" \
   mv"okteto-*->okteto" \
   atload"export KUBECONFIG=$HOME/.kube/config:$HOME/.config/okteto/okteto-kube.config"
 zinit light okteto/okteto
+# }}}
+# kubernetes-sigs/controller-runtime#setup-envtest {{{
+zinit ice wait'1' lucid as"program" \
+  id-as"kubernetes-sigs/setup-envtest" \
+  atclone"pushd tools/setup-envtest; go install; popd" \
+  atpull"%atclone"
+zinit light kubernetes-sigs/controller-runtime
 # }}}
 # }}}
 
