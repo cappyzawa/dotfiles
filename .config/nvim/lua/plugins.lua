@@ -76,7 +76,8 @@ M.nvim_cmp = function()
                     end
                 }
             }, { name = "path" }, { name = "nvim_lua" }, { name = "emoji" },
-            { name = "vsnip" }
+            { name = "vsnip" },
+            { name = "nvim_lsp_signature_help" }
         }
     }
 
