@@ -31,6 +31,7 @@ zinit light tree-sitter/tree-sitter
 # }}}
 # starship/starship {{{
 zinit ice wait lucid as"command" from"gh-r" \
+  bpick'*.tar.gz' \
   atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
   atpull"%atclone" src"init.zsh" \
   atload"export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml"
@@ -146,6 +147,11 @@ zinit light mike-engel/jwt-cli
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"cheat-*->cheat"
 zinit light cheat/cheat
+# }}}
+# Aloxaf/fzf-tab {{{
+zinit ice wait'2' lucid as"program" \
+  atload"source ./fzf-tab.plugin.zsh"
+zinit light Aloxaf/fzf-tab
 # }}}
 # alacritty/alacritty {{{
 zinit ice wait'2' lucid as"program" \

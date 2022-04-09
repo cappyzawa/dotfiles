@@ -18,6 +18,7 @@ path=( \
     ~/.gem/ruby/2.6.0/bin(N-/) \
     ~/Library/Python/3.9/bin(N-/) \
     /usr/local/go/bin(N-/) \
+    $HOME/.krew/bin(N-/) \
     "$path[@]" \
     )
 
