@@ -217,7 +217,7 @@ require('packer').startup(function()
   }
   use {
     'cappyzawa/trim.nvim',
-    config = function() require 'trim'.setup({ disable = { 'markdown', 'elm' } }) end
+    config = function() require 'trim'.setup({ disable = { 'markdown', 'elm', 'lua' } }) end
   }
   use {
     'nvim-telescope/telescope.nvim',
@@ -257,6 +257,10 @@ require('packer').startup(function()
   use {
     'phaazon/hop.nvim',
     config = function() require 'plugins'.hop() end
+  }
+  use {
+    'rcarriga/nvim-notify',
+    config = function() require 'plugins'.notify() end
   }
 end)
 -- }}}
