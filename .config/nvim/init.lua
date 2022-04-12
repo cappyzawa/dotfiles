@@ -16,28 +16,28 @@ local set_keymap = vim.api.nvim_set_keymap
 
 -- nnoremap {{{
 local nmap = {
-    ['<Space>'] = '[Space]',
-    ['<Leader>h'] = '^',
-    ['<Leader>l'] = '$',
-    ['<Up>'] = '<Nop>',
-    ['<Down>'] = '<Nop>',
-    ['<Left>'] = '<Nop>',
-    ['<Right>'] = '<Nop>',
-    Y = 'y$',
-    J = '10j',
-    K = '10k',
-    sj = '<C-w>j',
-    sk = '<C-w>k',
-    sl = '<C-w>l',
-    sh = '<C-w>h',
-    sJ = '<C-w>J',
-    sK = '<C-w>K',
-    sL = '<C-w>L',
-    sH = '<C-w>H',
-    ['s>'] = '<C-w>>',
-    ['s<'] = '<C-w><',
-    ['s+'] = '<C-w>+',
-    ['s-'] = '<C-w>-'
+  ['<Space>'] = '[Space]',
+  ['<Leader>h'] = '^',
+  ['<Leader>l'] = '$',
+  ['<Up>'] = '<Nop>',
+  ['<Down>'] = '<Nop>',
+  ['<Left>'] = '<Nop>',
+  ['<Right>'] = '<Nop>',
+  Y = 'y$',
+  J = '10j',
+  K = '10k',
+  sj = '<C-w>j',
+  sk = '<C-w>k',
+  sl = '<C-w>l',
+  sh = '<C-w>h',
+  sJ = '<C-w>J',
+  sK = '<C-w>K',
+  sL = '<C-w>L',
+  sH = '<C-w>H',
+  ['s>'] = '<C-w>>',
+  ['s<'] = '<C-w><',
+  ['s+'] = '<C-w>+',
+  ['s-'] = '<C-w>-'
 }
 
 for k, v in pairs(nmap) do set_keymap('n', k, v, keymap_opt) end
@@ -45,12 +45,12 @@ for k, v in pairs(nmap) do set_keymap('n', k, v, keymap_opt) end
 
 -- inoremap {{{
 local imap = {
-    ['<BS>'] = '<Nop>',
-    ['<Del>'] = '<Nop>',
-    ['<C-a>'] = '<Home>',
-    ['<C-e>'] = '<End>',
-    jj = '<ESC>',
-    ['j[Space]'] = 'j'
+  ['<BS>'] = '<Nop>',
+  ['<Del>'] = '<Nop>',
+  ['<C-a>'] = '<Home>',
+  ['<C-e>'] = '<End>',
+  jj = '<ESC>',
+  ['j[Space]'] = 'j'
 }
 
 for k, v in pairs(imap) do set_keymap('i', k, v, keymap_opt) end
@@ -58,13 +58,13 @@ for k, v in pairs(imap) do set_keymap('i', k, v, keymap_opt) end
 
 -- vnoremap {{{
 local vmap = {
-    ['<C-j><C-j>'] = '<ESC>',
-    ['<Leader>h'] = '^',
-    ['<Leader>l'] = '$',
-    J = '10j',
-    K = '10k',
-    ['<'] = '<gv',
-    ['>'] = '>gv'
+  ['<C-j><C-j>'] = '<ESC>',
+  ['<Leader>h'] = '^',
+  ['<Leader>l'] = '$',
+  J = '10j',
+  K = '10k',
+  ['<'] = '<gv',
+  ['>'] = '>gv'
 }
 
 for k, v in pairs(vmap) do set_keymap('v', k, v, keymap_opt) end
@@ -80,18 +80,18 @@ for k, v in pairs(tmap) do set_keymap('t', k, v, keymap_opt) end
 -- option {{{
 -- common {{{
 local common_opts = {
-    hidden = true,
-    splitright = true,
-    splitbelow = true,
-    wildoptions = 'pum',
-    wildmenu = true,
-    wildmode = 'longest,full',
-    sh = 'zsh',
-    completeopt = 'menu,menuone,noselect',
-    clipboard = 'unnamedplus',
-    ignorecase = true,
-    smartcase = true,
-    termguicolors = true,
+  hidden = true,
+  splitright = true,
+  splitbelow = true,
+  wildoptions = 'pum',
+  wildmenu = true,
+  wildmode = 'longest,full',
+  sh = 'zsh',
+  completeopt = 'menu,menuone,noselect',
+  clipboard = 'unnamedplus',
+  ignorecase = true,
+  smartcase = true,
+  termguicolors = true,
 }
 
 vim.cmd [[ set shortmess+=c ]]
@@ -110,11 +110,11 @@ for k, v in pairs(window_opts) do vim.api.nvim_win_set_option(cur_win, k, v) end
 
 -- buffer {{{
 local buffer_opts = {
-    autoindent = true,
-    smartindent = true,
-    expandtab = true,
-    undofile = true,
-    swapfile = false
+  autoindent = true,
+  smartindent = true,
+  expandtab = true,
+  undofile = true,
+  swapfile = false
 }
 
 local cur_buf = vim.api.nvim_get_current_buf()
@@ -138,8 +138,8 @@ local install_path = vim.fn.stdpath 'data' ..
     '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' ..
-        install_path)
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' ..
+  install_path)
 end
 
 vim.api.nvim_exec([[
@@ -151,112 +151,112 @@ vim.api.nvim_exec([[
 -- }}}
 local use = require('packer').use
 require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
-    use {
-        'folke/tokyonight.nvim',
-        config = function() require 'plugins'.tokyonight() end
-    }
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = {
-            { 'kyazdani42/nvim-web-devicons' }, { 'lewis6991/gitsigns.nvim' },
-            { 'folke/tokyonight.nvim' }, { 'arkav/lualine-lsp-progress' }
-        },
-        config = function() require 'plugins'.lualine() end
-    }
-    use {
-        'numToStr/Comment.nvim',
-        config = function() require('Comment').setup() end
-    }
-    use 'jiangmiao/auto-pairs'
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            require('gitsigns').setup {
-                signs = {
-                    add = { hl = 'GitGutterAdd', text = '+' },
-                    change = { hl = 'GitGutterChange', text = '~' },
-                    delete = { hl = 'GitGutterDelete', text = '-' },
-                    topdelete = { hl = 'GitGutterDelete', text = '‾' },
-                    changedelete = { hl = 'GitGutterChange', text = '~' }
-                }
-            }
-        end
-    }
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        requires = { 'nvim-treesitter/nvim-treesitter-textobjects' },
-        run = ':TSUpdate',
-        config = function() require 'plugins'.treesitter() end
-    }
-    use {
-        'neovim/nvim-lspconfig',
-        requires = {
-            'williamboman/nvim-lsp-installer', 'tami5/lspsaga.nvim',
-            'hrsh7th/nvim-cmp'
-        },
-        config = function()
-            require 'plugins'.lspsaga()
-            require 'plugins'.lspconfig()
-        end
-    }
-    use {
-        "folke/trouble.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", "neovim/nvim-lspconfig" },
-        config = function() require 'plugins'.trouble() end
-    }
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            "hrsh7th/vim-vsnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-path", "hrsh7th/cmp-emoji",
-            "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp-signature-help"
-        },
-        config = function() require 'plugins'.nvim_cmp() end
-    }
-    use {
-        'cappyzawa/trim.nvim',
-        config = function() require 'trim'.setup({ disable = { 'markdown' } }) end
-    }
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-            { 'nvim-lua/plenary.nvim' }, { 'cappyzawa/telescope-terraform.nvim' },
-            { 'nvim-telescope/telescope-ghq.nvim' }
-        },
-        config = function() require 'plugins'.telescope() end
-    }
-    use {
-        'iamcco/markdown-preview.nvim',
-        run = 'cd app && yarn install',
-        cmd = 'MarkdownPreview',
-        ft = 'markdown'
-    }
-    use {
-        'norcalli/nvim-colorizer.lua',
-        config = function() require 'colorizer'.setup() end
-    }
-    use {
-        'rhysd/git-messenger.vim',
-        config = function() require 'plugins'.git_messenger() end
-    }
-    use 'cappyzawa/go-playground.nvim'
-    use {
-        'tyru/open-browser-github.vim',
-        requires = { 'tyru/open-browser.vim' },
-        cmd = { 'OpenGithubFile' }
-    }
-    use { 'tsandall/vim-rego' }
-    use { 'cappyzawa/starlark.vim' }
-    use { 'mattn/vim-maketable' }
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function() require 'plugins'.indent_blankline() end
-    }
-    use {
-        'phaazon/hop.nvim',
-        config = function() require 'plugins'.hop() end
-    }
+  use 'wbthomason/packer.nvim'
+  use {
+    'folke/tokyonight.nvim',
+    config = function() require 'plugins'.tokyonight() end
+  }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      { 'kyazdani42/nvim-web-devicons' }, { 'lewis6991/gitsigns.nvim' },
+      { 'folke/tokyonight.nvim' }, { 'arkav/lualine-lsp-progress' }
+    },
+    config = function() require 'plugins'.lualine() end
+  }
+  use {
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup() end
+  }
+  use 'jiangmiao/auto-pairs'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add = { hl = 'GitGutterAdd', text = '+' },
+          change = { hl = 'GitGutterChange', text = '~' },
+          delete = { hl = 'GitGutterDelete', text = '-' },
+          topdelete = { hl = 'GitGutterDelete', text = '‾' },
+          changedelete = { hl = 'GitGutterChange', text = '~' }
+        }
+      }
+    end
+  }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    requires = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+    run = ':TSUpdate',
+    config = function() require 'plugins'.treesitter() end
+  }
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      'williamboman/nvim-lsp-installer', 'tami5/lspsaga.nvim',
+      'hrsh7th/nvim-cmp'
+    },
+    config = function()
+      require 'plugins'.lspsaga()
+      require 'plugins'.lspconfig()
+    end
+  }
+  use {
+    "folke/trouble.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", "neovim/nvim-lspconfig" },
+    config = function() require 'plugins'.trouble() end
+  }
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      "hrsh7th/vim-vsnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-path", "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp-signature-help"
+    },
+    config = function() require 'plugins'.nvim_cmp() end
+  }
+  use {
+    'cappyzawa/trim.nvim',
+    config = function() require 'trim'.setup({ disable = { 'markdown', 'elm' } }) end
+  }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      { 'nvim-lua/plenary.nvim' }, { 'cappyzawa/telescope-terraform.nvim' },
+      { 'nvim-telescope/telescope-ghq.nvim' }
+    },
+    config = function() require 'plugins'.telescope() end
+  }
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && yarn install',
+    cmd = 'MarkdownPreview',
+    ft = 'markdown'
+  }
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function() require 'colorizer'.setup() end
+  }
+  use {
+    'rhysd/git-messenger.vim',
+    config = function() require 'plugins'.git_messenger() end
+  }
+  use 'cappyzawa/go-playground.nvim'
+  use {
+    'tyru/open-browser-github.vim',
+    requires = { 'tyru/open-browser.vim' },
+    cmd = { 'OpenGithubFile' }
+  }
+  use { 'tsandall/vim-rego' }
+  use { 'cappyzawa/starlark.vim' }
+  use { 'mattn/vim-maketable' }
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require 'plugins'.indent_blankline() end
+  }
+  use {
+    'phaazon/hop.nvim',
+    config = function() require 'plugins'.hop() end
+  }
 end)
 -- }}}
