@@ -103,7 +103,15 @@ M.nvim_cmp = function()
   })
 
   cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } })
+    sources = cmp.config.sources(
+      { {
+        name = 'path',
+        option = {
+          trailling_slash = true
+        }
+      } },
+      { { name = 'cmdline' } }
+    )
   })
 end
 
