@@ -330,6 +330,10 @@ zinit ice wait'1' lucid as"program" \
   atpull"%atclone"
 zinit light kubernetes-sigs/controller-runtime
 # }}}
+#
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  mv"kubectl-neat-diff-* -> kubectl-neat-diff"
+zinit light sh0rez/kubectl-neat-diff
 # }}}
 
 # hashicorp tools {{{
@@ -372,7 +376,7 @@ zinit light tonsky/FiraCode
 # }}}
 
 # cloudfoundry/bosh-cli {{{
-zinit ice wait'2' lucid as"program" from"gh-r" ver"v6.2.0"\
+zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"bosh-cli* -> bosh"
 zinit light cloudfoundry/bosh-cli
 # }}}
