@@ -330,10 +330,17 @@ zinit ice wait'1' lucid as"program" \
   atpull"%atclone"
 zinit light kubernetes-sigs/controller-runtime
 # }}}
-#
+# sh0rez/kubectl-neat-diff {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
   mv"kubectl-neat-diff-* -> kubectl-neat-diff"
 zinit light sh0rez/kubectl-neat-diff
+# }}}
+# kubernetes-sigs/krew {{{
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  mv"krew-*->krew" \
+  atclone"./krew install krew" atpull"%atclone"
+zinit light kubernetes-sigs/krew
+# }}}
 # }}}
 
 # hashicorp tools {{{

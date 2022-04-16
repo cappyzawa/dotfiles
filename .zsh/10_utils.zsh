@@ -40,8 +40,13 @@ is_ssh_running() {
 }
 
 # ostype returns the lowercase OS name
-ostype() {
-    echo ${(L):-$(uname)}
+os() {
+    echo $(uname | tr '[:upper:]' '[:lower:]')
+}
+ostype=os
+
+arch() {
+  echo "$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
 }
 
 # os_detect export the PLATFORM variable as you see fit
