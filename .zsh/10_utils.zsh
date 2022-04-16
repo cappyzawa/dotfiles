@@ -43,7 +43,8 @@ is_ssh_running() {
 os() {
     echo $(uname | tr '[:upper:]' '[:lower:]')
 }
-ostype=os
+
+alias ostype=os
 
 arch() {
   echo "$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
