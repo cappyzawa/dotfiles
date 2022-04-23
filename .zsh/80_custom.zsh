@@ -1,5 +1,9 @@
 if has "kubectl"; then
   alias k='kubectl'
+
+  if (kubectl krew info neat > /dev/null); then
+    alias -g kvy="| kubectl neat | vim '+set filetype=yaml buftype=nofile'"
+  fi
 fi
 
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}

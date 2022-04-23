@@ -332,7 +332,8 @@ zinit light kubernetes-sigs/controller-runtime
 # }}}
 # sh0rez/kubectl-neat-diff {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
-  mv"kubectl-neat-diff-* -> kubectl-neat-diff"
+  mv"kubectl-neat-diff-* -> kubectl-neat-diff" \
+  atload"export KUBECTL_EXTERNAL_DIFF=kubectl-neat-diff"
 zinit light sh0rez/kubectl-neat-diff
 # }}}
 # kubernetes-sigs/krew {{{

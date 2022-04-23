@@ -202,7 +202,7 @@ local yaml_lsp_config = {
   settings = {
     yaml = {
       schemas = {
-        ["kubernetes"] = { "*.k8s.yaml", "/*k8s/**/*.yaml", "app.yaml" },
+        ["kubernetes"] = { "*.yaml" },
         ["http://json.schemastore.org/kustomization"] = "/kustomization.yaml",
         ["https://raw.githubusercontent.com/cappyzawa/concourse-pipeline-jsonschema/master/concourse_jsonschema.json"] = "/pipeline.yml"
       },

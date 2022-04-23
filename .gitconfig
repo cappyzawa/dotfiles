@@ -23,7 +23,7 @@
 [merge]
   conflictstyle = diff3
 [diff]
-    colorMoved = default
+  colorMoved = default
 [difftool "nvimdiff"]
   cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
 [pull]
