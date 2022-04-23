@@ -342,6 +342,12 @@ zinit ice wait'1' lucid as"program" from"gh-r" \
   atclone"./krew install krew" atpull"%atclone"
 zinit light kubernetes-sigs/krew
 # }}}
+# FairwindsOps/pluto {{{
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  atclone"./pluto completion zsh > ${HOME}/.zsh/Completion/_pluto" \
+  atpull"%atclone"
+zinit light FairwindsOps/pluto
+# }}}
 # }}}
 
 # hashicorp tools {{{
