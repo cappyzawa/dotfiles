@@ -75,7 +75,14 @@ M.nvim_cmp = function()
             return vim.api.nvim_list_bufs()
           end
         }
-      }, { name = "path" }, { name = "nvim_lua" }, { name = "emoji" },
+      },
+      {
+        name = "path",
+        option = {
+          trailling_slash = true
+        }
+      },
+      { name = "nvim_lua" }, { name = "emoji" },
       { name = "vsnip" },
       { name = "nvim_lsp_signature_help" }
     }
