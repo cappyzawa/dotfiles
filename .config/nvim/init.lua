@@ -223,7 +223,7 @@ require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = {
       { 'nvim-lua/plenary.nvim' }, { 'cappyzawa/telescope-terraform.nvim' },
-      { 'nvim-telescope/telescope-ghq.nvim' }
+      { 'nvim-telescope/telescope-ghq.nvim' },{ 'nvim-telescope/telescope-github.nvim' }
     },
     config = function() require 'plugins'.telescope() end
   }

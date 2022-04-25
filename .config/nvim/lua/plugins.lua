@@ -300,7 +300,7 @@ M.telescope = function()
   local telescope = require 'telescope'
   local actions = require 'telescope.actions'
 
-  local extensions = { "terraform", "ghq" }
+  local extensions = { "terraform", "ghq", "gh" }
   for _, v in pairs(extensions) do telescope.load_extension(v) end
 
   telescope.setup {
