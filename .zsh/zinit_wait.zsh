@@ -139,6 +139,12 @@ zinit ice wait'3' lucid as"program" from"gh-r" \
   mv"step_*/bin/step -> $ZPFX/bin/step"
 zinit light smallstep/cli
 # }}}
+# smallstep/certificates {{{
+zinit ice wait'3' lucid as"program" from"gh-r" \
+  pick"step-ca*/bin/step-ca"
+zinit light smallstep/certificates
+# }}}
+
 # mike-engel/jwt-cli {{{
 zinit ice wait'2' lucid as"program" from"gh-r"
 zinit light mike-engel/jwt-cli
