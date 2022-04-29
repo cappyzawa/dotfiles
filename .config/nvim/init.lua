@@ -139,7 +139,7 @@ local install_path = vim.fn.stdpath 'data' ..
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' ..
-  install_path)
+    install_path)
 end
 
 vim.api.nvim_exec([[
@@ -211,7 +211,7 @@ require('packer').startup(function()
     requires = {
       "hrsh7th/vim-vsnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-path", "hrsh7th/cmp-emoji",
-      "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp-signature-help"
+      "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     config = function() require 'plugins'.nvim_cmp() end
   }
@@ -223,7 +223,7 @@ require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = {
       { 'nvim-lua/plenary.nvim' }, { 'cappyzawa/telescope-terraform.nvim' },
-      { 'nvim-telescope/telescope-ghq.nvim' },{ 'nvim-telescope/telescope-github.nvim' }
+      { 'nvim-telescope/telescope-ghq.nvim' }, { 'nvim-telescope/telescope-github.nvim' }
     },
     config = function() require 'plugins'.telescope() end
   }
