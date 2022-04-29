@@ -32,6 +32,11 @@ M.nvim_cmp = function()
 		TypeParameter = ""
 	}
 	cmp.setup {
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    },
 		formatting = {
 			format = function(entry, vim_item)
 				-- Kind icons
