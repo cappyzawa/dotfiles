@@ -202,9 +202,9 @@ local yaml_lsp_config = {
   settings = {
     yaml = {
       schemas = {
-        ["kubernetes"] = { "*.yaml" },
-        ["http://json.schemastore.org/kustomization"] = "/kustomization.yaml",
-        ["https://raw.githubusercontent.com/cappyzawa/concourse-pipeline-jsonschema/master/concourse_jsonschema.json"] = "/pipeline.yml"
+        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.yaml",
+        ["https://json.schemastore.org/kustomization.json"] = "/kustomization.yaml",
+        ["https://raw.githubusercontent.com/cappyzawa/concourse-pipeline-jsonschema/master/concourse_jsonschema.json"] = "/pipeline.yml",
       },
       trace = { server = "verbose" }
     }
