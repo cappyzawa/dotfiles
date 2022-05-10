@@ -180,6 +180,11 @@ zinit light jesseduffield/lazydocker
 zinit ice wait'2' lucid as"program" from:"gh-r"
 zinit light wagoodman/dive
 # }}}
+# dagger/dagger {{{
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  atclone"./dagger completion zsh > ~/.zsh/Completion/_dagger" atpull"%atclone"
+zinit light dagger/dagger
+# }}}
 # }}}
 
 # golang {{{
@@ -430,6 +435,12 @@ zinit ice wait'2' lucid as"program" from:"gh-r" \
   if'[[ "$(ostype)" == "darwin" ]]' \
   bpick:"protoc-*-osx-*.zip" mv"bin/protoc->$ZPFX/bin/protoc"
 zinit light protocolbuffers/protobuf
+# }}}
+
+# cue-lang/cue {{{
+zinit ice wait'2' lucid as"program" from:"gh-r" \
+  atclone"./cue completion zsh > ~/.zsh/Completion/_cue" atpull"%atclone"
+zinit light cue-lang/cue
 # }}}
 
 zinit ice wait cdreplay -q

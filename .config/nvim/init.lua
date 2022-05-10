@@ -248,6 +248,7 @@ require('packer').startup(function()
     cmd = { 'OpenGithubFile' }
   }
   use { 'tsandall/vim-rego' }
+  use { 'jjo/vim-cue' }
   use { 'cappyzawa/starlark.vim' }
   use { 'mattn/vim-maketable' }
   use {
