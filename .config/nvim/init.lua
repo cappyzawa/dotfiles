@@ -101,8 +101,8 @@ vim.cmd [[ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>" ]]
 for k, v in pairs(common_opts) do vim.api.nvim_set_option(k, v) end
 -- }}}
 
--- window {{{
-local window_opts = { foldmethod = 'marker' }
+-- window {{
+local window_opts = { foldmethod = 'marker', number = true }
 
 local cur_win = vim.api.nvim_get_current_win()
 for k, v in pairs(window_opts) do vim.api.nvim_win_set_option(cur_win, k, v) end
