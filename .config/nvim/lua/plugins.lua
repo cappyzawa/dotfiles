@@ -162,15 +162,12 @@ M.lspconfig = function()
   local ext_patterns = {
     ['*.go'] = function()
       M.goimports(1000)
-      vim.lsp.buf.formatting()
+      vim.lsp.buf.format { async = true }
     end,
-    ['*.tf'] = function()
-      vim.lsp.buf.formatting()
-    end,
-    -- ['*.ts'] = function() vim.lsp.buf.format { async = true } end,
+    ['*.tf'] = function() vim.lsp.buf.format { async = true } end,
     ['*.rs'] = function() vim.lsp.buf.format { async = true } end,
     ['*.rego'] = function() vim.lsp.buf.format { async = true } end,
-    ['*.yaml'] = function() vim.lsp.buf.format { async = true } end,
+    -- ['*.yaml'] = function() vim.lsp.buf.format { async = true } end,
     ['*.lua'] = function() vim.lsp.buf.format { async = true } end,
     ['*.zig'] = function() vim.lsp.buf.format { async = true } end,
     ['*.json'] = function() vim.lsp.buf.format { async = true } end,

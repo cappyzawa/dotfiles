@@ -120,7 +120,7 @@ local lsputil = require 'lspconfig/util'
 
 local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol
-.make_client_capabilities())
+  .make_client_capabilities())
 
 -- lua {{{
 local ok, sumneko_lua = lsp_installer_servers.get_server("sumneko_lua")

@@ -124,7 +124,6 @@ for k, v in pairs(buffer_opts) do vim.api.nvim_buf_set_option(cur_buf, k, v) end
 vim.cmd [[set shiftwidth=2]]
 vim.cmd [[set tabstop=2]]
 -- }}}
--- }}}
 
 -- au {{{
 vim.cmd [[augroup CursorRestore]]
