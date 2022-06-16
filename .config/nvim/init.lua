@@ -92,6 +92,7 @@ local common_opts = {
   ignorecase = true,
   smartcase = true,
   termguicolors = true,
+  cmdheight = 0,
 }
 
 vim.cmd [[ set shortmess+=c ]]
@@ -171,6 +172,7 @@ require('packer').startup(function()
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
+    after = { 'plenary.nvim' },
     config = function()
       require('gitsigns').setup {
         signs = {
@@ -203,6 +205,7 @@ require('packer').startup(function()
   use {
     "folke/trouble.nvim",
     requires = { "kyazdani42/nvim-web-devicons", "neovim/nvim-lspconfig" },
+    after = { 'nvim-lspconfig' },
     config = function() require 'plugins'.trouble() end
   }
   use {
@@ -216,6 +219,7 @@ require('packer').startup(function()
   }
   use {
     'cappyzawa/trim.nvim',
+    event = 'BufWritePre',
     config = function() require 'trim'.setup({ disable = { 'markdown', 'elm', 'lua' } }) end
   }
   use {
@@ -234,24 +238,44 @@ require('packer').startup(function()
   }
   use {
     'norcalli/nvim-colorizer.lua',
+    cmd = { 'ColorizerToggle' },
     config = function() require 'colorizer'.setup() end
   }
   use {
     'rhysd/git-messenger.vim',
+    cmd = 'GitMessenger',
+    keys = { 'n', '<Leader>gm' },
     config = function() require 'plugins'.git_messenger() end
   }
-  use 'cappyzawa/go-playground.nvim'
+  use {
+    'cappyzawa/go-playground.nvim',
+    cmd = 'GoPlayground',
+    ft = 'go'
+  }
   use {
     'tyru/open-browser-github.vim',
     requires = { 'tyru/open-browser.vim' },
     cmd = { 'OpenGithubFile' }
   }
-  use { 'tsandall/vim-rego' }
-  use { 'jjo/vim-cue' }
-  use { 'cappyzawa/starlark.vim' }
-  use { 'mattn/vim-maketable' }
+  use {
+    'tsandall/vim-rego',
+    after = { 'tokyonight.nvim' },
+  }
+  use {
+    'jjo/vim-cue',
+    after = { 'tokyonight.nvim' },
+  }
+  use {
+    'cappyzawa/starlark.vim',
+    after = { 'tokyonight.nvim' },
+  }
+  use {
+    'mattn/vim-maketable',
+    cmd = { 'MakeTable', 'UnmakeTable' }
+  }
   use {
     'lukas-reineke/indent-blankline.nvim',
+    after = { 'tokyonight.nvim' },
     config = function() require 'plugins'.indent_blankline() end
   }
   use {

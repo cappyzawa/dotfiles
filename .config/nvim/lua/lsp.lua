@@ -88,7 +88,8 @@ local on_attach = function(client, bufnr)
     Info = vim.g.i_sign
   }
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, diag_config)
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+    diag_config)
 
   -- hilight
   for type, icon in pairs(signs) do
