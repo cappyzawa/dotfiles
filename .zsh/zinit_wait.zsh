@@ -136,7 +136,8 @@ zinit light open-policy-agent/opa
 # }}}
 # smallstep/cli {{{
 zinit ice wait'3' lucid as"program" from"gh-r" \
-  mv"step_*/bin/step -> $ZPFX/bin/step"
+  mv"step_*/bin/step -> $ZPFX/bin/step" \
+  atclone"$ZPFX/bin/step completion zsh > ~/.zsh/Completion/_step" atpull"%atclone"
 zinit light smallstep/cli
 # }}}
 # smallstep/certificates {{{
@@ -220,7 +221,7 @@ zinit light golang/dep
 # rust-analyzer/rust-analyzer {{{
 zinit ice wait'2' lucid as"program" from:"gh-r" \
   mv"rust-analyzer* -> rust-analyzer" has:"rustup"
-zinit light rust-analyzer/rust-analyzer
+zinit light rust-lang/rust-analyzer
 # }}}
 # }}}
 
