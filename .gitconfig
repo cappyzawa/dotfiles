@@ -9,7 +9,7 @@
 [gpg]
 	program = gpg2
 [alias]
-	cm = checkout master
+	cm = checkout main
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [ghq]
 	root = ~/ghq/src
@@ -28,3 +28,5 @@
   cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
