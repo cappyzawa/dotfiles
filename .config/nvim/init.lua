@@ -209,11 +209,16 @@ require('packer').startup(function()
     config = function() require 'plugins'.trouble() end
   }
   use {
+    "hrsh7th/cmp-copilot",
+    requires = "github/copilot.vim",
+  }
+  use {
     'hrsh7th/nvim-cmp',
     requires = {
       "hrsh7th/vim-vsnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-path", "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-copilot",
     },
     config = function() require 'plugins'.nvim_cmp() end
   }
@@ -289,6 +294,12 @@ require('packer').startup(function()
   use {
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end
+  }
+  use {
+    'github/copilot.vim',
+    run = function()
+      vim.cmd [[ Copilot setup ]]
+    end
   }
 end)
 -- }}}
