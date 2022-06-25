@@ -19,6 +19,7 @@ path=( \
     ~/Library/Python/3.9/bin(N-/) \
     /usr/local/go/bin(N-/) \
     $HOME/.krew/bin(N-/) \
+    ~/.luarocks/bin(N-/) \
     "$path[@]" \
     )
 
