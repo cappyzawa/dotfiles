@@ -311,6 +311,47 @@ local ansiblels_binary = installed_lsp_servers .. '/ansiblels/bin/ansible-langua
 local ansiblels_config = { cmd = { ansiblels_binary, "--stdio" } }
 -- }}}
 
+-- html {{{
+local ok, htmlls = lsp_installer_servers.get_server("html")
+if ok then if not htmlls:is_installed() then jsonls:install() end end
+local htmlls_binary = installed_lsp_servers ..
+    '/html/node_modules/.bin/vscode-html-language-server'
+local htmlls_config = {
+  filetype = { "html" },
+  cmd = { htmlls_binary, "--stdio" },
+  init_options = {
+    configurationSection = { "html", "css", "javascript" },
+    embeddedLanguages = {
+      css = true,
+      javascript = true
+    },
+    provideFormatter = true
+  }
+}
+-- }}}
+
+-- css {{{
+local ok, cssls = lsp_installer_servers.get_server("css")
+if ok then if not cssls:is_installed() then jsonls:install() end end
+local cssls_binary = installed_lsp_servers ..
+    '/cssls/node_modules/.bin/vscode-css-language-server'
+local cssls_config = {
+  filetype = { "css", "scss", "less" },
+  cmd = { cssls_binary, "--stdio" },
+  settings = {
+    css = {
+      validate = true
+    },
+    less = {
+      validate = true
+    },
+    scss = {
+      validate = true
+    }
+  },
+}
+-- }}}
+
 local servers = {
   sumneko_lua = lua_lsp_config,
   vimls = {},
@@ -331,7 +372,9 @@ local servers = {
   clangd = clang_lsp_config,
   solargraph = {},
   julials = {},
-  efm = efm_lsp_config
+  efm = efm_lsp_config,
+  html = htmlls_config,
+  cssls = cssls_config
 }
 
 for ls, config in pairs(servers) do
