@@ -286,5 +286,9 @@ require('packer').startup(function()
     'rcarriga/nvim-notify',
     config = function() require 'plugins'.notify() end
   }
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
 end)
 -- }}}
