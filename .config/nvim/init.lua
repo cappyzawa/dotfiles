@@ -168,7 +168,10 @@ require('packer').startup(function()
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup() end
   }
-  use 'jiangmiao/auto-pairs'
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require('plugins').autopairs() end
+  }
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
@@ -297,9 +300,8 @@ require('packer').startup(function()
   }
   use {
     'github/copilot.vim',
-    run = function()
-      vim.cmd [[ Copilot setup ]]
-    end
+    run = function() vim.cmd [[ Copilot setup ]] end,
+    config = function() require 'plugins'.copilot() end
   }
 end)
 -- }}}

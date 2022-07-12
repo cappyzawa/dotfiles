@@ -41,6 +41,7 @@ local tmux_keybinds = {
   { key = "y", mods = "LEADER", action = "Copy" },
   { key = "v", mods = "LEADER", action = "ActivateCopyMode" },
   { key = "/", mods = "LEADER", action = wezterm.action { Search = { CaseSensitiveString = "" } } },
+  { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 
 }
 
