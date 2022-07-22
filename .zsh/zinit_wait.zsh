@@ -241,7 +241,7 @@ zinit light adrienverge/yamllint
 # vmware-tanzu/carvel-ytt {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"ytt-* -> ytt" pick"ytt"
-zinit light "vmware-tanzu/carvel-ytt"
+zinit light vmware-tanzu/carvel-ytt
 # }}}
 # }}}
 
@@ -255,12 +255,12 @@ zinit wait lucid for \
     zsh-users/zsh-completions
 # }}}
 
-# java {{{
-zinit ice lucid wait"2" as"program" has"mvn" \
-  if'is_mac' \
-  atclone"mvn package -DskipTests" \
-  atpull"%atclone"
-zinit light georgewfraser/java-language-server
+# zig {{{
+# zigtools/zls {{{
+zinit ice wait'2' lucid as"program" from"gh-r" has"zig" \
+  pick"bin/zls"
+zinit light zigtools/zls
+# }}}
 # }}}
 
 # for only vim plugins {{{

@@ -205,7 +205,7 @@ local yaml_lsp_config = {
       schemas = {
         ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.yaml",
         ["https://json.schemastore.org/kustomization.json"] = "/kustomization.yaml",
-        ["https://raw.githubusercontent.com/cappyzawa/concourse-pipeline-jsonschema/master/concourse_jsonschema.json"] = "/pipeline.yml",
+        ["https://raw.githubusercontent.com/spion/concourse-jsonschema-generator/main/schema.json"] = "/pipeline.yml",
       },
       trace = { server = "verbose" }
     }
@@ -246,13 +246,6 @@ local ts_lsp_config = {
 local java_lsp_binary = os.getenv("HOME") ..
     '/.local/share/zinit/plugins/georgewfraser---java-language-server/dist/lang_server_mac.sh'
 lspconfig.java_language_server.setup { cmd = { "bash", java_lsp_binary } }
--- }}}
-
--- zig {{{
-local ok, zls = lsp_installer_servers.get_server("zls")
-if ok then if not zls:is_installed() then zls:install() end end
-local zls_binary = installed_lsp_servers .. '/zls/package/zls'
-local zig_lsp_config = { cmd = { zls_binary } }
 -- }}}
 
 -- json {{{
@@ -367,7 +360,7 @@ local servers = {
   jsonls = json_lsp_config,
   denols = deno_lsp_config,
   tsserver = ts_lsp_config,
-  zls = zig_lsp_config,
+  zls = {},
   pylsp = python_lsp_config,
   clangd = clang_lsp_config,
   solargraph = {},

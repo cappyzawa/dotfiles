@@ -10,6 +10,8 @@ vim.g.h_sign = "ﯧ"
 -- map {{{
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
 
 local keymap_opt = { noremap = true, silent = true }
 local set_keymap = vim.api.nvim_set_keymap
@@ -120,11 +122,6 @@ local buffer_opts = {
 
 local cur_buf = vim.api.nvim_get_current_buf()
 for k, v in pairs(buffer_opts) do vim.api.nvim_buf_set_option(cur_buf, k, v) end
-
--- https://github.com/neovim/neovim/issues/13433
-vim.cmd [[set shiftwidth=2]]
-vim.cmd [[set tabstop=2]]
--- }}}
 
 -- au {{{
 vim.cmd [[augroup CursorRestore]]
