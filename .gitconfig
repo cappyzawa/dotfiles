@@ -5,7 +5,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	ignorecase = false
-  pager = delta
+  ; pager = delta
 [gpg]
 	program = gpg2
 [alias]

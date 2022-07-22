@@ -96,3 +96,7 @@ if has "setup-envtest"; then
   k8s_version="1.23.x"
   source <(setup-envtest use -i -p env ${k8s_version})
 fi
+
+if has 'nvim'; then
+  alias vim='nvim'
+fi
