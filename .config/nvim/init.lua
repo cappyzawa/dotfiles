@@ -95,6 +95,7 @@ local common_opts = {
   smartcase = true,
   termguicolors = true,
   cmdheight = 0,
+  mouse = '',
 }
 
 vim.cmd [[ set shortmess+=c ]]

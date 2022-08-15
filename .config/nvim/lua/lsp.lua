@@ -177,9 +177,20 @@ local go_lsp_config = {
 local rust_lsp_config = {
   settings = {
     ["rust-analyzer"] = {
-      assist = { importGranularity = "module", importPrefix = "by_self" },
-      cargo = { loadOutDirsFromCheck = true },
-      procMacro = { enable = true }
+      imports = {
+        granularity = {
+          group = "module",
+        },
+        prefix = "self",
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true
+      },
     }
   }
 }

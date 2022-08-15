@@ -184,7 +184,7 @@ M.lspconfig = function()
     },
     ['*.rs'] = {
       format = function() vim.lsp.buf.format { async = true } end,
-      indent = 2,
+      indent = 4,
     },
     ['*.rego'] = {
       format = function() vim.lsp.buf.format { async = true } end,
@@ -626,6 +626,7 @@ M.copilot = function()
   vim.g.copilot_filetypes = {
     ["*"] = true,
     ["terraform"] = false,
+    ["rust"] = false,
   }
 end
 
