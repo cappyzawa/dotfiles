@@ -123,6 +123,7 @@ local buffer_opts = {
 
 local cur_buf = vim.api.nvim_get_current_buf()
 for k, v in pairs(buffer_opts) do vim.api.nvim_buf_set_option(cur_buf, k, v) end
+-- }}}
 
 -- au {{{
 vim.cmd [[augroup CursorRestore]]

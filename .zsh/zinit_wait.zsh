@@ -351,7 +351,7 @@ zinit light sh0rez/kubectl-neat-diff
 # kubernetes-sigs/krew {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
   mv"krew-*->krew" \
-  atclone"./krew install krew" atpull"%atclone"
+  atclone"./krew install krew && ./krew completion zsh > ~/.zsh/Completion/_krew" atpull"%atclone"
 zinit light kubernetes-sigs/krew
 # }}}
 # FairwindsOps/pluto {{{

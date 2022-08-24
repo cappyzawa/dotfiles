@@ -32,3 +32,5 @@ alias flushdns='sudo killall -HUP mDNSResponder'
 if is_osx; then
   alias ctags="`brew --prefix`/bin/ctags"
 fi
+
+alias -g vy="| vim '+set filetype=yaml buftype=nofile'"
