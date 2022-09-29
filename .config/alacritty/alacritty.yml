@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-   x: 0
-   y: 0
+   x: 5
+   y: 5
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -172,11 +172,12 @@ font:
   #  x: 0
   #  y: 0
 
-  # Thin stroke font rendering (macOS only)
+  # Use built-in font for box drawing characters.
   #
-  # Thin strokes are suitable for retina displays, but for non-retina screens
-  # it is recommended to set `use_thin_strokes` to `false`.
-  use_thin_strokes: true
+  # If `true`, Alacritty will use a custom built-in font for box drawing
+  # characters (Unicode points 2500 - 259f).
+  #
+  builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
@@ -190,7 +191,7 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x15161E'
+    black:   '0x15161e'
     red:     '0xf7768e'
     green:   '0x9ece6a'
     yellow:  '0xe0af68'

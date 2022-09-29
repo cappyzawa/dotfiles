@@ -30,12 +30,14 @@ zinit ice wait lucid as"program" from"gh-r" \
 zinit light tree-sitter/tree-sitter
 # }}}
 # starship/starship {{{
+if is_mac; then
 zinit ice wait lucid as"command" from"gh-r" \
-  bpick'*.tar.gz' \
+  bpick'starship-x86_64-apple-darwin.tar.gz' \
   atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
   atpull"%atclone" src"init.zsh" \
   atload"export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml"
 zinit light starship/starship
+fi
 # }}}
 # ogham/exa (as ls) {{{
 zinit ice wait lucid as"program" from"gh-r" \
@@ -243,6 +245,10 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
   mv"ytt-* -> ytt" pick"ytt"
 zinit light vmware-tanzu/carvel-ytt
 # }}}
+# google/yamlfmt {{{
+zinit ice wait'2' lucid as"program" from"gh-r"
+zinit light google/yamlfmt
+# }}}
 # }}}
 
 # zsh {{{
@@ -260,6 +266,19 @@ zinit wait lucid for \
 zinit ice wait'2' lucid as"program" from"gh-r" has"zig" \
   pick"bin/zls"
 zinit light zigtools/zls
+# }}}
+# }}}
+
+# shell {{{
+# koalaman/shellcheck {{{
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  pick"shellcheck-*/shellcheck"
+zinit light koalaman/shellcheck
+# }}}
+# mvdan/sh {{{
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  mv"shfmt_* -> shfmt"
+zinit light mvdan/sh
 # }}}
 # }}}
 
