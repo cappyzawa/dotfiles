@@ -290,7 +290,7 @@ if ok then if not efmls:is_installed() then efmls:install() end end
 local efmls_binary = installed_lsp_servers .. '/efm/efm-langserver'
 local efm_lsp_config = {
   cmd = { efmls_binary, '-logfile', '/tmp/efm.log', '-loglevel', '5' },
-  filetypes = { "rego" },
+  filetypes = { "rego", "sh" },
   init_options = {
     documentFormatting = true,
     hover = true,

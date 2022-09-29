@@ -94,7 +94,7 @@ local common_opts = {
   ignorecase = true,
   smartcase = true,
   termguicolors = true,
-  cmdheight = 0,
+  cmdheight = 1,
   mouse = '',
 }
 

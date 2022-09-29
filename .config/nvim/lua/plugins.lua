@@ -59,8 +59,9 @@ M.nvim_cmp = function()
         return vim_item
       end
     },
-    completion = { completeopt = 'menu,menuone,noinsert' },
-    mapping = {
+    window = {
+    },
+    mapping = cmp.mapping.preset.insert({
       ['<C-y>'] = cmp.config.disable,
       ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(),
         { 'i', 'c' }),
@@ -71,8 +72,8 @@ M.nvim_cmp = function()
         c = cmp.mapping.close(),
       }),
       ['<CR>'] = cmp.mapping.confirm({ select = true })
-    },
-    sources = {
+    }),
+    sources = cmp.config.sources({
       { name = "nvim_lsp" },
       -- { name = "copilot" },
       { name = "nvim_lua" }, { name = "emoji" },
@@ -91,7 +92,7 @@ M.nvim_cmp = function()
           trailling_slash = true
         },
       },
-    }
+    })
   }
 
   cmp.setup.filetype('gitcommit', {
@@ -116,6 +117,7 @@ M.nvim_cmp = function()
   })
 
   cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources(
       { {
         name = 'path',
@@ -235,7 +237,9 @@ M.lspsaga = function()
 end
 
 M.tokyonight = function()
-  vim.g.tokyonight_style = 'night'
+  require 'tokyonight'.setup({
+    style = "night",
+  })
   vim.cmd [[colorscheme tokyonight]]
 end
 
