@@ -105,7 +105,7 @@ vim.cmd [[ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>" ]]
 for k, v in pairs(common_opts) do vim.api.nvim_set_option(k, v) end
 -- }}}
 
--- window {{
+-- window {{{
 local window_opts = { foldmethod = 'marker', number = true }
 
 local cur_win = vim.api.nvim_get_current_win()
@@ -118,11 +118,12 @@ local buffer_opts = {
   smartindent = true,
   expandtab = true,
   undofile = true,
-  swapfile = false
+  swapfile = false,
 }
 
 local cur_buf = vim.api.nvim_get_current_buf()
 for k, v in pairs(buffer_opts) do vim.api.nvim_buf_set_option(cur_buf, k, v) end
+-- }}}
 -- }}}
 
 -- au {{{
