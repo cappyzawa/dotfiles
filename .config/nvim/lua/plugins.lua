@@ -208,6 +208,10 @@ M.lspconfig = function()
       format = function() vim.lsp.buf.format { async = true } end,
       indent = 4,
     },
+    ['*.md'] = {
+      format = function() vim.lsp.buf.format { async = true } end,
+      indent = 2,
+    }
   }
   for ext, s in pairs(ext_patterns) do
     vim.api.nvim_create_autocmd('BufWritePre', {
