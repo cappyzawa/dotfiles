@@ -6,6 +6,7 @@
 .config/anyenv/*.swp
 .config/anyenv/envs/
 .config/anyenv/plugins/
+.config/cheat/cheatsheets/private
 .config/gcloud/
 .config/direnv/
 .config/github-copilot/hosts.json
