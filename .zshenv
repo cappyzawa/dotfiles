@@ -20,6 +20,7 @@ path=( \
     /usr/local/go/bin(N-/) \
     $HOME/.krew/bin(N-/) \
     ~/.luarocks/bin(N-/) \
+    ~/Library/Application\ Support/Coursier/bin(N-/) \
     "$path[@]" \
     )
 
