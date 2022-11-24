@@ -16,11 +16,8 @@ local override_keymap_with_lspsaga = function(opts)
       vim.g.h_sign,
     },
     finder_action_keys = {
-      scroll_down = '<C-j>',
-      scroll_up = '<C-k>',
-      open = 'e',
       vsplit = '\\',
-      split = '-'
+      split = '-',
     },
     symbol_in_winbar = {
       in_custom = true,
@@ -35,19 +32,12 @@ local override_keymap_with_lspsaga = function(opts)
   keymap('n', 'gk', [[<cmd>Lspsaga hover_doc<CR>]], opts)
   keymap("n", "gp", [[<cmd>Lspsaga peek_definition<CR>]], opts)
   keymap("n", "go", [[<cmd>LSoutlineToggle<CR>]], opts)
-  -- keymap('n', 'gK',
-  --   [[<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]],
-  --   opts)
   keymap('n', 'gt', [[<cmd>Lspsaga rename<CR>]], opts)
-  keymap('n', '<C-j>',
-    [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>]],
-    opts)
-  keymap('n', '<C-k>',
-    [[<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>]],
-    opts)
   keymap('n', 'sd', [[<cmd>Lspsaga show_line_diagnostics<CR>]], opts)
   keymap('n', '[d', [[<cmd>Lspsaga diagnostic_jump_prev<CR>]], opts)
   keymap('n', ']d', [[<cmd>Lspsaga diagnostic_jump_next<CR>]], opts)
+  keymap('n', '<Leader>lg', [[<cmd>Lspsaga open_floaterm lazygit<CR>]], opts)
+  keymap('t', '<Leader>lg', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], opts)
 end
 
 local on_attach = function(client, bufnr)
