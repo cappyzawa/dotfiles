@@ -638,4 +638,8 @@ M.copilot = function()
   }
 end
 
+M.terraform = function()
+  vim.g.terraform_fold_sections = 1
+end
+
 return M

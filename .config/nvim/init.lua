@@ -239,6 +239,11 @@ require('packer').startup(function()
     config = function() require 'plugins'.telescope() end
   }
   use {
+    'hashivim/vim-terraform',
+    ft = { 'tf', 'hcl' },
+    config = function() require 'plugins'.terraform() end
+  }
+  use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && yarn install',
     cmd = 'MarkdownPreview',
