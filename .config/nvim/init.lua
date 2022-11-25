@@ -295,9 +295,14 @@ require('packer').startup(function()
     'phaazon/hop.nvim',
     config = function() require 'plugins'.hop() end
   }
+  -- use {
+  --   'rcarriga/nvim-notify',
+  --   config = function() require 'plugins'.notify() end
+  -- }
   use {
-    'rcarriga/nvim-notify',
-    config = function() require 'plugins'.notify() end
+    'folke/noice.nvim',
+    requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' },
+    config = function() require 'plugins'.noice() end
   }
   use {
     'glacambre/firenvim',
