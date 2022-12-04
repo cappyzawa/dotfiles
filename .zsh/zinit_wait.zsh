@@ -327,7 +327,8 @@ zinit light google/ko
 # }}}
 # operator-framework/operator-sdk {{{
 zinit ice wait'2' lucid as"program" from:"gh-r" \
-  mv"operator-sdk-v*-x86_64-*->operator-sdk"
+  bpick"operator-sdk_*" \
+  mv"operator-sdk_*->operator-sdk"
 zinit light operator-framework/operator-sdk
 # }}}
 # kubernetes-sigs/kubebuilder {{{
