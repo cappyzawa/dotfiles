@@ -283,7 +283,7 @@ function config.cmp()
             }
         }
     })
-    --
+
     cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline({
             ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item()),

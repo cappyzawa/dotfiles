@@ -3,18 +3,13 @@ local conf = require("modules.ui.config")
 
 ui["kyazdani42/nvim-web-devicons"] = { opt = false }
 ui["folke/tokyonight.nvim"] = { opt = false, config = conf.tokyonight }
--- ui["rcarriga/nvim-notify"] = {
---     opt = false,
---     config = conf.notify,
--- }
-ui["folke/noice.nvim"] = {
+ui["rcarriga/nvim-notify"] = {
     opt = false,
-    requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' },
-    config = conf.noice,
+    config = conf.notify,
 }
 ui["hoob3rt/lualine.nvim"] = {
     opt = true,
-    wants = { "nvim-lspconfig", "tokyonight.nvim" },
+    after = { "nvim-lspconfig", "tokyonight.nvim" },
     config = conf.lualine,
 }
 ui["kyazdani42/nvim-tree.lua"] = {
