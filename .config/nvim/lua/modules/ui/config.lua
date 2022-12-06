@@ -41,7 +41,10 @@ function config.lualine()
     local icons = {
         diagnostics = require("modules.ui.icons").get("diagnostics", true),
         misc = require("modules.ui.icons").get("misc", true),
+        ui = require("modules.ui.icons").get("ui"),
     }
+
+    local colors = require("tokyonight.colors").default
 
     local function escape_status()
         local ok, m = pcall(require, "better_escape")
@@ -106,7 +109,17 @@ function config.lualine()
             section_separators = { left = "", right = "" },
         },
         sections = {
-            lualine_a = { "mode" },
+            lualine_a = {
+                {
+                    function()
+                        return icons.ui.Devil
+                    end,
+                    color = function()
+                        return { fg = colors.bg }
+                    end,
+                },
+                { "mode" },
+            },
             lualine_b = { { "branch" }, { "diff", source = diff_source } },
             lualine_c = {},
             lualine_x = {
