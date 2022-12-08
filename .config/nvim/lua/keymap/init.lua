@@ -27,7 +27,7 @@ local plug_map = {
     ["n|<leader>pu"] = map_cr("PackerUpdate"):with_silent():with_noremap():with_nowait(),
     ["n|<leader>pi"] = map_cr("PackerInstall"):with_silent():with_noremap():with_nowait(),
     ["n|<leader>pc"] = map_cr("PackerClean"):with_silent():with_noremap():with_nowait(),
-    -- Lsp mapp work when insertenter and lsp start
+    -- Lsp map work when insertenter and lsp start
     ["n|<A-t>"] = map_cr("LSoutlineToggle"):with_noremap():with_silent(),
     ["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent(),
     ["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent(),
@@ -73,11 +73,13 @@ local plug_map = {
     ["n|<Leader>u"] = map_cr("UndotreeToggle"):with_noremap():with_silent(),
     -- Plugin Telescope
     ["n|<Leader>fp"] = map_cu("lua require('telescope').extensions.project.project{}"):with_noremap():with_silent(),
+    ["n|<Leader>fw"] = map_cu("lua require('telescope').extensions.live_grep_args.live_grep_args{}")
+        :with_noremap()
+        :with_silent(),
     ["n|<Leader>fe"] = map_cu("Telescope oldfiles"):with_noremap():with_silent(),
     ["n|<Leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent(),
     ["n|<Leader>fc"] = map_cu("Telescope colorscheme"):with_noremap():with_silent(),
     ["n|<Leader>fn"] = map_cu(":enew"):with_noremap():with_silent(),
-    ["n|<Leader>fw"] = map_cu("Telescope live_grep"):with_noremap():with_silent(),
     ["n|<Leader>fg"] = map_cu("Telescope git_files"):with_noremap():with_silent(),
     ["n|<Leader>fz"] = map_cu("Telescope zoxide list"):with_noremap():with_silent(),
     -- Plugin accelerate-jk
