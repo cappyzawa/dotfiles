@@ -44,8 +44,10 @@ local def_map = {
     -- Visual
     ["v|<leader>h"] = map_cmd("^"),
     ["v|<leader>l"] = map_cmd("$"),
-    ["v|J"] = map_cmd(":m '>+1<cr>gv=gv"),
-    ["v|K"] = map_cmd(":m '<-2<cr>gv=gv"),
+    ["v|J"] = map_cmd("10j"),
+    ["v|K"] = map_cmd("10k"),
+    ["v|<C-j>"] = map_cmd(":m '>+1<cr>gv=gv"),
+    ["v|<C-k>"] = map_cmd(":m '<-2<cr>gv=gv"),
     ["v|<"] = map_cmd("<gv"),
     ["v|>"] = map_cmd(">gv"),
 }

@@ -21,6 +21,11 @@ tools["nvim-telescope/telescope-fzf-native.nvim"] = {
 tools["nvim-telescope/telescope-project.nvim"] = {
     opt = true,
     after = "telescope-fzf-native.nvim",
+    requires = { {
+        "ahmedkhalf/project.nvim",
+        opt = true,
+        config = conf.project,
+    } },
 }
 tools["nvim-telescope/telescope-live-grep-args.nvim"] = {
     opt = true,
