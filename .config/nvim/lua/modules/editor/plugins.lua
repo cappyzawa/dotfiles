@@ -108,7 +108,12 @@ editor["rcarriga/nvim-dap-ui"] = {
     after = "nvim-dap", -- Need to call setup after dap has been initialized.
     config = conf.dapui,
 }
-editor["tpope/vim-fugitive"] = { opt = true, cmd = { "Git", "G" } }
+editor["tyru/open-browser-github.vim"] = {
+    opt = true,
+    cmd = { "OpenGithubFile" },
+    requires = { { "tyru/open-browser.vim", opt = true } },
+    wants = { "open-browser.vim" }
+}
 editor["famiu/bufdelete.nvim"] = {
     opt = true,
     cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
@@ -128,11 +133,6 @@ editor["abecodes/tabout.nvim"] = {
 editor["sindrets/diffview.nvim"] = {
     opt = true,
     cmd = { "DiffviewOpen", "DiffviewClose" },
-}
-editor["ibhagwan/smartyank.nvim"] = {
-    opt = true,
-    event = "BufReadPost",
-    config = conf.smartyank,
 }
 
 -- only for fcitx5 user who uses non-English language during coding

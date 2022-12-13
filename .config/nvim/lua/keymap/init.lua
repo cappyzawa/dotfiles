@@ -126,8 +126,8 @@ local plug_map = {
     ["o|m"] = map_cu([[lua require('tsht').nodes()]]):with_silent(),
     ["c|Q"] = map_cu([[%SnipRun]]):with_silent(),
     -- Plugin Tabout
-    ["i|<A-l>"] = map_cmd([[<Plug>(TaboutMulti)]]):with_silent(),
-    ["i|<A-h>"] = map_cmd([[<Plug>(TaboutBackMulti)]]):with_silent(),
+    ["i|<M-l>"] = map_cmd([[<Plug>(TaboutMulti)]]):with_silent(),
+    ["i|<M-h>"] = map_cmd([[<Plug>(TaboutBackMulti)]]):with_silent(),
     -- Plugin Diffview
     ["n|<leader>D"] = map_cr("DiffviewOpen"):with_silent():with_noremap(),
     ["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap(),
