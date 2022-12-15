@@ -28,7 +28,7 @@ local plug_map = {
     ["n|<leader>pi"] = map_cr("PackerInstall"):with_silent():with_noremap():with_nowait(),
     ["n|<leader>pc"] = map_cr("PackerClean"):with_silent():with_noremap():with_nowait(),
     -- Lsp map work when insertenter and lsp start
-    ["n|<A-t>"] = map_cr("LSoutlineToggle"):with_noremap():with_silent(),
+    ["n|go"] = map_cr("Lspsaga outline"):with_noremap():with_silent(),
     ["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent(),
     ["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent(),
     ["n|gs"] = map_cr("Lspsaga signature_help"):with_noremap():with_silent(),

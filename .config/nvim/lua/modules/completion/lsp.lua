@@ -287,7 +287,7 @@ efmls.setup({
     css = { formatter = prettier },
     scss = { formatter = prettier },
     sh = { formatter = shfmt, linter = shellcheck },
-    markdown = { formatter = prettier },
+    -- markdown = { formatter = prettier },
     -- rust = {formatter = rustfmt},
 })
 
