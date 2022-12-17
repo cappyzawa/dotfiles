@@ -56,4 +56,11 @@ tools["mrjones2014/legendary.nvim"] = {
     },
 }
 
+tools["rhysd/git-messenger.vim"] = {
+    opt = true,
+    cmd = "GitMessenger",
+    keys = { "n", "<Leader>gm" },
+    config = conf.git_messenger,
+}
+
 return tools
