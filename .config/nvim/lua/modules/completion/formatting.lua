@@ -47,7 +47,6 @@ end, {
             "css",
             "scss",
             "sh",
-            "rust",
         }
     end,
 })
