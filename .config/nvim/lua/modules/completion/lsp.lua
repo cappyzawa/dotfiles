@@ -285,6 +285,7 @@ efmls.setup({
     css = { formatter = prettier },
     scss = { formatter = prettier },
     sh = { formatter = shfmt, linter = shellcheck },
+    zsh = { formatter = shfmt, linter = shellcheck },
 })
 
 formatting.configure_format_on_save()
