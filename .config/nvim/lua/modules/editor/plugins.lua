@@ -134,6 +134,11 @@ editor["sindrets/diffview.nvim"] = {
     opt = true,
     cmd = { "DiffviewOpen", "DiffviewClose" },
 }
+editor["cappyzawa/trim.nvim"] = {
+    opt = true,
+    event = "BufWritePre",
+    config = conf.trim,
+}
 
 -- only for fcitx5 user who uses non-English language during coding
 -- editor["brglng/vim-im-select"] = {

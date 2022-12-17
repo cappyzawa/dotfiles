@@ -488,4 +488,18 @@ function config.clever_f()
     vim.g.clever_f_timeout_ms = 1500
 end
 
+function config.trim()
+    require "trim".setup({
+        disable = {
+            "bash",
+            "elm",
+            "go",
+            "lua",
+            "markdown",
+            "rust",
+            "sh",
+        },
+    })
+end
+
 return config
