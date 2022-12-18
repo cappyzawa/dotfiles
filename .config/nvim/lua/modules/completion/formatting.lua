@@ -34,56 +34,22 @@ end, {
     nargs = 1,
     complete = function(_, _, _)
         return {
-            "markdown",
-            "vim",
             "c",
             "cpp",
-            "python",
-            "vue",
-            "typescript",
-            "javascript",
-            "yaml",
-            "html",
             "css",
+            "html",
+            "javascript",
+            "markdown",
+            "python",
             "scss",
             "sh",
+            "typescript",
+            "vim",
+            "vue",
+            "yaml",
         }
     end,
 })
-
-M.goimports = function(timeout_ms)
-    local context = { only = { "source.organizeImports" } }
-    vim.validate { context = { context, "t", true } }
-
-    local params = vim.lsp.util.make_range_params()
-    params.context = context
-
-    -- See the implementation of the textDocument/codeAction callback
-    -- (lua/vim/lsp/handler.lua) for how to do this properly.
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction",
-        params, timeout_ms)
-    if not result or next(result) == nil then return end
-    local client_id = next(result)
-    local actions = result[1].result
-    if not actions then return end
-    local action = actions[1]
-
-    -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
-    -- is a CodeAction, it can have either an edit, a command or both. Edits
-    -- should be executed first.
-    if action.edit or type(action.command) == "table" then
-        if action.edit then
-            local client = vim.lsp.get_client_by_id(client_id)
-            vim.lsp.util.apply_workspace_edit(action.edit,
-                client.offset_encoding)
-        end
-        if type(action.command) == "table" then
-            vim.lsp.buf.execute_command(action.command)
-        end
-    else
-        vim.lsp.buf.execute_command(action)
-    end
-end
 
 function M.enable_format_on_save(is_configured)
     local opts = { pattern = "*", timeout = 1000 }
@@ -172,7 +138,7 @@ function M.format(opts)
     if #clients == 0 then
         vim.notify(
             "[LSP] Format request failed, no matching language servers.",
-            vim.log.levels.WARN,
+            vim.log.levels.INFO,
             { title = "Formatting Failed!" }
         )
     end
@@ -192,14 +158,6 @@ function M.format(opts)
             return
         end
         local params = vim.lsp.util.make_formatting_params(opts.formatting_options)
-        if client.name == "gopls" then
-            M.goimports(timeout_ms)
-            vim.notify(
-                string.format("Format successfully with goimports!"),
-                vim.log.levels.INFO,
-                { title = "Format Success!" }
-            )
-        end
         local result, err = client.request_sync("textDocument/formatting", params, timeout_ms, bufnr)
         if result and result.result then
             vim.lsp.util.apply_text_edits(result.result, bufnr, client.offset_encoding)

@@ -211,6 +211,19 @@ for _, server in ipairs(mason_lsp.get_installed_servers()) do
                 },
             },
         })
+    elseif server == "yamlls" then
+        nvim_lsp.yamlls.setup({
+            format = {
+                enable = true,
+            },
+            settings = {
+                yaml = {
+                    schemas = {
+                        ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+                    },
+                },
+            }
+        })
     elseif server ~= "efm" then
         nvim_lsp[server].setup({
             capabilities = capabilities,
@@ -255,9 +268,11 @@ local shellcheck = require("efmls-configs.linters.shellcheck")
 local black = require("efmls-configs.formatters.black")
 local prettier = require("efmls-configs.formatters.prettier")
 local shfmt = require("efmls-configs.formatters.shfmt")
+local goimports = require("efmls-configs.formatters.goimports")
 
 -- Add your own config for formatter and linter here
 local clangfmt = require("modules.completion.efm.formatters.clangfmt")
+local yamlfmt = require("modules.completion.efm.formatters.yamlfmt")
 
 -- Override default config here
 
@@ -272,19 +287,21 @@ flake8 = vim.tbl_extend("force", flake8, {
 -- Setup formatter and linter for efmls here
 
 efmls.setup({
-    vim = { formatter = vint },
     c = { formatter = clangfmt },
     cpp = { formatter = clangfmt },
-    python = { formatter = black },
-    vue = { formatter = prettier },
-    typescript = { formatter = prettier, linter = eslint },
-    javascript = { formatter = prettier, linter = eslint },
-    typescriptreact = { formatter = prettier, linter = eslint },
-    javascriptreact = { formatter = prettier, linter = eslint },
-    html = { formatter = prettier },
     css = { formatter = prettier },
+    go = { formatter = goimports },
+    html = { formatter = prettier },
+    javascript = { formatter = prettier, linter = eslint },
+    javascriptreact = { formatter = prettier, linter = eslint },
+    python = { formatter = black },
     scss = { formatter = prettier },
     sh = { formatter = shfmt, linter = shellcheck },
+    typescript = { formatter = prettier, linter = eslint },
+    typescriptreact = { formatter = prettier, linter = eslint },
+    vim = { formatter = vint },
+    vue = { formatter = prettier },
+    yaml = { formatter = yamlfmt },
     zsh = { formatter = shfmt, linter = shellcheck },
 })
 
