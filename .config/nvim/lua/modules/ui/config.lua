@@ -373,7 +373,10 @@ function config.nvim_tree()
 end
 
 function config.nvim_bufferline()
-    local icons = { ui = require("modules.ui.icons").get("ui") }
+    local icons = {
+        diagnostics = require("modules.ui.icons").get("diagnostics", true),
+        ui = require("modules.ui.icons").get("ui"),
+    }
 
     local opts = {
         options = {
@@ -385,9 +388,10 @@ function config.nvim_bufferline()
             max_name_length = 14,
             max_prefix_length = 13,
             tab_size = 20,
-            show_buffer_close_icons = true,
+            show_buffer_close_icons = false,
             show_buffer_icons = true,
             show_tab_indicators = true,
+            show_close_icon = false,
             diagnostics = "nvim_lsp",
             always_show_bufferline = true,
             separator_style = "thin",
@@ -406,8 +410,10 @@ function config.nvim_bufferline()
                     separator = true,
                 },
             },
-            diagnostics_indicator = function(count)
-                return "(" .. count .. ")"
+            diagnostics_indicator = function(count, level)
+                local icon = level:match("error") and icons.diagnostics.Error or icons.diagnostics.Warning
+                -- return " " .. icon .. " " .. count
+                return icon .. count
             end,
         },
         -- Change bufferline's highlights here! See `:h bufferline-highlights` for detailed explanation.
