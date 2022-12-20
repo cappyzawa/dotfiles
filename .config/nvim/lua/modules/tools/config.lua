@@ -2,7 +2,6 @@ local config = {}
 
 function config.telescope()
     vim.api.nvim_command([[packadd telescope-fzf-native.nvim]])
-    vim.api.nvim_command([[packadd telescope-project.nvim]])
     vim.api.nvim_command([[packadd telescope-live-grep-args.nvim]])
 
     local icons = { ui = require("modules.ui.icons").get("ui", true) }
@@ -81,22 +80,7 @@ function config.telescope()
 
     require("telescope").load_extension("notify")
     require("telescope").load_extension("fzf")
-    require("telescope").load_extension("project")
     require("telescope").load_extension("live_grep_args")
-end
-
-function config.project()
-    require("project_nvim").setup({
-        manual_mode = false,
-        detection_methods = { "lsp", "pattern" },
-        patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "vendor" },
-        ignore_lsp = { "efm", "copilot" },
-        exclude_dirs = {},
-        show_hidden = false,
-        silent_chdir = true,
-        scope_chdir = "global",
-        datapath = vim.fn.stdpath("data"),
-    })
 end
 
 function config.trouble()
@@ -310,7 +294,6 @@ function config.legendary()
             },
             f = {
                 name = "Telescope commands",
-                p = "find: Project",
                 w = "find: Word",
                 e = "find: File by history",
                 c = "ui: Change color scheme",

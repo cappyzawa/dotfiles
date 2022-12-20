@@ -7,10 +7,10 @@ require("keymap.config")
 local plug_map = {
     -- Bufferline
     ["n|gb"] = map_cr("BufferLinePick"):with_noremap():with_silent(),
-    ["n|<A-j>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
-    ["n|<A-k>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
-    ["n|<leader>bl"] = map_cr("BufferLineMoveNext"):with_noremap():with_silent(),
-    ["n|<leader>bh"] = map_cr("BufferLineMovePrev"):with_noremap():with_silent(),
+    ["n|<leader>bl"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
+    ["n|<leader>bh"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
+    ["n|<leader>bL"] = map_cr("BufferLineMoveNext"):with_noremap():with_silent(),
+    ["n|<leader>bH"] = map_cr("BufferLineMovePrev"):with_noremap():with_silent(),
     ["n|<leader>be"] = map_cr("BufferLineSortByExtension"):with_noremap(),
     ["n|<leader>bd"] = map_cr("BufferLineSortByDirectory"):with_noremap(),
     ["n|<leader>b1"] = map_cr("BufferLineGoToBuffer 1"):with_noremap():with_silent(),
@@ -66,13 +66,12 @@ local plug_map = {
     ["n|<leader>tq"] = map_cr("TroubleToggle quickfix"):with_noremap():with_silent(),
     ["n|<leader>tl"] = map_cr("TroubleToggle loclist"):with_noremap():with_silent(),
     -- Plugin nvim-tree
-    ["n|<C-n>"] = map_cr("NvimTreeToggle"):with_noremap():with_silent(),
+    ["n|<C-n>"] = map_cr("lua toggle_nvimtree()"):with_noremap():with_silent(),
     ["n|<Leader>nf"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent(),
     ["n|<Leader>nr"] = map_cr("NvimTreeRefresh"):with_noremap():with_silent(),
     -- Plugin Undotree
     ["n|<Leader>u"] = map_cr("UndotreeToggle"):with_noremap():with_silent(),
     -- Plugin Telescope
-    ["n|<Leader>fp"] = map_cu("lua require('telescope').extensions.project.project{}"):with_noremap():with_silent(),
     ["n|<Leader>fw"] = map_cu("lua require('telescope').extensions.live_grep_args.live_grep_args{}")
         :with_noremap()
         :with_silent(),
