@@ -3,6 +3,7 @@ local config = {}
 function config.telescope()
     vim.api.nvim_command([[packadd telescope-fzf-native.nvim]])
     vim.api.nvim_command([[packadd telescope-live-grep-args.nvim]])
+    vim.api.nvim_command([[packadd telescope-undo.nvim]])
 
     local icons = { ui = require("modules.ui.icons").get("ui", true) }
     local actions = require("telescope.actions")
@@ -66,7 +67,24 @@ function config.telescope()
                         ["<C-i>"] = lga_actions.quote_prompt(),
                     },
                 },
-            }
+            },
+            undo = {
+                side_by_side = true,
+                layout_config = {
+                    preview_height = 0.8,
+                },
+                mappings = { -- this whole table is the default
+                    i = {
+                        -- IMPORTANT: Note that telescope-undo must be available when telescope is configured if
+                        -- you want to use the following actions. This means installing as a dependency of
+                        -- telescope in it's `requirements` and loading this extension from there instead of
+                        -- having the separate plugin definition as outlined above. See issue #6.
+                        ["<cr>"] = require("telescope-undo.actions").yank_additions,
+                        ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+                        ["<C-cr>"] = require("telescope-undo.actions").restore,
+                    },
+                },
+            },
         },
         pickers = {
             buffers = fixfolds,
@@ -81,6 +99,7 @@ function config.telescope()
     require("telescope").load_extension("notify")
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("live_grep_args")
+    require("telescope").load_extension("undo")
 end
 
 function config.trouble()
