@@ -12,7 +12,7 @@ ui["hoob3rt/lualine.nvim"] = {
     after = { "nvim-lspconfig", "tokyonight.nvim" },
     config = conf.lualine,
 }
-ui["kyazdani42/nvim-tree.lua"] = {
+ui["nvim-tree/nvim-tree.lua"] = {
     opt = true,
     cmd = {
         "NvimTreeToggle",
