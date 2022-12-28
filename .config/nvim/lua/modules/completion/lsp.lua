@@ -268,7 +268,7 @@ local shellcheck = require("efmls-configs.linters.shellcheck")
 local black = require("efmls-configs.formatters.black")
 local prettier = require("efmls-configs.formatters.prettier")
 local shfmt = require("efmls-configs.formatters.shfmt")
-local goimports = require("efmls-configs.formatters.goimports")
+-- local goimports = require("efmls-configs.formatters.goimports")
 
 -- Add your own config for formatter and linter here
 local clangfmt = require("modules.completion.efm.formatters.clangfmt")
@@ -290,7 +290,7 @@ efmls.setup({
     c = { formatter = clangfmt },
     cpp = { formatter = clangfmt },
     css = { formatter = prettier },
-    go = { formatter = goimports },
+    -- go = { formatter = goimports },
     html = { formatter = prettier },
     javascript = { formatter = prettier, linter = eslint },
     javascriptreact = { formatter = prettier, linter = eslint },

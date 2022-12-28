@@ -47,7 +47,6 @@ tools["mrjones2014/legendary.nvim"] = {
         { "stevearc/dressing.nvim", opt = false, config = conf.dressing },
     },
 }
-
 tools["rhysd/git-messenger.vim"] = {
     opt = true,
     cmd = "GitMessenger",

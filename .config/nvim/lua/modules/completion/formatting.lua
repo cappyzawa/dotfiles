@@ -52,7 +52,7 @@ end, {
 })
 
 function M.enable_format_on_save(is_configured)
-    local opts = { pattern = "*", timeout = 1000 }
+    local opts = { pattern = "*", timeout = 5000 }
     vim.api.nvim_create_augroup("format_on_save", {})
     vim.api.nvim_create_autocmd("BufWritePre", {
         group = "format_on_save",
@@ -108,6 +108,25 @@ function M.format_filter(clients)
     end, clients)
 end
 
+function M.go_org_imports(wait_ms)
+    local params = vim.lsp.util.make_range_params()
+    params.context = { only = { "source.organizeImports" } }
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+    for cid, res in pairs(result or {}) do
+        for _, r in pairs(res.result or {}) do
+            if r.edit then
+                local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+                vim.lsp.util.apply_workspace_edit(r.edit, enc)
+                vim.notify(
+                    string.format("Format successfully with %s!", "goimports"),
+                    vim.log.levels.INFO,
+                    { title = "LSP Format Success!" }
+                )
+            end
+        end
+    end
+end
+
 function M.format(opts)
     local cwd = vim.fn.getcwd()
     for i = 1, #disabled_workspaces do
@@ -158,6 +177,9 @@ function M.format(opts)
             return
         end
         local params = vim.lsp.util.make_formatting_params(opts.formatting_options)
+        if client.name == "gopls" then
+            M.go_org_imports(timeout_ms)
+        end
         local result, err = client.request_sync("textDocument/formatting", params, timeout_ms, bufnr)
         if result and result.result then
             vim.lsp.util.apply_text_edits(result.result, bufnr, client.offset_encoding)
