@@ -144,7 +144,7 @@ zinit light smallstep/cli
 # }}}
 # smallstep/certificates {{{
 zinit ice wait'3' lucid as"program" from"gh-r" \
-	pick"step-ca*/bin/step-ca"
+	pick"step-ca_*/step-ca"
 zinit light smallstep/certificates
 # }}}
 
