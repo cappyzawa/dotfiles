@@ -101,7 +101,6 @@ local function load_options()
         signcolumn = "yes",
         conceallevel = 0,
         concealcursor = "niv",
-        winbar = " ",
     }
     local function isempty(s)
         return s == nil or s == ""

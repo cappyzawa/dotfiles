@@ -90,8 +90,8 @@ function config.lspsaga()
             StaticMethod = { icons.kind.StaticMethod, colors.peach },
         },
         symbol_in_winbar = {
+            in_custom = true,
             enable = true,
-            in_custom = false,
             separator = " " .. icons.ui.Separator,
             show_file = false,
             file_formatter = "",

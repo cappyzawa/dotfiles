@@ -69,6 +69,43 @@ function config.lualine()
         return ok and m.waiting and icons.misc.EscapeST or ""
     end
 
+    local function lspsaga_symbols()
+        local exclude = {
+            ["terminal"] = true,
+            ["toggleterm"] = true,
+            ["prompt"] = true,
+            ["NvimTree"] = true,
+            ["help"] = true,
+        }
+        if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
+            return "" -- Excluded filetypes
+        else
+            local ok, lspsaga = pcall(require, "lspsaga.symbolwinbar")
+            if ok then
+                if lspsaga.get_symbol_node() ~= nil then
+                    return lspsaga.get_symbol_node()
+                else
+                    return "" -- Cannot get node
+                end
+            end
+        end
+    end
+
+    local function get_cwd()
+        local cwd = vim.fn.getcwd()
+        local home = os.getenv("HOME")
+        if cwd:find(home, 1, true) == 1 then
+            cwd = "~" .. cwd:sub(#home + 1)
+        end
+        return icons.ui.RootFolderOpened .. cwd
+    end
+
+    local conditions = {
+        check_code_context = function()
+            return lspsaga_symbols() ~= ""
+        end,
+    }
+
     local function diff_source()
         local gitsigns = vim.b.gitsigns_status_dict
         if gitsigns then
@@ -139,7 +176,7 @@ function config.lualine()
                 { "mode" },
             },
             lualine_b = { { "branch" }, { "diff", source = diff_source } },
-            lualine_c = {},
+            lualine_c = { { lspsaga_symbols, cond = conditions.check_code_context } },
             lualine_x = {
                 { escape_status },
                 {
@@ -151,6 +188,7 @@ function config.lualine()
                         info = icons.diagnostics.Information,
                     },
                 },
+                { get_cwd },
             },
             lualine_y = {
                 { "filetype", colored = true, icon_only = true },
@@ -195,6 +233,7 @@ function config.nvim_tree()
         git = require("modules.ui.icons").get("git"),
         ui = require("modules.ui.icons").get("ui"),
     }
+    vim.api.nvim_command([[packadd nvim-window-picker]])
 
     require("nvim-tree").setup({
         create_in_closed_folder = false,
@@ -316,6 +355,7 @@ function config.nvim_tree()
                 window_picker = {
                     enable = true,
                     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                    picker = require("window-picker").pick_window,
                     exclude = {
                         filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
                         buftype = { "nofile", "terminal", "help" },
