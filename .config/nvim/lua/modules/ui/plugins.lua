@@ -3,6 +3,12 @@ local conf = require("modules.ui.config")
 
 ui["kyazdani42/nvim-web-devicons"] = { opt = false }
 ui["folke/tokyonight.nvim"] = { opt = false, config = conf.tokyonight }
+ui["zbirenbaum/neodim"] = {
+    opt = true,
+    event = "LspAttach",
+    requires = "nvim-treesitter/nvim-treesitter",
+    config = conf.neodim,
+}
 ui["rcarriga/nvim-notify"] = {
     opt = false,
     config = conf.notify,

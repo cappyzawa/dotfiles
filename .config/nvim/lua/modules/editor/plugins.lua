@@ -126,7 +126,6 @@ editor["edluffy/specs.nvim"] = {
 editor["abecodes/tabout.nvim"] = {
     opt = true,
     event = "InsertEnter",
-    wants = "nvim-treesitter",
     after = "nvim-cmp",
     config = conf.tabout,
 }
