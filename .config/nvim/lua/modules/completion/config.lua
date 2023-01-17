@@ -28,8 +28,7 @@ function config.lspsaga()
 
     set_sidebar_icons()
 
-    local colors = require("tokyonight.colors")
-    -- local colors = require("modules.utils").get_palette()
+    local colors = require("modules.utils").get_palette()
 
     require("lspsaga").setup({
         preview = {

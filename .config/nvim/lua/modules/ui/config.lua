@@ -66,7 +66,7 @@ function config.lualine()
         ui = require("modules.ui.icons").get("ui"),
     }
 
-    local colors = require("tokyonight.colors").default
+    local colors = require("modules.utils").get_palette()
 
     local function escape_status()
         local ok, m = pcall(require, "better_escape")
