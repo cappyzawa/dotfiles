@@ -341,7 +341,8 @@ function config.legendary()
                 u = "packer: PackerUpdate",
             },
             s = {
-                name = "Session commands",
+                c = "lsp: Show cursor disgnostics",
+                l = "lsp: Show line disgnostics",
                 s = "sesson: Save session",
                 r = "sesson: Restore session",
                 d = "sesson: Delete session",
@@ -376,6 +377,8 @@ function config.legendary()
         ["<leader><leader>D"] = "git: Close diff",
         ["g["] = "lsp: Goto prev diagnostic",
         ["g]"] = "lsp: Goto next diagnostic",
+        ["<leader>ci"] = "lsp: Incoming calls",
+        ["<leader>co"] = "lsp: Outgoing calls",
         ["<leader>w"] = "jump: Goto word",
         ["<leader>j"] = "jump: Goto line",
         ["<leader>k"] = "jump: Goto line",

@@ -86,8 +86,8 @@ function config.lualine()
         else
             local ok, lspsaga = pcall(require, "lspsaga.symbolwinbar")
             if ok then
-                if lspsaga.get_symbol_node() ~= nil then
-                    return lspsaga.get_symbol_node()
+                if lspsaga:get_winbar() ~= nil then
+                    return lspsaga:get_winbar()
                 else
                     return "" -- Cannot get node
                 end
@@ -103,12 +103,6 @@ function config.lualine()
         end
         return icons.ui.RootFolderOpened .. cwd
     end
-
-    local conditions = {
-        check_code_context = function()
-            return lspsaga_symbols() ~= ""
-        end,
-    }
 
     local function diff_source()
         local gitsigns = vim.b.gitsigns_status_dict
@@ -180,7 +174,7 @@ function config.lualine()
                 { "mode" },
             },
             lualine_b = { { "branch" }, { "diff", source = diff_source } },
-            lualine_c = { { lspsaga_symbols, cond = conditions.check_code_context } },
+            lualine_c = { lspsaga_symbols },
             lualine_x = {
                 { escape_status },
                 {
@@ -446,6 +440,12 @@ function config.nvim_bufferline()
                     text_align = "center",
                     padding = 1,
                 },
+                {
+                    filetype = "lspsagaoutline",
+                    text = "Lspsaga Outline",
+                    text_align = "center",
+                    padding = 1,
+                },
             },
             diagnostics_indicator = function(count, level)
                 local icon = level:match("error") and icons.diagnostics.Error or icons.diagnostics.Warning
@@ -459,8 +459,7 @@ function config.nvim_bufferline()
     }
 
     if vim.g.colors_name == "catppuccin" then
-        local cp = require("catppuccin.palettes").get_palette() -- Get the palette.
-        cp.none = "NONE" -- Special setting for complete transparent fg/bg.
+        local cp = require("modules.utils").get_palette() -- Get the palette.
 
         local catppuccin_hl_overwrite = {
             highlights = require("catppuccin.groups.integrations.bufferline").get({
