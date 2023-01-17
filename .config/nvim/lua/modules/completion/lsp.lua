@@ -23,11 +23,13 @@ mason_lsp.setup({
         "cssls",
         "dockerls",
         "efm",
+        "gopls",
         "html",
         "jsonls",
         "pylsp",
         "rust_analyzer",
         "sumneko_lua",
+        "terraformls",
         "tsserver",
         "yamlls",
         "zls",
@@ -93,6 +95,11 @@ for _, server in ipairs(mason_lsp.get_installed_servers()) do
                     },
                 },
             },
+        })
+    elseif server == "terraformls" then
+        nvim_lsp.terraformls.setup({
+            capabilities = capabilities,
+            on_attach = custom_attach,
         })
     elseif server == "sumneko_lua" then
         nvim_lsp.sumneko_lua.setup({
