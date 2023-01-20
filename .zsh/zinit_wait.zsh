@@ -219,14 +219,6 @@ zinit light golang/dep
 # }}}
 # }}}
 
-# rust {{{
-# rust-analyzer/rust-analyzer {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" \
-	mv"rust-analyzer* -> rust-analyzer" has:"rustup"
-zinit light rust-lang/rust-analyzer
-# }}}
-# }}}
-
 # lua {{{
 # Koihik/vscode-lua-format {{{
 zinit ice wait'2' lucid as"program" \
