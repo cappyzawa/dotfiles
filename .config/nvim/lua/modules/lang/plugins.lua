@@ -6,4 +6,10 @@ lang["iamcco/markdown-preview.nvim"] = {
     ft = "markdown",
     run = "cd app && yarn install",
 }
+lang["simrat39/rust-tools.nvim"] = {
+    opt = true,
+    ft = "rust",
+    config = conf.rust_tools,
+    requires = "nvim-lua/plenary.nvim",
+}
 return lang
