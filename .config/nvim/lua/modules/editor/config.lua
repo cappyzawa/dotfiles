@@ -500,7 +500,6 @@ function config.trim()
             "markdown",
             "rust",
             "sh",
-            "yaml",
         },
     })
 end
