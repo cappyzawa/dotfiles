@@ -201,8 +201,6 @@ function config.cmp()
   local lspkind = require("lspkind")
   local cmp = require("cmp")
 
-  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.fg })
-
   cmp.setup({
     window = {
       completion = {
