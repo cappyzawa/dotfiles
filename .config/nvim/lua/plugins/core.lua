@@ -1,0 +1,71 @@
+local icons = {
+  diagnostics = require("config.icons").get("diagnostics", true),
+  git = require("config.icons").get("git", true),
+  kind = require("config.icons").get("kind", true),
+  type = require("config.icons").get("type", true),
+  ui = require("config.icons").get("ui", true),
+}
+
+return {
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = function()
+        require("tokyonight")._load("night")
+      end,
+      icons = {
+        diagnostics = {
+          Error = icons.diagnostics.Error,
+          Warn = icons.diagnostics.Warning,
+          Info = icons.diagnostics.Information,
+          Hint = icons.diagnostics.Hint,
+        },
+        git = {
+          added = icons.git.Add,
+          modified = icons.git.Mod,
+          removed = icons.git.Remove,
+        },
+        kinds = {
+          -- ccls-specific icons.
+          Array = icons.type.Array,
+          Boolean = icons.type.Boolean,
+          Class = icons.kind.Class,
+          Color = icons.kind.Color,
+          Constant = icons.kind.Constant,
+          Constructor = icons.kind.Constructor,
+          Enum = icons.kind.Enum,
+          EnumMember = icons.kind.EnumMember,
+          Event = icons.kind.Event,
+          Field = icons.kind.Field,
+          File = icons.kind.File,
+          Folder = icons.kind.Folder,
+          Function = icons.kind.Function,
+          Interface = icons.kind.Interface,
+          Keyword = icons.kind.Keyword,
+          Macro = icons.kind.Macro,
+          Method = icons.kind.Method,
+          Module = icons.kind.Module,
+          Namespace = icons.kind.Namespace,
+          Null = icons.type.Null,
+          Number = icons.type.Number,
+          Object = icons.type.Object,
+          Operator = icons.kind.Operator,
+          Package = icons.kind.Package,
+          Parameter = icons.kind.Parameter,
+          Property = icons.kind.Property,
+          Reference = icons.kind.Reference,
+          Snippet = icons.kind.Snippet,
+          StaticMethod = icons.kind.StaticMethod,
+          String = icons.type.String,
+          Struct = icons.kind.Struct,
+          Text = icons.kind.Text,
+          TypeAlias = icons.kind.TypeAlias,
+          TypeParameter = icons.kind.TypeParameter,
+          Unit = icons.kind.Unit,
+          Value = icons.kind.Value,
+          Variable = icons.kind.Variable,
+        },
+      },
+    },
+  },
+}

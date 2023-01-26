@@ -1,3 +1,4 @@
-# Settings for Neovim
+# 💤 LazyVim
 
-This dir refers to https://github.com/ayamir/nvimdots.
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
