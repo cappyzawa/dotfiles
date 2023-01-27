@@ -1,6 +1,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+          require("colorizer").setup()
+        end,
+      },
+    },
     opts = {
       ensure_installed = {
         "bash",
