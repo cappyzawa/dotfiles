@@ -113,7 +113,26 @@ return {
       local nls = require("null-ls")
       return {
         sources = {
-          nls.builtins.formatting.prettier,
+          nls.builtins.formatting.prettier.with({
+            filetypes = {
+              "javascript",
+              "javascriptreact",
+              "typescript",
+              "typescriptreact",
+              "vue",
+              "css",
+              "scss",
+              "less",
+              "html",
+              "json",
+              "jsonc",
+              "yaml",
+              -- "markdown",
+              "markdown.mdx",
+              "graphql",
+              "handlebars",
+            },
+          }),
           nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.flake8,
         },
