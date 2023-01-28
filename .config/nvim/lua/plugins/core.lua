@@ -10,9 +10,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = function()
-        require("tokyonight")._load("night")
-      end,
+      colorscheme = "tokyonight-night",
       icons = {
         diagnostics = {
           Error = icons.diagnostics.Error,
