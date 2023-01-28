@@ -30,6 +30,7 @@ return {
         gopls = {
           settings = {
             gopls = {
+              gofumpt = true,
               usePlaceholders = true,
               analyses = {
                 nilness = true,
@@ -135,6 +136,7 @@ return {
           }),
           nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.flake8,
+          nls.builtins.formatting.goimports,
         },
       }
     end,
