@@ -11,6 +11,10 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+-- Esc
+map("i", "jj", "<Esc>")
+map("o", "jj", "<Esc>")
+
 -- Move Lines
 map("n", "<M-j>", ":m .+1<cr>==", { desc = "Move down" })
 map("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
