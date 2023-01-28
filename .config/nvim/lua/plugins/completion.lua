@@ -5,6 +5,7 @@ return {
     "glepnir/lspsaga.nvim",
     event = "BufReadPre",
     config = config.lspsaga,
+    branch = "0.2.4",
   },
   {
     "hrsh7th/nvim-cmp",
