@@ -2,8 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local Util = require("lazyvim.util")
-
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
   ---@cast keys LazyKeysHandler
@@ -20,10 +18,6 @@ map("i", "<M-j>", "<Esc>:m .+1<cr>==gi", { desc = "Move down" })
 map("n", "<M-k>", ":m .-2<cr>==", { desc = "Move up" })
 map("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 map("i", "<M-k>", "<Esc>:m .-2<cr>==gi", { desc = "Move up" })
-
--- Esc
-map("i", "jj", "<Esc>")
-map("o", "jj", "<Esc>")
 
 -- Move Cursor
 map("n", "J", "10j")
