@@ -110,4 +110,12 @@ return {
       return dashboard
     end,
   },
+  {
+    "folke/noice.nvim",
+    opts = {
+      cmdline = {
+        view = "cmdline",
+      },
+    },
+  },
 }
