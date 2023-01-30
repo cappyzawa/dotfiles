@@ -1,3 +1,5 @@
+local colors = require("tokyonight.colors").setup({ style = "night" })
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -117,5 +119,37 @@ return {
         view = "cmdline",
       },
     },
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function()
+      local icons = {
+        ui = require("config.icons").get("ui", false),
+      }
+      local mode_color = {
+        n = colors.blue,
+        i = colors.yellow,
+        v = colors.purple,
+        [""] = colors.purple,
+        V = colors.purple,
+      }
+      return {
+        sections = {
+          lualine_a = {
+            {
+              function()
+                return icons.ui.Devil
+              end,
+              color = function()
+                return {
+                  fg = mode_color[vim.fn.mode()],
+                  bg = colors.bg,
+                }
+              end,
+            },
+          },
+        },
+      }
+    end,
   },
 }
