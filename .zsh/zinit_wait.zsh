@@ -302,10 +302,10 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
 	atpull"%atclone"
 zinit light kubernetes-sigs/kustomize
 # }}}
-# wercker/stern {{{
+# stern/stern {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
 	mv"stern* -> stern"
-zinit light wercker/stern
+zinit light stern/stern
 # }}}
 # ahmetb/kubectx {{{
 zinit ice wait'2' lucid as"program" pick:"kubectx"
