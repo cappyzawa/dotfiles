@@ -11,7 +11,6 @@ return {
         "markdown",
         "rust",
         "sh",
-        "yaml",
       },
     },
   },
