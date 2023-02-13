@@ -97,6 +97,7 @@ return {
         },
         rust_analyzer = {},
         terraformls = {},
+        tsserver = {},
       },
     },
   },
