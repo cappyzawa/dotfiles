@@ -2,11 +2,6 @@ local config = require("config.completion")
 
 return {
   {
-    "glepnir/lspsaga.nvim",
-    event = "BufReadPre",
-    config = config.lspsaga,
-  },
-  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       { "onsails/lspkind.nvim" },

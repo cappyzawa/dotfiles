@@ -1,4 +1,26 @@
+local icons = {
+  diagnostics = require("config.icons").get("diagnostics", true),
+  kind = require("config.icons").get("kind", true),
+  type = require("config.icons").get("type", true),
+  ui = require("config.icons").get("ui", true),
+}
+
 return {
+  {
+    "glepnir/lspsaga.nvim",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    event = "BufReadPre",
+    opts = {
+      symbol_in_winbar = {
+        enable = false,
+      },
+    },
+    config = function(_, opts)
+      require("lspsaga").setup(opts)
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -16,6 +38,7 @@ return {
       map("gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Defenition" })
       map("gr", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
       map("gD", "<cmd>Lspsaga goto_definition<CR>", { desc = "Goto Defenition" })
+      map("gh", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Lsp Finder" })
       map("K", vim.NIL)
       map("gk", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover" })
       map("gK", "<cmd>Lspsaga signature_help<CR>", { desc = "Signature Help", has = "signatureHelp" })
