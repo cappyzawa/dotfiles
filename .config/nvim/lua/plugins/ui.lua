@@ -116,10 +116,17 @@ Y88b  d88P888       d88P      8888P   Y8888
   },
   {
     "nvim-lualine/lualine.nvim",
+    dependencies = {
+      { "folke/tokyonight.nvim" },
+      { "glepnir/lspsaga.nvim" },
+    },
     opts = function()
       local icons = {
         ui = require("config.icons").get("ui", false),
+        diagnostics = require("config.icons").get("diagnostics", false),
+        git = require("config.icons").get("git", false),
       }
+
       local mode_color = {
         n = colors.blue,
         i = colors.yellow,
@@ -127,7 +134,13 @@ Y88b  d88P888       d88P      8888P   Y8888
         [""] = colors.purple,
         V = colors.purple,
       }
+
       return {
+        options = {
+          theme = "auto",
+          globalstatus = true,
+          disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
+        },
         sections = {
           lualine_a = {
             {
@@ -142,7 +155,30 @@ Y88b  d88P888       d88P      8888P   Y8888
               end,
             },
           },
+          lualine_b = { "branch" },
+          lualine_c = {
+            {
+              "diagnostics",
+              symbols = {
+                error = icons.diagnostics.Error,
+                warn = icons.diagnostics.Warning,
+                info = icons.diagnostics.Information,
+                hint = icons.diagnostics.Hint,
+              },
+            },
+            { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+            { "filename", path = 1, symbols = { modified = icons.ui.File, readonly = "", unnamed = "" } },
+            {
+              function()
+                return require("nvim-navic").get_location()
+              end,
+              cond = function()
+                return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+              end,
+            },
+          },
         },
+        extensions = { "neo-tree" },
       }
     end,
   },
