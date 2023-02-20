@@ -18,6 +18,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "glepnir/lspsaga.nvim" },
+      { "j-hui/fidget.nvim", opts = {} },
     },
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()

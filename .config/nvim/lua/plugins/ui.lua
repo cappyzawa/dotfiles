@@ -44,6 +44,7 @@ Y88b  d88P888       d88P      8888P   Y8888
   },
   {
     "folke/noice.nvim",
+    enabled = false,
     opts = {
       cmdline = {
         view = "cmdline",
@@ -62,7 +63,7 @@ Y88b  d88P888       d88P      8888P   Y8888
 
       local mode_color = {
         n = colors.blue,
-        i = colors.yellow,
+        i = colors.green,
         v = colors.purple,
         [""] = colors.purple,
         V = colors.purple,
@@ -82,6 +83,8 @@ Y88b  d88P888       d88P      8888P   Y8888
             end,
           },
         },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
       })
       return opts
     end,
