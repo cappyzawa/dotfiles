@@ -7,7 +7,9 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
       local compare = require("cmp.config.compare")
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "copilot" } }))
+      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
+        { name = "copilot" },
+      }))
       opts.sorting = {
         comparators = {
           require("copilot_cmp.comparators").prioritize,

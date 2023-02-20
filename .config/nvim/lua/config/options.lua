@@ -6,5 +6,6 @@ local opt = vim.opt
 
 opt.conceallevel = 0
 opt.listchars = { tab = "»·", nbsp = "+", trail = "·", extends = "→", precedes = "←" }
-opt.mouse = "" -- Disable mouse
-opt.relativenumber = false -- Relative line numbers
+opt.mouse = ""
+opt.relativenumber = false
+opt.cmdheight = 0
