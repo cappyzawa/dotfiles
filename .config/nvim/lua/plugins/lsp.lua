@@ -1,10 +1,3 @@
-local icons = {
-  diagnostics = require("config.icons").get("diagnostics", true),
-  kind = require("config.icons").get("kind", true),
-  type = require("config.icons").get("type", true),
-  ui = require("config.icons").get("ui", true),
-}
-
 return {
   {
     "glepnir/lspsaga.nvim",
@@ -125,49 +118,35 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shellcheck",
-        "shfmt",
-        "flake8",
-      },
-    },
-  },
-  {
     "jose-elias-alvarez/null-ls.nvim",
-    opts = function()
+    opts = function(_, opts)
       local nls = require("null-ls")
-      return {
-        sources = {
-          nls.builtins.formatting.prettier.with({
-            filetypes = {
-              "javascript",
-              "javascriptreact",
-              "typescript",
-              "typescriptreact",
-              "vue",
-              "css",
-              "scss",
-              "less",
-              "html",
-              "json",
-              "jsonc",
-              -- "yaml",
-              -- "markdown",
-              "markdown.mdx",
-              "graphql",
-              "handlebars",
-            },
-          }),
-          nls.builtins.formatting.stylua,
-          nls.builtins.formatting.goimports,
-          nls.builtins.formatting.shfmt,
-          nls.builtins.diagnostics.flake8,
-          nls.builtins.diagnostics.shellcheck,
-        },
-      }
+      opts.sources = vim.list_extend(opts.sources, {
+        nls.builtins.formatting.prettier.with({
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "css",
+            "scss",
+            "less",
+            "html",
+            "json",
+            "jsonc",
+            -- "yaml",
+            -- "markdown",
+            "markdown.mdx",
+            "graphql",
+            "handlebars",
+          },
+        }),
+        nls.builtins.formatting.goimports,
+        nls.builtins.formatting.shfmt,
+        nls.builtins.diagnostics.shellcheck,
+      })
+      return opts
     end,
   },
 }
