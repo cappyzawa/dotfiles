@@ -116,6 +116,7 @@ return {
         terraformls = {},
         tsserver = {},
         elmls = {},
+        yamlls = {},
       },
     },
   },
