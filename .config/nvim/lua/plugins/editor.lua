@@ -3,7 +3,7 @@ return {
     "cappyzawa/trim.nvim",
     event = "BufWritePre",
     opts = {
-      disable = {
+      ft_blocklist = {
         "bash",
         "elm",
         "go",
