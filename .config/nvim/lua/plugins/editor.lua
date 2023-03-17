@@ -24,4 +24,8 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+  {
+    "cappyzawa/starlark.vim",
+    ft = "starlark",
+  },
 }

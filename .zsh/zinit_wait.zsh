@@ -122,10 +122,11 @@ zinit light dandavison/delta
 zinit ice wait'1' lucid as"program" from:"gh-r"
 zinit light o2sh/onefetch
 # }}}
-# google/starlark-go {{{
-zinit ice wait'3' lucid as"program" has"go" \
-	atclone"go install ./cmd/starlark/..." atpull"%atclone"
-zinit light google/starlark-go
+# facebookexperimental/starlark-rust {{{
+zinit ice wait'3' lucid as"program" has"cargo" \
+  atclone"cargo build" atpull"%atclone" \
+  pick"target/debug/starlark"
+zinit light facebookexperimental/starlark-rust
 # }}}
 # open-policy-agent/conftest {{{
 zinit ice wait'2' lucid as"program" from"gh-r"
@@ -381,6 +382,14 @@ zinit ice wait'1' lucid as"program" from"gh-r" \
 	atclone"./pluto completion zsh > ${HOME}/.zsh/Completion/_pluto" \
 	atpull"%atclone"
 zinit light FairwindsOps/pluto
+# }}}
+# tilt-dev/tilt {{{
+zinit ice wait'1' lucid as"program" from"gh-r"
+zinit light tilt-dev/tilt
+# }}}
+# tilt-dev/ctlptl {{{
+zinit ice wait'1' lucid as"program" from"gh-r"
+zinit light tilt-dev/ctlptl
 # }}}
 # }}}
 
