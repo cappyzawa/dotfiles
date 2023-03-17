@@ -43,6 +43,9 @@ return {
       map("<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { desc = "Show Cursor Diagnostics" })
     end,
     opts = {
+      format = {
+        timeout_ms = 10000,
+      },
       servers = {
         gopls = {
           settings = {
@@ -116,7 +119,19 @@ return {
         terraformls = {},
         tsserver = {},
         elmls = {},
-        yamlls = {},
+        yamlls = {
+          settings = {
+            yaml = {
+              schemas = {
+                kubernetes = { "*.yaml" },
+                ["http://json.schemastore.org/kustomization"] = "/kustomization.yaml",
+              },
+            },
+          },
+        },
+        bashls = {
+          filetypes = { "sh", "zsh", "bash" },
+        },
       },
     },
   },
@@ -151,5 +166,16 @@ return {
       })
       return opts
     end,
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "stylua",
+        "shfmt",
+        "flake8",
+        "prettier",
+      },
+    },
   },
 }
