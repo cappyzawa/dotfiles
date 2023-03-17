@@ -308,7 +308,11 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
 zinit light stern/stern
 # }}}
 # ahmetb/kubectx {{{
-zinit ice wait'2' lucid as"program" pick:"kubectx"
+zinit ice wait'2' lucid as"program" pick"kubectx" id-as"kubectx"
+zinit light ahmetb/kubectx
+# }}}
+# ahmetb/kubens {{{
+zinit ice wait'2' lucid as"program" pick"kubens" id-as"kubens"
 zinit light ahmetb/kubectx
 # }}}
 # google/ko {{{
@@ -352,6 +356,13 @@ zinit ice wait'1' lucid as"program" \
 	atclone"pushd tools/setup-envtest; go install; popd" \
 	atpull"%atclone"
 zinit light kubernetes-sigs/controller-runtime
+# }}}
+# kubernetes-sigs/controller-tools#controller-gen {{{
+zinit ice wait'1' lucid as"program" \
+	id-as"kubernetes-sigs/controller-gen" \
+	atclone"pushd cmd/controller-gen; go install; popd" \
+	atpull"%atclone"
+zinit light kubernetes-sigs/controller-tools
 # }}}
 # sh0rez/kubectl-neat-diff {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
