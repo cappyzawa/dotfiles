@@ -172,6 +172,10 @@ zinit ice wait'2' lucid as"program" \
 	has"cargo"
 zinit light alacritty/alacritty
 # }}}
+# aquaproj/aqua {{{
+zinit ice wait'2' lucid as"program" from"gh-r"
+zinit light aquaproj/aqua
+# }}}
 # }}}
 
 # docker {{{
@@ -384,11 +388,15 @@ zinit ice wait'1' lucid as"program" from"gh-r" \
 zinit light FairwindsOps/pluto
 # }}}
 # tilt-dev/tilt {{{
-zinit ice wait'1' lucid as"program" from"gh-r"
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  atclone"./tilt completion zsh > ${HOME}/.zsh/Completion/_tilt" \
+  atpull"%atclone"
 zinit light tilt-dev/tilt
 # }}}
 # tilt-dev/ctlptl {{{
-zinit ice wait'1' lucid as"program" from"gh-r"
+zinit ice wait'1' lucid as"program" from"gh-r" \
+  atclone"./ctlptl completion zsh > ${HOME}/.zsh/Completion/_ctlptl" \
+  atpull"%atclone"
 zinit light tilt-dev/ctlptl
 # }}}
 # }}}

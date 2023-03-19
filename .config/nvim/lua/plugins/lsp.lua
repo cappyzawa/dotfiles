@@ -124,7 +124,7 @@ return {
             yaml = {
               schemas = {
                 kubernetes = { "*.yaml" },
-                ["http://json.schemastore.org/kustomization"] = "/kustomization.yaml",
+                ["http://json.schemastore.org/kustomization"] = "kustomization.yaml",
               },
             },
           },
