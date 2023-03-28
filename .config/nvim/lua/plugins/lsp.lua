@@ -132,6 +132,7 @@ return {
         bashls = {
           filetypes = { "sh", "zsh", "bash" },
         },
+        dockerls = {},
       },
     },
   },
