@@ -129,7 +129,8 @@ zinit ice wait'3' lucid as"program" has"cargo" \
 zinit light facebookexperimental/starlark-rust
 # }}}
 # open-policy-agent/conftest {{{
-zinit ice wait'2' lucid as"program" from"gh-r"
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  atclone"./conftest completion zsh > ~/.zsh/.Completion/_conftest" atpull"%atclone"
 zinit light open-policy-agent/conftest
 # }}}
 # open-policy-agent/opa {{{
@@ -388,16 +389,23 @@ zinit ice wait'1' lucid as"program" from"gh-r" \
 zinit light FairwindsOps/pluto
 # }}}
 # tilt-dev/tilt {{{
-zinit ice wait'1' lucid as"program" from"gh-r" \
+zinit ice wait'2' lucid as"program" from"gh-r" \
   atclone"./tilt completion zsh > ${HOME}/.zsh/Completion/_tilt" \
   atpull"%atclone"
 zinit light tilt-dev/tilt
 # }}}
 # tilt-dev/ctlptl {{{
-zinit ice wait'1' lucid as"program" from"gh-r" \
+zinit ice wait'2' lucid as"program" from"gh-r" \
   atclone"./ctlptl completion zsh > ${HOME}/.zsh/Completion/_ctlptl" \
   atpull"%atclone"
 zinit light tilt-dev/ctlptl
+# }}}
+# GoogleContainerTools/skaffold {{{
+zinit ice wait'2' lucid as"program" from"gh-r" \
+  mv"skaffold-*->skaffold" \
+  atclone"./skaffold completion zsh > ${HOME}/.zsh/Completion/_skaffold" \
+  atpull"%atclone"
+zinit light GoogleContainerTools/skaffold
 # }}}
 # }}}
 

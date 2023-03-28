@@ -17,6 +17,7 @@ return {
         "go",
         "hcl",
         "julia",
+        "rego",
         "rust",
         "terraform",
       })
