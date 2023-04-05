@@ -163,7 +163,9 @@ return {
         }),
         nls.builtins.formatting.goimports,
         nls.builtins.formatting.shfmt,
+        nls.builtins.formatting.rego,
         nls.builtins.diagnostics.shellcheck,
+        nls.builtins.diagnostics.opacheck,
       })
       return opts
     end,
