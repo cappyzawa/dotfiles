@@ -46,8 +46,11 @@ require("lazy").setup({
   ui = {
     icons = {
       cmd = icons.ui.Fire,
+      config = icons.ui.Gear,
       event = icons.kind.Event,
+      ft = icons.kind.File,
       start = icons.ui.Play,
+      lazy = icons.ui.Sleep,
     },
   },
 })

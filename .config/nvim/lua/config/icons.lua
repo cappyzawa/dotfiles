@@ -117,6 +117,7 @@ local data = {
     Separator = "",
     SignIn = "",
     SignOut = "",
+    Sleep = "⏾",
     Sort = "",
     Spell = "暈",
     Symlink = "",

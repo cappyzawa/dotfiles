@@ -96,4 +96,15 @@ Y88b  d88P888       d88P      8888P   Y8888
       opts.filetype_exclude = vim.list_extend(opts.filetype_exclude, { "lspsagafinder" })
     end,
   },
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    opts = {
+      options = {
+        buffer_close_icon = require("config.icons").get("ui", false).Close,
+      },
+    },
+  },
 }
