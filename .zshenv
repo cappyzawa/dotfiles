@@ -21,6 +21,7 @@ path=( \
     $HOME/.krew/bin(N-/) \
     ~/.luarocks/bin(N-/) \
     ~/Library/Application\ Support/Coursier/bin(N-/) \
+    ~/.rd/bin(N-/) \
     "$path[@]" \
     )
 
