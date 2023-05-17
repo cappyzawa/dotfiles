@@ -302,7 +302,7 @@ zinit ice wait'2' lucid as"program" pick"create-kubeconfig"
 zinit light zlabjp/kubernetes-scripts
 # }}}
 # kubernetes-sigs/kustomize {{{
-zinit ice wait'2' lucid as"program" from"gh-r" ver"kustomize%2Fv4.5.7" \
+zinit ice wait'2' lucid as"program" from"gh-r" ver"kustomize%2Fv5.0.3" \
 	mv"kustomize* -> kustomize" \
 	atclone"./kustomize completion zsh > ~/.zsh/Completion/_kustomize" \
 	atpull"%atclone"
