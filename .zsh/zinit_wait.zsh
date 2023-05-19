@@ -238,10 +238,10 @@ zinit light Koihik/vscode-lua-format
 zinit ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"
 zinit light adrienverge/yamllint
 # }}}
-# vmware-tanzu/carvel-ytt {{{
+# carvel-dev/ytt {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
 	mv"ytt-* -> ytt"
-zinit light vmware-tanzu/carvel-ytt
+zinit light carvel-dev/ytt
 # }}}
 # google/yamlfmt {{{
 zinit ice wait'2' lucid as"program" from"gh-r"
@@ -321,11 +321,11 @@ zinit light ahmetb/kubectx
 zinit ice wait'2' lucid as"program" pick"kubens" id-as"kubens"
 zinit light ahmetb/kubectx
 # }}}
-# google/ko {{{
+# ko-build/ko {{{
 zinit ice wait'3' lucid as"program" from"gh-r" \
-	atclone"ko completion --zsh > ~/.zsh/Completion/_ko" atpull"%atclone" \
+	atclone"./ko completion zsh > ~/.zsh/Completion/_ko" atpull"%atclone" \
 	atload"export KO_DOCKER_REPO='docker.io/cappyzawa'"
-zinit light google/ko
+zinit light ko-build/ko
 # }}}
 # operator-framework/operator-sdk {{{
 zinit ice wait'2' lucid as"program" from:"gh-r" \
