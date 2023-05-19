@@ -18,6 +18,7 @@ path=( \
     ~/.gem/ruby/2.6.0/bin(N-/) \
     ~/Library/Python/3.9/bin(N-/) \
     /usr/local/go/bin(N-/) \
+    /opt/homebrew/bin(N-/) \
     $HOME/.krew/bin(N-/) \
     ~/.luarocks/bin(N-/) \
     ~/Library/Application\ Support/Coursier/bin(N-/) \
@@ -118,4 +119,5 @@ export DOTPATH=${0:A:h}
 # export TERM="screen-256color"
 export ZDOTDIR=${HOME}
 
-export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git/zinit.git"
+. "$HOME/.cargo/env"

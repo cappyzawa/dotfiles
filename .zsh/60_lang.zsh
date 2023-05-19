@@ -4,7 +4,7 @@ has_image() {
 }
 
 if has "nodenv"; then
-	local version="14.13.1"
+	local version="18.16.0"
 	if ! [[ -d "${ANYENV_ROOT}/envs/nodenv/versions/${version}" ]]; then
 		nodenv install ${version}
 		nodenv global ${version}

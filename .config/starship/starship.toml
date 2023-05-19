@@ -68,7 +68,7 @@ symbol = " "
 [jobs]
 
 [kubernetes]
-symbol = "ﴱ "
+symbol = "󱃾 "
 disabled = false
 style = "cyan"
 

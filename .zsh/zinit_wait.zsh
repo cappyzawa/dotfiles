@@ -240,7 +240,7 @@ zinit light adrienverge/yamllint
 # }}}
 # vmware-tanzu/carvel-ytt {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
-	mv"ytt-* -> ytt" pick"ytt"
+	mv"ytt-* -> ytt"
 zinit light vmware-tanzu/carvel-ytt
 # }}}
 # google/yamlfmt {{{
