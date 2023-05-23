@@ -25,3 +25,4 @@ node_modules/
 .chef/
 .jupyter/migrated
 .zsh/Completion/_*
+.config/nvim/.luarc.json
