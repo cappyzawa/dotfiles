@@ -4,7 +4,9 @@ zinit ice lucid from"gh-r" as"program"
 zinit light "junegunn/fzf"
 # }}}
 # direnv/direnv {{{
-zinit ice from"gh-r" as"program" mv"direnv* -> direnv"
+zinit ice from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    src"zhook.zsh"
 zinit light direnv/direnv
 # }}}
 # anyenv/anyenv {{{
