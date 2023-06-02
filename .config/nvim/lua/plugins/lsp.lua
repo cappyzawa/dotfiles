@@ -168,6 +168,13 @@ return {
         nls.builtins.formatting.goimports,
         nls.builtins.formatting.rego,
         nls.builtins.formatting.shfmt,
+        nls.builtins.formatting.yamlfmt.with({
+          extra_args = {
+            "-quiet",
+            "-formatter",
+            "indentless_arrays=true, retain_line_breaks = true, max_line_length = 100",
+          },
+        }),
       })
       return opts
     end,
