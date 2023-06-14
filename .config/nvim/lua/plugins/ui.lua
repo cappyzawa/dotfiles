@@ -13,6 +13,7 @@ return {
     },
     opts = function(_, opts)
       opts.ensure_installed = vim.list_extend(opts.ensure_installed, {
+        "cue",
         "elm",
         "go",
         "hcl",

@@ -133,6 +133,7 @@ return {
           filetypes = { "sh", "zsh", "bash" },
         },
         dockerls = {},
+        dagger = {},
       },
     },
   },
@@ -165,6 +166,7 @@ return {
         nls.builtins.diagnostics.shellcheck,
         nls.builtins.diagnostics.zsh,
         nls.builtins.formatting.beautysh,
+        nls.builtins.formatting.cueimports,
         nls.builtins.formatting.goimports,
         nls.builtins.formatting.rego,
         nls.builtins.formatting.shfmt,
@@ -172,7 +174,7 @@ return {
           extra_args = {
             "-quiet",
             "-formatter",
-            "indentless_arrays=true, retain_line_breaks = true, max_line_length = 100",
+            "indentless_arrays=true,retain_line_breaks=true,max_line_length=100",
           },
         }),
       })
@@ -184,6 +186,7 @@ return {
     opts = {
       ensure_installed = {
         "beautysh",
+        "cueimports",
         "flake8",
         "goimports",
         "prettier",

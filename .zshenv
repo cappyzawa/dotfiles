@@ -1,29 +1,30 @@
 typeset -gx -U path
 path=( \
-    /usr/local/bin(N-/) \
-    ~/bin(N-/) \
-    /usr/sbin(N-/) \
-    ~/.config/anyenv/bin(N-/) \
-    ~/.local/bin(N-/) \
-    ~/.local/share/zinit/bin(N-/) \
-    ~/.tmux/bin(N-/) \
-    ~/.nimble/bin(N-/) \
-    ~/.yarn/bin(N-/) \
-    ~/.julia/conda/3/bin(N-/) \
-    ~/.nimble/bin(N-/) \
-    ~/.deno/bin(N-/) \
-    ~/Library/ApplicationSupport/Coursier/bin(N-/) \
-    /usr/local/opt/libpq/bin(N-/) \
-    /usr/local/opt/llvm/bin(N-/) \
-    ~/.gem/ruby/2.6.0/bin(N-/) \
-    ~/Library/Python/3.9/bin(N-/) \
-    /usr/local/go/bin(N-/) \
-    /opt/homebrew/bin(N-/) \
-    $HOME/.krew/bin(N-/) \
-    ~/.luarocks/bin(N-/) \
-    ~/Library/Application\ Support/Coursier/bin(N-/) \
-    ~/.rd/bin(N-/) \
-    "$path[@]" \
+        /usr/local/bin(N-/) \
+        ~/bin(N-/) \
+        /usr/sbin(N-/) \
+        ~/.config/anyenv/bin(N-/) \
+        ~/.local/bin(N-/) \
+        ~/.local/share/zinit/bin(N-/) \
+        ~/.tmux/bin(N-/) \
+        ~/.nimble/bin(N-/) \
+        ~/.yarn/bin(N-/) \
+        ~/.julia/conda/3/bin(N-/) \
+        ~/.nimble/bin(N-/) \
+        ~/.deno/bin(N-/) \
+        ~/Library/ApplicationSupport/Coursier/bin(N-/) \
+        /usr/local/opt/libpq/bin(N-/) \
+        /usr/local/opt/llvm/bin(N-/) \
+        ~/.gem/ruby/2.6.0/bin(N-/) \
+        ~/Library/Python/3.9/bin(N-/) \
+        /usr/local/go/bin(N-/) \
+        /opt/homebrew/bin(N-/) \
+        $HOME/.krew/bin(N-/) \
+        ~/.luarocks/bin(N-/) \
+        ~/Library/Application\ Support/Coursier/bin(N-/) \
+        ~/.rd/bin(N-/) \
+        ~/.cargo/bin(N-/) \
+        "$path[@]" \
     )
 
 # autoload
@@ -43,7 +44,7 @@ export LC_CTYPE="${LANGUAGE}"
 # Editor
 export EDITOR=vim
 if (command -v nvim > /dev/null); then
-  export EDITOR=nvim
+    export EDITOR=nvim
 fi
 
 export CVSEDITOR="${EDITOR}"
@@ -71,16 +72,13 @@ export PATH=~/bin:"$PATH"
 
 # Settings for golang
 if ! [ -d $HOME/ghq ]; then
-  mkdir $HOME/ghq
+    mkdir $HOME/ghq
 fi
 export GOPATH="$HOME/ghq"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 export GOENV_DISABLE_GOPATH=1
 export GOPRIVATE="*.yahoo.co.jp"
-
-# Setting for rust
-export PATH=$PATH:$HOME/.cargo/bin
 
 # declare the environment variables
 export CORRECT_IGNORE='_*'
