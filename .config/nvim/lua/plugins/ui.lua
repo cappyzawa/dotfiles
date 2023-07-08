@@ -16,6 +16,7 @@ return {
         "cue",
         "elm",
         "go",
+        "gomod",
         "hcl",
         "julia",
         "rego",

@@ -1,6 +1,6 @@
 return {
   {
-    "glepnir/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
     },
@@ -17,7 +17,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "glepnir/lspsaga.nvim" },
+      { "nvimdev/lspsaga.nvim" },
       { "j-hui/fidget.nvim", opts = {} },
     },
     init = function()
@@ -28,12 +28,11 @@ return {
         keys[#keys + 1] = { lhs, rhs, desc = desc, { has = has } }
       end
 
-      keys[#keys + 1] = { "gH", "<cmd>echo 'hello'<cr>", desc = "Hello" }
       map("gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Defenition" })
       map("gr", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
       map("gD", "<cmd>Lspsaga goto_definition<CR>", { desc = "Goto Defenition" })
       map("gh", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Lsp Finder" })
-      map("K", vim.NIL)
+      map("K", false)
       map("gk", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover" })
       map("gK", "<cmd>Lspsaga signature_help<CR>", { desc = "Signature Help", has = "signatureHelp" })
       map("g[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Prev Diagnostic" })
@@ -46,6 +45,9 @@ return {
       format = {
         timeout_ms = 10000,
       },
+      inlay_hints = {
+        enabled = false,
+      },
       servers = {
         gopls = {
           settings = {
@@ -57,6 +59,15 @@ return {
                 shadow = true,
                 unusedparams = true,
                 unusewrites = true,
+              },
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
               },
             },
           },
@@ -115,7 +126,26 @@ return {
             },
           },
         },
-        rust_analyzer = {},
+        rust_analyzer = {
+          settings = {
+            ["rust-analyzer"] = {
+              imports = {
+                granularity = {
+                  group = "module",
+                },
+                prefix = "self",
+              },
+              cargo = {
+                buildScripts = {
+                  enable = true,
+                },
+              },
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        },
         terraformls = {},
         tsserver = {},
         elmls = {},
@@ -134,6 +164,13 @@ return {
         },
         dockerls = {},
         dagger = {},
+        lua_ls = {
+          Lua = {
+            hint = {
+              enable = true,
+            },
+          },
+        },
       },
     },
   },
