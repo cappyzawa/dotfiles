@@ -3,6 +3,7 @@ return {
     "nvimdev/lspsaga.nvim",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
+      { "nvim-treesitter/nvim-treesitter" },
     },
     event = "BufReadPre",
     opts = {
@@ -31,7 +32,8 @@ return {
       map("gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Defenition" })
       map("gr", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
       map("gD", "<cmd>Lspsaga goto_definition<CR>", { desc = "Goto Defenition" })
-      map("gh", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Lsp Finder" })
+      map("gh", "<cmd>Lspsaga finder<CR>", { desc = "Lsp Finder" })
+      map("gi", "<cmd>Lspsaga finder imp<CR>", { desc = "Goto Implementation" })
       map("K", false)
       map("gk", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover" })
       map("gK", "<cmd>Lspsaga signature_help<CR>", { desc = "Signature Help", has = "signatureHelp" })
