@@ -7,9 +7,9 @@ source "${ZINIT_HOME}/zinit.zsh"
 source ~/.zsh/zinit.zsh
 
 if (command -v starship > /dev/null) then
-  eval "$(starship init zsh)"
+    eval "$(starship init zsh)"
 fi
 
 if [[ -f ~/.zshrc.local ]]; then
-  source ~/.zshrc.local
+    source ~/.zshrc.local
 fi
