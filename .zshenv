@@ -19,6 +19,7 @@ path=( \
         ~/Library/Python/3.9/bin(N-/) \
         /usr/local/go/bin(N-/) \
         /opt/homebrew/bin(N-/) \
+        /opt/homebrew/opt/openjdk@17/bin(N-/) \
         $HOME/.krew/bin(N-/) \
         ~/.luarocks/bin(N-/) \
         ~/Library/Application\ Support/Coursier/bin(N-/) \
