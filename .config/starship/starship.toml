@@ -95,10 +95,10 @@ symbol = " "
 symbol = " "
 
 [nodejs]
-symbol = " "
+symbol = " "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
 
 [php]
 symbol = " "
