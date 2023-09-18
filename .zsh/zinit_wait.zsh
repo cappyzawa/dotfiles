@@ -302,8 +302,8 @@ zinit ice wait'2' lucid as"program" pick"create-kubeconfig"
 zinit light zlabjp/kubernetes-scripts
 # }}}
 # kubernetes-sigs/kustomize {{{
-zinit ice wait'2' lucid as"program" from"gh-r" ver"kustomize%2Fv5.0.3" \
-    mv"kustomize* -> kustomize" \
+zinit ice wait'2' lucid as"program" from"gh-r" ver"kustomize%2Fv5.1.0" \
+    bpick:"*_darwin_*.tar.gz" \
     atclone"./kustomize completion zsh > ~/.zsh/Completion/_kustomize" \
     atpull"%atclone"
 zinit light kubernetes-sigs/kustomize
@@ -359,7 +359,7 @@ zinit light okteto/okteto
 # kubernetes-sigs/controller-runtime#setup-envtest {{{
 zinit ice wait'1' lucid as"program" \
     id-as"kubernetes-sigs/setup-envtest" \
-    atclone"pushd tools/setup-envtest; go install; popd" \
+    atclone"pushd tools/setup-envtest; go install ./...; popd" \
     atpull"%atclone"
 zinit light kubernetes-sigs/controller-runtime
 # }}}
