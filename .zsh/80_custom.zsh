@@ -100,3 +100,19 @@ fi
 if has 'nvim'; then
     alias vim='nvim'
 fi
+
+gh_install() {
+    local extensions_home="${XDG_DATA_HOME}/gh/extensions"
+    local extension=$1
+    if ! [[ -d "${extensions_home}/$(basename ${extension})" ]]; then
+        gh extension install "${extension}"
+    fi
+}
+
+if has "gh"; then
+    gh_install "cappyzawa/gh-ghq-cd"
+    gh_install "mislav/gh-branch"
+    gh_install "seachicken/gh-poi"
+    gh_install "dlvhdr/gh-dash"
+    gh alias import --clobber "${XDG_CONFIG_HOME}/gh/alias.yml" >/dev/null
+fi

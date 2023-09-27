@@ -47,7 +47,7 @@ os() {
 alias ostype=os
 
 arch() {
-  echo "$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
+    echo "$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
 }
 
 # os_detect export the PLATFORM variable as you see fit
@@ -103,37 +103,37 @@ get_os() {
 }
 
 gitlocal() {
-  git config --local user.name "Shu Kutsuzawa"
-  git config --local user.email "cappyzawa@gmail.com"
-  git config --local hub.host "github.com"
-  git config --local gpg.program gpg
-  git config --local user.signingkey 95FACBF514EBED07EFF2461812D20A0BDD2B2A46
-  echo 'export GITHUB_TOKEN=${GITHUB_COM_TOKEN}' >> .envrc
+    git config --local user.name "Shu Kutsuzawa"
+    git config --local user.email "cappyzawa@gmail.com"
+    git config --local hub.host "github.com"
+    git config --local gpg.program gpg
+    git config --local user.signingkey 95FACBF514EBED07EFF2461812D20A0BDD2B2A46
+    echo 'export GITHUB_TOKEN=${GITHUB_COM_TOKEN}' >> .envrc
 }
 
 kind_start() {
-  if ! has "kind"; then
-    echo "kind command is missing"
-    exit 1
-  fi
+    if ! has "kind"; then
+        echo "kind command is missing"
+        exit 1
+    fi
 
-  if ! has "docker"; then
-    echo "docker command is missing"
-    exit 1
-  fi
+    if ! has "docker"; then
+        echo "docker command is missing"
+        exit 1
+    fi
 
-  set -x
-  kind get nodes | while read n; do
-    docker start $n
-  done
-  set +x
+    set -x
+    kind get nodes | while read n; do
+        docker start $n
+    done
+    set +x
 }
 
 gcd() {
-  local repo_path=`ghq list --full-path | fzf --reverse --preview "bat {1}/README.md"`
-  \cd ${repo_path}
+    local repo_path=`ghq list --full-path | fzf --reverse --preview "bat {1}/README.md"`
+    \cd ${repo_path}
 }
 
 if has 'anyenv'; then
-  eval "$(anyenv init -)"
+    eval "$(anyenv init -)"
 fi

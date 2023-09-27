@@ -1,18 +1,19 @@
 [include]
-	path = ~/.gitconfig.local
+  path = ~/.gitconfig.local
 [include]
-	path = ~/.gitconfig.themes
+  path = ~/.gitconfig.themes
 [core]
-	excludesfile = ~/.gitignore_global
-	ignorecase = false
+  excludesfile = ~/.gitignore_global
+  ignorecase = false
+  editor = nvim
   ; pager = delta
 [gpg]
-	program = gpg2
+  program = gpg2
 [alias]
-	cm = checkout main
+  cm = checkout main
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [ghq]
-	root = ~/ghq/src
+  root = ~/ghq/src
 [interactive]
   diffFilter = delta --color-only
 [delta]
@@ -27,8 +28,8 @@
 [difftool "nvimdiff"]
   cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
 [pull]
-	rebase = true
+  rebase = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [credential]
-	helper = cache --timeout=3600
+  helper = cache --timeout=3600
