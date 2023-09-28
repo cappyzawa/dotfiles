@@ -94,8 +94,9 @@ Y88b  d88P888       d88P      8888P   Y8888
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    config = function(_, opts)
-      opts.filetype_exclude = vim.list_extend(opts.filetype_exclude, { "lspsagafinder" })
+    opts = function(_, opts)
+      opts.exclude.filetypes = vim.list_extend(opts.exclude.filetypes, { "lspsagafinder" })
+      return opts
     end,
   },
   {
