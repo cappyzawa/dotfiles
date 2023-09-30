@@ -488,4 +488,4 @@ zinit light cue-lang/cue
 # }}}
 
 zinit ice wait cdreplay -q
-zinit creinstall -Q %HOME/.zsh/Completion
+zinit creinstall -Q %HOME/.zsh/Completion 2>&1 >/dev/null
