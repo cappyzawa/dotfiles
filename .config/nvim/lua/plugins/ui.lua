@@ -27,9 +27,8 @@ return {
     end,
   },
   {
-    "goolord/alpha-nvim",
+    "glepnir/dashboard-nvim",
     opts = function()
-      local dashboard = require("alpha.themes.dashboard")
       local logo = [[
  .d8888b. 8888888b.8888888888P888       888
 d88P  Y88b888   Y88b     d88P 888   o   888
@@ -40,9 +39,6 @@ d88P  Y88b888   Y88b     d88P 888   o   888
 Y88b  d88P888       d88P      8888P   Y8888
  "Y8888P" 888      d8888888888888P     Y888
   ]]
-
-      dashboard.section.header.val = vim.split(logo, "\n")
-      return dashboard
     end,
   },
   {

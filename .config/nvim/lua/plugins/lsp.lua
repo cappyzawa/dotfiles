@@ -179,50 +179,6 @@ return {
     },
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = vim.list_extend(opts.sources, {
-        nls.builtins.formatting.prettier.with({
-          filetypes = {
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "vue",
-            "css",
-            "scss",
-            "less",
-            "html",
-            "json",
-            "jsonc",
-            -- "yaml",
-            -- "markdown",
-            "markdown.mdx",
-            "graphql",
-            "handlebars",
-          },
-        }),
-        nls.builtins.diagnostics.opacheck,
-        nls.builtins.diagnostics.shellcheck,
-        nls.builtins.diagnostics.zsh,
-        nls.builtins.formatting.beautysh,
-        nls.builtins.formatting.cueimports,
-        nls.builtins.formatting.goimports,
-        nls.builtins.formatting.rego,
-        nls.builtins.formatting.shfmt,
-        nls.builtins.formatting.yamlfmt.with({
-          extra_args = {
-            "-quiet",
-            "-formatter",
-            "indentless_arrays=true,retain_line_breaks=true,max_line_length=100",
-          },
-        }),
-      })
-      return opts
-    end,
-  },
-  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
