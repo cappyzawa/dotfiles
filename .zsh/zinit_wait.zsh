@@ -18,11 +18,6 @@ zinit ice wait pick"init.sh" lucid \
     atclone"zinit cclear" atpull"%atclone"
 zinit light "b4b4r07/enhancd"
 # }}}
-# tree-sitter/tree-sitter {{{
-zinit ice wait lucid as"program" from"gh-r" \
-    mv"tree-sitter-* -> tree-sitter"
-zinit light tree-sitter/tree-sitter
-# }}}
 # starship/starship {{{
 if is_mac; then
     zinit ice wait lucid as"command" from"gh-r" \
@@ -39,23 +34,10 @@ zinit ice wait lucid as"program" from"gh-r" \
     atload="alias ls='exa'"
 zinit light ogham/exa
 # }}}
-# BurntSushi/ripgrep {{{
-zinit ice wait lucid as"program" from"gh-r" \
-    pick"ripgrep-*/rg"
-zinit light BurntSushi/ripgrep
-# }}}
 # jonas/tig {{{
 zinit ice wait"1" as"program" lucid \
     make"install prefix=$ZPFX" pick"$ZPFX/bin/tig"
 zinit light jonas/tig
-# }}}
-# jesseduffield/lazygit {{{
-zinit ice wait"1" as"program" from:"gh-r" lucid
-zinit light jesseduffield/lazygit
-# }}}
-# x-motemen/ghq {{{
-zinit ice wait as"program" from"gh-r" pick"ghq_*/ghq" lucid
-zinit light x-motemen/ghq
 # }}}
 # sharkdp/hyperfine {{{
 zinit ice wait"1" as"program" from"gh-r" pick"hyperfine-*/hyperfine" lucid
