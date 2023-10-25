@@ -26,3 +26,5 @@ packages:
 - name: jqlang/jq@jq-1.7
 - name: kubernetes/kubectl@v1.25.15
 - name: kubernetes-sigs/kustomize@kustomize/v5.2.1
+- name: neovim/neovim@nightly
+  registry: custom

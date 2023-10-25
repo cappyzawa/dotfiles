@@ -12,12 +12,6 @@ zinit snippet $HOME/.zsh/80_custom.zsh
 # }}}
 
 # utils {{{
-# neovim/neovim {{{
-zinit ice wait"1" lucid as"program" pick"nvim*/bin/nvim" from:"gh-r" \
-    if'is_mac' \
-    bpick"nvim-macos.tar.gz" ver"nightly"
-zinit light neovim/neovim
-# }}}
 # b4b4r07/enhancd {{{
 zinit ice wait pick"init.sh" lucid \
     atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1' \
@@ -49,12 +43,6 @@ zinit light ogham/exa
 zinit ice wait lucid as"program" from"gh-r" \
     pick"ripgrep-*/rg"
 zinit light BurntSushi/ripgrep
-# }}}
-# stedolan/jq {{{
-zinit ice wait"1" as"program" from"gh-r" lucid \
-    mv"jq-* -> jq" pick"jq" \
-    atload"alias -g JQ='| jq -C .' && alias -g JL='| jq -C . | less -R -X'"
-zinit light stedolan/jq
 # }}}
 # jonas/tig {{{
 zinit ice wait"1" as"program" lucid \
