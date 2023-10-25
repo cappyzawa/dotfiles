@@ -1,7 +1,6 @@
 # required for activatioin {{{
 # junegunn/fzf {{{
 zinit ice lucid from"gh-r" as"program"
-zinit light "junegunn/fzf"
 # }}}
 # direnv/direnv {{{
 zinit ice from"gh-r" as"program" mv"direnv* -> direnv" \
@@ -12,6 +11,10 @@ zinit light direnv/direnv
 # anyenv/anyenv {{{
 zinit ice lucid as"program" pick:"bin/anyenv"
 zinit light anyenv/anyenv
+# }}}
+# aquaproj/aqua {{{
+zinit ice lucid as"program" from"gh-r"
+zinit light aquaproj/aqua
 # }}}
 zinit ice lucid
 zinit snippet $HOME/.zsh/10_utils.zsh

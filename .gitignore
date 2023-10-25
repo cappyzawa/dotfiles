@@ -6,6 +6,7 @@
 .config/anyenv/*.swp
 .config/anyenv/envs/
 .config/anyenv/plugins/
+.config/aqua/private/
 .config/cheat/cheatsheets/private
 .config/gcloud/
 .config/direnv/

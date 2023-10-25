@@ -1,0 +1,6 @@
+packages:
+- type: github_release
+  repo_owner: cappyzawa
+  repo_name: tfswitch
+  asset: 'tfswitch_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz'
+  description: tfswitch is a command line tool to switch between different versions of terraform.

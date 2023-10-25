@@ -1,0 +1,19 @@
+# aqua Policy
+# https://aquaproj.github.io/
+registries:
+- name: custom
+  type: local
+  path: registry.yaml
+- type: standard
+  ref: semver(">= 4.0.0")
+- name: private
+  type: local
+  path: private/registry.yaml
+packages:
+# Example
+- registry: custom # allow all packages in the Registry
+  # - name: cli/cli # allow only a specific package. The default value of registry is "standard"
+  # - name: cli/cli
+  #   version: semver(">= 2.0.0") # version is optional
+- registry: standard
+- registry: private

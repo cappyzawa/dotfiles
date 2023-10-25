@@ -173,10 +173,6 @@ zinit ice wait'2' lucid as"program" \
     has"cargo"
 zinit light alacritty/alacritty
 # }}}
-# aquaproj/aqua {{{
-zinit ice wait'2' lucid as"program" from"gh-r"
-zinit light aquaproj/aqua
-# }}}
 # }}}
 
 # docker {{{
@@ -300,13 +296,6 @@ zinit light GoogleContainerTools/kpt
 # zlabjp/kubernetes-scripts (as create-kubeconfig) {{{
 zinit ice wait'2' lucid as"program" pick"create-kubeconfig"
 zinit light zlabjp/kubernetes-scripts
-# }}}
-# kubernetes-sigs/kustomize {{{
-zinit ice wait'2' lucid as"program" from"gh-r" ver"kustomize%2Fv5.1.0" \
-    bpick:"*_darwin_*.tar.gz" \
-    atclone"./kustomize completion zsh > ~/.zsh/Completion/_kustomize" \
-    atpull"%atclone"
-zinit light kubernetes-sigs/kustomize
 # }}}
 # stern/stern {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
