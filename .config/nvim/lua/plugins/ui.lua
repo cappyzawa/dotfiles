@@ -27,8 +27,8 @@ return {
     end,
   },
   {
-    "glepnir/dashboard-nvim",
-    opts = function()
+    "nvimdev/dashboard-nvim",
+    opts = function(_, opts)
       local logo = [[
  .d8888b. 8888888b.8888888888P888       888
 d88P  Y88b888   Y88b     d88P 888   o   888
@@ -39,6 +39,8 @@ d88P  Y88b888   Y88b     d88P 888   o   888
 Y88b  d88P888       d88P      8888P   Y8888
  "Y8888P" 888      d8888888888888P     Y888
   ]]
+      opts.config.header = vim.split(logo, "\n")
+      return opts
     end,
   },
   {

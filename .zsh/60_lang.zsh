@@ -35,3 +35,7 @@ fi
 if ! has "rustup"; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
+
+if has "fzf"; then
+    export FZF_DEFAULT_OPTS="--reverse"
+fi
