@@ -39,58 +39,16 @@ zinit ice wait"1" as"program" lucid \
     make"install prefix=$ZPFX" pick"$ZPFX/bin/tig"
 zinit light jonas/tig
 # }}}
-# sharkdp/hyperfine {{{
-zinit ice wait"1" as"program" from"gh-r" pick"hyperfine-*/hyperfine" lucid
-zinit light sharkdp/hyperfine
-# }}}
-# cjbassi/gotop {{{
-zinit ice wait"1" as"program" from"gh-r" pick"gotop" lucid
-zinit light cjbassi/gotop
-# }}}
 # Rasukarusan/fzf-chrome-active-tab (as tl) {{{
 zinit ice lucid wait"2" as"program" from"gh-r" \
     has"fzf" mv"chrome-tab-activate->tl"
 zinit light Rasukarusan/fzf-chrome-active-tab
-# }}}
-# mikefarah/yq {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" \
-    mv"yq* -> yq"
-zinit light mikefarah/yq
-# }}}
-# cli/cli (as gh) {{{
-zinit ice wait'1' lucid as"program" from:"gh-r" \
-    mv"gh*/bin/gh->gh" \
-    atclone"gh completion --shell zsh > ~/.zsh/Completion/_gh" \
-    atpull"%atclone"
-zinit light "cli/cli"
 # }}}
 # sharkdp/bat {{{
 zinit ice wait'1' lucid as"program" from"gh-r" \
     pick"bat-v*/bat" \
     atload"compdef _gnu_generic bat"
 zinit light sharkdp/bat
-# }}}
-# sharkdp/fd {{{
-zinit ice wait'1' lucid as"program" from"gh-r" \
-    pick"fd-*/fd" \
-    atload"compdef _gnu_generic fd"
-zinit light sharkdp/fd
-# }}}
-# sharkdp/diskus {{{
-zinit ice wait'1' lucid as"program" from"gh-r" \
-    pick"diskus-*/diskus" \
-    atload"compdef _gnu_generic diskus"
-zinit light sharkdp/diskus
-# }}}
-# dandavison/delta {{{
-zinit ice wait'1' lucid as"program" from"gh-r" \
-    pick"delta-*/delta" \
-    atload"compdef _gnu_generic delta"
-zinit light dandavison/delta
-# }}}
-# o2sh/onefetch {{{
-zinit ice wait'1' lucid as"program" from:"gh-r"
-zinit light o2sh/onefetch
 # }}}
 # facebookexperimental/starlark-rust {{{
 zinit ice wait'3' lucid as"program" has"cargo" \
@@ -107,27 +65,6 @@ zinit light open-policy-agent/conftest
 zinit ice wait'2' lucid as"program" from"gh-r" \
     mv"opa* -> opa"
 zinit light open-policy-agent/opa
-# }}}
-# smallstep/cli {{{
-zinit ice wait'3' lucid as"program" from"gh-r" \
-    mv"step_*/bin/step -> $ZPFX/bin/step" \
-    atclone"$ZPFX/bin/step completion zsh > ~/.zsh/Completion/_step" atpull"%atclone"
-zinit light smallstep/cli
-# }}}
-# smallstep/certificates {{{
-zinit ice wait'3' lucid as"program" from"gh-r" \
-    pick"step-ca_*/step-ca"
-zinit light smallstep/certificates
-# }}}
-
-# mike-engel/jwt-cli {{{
-zinit ice wait'2' lucid as"program" from"gh-r"
-zinit light mike-engel/jwt-cli
-# }}}
-# cheat/cheat {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-    mv"cheat-*->cheat"
-zinit light cheat/cheat
 # }}}
 # Aloxaf/fzf-tab {{{
 zinit ice wait'2' lucid as"program" \
@@ -163,17 +100,6 @@ zinit light dagger/dagger
 # }}}
 
 # golang {{{
-# goreleaser/goreleaser {{{
-zinit ice wait"3" as"program" from"gh-r" lucid \
-    pick"goreleaser" has"go"
-zinit light goreleaser/goreleaser
-# }}}
-# golangci/golangci-lint {{{
-zinit ice wait"3" as"program" from"gh-r" pick"golangci-lint-*/golangci-lint" lucid \
-    has"go" \
-    atclone"golangci-lint completion zsh > ~/.zsh/Completion/_golangci-lint"
-zinit light golangci/golangci-lint
-# }}}
 # dominikh/go-tools (id-as"golang/staticcheck") {{{
 zinit ice wait"1" lucid as"program" from"gh-r" id-as"golang/staticcheck" \
     pick"staticcheck/staticcheck"
@@ -200,18 +126,10 @@ zinit light Koihik/vscode-lua-format
 # }}}
 
 # yaml {{{
-# adrienverge/yamllint {{{
-zinit ice wait'2' lucid atclone"python setup.py install" atpull"%atclone"
-zinit light adrienverge/yamllint
-# }}}
 # carvel-dev/ytt {{{
 zinit ice wait'2' lucid as"program" from"gh-r" \
     mv"ytt-* -> ytt"
 zinit light carvel-dev/ytt
-# }}}
-# google/yamlfmt {{{
-zinit ice wait'2' lucid as"program" from"gh-r"
-zinit light google/yamlfmt
 # }}}
 # }}}
 
@@ -230,19 +148,6 @@ zinit wait lucid for \
 zinit ice wait'2' lucid as"program" from"gh-r" has"zig" \
     pick"bin/zls"
 zinit light zigtools/zls
-# }}}
-# }}}
-
-# shell {{{
-# koalaman/shellcheck {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-    pick"shellcheck-*/shellcheck"
-zinit light koalaman/shellcheck
-# }}}
-# mvdan/sh {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-    mv"shfmt_* -> shfmt"
-zinit light mvdan/sh
 # }}}
 # }}}
 

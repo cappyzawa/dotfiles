@@ -32,3 +32,17 @@ packages:
 - name: BurntSushi/ripgrep@13.0.0
 - name: jesseduffield/lazygit@v0.40.2
 - name: x-motemen/ghq@v1.4.2
+- name: sharkdp/hyperfine@v1.18.0
+- name: xxxserxxx/gotop@v4.2.0
+- name: mikefarah/yq@v4.35.2
+- name: dandavison/delta@0.16.5
+- name: o2sh/onefetch@2.18.1
+- name: smallstep/cli@v0.25.0
+- name: smallstep/certificates@v0.25.0
+- name: mike-engel/jwt-cli@6.0.0
+- name: cheat/cheat@4.4.0
+- name: golangci/golangci-lint@v1.55.1
+- name: goreleaser/goreleaser@v1.21.2
+- name: google/yamlfmt@v0.10.0
+- name: koalaman/shellcheck@v0.9.0
+- name: mvdan/sh@v3.7.0
