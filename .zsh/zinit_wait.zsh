@@ -12,28 +12,6 @@ zinit snippet $HOME/.zsh/80_custom.zsh
 # }}}
 
 # utils {{{
-# b4b4r07/enhancd {{{
-zinit ice wait pick"init.sh" lucid \
-    atload'export ENHANCD_FILTER="fzf --height 50% --reverse --ansi";export ENHANCD_DOT_SHOW_FULLPATH=1' \
-    atclone"zinit cclear" atpull"%atclone"
-zinit light "b4b4r07/enhancd"
-# }}}
-# starship/starship {{{
-if is_mac; then
-    zinit ice wait lucid as"command" from"gh-r" \
-        bpick'starship-x86_64-apple-darwin.tar.gz' \
-        atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-        atpull"%atclone" src"init.zsh" \
-        atload"export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml"
-    zinit light starship/starship
-fi
-# }}}
-# ogham/exa (as ls) {{{
-zinit ice wait lucid as"program" from"gh-r" \
-    pick"bin/exa" \
-    atload="alias ls='exa'"
-zinit light ogham/exa
-# }}}
 # jonas/tig {{{
 zinit ice wait"1" as"program" lucid \
     make"install prefix=$ZPFX" pick"$ZPFX/bin/tig"
@@ -43,28 +21,6 @@ zinit light jonas/tig
 zinit ice lucid wait"2" as"program" from"gh-r" \
     has"fzf" mv"chrome-tab-activate->tl"
 zinit light Rasukarusan/fzf-chrome-active-tab
-# }}}
-# sharkdp/bat {{{
-zinit ice wait'1' lucid as"program" from"gh-r" \
-    pick"bat-v*/bat" \
-    atload"compdef _gnu_generic bat"
-zinit light sharkdp/bat
-# }}}
-# facebookexperimental/starlark-rust {{{
-zinit ice wait'3' lucid as"program" has"cargo" \
-    atclone"cargo build" atpull"%atclone" \
-    pick"target/debug/starlark"
-zinit light facebookexperimental/starlark-rust
-# }}}
-# open-policy-agent/conftest {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-    atclone"./conftest completion zsh > ~/.zsh/.Completion/_conftest" atpull"%atclone"
-zinit light open-policy-agent/conftest
-# }}}
-# open-policy-agent/opa {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-    mv"opa* -> opa"
-zinit light open-policy-agent/opa
 # }}}
 # Aloxaf/fzf-tab {{{
 zinit ice wait'2' lucid as"program" \
@@ -245,54 +201,6 @@ zinit ice wait'2' lucid as"program" from"gh-r" \
     atpull"%atclone"
 zinit light tilt-dev/ctlptl
 # }}}
-# GoogleContainerTools/skaffold {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-    mv"skaffold-*->skaffold" \
-    atclone"./skaffold completion zsh > ${HOME}/.zsh/Completion/_skaffold" \
-    atpull"%atclone"
-zinit light GoogleContainerTools/skaffold
-# }}}
-# }}}
-
-# hashicorp tools {{{
-# terraform {{{
-# terraform-linters/tflint {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform"
-zinit light terraform-linters/tflint
-# }}}
-# terraform-docs/terraform-docs {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" has"terraform" \
-    mv"terraform-docs-*->terraform-docs"
-zinit light terraform-docs/terraform-docs
-# }}}
-# hashicorp/terraform-bundle {{{
-zinit ice wait'3' lucid as"program" has"go" id-as"hashicorp/terraform-bundle" \
-    atclone"go install ./tools/terraform-bundle" atpull"%atclone"
-zinit light hashicorp/terraform
-# }}}
-# cappyzawa/tfswitch {{{
-zinit ice wait'1' lucid as"program" from"gh-r"
-zinit light cappyzawa/tfswitch
-# }}}
-# im2nguyen/rover {{{
-zinit ice wait'1' lucid as"program" from"gh-r" \
-    mv"rover_* -> rover"
-zinit light im2nguyen/rover
-# }}}
-# }}}
-# }}}
-
-# tonsky/FiraCode {{{
-zinit ice wait'1' lucid as"program" from:"gh-r" \
-    if'[[ "$(ostype)" == "darwin" ]]' \
-    atclone"cp ttf/FiraCode*.ttf ~/Library/Fonts"
-zinit light tonsky/FiraCode
-# }}}
-
-# cloudfoundry/bosh-cli {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-    mv"bosh-cli* -> bosh"
-zinit light cloudfoundry/bosh-cli
 # }}}
 
 # minio/mc {{{
@@ -307,29 +215,11 @@ zinit ice wait'2' lucid as"program" from:"gh-r" \
 zinit light bazelbuild/bazel
 # }}}
 
-# screwdriver-cd/sd-local {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" \
-    mv"sd-local_*->sd-local"
-zinit light screwdriver-cd/sd-local
-# }}}
-
-# denoland/deno_install {{{
-zinit ice wait'2' lucid as"program" \
-    atclone"curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=$ZPFX sh && deno completions zsh > ~/.zsh/Completion/_deno" atpull"%atclone"
-zinit light denoland/deno_install
-# }}}
-
 # protocolbuffers/protobuf {{{
 zinit ice wait'2' lucid as"program" from:"gh-r" \
     if'[[ "$(ostype)" == "darwin" ]]' \
     bpick:"protoc-*-osx-*.zip" mv"bin/protoc->$ZPFX/bin/protoc"
 zinit light protocolbuffers/protobuf
-# }}}
-
-# cue-lang/cue {{{
-zinit ice wait'2' lucid as"program" from:"gh-r" \
-    atclone"./cue completion zsh > ~/.zsh/Completion/_cue" atpull"%atclone"
-zinit light cue-lang/cue
 # }}}
 
 zinit ice wait cdreplay -q

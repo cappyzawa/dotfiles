@@ -133,7 +133,3 @@ gcd() {
     local repo_path=`ghq list --full-path | fzf --reverse --preview "bat {1}/README.md"`
     \cd ${repo_path}
 }
-
-if has 'anyenv'; then
-    eval "$(anyenv init -)"
-fi

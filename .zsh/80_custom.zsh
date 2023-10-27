@@ -11,10 +11,6 @@ if [[ -d $KREW_ROOT ]]; then
     export PATH="${KREW_ROOT}/bin:$PATH"
 fi
 
-if (which jenv > /dev/null); then
-    export JAVA_HOME="${ANYENV_ROOT}/envs/jenv/versions/`jenv version-name`"
-fi
-
 if has "lazygit"; then
     alias lg='lazygit'
 fi
@@ -115,4 +111,8 @@ if has "gh"; then
     gh_install "seachicken/gh-poi"
     gh_install "dlvhdr/gh-dash"
     gh alias import --clobber "${XDG_CONFIG_HOME}/gh/alias.yml" >/dev/null
+fi
+
+if has "exa"; then
+    alias ls="exa"
 fi
