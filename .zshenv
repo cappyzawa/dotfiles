@@ -1,10 +1,10 @@
 typeset -gx -U path
 path=( \
+        ~/.local/share/aquaproj-aqua/bin(N-/) \
         /usr/local/bin(N-/) \
         ~/bin(N-/) \
         /usr/sbin(N-/) \
         ~/.local/bin(N-/) \
-        ~/.local/share/aquaproj-aqua/bin(N-/) \
         ~/.local/share/zinit/bin(N-/) \
         ~/.tmux/bin(N-/) \
         ~/.nimble/bin(N-/) \
@@ -17,7 +17,6 @@ path=( \
         /usr/local/opt/llvm/bin(N-/) \
         ~/.gem/ruby/2.6.0/bin(N-/) \
         ~/Library/Python/3.9/bin(N-/) \
-        /usr/local/go/bin(N-/) \
         /opt/homebrew/bin(N-/) \
         /opt/homebrew/opt/openjdk@17/bin(N-/) \
         $HOME/.krew/bin(N-/) \

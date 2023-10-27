@@ -15,3 +15,4 @@ curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install
 * `git`
 * `tmux` 3.2+
 * [tonsky/FiraCode: Free monospaced font with programming ligatures](https://github.com/tonsky/FiraCode)
+* [alacritty/alacritty: A cross\-platform, OpenGL terminal emulator\.](https://github.com/alacritty/alacritty)

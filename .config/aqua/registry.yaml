@@ -1,10 +1,5 @@
 packages:
 - type: github_release
-  repo_owner: cappyzawa
-  repo_name: tfswitch
-  asset: 'tfswitch_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz'
-  description: tfswitch is a command line tool to switch between different versions of terraform.
-- type: github_release
   repo_owner: neovim
   repo_name: neovim
   description: Hyperextensible Vim-based text editor
@@ -30,7 +25,30 @@ packages:
     overrides:
     - goos: windows
       format: zip
-    # - goos: darwin
-    #   files:
-    #     - name: nvim
-    #       src: nvim-osx64/bin/nvim
+      # - goos: darwin
+      #   files:
+      #     - name: nvim
+      #       src: nvim-osx64/bin/nvim
+- type: github_archive
+  name: Aloxaf/fzf-tab
+  repo_owner: Aloxaf
+  repo_name: fzf-tab
+  description: Replace zsh's default completion selection menu with fzf!
+  files:
+  - name: fzf-tab.plugin.zsh
+    src: fzf-tab-{{trimV .Version}}/fzf-tab.plugin.zsh
+- type: github_release
+  repo_owner: Rasukarusan
+  repo_name: fzf-chrome-active-tab
+  description: 🐧 Fuzzy search and activate Chrome tab via the terminal.
+  supported_envs:
+  - darwin
+  supported_if: GOOS == "darwin"
+  asset: chrome-tab-activate
+  aliases:
+  - name: tl
+- type: go_install
+  name: sigs.k8s.io/controller-runtime/tools/setup-envtest
+  repo_owner: kubernetes-sigs
+  repo_name: controller-runtime
+  path: sigs.k8s.io/controller-runtime/tools/setup-envtest
