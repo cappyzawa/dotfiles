@@ -172,19 +172,6 @@ zinit light GoogleContainerTools/kpt
 zinit ice wait'2' lucid as"program" pick"create-kubeconfig"
 zinit light zlabjp/kubernetes-scripts
 # }}}
-# stern/stern {{{
-zinit ice wait'2' lucid as"program" from"gh-r" \
-    mv"stern* -> stern"
-zinit light stern/stern
-# }}}
-# ahmetb/kubectx {{{
-zinit ice wait'2' lucid as"program" pick"kubectx" id-as"kubectx"
-zinit light ahmetb/kubectx
-# }}}
-# ahmetb/kubens {{{
-zinit ice wait'2' lucid as"program" pick"kubens" id-as"kubens"
-zinit light ahmetb/kubectx
-# }}}
 # ko-build/ko {{{
 zinit ice wait'3' lucid as"program" from"gh-r" \
     atclone"./ko completion zsh > ~/.zsh/Completion/_ko" atpull"%atclone" \
@@ -203,12 +190,6 @@ zinit ice wait'2' lucid as"program" from:"gh-r" \
     atclone"kubebuilder completion zsh > ~/.zsh/Completion/_kubebuilder" \
     atpull"%atclone"
 zinit light kubernetes-sigs/kubebuilder
-# }}}
-# kubernetes-sigs/kind {{{
-zinit ice wait'3' lucid as"program" from:"gh-r" \
-    mv"kind-*->kind" \
-    atclone"kind completion zsh > ~/.zsh/Completion/_kind" atpull"%atclone"
-zinit light kubernetes-sigs/kind
 # }}}
 # tektoncd/cli {{{
 zinit ice wait'2' lucid as"program" from"gh-r" pick"tkn" \
