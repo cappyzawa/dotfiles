@@ -1,11 +1,3 @@
-if has "kubectl"; then
-    alias k='kubectl'
-
-    if (kubectl krew info neat > /dev/null); then
-        alias -g kvy="| kubectl neat | vim '+set filetype=yaml buftype=nofile'"
-    fi
-fi
-
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
 if [[ -d $KREW_ROOT ]]; then
     export PATH="${KREW_ROOT}/bin:$PATH"
@@ -43,9 +35,6 @@ fi
 if has "consul"; then
     complete -o nospace -C `which consul` consul
 fi
-
-# TODO: remove
-alias gofmt="find . -not -path './vendor/*' -and -name '*.go' | xargs gofmt -w"
 
 alias lgtm="echo '![LGTM](//lgtmoon.herokuapp.com/images/23050)'|pbcopy"
 

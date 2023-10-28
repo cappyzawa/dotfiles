@@ -1,0 +1,154 @@
+github:
+- name: neovim/neovim
+  description: Vim-fork focused on extensibility and usability
+  owner: neovim
+  repo: neovim
+  release:
+    name: nvim
+    tag: nightly
+  command:
+    env:
+      EDITOR: nvim
+    alias:
+      vim: nvim
+      vi: command vim
+    link:
+    - from: '**/bin/nvim'
+      to: nvim
+- name: junegunn/fzf
+  description: A command-line fuzzy finder
+  owner: junegunn
+  repo: fzf
+  command:
+    build:
+      steps:
+      - ./install --bin --no-update-rc --no-key-bindings
+    link:
+    - from: 'bin/fzf'
+    - from: 'bin/fzf-tmux'
+- name: aquaproj/aqua
+  description: |
+    Declarative CLI Version manager written in Go.
+    Support Lazy Install, Registry, and continuous update with Renovate.
+    CLI version is switched seamlessly
+  owner: aquaproj
+  repo: aqua
+  release:
+    name: aqua
+    tag: v2.16.1
+  command:
+    env:
+      AQUA_CONFIG: $XDG_CONFIG_HOME/aqua/aqua.yaml
+      AQUA_PROGRESS_BAR: "true"
+      AQUA_POLICY_CONFIG: $XDG_CONFIG_HOME/aqua/policy.yaml
+    link:
+    - from: "**/aqua"
+      to: aqua
+- name: tmux-plugins/tpm
+  description: Tmux Plugin Manager
+  owner: tmux-plugins
+  repo: tpm
+  command:
+    link:
+    - from: .
+      to: $HOME/.tmux/plugins/tpm
+- name: direnv/direnv
+  description: Unclutter your .profile
+  owner: direnv
+  repo: direnv
+  release:
+    name: direnv
+    tag: v2.30.3
+    asset:
+      filename: '{{ .Release.Name }}.{{ .OS }}-{{ .Arch }}'
+      replacements:
+        darwin: darwin
+        amd64: amd64
+  command:
+    link:
+    - from: direnv
+    snippet: |
+      eval "$(direnv hook zsh)"
+- name: zdharma-continuum/fast-syntax-highlighting
+  description: Syntax-highlighting for Zshell
+  owner: zdharma-continuum
+  repo: fast-syntax-highlighting
+  plugin:
+    sources:
+    - fast-syntax-highlighting.plugin.zsh
+- name: Aloxaf/fzf-tab
+  description: Replace zsh's default completion selection menu with fzf!
+  owner: Aloxaf
+  repo: fzf-tab
+  plugin:
+    sources:
+    - fzf-tab.plugin.zsh
+- name: cli/cli
+  description: GitHub’s official command line tool
+  owner: cli
+  repo: cli
+  release:
+    name: gh
+    tag: v2.37.0
+    asset:
+      filename: 'gh_{{ replace .Release.Tag "v" "" }}_{{ .OS }}_{{ .Arch }}.zip'
+      replacements:
+        darwin: macOS
+  command:
+    link:
+    - from: "gh_*/bin/gh"
+      to: gh
+- name: starship/starship
+  description: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+  owner: starship
+  repo: starship
+  release:
+    name: starship
+    tag: v1.16.0
+    asset:
+      filename: 'starship-{{ .Arch }}-{{ .OS }}.tar.gz'
+      replacements:
+        darwin: apple-darwin
+        amd64: x86_64
+        arm64: aarch64
+  command:
+    link:
+    - from: starship
+      to: starship
+    env:
+      STARSHIP_CONFIG: $XDG_CONFIG_HOME/starship/starship.toml
+    snippet: |
+      eval "$(starship init zsh)"
+- name: BurntSushi/ripgrep
+  description: ripgrep recursively searches directories for a regex pattern while respecting your gitignore
+  owner: BurntSushi
+  repo: ripgrep
+  release:
+    name: ripgrep
+    tag: 13.0.0
+    asset:
+      filename: 'ripgrep-{{ .Release.Tag }}-{{ .Arch }}-{{ .OS }}.tar.gz'
+      replacements:
+        darwin: apple-darwin
+        amd64: x86_64
+        arm64: x86_64
+        linux: unknown-linux-musl
+        windows: pc-windows-msvc
+  command:
+    link:
+    - from: '*/rg'
+      to: rg
+- name: Rasukarusan/fzf-chrome-active-tab
+  description: 🐧 Fuzzy search and activate Chrome tab via the terminal.
+  owner: Rasukarusan
+  repo: fzf-chrome-active-tab
+  release:
+    name: fzf-chrome-active-tab
+    tag: 0.03
+    asset:
+      filename: 'chrome-tab-activate'
+  command:
+    link:
+    - from: 'chrome-tab-activate'
+    alias:
+      tl: chrome-tab-activate

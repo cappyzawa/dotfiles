@@ -1,8 +1,8 @@
 typeset -gx -U path
 path=( \
+        ~/bin(N-/) \
         ~/.local/share/aquaproj-aqua/bin(N-/) \
         /usr/local/bin(N-/) \
-        ~/bin(N-/) \
         /usr/sbin(N-/) \
         ~/.local/bin(N-/) \
         ~/.local/share/zinit/bin(N-/) \
@@ -108,14 +108,6 @@ fi
 # Config
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
-
-# Aqua
-export AQUA_CONFIG="${XDG_CONFIG_HOME}/aqua/aqua.yaml"
-export AQUA_PROGRESS_BAR="true"
-export AQUA_POLICY_CONFIG="${XDG_CONFIG_HOME}/aqua/policy.yaml"
-
-# Starship
-export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
 # available $INTERACTIVE_FILTER
 export INTERACTIVE_FILTER="fzf:peco:percol:gof:pick"

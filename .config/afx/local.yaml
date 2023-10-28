@@ -1,0 +1,9 @@
+local:
+- name: zsh
+  description: My zsh scripts
+  directory: ~/.zsh
+  plugin:
+    if: |
+      [[ $SHELL == *zsh* ]]
+    sources:
+    - '[0-9]*.zsh'

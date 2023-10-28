@@ -1,0 +1,9 @@
+formatter:
+  type: basic
+  indentless_arrays: true
+  retain_line_breaks: true
+  max_line_length: 100
+  drop_merge_tag: true
+doublestar: true
+include:
+- '**/*.{yaml,yml}'
