@@ -26,24 +26,6 @@ github:
     link:
     - from: 'bin/fzf'
     - from: 'bin/fzf-tmux'
-- name: aquaproj/aqua
-  description: |
-    Declarative CLI Version manager written in Go.
-    Support Lazy Install, Registry, and continuous update with Renovate.
-    CLI version is switched seamlessly
-  owner: aquaproj
-  repo: aqua
-  release:
-    name: aqua
-    tag: v2.16.1
-  command:
-    env:
-      AQUA_CONFIG: $XDG_CONFIG_HOME/aqua/aqua.yaml
-      AQUA_PROGRESS_BAR: "true"
-      AQUA_POLICY_CONFIG: $XDG_CONFIG_HOME/aqua/policy.yaml
-    link:
-    - from: "**/aqua"
-      to: aqua
 - name: tmux-plugins/tpm
   description: Tmux Plugin Manager
   owner: tmux-plugins
@@ -69,13 +51,6 @@ github:
     - from: direnv
     snippet: |
       eval "$(direnv hook zsh)"
-- name: zdharma-continuum/fast-syntax-highlighting
-  description: Syntax-highlighting for Zshell
-  owner: zdharma-continuum
-  repo: fast-syntax-highlighting
-  plugin:
-    sources:
-    - fast-syntax-highlighting.plugin.zsh
 - name: Aloxaf/fzf-tab
   description: Replace zsh's default completion selection menu with fzf!
   owner: Aloxaf
@@ -138,6 +113,27 @@ github:
     link:
     - from: '*/rg'
       to: rg
+- name: x-motemen/ghq
+  description: Remote repository management made easy
+  owner: x-motemen
+  repo: ghq
+  release:
+    name: ghq
+    tag: v1.4.2
+    asset:
+      filename: 'ghq_{{ .OS }}_{{ .Arch }}.zip'
+  command:
+    link:
+    - from: '**/ghq'
+    snippet: |
+      if ! [ -d $HOME/ghq ]; then
+        mkdir -p $HOME/ghq
+      fi
+    env:
+      GOPATH: $HOME/ghq
+      GOBIN: $GOPATH/bin
+      GOPRIVATE: "*.yahoo.co.jp"
+
 - name: Rasukarusan/fzf-chrome-active-tab
   description: 🐧 Fuzzy search and activate Chrome tab via the terminal.
   owner: Rasukarusan

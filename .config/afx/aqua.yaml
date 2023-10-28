@@ -1,0 +1,21 @@
+github:
+- name: aquaproj/aqua
+  description: |
+    Declarative CLI Version manager written in Go.
+    Support Lazy Install, Registry, and continuous update with Renovate.
+    CLI version is switched seamlessly
+  owner: aquaproj
+  repo: aqua
+  release:
+    name: aqua
+    tag: v2.16.1
+  command:
+    env:
+      AQUA_CONFIG: $XDG_CONFIG_HOME/aqua/aqua.yaml
+      AQUA_PROGRESS_BAR: "true"
+      AQUA_POLICY_CONFIG: $XDG_CONFIG_HOME/aqua/policy.yaml
+    link:
+    - from: "**/aqua"
+      to: aqua
+    alias:
+      k: kubectl

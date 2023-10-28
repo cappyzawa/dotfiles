@@ -1,0 +1,22 @@
+github:
+- name: zdharma-continuum/fast-syntax-highlighting
+  description: Syntax-highlighting for Zshell
+  owner: zdharma-continuum
+  repo: fast-syntax-highlighting
+  plugin:
+    sources:
+    - fast-syntax-highlighting.plugin.zsh
+- name: zsh-users/zsh-autosuggestions
+  description: Fish-like autosuggestions for zsh
+  owner: zsh-users
+  repo: zsh-autosuggestions
+  plugin:
+    sources:
+    - zsh-autosuggestions.zsh
+- name: zdharma-continuum/history-search-multi-word
+  description: Multi-word history searcher for Zshell
+  owner: zdharma-continuum
+  repo: history-search-multi-word
+  plugin:
+    sources:
+    - history-search-multi-word.plugin.zsh
