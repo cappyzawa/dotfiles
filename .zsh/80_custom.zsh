@@ -3,46 +3,6 @@ if [[ -d $KREW_ROOT ]]; then
     export PATH="${KREW_ROOT}/bin:$PATH"
 fi
 
-if has "lazygit"; then
-    alias lg='lazygit'
-fi
-
-if has "vault"; then
-    complete -o nospace -C `which vault` vault
-fi
-
-if has "mc"; then
-    complete -o nospace -C `which mc` mc
-fi
-
-if ! has "helm"; then
-    curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-fi
-
-if has "go"; then
-    export GOPRIVATE="*.yahoo.co.jp"
-fi
-
-if has "gh"; then
-    gli() {
-        local args="$@"
-        local cmd="gh issue list ${args} | fzf --reverse --preview \"gh issue view {1}\""
-        selected=`eval ${cmd}`
-        gh issue view --web $(echo ${selected} | awk '{print $1}')
-    }
-fi
-
-if has "consul"; then
-    complete -o nospace -C `which consul` consul
-fi
-
-alias lgtm="echo '![LGTM](//lgtmoon.herokuapp.com/images/23050)'|pbcopy"
-
-if [[ -d "/usr/local/Caskroom/google-cloud-sdk" ]]; then
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-fi
-
 if has "julia"; then
     export LD_LIBRARY_PATH=$HOME/.julia/conda/3/lib
     if is_osx; then
@@ -52,56 +12,7 @@ if has "julia"; then
     fi
 fi
 
-if has "terraform"; then
-    complete -o nospace -C /usr/local/bin/terraform terraform
-fi
-
-if has "rga"; then
-    rga-fzf() {
-        RG_PREFIX="rga --files-with-matches"
-        local file
-        file="$(
-            FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-                fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-                --phony -q "$1" \
-                --bind "change:reload:$RG_PREFIX {q}" \
-                --preview-window="70%:wrap"
-        )" &&
-        echo "opening $file" &&
-
-        if [[ `basename "${file}"` =~ ".gz" ]]; then
-            gzip -dc ${file} | vim -
-        else
-            vim ${file}
-        fi
-    }
-fi
-
 if has "setup-envtest"; then
     k8s_version="1.25.x"
     source <(setup-envtest use -i -p env ${k8s_version})
-fi
-
-if has 'nvim'; then
-    alias vim='nvim'
-fi
-
-gh_install() {
-    local extensions_home="${XDG_DATA_HOME}/gh/extensions"
-    local extension=$1
-    if ! [[ -d "${extensions_home}/$(basename ${extension})" ]]; then
-        gh extension install "${extension}"
-    fi
-}
-
-if has "gh"; then
-    gh_install "cappyzawa/gh-ghq-cd"
-    gh_install "mislav/gh-branch"
-    gh_install "seachicken/gh-poi"
-    gh_install "dlvhdr/gh-dash"
-    gh alias import --clobber "${XDG_CONFIG_HOME}/gh/alias.yml" >/dev/null
-fi
-
-if has "exa"; then
-    alias ls="exa"
 fi
