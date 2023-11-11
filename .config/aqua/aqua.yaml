@@ -73,3 +73,4 @@ packages:
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.31.0
 - name: neovim/neovim@stable
   registry: custom
+- name: Wilfred/difftastic@0.52.0

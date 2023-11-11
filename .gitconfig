@@ -6,7 +6,6 @@
   excludesfile = ~/.gitignore_global
   ignorecase = false
   editor = nvim
-  ; pager = delta
 [gpg]
   program = gpg2
 [alias]
@@ -24,9 +23,8 @@
 [merge]
   conflictstyle = diff3
 [diff]
-  colorMoved = default
-[difftool "nvimdiff"]
-  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+  tool = difftastic
+  external = difft
 [pull]
   rebase = true
 [init]
