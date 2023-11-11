@@ -9,8 +9,6 @@ if ! command -v afx &> /dev/null; then
 fi
 
 source <(afx init)
-source <(afx completion zsh)
-
 # word split: `-`, `_`, `.`, `=`
 export WORDCHARS='*?[]~&;!#$%^(){}<>'
 

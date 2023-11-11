@@ -3,6 +3,7 @@ path=( \
         ~/bin(N-/) \
         ~/.local/share/aquaproj-aqua/bin(N-/) \
         ~/ghq/bin(N-/) \
+        /opt/homebrew/bin(N-/) \
         /usr/local/bin(N-/) \
         /usr/sbin(N-/) \
         ~/.local/bin(N-/) \
@@ -17,7 +18,6 @@ path=( \
         /usr/local/opt/llvm/bin(N-/) \
         ~/.gem/ruby/2.6.0/bin(N-/) \
         ~/Library/Python/3.9/bin(N-/) \
-        /opt/homebrew/bin(N-/) \
         /opt/homebrew/opt/openjdk@17/bin(N-/) \
         $HOME/.krew/bin(N-/) \
         ~/.luarocks/bin(N-/) \
@@ -30,12 +30,12 @@ path=( \
 
 typeset -gx -U fpath
 fpath=( \
-    ~/.zsh/Completion(N-/) \
-    ~/.zsh/functions(N-/) \
-    ~/.zsh/plugins/zsh-completions(N-/) \
-    /usr/local/share/zsh/site-functions(N-/) \
-    $fpath \
-) 
+        ~/.zsh/Completion(N-/) \
+        ~/.zsh/functions(N-/) \
+        ~/.zsh/plugins/zsh-completions(N-/) \
+        /usr/local/share/zsh/site-functions(N-/) \
+        $fpath \
+    )
 
 # History
 # History file
