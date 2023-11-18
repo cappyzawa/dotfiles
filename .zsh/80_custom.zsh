@@ -16,3 +16,7 @@ if has "setup-envtest"; then
     k8s_version="1.25.x"
     source <(setup-envtest use -i -p env ${k8s_version})
 fi
+
+if has "rbenv"; then
+    eval "$(rbenv init -)"
+fi

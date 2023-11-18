@@ -175,6 +175,7 @@ return {
         },
         html = {},
         cssls = {},
+        solargraph = {},
       },
     },
   },

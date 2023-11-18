@@ -1,9 +1,9 @@
 typeset -gx -U path
 path=( \
         ~/bin(N-/) \
+        /opt/homebrew/bin(N-/) \
         ~/.local/share/aquaproj-aqua/bin(N-/) \
         ~/ghq/bin(N-/) \
-        /opt/homebrew/bin(N-/) \
         /usr/local/bin(N-/) \
         /usr/sbin(N-/) \
         ~/.local/bin(N-/) \
