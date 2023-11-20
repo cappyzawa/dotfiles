@@ -27,3 +27,4 @@ node_modules/
 .jupyter/migrated
 .zsh/Completion/_*
 .config/nvim/.luarc.json
+.tmux/plugins/*

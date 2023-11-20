@@ -1,4 +1,4 @@
-import = ["/Users/skutsuza/.config/alacritty/tokyo-night.toml"]
+import = ["~/.config/alacritty/tokyo-night.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -21,12 +21,12 @@ style = "Regular"
 
 [[keyboard.bindings]]
 chars = "¥"
-key = "Yen"
+key = "¥"
 mods = "Alt"
 
 [[keyboard.bindings]]
 chars = '\'
-key = "Yen"
+key = "¥"
 
 [[keyboard.bindings]]
 chars = "\u001Ba"
@@ -344,16 +344,6 @@ key = "Space"
 mods = "Control"
 
 [[keyboard.bindings]]
-chars = "\u001B`"
-key = "Grave"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001B~"
-key = "Grave"
-mods = "Alt|Shift"
-
-[[keyboard.bindings]]
 chars = "\u001B."
 key = "Period"
 mods = "Alt"
@@ -405,7 +395,7 @@ mods = "Alt|Shift"
 
 [shell]
 args = ["-u"]
-program = "/opt/homebrew/bin/tmux"
+program = "/usr/local/bin/tmux"
 
 [window]
 decorations = "full"
