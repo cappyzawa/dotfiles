@@ -186,7 +186,6 @@ return {
         "beautysh",
         "cueimports",
         "flake8",
-        "goimports",
         "prettier",
         "shellcheck",
         "shfmt",
