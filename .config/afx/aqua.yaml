@@ -9,6 +9,8 @@ github:
   release:
     name: aqua
     tag: v2.16.1
+    asset:
+      filename: aqua_{{ .OS }}_{{ .Arch }}.tar.gz
   command:
     env:
       AQUA_CONFIG: $XDG_CONFIG_HOME/aqua/aqua.yaml
