@@ -13,7 +13,7 @@ github:
       filename: aqua_{{ .OS }}_{{ .Arch }}.tar.gz
   command:
     env:
-      AQUA_CONFIG: $XDG_CONFIG_HOME/aqua/aqua.yaml
+      AQUA_GLOBAL_CONFIG: $XDG_CONFIG_HOME/aqua/aqua.yaml
       AQUA_PROGRESS_BAR: "true"
       AQUA_POLICY_CONFIG: $XDG_CONFIG_HOME/aqua/policy.yaml
       EDITOR: nvim
@@ -27,3 +27,5 @@ github:
       ld: lazydocker
       vim: nvim
       vi: command vim
+    snippet: |
+      source <(setup-envtest use -i -p env 1.25.x!)
