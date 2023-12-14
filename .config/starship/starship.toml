@@ -2,7 +2,7 @@ add_newline = true
 command_timeout = 2000
 
 [aws]
-disabled = true
+symbol = "  "
 
 [battery]
 disabled = true
