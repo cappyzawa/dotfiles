@@ -110,4 +110,8 @@ return {
     "cappyzawa/starlark.vim",
     ft = "starlark",
   },
+  {
+    "akinsho/git-conflict.nvim",
+    config = true,
+  },
 }
