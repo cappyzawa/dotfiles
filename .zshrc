@@ -1,4 +1,5 @@
-autoload -Uz compinit
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
 compinit
 
 autoload -Uz colors
