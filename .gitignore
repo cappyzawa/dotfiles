@@ -17,6 +17,7 @@
 .config/helm/*
 node_modules/
 .config/coc/
+.config/github-copilot/versions.json
 .config/nvim/sessions
 .config/nvim/lazy-lock.json
 .config/cheat/cheatsheets
