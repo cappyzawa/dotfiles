@@ -5,7 +5,7 @@ github:
   repo: neovim
   release:
     name: nvim
-    tag: nightly
+    tag: v0.9.5
   command:
     env:
       EDITOR: nvim
@@ -139,12 +139,12 @@ github:
   owner: Rasukarusan
   repo: fzf-chrome-active-tab
   release:
-    name: fzf-chrome-active-tab
-    tag: 0.03
+    name: chrome-tab-activate
+    tag: "0.03"
     asset:
-      filename: 'chrome-tab-activate'
+      filename: chrome-tab-activate
   command:
     link:
-    - from: 'chrome-tab-activate'
+    - from: chrome-tab-activate
     alias:
       tl: chrome-tab-activate
