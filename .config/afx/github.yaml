@@ -79,7 +79,7 @@ github:
   repo: starship
   release:
     name: starship
-    tag: v1.16.0
+    tag: v1.17.0
     asset:
       filename: 'starship-{{ .Arch }}-{{ .OS }}.tar.gz'
       replacements:
