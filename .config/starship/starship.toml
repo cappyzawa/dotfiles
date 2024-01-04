@@ -168,3 +168,8 @@ disabled = true
 
 [username]
 disabled = false
+
+[env_var.ARCH]
+variable = "ARCH"
+default = "x86_64"
+style = "bold yellow"
