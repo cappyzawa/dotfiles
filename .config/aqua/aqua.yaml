@@ -11,10 +11,10 @@ registries:
 - name: custom
   type: local
   path: ./registry.yaml
-# - name: private
-#   type: local
-#   path: ./private/registry.yaml
-#   private: true
+- name: private
+  type: local
+  path: ./private/registry.yaml
+  private: true
 packages:
 - import: ./private/aqua.yaml
 - name: cli/cli@v2.38.0
