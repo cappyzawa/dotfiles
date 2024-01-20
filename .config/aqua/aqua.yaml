@@ -80,3 +80,5 @@ packages:
 - name: GoogleContainerTools/skaffold@v2.9.0
 - name: golang/go@go1.21.5
 - name: helm/helm@v3.13.3
+- name: docker/cli@v24.0.7
+- name: awslabs/amazon-ecr-credential-helper@v0.7.1
