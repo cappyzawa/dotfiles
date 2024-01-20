@@ -9,6 +9,7 @@ github:
   command:
     env:
       EDITOR: nvim
+      GIT_EDITOR: nvim
     alias:
       vim: nvim
       vi: command vim
