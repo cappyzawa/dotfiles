@@ -19,14 +19,11 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  group = augroup("starlark"),
+  group = augroup("tiltfile"),
   pattern = {
-    "*.star",
-    "BUILD.bazel",
-    "BUILD",
     "Tiltfile*",
   },
   callback = function()
-    vim.opt_local.filetype = "starlark"
+    vim.opt_local.filetype = "tiltfile"
   end,
 })

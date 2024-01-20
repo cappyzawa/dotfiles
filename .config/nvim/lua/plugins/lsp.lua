@@ -176,6 +176,7 @@ return {
         html = {},
         cssls = {},
         solargraph = {},
+        tilt_ls = {},
       },
     },
   },
