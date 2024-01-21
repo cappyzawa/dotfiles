@@ -19,6 +19,9 @@ return {
       },
       {
         "rcarriga/nvim-notify",
+        keys = {
+          { "<Leader>no", "<cmd>Telescope notify<cr>", desc = "Show notifications" },
+        },
         config = function()
           require("telescope").load_extension("notify")
         end,
