@@ -16,5 +16,6 @@
       "automerge": true
     }
   ],
-  "branchConcurrentLimit": 5
+  "branchConcurrentLimit": 5,
+  "platformAutomerge": true
 }
