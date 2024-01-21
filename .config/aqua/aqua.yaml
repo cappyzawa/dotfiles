@@ -57,7 +57,7 @@ packages:
 - name: carvel-dev/ytt@v0.45.6
 - name: ziglang/zig@0.11.0
 - name: zigtools/zls@0.11.0
-- name: Aloxaf/silicon@v0.5.1
+- name: Aloxaf/silicon@v0.5.2
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v3.12.0
 - name: tektoncd/cli@v0.32.2
