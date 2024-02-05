@@ -22,8 +22,8 @@ packages:
 - name: starship/starship@v1.16.0
 - name: hashicorp/terraform@v1.6.3
 - name: jqlang/jq@jq-1.7
-- name: kubernetes/kubectl@v1.25.15
-- name: kubernetes-sigs/kustomize@kustomize/v5.2.1
+- name: kubernetes/kubectl@v1.28.4
+- name: kubernetes-sigs/kustomize@kustomize/v5.3.0
 - name: tree-sitter/tree-sitter@v0.20.8
 - name: BurntSushi/ripgrep@13.0.0
 - name: jesseduffield/lazygit@v0.40.2
@@ -82,3 +82,4 @@ packages:
 - name: helm/helm@v3.13.3
 - name: docker/cli@v24.0.7
 - name: awslabs/amazon-ecr-credential-helper@v0.7.1
+- name: kayac/ecspresso@v2.3.2
