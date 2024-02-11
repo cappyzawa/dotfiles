@@ -101,7 +101,7 @@ github:
   repo: ripgrep
   release:
     name: ripgrep
-    tag: 13.0.0
+    tag: 14.1.0
     asset:
       filename: 'ripgrep-{{ .Release.Tag }}-{{ .Arch }}-{{ .OS }}.tar.gz'
       replacements:
