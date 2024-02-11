@@ -7,7 +7,7 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
 local tmux_keybinds = {
 	-- Pane
-	{ key = "¥", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
+	{ key = "\\", mods = "LEADER", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 	{ key = "-", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 	{ key = "h", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
 	{ key = "l", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
@@ -121,16 +121,16 @@ end)
 return {
 	color_scheme = "tokyonight",
 	window_frame = {
-		font = wezterm.font("FiraCode Nerd Font Mono", { stretch = "Expanded", weight = "Medium" }),
-		font_size = 11.0,
+		font = wezterm.font("MonaspiceAr Nerd Font", { stretch = "Expanded", weight = "Medium" }),
+		font_size = 20.0,
 
 		-- The overall background color of the tab bar when
 		-- the window is focused
 		active_titlebar_bg = "#1a1b26",
 		active_titlebar_fg = "#c0caf5",
 	},
-	font = wezterm.font("FiraCode Nerd Font Mono", { stretch = "Expanded", weight = "Medium" }),
-	font_size = 13.0,
+	font = wezterm.font("MonaspiceAr Nerd Font", { stretch = "Expanded", weight = "Medium" }),
+	font_size = 20.0,
 	harfbuzz_features = { "zero" },
 	bold_brightens_ansi_colors = true,
 

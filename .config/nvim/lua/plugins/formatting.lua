@@ -13,6 +13,7 @@ return {
           javascript = { "prettier" },
           json = { "prettier" },
           lua = { "stylua" },
+          markdown = { "prettier" },
           sh = { "shfmt" },
           typescript = { "prettier" },
           yaml = { "yamlfmt" },
