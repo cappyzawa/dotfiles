@@ -67,6 +67,7 @@ local termainl_keybinds = {
 	{ key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
 	{ key = "y", mods = "LEADER", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
 	{ key = "v", mods = "CMD", action = wezterm.action.PasteFrom("Clipboard") },
+	{ key = "p", mods = "LEADER", action = wezterm.action.PasteFrom("Clipboard") },
 	{ key = "v", mods = "LEADER", action = "ActivateCopyMode" },
 	{ key = "/", mods = "LEADER", action = wezterm.action({ Search = { CaseSensitiveString = "" } }) },
 	{ key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
@@ -182,8 +183,8 @@ return {
 			{ key = "j", mods = "NONE", action = act.CopyMode("MoveDown") },
 			{ key = "k", mods = "NONE", action = act.CopyMode("MoveUp") },
 			{ key = "l", mods = "NONE", action = act.CopyMode("MoveRight") },
-			{ key = "h", mods = "NONE", action = act.CopyMode("MoveToStartOfLineContent") },
-			{ key = "l", mods = " ", action = act.CopyMode("MoveToEndOfLineContent") },
+			{ key = "H", mods = "NONE", action = act.CopyMode("MoveToStartOfLineContent") },
+			{ key = "L", mods = "NONE", action = act.CopyMode("MoveToEndOfLineContent") },
 			{ key = "v", mods = "NONE", action = act.CopyMode({ SetSelectionMode = "Cell" }) },
 			{
 				key = "y",
