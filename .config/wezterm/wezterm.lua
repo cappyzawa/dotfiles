@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
@@ -21,7 +22,24 @@ local tmux_keybinds = {
 	-- } },
 
 	-- Tab
-	{ key = "c", mods = "LEADER", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
+	{ key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+	{
+		key = ",",
+		mods = "LEADER",
+		action = act.Multiple({
+			act.PromptInputLine({
+				description = "Enter new name for tab",
+				action = wezterm.action_callback(function(window, pane, line)
+					-- line will be `nil` if they hit escape without entering anything
+					-- An empty string if they just hit enter
+					-- Or the actual line of text they wrote
+					if line then
+						window:active_tab():set_title(line)
+					end
+				end),
+			}),
+		}),
+	},
 	{ key = "h", mods = "LEADER|CTRL", action = wezterm.action({ ActivateTabRelative = -1 }) },
 	{ key = "l", mods = "LEADER|CTRL", action = wezterm.action({ ActivateTabRelative = 1 }) },
 	{ key = "[", mods = "LEADER|CTRL", action = wezterm.action({ MoveTabRelative = -1 }) },
@@ -48,7 +66,7 @@ local termainl_keybinds = {
 	-- Operation
 	{ key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
 	{ key = "y", mods = "LEADER", action = wezterm.action.CopyTo("ClipboardAndPrimarySelection") },
-	{ key = "V", mods = "CTRL", action = wezterm.action.PasteFrom("Clipboard") },
+	{ key = "v", mods = "CMD", action = wezterm.action.PasteFrom("Clipboard") },
 	{ key = "v", mods = "LEADER", action = "ActivateCopyMode" },
 	{ key = "/", mods = "LEADER", action = wezterm.action({ Search = { CaseSensitiveString = "" } }) },
 	{ key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
@@ -66,60 +84,60 @@ local keybinds = function()
 	return list
 end
 
-wezterm.on("update-right-status", function(window, pane)
-	-- Each element holds the text for a cell in a "powerline" style << fade
-	local cells = {}
-
-	table.insert(cells, "")
-	table.insert(cells, "")
-
-	local date = wezterm.strftime("%a %b %-d %H:%M")
-	table.insert(cells, date)
-
-	-- An entry for each battery (typically 0 or 1 battery)
-	for _, b in ipairs(wezterm.battery_info()) do
-		table.insert(cells, string.format("%.0f%%", b.state_of_charge * 100))
-	end
-
-	-- Color palette for the backgrounds of each cell
-	local colors = {
-		"#1a1b26",
-		"#e0af68",
-		"#1a1b26",
-		"#e0af68",
-	}
-
-	-- Foreground color for the text across the fade
-	local text_fg = "#414868"
-
-	-- The elements to be formatted
-	local elements = {}
-	-- How many cells have been formatted
-	local num_cells = 0
-
-	-- Translate a cell into elements
-	local function push(text, is_last)
-		local cell_no = num_cells + 1
-		table.insert(elements, { Foreground = { Color = text_fg } })
-		table.insert(elements, { Background = { Color = colors[cell_no] } })
-		table.insert(elements, { Text = " " .. text .. " " })
-		if not is_last then
-			table.insert(elements, { Foreground = { Color = colors[cell_no + 1] } })
-			table.insert(elements, { Text = SOLID_LEFT_ARROW })
-		end
-		num_cells = num_cells + 1
-	end
-
-	while #cells > 0 do
-		local cell = table.remove(cells, 1)
-		push(cell, #cells == 0)
-	end
-
-	window:set_right_status(wezterm.format(elements))
-end)
+-- wezterm.on("update-right-status", function(window, pane)
+-- 	-- Each element holds the text for a cell in a "powerline" style << fade
+-- 	local cells = {}
+--
+-- 	table.insert(cells, "")
+-- 	table.insert(cells, "")
+--
+-- 	local date = wezterm.strftime("%a %b %-d %H:%M")
+-- 	table.insert(cells, date)
+--
+-- 	-- An entry for each battery (typically 0 or 1 battery)
+-- 	for _, b in ipairs(wezterm.battery_info()) do
+-- 		table.insert(cells, string.format("%.0f%%", b.state_of_charge * 100))
+-- 	end
+--
+-- 	-- Color palette for the backgrounds of each cell
+-- 	local colors = {
+-- 		"#1a1b26",
+-- 		"#e0af68",
+-- 		"#1a1b26",
+-- 		"#e0af68",
+-- 	}
+--
+-- 	-- Foreground color for the text across the fade
+-- 	local text_fg = "#414868"
+--
+-- 	-- The elements to be formatted
+-- 	local elements = {}
+-- 	-- How many cells have been formatted
+-- 	local num_cells = 0
+--
+-- 	-- Translate a cell into elements
+-- 	local function push(text, is_last)
+-- 		local cell_no = num_cells + 1
+-- 		table.insert(elements, { Foreground = { Color = text_fg } })
+-- 		table.insert(elements, { Background = { Color = colors[cell_no] } })
+-- 		table.insert(elements, { Text = " " .. text .. " " })
+-- 		if not is_last then
+-- 			table.insert(elements, { Foreground = { Color = colors[cell_no + 1] } })
+-- 			table.insert(elements, { Text = SOLID_LEFT_ARROW })
+-- 		end
+-- 		num_cells = num_cells + 1
+-- 	end
+--
+-- 	while #cells > 0 do
+-- 		local cell = table.remove(cells, 1)
+-- 		push(cell, #cells == 0)
+-- 	end
+--
+-- 	window:set_right_status(wezterm.format(elements))
+-- end)
 
 return {
-	color_scheme = "tokyonight",
+	color_scheme = "Tokyo Night",
 	window_frame = {
 		font = wezterm.font("MonaspiceAr Nerd Font", { stretch = "Expanded", weight = "Medium" }),
 		font_size = 20.0,
@@ -138,8 +156,8 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 	tab_max_width = 16,
 	window_padding = {
-		left = 5,
-		right = 5,
+		left = 20,
+		right = 20,
 		top = 0,
 		bottom = 0,
 	},
@@ -159,15 +177,23 @@ return {
 			{ key = "Escape", action = "PopKeyTable" },
 		},
 		copy_mode = {
-			{ key = "q", mods = "NONE", action = wezterm.action({ CopyMode = "Close" }) },
-			{ key = "Escape", mods = "NONE", action = wezterm.action({ CopyMode = "Close" }) },
-
-			{ key = "h", mods = "NONE", action = wezterm.action({ CopyMode = "MoveLeft" }) },
-			{ key = "j", mods = "NONE", action = wezterm.action({ CopyMode = "MoveDown" }) },
-			{ key = "k", mods = "NONE", action = wezterm.action({ CopyMode = "MoveUp" }) },
-			{ key = "l", mods = "NONE", action = wezterm.action({ CopyMode = "MoveRight" }) },
-			{ key = "h", mods = " ", action = wezterm.action({ CopyMode = "MoveToStartOfLine" }) },
-			{ key = "l", mods = " ", action = wezterm.action({ CopyMode = "MoveToEndOfLineContent" }) },
+			{ key = "c", mods = "CTRL", action = act.CopyMode("Close") },
+			{ key = "h", mods = "NONE", action = act.CopyMode("MoveLeft") },
+			{ key = "j", mods = "NONE", action = act.CopyMode("MoveDown") },
+			{ key = "k", mods = "NONE", action = act.CopyMode("MoveUp") },
+			{ key = "l", mods = "NONE", action = act.CopyMode("MoveRight") },
+			{ key = "h", mods = "NONE", action = act.CopyMode("MoveToStartOfLineContent") },
+			{ key = "l", mods = " ", action = act.CopyMode("MoveToEndOfLineContent") },
+			{ key = "v", mods = "NONE", action = act.CopyMode({ SetSelectionMode = "Cell" }) },
+			{
+				key = "y",
+				mods = "NONE",
+				action = act.Multiple({
+					act.CopyTo("ClipboardAndPrimarySelection"),
+					act.ClearSelection,
+					act.CopyMode("ClearSelectionMode"),
+				}),
+			},
 		},
 		search_mode = {
 			{ key = "Escape", mods = "NONE", action = wezterm.action({ CopyMode = "Close" }) },
