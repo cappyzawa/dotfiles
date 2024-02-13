@@ -8,15 +8,15 @@ builtin_box_drawing = true
 size = 20.0
 
 [font.bold]
-family = "MonaspiceAr Nerd Font"
+family = "Moralerspace Argon NF"
 style = "Bold"
 
 [font.italic]
-family = "MonaspiceAr Nerd Font"
+family = "Moralerspace Argon NF"
 style = "Italic"
 
 [font.normal]
-family = "MonaspiceAr Nerd Font"
+family = "Moralerspace Argon NF"
 style = "Regular"
 
 [[keyboard.bindings]]

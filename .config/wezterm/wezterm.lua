@@ -140,7 +140,7 @@ end
 return {
 	color_scheme = "Tokyo Night",
 	window_frame = {
-		font = wezterm.font("MonaspiceAr Nerd Font", { stretch = "Expanded", weight = "Medium" }),
+		font = wezterm.font("Moralerspace Argon NF"),
 		font_size = 20.0,
 
 		-- The overall background color of the tab bar when
@@ -148,7 +148,7 @@ return {
 		active_titlebar_bg = "#1a1b26",
 		active_titlebar_fg = "#c0caf5",
 	},
-	font = wezterm.font("MonaspiceAr Nerd Font", { stretch = "Expanded", weight = "Medium" }),
+	font = wezterm.font("Moralerspace Argon NF"),
 	font_size = 20.0,
 	harfbuzz_features = { "zero" },
 	bold_brightens_ansi_colors = true,
