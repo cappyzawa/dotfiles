@@ -400,7 +400,7 @@ program = "/opt/homebrew/bin/tmux"
 [window]
 decorations = "full"
 dynamic_padding = true
-startup_mode = "Fullscreen"
+# startup_mode = "Fullscreen"
 
 [window.padding]
 x = 5
