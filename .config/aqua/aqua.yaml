@@ -17,7 +17,7 @@ registries:
   private: true
 packages:
 - import: ./private/aqua.yaml
-- name: cli/cli@v2.38.0
+- name: cli/cli@v2.46.0
 - name: junegunn/fzf@0.48.1
 - name: starship/starship@v1.18.0
 - name: hashicorp/terraform@v1.6.3
