@@ -33,10 +33,10 @@ packages:
 - name: mikefarah/yq@v4.35.2
 - name: dandavison/delta@0.16.5
 - name: o2sh/onefetch@2.18.1
-- name: smallstep/cli@v0.25.0
-- name: smallstep/certificates@v0.25.0
+- name: smallstep/cli@v0.25.2
+- name: smallstep/certificates@v0.25.2
 - name: mike-engel/jwt-cli@6.0.0
-- name: cheat/cheat@4.4.0
+- name: cheat/cheat@4.4.2
 - name: golangci/golangci-lint@v1.55.2
 - name: goreleaser/goreleaser@v1.21.2
 - name: google/yamlfmt@v0.9.0
@@ -75,7 +75,7 @@ packages:
 - name: denisidoro/navi@v2.22.1
 - name: aws/aws-cli@2.15.32
 - name: aws/session-manager-plugin@1.2.536.0
-- name: Versent/saml2aws@v2.36.13
+- name: Versent/saml2aws@v2.36.14
 - name: helmfile/helmfile@v0.159.0
 - name: GoogleContainerTools/skaffold@v2.9.0
 - name: golang/go@go1.22.1
