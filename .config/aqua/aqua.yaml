@@ -27,7 +27,7 @@ packages:
 - name: tree-sitter/tree-sitter@v0.20.8
 - name: BurntSushi/ripgrep@13.0.0
 - name: jesseduffield/lazygit@v0.40.2
-- name: x-motemen/ghq@v1.4.2
+- name: x-motemen/ghq@v1.5.0
 - name: sharkdp/hyperfine@v1.18.0
 - name: xxxserxxx/gotop@v4.2.0
 - name: mikefarah/yq@v4.42.1
