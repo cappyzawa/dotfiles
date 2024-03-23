@@ -19,7 +19,7 @@ packages:
 - import: ./private/aqua.yaml
 - name: cli/cli@v2.38.0
 - name: junegunn/fzf@0.43.0
-- name: starship/starship@v1.16.0
+- name: starship/starship@v1.18.0
 - name: hashicorp/terraform@v1.6.3
 - name: jqlang/jq@jq-1.7
 - name: kubernetes/kubectl@v1.28.4
