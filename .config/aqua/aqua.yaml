@@ -45,7 +45,7 @@ packages:
 - name: stern/stern@v1.26.0
 - name: kubernetes-sigs/kind@v0.20.0
 - name: cloudfoundry/bosh-cli@v7.4.1
-- name: denoland/deno@v1.38.0
+- name: denoland/deno@v1.41.3
 - name: cue-lang/cue@v0.6.0
 - name: ogham/exa@v0.10.1
 - name: open-policy-agent/conftest@v0.46.0
