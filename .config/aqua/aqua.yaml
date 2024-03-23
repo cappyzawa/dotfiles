@@ -52,7 +52,7 @@ packages:
 - name: open-policy-agent/opa@v0.58.0
 - name: direnv/direnv@v2.32.3
 - name: jesseduffield/lazydocker@v0.23.1
-- name: wagoodman/dive@v0.11.0
+- name: wagoodman/dive@v0.12.0
 - name: dominikh/go-tools/staticcheck@2023.1.7
 - name: carvel-dev/ytt@v0.45.6
 - name: ziglang/zig@0.11.0
