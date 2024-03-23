@@ -1,21 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    "github>aquaproj/aqua-renovate-config#2.2.0"
-  ],
+  "extends": ["config:base", "github>aquaproj/aqua-renovate-config#1.11.0"],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "aquaproj/aqua-registry"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchPackageNames": ["aquaproj/aqua-registry"],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     }
   ],
-  "branchConcurrentLimit": 5,
+  "prConcurrentLimit": 5,
   "platformAutomerge": true
 }
