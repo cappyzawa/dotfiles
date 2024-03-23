@@ -73,7 +73,7 @@ packages:
 - name: Wilfred/difftastic@0.52.0
 - name: golang/go@go1.22.1
 - name: denisidoro/navi@v2.22.1
-- name: aws/aws-cli@2.15.12
+- name: aws/aws-cli@2.15.32
 - name: aws/session-manager-plugin@1.2.536.0
 - name: Versent/saml2aws@v2.36.14
 - name: helmfile/helmfile@v0.159.0
