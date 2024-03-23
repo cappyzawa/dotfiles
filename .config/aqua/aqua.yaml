@@ -62,7 +62,7 @@ packages:
 - name: kubernetes-sigs/kubebuilder@v3.14.0
 - name: tektoncd/cli@v0.32.2
 - name: okteto/okteto@2.21.0
-- name: kubernetes-sigs/controller-tools/controller-gen@v0.13.0
+- name: kubernetes-sigs/controller-tools/controller-gen@v0.14.0
 - name: sigs.k8s.io/controller-runtime/tools/setup-envtest@bf15e44
   registry: custom
 - name: kubernetes-sigs/krew@v0.4.4
