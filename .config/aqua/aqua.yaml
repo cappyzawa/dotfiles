@@ -20,7 +20,7 @@ packages:
 - name: cli/cli@v2.38.0
 - name: junegunn/fzf@0.48.1
 - name: starship/starship@v1.18.0
-- name: hashicorp/terraform@v1.6.3
+- name: hashicorp/terraform@v1.7.5
 - name: jqlang/jq@jq-1.7.1
 - name: kubernetes/kubectl@v1.28.4
 - name: kubernetes-sigs/kustomize@kustomize/v5.3.0
