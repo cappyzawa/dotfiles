@@ -30,7 +30,7 @@ packages:
 - name: x-motemen/ghq@v1.5.0
 - name: sharkdp/hyperfine@v1.18.0
 - name: xxxserxxx/gotop@v4.2.0
-- name: mikefarah/yq@v4.42.1
+- name: mikefarah/yq@v4.43.1
 - name: dandavison/delta@0.17.0
 - name: o2sh/onefetch@2.18.1
 - name: smallstep/cli@v0.25.2
