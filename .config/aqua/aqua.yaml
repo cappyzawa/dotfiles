@@ -17,7 +17,6 @@ registries:
   private: true
 packages:
 - import: ./private/aqua.yaml
-- name: cli/cli@v2.46.0
 - name: junegunn/fzf@0.48.1
 - name: starship/starship@v1.18.1
 - name: hashicorp/terraform@v1.6.3
@@ -25,7 +24,6 @@ packages:
 - name: kubernetes/kubectl@v1.28.4
 - name: kubernetes-sigs/kustomize@kustomize/v5.3.0
 - name: tree-sitter/tree-sitter@v0.22.2
-- name: BurntSushi/ripgrep@14.1.0
 - name: jesseduffield/lazygit@v0.41.0
 - name: x-motemen/ghq@v1.5.0
 - name: sharkdp/hyperfine@v1.18.0
@@ -76,7 +74,6 @@ packages:
 - name: aws/aws-cli@2.15.32
 - name: aws/session-manager-plugin@1.2.536.0
 - name: Versent/saml2aws@v2.36.14
-- name: helmfile/helmfile@v0.163.1
 - name: GoogleContainerTools/skaffold@v2.9.0
 - name: golang/go@go1.22.1
 - name: helm/helm@v3.14.3

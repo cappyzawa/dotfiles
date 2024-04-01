@@ -65,7 +65,7 @@ github:
   repo: cli
   release:
     name: gh
-    tag: v2.37.0
+    tag: v2.46.0
     asset:
       filename: 'gh_{{ replace .Release.Tag "v" "" }}_{{ .OS }}_{{ .Arch }}.zip'
       replacements:

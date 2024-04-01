@@ -15,6 +15,7 @@ return {
           -- json5 = { "prettier" },
           lua = { "stylua" },
           markdown = { "prettier" },
+          rust = { "rustfmt" },
           sh = { "shfmt" },
           terraform = { "terraform_fmt" },
           typescript = { "prettier" },
