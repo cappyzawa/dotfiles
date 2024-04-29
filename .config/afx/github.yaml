@@ -5,7 +5,11 @@ github:
   repo: neovim
   release:
     name: nvim
-    tag: v0.9.5
+    tag: nightly
+    asset:
+      filename: 'nvim-{{ .OS }}-{{ .Arch }}.tar.gz'
+      replacements:
+        darwin: macos
   command:
     env:
       EDITOR: nvim
