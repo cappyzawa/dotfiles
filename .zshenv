@@ -24,6 +24,7 @@ path=( \
         ~/Library/Application\ Support/Coursier/bin(N-/) \
         ~/.cargo/bin(N-/) \
         ~/.rd/bin(N-/) \
+        ~/.tmux/plugins/tpm/bin(N-/) \
         "$path[@]" \
     )
 
