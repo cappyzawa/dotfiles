@@ -22,7 +22,7 @@ return {
       { "nvimdev/lspsaga.nvim" },
       { "j-hui/fidget.nvim", opts = {} },
     },
-    init = function()
+    opts = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       local function map(lhs, rhs, opts)
         local desc = opts and opts.desc or ""
@@ -43,144 +43,169 @@ return {
       map("go", "<cmd>Lspsaga outline<CR>", { desc = "Show Outline" })
       map("<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "Show Line Diagnostics" })
       map("<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { desc = "Show Cursor Diagnostics" })
-    end,
-    opts = {
-      format = {
-        timeout_ms = 10000,
-      },
-      inlay_hints = {
-        enabled = false,
-      },
-      servers = {
-        gopls = {
-          settings = {
-            gopls = {
-              gofumpt = true,
-              usePlaceholders = true,
-              analyses = {
-                nilness = true,
-                shadow = true,
-                unusedparams = true,
-                unusewrites = true,
-              },
-              hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-              },
+
+      return {
+        diagnostics = {
+          underline = true,
+          update_in_insert = false,
+          virtual_text = {
+            spacing = 4,
+            source = "if_many",
+            prefix = "●",
+            -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+            -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+            -- prefix = "icons",
+          },
+          severity_sort = true,
+          signs = {
+            text = {
+              [vim.diagnostic.severity.ERROR] = LazyVim.config.icons.diagnostics.Error,
+              [vim.diagnostic.severity.WARN] = LazyVim.config.icons.diagnostics.Warn,
+              [vim.diagnostic.severity.HINT] = LazyVim.config.icons.diagnostics.Hint,
+              [vim.diagnostic.severity.INFO] = LazyVim.config.icons.diagnostics.Info,
             },
           },
         },
-        jsonls = {
-          flags = { debounce_text_changes = 500 },
-          settings = {
-            json = {
-              -- Schemas https://www.schemastore.org
-              schemas = {
-                {
-                  fileMatch = { "package.json" },
-                  url = "https://json.schemastore.org/package.json",
+        format = {
+          timeout_ms = 10000,
+        },
+        inlay_hints = {
+          enabled = false,
+        },
+        codelens = {
+          enabled = false,
+        },
+        servers = {
+          gopls = {
+            settings = {
+              gopls = {
+                gofumpt = true,
+                usePlaceholders = true,
+                analyses = {
+                  nilness = true,
+                  shadow = true,
+                  unusedparams = true,
+                  unusewrites = true,
                 },
-                {
-                  fileMatch = { "tsconfig*.json" },
-                  url = "https://json.schemastore.org/tsconfig.json",
-                },
-                {
-                  fileMatch = {
-                    ".prettierrc",
-                    ".prettierrc.json",
-                    "prettier.config.json",
-                  },
-                  url = "https://json.schemastore.org/prettierrc.json",
-                },
-                {
-                  fileMatch = { ".eslintrc", ".eslintrc.json" },
-                  url = "https://json.schemastore.org/eslintrc.json",
-                },
-                {
-                  fileMatch = {
-                    ".babelrc",
-                    ".babelrc.json",
-                    "babel.config.json",
-                  },
-                  url = "https://json.schemastore.org/babelrc.json",
-                },
-                {
-                  fileMatch = { "lerna.json" },
-                  url = "https://json.schemastore.org/lerna.json",
-                },
-                {
-                  fileMatch = {
-                    ".stylelintrc",
-                    ".stylelintrc.json",
-                    "stylelint.config.json",
-                  },
-                  url = "http://json.schemastore.org/stylelintrc.json",
-                },
-                {
-                  fileMatch = { "/.github/workflows/*" },
-                  url = "https://json.schemastore.org/github-workflow.json",
+                hints = {
+                  assignVariableTypes = true,
+                  compositeLiteralFields = true,
+                  compositeLiteralTypes = true,
+                  constantValues = true,
+                  functionTypeParameters = true,
+                  parameterNames = true,
+                  rangeVariableTypes = true,
                 },
               },
             },
           },
-        },
-        rust_analyzer = {
-          settings = {
-            ["rust-analyzer"] = {
-              imports = {
-                granularity = {
-                  group = "module",
+          jsonls = {
+            flags = { debounce_text_changes = 500 },
+            settings = {
+              json = {
+                -- Schemas https://www.schemastore.org
+                schemas = {
+                  {
+                    fileMatch = { "package.json" },
+                    url = "https://json.schemastore.org/package.json",
+                  },
+                  {
+                    fileMatch = { "tsconfig*.json" },
+                    url = "https://json.schemastore.org/tsconfig.json",
+                  },
+                  {
+                    fileMatch = {
+                      ".prettierrc",
+                      ".prettierrc.json",
+                      "prettier.config.json",
+                    },
+                    url = "https://json.schemastore.org/prettierrc.json",
+                  },
+                  {
+                    fileMatch = { ".eslintrc", ".eslintrc.json" },
+                    url = "https://json.schemastore.org/eslintrc.json",
+                  },
+                  {
+                    fileMatch = {
+                      ".babelrc",
+                      ".babelrc.json",
+                      "babel.config.json",
+                    },
+                    url = "https://json.schemastore.org/babelrc.json",
+                  },
+                  {
+                    fileMatch = { "lerna.json" },
+                    url = "https://json.schemastore.org/lerna.json",
+                  },
+                  {
+                    fileMatch = {
+                      ".stylelintrc",
+                      ".stylelintrc.json",
+                      "stylelint.config.json",
+                    },
+                    url = "http://json.schemastore.org/stylelintrc.json",
+                  },
+                  {
+                    fileMatch = { "/.github/workflows/*" },
+                    url = "https://json.schemastore.org/github-workflow.json",
+                  },
                 },
-                prefix = "self",
               },
-              cargo = {
-                buildScripts = {
+            },
+          },
+          rust_analyzer = {
+            settings = {
+              ["rust-analyzer"] = {
+                imports = {
+                  granularity = {
+                    group = "module",
+                  },
+                  prefix = "self",
+                },
+                cargo = {
+                  buildScripts = {
+                    enable = true,
+                  },
+                },
+                procMacro = {
                   enable = true,
                 },
               },
-              procMacro = {
+            },
+          },
+          terraformls = {},
+          tsserver = {},
+          elmls = {},
+          yamlls = {
+            settings = {
+              yaml = {
+                schemas = {
+                  kubernetes = { "*.yaml" },
+                  ["http://json.schemastore.org/kustomization"] = "kustomization.yaml",
+                },
+              },
+            },
+          },
+          bashls = {
+            filetypes = { "sh", "zsh", "bash" },
+          },
+          dockerls = {},
+          dagger = {},
+          lua_ls = {
+            Lua = {
+              hint = {
                 enable = true,
               },
             },
           },
+          html = {},
+          cssls = {},
+          solargraph = {},
+          tilt_ls = {},
+          ruby_lsp = {},
         },
-        terraformls = {},
-        tsserver = {},
-        elmls = {},
-        yamlls = {
-          settings = {
-            yaml = {
-              schemas = {
-                kubernetes = { "*.yaml" },
-                ["http://json.schemastore.org/kustomization"] = "kustomization.yaml",
-              },
-            },
-          },
-        },
-        bashls = {
-          filetypes = { "sh", "zsh", "bash" },
-        },
-        dockerls = {},
-        dagger = {},
-        lua_ls = {
-          Lua = {
-            hint = {
-              enable = true,
-            },
-          },
-        },
-        html = {},
-        cssls = {},
-        solargraph = {},
-        tilt_ls = {},
-        ruby_lsp = {},
-      },
-    },
+      }
+    end,
   },
   {
     "williamboman/mason.nvim",
