@@ -19,6 +19,7 @@ return {
           sh = { "shfmt" },
           terraform = { "terraform_fmt" },
           typescript = { "prettier" },
+          typescriptreact = { "prettier" },
           yaml = { "yamlfmt" },
           zsh = { "beautysh" },
         },
