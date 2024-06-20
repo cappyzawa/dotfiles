@@ -18,7 +18,7 @@ registries:
 packages:
 - import: ./private/aqua.yaml
 - name: junegunn/fzf@0.48.1
-- name: starship/starship@v1.18.1
+- name: starship/starship@v1.19.0
 - name: hashicorp/terraform@v1.6.3
 - name: jqlang/jq@jq-1.7.1
 - name: kubernetes/kubectl@v1.28.4
