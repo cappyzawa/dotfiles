@@ -57,7 +57,7 @@ packages:
 - name: zigtools/zls@0.11.0
 - name: Aloxaf/silicon@v0.5.2
 - name: github/hub@v2.14.2
-- name: kubernetes-sigs/kubebuilder@v3.14.0
+- name: kubernetes-sigs/kubebuilder@v3.15.1
 - name: tektoncd/cli@v0.36.0
 - name: okteto/okteto@2.25.4
 - name: kubernetes-sigs/controller-tools/controller-gen@v0.13.0
