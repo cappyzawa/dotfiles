@@ -12,6 +12,7 @@
 [alias]
   cm = checkout main
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+  undo = reset --soft HEAD^
 [ghq]
   root = ~/ghq/src
 [interactive]
