@@ -73,7 +73,7 @@ packages:
 - name: denisidoro/navi@v2.22.1
 - name: aws/aws-cli@2.15.44
 - name: aws/session-manager-plugin@1.2.536.0
-- name: Versent/saml2aws@v2.36.16
+- name: Versent/saml2aws@v2.36.17
 - name: GoogleContainerTools/skaffold@v2.9.0
 - name: golang/go@go1.22.4
 - name: helm/helm@v3.14.3
