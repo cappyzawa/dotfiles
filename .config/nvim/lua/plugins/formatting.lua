@@ -3,7 +3,7 @@ return {
     "stevearc/conform.nvim",
     opts = function()
       return {
-        format = {
+        default_format_opt = {
           timeout_ms = 5000,
         },
         formatters_by_ft = {

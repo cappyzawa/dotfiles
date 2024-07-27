@@ -81,3 +81,4 @@ packages:
 - name: awslabs/amazon-ecr-credential-helper@v0.8.0
 - name: kayac/ecspresso@v2.3.3
 - name: sharkdp/bat@v0.24.0
+- name: kubernetes/minikube@v1.33.1
