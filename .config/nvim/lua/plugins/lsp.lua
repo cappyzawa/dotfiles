@@ -11,6 +11,9 @@ return {
       symbol_in_winbar = {
         enable = false,
       },
+      lightbulb = {
+        enable = false,
+      },
     },
     config = function(_, opts)
       require("lspsaga").setup(opts)

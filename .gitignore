@@ -30,3 +30,4 @@ node_modules/
 .config/nvim/.luarc.json
 .tmux/plugins/*
 .config/karabiner/automatic_backups/*
+.config/raycast
