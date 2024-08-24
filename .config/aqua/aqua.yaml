@@ -49,7 +49,7 @@ packages:
 - name: open-policy-agent/conftest@v0.55.0
 - name: open-policy-agent/opa@v0.67.1
 - name: direnv/direnv@v2.34.0
-- name: jesseduffield/lazydocker@v0.23.1
+- name: jesseduffield/lazydocker@v0.23.3
 - name: wagoodman/dive@v0.12.0
 - name: dominikh/go-tools/staticcheck@2023.1.7
 - name: carvel-dev/ytt@v0.48.0
