@@ -76,7 +76,7 @@ packages:
 - name: Versent/saml2aws@v2.36.17
 - name: GoogleContainerTools/skaffold@v2.13.2
 - name: golang/go@go1.23.0
-- name: helm/helm@v3.15.3
+- name: helm/helm@v3.15.4
 - name: docker/cli@v24.0.7
 - name: awslabs/amazon-ecr-credential-helper@v0.8.0
 - name: kayac/ecspresso@v2.3.3
