@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "github>aquaproj/aqua-renovate-config#2.2.1"],
+  "extends": ["config:base", "github>aquaproj/aqua-renovate-config#2.3.1"],
   "packageRules": [
     {
       "matchPackageNames": ["aquaproj/aqua-registry"],
