@@ -28,5 +28,6 @@ node_modules/
 .jupyter/migrated
 .zsh/Completion/_*
 .config/nvim/.luarc.json
-.tmux/plugins/*
+.tmux/plugins
 .config/karabiner/automatic_backups/*
+.config/raycast
