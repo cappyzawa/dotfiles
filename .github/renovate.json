@@ -5,7 +5,8 @@
     {
       "matchPackageNames": ["aquaproj/aqua-registry"],
       "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr"
     }
   ],
   "prConcurrentLimit": 5,
