@@ -32,7 +32,7 @@ packages:
 - name: o2sh/onefetch@2.22.0
 - name: smallstep/cli@v0.25.2
 - name: smallstep/certificates@v0.27.4
-- name: mike-engel/jwt-cli@6.0.0
+- name: mike-engel/jwt-cli@6.1.1
 - name: cheat/cheat@4.4.2
 - name: golangci/golangci-lint@v1.61.0
 - name: goreleaser/goreleaser@v2.3.2
