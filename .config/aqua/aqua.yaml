@@ -29,7 +29,7 @@ packages:
 - name: xxxserxxx/gotop@v4.2.0
 - name: mikefarah/yq@v4.44.3
 - name: dandavison/delta@0.18.2
-- name: o2sh/onefetch@2.20.0
+- name: o2sh/onefetch@2.22.0
 - name: smallstep/cli@v0.25.2
 - name: smallstep/certificates@v0.25.2
 - name: mike-engel/jwt-cli@6.0.0
@@ -39,7 +39,7 @@ packages:
 - name: google/yamlfmt@v0.13.0
 - name: koalaman/shellcheck@v0.10.0
 - name: mvdan/sh@v3.9.0
-- name: stern/stern@v1.28.0
+- name: stern/stern@v1.30.0
 - name: kubernetes-sigs/kind@v0.24.0
 - name: denoland/deno@v1.46.3
 - name: denoland/deno@v1.46.3
