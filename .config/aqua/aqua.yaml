@@ -30,7 +30,7 @@ packages:
 - name: mikefarah/yq@v4.44.3
 - name: dandavison/delta@0.18.2
 - name: o2sh/onefetch@2.22.0
-- name: smallstep/cli@v0.25.2
+- name: smallstep/cli@v0.27.4
 - name: smallstep/certificates@v0.27.4
 - name: mike-engel/jwt-cli@6.1.1
 - name: cheat/cheat@4.4.2
