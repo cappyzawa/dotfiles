@@ -7,8 +7,7 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": ["aquaproj/aqua-registry"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchPackageNames": ["aquaproj/aqua-registry"]
     }
   ],
   "prConcurrentLimit": 5
