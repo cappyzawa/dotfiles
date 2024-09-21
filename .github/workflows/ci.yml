@@ -1,7 +1,7 @@
 name: CI
 on: push
 jobs:
-  setUP:
+  setup:
     name: Set Up
     strategy:
       fail-fast: false
@@ -14,7 +14,7 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install -y zsh curl make git
-    - name: setUP
+    - name: setup
       run: |
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
     - name: Reboot shell
@@ -24,3 +24,11 @@ jobs:
       # https://github.com/actions/virtual-environments/issues/264#issuecomment-574032011
       # use zsh
       shell: zsh {0}
+  status-check:
+    runs-on: ubuntu-latest
+    needs:
+    - setup
+    permissions: {}
+    if: failure()
+    steps:
+    - run: exit 1
