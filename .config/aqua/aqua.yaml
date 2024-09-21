@@ -63,7 +63,7 @@ packages:
 - name: tilt-dev/tilt@v0.33.20
 - name: tilt-dev/ctlptl@v0.8.34
 - name: protocolbuffers/protobuf/protoc@v26.1
-- name: protocolbuffers/protobuf-go/protoc-gen-go@v1.33.0
+- name: protocolbuffers/protobuf-go/protoc-gen-go@v1.34.2
 - name: Wilfred/difftastic@0.60.0
 - name: golang/go@go1.23.1
 - name: denisidoro/navi@v2.22.1
