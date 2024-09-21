@@ -16,8 +16,10 @@ jobs:
         sudo apt-get install -y zsh curl make git
     - name: setup
       run: |
-        echo github.event.pull_request.user.login
+        echo "user: ${PR_USER}"
         curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
+      env:
+        PR_USER: ${{github.event.pull_request.user.login}}
     - name: Reboot shell
       run: |
         source ~/.zshenv
