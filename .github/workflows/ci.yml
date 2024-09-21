@@ -32,3 +32,19 @@ jobs:
     if: failure()
     steps:
     - run: exit 1
+  enable-auto-merge:
+    runs-on: ubuntu-latest
+    permissions: {}
+    if: |
+      github.event.pull_request.user.login == 'renovate[bot]' && contains(github.event.pull_request.body, ' **Automerge**: Enabled.')
+    steps:
+    - name: Generate token
+      id: generate_token
+      uses: tibdex/github-app-token@v2.1.0
+      with:
+        app_id: ${{secrets.gh_app_id}}
+        private_key: ${{secrets.gh_app_private_key}}
+    - run: gh -R "$GITHUB_REPOSITORY" pr merge --squash --auto --delete-branch "$PR_NUMBER"
+      env:
+        GITHUB_TOKEN: ${{steps.generate_token.outputs.token}}
+        PR_NUMBER: ${{github.event.pull_request.number}}
