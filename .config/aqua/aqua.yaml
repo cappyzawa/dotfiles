@@ -79,3 +79,4 @@ packages:
 - name: sharkdp/bat@v0.24.0
 - name: prometheus/prometheus@v2.54.1
 - name: kubernetes/minikube@v1.34.0
+- name: 1password/cli@v2.30.0
