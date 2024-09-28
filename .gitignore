@@ -29,5 +29,4 @@ node_modules/
 .zsh/Completion/_*
 .config/nvim/.luarc.json
 .tmux/plugins
-.config/karabiner/automatic_backups/*
 .config/raycast
