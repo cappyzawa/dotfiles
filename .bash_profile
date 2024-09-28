@@ -7,4 +7,4 @@ fi
 
 complete -C /usr/local/bin/vault vault
 
-export PATH="$HOME/.cargo/bin:$PATH"
+. "$HOME/.cargo/env"
