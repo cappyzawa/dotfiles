@@ -6,9 +6,6 @@
   excludesfile = ~/.gitignore_global
   ignorecase = false
   editor = nvim
-[gpg]
-  program = gpg2
-	format = ssh
 [alias]
   cm = checkout main
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short

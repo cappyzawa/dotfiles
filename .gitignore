@@ -30,3 +30,4 @@ node_modules/
 .config/nvim/.luarc.json
 .tmux/plugins
 .config/raycast
+.config/1Password/ssh/agent.toml
