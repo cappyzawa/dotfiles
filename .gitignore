@@ -31,3 +31,4 @@ node_modules/
 .tmux/plugins
 .config/raycast
 .config/1Password/ssh/agent.toml
+Brewfile.lock.json
