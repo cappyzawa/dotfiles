@@ -1,4 +1,3 @@
-local solargraph = require("lspconfig.server_configurations.solargraph")
 return {
   {
     "nvimdev/lspsaga.nvim",
@@ -203,9 +202,7 @@ return {
           },
           html = {},
           cssls = {},
-          solargraph = {},
           tilt_ls = {},
-          ruby_lsp = {},
         },
       }
     end,
