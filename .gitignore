@@ -22,6 +22,7 @@ node_modules/
 .config/nvim/lazy-lock.json
 .config/cheat/cheatsheets
 .config/nvim/plugin/packer_compiled.lua
+.config/nvm/
 .config/waypoint/
 .config/iterm2/
 .chef/
