@@ -7,6 +7,8 @@ cask "raycast"
 cask "google-chrome"
 cask "google-japanese-ime"
 cask "karabiner-elements"
+cask "drawio"
 
 brew "tmux"
 brew "wget"
+brew "ipcalc"
