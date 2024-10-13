@@ -7,7 +7,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.227.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.233.0 # renovate: depName=aquaproj/aqua-registry
 - name: custom
   type: local
   path: ./registry.yaml
@@ -22,7 +22,7 @@ packages:
 - name: jqlang/jq@jq-1.7.1
 - name: kubernetes/kubectl@v1.31.1
 - name: kubernetes-sigs/kustomize@kustomize/v5.4.3
-- name: tree-sitter/tree-sitter@v0.23.0
+- name: tree-sitter/tree-sitter@v0.24.3
 - name: jesseduffield/lazygit@v0.44.1
 - name: x-motemen/ghq@v1.6.2
 - name: sharkdp/hyperfine@v1.18.0
@@ -46,7 +46,7 @@ packages:
 - name: cue-lang/cue@v0.10.0
 - name: ogham/exa@v0.10.1
 - name: open-policy-agent/conftest@v0.55.0
-- name: open-policy-agent/opa@v0.68.0
+- name: open-policy-agent/opa@v0.69.0
 - name: jesseduffield/lazydocker@v0.23.3
 - name: wagoodman/dive@v0.12.0
 - name: dominikh/go-tools/staticcheck@2024.1.1
