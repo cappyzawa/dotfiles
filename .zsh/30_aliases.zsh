@@ -1,11 +1,11 @@
 alias p="print -l"
 
 if has 'git'; then
-  alias gst='git status'
+    alias gst='git status'
 fi
 
 if has 'nvim'; then
-  alias vim='nvim'
+    alias vim='nvim'
 fi
 
 # Common aliases
@@ -30,7 +30,7 @@ alias egrep='egrep --color=auto'
 alias flushdns='sudo killall -HUP mDNSResponder'
 
 if is_osx; then
-  alias ctags="`brew --prefix`/bin/ctags"
+    alias ctags="`brew --prefix`/bin/ctags"
 fi
 
 alias -g vy="| vim '+set filetype=yaml buftype=nofile'"

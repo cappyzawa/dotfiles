@@ -1,25 +1,4 @@
 github:
-- name: neovim/neovim
-  description: Vim-fork focused on extensibility and usability
-  owner: neovim
-  repo: neovim
-  release:
-    name: nvim
-    tag: nightly
-    asset:
-      filename: 'nvim-{{ .OS }}-{{ .Arch }}.tar.gz'
-      replacements:
-        darwin: macos
-  command:
-    env:
-      EDITOR: nvim
-      GIT_EDITOR: nvim
-    alias:
-      vim: nvim
-      vi: command vim
-    link:
-    - from: '**/bin/nvim'
-      to: nvim
 - name: junegunn/fzf
   description: A command-line fuzzy finder
   owner: junegunn
@@ -63,21 +42,6 @@ github:
   plugin:
     sources:
     - fzf-tab.plugin.zsh
-- name: cli/cli
-  description: GitHub’s official command line tool
-  owner: cli
-  repo: cli
-  release:
-    name: gh
-    tag: v2.46.0
-    asset:
-      filename: 'gh_{{ replace .Release.Tag "v" "" }}_{{ .OS }}_{{ .Arch }}.zip'
-      replacements:
-        darwin: macOS
-  command:
-    link:
-    - from: "gh_*/bin/gh"
-      to: gh
 - name: starship/starship
   description: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
   owner: starship
@@ -99,25 +63,6 @@ github:
       STARSHIP_CONFIG: $XDG_CONFIG_HOME/starship/starship.toml
     snippet: |
       eval "$(starship init zsh)"
-- name: BurntSushi/ripgrep
-  description: ripgrep recursively searches directories for a regex pattern while respecting your gitignore
-  owner: BurntSushi
-  repo: ripgrep
-  release:
-    name: ripgrep
-    tag: 14.1.0
-    asset:
-      filename: 'ripgrep-{{ .Release.Tag }}-{{ .Arch }}-{{ .OS }}.tar.gz'
-      replacements:
-        darwin: apple-darwin
-        amd64: x86_64
-        arm64: x86_64
-        linux: unknown-linux-musl
-        windows: pc-windows-msvc
-  command:
-    link:
-    - from: '*/rg'
-      to: rg
 - name: x-motemen/ghq
   description: Remote repository management made easy
   owner: x-motemen
@@ -138,18 +83,3 @@ github:
       GOPATH: $HOME/ghq
       GOBIN: $GOPATH/bin
       GOPRIVATE: "*.yahoo.co.jp"
-
-- name: Rasukarusan/fzf-chrome-active-tab
-  description: 🐧 Fuzzy search and activate Chrome tab via the terminal.
-  owner: Rasukarusan
-  repo: fzf-chrome-active-tab
-  release:
-    name: chrome-tab-activate
-    tag: "0.03"
-    asset:
-      filename: chrome-tab-activate
-  command:
-    link:
-    - from: chrome-tab-activate
-    alias:
-      tl: chrome-tab-activate

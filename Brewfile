@@ -1,14 +1,17 @@
 tap "homebrew/bundle"
 
-cask "alacritty"
-cask "arc"
-cask "1password"
-cask "raycast"
-cask "google-chrome"
-cask "google-japanese-ime"
-cask "karabiner-elements"
-cask "drawio"
+cask "alacritty" if OS.mac?
+cask "arc" if OS.mac?
+cask "1password" if OS.mac?
+cask "raycast" if OS.mac?
+cask "google-chrome" if OS.mac?
+cask "google-japanese-ime" if OS.mac?
+cask "karabiner-elements" if OS.mac?
+cask "drawio" if OS.mac?
 
+brew "neovim"
+brew "ripgrep"
+brew "gh"
 brew "tmux"
 brew "wget"
 brew "ipcalc"
