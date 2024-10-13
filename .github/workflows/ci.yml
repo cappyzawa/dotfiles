@@ -18,7 +18,7 @@ jobs:
     - name: setup
       run: |
         echo "PR was created by: ${{ github.event.pull_request.user.login }}"
-        make install
+        make all
     - name: Reboot shell
       run: |
         source ~/.zshenv
