@@ -14,10 +14,14 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install -y zsh curl make git
+    - uses: actions/checkout@v4
+    - name: Set up Homebrew
+      id: set-up-homebrew
+      uses: Homebrew/actions/setup-homebrew@master
     - name: setup
       run: |
         echo "PR was created by: ${{ github.event.pull_request.user.login }}"
-        curl -sL https://raw.githubusercontent.com/cappyzawa/dotfiles/master/etc/install | bash
+        make all
     - name: Reboot shell
       run: |
         source ~/.zshenv
