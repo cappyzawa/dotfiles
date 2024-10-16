@@ -11,13 +11,14 @@
 .config/gcloud/
 .config/direnv/
 .config/github-copilot/hosts.json
+.config/github-copilot/versions.json
+.config/github-copilot/apps.json
 .config/op/
 .config/okteto/*.config
 .config/configstore/
 .config/helm/*
 node_modules/
 .config/coc/
-.config/github-copilot/versions.json
 .config/nvim/sessions
 .config/nvim/lazy-lock.json
 .config/cheat/cheatsheets
