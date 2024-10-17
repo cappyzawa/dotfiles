@@ -2,6 +2,8 @@ typeset -gx -U path
 path=( \
         ~/bin(N-/) \
         /opt/homebrew/bin(N-/) \
+        /opt/homebrew/opt/ruby/bin(N-/) \
+        $(gem environment gemdir)/bin(N-/) \
         ~/.local/share/aquaproj-aqua/bin(N-/) \
         ~/ghq/bin(N-/) \
         /usr/local/bin(N-/) \
