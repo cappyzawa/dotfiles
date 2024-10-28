@@ -55,7 +55,7 @@ packages:
 - name: Aloxaf/silicon@v0.5.3
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v4.3.0
-- name: kubernetes-sigs/controller-tools/controller-gen@v0.16.4
+- name: kubernetes-sigs/controller-tools/controller-gen@v0.16.5
 - name: sigs.k8s.io/controller-runtime/tools/setup-envtest@bf15e44
   registry: custom
 - name: kubernetes-sigs/krew@v0.4.4
