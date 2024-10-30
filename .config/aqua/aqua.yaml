@@ -31,7 +31,7 @@ packages:
 - name: dandavison/delta@0.18.2
 - name: o2sh/onefetch@2.22.0
 - name: smallstep/cli@v0.27.5
-- name: smallstep/certificates@v0.27.5
+- name: smallstep/certificates@v0.28.0
 - name: mike-engel/jwt-cli@6.1.1
 - name: cheat/cheat@4.4.2
 - name: golangci/golangci-lint@v1.61.0
