@@ -83,8 +83,8 @@ disabled = false
 
 [directory]
 format = '[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[](fg:pink bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
-home_symbol = " ~/"
-truncation_symbol = ' '
+# home_symbol = " ~/"
+# truncation_symbol = ' '
 truncation_length = 2
 read_only = '󱧵 '
 read_only_style = ''
