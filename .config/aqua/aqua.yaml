@@ -27,7 +27,7 @@ packages:
 - name: x-motemen/ghq@v1.7.1
 - name: sharkdp/hyperfine@v1.19.0
 - name: xxxserxxx/gotop@v4.2.0
-- name: mikefarah/yq@v4.44.5
+- name: mikefarah/yq@v4.44.6
 - name: dandavison/delta@0.18.2
 - name: o2sh/onefetch@2.22.0
 - name: smallstep/cli@v0.28.2
