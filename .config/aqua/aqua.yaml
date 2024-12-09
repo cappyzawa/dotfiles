@@ -74,7 +74,7 @@ packages:
 - name: helm/helm@v3.16.3
 - name: docker/cli@v24.0.7
 - name: awslabs/amazon-ecr-credential-helper@v0.9.0
-- name: kayac/ecspresso@v2.4.4
+- name: kayac/ecspresso@v2.4.5
 - name: sharkdp/bat@v0.24.0
 - name: prometheus/prometheus@v2.55.1
 - name: kubernetes/minikube@v1.34.0
