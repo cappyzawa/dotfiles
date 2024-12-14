@@ -4,6 +4,8 @@ return {
     opts = {
       filetypes = {
         gitcommit = true,
+        yaml = true,
+        markdown = true,
       },
     },
   },
