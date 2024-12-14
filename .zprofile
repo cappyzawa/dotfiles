@@ -14,6 +14,9 @@ export LC_CTYPE="${LANGUAGE}"
 
 # Editor
 export EDITOR=vim
+if (type nvim > /dev/null); then
+    export EDITOR=nvim
+fi
 export CVSEDITOR="${EDITOR}"
 export SVN_EDITOR="${EDITOR}"
 export GIT_EDITOR="${EDITOR}"
