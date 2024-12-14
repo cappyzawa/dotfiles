@@ -10,7 +10,7 @@ cask "karabiner-elements" if OS.mac?
 cask "drawio" if OS.mac?
 
 brew "utf8proc", args: ["HEAD"]
-brew "neovim", args: ["HEAD"]
+brew "neovim"
 brew "ripgrep"
 brew "gh"
 brew "tmux"
