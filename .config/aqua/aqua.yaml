@@ -29,7 +29,7 @@ packages:
 - name: xxxserxxx/gotop@v4.2.0
 - name: mikefarah/yq@v4.44.6
 - name: dandavison/delta@0.18.2
-- name: o2sh/onefetch@2.22.0
+- name: o2sh/onefetch@2.23.1
 - name: smallstep/cli@v0.28.2
 - name: smallstep/certificates@v0.28.1
 - name: mike-engel/jwt-cli@6.2.0
