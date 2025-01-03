@@ -1,5 +1,6 @@
 tap "homebrew/bundle"
 
+cask "ghostty"
 cask "alacritty" if OS.mac?
 cask "arc" if OS.mac?
 cask "1password" if OS.mac?
