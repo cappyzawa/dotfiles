@@ -4,6 +4,7 @@ $os\
 $kubernetes\
 $directory\
 $git_branch\
+$git_status\
 $fill\
 $cmd_duration\
 $golang\
@@ -90,8 +91,22 @@ read_only = '󱧵 '
 read_only_style = ''
 
 [git_branch]
-format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $branch](fg:foreground bg:box)[](fg:box)'
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $branch](fg:foreground bg:box)'
 symbol = ' '
+
+[git_status]
+format = '[$all_status](fg:green bg:box)[](fg:box)'
+conflicted = ' ='
+up_to_date = ''
+untracked = ' ?${count}'
+stashed = ' $'
+modified = ' !${count}'
+staged = ' +'
+renamed = ' »'
+deleted = ' ✘'
+ahead = ' ⇡${count}'
+diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
+behind = ' ⇣${count}'
 
 [nodejs]
 format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)'
