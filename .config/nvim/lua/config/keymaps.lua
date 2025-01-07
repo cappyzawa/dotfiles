@@ -32,8 +32,3 @@ map("n", "<leader>h", "^", { desc = "Move beginning of line" })
 map("n", "<leader>l", "$", { desc = "Move end of line" })
 map("v", "<leader>h", "^", { desc = "Move beginning of line" })
 map("v", "<leader>l", "$", { desc = "Move end of line" })
-
-map("n", "<Up>", "<c-w>k")
-map("n", "<Down>", "<c-w>j")
-map("n", "<Left>", "<c-w>h")
-map("n", "<Right>", "<c-w>l")
