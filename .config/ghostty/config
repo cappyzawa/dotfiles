@@ -39,6 +39,8 @@ keybind = super+shift+right=resize_split:right,30
 keybind = super+shift+left=resize_split:left,30
 keybind = super+shift+up=resize_split:up,30
 keybind = super+shift+down=resize_split:down,30
+keybind = super+shift+plus=increase_font_size:1
+keybind = super+shift+minus=decrease_font_size:1
 
 # Window
 window-decoration = true
