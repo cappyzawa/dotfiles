@@ -5,11 +5,7 @@ theme = tokyonight
 
 # Fonts
 font-family = "Moralerspace Argon NF"
-font-family-bold = "Moralerspace Argon NF"
-font-family-italic = "Moralerspace Argon NF"
-font-family-bold-italic = "Moralerspace Argon NF"
 font-size = 20
-font-feature = +liga
 adjust-underline-position = 4
 bold-is-bright = true
 
