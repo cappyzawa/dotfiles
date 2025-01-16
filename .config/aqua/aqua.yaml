@@ -20,7 +20,7 @@ packages:
 - name: junegunn/fzf@v0.57.0
 - name: hashicorp/terraform@v1.10.4
 - name: jqlang/jq@jq-1.7.1
-- name: kubernetes/kubectl@v1.32.0
+- name: kubernetes/kubectl@v1.32.1
 - name: kubernetes-sigs/kustomize@kustomize/v5.6.0
 - name: tree-sitter/tree-sitter@v0.24.7
 - name: jesseduffield/lazygit@v0.45.0
