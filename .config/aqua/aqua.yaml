@@ -54,7 +54,7 @@ packages:
 - name: zigtools/zls@0.13.0
 - name: Aloxaf/silicon@v0.5.3
 - name: github/hub@v2.14.2
-- name: kubernetes-sigs/kubebuilder@v4.4.0
+- name: kubernetes-sigs/kubebuilder@v4.5.0
 - name: kubernetes-sigs/controller-tools/controller-gen@v0.17.1
 - name: sigs.k8s.io/controller-runtime/tools/setup-envtest@bf15e44
   registry: custom
