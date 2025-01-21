@@ -39,7 +39,7 @@ packages:
 - name: google/yamlfmt@v0.15.0
 - name: koalaman/shellcheck@v0.10.0
 - name: mvdan/sh@v3.10.0
-- name: stern/stern@v1.31.0
+- name: stern/stern@v1.32.0
 - name: kubernetes-sigs/kind@v0.26.0
 - name: denoland/deno@v2.1.6
 - name: denoland/deno@v2.1.6
