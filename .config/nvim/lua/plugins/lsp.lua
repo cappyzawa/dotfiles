@@ -87,7 +87,7 @@ return {
                   nilness = true,
                   shadow = true,
                   unusedparams = true,
-                  unusewrites = true,
+                  unusedwrites = true,
                 },
                 hints = {
                   assignVariableTypes = true,
