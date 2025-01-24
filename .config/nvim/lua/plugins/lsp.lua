@@ -24,7 +24,7 @@ return {
       { "nvimdev/lspsaga.nvim" },
       { "j-hui/fidget.nvim", opts = {} },
     },
-    opts = function()
+    opts = function(_, opts)
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       local function map(lhs, rhs, opts)
         local desc = opts and opts.desc or ""
@@ -46,77 +46,42 @@ return {
       map("<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "Show Line Diagnostics" })
       map("<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { desc = "Show Cursor Diagnostics" })
 
-      return {
-        diagnostics = {
-          underline = true,
-          update_in_insert = false,
-          virtual_text = {
-            spacing = 4,
-            source = "if_many",
-            prefix = "●",
-            -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-            -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-            -- prefix = "icons",
-          },
-          severity_sort = true,
-          signs = {
-            text = {
-              [vim.diagnostic.severity.ERROR] = LazyVim.config.icons.diagnostics.Error,
-              [vim.diagnostic.severity.WARN] = LazyVim.config.icons.diagnostics.Warn,
-              [vim.diagnostic.severity.HINT] = LazyVim.config.icons.diagnostics.Hint,
-              [vim.diagnostic.severity.INFO] = LazyVim.config.icons.diagnostics.Info,
-            },
-          },
+      opts.diagnostics = {
+        underline = true,
+        update_in_insert = false,
+        virtual_text = {
+          spacing = 4,
+          source = "if_many",
+          prefix = "●",
+          -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+          -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+          -- prefix = "icons",
         },
-        format = {
-          timeout_ms = 10000,
-        },
-        inlay_hints = {
-          enabled = false,
-        },
-        codelens = {
-          enabled = false,
-        },
-        servers = {
-          gopls = {
-            settings = {
-              gopls = {
-                gofumpt = true,
-                usePlaceholders = true,
-                analyses = {
-                  nilness = true,
-                  shadow = true,
-                  unusedparams = true,
-                  unusedwrites = true,
-                },
-                hints = {
-                  assignVariableTypes = true,
-                  compositeLiteralFields = true,
-                  compositeLiteralTypes = true,
-                  constantValues = true,
-                  functionTypeParameters = true,
-                  parameterNames = true,
-                  rangeVariableTypes = true,
-                },
-              },
-            },
+        severity_sort = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = LazyVim.config.icons.diagnostics.Error,
+            [vim.diagnostic.severity.WARN] = LazyVim.config.icons.diagnostics.Warn,
+            [vim.diagnostic.severity.HINT] = LazyVim.config.icons.diagnostics.Hint,
+            [vim.diagnostic.severity.INFO] = LazyVim.config.icons.diagnostics.Info,
           },
-          elmls = {},
-          bashls = {
-            filetypes = { "sh", "zsh", "bash" },
-          },
-          lua_ls = {
-            Lua = {
-              hint = {
-                enable = true,
-              },
-            },
-          },
-          html = {},
-          cssls = {},
-          tilt_ls = {},
         },
       }
+
+      opts.format = {
+        timeout_ms = 10000,
+      }
+
+      opts.servers.bashls = {
+        filetypes = { "sh", "zsh", "bash" },
+      }
+      opts.servers.html = {}
+      opts.servers.cssls = {}
+      opts.servers.tilt_ls = {}
+      -- ref: https://github.com/LazyVim/LazyVim/pull/5170
+      opts.servers.gopls.settings.gopls.analyses["fieldalignment"] = nil
+
+      return opts
     end,
   },
   {
