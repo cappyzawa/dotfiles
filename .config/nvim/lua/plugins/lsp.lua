@@ -81,6 +81,8 @@ return {
       -- ref: https://github.com/LazyVim/LazyVim/pull/5170
       opts.servers.gopls.settings.gopls.analyses["fieldalignment"] = nil
 
+      opts.servers.regal = nil
+
       return opts
     end,
   },
