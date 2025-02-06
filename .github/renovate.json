@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "github>aquaproj/aqua-renovate-config#2.6.0"],
+  "extends": ["config:base", "github>aquaproj/aqua-renovate-config#2.7.0"],
   "rebaseWhen": "behind-base-branch",
   "automerge": true,
   "major": {
