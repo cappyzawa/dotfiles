@@ -3,7 +3,7 @@ TERM = "xterm-256color"
 
 [font]
 builtin_box_drawing = true
-size = 23.0
+size = 21.0
 
 [font.bold]
 family = "Moralerspace Argon NF"
