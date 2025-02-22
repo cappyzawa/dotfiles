@@ -8,6 +8,8 @@ cask "raycast" if OS.mac?
 cask "google-chrome" if OS.mac?
 cask "google-japanese-ime" if OS.mac?
 cask "karabiner-elements" if OS.mac?
+cask "font-monaspace"
+cask "font-fira-code"
 cask "drawio" if OS.mac?
 
 brew "utf8proc", args: ["HEAD"]
