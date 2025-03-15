@@ -41,8 +41,8 @@ packages:
 - name: mvdan/sh@v3.11.0
 - name: stern/stern@v1.32.0
 - name: kubernetes-sigs/kind@v0.27.0
-- name: denoland/deno@v2.2.3
-- name: denoland/deno@v2.2.3
+- name: denoland/deno@v2.2.4
+- name: denoland/deno@v2.2.4
 - name: cue-lang/cue@v0.12.0
 - name: ogham/exa@v0.10.1
 - name: open-policy-agent/conftest@v0.58.0
