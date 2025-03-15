@@ -68,6 +68,10 @@ return {
         },
       }
 
+      opts.inlay_hints = {
+        enable = false,
+      }
+
       opts.format = {
         timeout_ms = 10000,
       }
