@@ -6,6 +6,7 @@ return {
         sh = { "shellcheck" },
         bash = { "shellcheck" },
         zsh = { "shellcheck" },
+        go = { "golangcilint" },
       },
     },
   },

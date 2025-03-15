@@ -93,6 +93,7 @@ return {
         "beautysh",
         "cueimports",
         "flake8",
+        "golangci-lint",
         "prettier",
         "shellcheck",
         "shfmt",
