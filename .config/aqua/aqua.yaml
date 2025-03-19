@@ -69,7 +69,7 @@ packages:
 - name: aws/aws-cli@2.24.26
 - name: aws/session-manager-plugin@1.2.536.0
 - name: Versent/saml2aws@v2.36.19
-- name: GoogleContainerTools/skaffold@v2.14.1
+- name: GoogleContainerTools/skaffold@v2.14.2
 - name: golang/go@go1.24.1
 - name: helm/helm@v3.17.2
 - name: docker/cli@v24.0.7
