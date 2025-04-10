@@ -112,15 +112,4 @@ return {
       return opts
     end,
   },
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-    },
-    opts = {
-      options = {
-        buffer_close_icon = require("config.icons").get("ui", false).Close,
-      },
-    },
-  },
 }

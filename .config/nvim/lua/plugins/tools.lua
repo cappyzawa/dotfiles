@@ -16,16 +16,4 @@ return {
       vim.g.git_messenger_no_default_mappings = true
     end,
   },
-  {
-    "jackMort/ChatGPT.nvim",
-    cmd = { "ChatGPT" },
-    config = function()
-      require("chatgpt").setup({})
-    end,
-    dependencies = {
-      { "MunifTanjim/nui.nvim" },
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim" },
-    },
-  },
 }
