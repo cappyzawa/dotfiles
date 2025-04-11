@@ -1,6 +1,16 @@
 return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+    cmd = {
+      "CopilotChat",
+      "CopilotChatExplain",
+      "CopilotChatReview",
+      "CopilotChatFix",
+      "CopilotChatOptimize",
+      "CopilotChatDocs",
+      "CopilotChatTests",
+      "CopilotChatCommit",
+    },
     opts = {
       model = "o3-mini",
       prompts = {
