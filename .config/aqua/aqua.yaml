@@ -59,7 +59,7 @@ packages:
 - name: sigs.k8s.io/controller-runtime/tools/setup-envtest@bf15e44
   registry: custom
 - name: kubernetes-sigs/krew@v0.4.5
-- name: tilt-dev/tilt@v0.34.1
+- name: tilt-dev/tilt@v0.34.2
 - name: tilt-dev/ctlptl@v0.8.40
 - name: protocolbuffers/protobuf/protoc@v30.2
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.6
