@@ -47,7 +47,7 @@ return {
     version = false,
     opts = {
       provider = "copilot",
-      openai = {
+      copilot = {
         endpoint = "https://api.githubcopilot.com",
         model = "claude-3.7-sonnet",
         timeout = 30000,
