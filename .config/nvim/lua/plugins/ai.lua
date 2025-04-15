@@ -12,7 +12,7 @@ return {
       "CopilotChatCommit",
     },
     opts = {
-      model = "o3-mini",
+      model = "claude-3.7-sonnet",
       prompts = {
         Explain = {
           prompt = "選択したコードの説明を段落として書いてください。",
