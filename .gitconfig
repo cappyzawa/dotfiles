@@ -30,5 +30,3 @@
   defaultBranch = main
 [credential]
   helper = cache --timeout=3600
-[url "git@github:"]
-    insteadOf = https://github.com/
