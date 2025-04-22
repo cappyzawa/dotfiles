@@ -80,4 +80,4 @@ packages:
 - name: kubernetes/minikube@v1.35.0
 - name: argoproj/argo-rollouts@v1.8.2
 - name: metalbear-co/mirrord@3.139.1
-- name: github/github-mcp-server@v0.2.0
+- name: github/github-mcp-server@v0.2.1
