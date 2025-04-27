@@ -120,9 +120,7 @@ return {
     keys = {
       { "<F12>", "<cmd>MarkdownPreview<cr>", desc = "Preview Markdown file" },
     },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
+    build = ":call mkdp#util#install()",
   },
   {
     "akinsho/git-conflict.nvim",
