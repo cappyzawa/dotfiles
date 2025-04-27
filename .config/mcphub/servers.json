@@ -1,18 +1,46 @@
 {
-  "nativeMCPServers": [
-    
-  ],
   "mcpServers": {
-    "github": {
+    "ghe1": {
+      "disabled": false,
       "args": [
-        "stdio",
-        "--read-only"
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "-e",
+        "GITHUB_HOST",
+        "ghcr.io/github/github-mcp-server"
       ],
-      "command": "github-mcp-server",
+      "custom_instructions": {
+        "disabled": true
+      },
+      "command": "docker",
+      "env": {
+        "GITHUB_HOST": "https://${GHE_HOST1}",
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GHE_ACCESS_TOKEN1}"
+      }
+    },
+    "github": {
+      "disabled": false,
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "custom_instructions": {
+        "disabled": true,
+        "text": ""
+      },
+      "command": "docker",
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": ""
-      },
-      "disabled": false
+      }
     }
-  }
+  },
+  "nativeMCPServers": []
 }
+
