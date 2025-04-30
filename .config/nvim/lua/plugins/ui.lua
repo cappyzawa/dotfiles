@@ -78,6 +78,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       { "folke/tokyonight.nvim" },
+      { "ravitemer/mcphub.nvim" },
     },
     opts = function(_, opts)
       local icons = {
@@ -109,7 +110,7 @@ return {
         lualine_y = { "progress" },
         lualine_z = { "location" },
       })
-      return opts
+      table.insert(opts.sections.lualine_x, 3, require("mcphub.extensions.lualine"))
     end,
   },
 }
