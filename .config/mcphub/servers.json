@@ -41,6 +41,5 @@
       }
     }
   },
-  "nativeMCPServers": []
+  "nativeMCPServers": ["neovim"]
 }
-
