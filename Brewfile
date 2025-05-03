@@ -10,6 +10,8 @@ cask "font-monaspace"
 cask "font-fira-code"
 cask "drawio" if OS.mac?
 cask "excalidrawz" if OS.mac?
+cask "obsidian" if OS.mac?
+cask "dropbox" if OS.mac?
 
 brew "utf8proc", args: ["HEAD"]
 brew "neovim"
