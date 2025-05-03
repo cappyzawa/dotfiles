@@ -70,10 +70,3 @@ elif [[ $ARCH == x86_64 ]]; then
 fi
 export ARCH
 export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
-
-if (type op > /dev/null); then
-    GITHUB_TOKEN=$(op read -f "op://Private/GitHub Personal Access Token/token")
-    export GITHUB_TOKEN
-    #shellcheck disable=SC1091
-    source "$XDG_CONFIG_HOME/op/plugins.sh"
-fi

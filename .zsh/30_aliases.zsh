@@ -8,6 +8,11 @@ if has 'nvim'; then
     alias vim='nvim'
 fi
 
+if has 'op'; then
+    alias afx='GITHUB_TOKEN=$(op read -f "op://Private/GitHub Personal Access Token/token") afx'
+    alias aqua='GITHUB_TOKEN=$(op read -f "op://Private/GitHub Personal Access Token/token") aqua'
+fi
+
 # Common aliases
 alias ..='cd ..'
 alias l="ls -l"

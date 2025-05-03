@@ -24,6 +24,11 @@ if has "fzf"; then
     "
 fi
 
+if has "op"; then
+    #shellcheck disable=SC1091
+    source "$XDG_CONFIG_HOME/op/plugins.sh"
+fi
+
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
 if [[ -d $KREW_ROOT ]]; then
     export PATH="${KREW_ROOT}/bin:$PATH"
