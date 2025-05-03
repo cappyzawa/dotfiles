@@ -14,6 +14,7 @@ cask "obsidian" if OS.mac?
 cask "dropbox" if OS.mac?
 
 brew "fzf"
+brew "starship"
 brew "utf8proc", args: ["HEAD"]
 brew "neovim"
 brew "ripgrep"

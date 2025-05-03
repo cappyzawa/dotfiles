@@ -14,23 +14,3 @@ github:
   plugin:
     sources:
     - fzf-tab.plugin.zsh
-- name: starship/starship
-  description: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
-  owner: starship
-  repo: starship
-  release:
-    name: starship
-    asset:
-      filename: 'starship-{{ .Arch }}-{{ .OS }}.tar.gz'
-      replacements:
-        darwin: apple-darwin
-        amd64: x86_64
-        arm64: aarch64
-  command:
-    link:
-    - from: starship
-      to: starship
-    env:
-      STARSHIP_CONFIG: $XDG_CONFIG_HOME/starship/starship.toml
-    snippet: |
-      eval "$(starship init zsh)"

@@ -10,8 +10,10 @@ if ! command -v afx &> /dev/null; then
 fi
 
 source <(afx init)
-# word split: `-`, `_`, `.`, `=`
-export WORDCHARS='*?[]~&;!#$%^(){}<>'
+
+if ! command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+fi
 
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
