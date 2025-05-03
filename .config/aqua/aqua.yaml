@@ -56,8 +56,6 @@ packages:
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v4.5.2
 - name: kubernetes-sigs/controller-tools/controller-gen@v0.17.3
-- name: sigs.k8s.io/controller-runtime/tools/setup-envtest@bf15e44
-  registry: custom
 - name: kubernetes-sigs/krew@v0.4.5
 - name: tilt-dev/tilt@v0.34.2
 - name: tilt-dev/ctlptl@v0.8.40
@@ -82,3 +80,5 @@ packages:
 - name: metalbear-co/mirrord@3.141.0
 - name: github/github-mcp-server@v0.2.1
 - name: npryce/adr-tools@3.0.0
+- name: fullstorydev/grpcui@v1.4.3
+- name: fullstorydev/grpcurl@v1.9.3

@@ -27,6 +27,5 @@ github:
       vim: nvim
       vi: command vim
     snippet: |
-      source <(setup-envtest use -i -p env 1.25.x!)
       complete -C 'aws_completer' aws
       source $XDG_CONFIG_HOME/op/plugins.sh

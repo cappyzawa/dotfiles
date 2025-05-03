@@ -85,22 +85,3 @@ github:
       STARSHIP_CONFIG: $XDG_CONFIG_HOME/starship/starship.toml
     snippet: |
       eval "$(starship init zsh)"
-- name: x-motemen/ghq
-  description: Remote repository management made easy
-  owner: x-motemen
-  repo: ghq
-  release:
-    name: ghq
-    asset:
-      filename: 'ghq_{{ .OS }}_{{ .Arch }}.zip'
-  command:
-    link:
-    - from: '**/ghq'
-    snippet: |
-      if ! [ -d $HOME/ghq ]; then
-        mkdir -p $HOME/ghq
-      fi
-    env:
-      GOPATH: $HOME/ghq
-      GOBIN: $GOPATH/bin
-      GOPRIVATE: "*.yahoo.co.jp"
