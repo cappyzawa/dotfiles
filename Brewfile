@@ -13,6 +13,7 @@ cask "excalidrawz" if OS.mac?
 cask "obsidian" if OS.mac?
 cask "dropbox" if OS.mac?
 
+brew "fzf"
 brew "utf8proc", args: ["HEAD"]
 brew "neovim"
 brew "ripgrep"
