@@ -81,3 +81,4 @@ packages:
 - name: npryce/adr-tools@3.0.0
 - name: fullstorydev/grpcui@v1.4.3
 - name: fullstorydev/grpcurl@v1.9.3
+- name: direnv/direnv@v2.36.0

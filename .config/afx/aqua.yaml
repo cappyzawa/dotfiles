@@ -28,4 +28,4 @@ github:
       vi: command vim
     snippet: |
       complete -C 'aws_completer' aws
-      source $XDG_CONFIG_HOME/op/plugins.sh
+      eval "$(direnv hook zsh)"

@@ -7,22 +7,6 @@ github:
     link:
     - from: .
       to: $HOME/.tmux/plugins/tpm
-- name: direnv/direnv
-  description: Unclutter your .profile
-  owner: direnv
-  repo: direnv
-  release:
-    name: direnv
-    asset:
-      filename: '{{ .Release.Name }}.{{ .OS }}-{{ .Arch }}'
-      replacements:
-        darwin: darwin
-        amd64: amd64
-  command:
-    link:
-    - from: direnv
-    snippet: |
-      eval "$(direnv hook zsh)"
 - name: Aloxaf/fzf-tab
   description: Replace zsh's default completion selection menu with fzf!
   owner: Aloxaf
