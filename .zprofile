@@ -62,9 +62,6 @@ if [[ $UID == 0 ]]; then
     export SAVEHIST=0
 fi
 
-# fzf - command-line fuzzy finder (https://github.com/junegunn/fzf)
-export FZF_DEFAULT_OPTS="--extended --ansi --multi"
-
 ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -73,3 +70,8 @@ elif [[ $ARCH == x86_64 ]]; then
 fi
 export ARCH
 export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
+
+if (type op > /dev/null); then
+    GITHUB_TOKEN=$(op read "op://Private/GitHub Personal Access Token/token")
+    export GITHUB_TOKEN
+fi
