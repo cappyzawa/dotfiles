@@ -70,3 +70,7 @@ elif [[ $ARCH == x86_64 ]]; then
 fi
 export ARCH
 export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
+
+if [[ ! -e "$HOME/Dropbox" ]] && [[ -e "$HOME/Library/CloudStorage/Dropbox" ]]; then
+    ln -s "$HOME/Library/CloudStorage/Dropbox" "$HOME/Dropbox"
+fi
