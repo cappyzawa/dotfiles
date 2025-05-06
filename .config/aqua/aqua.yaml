@@ -61,13 +61,13 @@ packages:
 - name: protocolbuffers/protobuf/protoc@v30.2
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.6
 - name: Wilfred/difftastic@0.63.0
-- name: golang/go@go1.24.2
+- name: golang/go@go1.24.3
 - name: denisidoro/navi@v2.24.0
 - name: aws/aws-cli@2.27.9
 - name: aws/session-manager-plugin@1.2.536.0
 - name: Versent/saml2aws@v2.36.19
 - name: GoogleContainerTools/skaffold@v2.15.0
-- name: golang/go@go1.24.2
+- name: golang/go@go1.24.3
 - name: helm/helm@v3.17.3
 - name: docker/cli@v24.0.7
 - name: awslabs/amazon-ecr-credential-helper@v0.9.1
