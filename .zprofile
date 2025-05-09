@@ -6,6 +6,50 @@ autoload -Uz compinit && compinit -u
 autoload -Uz is-at-least
 autoload -U +X bashcompinit && bashcompinit
 
+typeset -gx -U path
+path=( \
+        ~/.nix-profile/bin(N-/) \
+        ~/bin(N-/) \
+        /opt/homebrew/bin(N-/) \
+        /opt/homebrew/opt/ruby/bin(N-/) \
+        $(gem environment gemdir)/bin(N-/) \
+        ~/.local/share/aquaproj-aqua/bin(N-/) \
+        ~/ghq/bin(N-/) \
+        /usr/local/bin(N-/) \
+        /usr/sbin(N-/) \
+        ~/.local/bin(N-/) \
+        ~/.tmux/bin(N-/) \
+        ~/.nimble/bin(N-/) \
+        ~/.yarn/bin(N-/) \
+        ~/.julia/conda/3/bin(N-/) \
+        ~/.nimble/bin(N-/) \
+        ~/.deno/bin(N-/) \
+        ~/Library/ApplicationSupport/Coursier/bin(N-/) \
+        /usr/local/opt/libpq/bin(N-/) \
+        /usr/local/opt/llvm/bin(N-/) \
+        ~/.gem/ruby/2.6.0/bin(N-/) \
+        ~/Library/Python/3.9/bin(N-/) \
+        /opt/homebrew/opt/openjdk@17/bin(N-/) \
+        $HOME/.krew/bin(N-/) \
+        ~/.luarocks/bin(N-/) \
+        ~/Library/Application\ Support/Coursier/bin(N-/) \
+        ~/.cargo/bin(N-/) \
+        ~/.rd/bin(N-/) \
+        ~/.tmux/plugins/tpm/bin(N-/) \
+        "$path[@]" \
+    )
+
+
+typeset -gx -U fpath
+fpath=( \
+        ~/.zsh/Completion(N-/) \
+        ~/.zsh/functions(N-/) \
+        ~/.zsh/plugins/zsh-completions(N-/) \
+        /usr/local/share/zsh/site-functions(N-/) \
+        $fpath \
+    )
+
+
 # LANGUAGE must be set by en_US
 export LANGUAGE="en_US.UTF-8"
 export LANG="${LANGUAGE}"
@@ -39,8 +83,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # ls command colors
 export LSCOLORS=exfxcxdxbxegedabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-
-export PATH=~/bin:/opt/homebrew/bin:$PATH
 
 # declare the environment variables
 export CORRECT_IGNORE='_*'
