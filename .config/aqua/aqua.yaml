@@ -83,3 +83,4 @@ packages:
 - name: fullstorydev/grpcurl@v1.9.3
 - name: direnv/direnv@v2.36.0
 - name: lima-vm/lima@v1.0.7
+- name: docker/compose@v2.36.0
