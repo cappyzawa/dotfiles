@@ -122,6 +122,43 @@ kind_start() {
     set +x
 }
 
+docker_start() {
+    if ! has "limactl"; then
+        echo "limactl command is missing"
+        exit 1
+    fi
+
+    if ! limactl list --format json \
+        | jq '."hostname" == "lima-docker"' \
+        | grep 'true' > /dev/null ; then
+        limactl start --name=docker template://docker
+    else
+        limactl start docker
+    fi
+
+    if ! "$(docker context ls --format json \
+      | jq -s 'any(.[]; .Name == "lima-docker")')" > /dev/null; then
+        docker context create lima-docker --docker "host=unix://$HOME/.lima/docker/sock/docker.sock"
+    fi
+
+    local current_context
+    current_context="$(docker context show)"
+    if [[ $current_context != "lima-docker" ]]; then
+        docker context use lima-docker > /dev/null
+    fi
+    echo "Started docker context: $current_context"
+}
+
+docker_stop() {
+    if ! has "limactl"; then
+        echo "limactl command is missing"
+        exit 1
+    fi
+
+    limactl stop docker
+    echo "Stopped lima instance: docker"
+}
+
 gcd() {
     local repo_path=`ghq list --full-path | fzf --reverse --preview "bat {1}/README.md"`
     \cd ${repo_path}
