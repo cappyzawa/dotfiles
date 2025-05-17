@@ -39,7 +39,7 @@ packages:
 - name: koalaman/shellcheck@v0.10.0
 - name: mvdan/sh@v3.11.0
 - name: stern/stern@v1.32.0
-- name: kubernetes-sigs/kind@v0.27.0
+- name: kubernetes-sigs/kind@v0.28.0
 - name: denoland/deno@v2.3.3
 - name: denoland/deno@v2.3.3
 - name: cue-lang/cue@v0.12.1
