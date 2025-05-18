@@ -69,7 +69,6 @@ packages:
 - name: GoogleContainerTools/skaffold@v2.16.0
 - name: golang/go@go1.24.3
 - name: helm/helm@v3.17.3
-- name: docker/cli@v24.0.7
 - name: awslabs/amazon-ecr-credential-helper@v0.9.1
 - name: kayac/ecspresso@v2.5.0
 - name: sharkdp/bat@v0.25.0
