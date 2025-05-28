@@ -56,7 +56,7 @@ packages:
 - name: kubernetes-sigs/kubebuilder@v4.6.0
 - name: kubernetes-sigs/controller-tools/controller-gen@v0.18.0
 - name: kubernetes-sigs/krew@v0.4.5
-- name: tilt-dev/tilt@v0.34.3
+- name: tilt-dev/tilt@v0.34.4
 - name: tilt-dev/ctlptl@v0.8.42
 - name: protocolbuffers/protobuf/protoc@v30.2
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.6
