@@ -12,6 +12,7 @@ cask "excalidrawz" if OS.mac?
 cask "obsidian" if OS.mac?
 cask "dropbox" if OS.mac?
 cask "appcleaner" if OS.mac?
+cask "logi-options+" if OS.mac?
 
 brew "fzf"
 brew "starship"
