@@ -82,5 +82,4 @@ packages:
 - name: fullstorydev/grpcurl@v1.9.3
 - name: direnv/direnv@v2.36.0
 - name: theseus-rs/postgresql-binaries@17.5.0
-- name: lima-vm/lima@v1.1.1
 - name: docker/compose@v2.36.2
