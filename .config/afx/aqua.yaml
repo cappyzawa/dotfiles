@@ -17,6 +17,7 @@ github:
       AQUA_POLICY_CONFIG: $XDG_CONFIG_HOME/aqua/aqua-policy.yaml
       EDITOR: nvim
       LIMA_TEMPLATES_DIR: "$XDG_CONFIG_HOME/lima/templates:/usr/local/share/lima/templates"
+      GOPATH: $HOME/ghq
     link:
     - from: "**/aqua"
       to: aqua
