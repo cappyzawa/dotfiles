@@ -1,24 +1,5 @@
 return {
   {
-    "nvimdev/lspsaga.nvim",
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-    event = "BufReadPre",
-    opts = {
-      symbol_in_winbar = {
-        enable = false,
-      },
-      lightbulb = {
-        enable = false,
-      },
-    },
-    config = function(_, opts)
-      require("lspsaga").setup(opts)
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "nvimdev/lspsaga.nvim" },
@@ -32,19 +13,8 @@ return {
         keys[#keys + 1] = { lhs, rhs, desc = desc, { has = has } }
       end
 
-      map("gd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Defenition" })
-      map("gr", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
-      map("gD", "<cmd>Lspsaga goto_definition<CR>", { desc = "Goto Defenition" })
-      map("gh", "<cmd>Lspsaga finder<CR>", { desc = "Lsp Finder" })
-      map("gi", "<cmd>Lspsaga finder imp<CR>", { desc = "Goto Implementation" })
       map("K", false)
-      map("gk", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover" })
-      map("gK", "<cmd>Lspsaga signature_help<CR>", { desc = "Signature Help", has = "signatureHelp" })
-      map("g[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Prev Diagnostic" })
-      map("g]", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Next Diagnostic" })
-      map("go", "<cmd>Lspsaga outline<CR>", { desc = "Show Outline" })
-      map("<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "Show Line Diagnostics" })
-      map("<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { desc = "Show Cursor Diagnostics" })
+      map("gk", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Hover", has = "lsp_hover" })
 
       opts.diagnostics = {
         underline = true,
