@@ -12,7 +12,7 @@ return {
       "CopilotChatCommit",
     },
     opts = {
-      model = "gpt-4.1",
+      model = "claude-3.7-sonnet",
       prompts = {
         Explain = {
           prompt = "選択したコードの説明を段落として書いてください。",
@@ -49,7 +49,7 @@ return {
       provider = "copilot",
       copilot = {
         endpoint = "https://api.githubcopilot.com",
-        model = "gpt-4.1",
+        model = "claude-3.7-sonnet",
         timeout = 30000,
         temperature = 0,
         max_completion_tokens = 4096,
