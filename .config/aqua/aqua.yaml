@@ -74,7 +74,7 @@ packages:
 - name: sharkdp/bat@v0.25.0
 - name: prometheus/prometheus@v3.4.1
 - name: kubernetes/minikube@v1.36.0
-- name: argoproj/argo-rollouts@v1.8.2
+- name: argoproj/argo-rollouts@v1.8.3
 - name: metalbear-co/mirrord@3.143.0
 - name: github/github-mcp-server@v0.4.0
 - name: npryce/adr-tools@3.0.0
