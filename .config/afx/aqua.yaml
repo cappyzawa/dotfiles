@@ -18,6 +18,7 @@ github:
       EDITOR: nvim
       LIMA_TEMPLATES_DIR: "$XDG_CONFIG_HOME/lima/templates:/usr/local/share/lima/templates"
       GOPATH: $HOME/ghq
+      NPM_CONFIG_PREFIX: "$XDG_DATA_HOME/npm-global"
     link:
     - from: "**/aqua"
       to: aqua
