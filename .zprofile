@@ -24,6 +24,7 @@ path=( \
         ~/.julia/conda/3/bin(N-/) \
         ~/.nimble/bin(N-/) \
         ~/.deno/bin(N-/) \
+        $NPM_CONFIG_PREFIX/bin(N-/) \
         ~/Library/ApplicationSupport/Coursier/bin(N-/) \
         /usr/local/opt/libpq/bin(N-/) \
         /usr/local/opt/llvm/bin(N-/) \

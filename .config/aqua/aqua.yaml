@@ -83,3 +83,4 @@ packages:
 - name: direnv/direnv@v2.36.0
 - name: theseus-rs/postgresql-binaries@17.5.0
 - name: docker/compose@v2.37.0
+- name: nodejs/node@v24.1.0
