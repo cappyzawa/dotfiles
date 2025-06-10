@@ -44,7 +44,7 @@ packages:
 - name: denoland/deno@v2.3.5
 - name: cue-lang/cue@v0.13.0
 - name: ogham/exa@v0.10.1
-- name: open-policy-agent/conftest@v0.61.1
+- name: open-policy-agent/conftest@v0.61.2
 - name: open-policy-agent/opa@v1.5.1
 - name: jesseduffield/lazydocker@v0.24.1
 - name: wagoodman/dive@v0.13.1
