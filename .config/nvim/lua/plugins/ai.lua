@@ -47,12 +47,13 @@ return {
     version = false,
     opts = {
       provider = "copilot",
-      copilot = {
-        endpoint = "https://api.githubcopilot.com",
-        model = "claude-3.7-sonnet",
-        timeout = 30000,
-        temperature = 0,
-        max_completion_tokens = 4096,
+      providers = {
+        copilot = {
+          endpoint = "https://api.githubcopilot.com",
+          model = "claude-3.7-sonnet",
+          timeout = 30000,
+          max_completion_tokens = 4096,
+        },
       },
       file_selector = {
         provider = "fzf",
