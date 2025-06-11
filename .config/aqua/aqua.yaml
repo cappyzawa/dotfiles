@@ -17,7 +17,7 @@ registries:
   private: true
 packages:
 - import: ./private/aqua.yaml
-- name: hashicorp/terraform@v1.12.1
+- name: hashicorp/terraform@v1.12.2
 - name: jqlang/jq@jq-1.8.0
 - name: kubernetes/kubectl@v1.33.1
 - name: kubernetes-sigs/kustomize@kustomize/v5.6.0
