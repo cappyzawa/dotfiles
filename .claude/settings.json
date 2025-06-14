@@ -2,7 +2,7 @@
   "model": "sonnet",
   "includeCoAuthoredBy": false,
   "permissions": {
-    "allowed": [
+    "allow": [
       "Bash(git status)",
       "Bash(git diff*)",
       "Bash(git log*)",
@@ -36,7 +36,8 @@
       "Bash(npm run format*)",
       "Bash(yarn lint*)",
       "Bash(yarn test*)",
-      "Bash(yarn format*)"
+      "Bash(yarn format*)",
+      "WebFetch(domain:docs.anthropic.com)"
     ]
   }
 }
