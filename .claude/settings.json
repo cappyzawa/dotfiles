@@ -42,7 +42,12 @@
       "mcp__github__list_*", 
       "mcp__github__search_*",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:api.github.com)"
+      "WebFetch(domain:api.github.com)",
+      "mcp__filesystem__read_*",
+      "mcp__filesystem__list_*",
+      "mcp__filesystem__search_*",
+      "mcp__filesystem__get_*",
+      "mcp__filesystem__directory_tree"
     ]
   }
 }
