@@ -52,8 +52,7 @@ return {
       opts.servers.html = {}
       opts.servers.cssls = {}
       opts.servers.tilt_ls = {}
-      -- ref: https://github.com/LazyVim/LazyVim/pull/5170
-      opts.servers.gopls.settings.gopls.analyses["fieldalignment"] = nil
+      opts.servers.gopls.settings.gopls.buildFlags = { "-tags=unit" }
 
       opts.servers.regal = nil
 
