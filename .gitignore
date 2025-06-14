@@ -36,3 +36,4 @@ node_modules/
 Brewfile.lock.json
 .claude/*
 !.claude/settings.json
+!.claude/CLAUDE.md
