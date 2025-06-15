@@ -39,7 +39,7 @@
       "Bash(yarn format*)",
       "WebFetch(domain:docs.anthropic.com)",
       "mcp__github__get_*",
-      "mcp__github__list_*", 
+      "mcp__github__list_*",
       "mcp__github__search_*",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:api.github.com)",
@@ -51,3 +51,4 @@
     ]
   }
 }
+
