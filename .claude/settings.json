@@ -1,5 +1,4 @@
 {
-  "model": "sonnet",
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
@@ -51,4 +50,3 @@
     ]
   }
 }
-
