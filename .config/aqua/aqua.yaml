@@ -82,6 +82,6 @@ packages:
 - name: direnv/direnv@v2.36.0
 - name: theseus-rs/postgresql-binaries@17.5.0
 - name: docker/compose@v2.37.1
-- name: fluxcd/flux2@v2.6.1
+- name: fluxcd/flux2@v2.6.2
 - name: nodejs/node@v24.2.0
 - name: sigstore/cosign@v2.5.0
