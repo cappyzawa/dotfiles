@@ -37,17 +37,25 @@
       "Bash(yarn test:*)",
       "Bash(yarn format:*)",
       "WebFetch(domain:docs.anthropic.com)",
-      "mcp__github__get_*",
-      "mcp__github__list_*",
-      "mcp__github__search_*",
+      "mcp__github__get_pull_request",
+      "mcp__github__get_pull_request_status",
+      "mcp__github__list_issues",
+      "mcp__github__list_pull_requests",
+      "mcp__github__list_notifications",
+      "mcp__github__get_issue",
+      "mcp__github__get_issue_comments",
+      "mcp__github__search_code",
+      "mcp__github__list_tags",
+      "mcp__github__list_commits",
+      "mcp__github__search_issues",
+      "mcp__github__get_file_contents",
+      "mcp__filesystem__read_file",
+      "mcp__filesystem__list_directory",
+      "mcp__filesystem__directory_tree",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:api.github.com)",
-      "WebFetch(domain:doc.rust-lang.org)",
-      "mcp__filesystem__read_*",
-      "mcp__filesystem__list_*",
-      "mcp__filesystem__search_*",
-      "mcp__filesystem__get_*",
-      "mcp__filesystem__directory_tree"
+      "WebFetch(domain:doc.rust-lang.org)"
     ]
   }
 }
+
