@@ -34,6 +34,6 @@ node_modules/
 .config/raycast
 .config/1Password/ssh/agent.toml
 Brewfile.lock.json
-.claude/*
-!.claude/settings.json
-!.claude/CLAUDE.md
+.config/claude/*
+!.config/claude/settings.json
+!.config/claude/CLAUDE.md
