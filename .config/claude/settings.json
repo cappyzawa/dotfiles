@@ -59,6 +59,5 @@
       "mcp__github__search_code",
       "mcp__github__search_issues"
     ]
-  },
-  "model": "sonnet"
+  }
 }
