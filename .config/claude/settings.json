@@ -40,6 +40,7 @@
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:doc.rust-lang.org)",
       "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:fluxcd.io)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "mcp__filesystem__directory_tree",
