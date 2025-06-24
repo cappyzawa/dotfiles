@@ -41,7 +41,7 @@ packages:
 - name: stern/stern@v1.32.0
 - name: kubernetes-sigs/kind@v0.29.0
 - name: denoland/deno@v2.3.7
-- name: cue-lang/cue@v0.13.1
+- name: cue-lang/cue@v0.13.2
 - name: ogham/exa@v0.10.1
 - name: open-policy-agent/conftest@v0.61.2
 - name: open-policy-agent/opa@v1.5.1
