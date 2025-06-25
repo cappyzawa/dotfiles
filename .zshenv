@@ -20,3 +20,4 @@ export NPM_CONFIG_PREFIX="$XDG_DATA_HOME/npm-global"
 . "$HOME/.cargo/env"
 
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
