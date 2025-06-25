@@ -33,7 +33,7 @@ path_add '$CUSTOM_ROOT/bin'
 # Remove from PATH
 path_remove /path/to/bin
 
-# Debug current PATH state
+# Debug current PATH state (shows managed vs system paths)
 path_debug
 ```
 
@@ -43,7 +43,7 @@ path_debug
 - **Priority Control**: Later additions override earlier ones properly
 - **Automatic Deduplication**: No duplicate entries in PATH
 - **Existence Checking**: Only existing directories are added
-- **Debug Support**: Visual debugging with `path_debug` command
+- **Debug Support**: Visual debugging with `path_debug` command (✓ = managed paths)
 
 #### Adding New Tools
 
