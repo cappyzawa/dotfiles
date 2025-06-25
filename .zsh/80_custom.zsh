@@ -43,7 +43,4 @@ if has "julia"; then
     fi
 fi
 
-if has "rbenv"; then
-    eval "$(rbenv init -)"
-fi
 

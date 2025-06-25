@@ -10,27 +10,19 @@ typeset -gx -U path
 path=( \
         ~/bin(N-/) \
         /opt/homebrew/bin(N-/) \
-        /opt/homebrew/opt/ruby/bin(N-/) \
-        $(gem environment gemdir)/bin(N-/) \
         ~/.local/share/aquaproj-aqua/bin(N-/) \
         ~/ghq/bin(N-/) \
         /usr/local/bin(N-/) \
         /usr/sbin(N-/) \
         ~/.local/bin(N-/) \
         ~/.tmux/bin(N-/) \
-        ~/.nimble/bin(N-/) \
-        ~/.yarn/bin(N-/) \
-        ~/.julia/conda/3/bin(N-/) \
-        ~/.deno/bin(N-/) \
         $NPM_CONFIG_PREFIX/bin(N-/) \
         /usr/local/opt/libpq/bin(N-/) \
         /usr/local/opt/llvm/bin(N-/) \
         /opt/homebrew/opt/openjdk@17/bin(N-/) \
         $HOME/.krew/bin(N-/) \
-        ~/.luarocks/bin(N-/) \
         ~/Library/Application\ Support/Coursier/bin(N-/) \
         ~/.cargo/bin(N-/) \
-        ~/.rd/bin(N-/) \
         ~/.tmux/plugins/tpm/bin(N-/) \
         "$path[@]" \
     )
