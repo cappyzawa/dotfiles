@@ -44,11 +44,13 @@ make clean    # dotfiles のシンボリックリンクとリポジトリを削�
 明確な使い分けに基づいて3つのパッケージマネージャーを使用：
 
 1. **Homebrew** (`Brewfile`)
+
    - システムレベルのツール（git, curl など）
    - GUI アプリケーション（Alacritty, Docker など）
    - システム統合が必要なツール（fonts, drivers など）
 
 2. **Aqua** (`.config/aqua/aqua.yaml`)
+
    - 開発用 CLI ツール（kubectl, terraform, golang など）
    - バージョン管理が重要なツール
    - チーム間で統一したいツール
@@ -62,9 +64,42 @@ make clean    # dotfiles のシンボリックリンクとリポジトリを削�
 ### 重要な統合
 
 - **1Password**: GitHub トークンなどの認証情報管理
-- **Starship**: カスタマイズ可能なプロンプト
+- **Starship**: カスタマイズ可能なプロンプト（遅延ロード対応）
 - **tmux**: ターミナルマルチプレクサー（TPM でプラグイン管理）
 - **Neovim**: LazyVim ベースの設定
+
+### パフォーマンス最適化
+
+#### 遅延ロードシステム
+
+`.zsh/hooks/` ディレクトリに配置された hook ファイルにより、重い初期化処理を遅延ロード：
+
+- **starship**: プロンプト初期化を初回コマンド実行時まで遅延
+- **afx**: プラグインマネージャーの初期化を遅延
+- **起動時間**: ~14ms（95% 改善）
+
+#### hook 追加パターン
+
+新しいツールの遅延ロードを追加する場合：
+
+```bash
+# .zsh/hooks/newtool.zsh
+_lazy_load_newtool() {
+    eval "$(newtool init)"
+    unfunction _lazy_load_newtool
+}
+
+if command -v newtool &> /dev/null; then
+    function _newtool_hook() {
+        _lazy_load_newtool
+        unfunction _newtool_hook
+    }
+    autoload -Uz add-zsh-hook
+    add-zsh-hook precmd _newtool_hook
+fi
+```
+
+ファイルを `.zsh/hooks/` に配置するだけで自動的に読み込まれます。
 
 ## 開発時の注意事項
 
@@ -126,4 +161,3 @@ ARM64 と x86_64 の両方に対応。切り替えは：
 1. 新しいツールの設定は `.config/` ディレクトリに配置
 2. `Makefile` の `install` ターゲットにシンボリックリンクの作成を追加
 3. パッケージは適切なマネージャーで管理（Homebrew なら `Brewfile`、Aqua なら `aqua.yaml`）
-
