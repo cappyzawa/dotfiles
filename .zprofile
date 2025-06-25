@@ -8,7 +8,6 @@ autoload -U +X bashcompinit && bashcompinit
 
 typeset -gx -U path
 path=( \
-        ~/.nix-profile/bin(N-/) \
         ~/bin(N-/) \
         /opt/homebrew/bin(N-/) \
         /opt/homebrew/opt/ruby/bin(N-/) \

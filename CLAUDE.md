@@ -17,7 +17,6 @@ make all
 # 個別のセットアップ
 make brew     # Homebrew のインストールと Brewfile からパッケージをインストール
 make install  # dotfiles のシンボリックリンクを作成
-make nix      # Nix パッケージマネージャーのインストール
 ```
 
 ### クリーンアップ

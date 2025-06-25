@@ -11,8 +11,6 @@ brew: ## Install brew
 	@sh ./etc/scripts/brew.sh
 	@brew bundle
 
-nix: ## Install Nix
-	@sh ./etc/scripts/nix.sh
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
