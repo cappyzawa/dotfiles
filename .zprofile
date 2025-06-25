@@ -9,6 +9,9 @@ autoload -U +X bashcompinit && bashcompinit
 # Initialize PATH with unique flag
 typeset -gx -U path
 
+# Load PATH management system first
+source ~/.zsh/05_path_manager.zsh
+
 # Use dynamic PATH management for better flexibility
 # Note: Order matters - first added = highest priority
 path_add ~/bin
@@ -28,7 +31,7 @@ path_add '~/Library/Application Support/Coursier/bin'
 path_add ~/.cargo/bin
 path_add ~/.tmux/plugins/tpm/bin
 
-
+# Configure fpath for completions
 typeset -gx -U fpath
 fpath=( \
         ~/.zsh/Completion(N-/) \
@@ -38,9 +41,7 @@ fpath=( \
         $fpath \
     )
 
-
-
-
+# Architecture-specific Homebrew setup
 ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -50,6 +51,7 @@ fi
 export ARCH
 export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
 
+# Create Dropbox symlink if needed
 if [[ ! -e "$HOME/Dropbox" ]] && [[ -e "$HOME/Library/CloudStorage/Dropbox" ]]; then
     ln -s "$HOME/Library/CloudStorage/Dropbox" "$HOME/Dropbox"
 fi
