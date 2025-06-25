@@ -1,5 +1,22 @@
+# Command existence cache
+typeset -gA _has_cache
+
 has() {
-    type "${1:?too few arguments}" &>/dev/null
+    local cmd="${1:?too few arguments}"
+    
+    # Check cache first
+    if [[ -n $_has_cache[$cmd] ]]; then
+        return $_has_cache[$cmd]
+    fi
+    
+    # Check command existence and cache result
+    if type "$cmd" &>/dev/null; then
+        _has_cache[$cmd]=0
+        return 0
+    else
+        _has_cache[$cmd]=1
+        return 1
+    fi
 }
 
 # is_login_shell returns true if current shell is first shell
@@ -48,6 +65,11 @@ alias ostype=os
 
 # os_detect export the PLATFORM variable as you see fit
 os_detect() {
+    # Only detect once
+    if [[ -n $PLATFORM ]]; then
+        return 0
+    fi
+    
     export PLATFORM
     case "$(ostype)" in
         *'linux'*)  PLATFORM='linux'   ;;
