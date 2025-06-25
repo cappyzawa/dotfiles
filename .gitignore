@@ -37,3 +37,4 @@ Brewfile.lock.json
 .config/claude/*
 !.config/claude/settings.json
 !.config/claude/CLAUDE.md
+!CLAUDE.md
