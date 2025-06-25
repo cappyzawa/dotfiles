@@ -25,6 +25,15 @@ clean: ## Remove the dot files and this repo
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
 	-rm -rf $(DOTPATH)
 
+lint-setup: ## Install and setup pre-commit hooks
+	@echo '==> Setting up pre-commit hooks...'
+	@pre-commit install
+	@echo 'Pre-commit hooks installed!'
+
+lint: ## Run pre-commit on all files
+	@echo '==> Running pre-commit on all files...'
+	@pre-commit run --all-files
+
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| sort \

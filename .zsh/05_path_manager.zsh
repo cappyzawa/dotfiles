@@ -8,19 +8,19 @@ typeset -gUa _dynamic_paths
 path_prepend() {
     local dir="$1"
     [[ -z "$dir" ]] && return 1
-    
+
     # Expand variables and tildes
     dir="${(e)dir}"
-    
+
     # Only add if directory exists
     [[ -d "$dir" ]] || return 1
-    
+
     # Remove from current PATH if exists
     path=("${(@)path:#$dir}")
-    
+
     # Add to beginning
     path=("$dir" "${(@)path}")
-    
+
     # Track this addition
     _dynamic_paths=("$dir" "${(@)_dynamic_paths:#$dir}")
 }
@@ -29,19 +29,19 @@ path_prepend() {
 path_append() {
     local dir="$1"
     [[ -z "$dir" ]] && return 1
-    
+
     # Expand variables and tildes
     dir="${(e)dir}"
-    
+
     # Only add if directory exists
     [[ -d "$dir" ]] || return 1
-    
+
     # Remove from current PATH if exists
     path=("${(@)path:#$dir}")
-    
+
     # Add to end
     path=("${(@)path}" "$dir")
-    
+
     # Track this addition
     _dynamic_paths=("${(@)_dynamic_paths:#$dir}" "$dir")
 }
@@ -50,9 +50,9 @@ path_append() {
 path_add() {
     local dir="$1"
     local mode="${2:-prepend}"  # prepend or append
-    
+
     [[ -z "$dir" ]] && return 1
-    
+
     case "$mode" in
         prepend|pre) path_prepend "$dir" ;;
         append|app)  path_append "$dir" ;;
@@ -64,13 +64,13 @@ path_add() {
 path_remove() {
     local dir="$1"
     [[ -z "$dir" ]] && return 1
-    
+
     # Expand variables and tildes
     dir="${(e)dir}"
-    
+
     # Remove from PATH
     path=("${(@)path:#$dir}")
-    
+
     # Remove from tracking
     _dynamic_paths=("${(@)_dynamic_paths:#$dir}")
 }
@@ -84,7 +84,7 @@ path_list() {
 path_refresh() {
     local saved_paths=("${_dynamic_paths[@]}")
     _dynamic_paths=()
-    
+
     for dir in "${saved_paths[@]}"; do
         path_add "$dir"
     done

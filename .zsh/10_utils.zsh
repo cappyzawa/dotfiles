@@ -3,12 +3,12 @@ typeset -gA _has_cache
 
 has() {
     local cmd="${1:?too few arguments}"
-    
+
     # Check cache first
     if [[ -n $_has_cache[$cmd] ]]; then
         return $_has_cache[$cmd]
     fi
-    
+
     # Check command existence and cache result
     if type "$cmd" &>/dev/null; then
         _has_cache[$cmd]=0
@@ -69,7 +69,7 @@ os_detect() {
     if [[ -n $PLATFORM ]]; then
         return 0
     fi
-    
+
     export PLATFORM
     case "$(ostype)" in
         *'linux'*)  PLATFORM='linux'   ;;

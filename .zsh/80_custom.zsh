@@ -35,6 +35,3 @@ export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
 # Use dynamic PATH management - this will override the static path in .zprofile
 # and ensure the current KREW_ROOT value is used
 path_add '$KREW_ROOT/bin'
-
-
-

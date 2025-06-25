@@ -83,3 +83,4 @@ packages:
 - name: fluxcd/flux2@v2.6.2
 - name: nodejs/node@v24.3.0
 - name: sigstore/cosign@v2.5.2
+- name: pre-commit/pre-commit@v4.2.0

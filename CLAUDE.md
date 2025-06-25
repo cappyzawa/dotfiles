@@ -46,13 +46,11 @@ make clean    # dotfiles のシンボリックリンクとリポジトリを削�
 明確な使い分けに基づいて3つのパッケージマネージャーを使用：
 
 1. **Homebrew** (`Brewfile`)
-
    - システムレベルのツール（git, curl など）
    - GUI アプリケーション（Alacritty, Docker など）
    - システム統合が必要なツール（fonts, drivers など）
 
 2. **Aqua** (`.config/aqua/aqua.yaml`)
-
    - 開発用 CLI ツール（kubectl, terraform, golang など）
    - バージョン管理が重要なツール
    - チーム間で統一したいツール

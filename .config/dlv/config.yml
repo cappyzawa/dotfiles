@@ -19,7 +19,7 @@ aliases:
 # commands.
 substitute-path:
   # - {from: path, to: path}
-  
+
 # Maximum number of elements loaded from an array.
 # max-array-values: 64
 

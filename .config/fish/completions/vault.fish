@@ -6,4 +6,3 @@ function __complete_vault
     /usr/local/bin/vault
 end
 complete -c vault -a "(__complete_vault)"
-

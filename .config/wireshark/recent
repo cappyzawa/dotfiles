@@ -82,11 +82,11 @@ column.width:
 
 # Open conversation dialog tabs.
 # List of conversation names, e.g. "TCP", "IPv6".
-gui.conversation_tabs: 
+gui.conversation_tabs:
 
 # Open endpoint dialog tabs.
 # List of endpoint names, e.g. "TCP", "IPv6".
-gui.endpoint_tabs: 
+gui.endpoint_tabs:
 
 # For RLC stats, whether to use RLC PDUs found inside MAC frames.
 # TRUE or FALSE (case-insensitive).
@@ -97,8 +97,8 @@ gui.fileopen_remembered_dir: /Users/skutsuza/Downloads/
 
 # Additional Toolbars shown
 # List of additional toolbars to show.
-gui.additional_toolbar_show: 
+gui.additional_toolbar_show:
 
 # Interface Toolbars show.
 # List of interface toolbars to show.
-gui.interface_toolbar_show: 
+gui.interface_toolbar_show:

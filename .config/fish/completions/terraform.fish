@@ -6,4 +6,3 @@ function __complete_terraform
     /usr/local/bin/terraform
 end
 complete -c terraform -a "(__complete_terraform)"
-
