@@ -61,3 +61,17 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # Default prompt (overridden by starship when loaded)
 export PS1='%n@%m:%~$ '
+
+# Essential PATH initialization (required for afx in .zprofile)
+# Initialize PATH with unique flag
+typeset -gx -U path
+
+# Add essential directories that are needed before afx loads
+if [[ -d ~/bin ]]; then
+    path=(~/bin $path)
+fi
+
+# Add aqua path (required for direnv and other aqua-managed tools in afx snippets)
+if [[ -d ~/.local/share/aquaproj-aqua/bin ]]; then
+    path=(~/.local/share/aquaproj-aqua/bin $path)
+fi

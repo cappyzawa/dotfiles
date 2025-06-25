@@ -6,30 +6,26 @@ autoload -Uz compinit && compinit -u
 autoload -Uz is-at-least
 autoload -U +X bashcompinit && bashcompinit
 
-# Initialize PATH with unique flag
-typeset -gx -U path
+# Load all functionality via afx (PATH initialized in .zshenv)
+#
+if ! command -v afx &> /dev/null; then
+    curl -sL https://raw.githubusercontent.com/b4b4r07/afx/HEAD/hack/install | bash
+fi
 
-# Load PATH management system first
-source ~/.zsh/05_path_manager.zsh
+# Lazy loading hook for afx
+# This file contains the hook setup for afx lazy loading
+_lazy_load_afx() {
+    source <(afx init)
+    unfunction _lazy_load_afx
+}
 
-# Use dynamic PATH management for better flexibility
-# Note: Order matters - first added = highest priority
-path_add ~/bin
-path_add /opt/homebrew/bin
-path_add ~/.local/share/aquaproj-aqua/bin
-path_add ~/ghq/bin
-path_add /usr/local/bin
-path_add /usr/sbin
-path_add ~/.local/bin
-path_add ~/.tmux/bin
-path_add '$NPM_CONFIG_PREFIX/bin'
-path_add /usr/local/opt/libpq/bin
-path_add /usr/local/opt/llvm/bin
-path_add /opt/homebrew/opt/openjdk@17/bin
-path_add '$HOME/.krew/bin'
-path_add '~/Library/Application Support/Coursier/bin'
-path_add ~/.cargo/bin
-path_add ~/.tmux/plugins/tpm/bin
+# Register hook if afx is available
+function _afx_hook() {
+    _lazy_load_afx
+    unfunction _afx_hook
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _afx_hook
 
 # Configure fpath for completions
 typeset -gx -U fpath
