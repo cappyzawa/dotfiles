@@ -53,7 +53,6 @@ packages:
 - name: Aloxaf/silicon@v0.5.3
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v4.6.0
-- name: kubernetes-sigs/controller-tools/controller-gen@v0.18.0
 - name: kubernetes-sigs/krew@v0.4.5
 - name: tilt-dev/tilt@v0.35.0
 - name: tilt-dev/ctlptl@v0.8.42
