@@ -6,20 +6,24 @@ autoload -Uz compinit && compinit -u
 autoload -Uz is-at-least
 autoload -U +X bashcompinit && bashcompinit
 
-# Load all functionality via afx (PATH initialized in .zshenv)
-#
+# afx Package Manager Setup (lazy loaded)
+# Essential PATH (~/bin, aqua) are already set in .zshenv
+# afx manages local scripts via .config/afx/local.yaml
+# Heavy initializations (starship) are loaded via .zsh/hooks/
+
+# Install afx if not available
 if ! command -v afx &> /dev/null; then
     curl -sL https://raw.githubusercontent.com/b4b4r07/afx/HEAD/hack/install | bash
 fi
 
-# Lazy loading hook for afx
-# This file contains the hook setup for afx lazy loading
+# Lazy load afx on first command execution (precmd hook)
+# This keeps shell startup fast (~15ms) while maintaining functionality
 _lazy_load_afx() {
     source <(afx init)
     unfunction _lazy_load_afx
 }
 
-# Register hook if afx is available
+# Register precmd hook to trigger afx initialization
 function _afx_hook() {
     _lazy_load_afx
     unfunction _afx_hook

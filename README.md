@@ -59,9 +59,17 @@ This ensures the tool's PATH works correctly even if `TOOL_ROOT` is changed late
 
 ### Performance Optimizations
 
-- **Fast Startup**: ~14ms shell startup time with lazy loading (95% improvement from 250ms)
+- **Fast Startup**: ~15ms shell startup time with lazy loading (94% improvement from 250ms)
 - **Command Caching**: Repeated command existence checks are cached
-- **Lazy Loading System**: Heavy tools (afx, starship) load on first command execution
+- **Lazy Loading System**: Heavy tools load on first command execution
+- **Optimized PATH Setup**: Essential paths in `.zshenv`, detailed paths via afx snippet
+
+#### Shell Initialization Order
+
+1. **`.zshenv`**: Environment variables + essential PATH (~/bin, aqua)
+2. **`.zprofile`**: afx lazy loading hook registration + Homebrew initialization
+3. **`.zshrc`**: Minimal configuration (colors setup + local overrides)
+4. **On first command (precmd hook)**: `afx init` executes, loading all local scripts, zsh plugins, and `.zsh/hooks/`
 
 #### Lazy Loading Hook Pattern
 
@@ -84,7 +92,7 @@ if command -v newtool &> /dev/null; then
 fi
 ```
 
-Files placed in `.zsh/hooks/` are automatically loaded by `.zshrc`. This pattern:
+Files placed in `.zsh/hooks/` are automatically loaded by afx (via local.yaml configuration). This pattern:
 
 - Only registers hooks for available commands
 - Removes hooks after first execution

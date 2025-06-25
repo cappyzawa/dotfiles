@@ -32,11 +32,13 @@ make clean    # dotfiles のシンボリックリンクとリポジトリを削�
 - ルートレベル: 主要な設定ファイル（`.zshrc`, `.tmux.conf`, `.gitconfig` など）
 - `.config/`: XDG Base Directory 仕様に従ったアプリケーション固有の設定
 - `.zsh/`: モジュール化された Zsh 設定
+  - `05_path_manager.zsh`: 動的 PATH 管理システム
   - `10_utils.zsh`: ユーティリティ関数
   - `20_keybinds.zsh`: キーバインド
   - `30_aliases.zsh`: エイリアス
   - `50_setopt.zsh`: Zsh オプション
   - `80_custom.zsh`: カスタム設定
+  - `hooks/`: 遅延ロード用 hook スクリプト
 - `etc/scripts/`: インストールスクリプト
 
 ### パッケージ管理戦略
@@ -72,11 +74,18 @@ make clean    # dotfiles のシンボリックリンクとリポジトリを削�
 
 #### 遅延ロードシステム
 
-`.zsh/hooks/` ディレクトリに配置された hook ファイルにより、重い初期化処理を遅延ロード：
+重い初期化処理を初回コマンド実行時まで遅延させることで高速起動を実現：
 
-- **starship**: プロンプト初期化を初回コマンド実行時まで遅延
-- **afx**: プラグインマネージャーの初期化を遅延
-- **起動時間**: ~14ms（95% 改善）
+- **afx**: `.zprofile` で precmd hook として登録、初回コマンド実行時に初期化
+- **starship**: `.zsh/hooks/starship.zsh` により遅延ロード
+- **起動時間**: ~15ms（94% 改善）
+
+#### 読み込み順序
+
+1. `.zshenv`: 環境変数と基本 PATH（~/bin, aqua）
+2. `.zprofile`: afx 遅延ロード設定、Homebrew 初期化
+3. `.zshrc`: 最小構成（colors, .zshrc.local）
+4. 初回コマンド実行時: afx init（全ローカルスクリプト、プラグイン、hooks 読み込み）
 
 #### hook 追加パターン
 
@@ -99,7 +108,7 @@ if command -v newtool &> /dev/null; then
 fi
 ```
 
-ファイルを `.zsh/hooks/` に配置するだけで自動的に読み込まれます。
+ファイルを `.zsh/hooks/` に配置すると、afx 経由（local.yaml の設定）で自動的に読み込まれます。
 
 ## 開発時の注意事項
 
@@ -146,8 +155,9 @@ path_add '$TOOL_ROOT/bin'
 
 ### 環境変数
 
-- `.zshenv`: 基本的な環境変数（履歴、XDG パス、CLAUDE_CONFIG_DIR など）
-- `.zprofile`: PATH、言語設定、エディタ設定
+- `.zshenv`: 基本的な環境変数（履歴、XDG パス、CLAUDE_CONFIG_DIR など）+ 基本 PATH
+- `.zprofile`: afx 遅延ロード設定、Homebrew 初期化
+- afx のローカルスクリプト: 詳細な PATH 設定（local.yaml の snippet）
 
 ### アーキテクチャ対応
 
