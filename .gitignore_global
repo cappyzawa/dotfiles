@@ -3,3 +3,7 @@
 .go-version
 .node-version
 .DS_STORE
+
+# Claude Code files
+.claude/
+CLAUDE.md
