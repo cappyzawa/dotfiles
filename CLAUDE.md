@@ -39,11 +39,25 @@ make clean    # dotfiles のシンボリックリンクとリポジトリを削�
   - `80_custom.zsh`: カスタム設定
 - `etc/scripts/`: インストールスクリプト
 
-### パッケージ管理
+### パッケージ管理戦略
 
-1. **Homebrew**: macOS アプリケーションと CLI ツール（`Brewfile`）
-2. **Aqua**: 宣言的 CLI バージョンマネージャー（`.config/aqua/aqua.yaml`）
-3. **afx**: GitHub リポジトリと Zsh プラグインの管理（`.config/afx/`）
+明確な使い分けに基づいて3つのパッケージマネージャーを使用：
+
+1. **Homebrew** (`Brewfile`)
+   - システムレベルのツール（git, curl など）
+   - GUI アプリケーション（Alacritty, Docker など）
+   - システム統合が必要なツール（fonts, drivers など）
+
+2. **Aqua** (`.config/aqua/aqua.yaml`)
+   - 開発用 CLI ツール（kubectl, terraform, golang など）
+   - バージョン管理が重要なツール
+   - チーム間で統一したいツール
+
+3. **afx** (`.config/afx/`)
+   - Zsh プラグインと設定ファイル
+   - GitHub CLI (gh) プラグイン管理
+   - GitHub リポジトリの直接管理
+   - dotfiles 固有の拡張機能
 
 ### 重要な統合
 
