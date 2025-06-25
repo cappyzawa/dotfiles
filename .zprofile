@@ -21,14 +21,10 @@ path=( \
         ~/.nimble/bin(N-/) \
         ~/.yarn/bin(N-/) \
         ~/.julia/conda/3/bin(N-/) \
-        ~/.nimble/bin(N-/) \
         ~/.deno/bin(N-/) \
         $NPM_CONFIG_PREFIX/bin(N-/) \
-        ~/Library/ApplicationSupport/Coursier/bin(N-/) \
         /usr/local/opt/libpq/bin(N-/) \
         /usr/local/opt/llvm/bin(N-/) \
-        ~/.gem/ruby/2.6.0/bin(N-/) \
-        ~/Library/Python/3.9/bin(N-/) \
         /opt/homebrew/opt/openjdk@17/bin(N-/) \
         $HOME/.krew/bin(N-/) \
         ~/.luarocks/bin(N-/) \
@@ -92,17 +88,6 @@ export CORRECT_IGNORE_FILE='.*'
 #export WORDCHARS='*?.[]~&;!#$%^(){}<>'
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-# History file and its size
-export HISTFILE=~/.zsh_history
-export HISTSIZE=1000000
-export SAVEHIST=1000000
-# The size of asking history
-export LISTMAX=50
-# Do not add in root
-if [[ $UID == 0 ]]; then
-    unset HISTFILE
-    export SAVEHIST=0
-fi
 
 ARCH=$(uname -m)
 if [[ $ARCH == arm64 ]]; then

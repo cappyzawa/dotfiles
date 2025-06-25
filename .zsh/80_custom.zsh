@@ -47,7 +47,3 @@ if has "rbenv"; then
     eval "$(rbenv init -)"
 fi
 
-if [[ -f "$HOME/.config/op/plugins.sh" ]]; then
-    # shellcheck source=/dev/null
-    source "$HOME/.config/op/plugins.sh"
-fi

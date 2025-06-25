@@ -2,7 +2,7 @@
 # History file
 export HISTFILE=~/.zsh_history
 # History size in memory
-export HISTSIZE=10000
+export HISTSIZE=1000000
 # The number of histsize
 export SAVEHIST=1000000
 # The size of asking history

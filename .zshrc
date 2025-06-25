@@ -1,6 +1,5 @@
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-compinit
+# bashcompinit は .zprofile で既に読み込まれている
+# compinit も .zprofile で既に読み込まれている
 
 autoload -Uz colors
 colors
