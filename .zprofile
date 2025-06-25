@@ -6,26 +6,27 @@ autoload -Uz compinit && compinit -u
 autoload -Uz is-at-least
 autoload -U +X bashcompinit && bashcompinit
 
+# Initialize PATH with unique flag
 typeset -gx -U path
-path=( \
-        ~/bin(N-/) \
-        /opt/homebrew/bin(N-/) \
-        ~/.local/share/aquaproj-aqua/bin(N-/) \
-        ~/ghq/bin(N-/) \
-        /usr/local/bin(N-/) \
-        /usr/sbin(N-/) \
-        ~/.local/bin(N-/) \
-        ~/.tmux/bin(N-/) \
-        $NPM_CONFIG_PREFIX/bin(N-/) \
-        /usr/local/opt/libpq/bin(N-/) \
-        /usr/local/opt/llvm/bin(N-/) \
-        /opt/homebrew/opt/openjdk@17/bin(N-/) \
-        $HOME/.krew/bin(N-/) \
-        ~/Library/Application\ Support/Coursier/bin(N-/) \
-        ~/.cargo/bin(N-/) \
-        ~/.tmux/plugins/tpm/bin(N-/) \
-        "$path[@]" \
-    )
+
+# Use dynamic PATH management for better flexibility
+# Note: Order matters - first added = highest priority
+path_add ~/bin
+path_add /opt/homebrew/bin
+path_add ~/.local/share/aquaproj-aqua/bin
+path_add ~/ghq/bin
+path_add /usr/local/bin
+path_add /usr/sbin
+path_add ~/.local/bin
+path_add ~/.tmux/bin
+path_add '$NPM_CONFIG_PREFIX/bin'
+path_add /usr/local/opt/libpq/bin
+path_add /usr/local/opt/llvm/bin
+path_add /opt/homebrew/opt/openjdk@17/bin
+path_add '$HOME/.krew/bin'
+path_add '~/Library/Application Support/Coursier/bin'
+path_add ~/.cargo/bin
+path_add ~/.tmux/plugins/tpm/bin
 
 
 typeset -gx -U fpath

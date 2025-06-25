@@ -29,10 +29,12 @@ if has "op"; then
     source "$XDG_CONFIG_HOME/op/plugins.sh"
 fi
 
+# Set KREW_ROOT and add to PATH dynamically
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
-if [[ -d $KREW_ROOT ]]; then
-    export PATH="${KREW_ROOT}/bin:$PATH"
-fi
+
+# Use dynamic PATH management - this will override the static path in .zprofile
+# and ensure the current KREW_ROOT value is used
+path_add '$KREW_ROOT/bin'
 
 
 

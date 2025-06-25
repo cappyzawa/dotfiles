@@ -68,18 +68,46 @@ make clean    # dotfiles のシンボリックリンクとリポジトリを削�
 
 ## 開発時の注意事項
 
-### PATH の設定
+### PATH の動的管理システム
 
-PATH は `.zprofile` で管理されています。新しいツールを追加する場合は、以下の形式で追加：
+`.zsh/05_path_manager.zsh` で提供される動的 PATH 管理システムを使用：
+
+#### 基本的な使い方
 
 ```bash
-path=( \
-    ~/.local/share/aquaproj-aqua/bin(N-/) \
-    # ... その他のパス
-)
+# 高優先度で PATH に追加（先頭に追加）
+path_add /path/to/bin
+
+# 低優先度で PATH に追加（末尾に追加）
+path_add /path/to/bin append
+
+# 変数を含むパスの追加（後から変数が変更されても対応）
+path_add '$CUSTOM_ROOT/bin'
+
+# PATH から削除
+path_remove /path/to/bin
+
+# PATH の状態確認
+path_debug
 ```
 
-`(N-/)` は Zsh のグロブ修飾子で、ディレクトリが存在する場合のみ追加します。
+#### 利点
+
+- **柔軟性**: 環境変数の変更後も正しく動作
+- **順序制御**: 後から追加されたパスが優先される
+- **重複排除**: 自動的に重複を排除
+- **デバッグ**: `path_debug` で現在の状態を確認可能
+
+#### 設定追加時の推奨パターン
+
+```bash
+# .zprofile: システム全体の基本パス
+path_add ~/.local/bin
+
+# 80_custom.zsh: 個別ツールの動的パス
+export TOOL_ROOT=${TOOL_ROOT:-$HOME/.tool}
+path_add '$TOOL_ROOT/bin'
+```
 
 ### 環境変数
 
