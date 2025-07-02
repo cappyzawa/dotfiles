@@ -12,18 +12,11 @@
   undo = reset --soft HEAD^
 [ghq]
   root = ~/ghq/src
-[interactive]
-  diffFilter = delta --color-only
-[delta]
-  features = tokyonight
-  navigate = true
-  line-numbers = true
-  side-by-side = true
 [merge]
   conflictstyle = diff3
-[diff]
-  tool = difftastic
-  external = difft
+; [diff]
+;   tool = difftastic
+;   external = difft
 [pull]
   rebase = true
 [init]
