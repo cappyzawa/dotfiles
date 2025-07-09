@@ -59,7 +59,7 @@ packages:
 - name: protocolbuffers/protobuf/protoc@v31.1
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.6
 - name: Wilfred/difftastic@0.64.0
-- name: golang/go@go1.24.4
+- name: golang/go@go1.24.5
 - name: denisidoro/navi@v2.24.0
 - name: aws/aws-cli@2.27.49
 - name: aws/session-manager-plugin@1.2.536.0
