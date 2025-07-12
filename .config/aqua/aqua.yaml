@@ -21,7 +21,7 @@ packages:
 - name: jqlang/jq@jq-1.8.1
 - name: kubernetes/kubectl@v1.33.2
 - name: kubernetes-sigs/kustomize@kustomize/v5.7.0
-- name: tree-sitter/tree-sitter@v0.25.6
+- name: tree-sitter/tree-sitter@v0.25.7
 - name: jesseduffield/lazygit@v0.53.0
 - name: x-motemen/ghq@v1.8.0
 - name: sharkdp/hyperfine@v1.19.0
