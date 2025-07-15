@@ -69,7 +69,7 @@ packages:
 - name: awslabs/amazon-ecr-credential-helper@v0.10.1
 - name: kayac/ecspresso@v2.5.0
 - name: sharkdp/bat@v0.25.0
-- name: prometheus/prometheus@v3.4.2
+- name: prometheus/prometheus@v3.5.0
 - name: kubernetes/minikube@v1.36.0
 - name: argoproj/argo-rollouts@v1.8.3
 - name: metalbear-co/mirrord@3.150.0
