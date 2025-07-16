@@ -81,7 +81,7 @@ packages:
 - name: theseus-rs/postgresql-binaries@17.5.0
 - name: docker/compose@v2.38.2
 - name: fluxcd/flux2@v2.6.4
-- name: nodejs/node@v24.4.0
+- name: nodejs/node@v24.4.1
 - name: sigstore/cosign@v2.5.2
 - name: pre-commit/pre-commit@v4.2.0
 - name: k0sproject/k0s@v1.33.2+k0s.0
