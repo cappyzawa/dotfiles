@@ -19,7 +19,7 @@ packages:
 - import: ./private/aqua.yaml
 - name: hashicorp/terraform@v1.12.2
 - name: jqlang/jq@jq-1.8.1
-- name: kubernetes/kubectl@v1.33.2
+- name: kubernetes/kubectl@v1.33.3
 - name: kubernetes-sigs/kustomize@kustomize/v5.7.0
 - name: tree-sitter/tree-sitter@v0.25.8
 - name: jesseduffield/lazygit@v0.53.0
