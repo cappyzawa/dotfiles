@@ -77,7 +77,7 @@ packages:
 - name: npryce/adr-tools@3.0.0
 - name: fullstorydev/grpcui@v1.4.3
 - name: fullstorydev/grpcurl@v1.9.3
-- name: direnv/direnv@v2.37.0
+- name: direnv/direnv@v2.37.1
 - name: theseus-rs/postgresql-binaries@17.5.0
 - name: docker/compose@v2.38.2
 - name: fluxcd/flux2@v2.6.4
