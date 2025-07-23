@@ -61,7 +61,7 @@ packages:
 - name: Wilfred/difftastic@0.64.0
 - name: golang/go@go1.24.5
 - name: denisidoro/navi@v2.24.0
-- name: aws/aws-cli@2.27.56
+- name: aws/aws-cli@2.27.57
 - name: aws/session-manager-plugin@1.2.536.0
 - name: Versent/saml2aws@v2.36.19
 - name: GoogleContainerTools/skaffold@v2.16.1
