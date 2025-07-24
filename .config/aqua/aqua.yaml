@@ -79,7 +79,7 @@ packages:
 - name: fullstorydev/grpcurl@v1.9.3
 - name: direnv/direnv@v2.37.1
 - name: theseus-rs/postgresql-binaries@17.5.0
-- name: docker/compose@v2.38.2
+- name: docker/compose@v2.39.0
 - name: fluxcd/flux2@v2.6.4
 - name: nodejs/node@v24.4.1
 - name: sigstore/cosign@v2.5.3
