@@ -1,4 +1,5 @@
 {
+  "cleanupPeriodDays": 7,
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
@@ -61,6 +62,33 @@
       "mcp__github__list_tags",
       "mcp__github__search_code",
       "mcp__github__search_issues"
+    ]
+  },
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
     ]
   }
 }
