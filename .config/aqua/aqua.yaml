@@ -38,7 +38,6 @@ packages:
 - name: google/yamlfmt@v0.17.2
 - name: koalaman/shellcheck@v0.10.0
 - name: mvdan/sh@v3.12.0
-- name: stern/stern@v1.32.0
 - name: kubernetes-sigs/kind@v0.29.0
 - name: denoland/deno@v2.4.2
 - name: cue-lang/cue@v0.13.2
@@ -50,7 +49,6 @@ packages:
 - name: dominikh/go-tools/staticcheck@2025.1.1
 - name: ziglang/zig@0.14.1
 - name: zigtools/zls@0.14.0
-- name: Aloxaf/silicon@v0.5.3
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v4.7.1
 - name: kubernetes-sigs/krew@v0.4.5
@@ -60,14 +58,11 @@ packages:
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.6
 - name: Wilfred/difftastic@0.64.0
 - name: golang/go@go1.24.4
-- name: denisidoro/navi@v2.24.0
 - name: aws/aws-cli@2.27.60
 - name: aws/session-manager-plugin@1.2.536.0
-- name: Versent/saml2aws@v2.36.19
 - name: GoogleContainerTools/skaffold@v2.16.1
 - name: helm/helm@v3.18.4
 - name: awslabs/amazon-ecr-credential-helper@v0.10.1
-- name: kayac/ecspresso@v2.5.0
 - name: sharkdp/bat@v0.25.0
 - name: prometheus/prometheus@v3.5.0
 - name: kubernetes/minikube@v1.36.0
@@ -84,5 +79,3 @@ packages:
 - name: nodejs/node@v24.4.1
 - name: sigstore/cosign@v2.5.3
 - name: pre-commit/pre-commit@v4.2.0
-- name: k0sproject/k0s@v1.33.3+k0s.0
-- name: k0sproject/k0sctl@v0.25.1
