@@ -17,6 +17,7 @@ registries:
   private: true
 packages:
 - import: ./private/aqua.yaml
+- import: ./helix.yaml
 - name: hashicorp/terraform@v1.12.2
 - name: jqlang/jq@jq-1.8.1
 - name: kubernetes/kubectl@v1.33.3
@@ -37,7 +38,6 @@ packages:
 - name: goreleaser/goreleaser@v2.11.1
 - name: google/yamlfmt@v0.17.2
 - name: koalaman/shellcheck@v0.10.0
-- name: mvdan/sh@v3.12.0
 - name: kubernetes-sigs/kind@v0.29.0
 - name: denoland/deno@v2.4.2
 - name: cue-lang/cue@v0.13.2
@@ -57,7 +57,6 @@ packages:
 - name: protocolbuffers/protobuf/protoc@v31.1
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.6
 - name: Wilfred/difftastic@0.64.0
-- name: golang/go@go1.24.4
 - name: aws/aws-cli@2.27.60
 - name: aws/session-manager-plugin@1.2.536.0
 - name: GoogleContainerTools/skaffold@v2.16.1

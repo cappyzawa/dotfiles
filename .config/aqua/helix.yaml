@@ -1,0 +1,14 @@
+# Helix Editor Dependencies
+# Language servers and formatters managed by aqua
+
+packages:
+# Language servers (binary releases)
+- name: hashicorp/terraform-ls@v0.36.5
+- name: tamasfe/taplo@0.10.0
+- name: artempyanykh/marksman@2024-12-18
+- name: LuaLS/lua-language-server@3.10.5
+- name: golang/go@go1.24.4  # provides gopls
+
+# Formatters (binary releases)
+- name: mvdan/sh@v3.12.0     # provides shfmt
+# Note: prettier and other npm-based tools are managed via .zsh/60_lang.zsh

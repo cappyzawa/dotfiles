@@ -72,6 +72,65 @@ file-types = ["sh", "bash", "zsh", ".zshenv", ".zshrc", ".zprofile", ".bashrc", 
 shebangs = ["sh", "bash", "dash", "zsh"]
 comment-token = "#"
 language-servers = ["bash-language-server"]
+formatter = { command = "shfmt", args = ["-i", "2"] }
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+# Additional languages from nvim config
+[[language]]
+name = "css"
+scope = "source.css"
+file-types = ["css"]
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.css"] }
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "html"
+scope = "text.html.basic"
+file-types = ["html"]
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.html"] }
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+file-types = ["js", "mjs"]
+language-servers = ["typescript-language-server"]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+file-types = ["ts"]
+language-servers = ["typescript-language-server"]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+file-types = ["tsx"]
+language-servers = ["typescript-language-server"]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "lua"
+scope = "source.lua"
+file-types = ["lua"]
+language-servers = ["lua-language-server"]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "terraform"
+scope = "source.hcl"
+file-types = ["tf", "hcl"]
+language-servers = ["terraform-ls"]
+auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [language-server.gopls]
@@ -100,3 +159,14 @@ args = ["server"]
 [language-server.bash-language-server]
 command = "bash-language-server"
 args = ["start"]
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+[language-server.lua-language-server]
+command = "lua-language-server"
+
+[language-server.terraform-ls]
+command = "terraform-ls"
+args = ["serve"]
