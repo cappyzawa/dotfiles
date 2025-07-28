@@ -1,0 +1,75 @@
+theme = "tokyonight_night"
+
+[editor]
+true-color = true
+cursorline = true
+color-modes = true
+auto-completion = true
+auto-save = true
+auto-format = true
+auto-pairs = true
+end-of-line-diagnostics = "hint"
+clipboard-provider = "pasteboard"
+mouse = false
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-type"]
+separator = "│"
+
+[editor.lsp]
+display-messages = true
+auto-signature-help = true
+display-inlay-hints = true
+display-signature-help-docs = true
+snippets = true
+goto-reference-include-declaration = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+follow-symlinks = true
+deduplicate-links = true
+parents = true
+ignore = true
+git-ignore = true
+git-global = true
+git-exclude = true
+
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.whitespace]
+render = "none"
+
+[editor.gutters]
+layout = ["diff", "diagnostics", "line-numbers", "spacer"]
+
+[editor.soft-wrap]
+enable = false
+
+[keys.normal]
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
+y = "yank_to_clipboard"
+Y = "yank_joined_to_clipboard"
+d = ["yank_to_clipboard", "delete_selection_noyank"]
+space.h = "goto_line_start"
+space.l = "goto_line_end"
+
+[keys.select]
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
+y = "yank_to_clipboard"
+Y = "yank_joined_to_clipboard"
+R = "replace_selections_with_clipboard"
+d = ["yank_to_clipboard", "delete_selection_noyank"]
+
+[keys.insert]
+j.j = "normal_mode"

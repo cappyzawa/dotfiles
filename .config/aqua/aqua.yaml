@@ -79,3 +79,4 @@ packages:
 - name: nodejs/node@v24.4.1
 - name: sigstore/cosign@v2.5.3
 - name: pre-commit/pre-commit@v4.2.0
+- name: oras-project/oras@v1.2.3

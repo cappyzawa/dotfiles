@@ -29,14 +29,9 @@ export LANG="${LANGUAGE}"
 export LC_ALL="${LANGUAGE}"
 export LC_CTYPE="${LANGUAGE}"
 
-# Editor
+# Editor (set after PATH is initialized)
 export EDITOR=vim
-if command -v nvim >/dev/null 2>&1; then
-    export EDITOR=nvim
-fi
-export CVSEDITOR="${EDITOR}"
-export SVN_EDITOR="${EDITOR}"
-export GIT_EDITOR="${EDITOR}"
+
 
 # Pager
 export PAGER=less
@@ -75,3 +70,16 @@ fi
 if [[ -d ~/.local/share/aquaproj-aqua/bin ]]; then
     path=(~/.local/share/aquaproj-aqua/bin $path)
 fi
+
+# Editor configuration (after PATH is set)
+if command -v hx >/dev/null 2>&1; then
+    export EDITOR=hx
+    alias vim='hx'
+elif command -v nvim >/dev/null 2>&1; then
+    export EDITOR=nvim
+    alias vim='nvim'
+fi
+
+export CVSEDITOR="${EDITOR}"
+export SVN_EDITOR="${EDITOR}"
+export GIT_EDITOR="${EDITOR}"

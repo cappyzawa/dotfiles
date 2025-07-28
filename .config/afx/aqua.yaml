@@ -26,7 +26,6 @@ github:
       ls: exa
       lg: lazygit
       ld: lazydocker
-      vim: nvim
       vi: command vim
       docker-compose: docker-cli-plugin-docker-compose
     snippet: |
