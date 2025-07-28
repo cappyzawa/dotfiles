@@ -62,7 +62,8 @@
       "mcp__github__list_tags",
       "mcp__github__search_code",
       "mcp__github__search_issues"
-    ]
+    ],
+    "deny": ["Read(~/.zshrc.local)"]
   },
   "env": {
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
