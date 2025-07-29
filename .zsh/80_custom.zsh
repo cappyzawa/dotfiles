@@ -32,6 +32,5 @@ fi
 # Set KREW_ROOT and add to PATH dynamically
 export KREW_ROOT=${KREW_ROOT:-$HOME/.krew}
 
-# Use dynamic PATH management - this will override the static path in .zprofile
-# and ensure the current KREW_ROOT value is used
-path_add '$KREW_ROOT/bin'
+# Dynamic PATH management - already added in .config/afx/local.yaml
+# This ensures the current KREW_ROOT value is used if changed at runtime

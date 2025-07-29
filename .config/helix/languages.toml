@@ -1,69 +1,99 @@
 use-grammars = { except = [ "hare", "wgsl" ] }
 
+# Go
 [[language]]
 name = "go"
 scope = "source.go"
-injection-regex = "go"
 file-types = ["go"]
-roots = ["Gopkg.toml", "go.mod"]
+roots = ["go.work", "go.mod"]
 auto-format = true
 comment-token = "//"
 language-servers = ["gopls"]
+formatter = { command = "goimports" }
 indent = { tab-width = 4, unit = "\t" }
 
+[language-server.gopls]
+command = "gopls"
+args = ["serve"]
+
+# Rust
 [[language]]
 name = "rust"
 scope = "source.rust"
-injection-regex = "rust"
-file-types = ["rs"]
 roots = ["Cargo.toml", "Cargo.lock"]
 auto-format = true
-comment-tokens = ["//", "///", "//!"]
 language-servers = ["rust-analyzer"]
-indent = { tab-width = 4, unit = "    " }
 
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+# YAML
 [[language]]
 name = "yaml"
 scope = "source.yaml"
 file-types = ["yml", "yaml"]
 comment-token = "#"
-auto-format = true
 language-servers = ["yaml-language-server"]
+formatter = { command = "yamlfmt", args = ["-"] }
+auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+[language-server.yaml-language-server]
+command = "yaml-language-server"
+args = ["--stdio"]
+
+# JSON
 [[language]]
 name = "json"
 scope = "source.json"
 file-types = ["json"]
 language-servers = ["vscode-json-language-server"]
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.json"] }
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+
+# TOML
 [[language]]
 name = "toml"
 scope = "source.toml"
 injection-regex = "toml"
-file-types = ["toml", "Cargo.lock"]
+file-types = ["toml"]
 comment-token = "#"
 language-servers = ["taplo"]
 indent = { tab-width = 2, unit = "  " }
 
+[language-server.taplo]
+command = "taplo"
+args = ["lsp", "stdio"]
+
+# Markdown
 [[language]]
 name = "markdown"
 scope = "source.md"
 injection-regex = "md|markdown"
 file-types = ["md", "markdown", "PULLREQ_EDITMSG", "ISSUE_EDITMSG"]
 language-servers = ["marksman"]
+formatter = { command = "prettier", args = ["--stdin-filepath", "file.md"] }
+auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+[language-server.marksman]
+command = "marksman"
+args = ["server"]
+
+# Dockerfile
 [[language]]
 name = "dockerfile"
 scope = "source.dockerfile"
-injection-regex = "docker|dockerfile"
 file-types = ["Dockerfile", "dockerfile"]
 comment-token = "#"
 indent = { tab-width = 2, unit = "  " }
 
+# Bash/Shell
 [[language]]
 name = "bash"
 scope = "source.bash"
@@ -76,7 +106,11 @@ formatter = { command = "shfmt", args = ["-i", "2"] }
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
-# Additional languages from nvim config
+[language-server.bash-language-server]
+command = "bash-language-server"
+args = ["start"]
+
+# CSS
 [[language]]
 name = "css"
 scope = "source.css"
@@ -85,6 +119,7 @@ formatter = { command = "prettier", args = ["--stdin-filepath", "file.css"] }
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+# HTML
 [[language]]
 name = "html"
 scope = "text.html.basic"
@@ -93,6 +128,7 @@ formatter = { command = "prettier", args = ["--stdin-filepath", "file.html"] }
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+# JavaScript
 [[language]]
 name = "javascript"
 scope = "source.js"
@@ -101,6 +137,7 @@ language-servers = ["typescript-language-server"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+# TypeScript
 [[language]]
 name = "typescript"
 scope = "source.ts"
@@ -109,6 +146,7 @@ language-servers = ["typescript-language-server"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+# TSX
 [[language]]
 name = "tsx"
 scope = "source.tsx"
@@ -117,6 +155,11 @@ language-servers = ["typescript-language-server"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+# Lua
 [[language]]
 name = "lua"
 scope = "source.lua"
@@ -125,6 +168,10 @@ language-servers = ["lua-language-server"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+[language-server.lua-language-server]
+command = "lua-language-server"
+
+# Terraform
 [[language]]
 name = "terraform"
 scope = "source.hcl"
@@ -132,40 +179,6 @@ file-types = ["tf", "hcl"]
 language-servers = ["terraform-ls"]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
-
-[language-server.gopls]
-command = "gopls"
-args = ["serve"]
-
-[language-server.rust-analyzer]
-command = "rust-analyzer"
-
-[language-server.yaml-language-server]
-command = "yaml-language-server"
-args = ["--stdio"]
-
-[language-server.vscode-json-language-server]
-command = "vscode-json-language-server"
-args = ["--stdio"]
-
-[language-server.taplo]
-command = "taplo"
-args = ["lsp", "stdio"]
-
-[language-server.marksman]
-command = "marksman"
-args = ["server"]
-
-[language-server.bash-language-server]
-command = "bash-language-server"
-args = ["start"]
-
-[language-server.typescript-language-server]
-command = "typescript-language-server"
-args = ["--stdio"]
-
-[language-server.lua-language-server]
-command = "lua-language-server"
 
 [language-server.terraform-ls]
 command = "terraform-ls"

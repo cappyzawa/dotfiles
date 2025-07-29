@@ -7,8 +7,15 @@ packages:
 - name: tamasfe/taplo@0.10.0
 - name: artempyanykh/marksman@2024-12-18
 - name: LuaLS/lua-language-server@3.10.5
-- name: golang/go@go1.24.4  # provides gopls
+- name: golang/tools/gopls@v0.17.2
+
+# Go toolchain
+- name: golang/go@go1.24.4  # provides go, gofmt
 
 # Formatters (binary releases)
 - name: mvdan/sh@v3.12.0     # provides shfmt
+- name: golang/tools/goimports@v0.28.0
+
+# Debug adapters
+- name: go-delve/delve@v1.24.0  # provides dlv
 # Note: prettier and other npm-based tools are managed via .zsh/60_lang.zsh
