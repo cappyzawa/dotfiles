@@ -7,7 +7,7 @@ packages:
 - name: tamasfe/taplo@0.10.0
 - name: artempyanykh/marksman@2024-12-18
 - name: LuaLS/lua-language-server@3.10.5
-- name: golang/tools/gopls@v0.17.2
+- name: golang/tools/gopls@v0.20.0
 
 # Go toolchain
 - name: golang/go@go1.24.4  # provides go, gofmt
