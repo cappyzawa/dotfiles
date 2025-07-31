@@ -39,7 +39,7 @@ packages:
 - name: google/yamlfmt@v0.17.2
 - name: koalaman/shellcheck@v0.10.0
 - name: kubernetes-sigs/kind@v0.29.0
-- name: denoland/deno@v2.4.2
+- name: denoland/deno@v2.4.3
 - name: cue-lang/cue@v0.13.2
 - name: ogham/exa@v0.10.1
 - name: open-policy-agent/conftest@v0.62.0
