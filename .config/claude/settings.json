@@ -1,5 +1,9 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 7,
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+  },
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
@@ -61,12 +65,15 @@
       "mcp__github__list_pull_requests",
       "mcp__github__list_tags",
       "mcp__github__search_code",
-      "mcp__github__search_issues"
+      "mcp__github__search_issues",
+      "mcp__serena__find_file",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__think_about_collected_information",
+      "mcp__serena__find_symbol"
     ],
-    "deny": ["Read(~/.zshrc.local)"]
-  },
-  "env": {
-    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+    "deny": [
+      "Read(~/.zshrc.local)"
+    ]
   },
   "hooks": {
     "Notification": [
@@ -91,5 +98,9 @@
         ]
       }
     ]
-  }
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1754061905187
+  },
+  "model": "sonnet"
 }

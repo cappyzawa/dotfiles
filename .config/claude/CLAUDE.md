@@ -33,15 +33,6 @@
 
 - コードの提案を行うときは、それが `cargo clippy` で指摘事項がないかチェックしてください
 
-## FluxCD 作業時の必須プロセス
-
-FluxCD リポジトリでコード変更時は必ず以下を実行：
-
-1. 作業開始前に Read tool で `~/ghq/src/github.com/cappyzawa/fluxcd-development-notes/knowledge/review-lessons.md` を確認し、最新の教訓を把握
-2. 実装開始前に Read tool で `~/ghq/src/github.com/cappyzawa/fluxcd-development-notes/checklists/pre-implementation.md` を確認
-3. PR作成前に Read tool で `~/ghq/src/github.com/cappyzawa/fluxcd-development-notes/checklists/pre-pr.md` を確認
-4. PR説明書作成時に Read tool で `~/ghq/src/github.com/cappyzawa/fluxcd-development-notes/checklists/pr-description.md` を確認
-
 ## GitHub へのアクセスについて
 
 - Web の Fetch ではなく、github mcp server でアクセスしてください
