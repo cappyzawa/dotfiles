@@ -37,7 +37,7 @@ packages:
 - name: golangci/golangci-lint@v2.3.1
 - name: goreleaser/goreleaser@v2.11.2
 - name: google/yamlfmt@v0.17.2
-- name: koalaman/shellcheck@v0.10.0
+- name: koalaman/shellcheck@v0.11.0
 - name: kubernetes-sigs/kind@v0.29.0
 - name: denoland/deno@v2.4.3
 - name: cue-lang/cue@v0.14.0
