@@ -57,7 +57,7 @@ packages:
 - name: protocolbuffers/protobuf/protoc@v31.1
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.6
 - name: Wilfred/difftastic@0.64.0
-- name: aws/aws-cli@2.28.2
+- name: aws/aws-cli@2.28.3
 - name: aws/session-manager-plugin@1.2.536.0
 - name: GoogleContainerTools/skaffold@v2.16.1
 - name: helm/helm@v3.18.4
