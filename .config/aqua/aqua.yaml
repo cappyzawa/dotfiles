@@ -79,4 +79,4 @@ packages:
 - name: sigstore/cosign@v2.5.3
 - name: pre-commit/pre-commit@v4.3.0
 - name: oras-project/oras@v1.2.3
-- name: charmbracelet/glow@v2.1.0
+- name: charmbracelet/glow@v2.1.1
