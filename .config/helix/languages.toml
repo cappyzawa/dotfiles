@@ -78,7 +78,7 @@ injection-regex = "md|markdown"
 file-types = ["md", "markdown", "PULLREQ_EDITMSG", "ISSUE_EDITMSG"]
 language-servers = ["marksman"]
 formatter = { command = "prettier", args = ["--stdin-filepath", "file.md"] }
-auto-format = true
+auto-format = false
 indent = { tab-width = 2, unit = "  " }
 
 [language-server.marksman]

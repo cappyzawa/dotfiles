@@ -60,8 +60,9 @@ P = "paste_clipboard_before"
 y = "yank_to_clipboard"
 Y = "yank_joined_to_clipboard"
 d = ["yank_to_clipboard", "delete_selection_noyank"]
-space.h = "goto_line_start"
-space.l = "goto_line_end"
+
+b = ":echo %sh{git blame --date=short -L %{cursor_line},+1 %{buffer_name} | cut -d' ' -f1-4 | sed 's/$/)/g'}"
+B = ":echo %sh{git show --no-patch --format='%%h (%%an: %%ar): %%s' $(git blame -p %{buffer_name} -L%{cursor_line},+1 | head -1 | cut -d' ' -f1)}"
 
 [keys.select]
 p = "paste_clipboard_after"
