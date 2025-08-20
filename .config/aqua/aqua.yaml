@@ -60,7 +60,7 @@ packages:
 - name: aws/aws-cli@2.28.13
 - name: aws/session-manager-plugin@1.2.536.0
 - name: GoogleContainerTools/skaffold@v2.16.1
-- name: helm/helm@v3.18.5
+- name: helm/helm@v3.18.6
 - name: awslabs/amazon-ecr-credential-helper@v0.10.1
 - name: sharkdp/bat@v0.25.0
 - name: prometheus/prometheus@v3.5.0
