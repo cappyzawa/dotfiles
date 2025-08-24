@@ -48,7 +48,7 @@ packages:
 - name: wagoodman/dive@v0.13.1
 - name: dominikh/go-tools/staticcheck@2025.1.1
 - name: ziglang/zig@0.14.1
-- name: zigtools/zls@0.14.0
+- name: zigtools/zls@0.15.0
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v4.7.1
 - name: kubernetes-sigs/krew@v0.4.5
