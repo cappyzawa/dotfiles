@@ -218,8 +218,8 @@ function fish_user_key_bindings
     bind -M insert \cx edit-cmd-in-hx         # Ctrl-x: edit commandline in hx
     bind -M insert \co hx-open-token          # Ctrl-o: open token under cursor in hx
 
-    # Custom jj binding for fish-helix (escape to normal mode)
-    bind -M insert jj 'set fish_bind_mode default; commandline -f repaint-mode'
+    # Note: Use ESC key to escape to normal mode (fish-helix default)
+    # jj binding causes display issues with fish-helix plugin
 end
 
 
