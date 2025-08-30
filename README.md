@@ -97,8 +97,9 @@ This dotfiles includes optimized key bindings for efficient development workflow
 
 - **Ctrl+x**: Edit current command line in Helix
 - **Ctrl+o**: Open file/path under cursor in Helix
-- **Ctrl+g**: FZF file picker → open in Helix
+- **Ctrl+f then Ctrl+o**: FZF file picker → open selected file in Helix
 - **`hg`**: Quick git changes → Helix
-- **`hf`**: Quick FZF → Helix
+
+Note: Use Ctrl+f to open fzf file search, then Ctrl+o to open the selected file in Helix.
 
 All key bindings are configured to avoid conflicts with tmux prefix (Ctrl+t).

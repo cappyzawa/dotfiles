@@ -33,19 +33,6 @@ function hx-open-token
     end
 end
 
-function hx-fzf
-    if not type -q fzf
-        echo "fzf not found" >&2
-        return 1
-    end
-    # fd があれば速い
-    if type -q fd
-        set -l pick (fd --type f --hidden --follow --exclude .git | fzf --height 40% --reverse)
-    else
-        set -l pick (find . -type f 2>/dev/null | sed 's|^\./||' | fzf --height 40% --reverse)
-    end
-    test -n "$pick"; and hx $pick
-end
 
 function hx-git-changes
     if not type -q git
@@ -59,7 +46,9 @@ function hx-git-changes
     end
     if type -q fzf
         set -l pick (printf '%s\n' $files | fzf --height 40% --reverse --multi)
-        test -n "$pick"; and hx $pick
+        if test -n "$pick"
+            hx $pick
+        end
     else
         hx $files
     end

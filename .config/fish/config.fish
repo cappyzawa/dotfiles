@@ -202,7 +202,6 @@ alias claude="$HOME/.config/claude/local/claude"
 
 # Helix utility aliases
 alias hg='hx-git-changes'                      # Quick git changes in hx
-alias hf='hx-fzf'                             # Quick fzf file picker for hx
 
 # ============================================================================
 # Vi Mode and Key Bindings
@@ -226,7 +225,6 @@ function fish_user_key_bindings
     # Helix integration
     bind -M insert \cx edit-cmd-in-hx         # Ctrl-x: edit commandline in hx (zsh-like)
     bind -M insert \co hx-open-token          # Ctrl-o: open token under cursor in hx
-    bind -M insert \cg hx-fzf                 # Ctrl-g: fzf file picker for hx
 end
 
 
@@ -278,6 +276,9 @@ if status --is-interactive
     if type -q delta
         set -g fzf_diff_highlighter delta --paging=never --width=20
     end
+
+    # Custom fzf directory search with Helix integration
+    set -g fzf_directory_opts --bind='ctrl-o:execute(hx {})+abort'
 end
 
 # ============================================================================
