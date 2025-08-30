@@ -32,24 +32,3 @@ function hx-open-token
         echo "not found: $path" >&2
     end
 end
-
-
-function hx-git-changes
-    if not type -q git
-        echo "git not found" >&2
-        return 1
-    end
-    set -l files (git -c color.ui=never status --porcelain | awk '{print $2}')
-    if test -z "$files"
-        echo "no changes" >&2
-        return 1
-    end
-    if type -q fzf
-        set -l pick (printf '%s\n' $files | fzf --height 40% --reverse --multi)
-        if test -n "$pick"
-            hx $pick
-        end
-    else
-        hx $files
-    end
-end

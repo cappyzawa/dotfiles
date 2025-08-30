@@ -200,8 +200,6 @@ alias x64='exec arch -arch x86_64 /usr/local/bin/fish'
 # Claude CLI alias
 alias claude="$HOME/.config/claude/local/claude"
 
-# Helix utility aliases
-alias hg='hx-git-changes'                      # Quick git changes in hx
 
 # ============================================================================
 # Vi Mode and Key Bindings
@@ -279,6 +277,9 @@ if status --is-interactive
 
     # Custom fzf directory search with Helix integration
     set -g fzf_directory_opts --bind='ctrl-o:execute(hx {})+abort'
+
+    # Git status search with Helix integration
+    set -g fzf_git_status_opts --bind='ctrl-o:execute(hx {})+abort'
 end
 
 # ============================================================================
