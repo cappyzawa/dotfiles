@@ -14,7 +14,11 @@ cask "dropbox" if OS.mac?
 cask "appcleaner" if OS.mac?
 cask "logi-options+" if OS.mac?
 
+brew "aquaproj-aqua/aqua/aqua"
+brew "fish"
 brew "fzf"
+brew "fd"
+brew "bat"
 brew "starship"
 brew "utf8proc", args: ["HEAD"]
 brew "neovim"

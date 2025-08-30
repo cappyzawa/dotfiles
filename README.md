@@ -2,7 +2,7 @@
 
 [![BuildStatus](https://github.com/cappyzawa/dotfiles/workflows/CI/badge.svg)](https://github.com/cappyzawa/dotfiles/actions?query=workflow%3ACI)
 
-dotfile for cappyzawa (using macOS).
+dotfile for cappyzawa (using macOS with fish shell).
 
 ## Setup
 
@@ -14,92 +14,91 @@ $ make all
 
 ## Key Features
 
-### Dynamic PATH Management
+### Fish Shell Configuration
 
-This dotfiles includes a flexible PATH management system (`.zsh/05_path_manager.zsh`) that solves common issues with shell configuration:
+This dotfiles uses fish shell with a consolidated configuration structure following fish best practices:
 
-#### Basic Usage
+- **Main Configuration**: `.config/fish/config.fish` - Single consolidated configuration file
+- **Local Overrides**: `.config/fish/config_local.fish` - Git-ignored local customizations
+- **Plugin Management**: Fisher with `.config/fish/fish_plugins` for reproducible plugin setup
+- **User Functions**: `.config/fish/conf.d/` - Custom functions and configurations (Git managed)
+- **Lazy Loading**: `.config/fish/conf.d/hooks.fish` - Performance optimizations for heavy tools
 
-```bash
-# Add directory to PATH (highest priority)
-path_add /path/to/bin
+Note: `functions/`, `completions/`, and `themes/` directories are Git-ignored as they contain plugin-generated files.
 
-# Add directory with lower priority
-path_add /path/to/bin append
+#### Fish Plugins (managed by Fisher)
 
-# Add paths with variables (supports dynamic resolution)
-path_add '$CUSTOM_ROOT/bin'
-
-# Remove from PATH
-path_remove /path/to/bin
-
-# Debug current PATH state (shows managed vs system paths)
-path_debug
 ```
-
-#### Benefits
-
-- **Flexibility**: Variables are resolved dynamically, so changing `$CUSTOM_ROOT` works correctly
-- **Priority Control**: Later additions override earlier ones properly
-- **Automatic Deduplication**: No duplicate entries in PATH
-- **Existence Checking**: Only existing directories are added
-- **Debug Support**: Visual debugging with `path_debug` command (✓ = managed paths)
-
-#### Adding New Tools
-
-When adding new development tools, use this pattern:
-
-```bash
-# In your custom zsh files (e.g., .zsh/80_custom.zsh)
-export TOOL_ROOT=${TOOL_ROOT:-$HOME/.tool}
-path_add '$TOOL_ROOT/bin'
+jorgebucaran/fisher      # Plugin manager itself
+jethrokuan/z            # Directory jumper
+vitallium/tokyonight-fish  # Tokyo Night theme
+PatrickF1/fzf.fish      # FZF integration
 ```
-
-This ensures the tool's PATH works correctly even if `TOOL_ROOT` is changed later.
 
 ### Performance Optimizations
 
-- **Fast Startup**: ~15ms shell startup time with lazy loading (94% improvement from 250ms)
-- **Command Caching**: Repeated command existence checks are cached
-- **Lazy Loading System**: Heavy tools load on first command execution
-- **Optimized PATH Setup**: Essential paths in `.zshenv`, detailed paths via afx snippet
+- **Fast Startup**: Optimized fish configuration with lazy loading
+- **Event-Based Loading**: Heavy tools (starship, direnv, AWS CLI) load on first prompt
+- **Smart Conditionals**: Tools only initialize if installed
+- **One-Time Setup**: Initialization functions self-destruct after first run
 
-#### Shell Initialization Order
+#### Lazy Loading Pattern
 
-1. **`.zshenv`**: Environment variables + essential PATH (~/bin, aqua)
-2. **`.zprofile`**: afx lazy loading hook registration + Homebrew initialization
-3. **`.zshrc`**: Minimal configuration (colors setup + local overrides)
-4. **On first command (precmd hook)**: `afx init` executes, loading all local scripts, zsh plugins, and `.zsh/hooks/`
+Heavy tools are loaded on first prompt using fish events:
 
-#### Lazy Loading Hook Pattern
-
-New tools can be easily added to the lazy loading system by creating hook files in `.zsh/hooks/`:
-
-```bash
-# .zsh/hooks/newtool.zsh
-_lazy_load_newtool() {
-    eval "$(newtool init)"
-    unfunction _lazy_load_newtool
-}
-
-if command -v newtool &> /dev/null; then
-    function _newtool_hook() {
-        _lazy_load_newtool
-        unfunction _newtool_hook
-    }
-    autoload -Uz add-zsh-hook
-    add-zsh-hook precmd _newtool_hook
-fi
+```fish
+function __init_tools --on-event fish_prompt
+    if not set -q __tools_loaded
+        # direnv hook
+        if command -v direnv > /dev/null 2>&1
+            direnv hook fish | source
+        end
+        # AWS CLI completion
+        if command -v aws_completer > /dev/null 2>&1
+            complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+        end
+        set -g __tools_loaded 1
+        functions -e __init_tools
+    end
+end
 ```
-
-Files placed in `.zsh/hooks/` are automatically loaded by afx (via local.yaml configuration). This pattern:
-
-- Only registers hooks for available commands
-- Removes hooks after first execution
-- Provides significant startup performance improvements
 
 ### Package Management Strategy
 
-- **Homebrew**: System tools and GUI applications
-- **Aqua**: Development CLI tools with version management
-- **afx**: Zsh plugins and GitHub CLI extensions
+Simplified to two package managers for clarity:
+
+- **Homebrew** (`Brewfile`): System tools, GUI applications, and system integration
+- **Aqua** (`.config/aqua/aqua.yaml`): Development CLI tools with version management
+- **Fisher** (`.config/fish/fish_plugins`): Fish shell plugins
+
+### Architecture Support
+
+Supports both ARM64 and x86_64 architectures:
+
+- `arm`: Switch to ARM64 architecture
+- `x64`: Switch to x86_64 architecture
+
+Architecture-specific paths and tools are automatically configured.
+
+### Key Bindings
+
+This dotfiles includes optimized key bindings for efficient development workflow:
+
+#### FZF Integration (via fzf.fish plugin)
+
+- **Ctrl+f**: Directory/file search with preview
+- **Alt+l**: Git log search with diff preview
+- **Alt+s**: Git status search with diff preview
+- **Ctrl+r**: Command history search
+- **Alt+p**: Process search
+- **Ctrl+v**: Variable search
+
+#### Helix Editor Integration
+
+- **Ctrl+x**: Edit current command line in Helix
+- **Ctrl+o**: Open file/path under cursor in Helix
+- **Ctrl+g**: FZF file picker → open in Helix
+- **`hg`**: Quick git changes → Helix
+- **`hf`**: Quick FZF → Helix
+
+All key bindings are configured to avoid conflicts with tmux prefix (Ctrl+t).

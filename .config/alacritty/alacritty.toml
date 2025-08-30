@@ -18,12 +18,13 @@ family = "Moralerspace Argon"
 style = "Regular"
 
 [terminal.shell]
-program = "/bin/zsh"
+program = "/opt/homebrew/bin/fish"
 args = ["-l", "-i", "-c", "tmux new-session -A -s zzz"]
 
 [window]
 decorations = "full"
 dynamic_padding = true
+option_as_alt = "Both"
 # startup_mode = "Fullscreen"
 
 [window.padding]
@@ -34,3 +35,6 @@ y = 5
 import = ["~/.config/alacritty/tokyo-night.toml"]
 
 [terminal]
+
+[keyboard]
+bindings = []

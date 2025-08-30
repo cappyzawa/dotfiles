@@ -38,4 +38,9 @@ Brewfile.lock.json
 !.config/claude/settings.json
 !.config/claude/CLAUDE.md
 !.config/claude/commands/
+.config/fish/config_local.fish
+.config/fish/fish_variables
+.config/fish/themes/
+.config/fish/functions/
+.config/fish/completions/
 !CLAUDE.md
