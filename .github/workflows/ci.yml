@@ -9,11 +9,11 @@ jobs:
         os: [ubuntu-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Install zsh
+    - name: Install fish
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update -y
-        sudo apt-get install -y zsh curl make git
+        sudo apt-get install -y fish curl make git
     - uses: actions/checkout@v4
     - name: Set up Homebrew
       id: set-up-homebrew
@@ -22,13 +22,12 @@ jobs:
       run: |
         echo "PR was created by: ${{ github.event.pull_request.user.login }}"
         make all
-    - name: Reboot shell
+    - name: Test fish configuration
       run: |
-        source ~/.zshenv
-        source ~/.zshrc
-      # https://github.com/actions/virtual-environments/issues/264#issuecomment-574032011
-      # use zsh
-      shell: zsh {0}
+        fish -c 'echo "Fish shell configuration test"'
+        fish -c 'echo $PATH'
+      # Test fish shell configuration
+      shell: fish {0}
   status-check:
     runs-on: ubuntu-latest
     needs:
