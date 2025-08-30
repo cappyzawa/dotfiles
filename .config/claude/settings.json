@@ -75,6 +75,7 @@
       "Read(~/.zshrc.local)"
     ]
   },
+  "model": "opusplan",
   "hooks": {
     "Notification": [
       {
@@ -101,6 +102,5 @@
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754061905187
-  },
-  "model": "sonnet"
+  }
 }

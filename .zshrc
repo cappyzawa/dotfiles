@@ -6,3 +6,5 @@ colors
 if [[ -f ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
+
+alias claude="/Users/cappyzawa/.config/claude/local/claude"

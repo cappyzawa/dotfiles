@@ -21,7 +21,7 @@ separator = "│"
 [editor.lsp]
 display-messages = true
 auto-signature-help = true
-display-inlay-hints = true
+display-inlay-hints = false
 display-signature-help-docs = true
 snippets = true
 goto-reference-include-declaration = true

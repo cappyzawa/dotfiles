@@ -168,15 +168,3 @@ gui:
       init: 'i'
       update: 'u'
       bulkMenu: 'b'
-customCommands:
-- key: "<c-y>"
-  context: "staging"
-  description: "Send comment to AI assistant"
-  loadingText: "Sending comment…"
-  prompts:
-  - type: "input"
-    title: "Comment:"
-  command: |
-    lazygit-mcp-bridge send \
-      --file "{{ .SelectedPath }}" \
-      --comment "{{ index .PromptResponses 0 }}"
