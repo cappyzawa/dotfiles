@@ -105,6 +105,11 @@ if test -d "$HOME/Library/Application Support/Coursier/bin"
     fish_add_path -a "$HOME/Library/Application Support/Coursier/bin"
 end
 
+# GNU tools (for fish-helix compatibility)
+if test -d "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
+    fish_add_path -p "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
+end
+
 # Optional tools
 if test -d "/usr/local/opt/libpq/bin"
     fish_add_path -a "/usr/local/opt/libpq/bin"
@@ -205,24 +210,16 @@ alias claude="$HOME/.config/claude/local/claude"
 # Vi Mode and Key Bindings
 # ============================================================================
 
-# Vi mode keybindings
-fish_vi_key_bindings
+# Helix keybindings (managed by fish-helix plugin)
+fish_helix_key_bindings
 
 function fish_user_key_bindings
-    # jj to escape from insert mode to normal mode
-    bind -M insert -m default jj backward-char force-repaint
-
-    # Emacs-like bindings in insert mode
-    bind -M insert \ca beginning-of-line
-    bind -M insert \ce end-of-line
-
-    # Vi mode specific (意図通りならこのまま)
-    bind -M default ' h' beginning-of-line
-    bind -M default ' l' end-of-line
-
-    # Helix integration
-    bind -M insert \cx edit-cmd-in-hx         # Ctrl-x: edit commandline in hx (zsh-like)
+    # Helix integration functions
+    bind -M insert \cx edit-cmd-in-hx         # Ctrl-x: edit commandline in hx
     bind -M insert \co hx-open-token          # Ctrl-o: open token under cursor in hx
+
+    # Custom jj binding for fish-helix (escape to normal mode)
+    bind -M insert jj 'set fish_bind_mode default; commandline -f repaint-mode'
 end
 
 
