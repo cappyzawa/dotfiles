@@ -33,7 +33,7 @@ set -gx PAGER less
 set -gx LESS '-R -f -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
 set -gx LESSCHARSET 'utf-8'
 
-# Less man page colors (printf でエスケープを確実に)
+# Less man page colors (ensure escape sequences with printf)
 set -gx LESS_TERMCAP_mb (printf '\e[01;31m')
 set -gx LESS_TERMCAP_md (printf '\e[01;31m')
 set -gx LESS_TERMCAP_me (printf '\e[0m')
@@ -62,10 +62,8 @@ if test -d "$CARGO_HOME/bin"
     fish_add_path -p "$CARGO_HOME/bin"
 end
 
-# 起動メッセージは消す（未設定/空でない場合のみ一度設定）
-if test -n "$fish_greeting"
-    set -U fish_greeting ""
-end
+# Disable startup greeting message
+set -U fish_greeting ""
 
 # ============================================================================
 # PATH Management
