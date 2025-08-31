@@ -2,7 +2,7 @@
 # Only runs when fish_plugins file changes
 if status --is-interactive
     set -l manifest ~/.config/fish/fish_plugins
-    set -l stamp    ~/.local/share/fish/fish_plugins.last
+    set -l stamp ~/.local/share/fish/fish_plugins.last
 
     if test -f $manifest
         mkdir -p (dirname $stamp)
