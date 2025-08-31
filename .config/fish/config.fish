@@ -138,36 +138,6 @@ set -gx SVN_EDITOR $EDITOR
 set -gx GIT_EDITOR $EDITOR
 
 # ============================================================================
-# Aliases
-# ============================================================================
-
-# Git aliases
-if type -q git
-    alias gst='git status'
-end
-
-# 1Password integration
-if type -q op
-    alias aqua='env GITHUB_TOKEN=(op read -f "op://Private/GitHub Personal Access Token/token") aqua'
-end
-
-# Development tool aliases
-if type -q kubectl
-    alias k='kubectl'
-end
-if type -q eza
-    alias ls='eza'
-else if type -q exa
-    alias ls='exa'
-end
-if type -q lazygit
-    alias lg='lazygit'
-end
-if type -q lazydocker
-    alias ld='lazydocker'
-end
-
-# ============================================================================
 # Vi Mode and Key Bindings
 # ============================================================================
 
