@@ -5,12 +5,14 @@ DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
 
-all: brew install
+all: brew aqua install
 
 brew: ## Install brew
 	@sh ./etc/scripts/brew.sh
 	@brew bundle
 
+aqua: ## Install aqua
+	@sh ./etc/scripts/aqua.sh
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
