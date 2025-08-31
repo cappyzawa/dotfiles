@@ -16,7 +16,7 @@ set -gx CLAUDE_CONFIG_DIR "$XDG_CONFIG_HOME/claude"
 
 # Aqua configuration
 set -gx AQUA_GLOBAL_CONFIG "$XDG_CONFIG_HOME/aqua/aqua.yaml"
-set -gx AQUA_PROGRESS_BAR "true"
+set -gx AQUA_PROGRESS_BAR true
 set -gx AQUA_POLICY_CONFIG "$XDG_CONFIG_HOME/aqua/aqua-policy.yaml"
 set -gx LIMA_TEMPLATES_DIR "$XDG_CONFIG_HOME/lima/templates:/usr/local/share/lima/templates"
 set -gx GOPATH "$HOME/ghq"
@@ -31,7 +31,7 @@ set -gx LC_CTYPE $LANGUAGE
 set -gx EDITOR vim
 set -gx PAGER less
 set -gx LESS '-R -f -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
-set -gx LESSCHARSET 'utf-8'
+set -gx LESSCHARSET utf-8
 
 # Less man page colors (ensure escape sequences with printf)
 set -gx LESS_TERMCAP_mb (printf '\e[01;31m')
@@ -49,9 +49,9 @@ set -gx LS_COLORS 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=4
 # Architecture-specific settings / Homebrew
 set -l arch (uname -m)
 set -gx ARCH $arch
-if test "$arch" = "arm64" -a -x /opt/homebrew/bin/brew
+if test "$arch" = arm64 -a -x /opt/homebrew/bin/brew
     eval (/opt/homebrew/bin/brew shellenv)
-else if test "$arch" = "x86_64" -a -x /usr/local/bin/brew
+else if test "$arch" = x86_64 -a -x /usr/local/bin/brew
     eval (/usr/local/bin/brew shellenv)
 end
 set -gx LDFLAGS "-L$HOMEBREW_PREFIX/lib"
@@ -104,16 +104,16 @@ if test -d "$HOME/Library/Application Support/Coursier/bin"
 end
 
 # GNU tools (for fish-helix compatibility)
-if test -d "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
-    fish_add_path -p "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
+if test -d /opt/homebrew/opt/gnu-sed/libexec/gnubin
+    fish_add_path -p /opt/homebrew/opt/gnu-sed/libexec/gnubin
 end
 
 # Optional tools
-if test -d "/usr/local/opt/libpq/bin"
-    fish_add_path -a "/usr/local/opt/libpq/bin"
+if test -d /usr/local/opt/libpq/bin
+    fish_add_path -a /usr/local/opt/libpq/bin
 end
-if test -d "/usr/local/opt/llvm/bin"
-    fish_add_path -a "/usr/local/opt/llvm/bin"
+if test -d /usr/local/opt/llvm/bin
+    fish_add_path -a /usr/local/opt/llvm/bin
 end
 if test -d "/opt/homebrew/opt/openjdk@17/bin"
     fish_add_path -a "/opt/homebrew/opt/openjdk@17/bin"
@@ -188,7 +188,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # macOS specific
-if test (uname -s) = "Darwin"
+if test (uname -s) = Darwin
     if type -q brew
         set -l brew_prefix (brew --prefix)
         alias ctags="$brew_prefix/bin/ctags"
@@ -203,7 +203,6 @@ alias x64='exec arch -arch x86_64 /usr/local/bin/fish'
 # Claude CLI alias
 alias claude="$HOME/.config/claude/local/claude"
 
-
 # ============================================================================
 # Vi Mode and Key Bindings
 # ============================================================================
@@ -213,8 +212,8 @@ fish_vi_key_bindings
 
 function fish_user_key_bindings
     # Helix integration functions
-    bind -M insert \cx edit-cmd-in-hx         # Ctrl-x: edit commandline in hx
-    bind -M insert \co hx-open-token          # Ctrl-o: open token under cursor in hx
+    bind -M insert \cx edit-cmd-in-hx # Ctrl-x: edit commandline in hx
+    bind -M insert \co hx-open-token # Ctrl-o: open token under cursor in hx
 
     # Helix-style key bindings
     # Insert mode: jj to escape to normal mode
@@ -231,12 +230,11 @@ function fish_user_key_bindings
     bind -M default d delete-char
 end
 
-
 # Cursor styles
 set fish_cursor_default block
-set fish_cursor_insert  line
+set fish_cursor_insert line
 set fish_cursor_replace_one underscore
-set fish_cursor_visual  block
+set fish_cursor_visual block
 
 # ============================================================================
 # Dropbox link compatibility
@@ -289,10 +287,21 @@ if status --is-interactive
 end
 
 # ============================================================================
-# Prompt / Starship (optional)
+# Tool Integrations and Prompt
 # ============================================================================
 
-if type -q starship
+# direnv hook
+if command -v direnv >/dev/null 2>&1
+    direnv hook fish | source
+end
+
+# AWS CLI completion
+if command -v aws_completer >/dev/null 2>&1
+    complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+end
+
+# Starship prompt
+if command -v starship >/dev/null 2>&1
     starship init fish | source
 end
 
