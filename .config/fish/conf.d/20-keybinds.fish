@@ -1,6 +1,9 @@
 # Vi key bindings base
 fish_vi_key_bindings
 
+# fifc configuration
+set -g fifc_editor hx
+
 function fish_user_key_bindings
     # Helix integration functions
     bind -M insert \cx edit-cmd-in-hx # Ctrl-x: edit commandline in hx
@@ -29,4 +32,7 @@ function fish_user_key_bindings
     # Completion pager navigation with Ctrl-n/Ctrl-p
     bind -M pager \cn forward-char
     bind -M pager \cp backward-char
+
+    # Shift-Tab for traditional fish completion (escape from fzf)
+    bind \e\[Z 'commandline -f complete'
 end

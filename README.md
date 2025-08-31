@@ -26,14 +26,9 @@ This dotfiles uses fish shell with a consolidated configuration structure follow
 
 Note: `functions/`, `completions/`, and `themes/` directories are Git-ignored as they contain plugin-generated files.
 
-#### Fish Plugins (managed by Fisher)
+#### Fish Plugins
 
-```
-jorgebucaran/fisher      # Plugin manager itself
-jethrokuan/z            # Directory jumper
-vitallium/tokyonight-fish  # Tokyo Night theme
-PatrickF1/fzf.fish      # FZF integration
-```
+Managed via Fisher with `.config/fish/fish_plugins`.
 
 ### Performance Optimizations
 
@@ -82,24 +77,6 @@ Architecture-specific paths and tools are automatically configured.
 
 ### Key Bindings
 
-This dotfiles includes optimized key bindings for efficient development workflow:
-
-#### FZF Integration (via fzf.fish plugin)
-
-- **Ctrl+f**: Directory/file search with preview
-- **Alt+l**: Git log search with diff preview
-- **Alt+s**: Git status search with diff preview
-- **Ctrl+r**: Command history search
-- **Alt+p**: Process search
-- **Ctrl+v**: Variable search
-
-#### Helix Editor Integration
-
-- **Ctrl+x**: Edit current command line in Helix
-- **Ctrl+o**: Open file/path under cursor in Helix
-- **Ctrl+f then Ctrl+o**: FZF file picker → open selected file in Helix
-- **Alt+s then Ctrl+o**: Git status search → open selected file in Helix
-
-Note: Use Ctrl+f for file search or Alt+s for git status, then Ctrl+o to open the selected file in Helix.
-
-All key bindings are configured to avoid conflicts with tmux prefix (Ctrl+t).
+- Vi-mode with Helix-style customizations
+- FZF-based tab completion
+- All bindings avoid tmux prefix conflicts

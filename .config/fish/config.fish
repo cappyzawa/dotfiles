@@ -230,11 +230,6 @@ if status --is-interactive
     # FZF default options
     set -gx FZF_DEFAULT_OPTS '--height 40% --reverse --border'
 
-    # Configure fzf.fish key bindings to avoid tmux prefix conflict
-    if functions -q fzf_configure_bindings
-        fzf_configure_bindings --directory=\cf --git_log=\el --git_status=\es --history=\cr --processes=\ep --variables=\cv
-    end
-
     # FZF preview commands
     if type -q bat
         set -g fzf_preview_file_cmd bat --style=numbers --color=always --line-range :200
