@@ -20,9 +20,19 @@ repos:
     hooks:
       - id: shfmt
         args: [-w, -i, "2"]
+        files: \.(sh|bash)$
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
         files: \.(md|markdown)$
+
+  - repo: local
+    hooks:
+      - id: fish-format
+        name: Format Fish files
+        entry: fish_indent
+        language: system
+        files: \.fish$
+        args: [-w]

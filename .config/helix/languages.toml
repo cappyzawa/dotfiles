@@ -183,3 +183,18 @@ indent = { tab-width = 2, unit = "  " }
 [language-server.terraform-ls]
 command = "terraform-ls"
 args = ["serve"]
+
+# Fish
+[[language]]
+name = "fish"
+scope = "source.fish"
+file-types = ["fish"]
+comment-token = "#"
+language-servers = ["fish-lsp"]
+formatter = { command = "fish_indent" }
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[language-server.fish-lsp]
+command = "fish-lsp"
+args = ["start"]
