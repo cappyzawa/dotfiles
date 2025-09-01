@@ -53,7 +53,7 @@ packages:
 - name: kubernetes-sigs/kubebuilder@v4.7.1
 - name: kubernetes-sigs/krew@v0.4.5
 - name: tilt-dev/tilt@v0.35.0
-- name: tilt-dev/ctlptl@v0.8.42
+- name: tilt-dev/ctlptl@v0.8.43
 - name: protocolbuffers/protobuf/protoc@v31.1
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.8
 - name: Wilfred/difftastic@0.64.0
