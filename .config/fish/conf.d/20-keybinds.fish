@@ -35,4 +35,5 @@ function fish_user_key_bindings
 
     # Shift-Tab for traditional fish completion (escape from fzf)
     bind \e\[Z 'commandline -f complete'
+
 end

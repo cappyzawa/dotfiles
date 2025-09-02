@@ -7,7 +7,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.407.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.407.2 # renovate: depName=aquaproj/aqua-registry
 - name: custom
   type: local
   path: ./registry.yaml
@@ -52,8 +52,8 @@ packages:
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v4.7.1
 - name: kubernetes-sigs/krew@v0.4.5
-- name: tilt-dev/tilt@v0.35.0
-- name: tilt-dev/ctlptl@v0.8.42
+- name: tilt-dev/tilt@v0.35.1
+- name: tilt-dev/ctlptl@v0.8.43
 - name: protocolbuffers/protobuf/protoc@v31.1
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.8
 - name: Wilfred/difftastic@0.64.0
@@ -65,7 +65,7 @@ packages:
 - name: prometheus/prometheus@v3.5.0
 - name: kubernetes/minikube@v1.36.0
 - name: argoproj/argo-rollouts@v1.8.3
-- name: metalbear-co/mirrord@3.159.0
+- name: metalbear-co/mirrord@3.160.0
 - name: github/github-mcp-server@v0.13.0
 - name: npryce/adr-tools@3.0.0
 - name: fullstorydev/grpcui@v1.4.3

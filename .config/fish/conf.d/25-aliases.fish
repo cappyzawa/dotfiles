@@ -55,5 +55,3 @@ end
 alias arm='exec arch -arch arm64 /opt/homebrew/bin/fish'
 alias x64='exec arch -arch x86_64 /usr/local/bin/fish'
 
-# Claude CLI alias
-alias claude="$HOME/.config/claude/local/claude"
