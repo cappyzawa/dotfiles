@@ -20,5 +20,5 @@ packages:
 - name: golang/tools/goimports@v0.28.0
 
 # Debug adapters
-- name: go-delve/delve@v1.24.0  # provides dlv
+- name: go-delve/delve@v1.25.2  # provides dlv
 # Note: prettier and other npm-based tools are managed via .zsh/60_lang.zsh
