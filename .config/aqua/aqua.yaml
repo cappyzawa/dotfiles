@@ -63,7 +63,7 @@ packages:
 - name: helm/helm@v3.18.6
 - name: awslabs/amazon-ecr-credential-helper@v0.10.1
 - name: prometheus/prometheus@v3.5.0
-- name: kubernetes/minikube@v1.36.0
+- name: kubernetes/minikube@v1.37.0
 - name: argoproj/argo-rollouts@v1.8.3
 - name: metalbear-co/mirrord@3.161.0
 - name: github/github-mcp-server@v0.14.0
