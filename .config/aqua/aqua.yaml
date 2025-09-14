@@ -54,7 +54,7 @@ packages:
 - name: kubernetes-sigs/krew@v0.4.5
 - name: tilt-dev/tilt@v0.35.1
 - name: tilt-dev/ctlptl@v0.8.43
-- name: protocolbuffers/protobuf/protoc@v32.0
+- name: protocolbuffers/protobuf/protoc@v32.1
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.9
 - name: Wilfred/difftastic@0.64.0
 - name: aws/aws-cli@2.30.1
