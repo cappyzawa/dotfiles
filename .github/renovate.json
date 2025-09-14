@@ -2,8 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "github>aquaproj/aqua-renovate-config#2.8.2",
-    "github>aquaproj/aqua-renovate-config:file#2.8.2(\\.config/aqua/.*\\.ya?ml)"
+    "github>aquaproj/aqua-renovate-config#2.9.0",
+    "github>aquaproj/aqua-renovate-config:file#2.9.0(\\.config/aqua/.*\\.ya?ml)"
   ],
   "rebaseWhen": "behind-base-branch",
   "automerge": true,
