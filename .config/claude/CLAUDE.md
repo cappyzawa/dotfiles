@@ -37,3 +37,5 @@
 
 - Web の Fetch ではなく、github mcp server でアクセスしてください
   - 会話において自分は Web リンクを提供すると思いますが、github mcp server でアクセスしてください
+- Commit メッセージにおいて How の箇条書きは不要。Why/What のみを書きたい。
+- コードコメントは英語で記述すること。
