@@ -26,6 +26,7 @@ language-servers = ["rust-analyzer"]
 
 [language-server.rust-analyzer]
 command = "rust-analyzer"
+config = { check = { command = "clippy" }}
 
 # YAML
 [[language]]
