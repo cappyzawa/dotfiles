@@ -13,7 +13,7 @@ packages:
 - name: golang/go@go1.25.1  # provides go, gofmt
 
 # Python toolchain
-- name: astral-sh/uv@0.8.20   # provides uv, uvx
+- name: astral-sh/uv@0.8.21   # provides uv, uvx
 
 # Formatters (binary releases)
 - name: mvdan/sh@v3.12.0     # provides shfmt
