@@ -66,7 +66,7 @@ packages:
 - name: kubernetes/minikube@v1.37.0
 - name: argoproj/argo-rollouts@v1.8.3
 - name: metalbear-co/mirrord@3.163.0
-- name: github/github-mcp-server@v0.15.0
+- name: github/github-mcp-server@v0.16.0
 - name: npryce/adr-tools@3.0.0
 - name: fullstorydev/grpcui@v1.4.3
 - name: fullstorydev/grpcurl@v1.9.3
