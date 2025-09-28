@@ -38,6 +38,11 @@ Brewfile.lock.json
 !.config/claude/settings.json
 !.config/claude/CLAUDE.md
 !.config/claude/commands/
+.config/colima/**
+!.config/colima/**/
+!.config/colima/**/colima.yaml
+!.config/colima/_templates/
+!.config/colima/_templates/*.yaml
 .config/fish/config_local.fish
 .config/fish/fish_variables
 .config/fish/themes/

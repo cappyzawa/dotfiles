@@ -30,5 +30,5 @@ brew "wget"
 brew "ipcalc"
 brew "ruby"
 brew "docker"
-brew "lima"
+brew "colima", restart_service: :always
 brew "cmake"
