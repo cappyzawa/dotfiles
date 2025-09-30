@@ -7,7 +7,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.418.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.419.0 # renovate: depName=aquaproj/aqua-registry
 - name: custom
   type: local
   path: ./registry.yaml
