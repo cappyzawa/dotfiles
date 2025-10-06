@@ -75,7 +75,6 @@
       "Read(~/.zshrc.local)"
     ]
   },
-  "model": "opusplan",
   "hooks": {
     "Notification": [
       {
@@ -100,11 +99,12 @@
       }
     ]
   },
-  "feedbackSurveyState": {
-    "lastShownTime": 1754061905187
-  },
   "statusLine": {
     "type": "command",
     "command": "input=$(cat); printf \"%s:%s\" \"$(whoami)\" \"$(basename \"$(echo \"$input\" | jq -r '.workspace.current_dir')\")\" && if git rev-parse --git-dir >/dev/null 2>&1; then printf \" [%s]\" \"$(git branch --show-current 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)\"; fi"
+  },
+  "alwaysThinkingEnabled": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754061905187
   }
 }
