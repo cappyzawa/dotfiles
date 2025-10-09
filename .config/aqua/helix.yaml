@@ -3,7 +3,7 @@
 
 packages:
 # Language servers (binary releases)
-- name: hashicorp/terraform-ls@v0.38.1
+- name: hashicorp/terraform-ls@v0.38.2
 - name: tamasfe/taplo@0.10.0
 - name: artempyanykh/marksman@2024-12-18
 - name: LuaLS/lua-language-server@3.15.0
