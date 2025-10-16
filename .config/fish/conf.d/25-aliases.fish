@@ -1,4 +1,9 @@
 # Common navigation and listing aliases
+if has eza
+    alias ls='eza'
+else if has exa
+    alias ls='exa'
+end
 alias ..='cd ..'
 alias l='ls -l'
 alias lla='ls -lAF'
@@ -18,9 +23,28 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# Git and development tools
+if has git
+    alias gst='git status'
+end
+if has kubectl
+    alias k='kubectl'
+end
+if has lazygit
+    alias lg='lazygit'
+end
+if has lazydocker
+    alias ld='lazydocker'
+end
+
+# 1Password integration
+if has op
+    alias aqua='env GITHUB_TOKEN=(op read -f "op://Private/GitHub Personal Access Token/token") aqua'
+end
+
 # macOS specific
 if test (uname -s) = Darwin
-    if type -q brew
+    if has brew
         set -l brew_prefix (brew --prefix)
         alias ctags="$brew_prefix/bin/ctags"
     end
