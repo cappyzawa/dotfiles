@@ -2,23 +2,29 @@
 # Language servers and formatters managed by aqua
 
 packages:
+# Language
+- name: golang/go@go1.25.3
+- name: denoland/deno@v2.5.4
+- name: cue-lang/cue@v0.14.2
+- name: open-policy-agent/opa@v1.9.0
+- name: ziglang/zig@0.15.1
+- name: hashicorp/terraform@v1.13.0
+
 # Language servers (binary releases)
 - name: hashicorp/terraform-ls@v0.38.2
 - name: tamasfe/taplo@0.10.0
 - name: artempyanykh/marksman@2024-12-18
 - name: LuaLS/lua-language-server@3.15.0
 - name: golang/tools/gopls@v0.20.0
+- name: zigtools/zls@0.15.0
 
-# Go toolchain
-- name: golang/go@go1.25.3  # provides go, gofmt
-
-# Python toolchain
-- name: astral-sh/uv@0.9.3   # provides uv, uvx
-
-# Formatters (binary releases)
-- name: mvdan/sh@v3.12.0     # provides shfmt
+# Toolchain
+- name: astral-sh/uv@0.9.3
+- name: mvdan/sh@v3.12.0
 - name: golang/tools/goimports@v0.28.0
+- name: go-delve/delve@v1.25.2
+- name: koalaman/shellcheck@v0.11.0
+- name: google/yamlfmt@v0.18.0
+- name: open-policy-agent/conftest@v0.63.0
 
-# Debug adapters
-- name: go-delve/delve@v1.25.2  # provides dlv
 # Note: prettier and other npm-based tools are managed via .zsh/60_lang.zsh
