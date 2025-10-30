@@ -40,9 +40,10 @@ jobs:
           echo "Aqua config has not changed"
         fi
     - name: Set up Homebrew
-      if: steps.changes.outputs.brewfile_changed == 'true'
       id: set-up-homebrew
       uses: Homebrew/actions/setup-homebrew@master
+    - name: Install fish (required for tests)
+      run: brew install fish
     - name: Install Homebrew packages
       if: steps.changes.outputs.brewfile_changed == 'true'
       run: make brew
