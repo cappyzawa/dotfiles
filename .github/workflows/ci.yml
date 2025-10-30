@@ -10,13 +10,49 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for proper diff
+    - name: Check for file changes
+      id: changes
+      run: |
+        # Get the base ref for comparison
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          BASE_REF="${{ github.event.pull_request.base.sha }}"
+        else
+          BASE_REF="HEAD~1"
+        fi
+
+        # Check for changes in Brewfile
+        if git diff --name-only "$BASE_REF" HEAD | grep -q '^Brewfile$'; then
+          echo "brewfile_changed=true" >> $GITHUB_OUTPUT
+          echo "Brewfile has changed"
+        else
+          echo "brewfile_changed=false" >> $GITHUB_OUTPUT
+          echo "Brewfile has not changed"
+        fi
+
+        # Check for changes in .config/aqua/
+        if git diff --name-only "$BASE_REF" HEAD | grep -q '^\.config/aqua/'; then
+          echo "aqua_changed=true" >> $GITHUB_OUTPUT
+          echo "Aqua config has changed"
+        else
+          echo "aqua_changed=false" >> $GITHUB_OUTPUT
+          echo "Aqua config has not changed"
+        fi
     - name: Set up Homebrew
+      if: steps.changes.outputs.brewfile_changed == 'true'
       id: set-up-homebrew
       uses: Homebrew/actions/setup-homebrew@master
-    - name: setup
+    - name: Install Homebrew packages
+      if: steps.changes.outputs.brewfile_changed == 'true'
+      run: make brew
+    - name: Install Aqua packages
+      if: steps.changes.outputs.aqua_changed == 'true'
+      run: make aqua
+    - name: Install dotfiles
       run: |
         echo "PR was created by: ${{ github.event.pull_request.user.login }}"
-        make all
+        make install
     - name: Test fish configuration
       run: |
         fish -c 'echo "Fish shell configuration test"'
