@@ -50,7 +50,7 @@ packages:
 - name: prometheus/prometheus@v3.7.3
 - name: kubernetes/minikube@v1.37.0
 - name: argoproj/argo-rollouts@v1.8.3
-- name: metalbear-co/mirrord@3.170.0
+- name: metalbear-co/mirrord@3.171.0
 - name: github/github-mcp-server@v0.20.1
 - name: npryce/adr-tools@3.0.0
 - name: fullstorydev/grpcui@v1.4.3
