@@ -22,7 +22,6 @@ brew "bat"
 brew "gnu-sed"
 brew "starship"
 brew "utf8proc", args: ["HEAD"]
-brew "neovim"
 brew "helix"
 brew "ripgrep"
 brew "gh"
