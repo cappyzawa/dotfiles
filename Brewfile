@@ -13,6 +13,7 @@ cask "obsidian" if OS.mac?
 cask "dropbox" if OS.mac?
 cask "appcleaner" if OS.mac?
 cask "logi-options+" if OS.mac?
+cask "claude-code"
 
 brew "fish"
 brew "fzf"
@@ -21,7 +22,6 @@ brew "bat"
 brew "gnu-sed"
 brew "starship"
 brew "utf8proc", args: ["HEAD"]
-brew "neovim"
 brew "helix"
 brew "ripgrep"
 brew "gh"
