@@ -13,6 +13,7 @@ cask "obsidian" if OS.mac?
 cask "dropbox" if OS.mac?
 cask "appcleaner" if OS.mac?
 cask "logi-options+" if OS.mac?
+cask "claude-code"
 
 brew "fish"
 brew "fzf"
