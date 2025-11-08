@@ -42,7 +42,7 @@ packages:
 - name: protocolbuffers/protobuf/protoc@v33.0
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.10
 - name: Wilfred/difftastic@0.65.0
-- name: aws/aws-cli@2.31.31
+- name: aws/aws-cli@2.31.32
 - name: aws/session-manager-plugin@1.2.536.0
 - name: GoogleContainerTools/skaffold@v2.16.1
 - name: helm/helm@v3.19.0
