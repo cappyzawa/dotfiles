@@ -58,9 +58,6 @@ set -gx LDFLAGS "-L$HOMEBREW_PREFIX/lib"
 
 # Cargo environment
 set -gx CARGO_HOME "$HOME/.cargo"
-if test -d "$CARGO_HOME/bin"
-    fish_add_path -p "$CARGO_HOME/bin"
-end
 
 # Disable startup greeting message
 set -U fish_greeting ""
@@ -68,47 +65,50 @@ set -U fish_greeting ""
 # ============================================================================
 # PATH Management
 # ============================================================================
+# Following fish best practices:
+# - High priority (prepend): Essential tools that should override system defaults
+# - Default: Standard user tools
+# - Low priority (append): Optional/fallback tools
 
-# Essential directories (highest priority first)
+# High priority: GNU tools (override macOS defaults)
+if test -d /opt/homebrew/opt/gnu-sed/libexec/gnubin
+    fish_add_path -p /opt/homebrew/opt/gnu-sed/libexec/gnubin
+end
+
+# High priority: User bin, Aqua, and Cargo
 if test -d "$HOME/bin"
     fish_add_path -p "$HOME/bin"
 end
 if test -d "$HOME/.local/share/aquaproj-aqua/bin"
     fish_add_path -p "$HOME/.local/share/aquaproj-aqua/bin"
 end
+if test -d "$CARGO_HOME/bin"
+    fish_add_path -p "$CARGO_HOME/bin"
+end
 
-# Development tools
+# Standard priority: Common development tools
 if test -d "$HOME/.local/bin"
-    fish_add_path -a "$HOME/.local/bin"
+    fish_add_path "$HOME/.local/bin"
 end
 if test -d "$HOME/.tmux/bin"
-    fish_add_path -a "$HOME/.tmux/bin"
+    fish_add_path "$HOME/.tmux/bin"
 end
 if test -d "$HOME/ghq/bin"
-    fish_add_path -a "$HOME/ghq/bin"
+    fish_add_path "$HOME/ghq/bin"
 end
 
-# NPM global path
+# Standard priority: Language package managers
 if test -n "$NPM_CONFIG_PREFIX" && test -d "$NPM_CONFIG_PREFIX/bin"
-    fish_add_path -a "$NPM_CONFIG_PREFIX/bin"
+    fish_add_path "$NPM_CONFIG_PREFIX/bin"
 end
-
-# Krew kubectl plugin manager
 if test -d "$HOME/.krew/bin"
-    fish_add_path -a "$HOME/.krew/bin"
+    fish_add_path "$HOME/.krew/bin"
 end
-
-# Coursier (Scala)
 if test -d "$HOME/Library/Application Support/Coursier/bin"
-    fish_add_path -a "$HOME/Library/Application Support/Coursier/bin"
+    fish_add_path "$HOME/Library/Application Support/Coursier/bin"
 end
 
-# GNU tools (for fish-helix compatibility)
-if test -d /opt/homebrew/opt/gnu-sed/libexec/gnubin
-    fish_add_path -p /opt/homebrew/opt/gnu-sed/libexec/gnubin
-end
-
-# Optional tools
+# Low priority: Optional/specialized tools (append to avoid conflicts)
 if test -d /usr/local/opt/libpq/bin
     fish_add_path -a /usr/local/opt/libpq/bin
 end
