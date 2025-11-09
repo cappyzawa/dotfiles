@@ -20,7 +20,7 @@ packages:
 - import: ./helix.yaml
 - name: jqlang/jq@jq-1.8.1
 - name: kubernetes/kubectl@v1.34.1
-- name: kubernetes-sigs/kustomize@kustomize/v5.7.1
+- name: kubernetes-sigs/kustomize@kustomize/v5.8.0
 - name: tree-sitter/tree-sitter@v0.25.10
 - name: jesseduffield/lazygit@v0.56.0
 - name: x-motemen/ghq@v1.8.0
