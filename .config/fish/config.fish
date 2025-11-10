@@ -243,7 +243,11 @@ end
 
 # Starship prompt
 if command -v starship >/dev/null 2>&1
+    function starship_transient_prompt_func
+        starship module character
+    end
     starship init fish | source
+    enable_transience
 end
 
 # ============================================================================
