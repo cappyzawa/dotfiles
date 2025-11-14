@@ -44,7 +44,7 @@ packages:
 - name: Wilfred/difftastic@0.65.0
 - name: aws/aws-cli@2.31.36
 - name: aws/session-manager-plugin@1.2.536.0
-- name: GoogleContainerTools/skaffold@v2.16.1
+- name: GoogleContainerTools/skaffold@v2.17.0
 - name: helm/helm@v3.19.2
 - name: awslabs/amazon-ecr-credential-helper@v0.11.0
 - name: prometheus/prometheus@v3.7.3
