@@ -30,7 +30,7 @@ packages:
 - name: smallstep/cli@v0.28.7
 - name: smallstep/certificates@v0.28.4
 - name: mike-engel/jwt-cli@6.2.0
-- name: golangci/golangci-lint@v2.6.1
+- name: golangci/golangci-lint@v2.6.2
 - name: goreleaser/goreleaser@v2.12.7
 - name: kubernetes-sigs/kind@v0.30.0
 - name: ogham/exa@v0.10.1
