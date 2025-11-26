@@ -1,38 +1,38 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
-    hooks:
-      - id: trailing-whitespace
-        exclude: ^\.config/karabiner/
-      - id: end-of-file-fixer
-        exclude: ^\.config/karabiner/
-      - id: check-yaml
-      - id: check-added-large-files
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.6.0
+  hooks:
+  - id: trailing-whitespace
+    exclude: ^\.config/karabiner/
+  - id: end-of-file-fixer
+    exclude: ^\.config/karabiner/
+  - id: check-yaml
+  - id: check-added-large-files
 
-  - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.10.0.1
-    hooks:
-      - id: shellcheck
-        exclude: \.(zsh|zshrc|zshenv|zprofile)$|^\.zsh/
+- repo: https://github.com/shellcheck-py/shellcheck-py
+  rev: v0.10.0.1
+  hooks:
+  - id: shellcheck
+    exclude: \.(zsh|zshrc|zshenv|zprofile)$|^\.zsh/
 
-  - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.8.0-1
-    hooks:
-      - id: shfmt
-        args: [-w, -i, "2"]
-        files: \.(sh|bash)$
+- repo: https://github.com/scop/pre-commit-shfmt
+  rev: v3.8.0-1
+  hooks:
+  - id: shfmt
+    args: [-w, -i, "2"]
+    files: \.(sh|bash)$
 
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v4.0.0-alpha.8
-    hooks:
-      - id: prettier
-        files: \.(md|markdown)$
+- repo: https://github.com/pre-commit/mirrors-prettier
+  rev: v4.0.0-alpha.8
+  hooks:
+  - id: prettier
+    files: \.(md|markdown)$
 
-  - repo: local
-    hooks:
-      - id: fish-format
-        name: Format Fish files
-        entry: fish_indent
-        language: system
-        files: \.fish$
-        args: [-w]
+- repo: local
+  hooks:
+  - id: fish-format
+    name: Format Fish files
+    entry: fish_indent
+    language: system
+    files: \.fish$
+    args: [-w]

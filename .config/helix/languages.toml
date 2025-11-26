@@ -1,4 +1,4 @@
-use-grammars = { except = [ "hare", "wgsl" ] }
+use-grammars = { except = ["hare", "wgsl"] }
 
 # Go
 [[language]]
@@ -26,7 +26,7 @@ language-servers = ["rust-analyzer"]
 
 [language-server.rust-analyzer]
 command = "rust-analyzer"
-config = { check = { command = "clippy" }}
+config = { check = { command = "clippy" } }
 
 # YAML
 [[language]]
@@ -66,6 +66,7 @@ file-types = ["toml"]
 comment-token = "#"
 language-servers = ["taplo"]
 indent = { tab-width = 2, unit = "  " }
+auto-format = true
 
 [language-server.taplo]
 command = "taplo"
@@ -99,7 +100,20 @@ indent = { tab-width = 2, unit = "  " }
 name = "bash"
 scope = "source.bash"
 injection-regex = "(shell|bash|zsh|sh)"
-file-types = ["sh", "bash", "zsh", ".zshenv", ".zshrc", ".zprofile", ".bashrc", ".bash_profile", ".bash_login", ".profile", "zsh-theme"]
+file-types = [
+  "sh",
+  "bash",
+  "zsh",
+  ".zshenv",
+  ".zshrc",
+  ".zprofile",
+  ".bashrc",
+  ".bash_profile",
+  ".bash_login",
+  ".profile",
+  "zsh-theme",
+  { glob = ".tmux.conf" },
+]
 shebangs = ["sh", "bash", "dash", "zsh"]
 comment-token = "#"
 language-servers = ["bash-language-server"]
