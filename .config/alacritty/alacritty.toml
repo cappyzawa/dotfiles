@@ -6,15 +6,15 @@ builtin_box_drawing = true
 size = 22.0
 
 [font.bold]
-family = "Moralerspace Argon"
+family = "Moralerspace Argon NF"
 style = "Bold"
 
 [font.italic]
-family = "Moralerspace Argon"
+family = "Moralerspace Argon NF"
 style = "Italic"
 
 [font.normal]
-family = "Moralerspace Argon"
+family = "Moralerspace Argon NF"
 style = "Regular"
 
 [terminal.shell]
@@ -32,7 +32,7 @@ x = 5
 y = 5
 
 [general]
-import = ["~/.config/alacritty/tokyo-night.toml"]
+import = ["rose-pine.toml"]
 
 [terminal]
 
