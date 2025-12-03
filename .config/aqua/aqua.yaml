@@ -47,7 +47,7 @@ packages:
 - name: GoogleContainerTools/skaffold@v2.17.0
 - name: helm/helm@v4.0.1
 - name: awslabs/amazon-ecr-credential-helper@v0.11.0
-- name: prometheus/prometheus@v3.7.3
+- name: prometheus/prometheus@v3.8.0
 - name: kubernetes/minikube@v1.37.0
 - name: argoproj/argo-rollouts@v1.8.3
 - name: metalbear-co/mirrord@3.174.0
