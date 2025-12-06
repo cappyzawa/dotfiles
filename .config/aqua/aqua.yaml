@@ -22,7 +22,7 @@ packages:
 - name: kubernetes/kubectl@v1.34.2
 - name: kubernetes-sigs/kustomize@kustomize/v5.8.0
 - name: tree-sitter/tree-sitter@v0.25.10
-- name: jesseduffield/lazygit@v0.56.0
+- name: jesseduffield/lazygit@v0.57.0
 - name: x-motemen/ghq@v1.8.0
 - name: sharkdp/hyperfine@v1.20.0
 - name: mikefarah/yq@v4.49.2
