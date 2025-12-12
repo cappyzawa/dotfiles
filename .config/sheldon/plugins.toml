@@ -7,6 +7,11 @@ shell = "zsh"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+# fzf color scheme (Rosé Pine)
+[plugins.rose-pine-fzf]
+github = "rose-pine/fzf"
+use = ["dist/rose-pine.sh"]
+
 # fzf-tab: Tab completion with fzf
 # Must be loaded after compinit, before zsh-autosuggestions
 [plugins.fzf-tab]

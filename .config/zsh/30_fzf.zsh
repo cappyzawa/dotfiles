@@ -1,7 +1,7 @@
 # fzf configuration
 
-# FZF default options
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+# FZF default options (append to rose-pine theme from sheldon)
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --height 40% --reverse --border"
 
 # fzf-tab configuration
 zstyle ':fzf-tab:*' fzf-flags --height=40% --reverse --border
