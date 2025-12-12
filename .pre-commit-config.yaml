@@ -13,14 +13,16 @@ repos:
   rev: v0.10.0.1
   hooks:
   - id: shellcheck
-    exclude: \.(zsh|zshrc|zshenv|zprofile)$|^\.zsh/
+    types: [shell]
+    exclude: \.(zsh)$|^\.zsh/|^\.zshenv$|^\.zshrc$|^\.zprofile$
 
 - repo: https://github.com/scop/pre-commit-shfmt
   rev: v3.8.0-1
   hooks:
   - id: shfmt
     args: [-w, -i, "2"]
-    files: \.(sh|bash)$
+    types: [shell]
+    files: \.(sh|bash|zsh|zshenv|zshrc|zprofile)$|^\.zsh/
 
 - repo: https://github.com/pre-commit/mirrors-prettier
   rev: v4.0.0-alpha.8

@@ -12,4 +12,5 @@ fi
 eval "$(sheldon source)"
 
 # Load local configuration (machine-specific, secrets)
+# shellcheck source=/dev/null
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
