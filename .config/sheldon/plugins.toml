@@ -16,6 +16,8 @@ use = ["dist/rose-pine.sh"]
 # Must be loaded after compinit, before zsh-autosuggestions
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
+# renovate: depName=Aloxaf/fzf-tab
+tag = "v1.2.0"
 
 # fzf history search (Ctrl+R)
 [plugins.zsh-fzf-history-search]
@@ -24,11 +26,15 @@ github = "joshskidmore/zsh-fzf-history-search"
 # Syntax highlighting (deferred for performance)
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
+# renovate: depName=zsh-users/zsh-syntax-highlighting
+tag = "0.8.0"
 apply = ["defer"]
 
 # Autosuggestions (must be after fzf-tab)
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+# renovate: depName=zsh-users/zsh-autosuggestions
+tag = "v0.7.1"
 
 # Local configuration files
 [plugins.local]

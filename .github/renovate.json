@@ -5,6 +5,17 @@
     "github>aquaproj/aqua-renovate-config#2.9.0",
     "github>aquaproj/aqua-renovate-config:file#2.9.0(\\.config/aqua/.*\\.ya?ml)"
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update sheldon plugin versions",
+      "fileMatch": ["\\.config/sheldon/plugins\\.toml$"],
+      "matchStrings": [
+        "# renovate: depName=(?<depName>\\S+)\\ntag = \"(?<currentValue>[^\"]+)\""
+      ],
+      "datasourceTemplate": "github-tags"
+    }
+  ],
   "rebaseWhen": "behind-base-branch",
   "automerge": true,
   "major": {
