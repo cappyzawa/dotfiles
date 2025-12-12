@@ -51,3 +51,4 @@ Brewfile.lock.json
 # Fish plugin-generated conf.d files (exclude files without numeric prefix)
 .config/fish/conf.d/[!0-9]*
 !CLAUDE.md
+.zshrc.local

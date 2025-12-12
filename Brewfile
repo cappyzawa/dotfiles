@@ -16,6 +16,8 @@ cask "logi-options+" if OS.mac?
 cask "claude-code"
 
 brew "fish"
+brew "zsh"
+brew "sheldon"
 brew "fzf"
 brew "fd"
 brew "bat"

@@ -1,0 +1,35 @@
+# Sheldon configuration for zsh
+# https://github.com/rossmacarthur/sheldon
+
+shell = "zsh"
+
+# Deferred loading support
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+# fzf-tab: Tab completion with fzf
+# Must be loaded after compinit, before zsh-autosuggestions
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
+
+# fzf history search (Ctrl+R)
+[plugins.zsh-fzf-history-search]
+github = "joshskidmore/zsh-fzf-history-search"
+
+# Syntax highlighting (deferred for performance)
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+# Autosuggestions (must be after fzf-tab)
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+# Local configuration files
+[plugins.local]
+local = "~/.config/zsh"
+use = ["*.zsh"]
+
+# Deferred loading template
+[templates]
+defer = '{% for file in files %}zsh-defer source "{{ file }}"{% endfor %}'
