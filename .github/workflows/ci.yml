@@ -53,6 +53,8 @@ jobs:
     - name: Install dotfiles
       run: |
         echo "PR was created by: ${{ github.event.pull_request.user.login }}"
+        # Remove existing .config to ensure proper symlink creation
+        rm -rf ~/.config
         make install
     - name: Test zsh configuration
       run: |
