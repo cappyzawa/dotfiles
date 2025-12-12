@@ -40,7 +40,7 @@ packages:
 - name: tilt-dev/tilt@v0.36.0
 - name: tilt-dev/ctlptl@v0.8.43
 - name: protocolbuffers/protobuf/protoc@v33.2
-- name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.10
+- name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.11
 - name: Wilfred/difftastic@0.67.0
 - name: aws/aws-cli@2.32.15
 - name: aws/session-manager-plugin@1.2.536.0
