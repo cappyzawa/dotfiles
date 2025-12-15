@@ -48,6 +48,8 @@ Brewfile.lock.json
 .config/fish/themes/
 .config/fish/functions/
 .config/fish/completions/
+.config/zsh/completions/*
+!.config/zsh/completions/.gitkeep
 # Fish plugin-generated conf.d files (exclude files without numeric prefix)
 .config/fish/conf.d/[!0-9]*
 !CLAUDE.md
