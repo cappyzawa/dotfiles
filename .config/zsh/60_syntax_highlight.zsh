@@ -16,39 +16,39 @@ _subtle='#908caa'
 _muted='#6e6a86'
 
 # Commands
-ZSH_HIGHLIGHT_STYLES[command]="fg=$_rose,bold"
-ZSH_HIGHLIGHT_STYLES[builtin]="fg=$_rose,bold"
-ZSH_HIGHLIGHT_STYLES[alias]="fg=$_iris,bold"
+ZSH_HIGHLIGHT_STYLES[command]="fg=$_love,bold"
+ZSH_HIGHLIGHT_STYLES[builtin]="fg=$_love,bold"
+ZSH_HIGHLIGHT_STYLES[alias]="fg=$_rose,bold"
 ZSH_HIGHLIGHT_STYLES[function]="fg=$_rose,bold"
 
 # Errors and unknown
-ZSH_HIGHLIGHT_STYLES[unknown - token]="fg=$_love,bold"
-ZSH_HIGHLIGHT_STYLES[reserved - word]="fg=$_pine"
+ZSH_HIGHLIGHT_STYLES[unknown-token]="fg=$_muted"
+ZSH_HIGHLIGHT_STYLES[reserved-word]="fg=$_pine"
 
 # Paths and files
 ZSH_HIGHLIGHT_STYLES[path]="fg=$_gold,underline"
 ZSH_HIGHLIGHT_STYLES[path_pathseparator]="fg=$_gold"
-ZSH_HIGHLIGHT_STYLES[globbing]="fg=$_iris"
+ZSH_HIGHLIGHT_STYLES[globbing]="fg=$_subtle"
 
 # Strings and quotes
-ZSH_HIGHLIGHT_STYLES[single - quoted - argument]="fg=$_gold"
-ZSH_HIGHLIGHT_STYLES[double - quoted - argument]="fg=$_gold"
-ZSH_HIGHLIGHT_STYLES[dollar - quoted - argument]="fg=$_gold"
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]="fg=$_gold"
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]="fg=$_gold"
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]="fg=$_gold"
 
 # Variables and substitutions
 ZSH_HIGHLIGHT_STYLES[assign]="fg=$_text"
-ZSH_HIGHLIGHT_STYLES[named - fd]="fg=$_foam"
-ZSH_HIGHLIGHT_STYLES[command - substitution]="fg=$_iris"
-ZSH_HIGHLIGHT_STYLES[command - substitution - delimiter]="fg=$_subtle"
-ZSH_HIGHLIGHT_STYLES[process - substitution]="fg=$_iris"
-ZSH_HIGHLIGHT_STYLES[process - substitution - delimiter]="fg=$_subtle"
+ZSH_HIGHLIGHT_STYLES[named-fd]="fg=$_foam"
+ZSH_HIGHLIGHT_STYLES[command-substitution]="fg=$_iris"
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]="fg=$_subtle"
+ZSH_HIGHLIGHT_STYLES[process-substitution]="fg=$_iris"
+ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]="fg=$_subtle"
 
 # Options and arguments
-ZSH_HIGHLIGHT_STYLES[single - hyphen - option]="fg=$_rose"
-ZSH_HIGHLIGHT_STYLES[double - hyphen - option]="fg=$_rose"
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]="fg=$_iris"
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]="fg=$_iris"
 
 # Redirections
-ZSH_HIGHLIGHT_STYLES[redirection]="fg=$_pine"
+ZSH_HIGHLIGHT_STYLES[redirection]="fg=$_subtle"
 
 # Comments
 ZSH_HIGHLIGHT_STYLES[comment]="fg=$_muted"
