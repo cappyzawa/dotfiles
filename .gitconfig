@@ -14,9 +14,6 @@
   root = ~/ghq/src
 [merge]
   conflictstyle = diff3
-; [diff]
-;   tool = difftastic
-;   external = difft
 [pull]
   rebase = true
 [init]

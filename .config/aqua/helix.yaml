@@ -2,6 +2,7 @@
 # Language servers and formatters managed by aqua
 
 packages:
+- name: tree-sitter/tree-sitter@v0.26.3
 # Language
 - name: golang/go@go1.25.5
 - name: denoland/deno@v2.6.0
