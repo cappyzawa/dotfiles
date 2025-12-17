@@ -45,5 +45,5 @@ packages:
 - name: docker/compose@v5.0.0
 - name: nodejs/node@v25.2.1
 - name: sigstore/cosign@v3.0.3
-- name: pre-commit/pre-commit@v4.5.0
+- name: pre-commit/pre-commit@v4.5.1
 - name: charmbracelet/glow@v2.1.1
