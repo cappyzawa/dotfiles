@@ -18,6 +18,10 @@ font-feature = ss08
 # Shell
 command = tmux new-session -A -s zzz
 
+# macOS
+macos-icon = xray
+macos-option-as-alt = right
+
 # Window
 window-padding-x = 5
 window-padding-y = 5
@@ -30,3 +34,4 @@ keybind = super+shift+d=unbind
 
 # Terminal
 term = xterm-256color
+keybind = shift+enter=text:\x1b\r
