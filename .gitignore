@@ -52,5 +52,6 @@ Brewfile.lock.json
 !.config/zsh/completions/.gitkeep
 # Fish plugin-generated conf.d files (exclude files without numeric prefix)
 .config/fish/conf.d/[!0-9]*
+.config/ghostty/*.bak
 !CLAUDE.md
 .zshrc.local
