@@ -26,6 +26,6 @@ packages:
 - name: go-delve/delve@v1.26.0
 - name: koalaman/shellcheck@v0.11.0
 - name: google/yamlfmt@v0.20.0
-- name: open-policy-agent/conftest@v0.65.0
+- name: open-policy-agent/conftest@v0.66.0
 
 # Note: prettier and other npm-based tools are managed via .zsh/60_lang.zsh
