@@ -15,7 +15,7 @@ packages:
 - name: hashicorp/terraform-ls@v0.38.3
 - name: tamasfe/taplo@0.10.0
 - name: artempyanykh/marksman@2024-12-18
-- name: LuaLS/lua-language-server@3.16.3
+- name: LuaLS/lua-language-server@3.16.4
 - name: golang/tools/gopls@v0.20.0
 - name: zigtools/zls@0.15.1
 
