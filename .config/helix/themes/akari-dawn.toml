@@ -1,0 +1,219 @@
+# Akari Dawn v0.1.0 — The same Japanese alley at dawn — lanterns still lit, but no longer the center of the world.
+
+# UI elements
+"ui.background" = { bg = "background" }
+"ui.text" = "foreground"
+"ui.text.focus" = { fg = "bright-white" }
+"ui.text.inactive" = { fg = "bright-black" }
+
+"ui.cursor" = { fg = "cursor-text", bg = "cursor" }
+"ui.cursor.primary" = { fg = "cursor-text", bg = "cursor" }
+"ui.cursor.match" = { fg = "lantern", bg = "sunken", modifiers = ["bold"] }
+"ui.cursor.insert" = { fg = "cursor-text", bg = "green" }
+"ui.cursor.select" = { fg = "cursor-text", bg = "magenta" }
+
+"ui.selection" = { bg = "selection-bg" }
+"ui.selection.primary" = { bg = "selection-bg" }
+
+"ui.cursorline.primary" = { bg = "cursorline" }
+"ui.cursorcolumn.primary" = { bg = "surface" }
+
+"ui.linenr" = { fg = "bright-black" }
+"ui.linenr.selected" = { fg = "lantern" }
+
+"ui.statusline" = { fg = "foreground", bg = "surface" }
+"ui.statusline.inactive" = { fg = "comment", bg = "surface" }
+"ui.statusline.normal" = { fg = "background", bg = "green", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "background", bg = "lantern", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "background", bg = "magenta", modifiers = ["bold"] }
+"ui.statusline.separator" = { fg = "bright-black", bg = "surface" }
+
+"ui.popup" = { fg = "foreground", bg = "raised" }
+"ui.window" = { fg = "border" }
+"ui.help" = { fg = "foreground", bg = "raised" }
+
+"ui.menu" = { fg = "foreground", bg = "raised" }
+"ui.menu.selected" = { fg = "bright-white", bg = "selection-bg" }
+"ui.menu.scroll" = { fg = "bright-black", bg = "raised" }
+
+"ui.virtual.ruler" = { bg = "surface" }
+"ui.virtual.whitespace" = { fg = "bright-black" }
+"ui.virtual.indent-guide" = { fg = "bright-black" }
+"ui.virtual.inlay-hint" = { fg = "comment" }
+"ui.virtual.inlay-hint.parameter" = { fg = "comment" }
+"ui.virtual.inlay-hint.type" = { fg = "comment" }
+"ui.virtual.wrap" = { fg = "bright-black" }
+"ui.virtual.jump-label" = { fg = "bright-red", modifiers = ["bold"] }
+
+"ui.debug.breakpoint" = { fg = "red" }
+"ui.debug.active" = { fg = "lantern", modifiers = ["bold"] }
+
+"ui.highlight" = { bg = "match-bg" }
+
+"ui.bufferline" = { fg = "bright-black", bg = "surface" }
+"ui.bufferline.active" = { fg = "foreground", bg = "background" }
+"ui.bufferline.background" = { bg = "surface" }
+
+"ui.picker.header.column" = { fg = "bright-blue", modifiers = ["bold"] }
+"ui.picker.header.column.active" = { fg = "lantern", modifiers = ["bold"] }
+
+# Diagnostics
+"error" = { fg = "red" }
+"warning" = { fg = "lantern" }
+"info" = { fg = "blue" }
+"hint" = { fg = "comment" }
+
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "lantern", style = "curl" } }
+"diagnostic.info" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "comment", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+# Diff
+"diff.plus" = "green"
+"diff.plus.gutter" = "green"
+"diff.minus" = "red"
+"diff.minus.gutter" = "red"
+"diff.delta" = "amber"
+"diff.delta.gutter" = "amber"
+
+# Markup
+"markup.heading" = { fg = "lantern", modifiers = ["bold"] }
+"markup.heading.marker" = { fg = "comment" }
+"markup.heading.1" = { fg = "lantern", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "amber", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "ember", modifiers = ["bold"] }
+"markup.heading.4" = { fg = "amber" }
+"markup.heading.5" = { fg = "comment", modifiers = ["bold"] }
+"markup.heading.6" = { fg = "blue" }
+"markup.list" = { fg = "cyan" }
+"markup.list.numbered" = { fg = "lantern" }
+"markup.list.unnumbered" = { fg = "cyan" }
+"markup.list.checked" = { fg = "green" }
+"markup.list.unchecked" = { fg = "comment" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "bright-blue", modifiers = ["underlined"] }
+"markup.link.text" = { fg = "cyan" }
+"markup.link.label" = { fg = "magenta" }
+"markup.quote" = { fg = "comment", modifiers = ["dim"] }
+"markup.raw" = { fg = "bright-green" }
+"markup.raw.inline" = { fg = "bright-green" }
+"markup.raw.block" = { fg = "bright-green" }
+
+# Syntax highlighting
+"attribute" = { fg = "amber" }
+"type" = { fg = "amber" }
+"type.builtin" = { fg = "yellow" }
+"type.enum" = { fg = "amber" }
+"type.enum.variant" = { fg = "amber" }
+"type.parameter" = { fg = "yellow" }
+
+"constructor" = { fg = "amber" }
+
+"constant" = { fg = "constant" }
+"constant.builtin" = { fg = "constant" }
+"constant.builtin.boolean" = { fg = "constant" }
+"constant.character" = { fg = "lantern" }
+"constant.character.escape" = { fg = "bright-magenta" }
+"constant.numeric" = { fg = "constant" }
+
+"string" = { fg = "green" }
+"string.regexp" = { fg = "bright-green" }
+"string.regexp.special" = { fg = "bright-magenta" }
+"string.special" = { fg = "green" }
+"string.special.path" = { fg = "bright-green" }
+"string.special.url" = { fg = "bright-blue", modifiers = ["underlined"] }
+"string.special.symbol" = { fg = "bright-magenta" }
+
+"comment" = { fg = "comment", modifiers = ["dim"] }
+"comment.line" = { fg = "comment", modifiers = ["dim"] }
+"comment.block" = { fg = "comment", modifiers = ["dim"] }
+"comment.block.documentation" = { fg = "comment", modifiers = ["dim"] }
+
+"variable" = "foreground"
+"variable.builtin" = { fg = "bright-red" }
+"variable.parameter" = "foreground"
+"variable.other" = "foreground"
+"variable.other.member" = "foreground"
+
+"label" = { fg = "amber" }
+
+"punctuation" = "foreground"
+"punctuation.bracket" = "foreground"
+"punctuation.delimiter" = "foreground"
+"punctuation.special" = { fg = "amber" }
+
+"keyword" = { fg = "lantern" }
+"keyword.control" = { fg = "lantern" }
+"keyword.control.conditional" = { fg = "lantern" }
+"keyword.control.repeat" = { fg = "lantern" }
+"keyword.control.import" = { fg = "lantern" }
+"keyword.control.return" = { fg = "lantern" }
+"keyword.control.exception" = { fg = "lantern" }
+"keyword.operator" = { fg = "lantern" }
+"keyword.directive" = { fg = "bright-magenta" }
+"keyword.function" = { fg = "lantern" }
+"keyword.storage" = { fg = "lantern" }
+"keyword.storage.type" = { fg = "lantern" }
+"keyword.storage.modifier" = { fg = "lantern" }
+
+"operator" = "foreground"
+
+"function" = { fg = "magenta" }
+"function.builtin" = { fg = "bright-magenta" }
+"function.method" = { fg = "magenta" }
+"function.macro" = { fg = "bright-magenta" }
+"function.special" = { fg = "bright-magenta" }
+
+"tag" = { fg = "lantern" }
+"tag.builtin" = { fg = "blue" }
+
+"namespace" = { fg = "amber" }
+
+"special" = { fg = "bright-yellow" }
+
+"module" = { fg = "amber" }
+
+# Palette definition (MUST be at the end of the file)
+[palette]
+background = "#E4DED6"   # base.background — dawn alley surface
+foreground = "#1A1816"   # base.foreground — ink black
+
+cursor = "#8A4530"       # state.cursor (colors.lantern)
+cursor-text = "#E4DED6"  # state.cursor_text (base.background)
+selection-bg = "#D0C4B8" # state.selection_bg
+selection-fg = "#1A1816" # state.selection_fg
+cursorline = "#DCD4CA"   # layers.sunken
+
+surface = "#D4CEC6"      # layers.surface
+raised = "#EDE7DF"       # layers.raised
+border = "#C4BEB6"       # layers.border
+
+black = "#1A1816"        # ansi.black
+red = "#B04030"          # ansi.red (state.error)
+green = "#3A5830"        # ansi.green (colors.life)
+yellow = "#B07840"       # ansi.yellow (colors.amber)
+blue = "#304050"         # ansi.blue (colors.night)
+magenta = "#806080"      # ansi.magenta (colors.muted)
+cyan = "#305858"         # ansi.cyan
+white = "#F4F0EA"        # ansi.white
+
+bright-black = "#3A3E48"   # ansi.bright.black
+bright-red = "#C04838"     # ansi.bright.red
+bright-green = "#70A868"   # ansi.bright.green
+bright-yellow = "#D09060"  # ansi.bright.yellow
+bright-blue = "#4060A0"    # ansi.bright.blue
+bright-magenta = "#705868" # ansi.bright.magenta
+bright-cyan = "#306868"    # ansi.bright.cyan
+bright-white = "#0A0808"   # ansi.bright.white
+
+lantern = "#8A4530"      # colors.lantern
+ember = "#7A3828"        # colors.ember
+amber = "#B07840"        # colors.amber
+constant = "#406868"     # semantic.constant (cool cyan for dawn)
+comment = "#4A4642"      # semantic.comment
+sunken = "#DCD4CA"       # layers.sunken (for cursor.match)
+match-bg = "#D8C8B8"     # state.match_bg

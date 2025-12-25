@@ -32,7 +32,7 @@ x = 5
 y = 5
 
 [general]
-import = ["rose-pine.toml"]
+import = ["themes/akari-night.toml"]
 
 [terminal]
 

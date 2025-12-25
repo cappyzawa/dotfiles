@@ -9,8 +9,8 @@ github = "romkatv/zsh-defer"
 
 # fzf color scheme (Akari)
 [plugins.akari-fzf]
-github = "cappyzawa/akari-theme"
-use = ["fzf/akari.sh"]
+github = "cappyzawa/akari-fzf"
+use = ["akari-night.sh"]
 
 # fzf-tab: Tab completion with fzf
 # Must be loaded after compinit, before zsh-autosuggestions
@@ -29,6 +29,11 @@ github = "zsh-users/zsh-syntax-highlighting"
 # renovate: depName=zsh-users/zsh-syntax-highlighting
 tag = "0.8.0"
 apply = ["defer"]
+
+# zsh-syntax-highlighting theme (Akari)
+[plugins.akari-zsh]
+github = "cappyzawa/akari-zsh"
+use = ["akari-night.zsh"]
 
 # Autosuggestions (must be after fzf-tab)
 [plugins.zsh-autosuggestions]

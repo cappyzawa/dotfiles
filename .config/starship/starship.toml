@@ -1,7 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-palette = 'akari'
+palette = 'akari-night'
 add_newline = true
 
 [palettes.tokyonight]
@@ -19,22 +19,47 @@ purple = '#9d7cd8'
 red = '#f7768e'
 yellow = '#e0af68'
 
-[palettes.akari]
-background = '#1C1A17'
-foreground = '#E6DED3'
-current_line = '#3A3530'
-primary = '#1C1A17'
-box = '#3A3530'
-blue = '#5A6F82'
-cyan = '#6F8F8A'
-green = '#7FAF6A'
-orange = '#F08A5D'
-pink = '#9A8FB3'
-purple = '#7C6A8A'
-red = '#C84C32'
-yellow = '#E26A3B'
-lantern = '#E26A3B'
-comment = '#7A7A75'
+[palettes.akari-night]
+# Standard ANSI colors
+black = '#12100E'         # ansi.black
+red = '#C84C32'           # ansi.red
+green = '#7FAF6A'         # ansi.green
+yellow = '#D4A05A'        # ansi.yellow
+blue = '#5A6F82'          # ansi.blue
+purple = '#7C6A8A'        # ansi.magenta
+cyan = '#6F8F8A'          # ansi.cyan
+white = '#E6DED3'         # ansi.white
+
+# Bright variants
+bright-black = '#2E3543'  # ansi.bright.black
+bright-red = '#D65A3A'    # ansi.bright.red
+bright-green = '#8FC57A'  # ansi.bright.green
+bright-yellow = '#F08A5D' # ansi.bright.yellow
+bright-blue = '#6F879A'   # ansi.bright.blue
+bright-purple = '#9A8FB3' # ansi.bright.magenta
+bright-cyan = '#8FB8B0'   # ansi.bright.cyan
+bright-white = '#F2ECE4'  # ansi.bright.white
+
+[palettes.akari-dawn]
+# Standard ANSI colors
+black = '#1A1816'         # ansi.black
+red = '#B04030'           # ansi.red
+green = '#3A5830'         # ansi.green
+yellow = '#B07840'        # ansi.yellow
+blue = '#304050'          # ansi.blue
+purple = '#806080'        # ansi.magenta
+cyan = '#305858'          # ansi.cyan
+white = '#F4F0EA'         # ansi.white
+
+# Bright variants
+bright-black = '#3A3E48'  # ansi.bright.black
+bright-red = '#C04838'    # ansi.bright.red
+bright-green = '#70A868'  # ansi.bright.green
+bright-yellow = '#D09060' # ansi.bright.yellow
+bright-blue = '#4060A0'   # ansi.bright.blue
+bright-purple = '#705868' # ansi.bright.magenta
+bright-cyan = '#306868'   # ansi.bright.cyan
+bright-white = '#0A0808'  # ansi.bright.white
 
 [os]
 disabled = true
