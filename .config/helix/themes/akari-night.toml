@@ -1,4 +1,4 @@
-# Akari Night v0.1.0 — A dark palette inspired by Japanese alleys lit by round lanterns.
+# Akari Night — A dark palette inspired by Japanese alleys lit by round lanterns.
 
 # UI elements
 "ui.background" = { bg = "background" }
@@ -179,41 +179,41 @@
 
 # Palette definition (MUST be at the end of the file)
 [palette]
-background = "#171B22"   # base.background (navy-charcoal night air)
-foreground = "#E6DED3"   # base.foreground
+background = "#10141C"
+foreground = "#E6DED3"
 
-cursor = "#E26A3B"       # state.cursor (colors.lantern)
-cursor-text = "#171B22"  # state.cursor_text (base.background)
-selection-bg = "#2D2518" # state.selection_bg (amber-tinted warmth)
-selection-fg = "#F2ECE4" # state.selection_fg
-cursorline = "#2E211D"   # layers.sunken (lantern-tinted 20%)
+cursor = "#E26A3B"
+cursor-text = "#10141C"
+selection-bg = "#2D2925"
+selection-fg = "#F2ECE4"
+cursorline = "#302121"
 
-surface = "#1E232C"      # layers.surface (blue-tinted)
-raised = "#242836"       # layers.raised (blue-tinted)
-border = "#2E3543"       # layers.border
+surface = "#1B222B"
+raised = "#1F2630"
+border = "#262F3B"
 
-black = "#12100E"        # ansi.black
-red = "#C84C32"          # ansi.red (state.error)
-green = "#7FAF6A"        # ansi.green (colors.life)
-yellow = "#D4A05A"       # ansi.yellow (colors.amber)
-blue = "#5A6F82"         # ansi.blue (colors.night)
-magenta = "#7C6A8A"      # ansi.magenta (colors.muted)
-cyan = "#6F8F8A"         # ansi.cyan
-white = "#E6DED3"        # ansi.white (base.foreground)
+black = "#12100E"
+red = "#C84C32"
+green = "#7FAF6A"
+yellow = "#D4A05A"
+blue = "#5A6F82"
+magenta = "#7C6A8A"
+cyan = "#6F8F8A"
+white = "#E6DED3"
 
-bright-black = "#2E3543"   # ansi.bright.black (layers.border)
-bright-red = "#D65A3A"     # ansi.bright.red (colors.ember)
-bright-green = "#8FC57A"   # ansi.bright.green
-bright-yellow = "#F08A5D"  # ansi.bright.yellow
-bright-blue = "#6F879A"    # ansi.bright.blue
-bright-magenta = "#9A8FB3" # ansi.bright.magenta
-bright-cyan = "#8FB8B0"    # ansi.bright.cyan (semantic.type)
-bright-white = "#F2ECE4"   # ansi.bright.white
+bright-black = "#4D5560"
+bright-red = "#D65A3A"
+bright-green = "#8FC57A"
+bright-yellow = "#F08A5D"
+bright-blue = "#6F879A"
+bright-magenta = "#9A8FB3"
+bright-cyan = "#8FB8B0"
+bright-white = "#F2ECE4"
 
-lantern = "#E26A3B"      # colors.lantern
-ember = "#D65A3A"        # colors.ember
-amber = "#D4A05A"        # colors.amber
-constant = "#8FB8B0"     # EXPERIMENTAL: bright-cyan for ~150° hue difference
-comment = "#7D8797"      # semantic.comment (distant stone-gray)
-sunken = "#2E211D"       # layers.sunken (for cursor.match)
-match-bg = "#332A2A"     # state.match_bg
+lantern = "#E26A3B"
+ember = "#D65A3A"
+amber = "#D4A05A"
+constant = "#8FB8B0"
+comment = "#7D8797"
+sunken = "#302121"
+match-bg = "#3A2522"

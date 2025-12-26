@@ -23,14 +23,14 @@ tag = "v1.2.0"
 [plugins.zsh-fzf-history-search]
 github = "joshskidmore/zsh-fzf-history-search"
 
-# Syntax highlighting (deferred for performance)
+# Syntax highlighting
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 # renovate: depName=zsh-users/zsh-syntax-highlighting
 tag = "0.8.0"
-apply = ["defer"]
 
 # zsh-syntax-highlighting theme (Akari)
+# Must be loaded after zsh-syntax-highlighting
 [plugins.akari-zsh]
 github = "cappyzawa/akari-zsh"
 use = ["akari-night.zsh"]
