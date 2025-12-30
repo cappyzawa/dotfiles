@@ -20,7 +20,7 @@ packages:
 - name: zigtools/zls@0.15.1
 
 # Toolchain
-- name: astral-sh/uv@0.9.18
+- name: astral-sh/uv@0.9.20
 - name: mvdan/sh@v3.12.0
 - name: golang/tools/goimports@v0.28.0
 - name: go-delve/delve@v1.26.0
