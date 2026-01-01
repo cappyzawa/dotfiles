@@ -47,6 +47,7 @@ CURRENT_DIR=$(echo "$input" | jq -r '.workspace.current_dir // "."')
 cd "$CURRENT_DIR" 2>/dev/null || true
 
 # Render with starship using custom config
-# Strip Zsh PS1 escape markers and fix double percent signs
-STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/starship-claude.toml" \
-  starship prompt 2>/dev/null | sed 's/%{//g; s/%}//g; s/%%/%/g'
+# STARSHIP_SHELL=sh to avoid shell-specific escapes (statusline is not a shell prompt)
+STARSHIP_SHELL=sh \
+  STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/starship-claude.toml" \
+  starship prompt 2>/dev/null
