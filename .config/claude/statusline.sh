@@ -22,14 +22,15 @@ if [ "$USAGE" != "null" ]; then
   CACHE_READ=$(echo "$USAGE" | jq '.cache_read_input_tokens // 0')
   CURRENT_TOKENS=$((INPUT_TOKENS + CACHE_CREATE + CACHE_READ))
 
-  # Calculate percentage
+  # Calculate remaining percentage
   if [ "$CONTEXT_SIZE" -gt 0 ]; then
-    export CLAUDE_PCT=$((CURRENT_TOKENS * 100 / CONTEXT_SIZE))
+    USED_PCT=$((CURRENT_TOKENS * 100 / CONTEXT_SIZE))
+    export CLAUDE_PCT=$((100 - USED_PCT))
   else
-    export CLAUDE_PCT=0
+    export CLAUDE_PCT=100
   fi
 
-  # Create gauge visualization
+  # Create gauge visualization (filled = remaining)
   FILLED=$((CLAUDE_PCT / 10))
   EMPTY=$((10 - FILLED))
   GAUGE=""
@@ -37,8 +38,8 @@ if [ "$USAGE" != "null" ]; then
   for _ in $(seq 1 "$EMPTY" 2>/dev/null || true); do GAUGE+="░"; done
   export CLAUDE_GAUGE="$GAUGE"
 else
-  export CLAUDE_PCT=0
-  export CLAUDE_GAUGE="░░░░░░░░░░"
+  export CLAUDE_PCT=100
+  export CLAUDE_GAUGE="▓▓▓▓▓▓▓▓▓▓"
 fi
 
 # Get current directory from JSON for starship
