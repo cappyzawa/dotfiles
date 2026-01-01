@@ -38,6 +38,7 @@ Brewfile.lock.json
 !.config/claude/settings.json
 !.config/claude/CLAUDE.md
 !.config/claude/commands/
+!.config/claude/statusline.sh
 .config/colima/**
 !.config/colima/**/
 !.config/colima/**/colima.yaml
