@@ -18,8 +18,10 @@ family = "Moralerspace Argon"
 style = "Regular"
 
 [terminal.shell]
-program = "/opt/homebrew/bin/fish"
-args = ["-l", "-i", "-c", "tmux new-session -A -s zzz"]
+# tmux: program = "/opt/homebrew/bin/zsh"
+# tmux: args = ["-l", "-c", "tmux new-session -AD -s zzz"]
+program = "/bin/zsh"
+args = ["--login", "-c", "zellij attach --create zzz"]
 
 [window]
 decorations = "full"
