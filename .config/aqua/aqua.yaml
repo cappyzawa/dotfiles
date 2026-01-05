@@ -47,3 +47,4 @@ packages:
 - name: sigstore/cosign@v3.0.3
 - name: pre-commit/pre-commit@v4.5.1
 - name: charmbracelet/glow@v2.1.1
+- name: jesseduffield/lazygit@v0.58.0
