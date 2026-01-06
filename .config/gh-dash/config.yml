@@ -4,16 +4,16 @@ prSections:
 - title: Ready to Merge
   filters: is:open author:@me review:approved
 - title: Needs My Review
-  filters: is:open review-requested:@me
+  filters: is:open review-requested:@me updated:>2025-10-01
 - title: Involved
-  filters: is:open involves:@me -author:@me
+  filters: is:open involves:@me -author:@me updated:>2025-10-01
 issuesSections:
 - title: My Issues
   filters: is:open author:@me
 - title: Assigned
   filters: is:open assignee:@me
 - title: Involved
-  filters: is:open involves:@me -author:@me
+  filters: is:open involves:@me -author:@me updated:>2025-10-01
 defaults:
   preview:
     open: true
