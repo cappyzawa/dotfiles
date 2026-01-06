@@ -24,7 +24,7 @@ args = ["-l", "-c", "tmux new-session -AD -s zzz"]
 [window]
 decorations = "full"
 dynamic_padding = true
-option_as_alt = "None"
+option_as_alt = "Both"
 # startup_mode = "Fullscreen"
 
 [window.padding]
