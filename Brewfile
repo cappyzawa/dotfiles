@@ -1,4 +1,4 @@
-cask "ghostty"
+cask "alacritty"
 cask "arc" if OS.mac?
 cask "1password" if OS.mac?
 cask "raycast" if OS.mac?

@@ -18,8 +18,8 @@ family = "Moralerspace Argon"
 style = "Regular"
 
 [terminal.shell]
-program = "/opt/homebrew/bin/fish"
-args = ["-l", "-i", "-c", "tmux new-session -A -s zzz"]
+program = "/bin/zsh"
+args = ["-l", "-c", "tmux new-session -AD -s zzz"]
 
 [window]
 decorations = "full"
