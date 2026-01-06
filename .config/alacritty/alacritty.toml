@@ -34,6 +34,9 @@ y = 5
 [general]
 import = ["themes/akari-night.toml"]
 
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+
 [terminal]
 
 [keyboard]
