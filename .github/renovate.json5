@@ -19,7 +19,7 @@
       "matchStrings": [
         "# renovate: depName=(?<depName>\\S+)\\ntag = \"(?<currentValue>[^\"]+)\"",
       ],
-      "datasourceTemplate": "github-tags",
+      "datasource": "github-tags",
     },
     {
       "customType": "regex",
@@ -30,7 +30,7 @@
       "matchStrings": [
         "# renovate: depName=(?<depName>\\S+)\\n\\s*\"[^@]+@(?<currentValue>[^\"]+)\"",
       ],
-      "datasourceTemplate": "github-releases",
+      "datasource": "github-releases",
     },
     {
       "customType": "regex",
@@ -41,7 +41,7 @@
       "matchStrings": [
         "# renovate: depName=(?<depName>\\S+)\\n[A-Z_]+=\"(?<currentValue>[^\"]+)\"",
       ],
-      "datasourceTemplate": "github-releases",
+      "datasource": "github-releases",
     },
   ],
   "rebaseWhen": "behind-base-branch",
