@@ -11,11 +11,6 @@ if command -v aws_completer &>/dev/null; then
     complete -C aws_completer aws
 fi
 
-# Starship prompt
-if command -v starship &>/dev/null; then
-    eval "$(starship init zsh)"
-fi
-
 # Dropbox link compatibility
 # Create compatibility symlink for Dropbox (new path -> old path)
 if [[ ! -e "${HOME}/Dropbox" && -e "${HOME}/Library/CloudStorage/Dropbox" ]]; then

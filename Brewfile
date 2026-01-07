@@ -22,7 +22,6 @@ brew "fzf"
 brew "fd"
 brew "bat"
 brew "gnu-sed"
-brew "starship"
 brew "utf8proc", args: ["HEAD"]
 brew "helix"
 brew "ripgrep"
