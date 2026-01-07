@@ -21,6 +21,17 @@
       ],
       "datasourceTemplate": "github-tags",
     },
+    {
+      "customType": "regex",
+      "description": "Update gh extension versions",
+      "fileMatch": ["\\.config/zsh/.*gh-extensions.*\\.zsh$"],
+      // Matches: # renovate: depName=owner/repo
+      //          "owner/repo@v1.0.0"
+      "matchStrings": [
+        "# renovate: depName=(?<depName>\\S+)\\n\\s*\"[^@]+@(?<currentValue>[^\"]+)\"",
+      ],
+      "datasourceTemplate": "github-releases",
+    },
   ],
   "rebaseWhen": "behind-base-branch",
   "automerge": true,

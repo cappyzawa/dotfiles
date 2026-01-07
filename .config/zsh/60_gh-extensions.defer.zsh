@@ -1,8 +1,10 @@
 # gh extensions list
+# Format: "owner/repo@tag"
 _GH_EXTENSIONS=(
-  "mislav/gh-branch"
-  "dlvhdr/gh-dash"
-  "cappyzawa/gh-ghq-cd"
+  # renovate: depName=dlvhdr/gh-dash
+  "dlvhdr/gh-dash@v4.20.1"
+  # renovate: depName=cappyzawa/gh-ghq-cd
+  "cappyzawa/gh-ghq-cd@v0.8.0"
 )
 
 # Install missing gh extensions in background
@@ -12,9 +14,11 @@ _install_gh_extensions() {
   local installed
   installed=$(gh extension list 2>/dev/null | awk '{print $3}')
 
-  for ext in "${_GH_EXTENSIONS[@]}"; do
+  for entry in "${_GH_EXTENSIONS[@]}"; do
+    local ext="${entry%@*}"
+    local tag="${entry#*@}"
     if ! echo "$installed" | grep -q "^https://github.com/${ext}$"; then
-      (gh extension install "$ext" &>/dev/null &)
+      (gh extension install "$ext" --pin "$tag" &>/dev/null &)
     fi
   done
 }
