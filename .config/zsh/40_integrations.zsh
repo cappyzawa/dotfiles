@@ -1,10 +1,5 @@
 # Tool integrations
 
-# direnv hook
-if command -v direnv &>/dev/null; then
-    eval "$(direnv hook zsh)"
-fi
-
 # AWS CLI completion
 if command -v aws_completer &>/dev/null; then
     autoload -Uz bashcompinit && bashcompinit

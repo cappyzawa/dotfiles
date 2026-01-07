@@ -28,10 +28,6 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
     '[[ $group == "[process ID]" ]] && ps -p $word -o pid,user,%cpu,%mem,command --no-headers -w -w'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
 
-# fzf-fzf-history-search configuration
-export ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES=1
-export ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=1
-
 # fd options for fzf (if using fzf default command)
 if command -v fd &>/dev/null; then
     export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude node_modules --exclude target'

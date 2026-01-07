@@ -7,10 +7,24 @@ shell = "zsh"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+# PATH configuration (must be loaded first for aqua-managed tools)
+[plugins.local-path]
+local = "~/.config/zsh"
+use = ["00_path.zsh"]
+
 # Starship prompt initialization
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 hooks.pre = 'export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/starship.toml"'
+
+# direnv hook (deferred for faster startup)
+[plugins.direnv]
+inline = 'zsh-defer eval "$(direnv hook zsh)"'
+
+# Custom completions
+[plugins.local-completions]
+local = "~/.config/zsh/completions"
+apply = ["fpath"]
 
 # fzf color scheme (Akari)
 [plugins.akari-fzf]
@@ -27,6 +41,10 @@ tag = "v1.2.0"
 # fzf history search (Ctrl+R)
 [plugins.zsh-fzf-history-search]
 github = "joshskidmore/zsh-fzf-history-search"
+hooks.pre = '''
+export ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES=1
+export ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=1
+'''
 
 # Syntax highlighting (deferred for faster startup)
 [plugins.zsh-syntax-highlighting]
@@ -51,7 +69,7 @@ apply = ["defer"]
 # Local configuration files (immediate loading)
 [plugins.local]
 local = "~/.config/zsh"
-use = ["*.zsh", "!*.defer.zsh"]
+use = ["*.zsh", "!*.defer.zsh", "!00_path.zsh"]
 
 # Local configuration files (deferred loading)
 [plugins.local-defer]
