@@ -1,54 +1,54 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "timezone": "Asia/Tokyo",
-  "schedule": ["before 8am every weekday"],
-  // Wait for stability before adopting new releases
-  "minimumReleaseAge": "7 days",
-  "extends": [
-    "config:recommended",
-    "github>aquaproj/aqua-renovate-config#2.9.0",
-    "github>aquaproj/aqua-renovate-config:file#2.9.0(\\.config/aqua/.*\\.ya?ml)",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  timezone: 'Asia/Tokyo',
+  schedule: [
+    'before 8am every weekday',
   ],
-  "customManagers": [
+  minimumReleaseAge: '7 days',
+  extends: [
+    'config:recommended',
+    'github>aquaproj/aqua-renovate-config#2.9.0',
+    'github>aquaproj/aqua-renovate-config:file#2.9.0(\\.config/aqua/.*\\.ya?ml)',
+  ],
+  customManagers: [
     {
-      "customType": "regex",
-      "description": "Update sheldon plugin versions",
-      "fileMatch": ["\\.config/sheldon/plugins\\.toml$"],
-      // Matches: # renovate: depName=foo/bar
-      //          tag = "v1.0.0"
-      "matchStrings": [
-        "# renovate: depName=(?<depName>\\S+)\\ntag = \"(?<currentValue>[^\"]+)\"",
+      customType: 'regex',
+      description: 'Update sheldon plugin versions',
+      managerFilePatterns: [
+        '/\\.config/sheldon/plugins\\.toml$/',
       ],
-      "datasourceTemplate": "github-tags",
+      matchStrings: [
+        '# renovate: depName=(?<depName>\\S+)\\ntag = "(?<currentValue>[^"]+)"',
+      ],
+      datasourceTemplate: 'github-tags',
     },
     {
-      "customType": "regex",
-      "description": "Update gh extension versions",
-      "fileMatch": ["\\.config/zsh/.*gh-extensions.*\\.zsh$"],
-      // Matches: # renovate: depName=owner/repo
-      //          "owner/repo@v1.0.0"
-      "matchStrings": [
-        "# renovate: depName=(?<depName>\\S+)\\n\\s*\"[^@]+@(?<currentValue>[^\"]+)\"",
+      customType: 'regex',
+      description: 'Update gh extension versions',
+      managerFilePatterns: [
+        '/\\.config/zsh/.*gh-extensions.*\\.zsh$/',
       ],
-      "datasourceTemplate": "github-releases",
+      matchStrings: [
+        '# renovate: depName=(?<depName>\\S+)\\n\\s*"[^@]+@(?<currentValue>[^"]+)"',
+      ],
+      datasourceTemplate: 'github-releases',
     },
     {
-      "customType": "regex",
-      "description": "Update aqua installer script versions",
-      "fileMatch": ["etc/scripts/aqua\\.sh$"],
-      // Matches: # renovate: depName=owner/repo
-      //          VAR_NAME="v1.0.0"
-      "matchStrings": [
-        "# renovate: depName=(?<depName>\\S+)\\n[A-Z_]+=\"(?<currentValue>[^\"]+)\"",
+      customType: 'regex',
+      description: 'Update aqua installer script versions',
+      managerFilePatterns: [
+        '/etc/scripts/aqua\\.sh$/',
       ],
-      "datasourceTemplate": "github-releases",
+      matchStrings: [
+        '# renovate: depName=(?<depName>\\S+)\\n[A-Z_]+="(?<currentValue>[^"]+)"',
+      ],
+      datasourceTemplate: 'github-releases',
     },
   ],
-  "rebaseWhen": "behind-base-branch",
-  "automerge": true,
-  // Require manual review for breaking changes
-  "major": {
-    "automerge": false,
+  rebaseWhen: 'behind-base-branch',
+  automerge: true,
+  major: {
+    automerge: false,
   },
-  "prConcurrentLimit": 5,
+  prConcurrentLimit: 5,
 }
