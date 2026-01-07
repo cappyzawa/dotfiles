@@ -2,34 +2,31 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "timezone": "Asia/Tokyo",
   "schedule": ["before 8am on weekday"],
+  // Wait for stability before adopting new releases
   "minimumReleaseAge": "7 days",
   "extends": [
     "config:recommended",
     "github>aquaproj/aqua-renovate-config#2.9.0",
-    "github>aquaproj/aqua-renovate-config:file#2.9.0(\\.config/aqua/.*\\.ya?ml)"
+    "github>aquaproj/aqua-renovate-config:file#2.9.0(\\.config/aqua/.*\\.ya?ml)",
   ],
   "customManagers": [
     {
       "customType": "regex",
       "description": "Update sheldon plugin versions",
       "fileMatch": ["\\.config/sheldon/plugins\\.toml$"],
+      // Matches: # renovate: depName=foo/bar
+      //          tag = "v1.0.0"
       "matchStrings": [
-        "# renovate: depName=(?<depName>\\S+)\\ntag = \"(?<currentValue>[^\"]+)\""
+        "# renovate: depName=(?<depName>\\S+)\\ntag = \"(?<currentValue>[^\"]+)\"",
       ],
-      "datasourceTemplate": "github-tags"
-    }
+      "datasourceTemplate": "github-tags",
+    },
   ],
   "rebaseWhen": "behind-base-branch",
   "automerge": true,
+  // Require manual review for breaking changes
   "major": {
-    "automerge": false
+    "automerge": false,
   },
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "aquaproj/aqua-registry"
-      ]
-    }
-  ],
-  "prConcurrentLimit": 5
+  "prConcurrentLimit": 5,
 }
