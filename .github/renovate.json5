@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "timezone": "Asia/Tokyo",
-  "schedule": ["before 8am on weekday"],
+  "schedule": ["before 8am on weekdays"],
   // Wait for stability before adopting new releases
   "minimumReleaseAge": "7 days",
   "extends": [
@@ -19,7 +19,7 @@
       "matchStrings": [
         "# renovate: depName=(?<depName>\\S+)\\ntag = \"(?<currentValue>[^\"]+)\"",
       ],
-      "datasource": "github-tags",
+      "datasourceTemplate": "github-tags",
     },
     {
       "customType": "regex",
@@ -30,7 +30,7 @@
       "matchStrings": [
         "# renovate: depName=(?<depName>\\S+)\\n\\s*\"[^@]+@(?<currentValue>[^\"]+)\"",
       ],
-      "datasource": "github-releases",
+      "datasourceTemplate": "github-releases",
     },
     {
       "customType": "regex",
@@ -41,7 +41,7 @@
       "matchStrings": [
         "# renovate: depName=(?<depName>\\S+)\\n[A-Z_]+=\"(?<currentValue>[^\"]+)\"",
       ],
-      "datasource": "github-releases",
+      "datasourceTemplate": "github-releases",
     },
   ],
   "rebaseWhen": "behind-base-branch",
