@@ -32,6 +32,17 @@
       ],
       "datasourceTemplate": "github-releases",
     },
+    {
+      "customType": "regex",
+      "description": "Update aqua installer script versions",
+      "fileMatch": ["etc/scripts/aqua\\.sh$"],
+      // Matches: # renovate: depName=owner/repo
+      //          VAR_NAME="v1.0.0"
+      "matchStrings": [
+        "# renovate: depName=(?<depName>\\S+)\\n[A-Z_]+=\"(?<currentValue>[^\"]+)\"",
+      ],
+      "datasourceTemplate": "github-releases",
+    },
   ],
   "rebaseWhen": "behind-base-branch",
   "automerge": true,
