@@ -16,6 +16,12 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
+    - name: Create empty private registry
+      run: |
+        mkdir -p .config/aqua/private
+        echo "packages: []" > .config/aqua/private/registry.yaml
+        echo "packages: []" > .config/aqua/private/aqua.yaml
+
     - uses: aquaproj/aqua-installer@v4.0.4
       with:
         aqua_version: v2.56.1
