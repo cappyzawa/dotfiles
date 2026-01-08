@@ -19,12 +19,11 @@ jobs:
     - uses: aquaproj/aqua-installer@v4.0.4
       with:
         aqua_version: v2.56.1
-        aqua_opts: "-l"
+        aqua_opts: "-l -t starship"
+        working_directory: .config/aqua
 
     - name: Regenerate starship init
       run: starship init zsh > .config/zsh/starship-init.zsh
-      env:
-        AQUA_GLOBAL_CONFIG: ${{ github.workspace }}/.config/aqua/aqua.yaml
 
     - name: Commit if changed
       run: |
