@@ -13,7 +13,7 @@
     {
       "customType": "regex",
       "description": "Update sheldon plugin versions",
-      "fileMatch": ["\\.config/sheldon/plugins\\.toml$"],
+      "managerFilePatterns": ["/\\.config/sheldon/plugins\\.toml$/"],
       // Matches: # renovate: depName=foo/bar
       //          tag = "v1.0.0"
       "matchStrings": [
@@ -24,7 +24,7 @@
     {
       "customType": "regex",
       "description": "Update gh extension versions",
-      "fileMatch": ["\\.config/zsh/.*gh-extensions.*\\.zsh$"],
+      "managerFilePatterns": ["/\\.config/zsh/.*gh-extensions.*\\.zsh$/"],
       // Matches: # renovate: depName=owner/repo
       //          "owner/repo@v1.0.0"
       "matchStrings": [
@@ -35,7 +35,7 @@
     {
       "customType": "regex",
       "description": "Update aqua installer script versions",
-      "fileMatch": ["etc/scripts/aqua\\.sh$"],
+      "managerFilePatterns": ["/etc/scripts/aqua\\.sh$/"],
       // Matches: # renovate: depName=owner/repo
       //          VAR_NAME="v1.0.0"
       "matchStrings": [
