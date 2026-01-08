@@ -29,7 +29,8 @@ jobs:
         working_directory: .config/aqua
 
     - name: Regenerate starship init
-      run: starship init zsh > .config/zsh/starship-init.zsh
+      run: aqua exec -- starship init zsh > ../zsh/starship-init.zsh
+      working-directory: .config/aqua
 
     - name: Commit if changed
       run: |
