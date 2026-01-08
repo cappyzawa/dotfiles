@@ -25,7 +25,7 @@ jobs:
     - uses: aquaproj/aqua-installer@v4.0.4
       with:
         aqua_version: v2.56.1
-        aqua_opts: "-l -t starship"
+        aqua_opts: "-tags starship/starship"
         working_directory: .config/aqua
 
     - name: Regenerate starship init
