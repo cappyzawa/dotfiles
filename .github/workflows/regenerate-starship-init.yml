@@ -1,0 +1,33 @@
+name: Regenerate starship init
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - '.config/aqua/aqua.yaml'
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v6
+
+    - uses: aquaproj/aqua-installer@v4.0.4
+      with:
+        aqua_version: v2.56.1
+
+    - name: Regenerate starship init
+      run: starship init zsh > .config/zsh/starship-init.zsh
+
+    - name: Commit if changed
+      run: |
+        if ! git diff --quiet .config/zsh/starship-init.zsh; then
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .config/zsh/starship-init.zsh
+          git commit -m "chore: regenerate starship init"
+          git push
+        fi
