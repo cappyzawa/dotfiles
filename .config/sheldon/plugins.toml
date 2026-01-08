@@ -26,6 +26,12 @@ inline = 'zsh-defer eval "$(direnv hook zsh)"'
 local = "~/.config/zsh/completions"
 apply = ["fpath"]
 
+# Aqua CLI completions generator (runs in background, see README.md)
+[plugins.aqua-completions]
+local = "~/.config/sheldon/aqua-completions"
+use = ["init.zsh"]
+apply = ["defer"]
+
 # fzf color scheme (Akari)
 [plugins.akari-fzf]
 github = "cappyzawa/akari-fzf"
