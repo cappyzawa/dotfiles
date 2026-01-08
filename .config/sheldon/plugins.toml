@@ -12,9 +12,11 @@ github = "romkatv/zsh-defer"
 local = "~/.config/zsh"
 use = ["00_path.zsh"]
 
-# Starship prompt initialization
+# Starship prompt initialization (pre-generated for performance)
+# Regenerate: starship init zsh > ~/.config/zsh/starship-init.zsh
 [plugins.starship]
-inline = 'eval "$(starship init zsh)"'
+local = "~/.config/zsh"
+use = ["starship-init.zsh"]
 hooks.pre = 'export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/starship.toml"'
 
 # direnv hook (deferred)
@@ -72,10 +74,10 @@ github = "zsh-users/zsh-autosuggestions"
 tag = "v0.7.1"
 apply = ["defer"]
 
-# Local configuration files (immediate loading)
+# Local configuration files (immediate loading, 10-99)
 [plugins.local]
 local = "~/.config/zsh"
-use = ["*.zsh", "!*.defer.zsh", "!00_path.zsh"]
+use = ["[1-9][0-9]_*.zsh", "!*.defer.zsh"]
 
 # Local configuration files (deferred loading)
 [plugins.local-defer]
