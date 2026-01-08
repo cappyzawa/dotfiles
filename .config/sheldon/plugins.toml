@@ -17,7 +17,7 @@ use = ["00_path.zsh"]
 inline = 'eval "$(starship init zsh)"'
 hooks.pre = 'export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/starship.toml"'
 
-# direnv hook (deferred for faster startup)
+# direnv hook (deferred)
 [plugins.direnv]
 inline = 'zsh-defer eval "$(direnv hook zsh)"'
 
@@ -52,7 +52,7 @@ export ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES=1
 export ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=1
 '''
 
-# Syntax highlighting (deferred for faster startup)
+# Syntax highlighting (deferred)
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 # renovate: depName=zsh-users/zsh-syntax-highlighting
@@ -65,7 +65,7 @@ apply = ["defer"]
 github = "cappyzawa/akari-zsh"
 use = ["akari-night.zsh"]
 
-# Autosuggestions (deferred for faster startup, must be after fzf-tab)
+# Autosuggestions (deferred, must be after fzf-tab)
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 # renovate: depName=zsh-users/zsh-autosuggestions

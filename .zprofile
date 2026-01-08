@@ -1,13 +1,16 @@
 # .zprofile - Login shell initialization
 
-# Homebrew initialization (architecture-specific)
-if [[ "$(uname -m)" == "arm64" ]] && [[ -x /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ "$(uname -m)" == "x86_64" ]] && [[ -x /usr/local/bin/brew ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
+# Homebrew initialization (cached for performance)
+# Regenerate cache: rm ~/.cache/zsh/brew-shellenv-*
+() {
+  local cache="${HOME}/.cache/zsh/brew-shellenv-$(uname -m)"
+  if [[ ! -f "$cache" ]]; then
+    local brew="/opt/homebrew/bin/brew"
+    [[ -x "$brew" ]] || brew="/usr/local/bin/brew"
+    [[ -x "$brew" ]] && { mkdir -p "${cache:h}"; "$brew" shellenv > "$cache"; }
+  fi
+  [[ -f "$cache" ]] && source "$cache"
+}
 
 # Set LDFLAGS for Homebrew
-if [[ -n "${HOMEBREW_PREFIX}" ]]; then
-  export LDFLAGS="-L${HOMEBREW_PREFIX}/lib"
-fi
+[[ -n "${HOMEBREW_PREFIX}" ]] && export LDFLAGS="-L${HOMEBREW_PREFIX}/lib"
