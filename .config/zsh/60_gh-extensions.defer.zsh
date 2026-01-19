@@ -2,7 +2,7 @@
 # Format: "owner/repo@tag"
 _GH_EXTENSIONS=(
   # renovate: depName=dlvhdr/gh-dash
-  "dlvhdr/gh-dash@v4.20.1"
+  "dlvhdr/gh-dash@v4.21.0"
   # renovate: depName=cappyzawa/gh-ghq-cd
   "cappyzawa/gh-ghq-cd@v0.8.0"
 )
