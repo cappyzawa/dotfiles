@@ -10,5 +10,5 @@ echo "Installing aqua..."
 # renovate: depName=aquaproj/aqua-installer
 AQUA_INSTALLER_VERSION="v4.0.4"
 # renovate: depName=aquaproj/aqua
-AQUA_VERSION="v2.56.2"
+AQUA_VERSION="v2.56.3"
 curl -sSfL "https://raw.githubusercontent.com/aquaproj/aqua-installer/${AQUA_INSTALLER_VERSION}/aqua-installer" | bash -s -- -v "${AQUA_VERSION}"
