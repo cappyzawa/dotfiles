@@ -4,7 +4,7 @@ _GH_EXTENSIONS=(
   # renovate: depName=dlvhdr/gh-dash
   "dlvhdr/gh-dash@v4.21.0"
   # renovate: depName=cappyzawa/gh-ghq-cd
-  "cappyzawa/gh-ghq-cd@v0.8.0"
+  "cappyzawa/gh-ghq-cd@v0.9.2"
 )
 
 # Sync gh extensions: install missing, upgrade outdated, remove unlisted
