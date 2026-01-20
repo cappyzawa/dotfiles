@@ -34,7 +34,7 @@ packages:
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v4.10.1
 - name: kubernetes-sigs/krew@v0.4.5
-- name: protocolbuffers/protobuf/protoc@v33.2
+- name: protocolbuffers/protobuf/protoc@v33.4
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.11
 - name: aws/aws-cli@2.32.33
 - name: aws/session-manager-plugin@1.2.536.0
