@@ -51,4 +51,4 @@ packages:
 - name: starship/starship@v1.24.2
 - name: sharkdp/fd@v10.3.0
 - name: sharkdp/bat@v0.26.1
-- name: cli/cli@v2.83.2
+- name: cli/cli@v2.85.0
