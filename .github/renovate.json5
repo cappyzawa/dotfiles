@@ -6,8 +6,8 @@
   "minimumReleaseAge": "7 days",
   "extends": [
     "config:recommended",
-    "github>aquaproj/aqua-renovate-config#2.9.0",
-    "github>aquaproj/aqua-renovate-config:file#2.9.0(\\.config/aqua/.*\\.ya?ml)",
+    "github>aquaproj/aqua-renovate-config#2.10.0",
+    "github>aquaproj/aqua-renovate-config:file#2.10.0(\\.config/aqua/.*\\.ya?ml)",
   ],
   "customManagers": [
     {
