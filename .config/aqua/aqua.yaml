@@ -20,7 +20,7 @@ packages:
 - import: ./helix.yaml
 - name: jqlang/jq@jq-1.8.1
 - name: kubernetes/kubectl@v1.35.0
-- name: kubernetes-sigs/kustomize@kustomize/v5.8.0
+- name: kubernetes-sigs/kustomize@kustomize/v5.8.1
 - name: helm/helm@v4.1.0
 - name: argoproj/argo-rollouts@v1.8.3
 - name: x-motemen/ghq@v1.8.1
