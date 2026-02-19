@@ -5,7 +5,7 @@ packages:
 - name: tree-sitter/tree-sitter@v0.26.5
 # Language
 - name: golang/go@go1.25.7
-- name: denoland/deno@v2.6.8
+- name: denoland/deno@v2.6.9
 - name: cue-lang/cue@v0.15.4
 - name: open-policy-agent/opa@v1.13.1
 - name: ziglang/zig@0.15.1
