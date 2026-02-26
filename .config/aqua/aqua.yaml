@@ -23,7 +23,7 @@ packages:
 - name: kubernetes-sigs/kustomize@kustomize/v5.8.1
 - name: helm/helm@v4.1.1
 - name: argoproj/argo-rollouts@v1.8.4
-- name: x-motemen/ghq@v1.8.1
+- name: x-motemen/ghq@v1.9.4
 - name: sharkdp/hyperfine@v1.20.0
 - name: mikefarah/yq@v4.52.4
 - name: mike-engel/jwt-cli@6.2.0
