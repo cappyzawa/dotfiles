@@ -33,7 +33,7 @@ packages:
 - name: ogham/exa@v0.10.1
 - name: github/hub@v2.14.2
 - name: kubernetes-sigs/kubebuilder@v4.12.0
-- name: kubernetes-sigs/krew@v0.4.5
+- name: kubernetes-sigs/krew@v0.5.0
 - name: protocolbuffers/protobuf/protoc@v33.5
 - name: protocolbuffers/protobuf-go/protoc-gen-go@v1.36.11
 - name: aws/aws-cli@2.34.0
