@@ -6,7 +6,7 @@ packages:
 # Language
 - name: golang/go@go1.26.0
 - name: denoland/deno@v2.7.3
-- name: cue-lang/cue@v0.15.4
+- name: cue-lang/cue@v0.16.0
 - name: open-policy-agent/opa@v1.14.0
 - name: ziglang/zig@0.15.1
 - name: hashicorp/terraform@v1.14.6
