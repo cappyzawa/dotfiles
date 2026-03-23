@@ -51,7 +51,7 @@ use = ["akari-night.sh"]
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
 # renovate: depName=Aloxaf/fzf-tab
-tag = "v1.2.0"
+tag = "v1.3.0"
 
 # fzf history search (Ctrl+R)
 [plugins.zsh-fzf-history-search]
