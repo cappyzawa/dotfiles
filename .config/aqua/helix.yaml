@@ -9,7 +9,7 @@ packages:
 - name: cue-lang/cue@v0.16.1
 - name: open-policy-agent/opa@v1.15.2
 - name: ziglang/zig@0.15.1
-- name: hashicorp/terraform@v1.14.8
+- name: hashicorp/terraform@v1.14.9
 
 # Language servers (binary releases)
 - name: hashicorp/terraform-ls@v0.38.6
