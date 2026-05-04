@@ -17,7 +17,7 @@ packages:
 - name: artempyanykh/marksman@2024-12-18
 - name: LuaLS/lua-language-server@3.18.2
 - name: golang/tools/gopls@v0.20.0
-- name: zigtools/zls@0.15.1
+- name: zigtools/zls@0.16.0
 
 # Toolchain
 - name: astral-sh/uv@0.11.7
