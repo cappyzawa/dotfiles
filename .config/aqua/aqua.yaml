@@ -42,7 +42,7 @@ packages:
 - name: prometheus/prometheus@v3.11.3
 - name: direnv/direnv@v2.37.1
 - name: theseus-rs/postgresql-binaries@18.3.0
-- name: docker/compose@v5.1.3
+- name: docker/compose@v5.1.4
 - name: nodejs/node@v25.9.0
 - name: sigstore/cosign@v3.0.6
 - name: pre-commit/pre-commit@v4.6.0
