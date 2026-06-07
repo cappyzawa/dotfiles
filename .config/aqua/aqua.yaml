@@ -47,7 +47,7 @@ packages:
 - name: sigstore/cosign@v3.0.6
 - name: pre-commit/pre-commit@v4.6.0
 - name: charmbracelet/glow@v2.1.2
-- name: jesseduffield/lazygit@v0.61.1
+- name: jesseduffield/lazygit@v0.62.1
 - name: starship/starship@v1.25.1
 - name: sharkdp/fd@v10.4.2
 - name: sharkdp/bat@v0.26.1
