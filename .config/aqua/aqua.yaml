@@ -18,7 +18,7 @@ registries:
 packages:
 - import: ./private/aqua.yaml
 - import: ./helix.yaml
-- name: jqlang/jq@jq-1.8.1
+- name: jqlang/jq@jq-1.8.2
 - name: kubernetes/kubectl@v1.36.2
 - name: kubernetes-sigs/kustomize@kustomize/v5.8.1
 - name: helm/helm@v4.2.2
