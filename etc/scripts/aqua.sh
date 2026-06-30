@@ -8,7 +8,7 @@ fi
 echo "Installing aqua..."
 # Install specific version to avoid GitHub API rate limit
 # renovate: depName=aquaproj/aqua-installer
-AQUA_INSTALLER_VERSION="v4.0.4"
+AQUA_INSTALLER_VERSION="v4.0.5"
 # renovate: depName=aquaproj/aqua
 AQUA_VERSION="v2.60.1"
 curl -sSfL "https://raw.githubusercontent.com/aquaproj/aqua-installer/${AQUA_INSTALLER_VERSION}/aqua-installer" | bash -s -- -v "${AQUA_VERSION}"
